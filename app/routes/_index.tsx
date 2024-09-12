@@ -1,6 +1,6 @@
 import type { MetaFunction } from "@netlify/remix-runtime";
 import  { LinksFunction } from "@remix-run/node";
-import styles from "~/styles/main.css";
+import styles from "~/styles/main.css?url";
 
 export const meta: MetaFunction = () => {
   return [
