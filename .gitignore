@@ -2,7 +2,7 @@ node_modules
 
 .vscode/
 /.cache
-/public/build
+/public
 /build
 .env
 

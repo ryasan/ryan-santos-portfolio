@@ -45,6 +45,11 @@ module.exports = {
         ],
         "import/resolver": {
           typescript: {},
+          alias: {
+            map: [
+              ["~/styles", "./public/styles"],
+            ],
+          }
         },
       },
     },
