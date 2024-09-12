@@ -1,0 +1,16 @@
+$ns: '.section-scroll';
+
+#{$ns} {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+
+	&__content {
+		height: 100%;
+		max-height: 750px;
+		outline: 1px solid red;
+		width: 100%;
+	}
+}

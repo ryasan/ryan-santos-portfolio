@@ -2,26 +2,26 @@ import clsx from 'clsx';
 import { getClass } from '~/utils';
 import SectionScroll from '~/components/section-scroll';
 
-const ns = 'hero-section';
+const ns = 'footer-section';
 
-type HeroSectionProps = {
+type FooterSectionProps = {
   order: number;
 };
 
-const HeroSection = ({ order }: HeroSectionProps) => {
+const FooterSection = ({ order }: FooterSectionProps) => {
   const rootClassName = clsx({
     [`${ns}`]: true,
   });
 
   return (
-    <SectionScroll className={rootClassName} order={order}>
+    <SectionScroll className={rootClassName} order={order} as="footer">
       <div className="container">
         <div className={getClass(ns, 'content')}>
-          <h1 className={getClass(ns, 'title')}>Hero Section</h1>
+          <h1 className={getClass(ns, 'title')}>Footer Section</h1>
         </div>
       </div>
     </SectionScroll>
   );
 };
 
-export default HeroSection;
+export default FooterSection;

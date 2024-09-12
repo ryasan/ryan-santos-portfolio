@@ -55,9 +55,8 @@ $max-width: 1440px;
 /* Font Families */
 
 $montserrat: 'Montserrat';
-$playfair-display: 'Playfair Display';
 $body-font-family: $montserrat, sans-serif;
-$heading-font-family: $playfair-display, serif;
+$heading-font-family: $montserrat, serif;
 
 /* Default Breakpoints For Typography */
 
