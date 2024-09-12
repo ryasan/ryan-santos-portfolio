@@ -1,6 +1,9 @@
 import type { MetaFunction } from "@netlify/remix-runtime";
 import { LinksFunction } from "@remix-run/node";
+
 import styles from "~/styles/main.css?url";
+import HeaderSection from "~/components/sections/header-section";
+import HeroSection from "~/components/sections/hero-section";
 
 export const meta: MetaFunction = () => {
   return [
@@ -29,7 +32,10 @@ export const links: LinksFunction = () => {
 export default function Index() {
   return (
     <div>
+      {/* Header */}
+      <HeaderSection />
       {/* Hero */}
+      <HeroSection />
       {/* Works */}
       {/* Blog */}
       {/* Contact */}

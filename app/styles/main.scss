@@ -6,3 +6,12 @@
 @import 'mixins';
 @import 'base';
 @import 'helpers';
+
+/* Sections */
+
+@import 'components/sections/header-section';
+@import 'components/sections/hero-section';
+
+/* Components */
+
+@import 'components/button';
