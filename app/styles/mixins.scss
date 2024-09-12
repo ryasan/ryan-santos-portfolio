@@ -1,0 +1,140 @@
+/* Screen Reader */
+
+@mixin visually-hidden() {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+/* Media Queries */
+
+@mixin at-tablet {
+	@media only screen and ($tablet-up) {
+		@content;
+	}
+}
+
+@mixin tablet-down {
+	@media only screen and ($tablet-down) {
+		@content;
+	}
+}
+
+@mixin at-laptop {
+	@media only screen and ($laptop-up) {
+		@content;
+	}
+}
+
+@mixin laptop-down {
+	@media only screen and ($laptop-down) {
+		@content;
+	}
+}
+
+@mixin at-desktop {
+	@media only screen and ($desktop-up) {
+		@content;
+	}
+}
+
+@mixin desktop-down {
+	@media only screen and ($desktop-down) {
+		@content;
+	}
+}
+
+@mixin at-widescreen {
+	@media only screen and ($widescreen-up) {
+		@content;
+	}
+}
+
+@mixin widescreen-down {
+	@media only screen and ($widescreen-down) {
+		@content;
+	}
+}
+
+/* Hiding Elements */
+
+@mixin hidden-tablet-down {
+	@include tablet-down {
+		display: none;
+	}
+}
+
+@mixin hidden-tablet-up {
+	@include at-tablet {
+		display: none;
+	}
+}
+
+@mixin hidden-laptop-down {
+	@include laptop-down {
+		display: none;
+	}
+}
+
+@mixin hidden-laptop-up {
+	@include at-laptop {
+		display: none;
+	}
+}
+
+/*
+ *  Creates typography styles given a map of breakpoints ($font-breakpoints is default)
+ *  and a map of font styles.
+ */
+
+@mixin font-style($fs-map, $fs-breakpoints: $font-breakpoints) {
+	@each $fs-breakpoint, $fs-font-size in $fs-map {
+		@if not $fs-breakpoint {
+			@include make-font-style($fs-font-size);
+		} @else {
+			// If $fs-font-size is a key that exists in $fs-breakpoints, use the value
+
+			@if map-has-key($fs-breakpoints, $fs-breakpoint) {
+				$fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+			}
+
+			@media screen and (min-width: $fs-breakpoint) {
+				@include make-font-style($fs-font-size);
+			}
+		}
+	}
+}
+
+/*
+ *  Utility function for mixin font-style. Accepts a font size or a sass list of 
+ *  properties (font-size, line-height, letter-spacing, font-weight). List must
+ *  be in this order - pass null to omit the property/rule.
+ */
+@mixin make-font-style($fs-rules) {
+	// If $fs-rules is a list, include the following properties
+	@if type-of($fs-rules) == 'list' {
+		font-size: nth($fs-rules, 1);
+
+		// line height
+		@if length($fs-rules) > 1 and nth($fs-rules, 2) {
+			line-height: nth($fs-rules, 2);
+		}
+
+		// letter spacing
+		@if length($fs-rules) > 2 and nth($fs-rules, 3) {
+			letter-spacing: nth($fs-rules, 3);
+		}
+
+		// font-weight
+		@if length($fs-rules) > 3 and nth($fs-rules, 4) {
+			font-weight: nth($fs-rules, 4);
+		}
+	} @else {
+		font-size: $fs-rules;
+	}
+}

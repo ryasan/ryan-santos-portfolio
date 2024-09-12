@@ -1,0 +1,99 @@
+/* Colors */
+
+$black: #000;
+$blue: #2E5BFF;
+$green: #2E9775;
+$red: #CB4040;
+$white: #fff;
+
+/* Grays */
+
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+/* Theme */
+
+$text-primary-color: $white;
+$text-secondary-color: $gray-500;
+$background-primary-color: $gray-900;
+$background-secondary-color: $gray-800;
+
+/* Breakpoints */
+
+$breakpoints: (
+	'mobile': 375px,
+	'tablet': 768px,
+	'laptop': 992px,
+	'desktop': 1200px,
+	'widescreen': 1400px,
+	) !default;
+
+/* Media Queries */
+
+$mobile-up: 'min-width: #{map-get($breakpoints, mobile)}';
+$tablet-up: 'min-width: #{map-get($breakpoints, tablet)}';
+$laptop-up: 'min-width: #{map-get($breakpoints, laptop)}';
+$desktop-up: 'min-width: #{map-get($breakpoints, desktop)}';
+$widescreen-up: 'min-width: #{map-get($breakpoints, widescreen)}';
+$mobile-down: 'max-width: calc(#{map-get($breakpoints, mobile)} - 1px)';
+$tablet-down: 'max-width: calc(#{map-get($breakpoints, tablet)} - 1px)';
+$laptop-down: 'max-width: calc(#{map-get($breakpoints, laptop)} - 1px)';
+$desktop-down: 'max-width: calc(#{map-get($breakpoints, desktop)} - 1px)';
+$widescreen-down: 'max-width: calc(#{map-get($breakpoints, widescreen)} - 1px)';
+
+/* Spacing */
+
+$max-width: 1440px;
+
+/* Font Families */
+
+$montserrat: 'Montserrat';
+$playfair-display: 'Playfair Display';
+$body-font-family: $montserrat, sans-serif;
+$heading-font-family: $playfair-display, serif;
+
+/* Default Breakpoints For Typography */
+
+$font-breakpoints: (
+	mobile: map-get($map: $breakpoints, $key: 'mobile'),
+	tablet: map-get($map: $breakpoints, $key: 'tablet'),
+	laptop: map-get($map: $breakpoints, $key: 'laptop')) !default;
+
+/* Font Style Maps */
+
+$body-font-style: (
+	mobile: (1.6rem),
+	laptop: (1.8rem),
+	) !default;
+$heading-1-font-style: (
+	mobile: (3.6rem),
+	laptop: (4.8rem),
+	) !default;
+$heading-2-font-style: (
+	mobile: (3rem),
+	laptop: (3.6rem),
+	) !default;
+$heading-3-font-style: (
+	mobile: (2.4rem),
+	laptop: (3rem),
+	) !default;
+$heading-4-font-style: (
+	mobile: (2rem),
+	laptop: (2.4rem),
+	) !default;
+$heading-5-font-style: (
+	mobile: (1.8rem),
+	laptop: (2rem),
+	) !default;
+$heading-6-font-style: (
+	mobile: (1.6rem),
+	laptop: (1.8rem),
+	) !default;
+
