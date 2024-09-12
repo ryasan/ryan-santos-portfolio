@@ -1,6 +1,7 @@
+import { useState } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import type { MetaFunction } from '@netlify/remix-runtime';
 import type { LinksFunction } from '@remix-run/node';
-import { motion, useScroll, useSpring } from 'framer-motion';
 
 import styles from '~/styles/main.css?url';
 import FooterSection from '~/components/sections/footer-section';
@@ -24,15 +25,12 @@ export const links: LinksFunction = () => {
       rel: 'stylesheet',
       href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap',
     },
-    {
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap',
-    },
     { rel: 'stylesheet', href: styles, loader: 'sass' },
   ];
 };
 
 export default function Index() {
+  const [activeSection, setActiveSection] = useState(0);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -40,28 +38,33 @@ export default function Index() {
     restDelta: 0.001,
   });
 
+  const handleScroll = () => {
+    console.log({handleScroll});
+    // setActiveSection(index);
+  };
+
   return (
-    <div>
+    <div onScroll={handleScroll}>
       {/* <HeaderSection /> */}
 
       {[HeroSection, WorksSection, FooterSection].map((Section, index) => (
-        <Section key={index} order={index + 1} />
+        <Section
+          key={index}
+          order={index + 1}
+        />
       ))}
 
-      <div
-        className="container"
-        style={{ height: 50, background: 'blue', position: 'fixed' }}
-      >
-        <motion.div
-          style={{
-            scaleX,
-            position: 'fixed',
-            height: 5,
-            backgroundColor: 'white',
-            bottom: 100,
-          }}
-        />
-      </div>
+      <motion.div
+        style={{
+          background: 'white',
+          bottom: 100,
+          height: 5,
+          left: 0,
+          position: 'fixed',
+          right: 0,
+          scaleX,
+        }}
+      />
     </div>
   );
 }

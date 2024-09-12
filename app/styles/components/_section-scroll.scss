@@ -1,16 +1,22 @@
 $ns: '.section-scroll';
 
 #{$ns} {
+	align-items: center;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	height: 100vh;
+	justify-content: center;
+	perspective: 500px;
+	position: relative;
+	scroll-snap-align: center;
+
+	&__inner {
+		height: 100%;
+		max-height: 750px;
+		width: 100%;
+	}
 
 	&__content {
 		height: 100%;
-		max-height: 750px;
-		outline: 1px solid red;
-		width: 100%;
 	}
 }

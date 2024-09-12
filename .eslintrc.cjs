@@ -75,6 +75,9 @@ module.exports = {
         "plugin:import/recommended",
         "plugin:import/typescript",
       ],
+      rules: {
+        "@typescript-eslint/no-unused-vars": "warn"
+      }
     },
 
     // Node

@@ -33,11 +33,14 @@ const SectionScroll = ({
 
   return (
     <Element className={rootClassName}>
-      <div className={getClass(ns, 'content')} ref={ref}>
-        {children}
-      </div>
-      <div className="container">
-        <motion.h2 style={{ y }}>{`#00${order}`}</motion.h2>
+      <div className={getClass(ns, 'inner')} ref={ref}>
+        <div className={getClass(ns, 'content')}>{children}</div>
+
+        <motion.div style={{ y }}>
+          <div className="container">
+            <h2>{`#00${order}`}</h2>
+          </div>
+        </motion.div>
       </div>
     </Element>
   );

@@ -1,14 +1,17 @@
-/* Apply a natural box layout model to all elements, but allowing components to change */
+/* Baseline Styles */
 
 html {
 	box-sizing: border-box;
 	font-size: 10px;
+	scroll-snap-type: y mandatory;
 }
 
 *,
 *::before,
 *::after {
 	box-sizing: inherit;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -17,8 +20,6 @@ body {
 	background-color: $background-primary-color;
 	color: $text-primary-color;
 	font-family: $body-font-family;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
 }
 
 h1 {
@@ -55,4 +56,22 @@ h6 {
 	@include font-style($heading-6-font-style);
 
 	font-family: $heading-font-family;
+}
+
+/* Pseudo Elements */
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  background: $background-primary-color;
+}
+
+::-webkit-scrollbar-thumb {
+	background: $white;
+	/* stylelint-disable-next-line property-no-vendor-prefix */
+	-webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: $background-primary-color;
 }
