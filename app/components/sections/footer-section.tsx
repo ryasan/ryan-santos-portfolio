@@ -1,23 +1,27 @@
 import clsx from 'clsx';
-import { getClass } from '~/utils';
-import SectionScroll from '~/components/section-scroll';
+import SectionScroll from '~/components/parallax-layout';
 
 const ns = 'footer-section';
 
 type FooterSectionProps = {
-  order: number;
+  id: number | null;
 };
 
-const FooterSection = ({ order }: FooterSectionProps) => {
+const FooterSection = ({ id }: FooterSectionProps) => {
   const rootClassName = clsx({
     [`${ns}`]: true,
   });
 
   return (
-    <SectionScroll className={rootClassName} order={order} as="footer">
+    <SectionScroll
+      className={rootClassName}
+      id={id}
+      as="footer"
+      // disableParallax
+    >
       <div className="container">
-        <div className={getClass(ns, 'content')}>
-          <h1 className={getClass(ns, 'title')}>Footer Section</h1>
+        <div className={`${ns}__content`}>
+          <h1 className={`${ns}__title`}>FOOTER SECTION</h1>
         </div>
       </div>
     </SectionScroll>

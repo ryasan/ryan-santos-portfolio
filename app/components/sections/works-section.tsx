@@ -1,24 +1,23 @@
 import clsx from 'clsx';
-import { getClass } from '~/utils';
-import SectionScroll from '~/components/section-scroll';
+import SectionScroll from '~/components/parallax-layout';
 
 const ns = 'works-section';
 
 type WorksSectionProps = {
-  order: number;
+  id: number | null;
 };
 
 
-const WorksSection = ({ order }: WorksSectionProps) => {
+const WorksSection = ({ id }: WorksSectionProps) => {
   const rootClassName = clsx({
     [`${ns}`]: true,
   });
 
   return (
-    <SectionScroll className={rootClassName} order={order}>
+    <SectionScroll className={rootClassName} id={id}>
       <div className="container">
-        <div className={getClass(ns, 'content')}>
-          <h1 className={getClass(ns, 'title')}>Works Section</h1>
+        <div className={`${ns}__content`}>
+          <h1 className={`${ns}__title`}>WORKS SECTION</h1>
         </div>
       </div>
     </SectionScroll>

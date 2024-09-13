@@ -19,9 +19,11 @@
     "@remix-run/node": "^2.12.0",
     "@remix-run/react": "^2.12.0",
     "@remix-run/serve": "^2.12.0",
+    "@types/lodash": "^4.17.7",
     "clsx": "^2.1.1",
     "framer-motion": "^11.5.4",
-    "isbot": "^4.1.0"
+    "isbot": "^4.1.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.12.0",

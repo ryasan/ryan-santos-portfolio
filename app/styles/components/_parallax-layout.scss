@@ -1,4 +1,4 @@
-$ns: '.section-scroll';
+$ns: '.parallax-layout';
 
 #{$ns} {
 	align-items: center;
@@ -6,9 +6,7 @@ $ns: '.section-scroll';
 	flex-direction: column;
 	height: 100vh;
 	justify-content: center;
-	perspective: 500px;
 	position: relative;
-	scroll-snap-align: center;
 
 	&__inner {
 		height: 100%;
@@ -18,5 +16,9 @@ $ns: '.section-scroll';
 
 	&__content {
 		height: 100%;
+	}
+
+	&__text {
+		position: absolute;
 	}
 }

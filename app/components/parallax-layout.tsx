@@ -1,27 +1,28 @@
 import clsx from 'clsx';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
-import { getClass } from '~/utils';
 
-const ns = 'section-scroll';
+const ns = 'parallax-layout';
 
-type Props = {
-  as?: React.ElementType;
+type ParallaxLayoutProps = {
+  as?: 'section' | 'header' | 'footer';
   children: React.ReactNode;
   className?: string;
-  order: number;
+  disableParallax?: boolean;
+  id: number | null;
 };
 
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 1], [-distance, distance]);
 }
 
-const SectionScroll = ({
+const ParallaxLayout = ({
   as: Element = 'section',
   children,
   className,
-  order,
-}: Props) => {
+  disableParallax,
+  id,
+}: ParallaxLayoutProps) => {
   const rootClassName = clsx({
     [`${ns}`]: true,
     [`${className}`]: className,
@@ -31,19 +32,25 @@ const SectionScroll = ({
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useParallax(scrollYProgress, 300);
 
-  return (
-    <Element className={rootClassName}>
-      <div className={getClass(ns, 'inner')} ref={ref}>
-        <div className={getClass(ns, 'content')}>{children}</div>
+  if (id === 1) {
+    console.log('scrollYProgress: ', scrollYProgress);
+  }
 
-        <motion.div style={{ y }}>
+  return (
+    <Element className={rootClassName} id={`section-${id}`}>
+      <div className={`${ns}__inner`} ref={ref}>
+        <div className={`${ns}__content`}>{children}</div>
+      </div>
+
+      {typeof id === 'number' && !disableParallax && (
+        <motion.div className={`${ns}__text`} style={{ y }}>
           <div className="container">
-            <h2>{`#00${order}`}</h2>
+            <h2>{`#00${id}`}</h2>
           </div>
         </motion.div>
-      </div>
+      )}
     </Element>
   );
 };
 
-export default SectionScroll;
+export default ParallaxLayout;

@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import type { MetaFunction } from '@netlify/remix-runtime';
 import type { LinksFunction } from '@remix-run/node';
 
 import styles from '~/styles/main.css?url';
 import FooterSection from '~/components/sections/footer-section';
-// import HeaderSection from '~/components/sections/header-section';
+import HeaderSection from '~/components/sections/header-section';
 import HeroSection from '~/components/sections/hero-section';
 import WorksSection from '~/components/sections/works-section';
 
@@ -30,7 +29,6 @@ export const links: LinksFunction = () => {
 };
 
 export default function Index() {
-  const [activeSection, setActiveSection] = useState(0);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -38,22 +36,14 @@ export default function Index() {
     restDelta: 0.001,
   });
 
-  const handleScroll = () => {
-    console.log({handleScroll});
-    // setActiveSection(index);
-  };
-
   return (
-    <div onScroll={handleScroll}>
+    <div>
       {/* <HeaderSection /> */}
-
-      {[HeroSection, WorksSection, FooterSection].map((Section, index) => (
-        <Section
-          key={index}
-          order={index + 1}
-        />
-      ))}
-
+      <HeroSection id={1} />
+      <WorksSection id={2} />
+      <WorksSection id={3} />
+      <WorksSection id={4} />
+      <FooterSection id={5} />
       <motion.div
         style={{
           background: 'white',
