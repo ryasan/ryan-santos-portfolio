@@ -4,6 +4,13 @@
 
 @import 'variables';
 @import 'mixins';
+
+/* Vendors & Reset */
+
+@import 'reset';
+
+/* Base */
+
 @import 'base';
 @import 'helpers';
 
@@ -18,3 +25,8 @@
 
 @import 'components/button';
 @import 'components/parallax-layout';
+@import 'components/sidebar';
+
+/* Routes */
+
+@import 'routes/index';

@@ -1,15 +1,11 @@
-import clsx from "clsx";
+import clsx from 'clsx';
 
-const ns = "button";
+const ns = 'button';
 
-// type Props = {}
+export default function Button() {
+	const rootClassName = clsx({
+		[`${ns}`]: true,
+	});
 
-const Button = () => {
-  const rootClassName = clsx({
-    [`${ns}`]: true,
-  });
-
-  return <button className={rootClassName}>Button</button>;
-};
-
-export default Button;
+	return <button className={rootClassName}>Button</button>;
+}

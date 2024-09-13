@@ -1,9 +1,9 @@
 /* Colors */
 
 $black: #000;
-$blue: #2E5BFF;
-$green: #2E9775;
-$red: #CB4040;
+$blue: #2e5bff;
+$green: #2e9775;
+$red: #cb4040;
 $white: #fff;
 
 /* Grays */
@@ -33,7 +33,7 @@ $breakpoints: (
 	'laptop': 992px,
 	'desktop': 1200px,
 	'widescreen': 1400px,
-	) !default;
+) !default;
 
 /* Media Queries */
 
@@ -61,38 +61,78 @@ $heading-font-family: $montserrat, serif;
 /* Default Breakpoints For Typography */
 
 $font-breakpoints: (
-	mobile: map-get($map: $breakpoints, $key: 'mobile'),
-	tablet: map-get($map: $breakpoints, $key: 'tablet'),
-	laptop: map-get($map: $breakpoints, $key: 'laptop')) !default;
+	mobile:
+		map-get(
+			$map: $breakpoints,
+			$key: 'mobile',
+		),
+	tablet:
+		map-get(
+			$map: $breakpoints,
+			$key: 'tablet',
+		),
+	laptop:
+		map-get(
+			$map: $breakpoints,
+			$key: 'laptop',
+		),
+) !default;
 
 /* Font Style Maps */
 
 $body-font-style: (
-	mobile: (1.6rem),
-	laptop: (1.8rem),
-	) !default;
+	mobile: (
+		1.6rem,
+	),
+	laptop: (
+		1.8rem,
+	),
+) !default;
 $heading-1-font-style: (
-	mobile: (3.6rem),
-	laptop: (4.8rem),
-	) !default;
+	mobile: (
+		3.6rem,
+	),
+	laptop: (
+		4.8rem,
+	),
+) !default;
 $heading-2-font-style: (
-	mobile: (3rem),
-	laptop: (3.6rem),
-	) !default;
+	mobile: (
+		3rem,
+	),
+	laptop: (
+		3.6rem,
+	),
+) !default;
 $heading-3-font-style: (
-	mobile: (2.4rem),
-	laptop: (3rem),
-	) !default;
+	mobile: (
+		2.4rem,
+	),
+	laptop: (
+		3rem,
+	),
+) !default;
 $heading-4-font-style: (
-	mobile: (2rem),
-	laptop: (2.4rem),
-	) !default;
+	mobile: (
+		2rem,
+	),
+	laptop: (
+		2.4rem,
+	),
+) !default;
 $heading-5-font-style: (
-	mobile: (1.8rem),
-	laptop: (2rem),
-	) !default;
+	mobile: (
+		1.8rem,
+	),
+	laptop: (
+		2rem,
+	),
+) !default;
 $heading-6-font-style: (
-	mobile: (1.6rem),
-	laptop: (1.8rem),
-	) !default;
-
+	mobile: (
+		1.6rem,
+	),
+	laptop: (
+		1.8rem,
+	),
+) !default;

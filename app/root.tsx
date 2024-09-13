@@ -5,6 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+import Sidebar from './components/sidebar';
 
 export default function App() {
   return (
@@ -16,7 +17,11 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <main>
+          {/* Header */}
+          <Sidebar />
+          <Outlet />
+        </main>
         <ScrollRestoration />
         <Scripts />
       </body>

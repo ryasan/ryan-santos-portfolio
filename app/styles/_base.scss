@@ -25,58 +25,52 @@ h1 {
 	@include font-style($heading-1-font-style);
 
 	font-family: $heading-font-family;
-	margin: 0;
 }
 
 h2 {
 	@include font-style($heading-2-font-style);
 
 	font-family: $heading-font-family;
-	margin: 0;
 }
 
 h3 {
 	@include font-style($heading-3-font-style);
 
 	font-family: $heading-font-family;
-	margin: 0;
 }
 
 h4 {
 	@include font-style($heading-4-font-style);
-
+	
 	font-family: $heading-font-family;
-	margin: 0;
 }
 
 h5 {
 	@include font-style($heading-5-font-style);
 
 	font-family: $heading-font-family;
-	margin: 0;
 }
 
 h6 {
 	@include font-style($heading-6-font-style);
 
 	font-family: $heading-font-family;
-	margin: 0;
 }
 
 /* Pseudo Elements */
 
 ::-webkit-scrollbar {
-  height: 5px;
-  width: 5px;
-  background: $background-primary-color;
+	background: $background-primary-color;
+	height: 5px;
+	width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: $white;
 	/* stylelint-disable-next-line property-no-vendor-prefix */
 	-webkit-border-radius: 1ex;
+	background: $white;
 }
 
 ::-webkit-scrollbar-corner {
-  background: $background-primary-color;
+	background: $background-primary-color;
 }
