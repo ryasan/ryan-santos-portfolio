@@ -51,6 +51,7 @@ $widescreen-down: 'max-width: calc(#{map-get($breakpoints, widescreen)} - 1px)';
 /* Spacing */
 
 $max-width: 1440px;
+$site-header-height: 60px;
 
 /* Font Families */
 
