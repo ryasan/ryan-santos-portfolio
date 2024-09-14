@@ -41,7 +41,7 @@ h3 {
 
 h4 {
 	@include font-style($heading-4-font-style);
-	
+
 	font-family: $heading-font-family;
 }
 
@@ -61,8 +61,8 @@ h6 {
 
 ::-webkit-scrollbar {
 	background: $background-primary-color;
-	height: 5px;
 	width: 5px;
+	height: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -73,4 +73,11 @@ h6 {
 
 ::-webkit-scrollbar-corner {
 	background: $background-primary-color;
+}
+
+.mouse-follower {
+	border-radius: 50%;
+	background-color: $white;
+	width: 20px;
+	height: 20px;
 }

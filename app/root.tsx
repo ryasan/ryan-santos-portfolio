@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { motion } from "framer-motion";
 import {
 	Links,
 	Meta,
@@ -8,9 +9,12 @@ import {
 } from '@remix-run/react';
 import Header from './components/header';
 import Sidebar from './components/sidebar';
+import { useFollowPointer } from './hooks/use-follow-pointer';
 
 export default function App() {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
+	const mouseFollowerRef = useRef<HTMLDivElement>(null);
+	const { x, y } = useFollowPointer(mouseFollowerRef);
 
 	function toggleSidebar(state: boolean) {
 		if (state === true || state === false) {
@@ -36,6 +40,11 @@ export default function App() {
 				</main>
 				<ScrollRestoration />
 				<Scripts />
+				<motion.div
+					className="mouse-follower"
+					ref={mouseFollowerRef}
+					style={{ x, y }}
+				/>
 			</body>
 		</html>
 	);
