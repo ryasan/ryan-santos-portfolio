@@ -17,6 +17,7 @@ body {
 	@include font-style($body-font-style);
 
 	background-color: $background-primary-color;
+	overflow-x: hidden;
 	color: $text-primary-color;
 	font-family: $body-font-family;
 }
@@ -73,11 +74,4 @@ h6 {
 
 ::-webkit-scrollbar-corner {
 	background: $background-primary-color;
-}
-
-.mouse-follower {
-	border-radius: 50%;
-	background-color: $white;
-	width: 20px;
-	height: 20px;
 }
