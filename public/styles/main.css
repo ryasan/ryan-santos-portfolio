@@ -1,0 +1,485 @@
+/* Config & Helpers */
+/* Colors */
+/* Grays */
+/* Theme */
+/* Breakpoints */
+/* Media Queries */
+/* Spacing */
+/* Font Families */
+/* Default Breakpoints For Typography */
+/* Font Style Maps */
+/* Base URL */
+/* Custom Font Sourcing */
+/* Screen Reader */
+/* Media Queries */
+/* Hiding Elements */
+/* Aspect Ratio Padding Trick */
+/*
+ *  Creates typography styles given a map of breakpoints ($font-breakpoints is default)
+ *  and a map of font styles.
+ */
+/*
+ *  Utility function for mixin font-style. Accepts a font size or a sass list of 
+ *  properties (font-size, line-height, letter-spacing, font-weight). List must
+ *  be in this order - pass null to omit the property/rule.
+ */
+/* Vendors & Reset */
+/* Eric Meyer's Reset */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  vertical-align: baseline;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-size: 100%;
+  font: inherit;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Custom */
+a,
+button,
+input,
+select,
+textarea {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Base */
+/* Baseline Styles */
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: #212529;
+  overflow-x: hidden;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+}
+@media screen and (min-width: 375px) {
+  body {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  body {
+    font-size: 1.8rem;
+  }
+}
+
+h1 {
+  font-family: "Matter-Light", sans-serif;
+}
+@media screen and (min-width: 375px) {
+  h1 {
+    font-size: 3.6rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  h1 {
+    font-size: 10rem;
+  }
+}
+
+h2 {
+  font-family: "Matter-Light", sans-serif;
+}
+@media screen and (min-width: 375px) {
+  h2 {
+    font-size: 3rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  h2 {
+    font-size: 3.6rem;
+  }
+}
+
+h3 {
+  font-family: "Matter-Light", sans-serif;
+}
+@media screen and (min-width: 375px) {
+  h3 {
+    font-size: 2.4rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  h3 {
+    font-size: 3rem;
+  }
+}
+
+h4 {
+  font-family: "Matter-Light", sans-serif;
+}
+@media screen and (min-width: 375px) {
+  h4 {
+    font-size: 2rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  h4 {
+    font-size: 2.4rem;
+  }
+}
+
+h5 {
+  font-family: "Matter-Light", sans-serif;
+}
+@media screen and (min-width: 375px) {
+  h5 {
+    font-size: 1.8rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  h5 {
+    font-size: 2rem;
+  }
+}
+
+h6 {
+  font-family: "Matter-Light", sans-serif;
+}
+@media screen and (min-width: 375px) {
+  h6 {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  h6 {
+    font-size: 1.8rem;
+  }
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+/* Pseudo Elements */
+::-webkit-scrollbar {
+  background: #212529;
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-border-radius: 1ex;
+  background: #fff;
+}
+
+::-webkit-scrollbar-corner {
+  background: #212529;
+}
+
+/* stylelint-disable */
+@font-face {
+  font-family: "Matter-Light";
+  src: url("/fonts/Matter-TRIAL-Light.woff") format("woff"), url("/fonts/Matter-TRIAL-Light.woff2") format("woff2"), url("/fonts/Matter-TRIAL-Light.ttf") format("truetype"), url("/fonts/Matter-TRIAL-Light.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300;
+}
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+@media only screen and (min-width: 992px) {
+  .container {
+    padding: 0 40px;
+  }
+}
+
+.container-fluid {
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+@media only screen and (min-width: 992px) {
+  .container-fluid {
+    padding: 0 40px;
+  }
+}
+
+/* Sections */
+.hero-section__title {
+  max-width: 900px;
+}
+.hero-section__title--row {
+  display: block;
+}
+
+/* Components */
+.button {
+  display: inline-block;
+  font-size: 1em;
+  padding: 10px 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.site-header {
+  height: 60px;
+}
+.site-header .container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.site-header__nav {
+  display: inline-flex;
+  align-items: center;
+}
+.site-header__menu-text {
+  display: none;
+  margin-right: 55px;
+}
+@media only screen and (min-width: 992px) {
+  .site-header__menu-text {
+    display: block;
+  }
+}
+.site-header__menu-button {
+  position: fixed;
+  top: 17.5px;
+  right: 40px;
+  margin-left: 15px;
+  width: 25px;
+  height: 25px;
+  z-index: 9999;
+}
+.site-header__menu-button.is-active .site-header__menu-icon span {
+  background: #000;
+}
+.site-header__menu-icon {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.site-header__menu-icon span {
+  display: block;
+  left: 0;
+  background: #fff;
+  width: 100%;
+  height: 2px;
+  transition: background 0.3s ease;
+}
+.site-header__menu-icon span:not(:first-child) {
+  margin-top: 5px;
+}
+
+.parallax-layout {
+  position: relative;
+  min-height: 100vh;
+}
+.parallax-layout__content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.parallax-layout__parallax-anchor {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.parallax-layout__parallax-item {
+  position: absolute;
+  right: 0;
+  letter-spacing: 0.3rem;
+}
+
+.pointer-follower {
+  mix-blend-mode: difference;
+  border-radius: 50%;
+  background-color: #fff;
+  width: 10px;
+  height: 10px;
+}
+.pointer-follower--mix-blend-mode {
+  mix-blend-mode: difference;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+}
+.sidebar * {
+  pointer-events: auto;
+}
+.sidebar__backdrop {
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+.sidebar__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1001;
+  background-color: #fff;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Routes */
+
+/*# sourceMappingURL=main.css.map */

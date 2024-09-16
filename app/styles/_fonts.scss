@@ -1,6 +1,6 @@
 /* stylelint-disable */
 // Matter Font
-$matter-light-src: font-src('Matter/Matter-TRIAL-Light');
+$matter-light-src: font-src('Matter-TRIAL-Light');
 
 @at-root {
 	@include font-face('Matter-Light', $matter-light-src, 300, normal);
