@@ -4,58 +4,59 @@ import ClientOnly from '~/components/client-only';
 
 const ns = 'site-header';
 
-function MenuIcon({ isOpen }: { isOpen: boolean }) {
-	const variantsA: Variants = {
-		open: {
-			transformOrigin: '30%',
-			transform: [
-				'rotate(0) scaleX(1)',
-				'rotate(0) scaleX(0)',
-				'rotate(45deg) scaleX(0)',
-				'rotate(45deg) scaleX(1)',
-			],
-			opacity: [1, 0, 0, 1],
-		},
-		closed: {
-			transformOrigin: '30%',
-			transform: [
-				'rotate(45deg) scaleX(1)',
-				'rotate(45deg) scaleX(0)',
-				'rotate(0) scaleX(0)',
-				'rotate(0) scaleX(1)',
-			],
-			opacity: [1, 0, 0, 1],
-		},
-	};
-	const variantsB: Variants = {
-		open: {
-			transformOrigin: '30%',
-			transform: [
-				'rotate(0) scaleX(1)',
-				'rotate(0) scaleX(0)',
-				'rotate(-45deg) scaleX(0)',
-				'rotate(-45deg) scaleX(1)',
-			],
-			opacity: [1, 0, 0, 1],
-		},
-		closed: {
-			transformOrigin: '30%',
-			transform: [
-				'rotate(-45deg) scaleX(1)',
-				'rotate(-45deg) scaleX(0)',
-				'rotate(0) scaleX(0)',
-				'rotate(0) scaleX(1)',
-			],
-			opacity: [1, 0, 0, 1],
-		},
-	};
+const menuIconVariantsA: Variants = {
+	open: {
+		transformOrigin: '30%',
+		transform: [
+			'rotate(0) scaleX(1)',
+			'rotate(0) scaleX(0)',
+			'rotate(45deg) scaleX(0)',
+			'rotate(45deg) scaleX(1)',
+		],
+		opacity: [1, 0, 0, 1],
+	},
+	closed: {
+		transformOrigin: '30%',
+		transform: [
+			'rotate(45deg) scaleX(1)',
+			'rotate(45deg) scaleX(0)',
+			'rotate(0) scaleX(0)',
+			'rotate(0) scaleX(1)',
+		],
+		opacity: [1, 0, 0, 1],
+	},
+};
 
+const menuIconVariantsB: Variants = {
+	open: {
+		transformOrigin: '30%',
+		transform: [
+			'rotate(0) scaleX(1)',
+			'rotate(0) scaleX(0)',
+			'rotate(-45deg) scaleX(0)',
+			'rotate(-45deg) scaleX(1)',
+		],
+		opacity: [1, 0, 0, 1],
+	},
+	closed: {
+		transformOrigin: '30%',
+		transform: [
+			'rotate(-45deg) scaleX(1)',
+			'rotate(-45deg) scaleX(0)',
+			'rotate(0) scaleX(0)',
+			'rotate(0) scaleX(1)',
+		],
+		opacity: [1, 0, 0, 1],
+	},
+};
+
+function MenuIcon({ isOpen }: { isOpen: boolean }) {
 	return (
 		<span className={`${ns}__menu-icon`}>
 			<ClientOnly>
 				<motion.span
 					animate={isOpen ? 'open' : 'closed'}
-					variants={variantsA}
+					variants={menuIconVariantsA}
 					initial={false}
 					transition={{
 						duration: 0.5,
@@ -64,7 +65,7 @@ function MenuIcon({ isOpen }: { isOpen: boolean }) {
 				/>
 				<motion.span
 					animate={isOpen ? 'open' : 'closed'}
-					variants={variantsB}
+					variants={menuIconVariantsB}
 					initial={false}
 					transition={{
 						duration: 0.5,

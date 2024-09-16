@@ -1,13 +1,63 @@
 $ns: '.button';
 
 #{$ns} {
-	background-color: $white;
-	color: $black;
 	display: inline-block;
-	padding: 10px 20px;
-	text-align: center;
-	border-radius: 30px;
+	position: relative;
+	border: 1px solid $white;
+	border-radius: 9999px;
+	background-color: $black;
+	padding: 30px;
+	min-width: 200px;
+	overflow: hidden;
+	color: $white;
 	font-size: 3rem;
+	text-align: center;
 
-	// font-weight: 400;
+	&__content {
+		position: relative;
+		overflow: hidden;
+	}
+
+	&__text {
+		display: block;
+	}
+
+	&__eclipse {
+		bottom: 0;
+		display: flex;
+		position: absolute;
+		left: 0;
+		justify-content: center;
+		align-items: center;
+		background-color: $white;
+		border-color: $white;
+
+		// outline: 5px solid $white;
+		width: 100%;
+		height: 100%;
+		color: $black;
+	}
+
+	// Focus
+
+	// Hover
+
+	// Active
+
+	// Disabled
+
+	// Size
+
+	&--small {
+		padding: 20px;
+		font-size: 2rem;
+	}
+
+	// Color
+
+	&--black {
+		border-color: $black;
+		background-color: $black;
+		color: $white;
+	}
 }

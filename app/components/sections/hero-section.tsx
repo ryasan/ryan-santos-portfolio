@@ -19,7 +19,7 @@ export default function HeroSection({ id }: HeroSectionProps) {
 				<div className={`${ns}__content`}>
 					<h1 className={`${ns}__title`}>
 						<span className={`${ns}__title--row`}>
-							<span>My Name Is Ryan</span>
+							<span>My Name Is Ryan.</span>
 						</span>
 						<span className={`${ns}__title--row`}>
 							<span>Frontend Engineer</span>
