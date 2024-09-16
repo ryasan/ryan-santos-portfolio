@@ -446,6 +446,15 @@ em {
   mix-blend-mode: difference;
 }
 
+.scroll-progress-bar {
+  background: #fff;
+  bottom: 100px;
+  height: 5px;
+  left: 0;
+  position: fixed;
+  right: 0;
+}
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -479,7 +488,5 @@ em {
   height: 100%;
   overflow-y: auto;
 }
-
-/* Routes */
 
 /*# sourceMappingURL=main.css.map */

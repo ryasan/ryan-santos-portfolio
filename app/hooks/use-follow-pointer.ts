@@ -29,7 +29,7 @@ export function useFollowPointer(ref: RefObject<HTMLElement>) {
 		window.addEventListener('pointermove', handlePointerMove);
 
 		return () => window.removeEventListener('pointermove', handlePointerMove);
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return { x, y };

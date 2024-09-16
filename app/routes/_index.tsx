@@ -1,9 +1,9 @@
-import { motion, useScroll, useSpring } from 'framer-motion';
 import clsx from 'clsx';
 import type { MetaFunction } from '@netlify/remix-runtime';
 
 import FooterSection from '~/components/sections/footer-section';
 import HeroSection from '~/components/sections/hero-section';
+import ScrollProgressBar from '~/components/scroll-progress-bar';
 import WorksSection from '~/components/sections/works-section';
 
 const ns = 'home';
@@ -23,13 +23,6 @@ export default function Index() {
 		[`${ns}`]: true,
 	});
 
-	const { scrollYProgress } = useScroll();
-	const scaleX = useSpring(scrollYProgress, {
-		stiffness: 100,
-		damping: 30,
-		restDelta: 0.001,
-	});
-
 	return (
 		<div className={rootClassName}>
 			<HeroSection id={1} />
@@ -37,17 +30,7 @@ export default function Index() {
 			<WorksSection id={3} />
 			<WorksSection id={4} />
 			<FooterSection id={5} />
-			<motion.div
-				style={{
-					background: 'white',
-					bottom: 100,
-					height: 5,
-					left: 0,
-					position: 'fixed',
-					right: 0,
-					scaleX,
-				}}
-			/>
+			<ScrollProgressBar />
 		</div>
 	);
 }

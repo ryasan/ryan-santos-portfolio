@@ -2,14 +2,11 @@ import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import { useFollowPointer } from '~/hooks/use-follow-pointer';
+import ClientOnly from '~/components/client-only';
 
 const ns = 'pointer-follower';
 
-type PointerFollowerProps = {
-	mixBlendModeEnabled?: boolean;
-};
-
-const PointerFollower = ({ mixBlendModeEnabled }: PointerFollowerProps) => {
+function MotionDiv({ mixBlendModeEnabled }: { mixBlendModeEnabled?: boolean }) {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
 		[`${ns}--mix-blend-mode`]: mixBlendModeEnabled,
@@ -25,6 +22,18 @@ const PointerFollower = ({ mixBlendModeEnabled }: PointerFollowerProps) => {
 			style={{ x, y }}
 		/>
 	);
+}
+
+type PointerFollowerProps = {
+	mixBlendModeEnabled?: boolean;
 };
 
-export default PointerFollower;
+export default function PointerFollower({
+	mixBlendModeEnabled,
+}: PointerFollowerProps) {
+	return (
+		<ClientOnly>
+			<MotionDiv mixBlendModeEnabled={mixBlendModeEnabled} />
+		</ClientOnly>
+	);
+}

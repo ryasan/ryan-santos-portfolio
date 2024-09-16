@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import ClientOnly from '~/components/client-only';
 
 const ns = 'parallax-layout';
 
@@ -37,11 +38,13 @@ export default function ParallaxLayout({
 			<div className={`${ns}__content`}>{children}</div>
 			<div className={`${ns}__parallax-anchor`} ref={anchorRef} />
 			{typeof id === 'number' && !disableParallax && (
-				<motion.div className={`${ns}__parallax-item`} style={{ y }}>
-					<div className="container">
-						<h2>{`#00${id}`}</h2>
-					</div>
-				</motion.div>
+				<ClientOnly>
+					<motion.div className={`${ns}__parallax-item`} style={{ y }}>
+						<div className="container">
+							<h2>{`#00${id}`}</h2>
+						</div>
+					</motion.div>
+				</ClientOnly>
 			)}
 		</Element>
 	);

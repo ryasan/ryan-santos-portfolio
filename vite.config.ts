@@ -9,4 +9,7 @@ export default defineConfig({
 		netlifyPlugin(),
 		tsconfigPaths(),
 	],
+	build: {
+		cssMinify: process.env.NODE_ENV === 'production',
+	}
 });

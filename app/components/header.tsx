@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { motion, type Variants } from 'framer-motion';
+import ClientOnly from '~/components/client-only';
 
 const ns = 'site-header';
 
@@ -51,24 +52,26 @@ function MenuIcon({ isOpen }: { isOpen: boolean }) {
 
 	return (
 		<span className={`${ns}__menu-icon`}>
-			<motion.span
-				animate={isOpen ? 'open' : 'closed'}
-				variants={variantsA}
-				initial={false}
-				transition={{
-					duration: 0.5,
-					times: [0, 0.3, 0.301, 1],
-				}}
-			/>
-			<motion.span
-				animate={isOpen ? 'open' : 'closed'}
-				variants={variantsB}
-				initial={false}
-				transition={{
-					duration: 0.5,
-					times: [0, 0.3, 0.301, 1],
-				}}
-			/>
+			<ClientOnly>
+				<motion.span
+					animate={isOpen ? 'open' : 'closed'}
+					variants={variantsA}
+					initial={false}
+					transition={{
+						duration: 0.5,
+						times: [0, 0.3, 0.301, 1],
+					}}
+				/>
+				<motion.span
+					animate={isOpen ? 'open' : 'closed'}
+					variants={variantsB}
+					initial={false}
+					transition={{
+						duration: 0.5,
+						times: [0, 0.3, 0.301, 1],
+					}}
+				/>
+			</ClientOnly>
 		</span>
 	);
 }
