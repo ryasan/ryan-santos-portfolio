@@ -1,3 +1,23 @@
+/* Custom Font Sourcing */
+
+@mixin font-face(
+	$family,
+	$src,
+	$weight: normal,
+	$style: normal
+) {
+	@font-face {
+		font-family: $family;
+		src:
+			url('#{$src}.woff') format('woff'),
+			url('#{$src}.woff2') format('woff2'),
+			url('#{$src}.ttf') format('truetype'),
+			url('#{$src}.otf') format('opentype');
+		font-style: $style;
+		font-weight: $weight;
+	}
+}
+
 /* Screen Reader */
 
 @mixin visually-hidden() {

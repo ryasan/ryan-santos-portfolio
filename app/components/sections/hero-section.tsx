@@ -16,7 +16,19 @@ export default function HeroSection({ id }: HeroSectionProps) {
 		<ParallaxLayout className={rootClassName} id={id}>
 			<div className="container">
 				<div className={`${ns}__content`}>
-					<h1 className={`${ns}__title`}>HERO</h1>
+					<h1 className={`${ns}__title`}>
+						{/* <span className={`${ns}__title--highlight`}>Hello</span> World
+						<span className={`${ns}__title--highlight`}>👋</span> */}
+						<span className={`${ns}__title--row`}>
+							<span>Hello</span> World 👋
+						</span>
+						<span className={`${ns}__title--row`}>
+							<span>My Name Is Ryan</span>
+						</span>
+						<span className={`${ns}__title--row`}>
+							<span>I&apos;m a Frontend Engineer</span>
+						</span>
+					</h1>
 				</div>
 			</div>
 		</ParallaxLayout>

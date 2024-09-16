@@ -58,6 +58,11 @@ h6 {
 	font-family: $heading-font-family;
 }
 
+i,
+em {
+	font-style: italic;
+}
+
 /* Pseudo Elements */
 
 ::-webkit-scrollbar {

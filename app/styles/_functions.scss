@@ -1,0 +1,3 @@
+@function font-src($path, $base: $base-url) {
+	@return '#{$base}fonts/#{$path}';
+}

@@ -3,6 +3,7 @@
 $black: #000;
 $blue: #2e5bff;
 $green: #2e9775;
+$teal: #20c997;
 $red: #cb4040;
 $white: #fff;
 
@@ -56,9 +57,9 @@ $site-header-height: 60px;
 /* Font Families */
 
 $montserrat: 'Montserrat';
-$roboto-flex: 'Roboto Flex';
+$matter-light: 'Matter-Light';
 $body-font-family: $montserrat, sans-serif;
-$heading-font-family: $roboto-flex, sans-serif;
+$heading-font-family: $matter-light, sans-serif;
 
 /* Default Breakpoints For Typography */
 
@@ -95,7 +96,7 @@ $heading-1-font-style: (
 		3.6rem,
 	),
 	laptop: (
-		4.8rem,
+		10rem,
 	),
 ) !default;
 $heading-2-font-style: (
@@ -138,3 +139,7 @@ $heading-6-font-style: (
 		1.8rem,
 	),
 ) !default;
+
+/* Base URL */
+
+$base-url: '../assets/' !default;

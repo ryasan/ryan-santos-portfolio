@@ -3,6 +3,7 @@
 /* Config & Helpers */
 
 @import 'variables';
+@import 'functions';
 @import 'mixins';
 
 /* Vendors & Reset */
@@ -12,6 +13,7 @@
 /* Base */
 
 @import 'base';
+@import 'fonts';
 @import 'helpers';
 
 /* Sections */
@@ -25,6 +27,7 @@
 @import 'components/button';
 @import 'components/header';
 @import 'components/parallax-layout';
+@import 'components/pointer-follower';
 @import 'components/sidebar';
 
 /* Routes */

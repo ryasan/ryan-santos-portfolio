@@ -1,0 +1,13 @@
+$ns: '.pointer-follower';
+
+#{$ns} {
+	mix-blend-mode: difference;
+	border-radius: 50%;
+	background-color: $white;
+	width: 10px;
+	height: 10px;
+
+	&--mix-blend-mode {
+		mix-blend-mode: difference;
+	}
+}

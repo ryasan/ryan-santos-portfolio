@@ -1,5 +1,4 @@
-import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 import {
 	Links,
 	Meta,
@@ -9,29 +8,27 @@ import {
 } from '@remix-run/react';
 import type { LinksFunction } from '@remix-run/node';
 
-import styles from '~/styles/main.css?url';
+import mainStyles from '~/styles/main.css?url';
 import Header from '~/components/header';
+import PointerFollower from '~/components/pointer-follower';
 import Sidebar from '~/components/sidebar';
-import { useFollowPointer } from '~/hooks/use-follow-pointer';
 
 export const links: LinksFunction = () => {
 	return [
-		{
-			rel: 'stylesheet',
-			href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap',
-		},
-		{
-			rel: 'stylesheet',
-			href: 'https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap',
-		},
-		{ rel: 'stylesheet', href: styles },
+		// {
+		// 	rel: 'stylesheet',
+		// 	href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
+		// },
+		// {
+		// 	rel: 'stylesheet',
+		// 	href: 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap',
+		// },
+		{ rel: 'stylesheet', href: mainStyles },
 	];
 };
 
 export default function App() {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
-	const pointerFollowerRef = useRef<HTMLDivElement>(null);
-	const { x, y } = useFollowPointer(pointerFollowerRef);
 
 	function toggleSidebar(state: boolean) {
 		if (state === true || state === false) {
@@ -54,17 +51,7 @@ export default function App() {
 					<Header sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 					<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 					<Outlet />
-					<motion.div
-						ref={pointerFollowerRef}
-						style={{
-							x,
-							y,
-							borderRadius: '50%',
-							height: 10,
-							width: 10,
-							backgroundColor: 'white',
-						}}
-					/>
+					<PointerFollower mixBlendModeEnabled />
 				</main>
 				<ScrollRestoration />
 				<Scripts />
