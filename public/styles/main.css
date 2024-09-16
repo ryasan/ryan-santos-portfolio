@@ -344,6 +344,9 @@ em {
 }
 
 /* Sections */
+.hero-section {
+  height: 68rem;
+}
 .hero-section__title {
   max-width: 900px;
 }
@@ -353,11 +356,13 @@ em {
 
 /* Components */
 .button {
+  background-color: #fff;
+  color: #000;
   display: inline-block;
-  font-size: 1em;
   padding: 10px 20px;
   text-align: center;
-  text-transform: uppercase;
+  border-radius: 30px;
+  font-size: 3rem;
 }
 
 .site-header {
@@ -416,7 +421,6 @@ em {
 
 .parallax-layout {
   position: relative;
-  min-height: 100vh;
 }
 .parallax-layout__content {
   display: flex;
@@ -436,7 +440,6 @@ em {
 }
 
 .pointer-follower {
-  mix-blend-mode: difference;
   border-radius: 50%;
   background-color: #fff;
   width: 10px;

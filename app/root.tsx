@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import {
 	Links,
 	Meta,
@@ -10,7 +10,7 @@ import type { LinksFunction } from '@remix-run/node';
 
 import mainStyles from '~/styles/main.css?url';
 import Header from '~/components/header';
-import PointerFollower from '~/components/pointer-follower';
+// import PointerFollower from '~/components/pointer-follower';
 import Sidebar from '~/components/sidebar';
 
 export const links: LinksFunction = () => {
@@ -39,7 +39,7 @@ export default function App() {
 			<body>
 				<main>
 					<Header sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-					<PointerFollower mixBlendModeEnabled />
+					{/* <PointerFollower /> */}
 					<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 					<Outlet />
 				</main>

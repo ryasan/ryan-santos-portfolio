@@ -2,7 +2,6 @@ $ns: '.parallax-layout';
 
 #{$ns} {
 	position: relative;
-	min-height: 100vh;
 
 	&__content {
 		display: flex;
