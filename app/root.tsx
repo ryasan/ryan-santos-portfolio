@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
 	Links,
 	Meta,
@@ -39,9 +39,9 @@ export default function App() {
 			<body>
 				<main>
 					<Header sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+					<PointerFollower mixBlendModeEnabled />
 					<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 					<Outlet />
-					<PointerFollower mixBlendModeEnabled />
 				</main>
 				<ScrollRestoration />
 				<Scripts />

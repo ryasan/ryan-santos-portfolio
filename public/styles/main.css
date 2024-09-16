@@ -444,6 +444,7 @@ em {
 }
 .pointer-follower--mix-blend-mode {
   mix-blend-mode: difference;
+  z-index: 9999;
 }
 
 .scroll-progress-bar {

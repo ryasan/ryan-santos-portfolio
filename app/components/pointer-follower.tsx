@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import { useFollowPointer } from '~/hooks/use-follow-pointer';
@@ -14,6 +14,16 @@ function MotionDiv({ mixBlendModeEnabled }: { mixBlendModeEnabled?: boolean }) {
 
 	const pointerFollowerRef = useRef<HTMLDivElement>(null);
 	const { x, y } = useFollowPointer(pointerFollowerRef);
+
+	useEffect(() => {
+		const main = document.querySelector('main');
+		const lastChild = main?.lastElementChild;
+
+		// Teleport it to the end of main if it's not already there
+		if (lastChild !== pointerFollowerRef.current) {
+			main?.appendChild(pointerFollowerRef.current!);
+		}
+	}, []);
 
 	return (
 		<motion.div
