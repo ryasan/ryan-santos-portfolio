@@ -56,9 +56,10 @@ $site-header-height: 60px;
 
 /* Font Families */
 
-$montserrat: 'Montserrat';
 $matter-light: 'Matter-Light';
-$body-font-family: $montserrat, sans-serif;
+$matter-light-italic: 'Matter-LightItalic';
+$matter-thin: 'Matter-Thin';
+$body-font-family: $matter-light, sans-serif;
 $heading-font-family: $matter-light, sans-serif;
 
 /* Default Breakpoints For Typography */

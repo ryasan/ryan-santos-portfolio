@@ -194,7 +194,7 @@ body {
   background-color: #212529;
   overflow-x: hidden;
   color: #fff;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Matter-Light", sans-serif;
 }
 @media screen and (min-width: 375px) {
   body {
@@ -313,12 +313,65 @@ em {
   background: #212529;
 }
 
-/* stylelint-disable */
+@font-face {
+  font-family: "Matter-Thin";
+  src: url("/fonts/Matter-Thin.woff") format("woff"), url("/fonts/Matter-Thin.woff2") format("woff2"), url("/fonts/Matter-Thin.ttf") format("truetype"), url("/fonts/Matter-Thin.otf") format("opentype");
+  font-style: normal;
+  font-weight: 100;
+}
+@font-face {
+  font-family: "Matter-ThinItalic";
+  src: url("/fonts/Matter-ThinItalic.woff") format("woff"), url("/fonts/Matter-ThinItalic.woff2") format("woff2"), url("/fonts/Matter-ThinItalic.ttf") format("truetype"), url("/fonts/Matter-ThinItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 100;
+}
 @font-face {
   font-family: "Matter-Light";
-  src: url("/fonts/Matter-TRIAL-Light.woff") format("woff"), url("/fonts/Matter-TRIAL-Light.woff2") format("woff2"), url("/fonts/Matter-TRIAL-Light.ttf") format("truetype"), url("/fonts/Matter-TRIAL-Light.otf") format("opentype");
+  src: url("/fonts/Matter-Light.woff") format("woff"), url("/fonts/Matter-Light.woff2") format("woff2"), url("/fonts/Matter-Light.ttf") format("truetype"), url("/fonts/Matter-Light.otf") format("opentype");
   font-style: normal;
   font-weight: 300;
+}
+@font-face {
+  font-family: "Matter-LightItalic";
+  src: url("/fonts/Matter-LightItalic.woff") format("woff"), url("/fonts/Matter-LightItalic.woff2") format("woff2"), url("/fonts/Matter-LightItalic.ttf") format("truetype"), url("/fonts/Matter-LightItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Matter-Regular";
+  src: url("/fonts/Matter-Regular.woff") format("woff"), url("/fonts/Matter-Regular.woff2") format("woff2"), url("/fonts/Matter-Regular.ttf") format("truetype"), url("/fonts/Matter-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Matter-RegularItalic";
+  src: url("/fonts/Matter-RegularItalic.woff") format("woff"), url("/fonts/Matter-RegularItalic.woff2") format("woff2"), url("/fonts/Matter-RegularItalic.ttf") format("truetype"), url("/fonts/Matter-RegularItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Matter-Medium";
+  src: url("/fonts/Matter-Medium.woff") format("woff"), url("/fonts/Matter-Medium.woff2") format("woff2"), url("/fonts/Matter-Medium.ttf") format("truetype"), url("/fonts/Matter-Medium.otf") format("opentype");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Matter-MediumItalic";
+  src: url("/fonts/Matter-MediumItalic.woff") format("woff"), url("/fonts/Matter-MediumItalic.woff2") format("woff2"), url("/fonts/Matter-MediumItalic.ttf") format("truetype"), url("/fonts/Matter-MediumItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Matter-SemiBold";
+  src: url("/fonts/Matter-SemiBold.woff") format("woff"), url("/fonts/Matter-SemiBold.woff2") format("woff2"), url("/fonts/Matter-SemiBold.ttf") format("truetype"), url("/fonts/Matter-SemiBold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Matter-SemiBoldItalic";
+  src: url("/fonts/Matter-SemiBoldItalic.woff") format("woff"), url("/fonts/Matter-SemiBoldItalic.woff2") format("woff2"), url("/fonts/Matter-SemiBoldItalic.ttf") format("truetype"), url("/fonts/Matter-SemiBoldItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 600;
 }
 .container {
   max-width: 1440px;
