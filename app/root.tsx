@@ -9,6 +9,7 @@ import {
 import type { LinksFunction } from '@remix-run/node';
 
 import mainStyles from '~/styles/main.css?url';
+import ClientOnly from '~/components/client-only';
 import Header from '~/components/header';
 // import PointerFollower from '~/components/pointer-follower';
 import Sidebar from '~/components/sidebar';
@@ -38,10 +39,12 @@ export default function App() {
 			</head>
 			<body>
 				<main>
-					<Header sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-					{/* <PointerFollower /> */}
-					<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-					<Outlet />
+					<ClientOnly>
+						<Header sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+						{/* <PointerFollower /> */}
+						<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+						<Outlet />
+					</ClientOnly>
 				</main>
 				<ScrollRestoration />
 				<Scripts />

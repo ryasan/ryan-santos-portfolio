@@ -14,6 +14,7 @@ export default function HeroSection({ id }: HeroSectionProps) {
 		[`${ns}`]: true,
 	});
 
+	const DELAY = 0.75;
 	const firstRowChars = 'My Name Is Ryan.'.split('');
 	const secondRowChars = 'Frontend Engineer'.split('');
 
@@ -30,7 +31,7 @@ export default function HeroSection({ id }: HeroSectionProps) {
 									animate={{ y: 0, opacity: 1 }}
 									transition={{
 										duration: 0.25,
-										delay: 0.2 + index * 0.03,
+										delay: DELAY + index * 0.03,
 										ease: 'easeOut',
 									}}
 								>
@@ -46,7 +47,7 @@ export default function HeroSection({ id }: HeroSectionProps) {
 									animate={{ y: 0, opacity: 1 }}
 									transition={{
 										duration: 0.25,
-										delay: 0.2 + (firstRowChars.length + index) * 0.03,
+										delay: DELAY + (firstRowChars.length + index) * 0.03,
 										ease: 'easeOut',
 									}}
 								>
@@ -55,11 +56,22 @@ export default function HeroSection({ id }: HeroSectionProps) {
 							))}
 						</span>
 					</h1>
-					<div className={`${ns}__cta`}>
+					<motion.div
+						className={`${ns}__cta`}
+						initial={{ y: 100, opacity: 0 }}
+						animate={{ y: 70, opacity: 1 }}
+						transition={{
+							duration: 0.25,
+							delay:
+								DELAY * 2 +
+								(firstRowChars.length + secondRowChars.length) * 0.03,
+							ease: 'easeOut',
+						}}
+					>
 						<Button as="a" mailto="ryansantos86@gmail.com">
 							Let&apos;s Connect
 						</Button>
-					</div>
+					</motion.div>
 				</div>
 			</div>
 		</ParallaxLayout>

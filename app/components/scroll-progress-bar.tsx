@@ -1,6 +1,5 @@
 import { motion, useScroll, useSpring } from 'framer-motion';
 import clsx from 'clsx';
-import ClientOnly from '~/components/client-only';
 
 const ns = 'scroll-progress-bar';
 
@@ -16,11 +15,7 @@ const ScrollProgressBar = () => {
 		restDelta: 0.001,
 	});
 
-	return (
-		<ClientOnly>
-			<motion.div className={rootClassName} style={{ scaleX }} />
-		</ClientOnly>
-	);
+	return <motion.div className={rootClassName} style={{ scaleX }} />;
 };
 
 export default ScrollProgressBar;

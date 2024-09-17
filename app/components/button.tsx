@@ -79,10 +79,10 @@ export default function Button({
 			className={rootClassName}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
-			whileHover={{ scaleX: 1.04 }}
+			whileHover={{ scaleX: 1.02 }}
 			transition={{
 				duration: 0.6,
-				ease: [0.34, 4.56, 0.64, 1],
+				ease: [0.34, 5.56, 0.64, 1],
 			}}
 			{...props}
 		>

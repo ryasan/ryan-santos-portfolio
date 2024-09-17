@@ -408,6 +408,7 @@ em {
 }
 .hero-section__title {
   max-width: 900px;
+  z-index: 2;
 }
 .hero-section__title .first-row,
 .hero-section__title .second-row {
@@ -420,7 +421,7 @@ em {
   display: inline-block;
 }
 .hero-section__cta {
-  margin-top: 7rem;
+  z-index: 1;
 }
 
 /* Components */

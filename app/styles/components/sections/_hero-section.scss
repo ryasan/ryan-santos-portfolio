@@ -5,6 +5,7 @@ $ns: '.hero-section';
 
 	&__title {
 		max-width: 900px;
+		z-index: 2;
 
 		.first-row,
 		.second-row {
@@ -19,6 +20,7 @@ $ns: '.hero-section';
 	}
 
 	&__cta {
-		margin-top: 7rem;
+		// margin-top: 7rem;
+		z-index: 1;
 	}
 }
