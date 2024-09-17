@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
 	Links,
 	Meta,
@@ -7,11 +7,8 @@ import {
 	ScrollRestoration,
 } from '@remix-run/react';
 import type { LinksFunction } from '@remix-run/node';
-import {
-	LocomotiveScrollProvider,
-	type LocomotiveScrollProviderProps,
-} from 'react-locomotive-scroll';
 
+import PointerFollowerProvider from '~/context/pointer-follower-context';
 import mainStyles from '~/styles/main.css?url';
 import ClientOnly from '~/components/client-only';
 import Header from '~/components/header';
@@ -26,11 +23,11 @@ export default function App() {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const scrollContainerRef = useRef(null);
 
-	const locomotiveScrollProps: LocomotiveScrollProviderProps = {
-		options: { smooth: true, direction: 'vertical' },
-		containerRef: scrollContainerRef,
-		watch: [],
-	};
+	// const locomotiveScrollProps: LocomotiveScrollProviderProps = {
+	// 	options: { smooth: true, direction: 'vertical' },
+	// 	containerRef: scrollContainerRef,
+	// 	watch: [],
+	// };
 
 	function toggleSidebar(state: boolean) {
 		if (state === true || state === false) {
@@ -39,6 +36,20 @@ export default function App() {
 			setSidebarOpen(!sidebarOpen);
 		}
 	}
+
+	useEffect(() => {
+		async function getLocomotiveScroll() {
+			const LocomotiveScroll = (await import('locomotive-scroll')).default;
+
+			new LocomotiveScroll({
+				el: scrollContainerRef.current!,
+				smooth: true,
+				direction: 'vertical',
+			});
+		}
+
+		getLocomotiveScroll();
+	}, []);
 
 	return (
 		<html lang="en">
@@ -51,14 +62,16 @@ export default function App() {
 
 			<body>
 				<ClientOnly>
-					<LocomotiveScrollProvider {...locomotiveScrollProps}>
-						<main ref={scrollContainerRef} data-scroll-container>
-							<Header sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-							{/* <PointerFollower /> */}
-							<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-							<Outlet />
-						</main>
-					</LocomotiveScrollProvider>
+					{/* <LocomotiveScrollProvider {...locomotiveScrollProps}> */}
+					{/* <PointerFollowerProvider> */}
+					<main ref={scrollContainerRef} data-scroll-container>
+						<Header sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+						{/* <PointerFollower /> */}
+						<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+						<Outlet />
+					</main>
+					{/* </PointerFollowerProvider> */}
+					{/* </LocomotiveScrollProvider> */}
 				</ClientOnly>
 				<ScrollRestoration />
 				<Scripts />
