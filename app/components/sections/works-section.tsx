@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 import clsx from 'clsx';
 import ParallaxLayout from '~/components/parallax-layout';
+import { usePointerFollower } from '~/context/pointer-follower-context';
 import type { Project } from '~/types';
 
 const ns = 'works-section';
@@ -11,7 +12,15 @@ type WorksSectionProps = {
 	projects: Project[];
 };
 
-function ProductCard({ project }: { project: Project }) {
+function ProductCard({
+	project,
+	onMouseEnter,
+	onMouseLeave,
+}: {
+	project: Project;
+	onMouseEnter(): void;
+	onMouseLeave(): void;
+}) {
 	const productCardRef = useRef(null);
 	const isInView = useInView(productCardRef, { once: true, amount: 0.4 });
 
@@ -20,6 +29,8 @@ function ProductCard({ project }: { project: Project }) {
 		<a
 			className={`${ns}__project`}
 			ref={productCardRef}
+			onMouseEnter={onMouseEnter}
+			onMouseLeave={onMouseLeave}
 			style={{
 				opacity: isInView ? 1 : 0,
 				transform: isInView ? 'translateY(0)' : 'translateY(100px)',
@@ -41,8 +52,17 @@ export default function WorksSection({ id, projects }: WorksSectionProps) {
 		[`${ns}`]: true,
 	});
 
+	const { setFollowerText } = usePointerFollower();
 	const leftProjects = projects.filter((_, i) => i % 2 === 0);
 	const rightProjects = projects.filter((_, i) => i % 2 !== 0);
+
+	function handleMouseEnter() {
+		setFollowerText('Explore');
+	}
+
+	function handleMouseLeave() {
+		setFollowerText('');
+	}
 
 	return (
 		<ParallaxLayout id={id} bgColor="white">
@@ -59,12 +79,22 @@ export default function WorksSection({ id, projects }: WorksSectionProps) {
 						<div className={`${ns}__projects`}>
 							<div className={`${ns}__projects-left`}>
 								{leftProjects.map((project, index) => (
-									<ProductCard key={index} project={project} />
+									<ProductCard
+										key={index}
+										project={project}
+										onMouseEnter={handleMouseEnter}
+										onMouseLeave={handleMouseLeave}
+									/>
 								))}
 							</div>
 							<div className={`${ns}__projects-right`}>
 								{rightProjects.map((project, index) => (
-									<ProductCard key={index} project={project} />
+									<ProductCard
+										key={index}
+										project={project}
+										onMouseEnter={handleMouseEnter}
+										onMouseLeave={handleMouseLeave}
+									/>
 								))}
 							</div>
 						</div>

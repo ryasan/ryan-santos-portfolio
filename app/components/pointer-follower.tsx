@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
-import { useFollowPointer } from '~/hooks/use-follow-pointer';
+import { usePointerFollower } from '~/context/pointer-follower-context';
 
 const ns = 'pointer-follower';
 
@@ -14,11 +14,18 @@ export default function PointerFollower({
 }: PointerFollowerProps) {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
-		[`${ns}--mix-blend-mode`]: mixBlendModeEnabled,
+		[`mix-blend-mode`]: mixBlendModeEnabled,
 	});
 
 	const pointerFollowerRef = useRef<HTMLDivElement>(null);
-	const { x, y } = useFollowPointer(pointerFollowerRef);
+	const { initFollower, xFollower, yFollower, innerText, followerSize } =
+		usePointerFollower();
+
+	useEffect(() => {
+		if (pointerFollowerRef.current) {
+			initFollower(pointerFollowerRef.current);
+		}
+	}, [initFollower]);
 
 	useEffect(() => {
 		const main = document.querySelector('main');
@@ -30,11 +37,26 @@ export default function PointerFollower({
 		}
 	}, []);
 
+	const width = followerSize === 'sm' ? 10 : 100;
+
 	return (
 		<motion.div
 			className={rootClassName}
 			ref={pointerFollowerRef}
-			style={{ x, y }}
-		/>
+			animate={{ width: width, height: width }}
+			style={{
+				x: xFollower,
+				y: yFollower,
+			}}
+		>
+			<motion.span
+				animate={{
+					scale: followerSize === 'sm' ? 0 : 1,
+					opacity: followerSize === 'sm' ? 0 : 1,
+				}}
+			>
+				{innerText}
+			</motion.span>
+		</motion.div>
 	);
 }

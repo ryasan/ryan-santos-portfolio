@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ButtonHTMLAttributes } from 'react';
 import clsx from 'clsx';
 import { useState } from 'react';
 import { motion, type Variants } from 'framer-motion';
@@ -24,13 +26,13 @@ const eclipseVariants: Variants = {
 	},
 };
 
-type ButtonProps = {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	as?: 'button' | 'a';
 	children: React.ReactNode;
 	className?: string;
 	mailto?: string;
 	href?: string;
-	onClick?: () => void;
+	onClick?(): void;
 };
 
 export default function Button({
@@ -40,6 +42,8 @@ export default function Button({
 	mailto,
 	href,
 	onClick,
+	onMouseEnter,
+	onMouseLeave,
 }: ButtonProps) {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
@@ -50,6 +54,20 @@ export default function Button({
 	const isDownload = href?.startsWith('.');
 	const isExternal = href?.startsWith('http');
 	const component = as;
+
+	function handleMouseEnter(e: any) {
+		if (onMouseEnter) {
+			onMouseEnter(e);
+			setIsHovered(true);
+		}
+	}
+
+	function handleMouseLeave(e: any) {
+		if (onMouseLeave) {
+			onMouseLeave(e);
+			setIsHovered(false);
+		}
+	}
 
 	const props = {
 		...(as === 'a' && {
@@ -77,8 +95,8 @@ export default function Button({
 	return (
 		<MotionComponent
 			className={rootClassName}
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
 			whileHover={{ scaleX: 1.02 }}
 			transition={{
 				duration: 0.6,
@@ -100,9 +118,7 @@ export default function Button({
 				animate={isHovered ? 'visible' : 'hidden'}
 				variants={eclipseVariants}
 				initial={false}
-				transition={{
-					ease: 'linear',
-				}}
+				transition={{ ease: 'linear' }}
 			>
 				{children}
 			</motion.span>

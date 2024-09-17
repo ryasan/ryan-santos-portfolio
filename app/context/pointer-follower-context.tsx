@@ -3,9 +3,8 @@ import {
 	useContext,
 	ReactNode,
 	useEffect,
-	RefObject,
+	useState,
 } from 'react';
-
 import {
 	useMotionValue,
 	useSpring,
@@ -15,16 +14,21 @@ import {
 } from 'framer-motion';
 
 const spring: Partial<Spring> = {
-	damping: 15,
-	stiffness: 100,
+	damping: 30,
+	stiffness: 300,
 	restDelta: 0.001,
 };
 
 type PointerFollowerContextType = {
+	followerSize: 'sm' | 'lg';
+	innerText: string;
 	xPointer: MotionValue<number>;
 	yPointer: MotionValue<number>;
-	xFollwer: MotionValue<number>;
+	xFollower: MotionValue<number>;
 	yFollower: MotionValue<number>;
+	initFollower(element: HTMLElement): void;
+	setFollowerText(text: string): void;
+	toggleMixBlendMode(state?: boolean): void;
 };
 
 const PointerFollowerContext = createContext<
@@ -43,22 +47,40 @@ export function usePointerFollower() {
 
 export default function PointerFollowerProvider({
 	children,
-	pointerRef,
 }: {
 	children: ReactNode;
-	pointerRef: RefObject<HTMLElement>;
 }) {
 	const xPointer = useMotionValue(0);
 	const yPointer = useMotionValue(0);
-	const xFollwer = useSpring(xPointer, spring);
+	const xFollower = useSpring(xPointer, spring);
 	const yFollower = useSpring(yPointer, spring);
+	const [innerText, setInnerText] = useState('');
+	const [followerSize, setSize] = useState<'sm' | 'lg'>('sm');
+	const [mixBlendModeEnabled, setMixBlendModeEnabled] = useState(false);
+	const [pointerEl, setPointerEl] = useState<HTMLElement>();
+
+	function initFollower(element: HTMLElement) {
+		setPointerEl(element);
+	}
+
+	function setFollowerText(text: string) {
+		setInnerText(text);
+	}
+
+	function toggleMixBlendMode(state?: boolean) {
+		if (state === true || state === false) {
+			setMixBlendModeEnabled(state);
+		} else {
+			setMixBlendModeEnabled(!mixBlendModeEnabled);
+		}
+	}
 
 	useEffect(() => {
-		if (!pointerRef.current) return;
+		if (!pointerEl) return;
 		if (window?.innerWidth < 992) return;
 
 		const handlePointerMove = ({ pageX, pageY }: MouseEvent) => {
-			const element = pointerRef.current!;
+			const element = pointerEl!;
 
 			frame.read(() => {
 				xPointer.set(pageX - element.offsetLeft - element.offsetWidth / 2);
@@ -70,11 +92,35 @@ export default function PointerFollowerProvider({
 
 		return () => window.removeEventListener('pointermove', handlePointerMove);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [pointerEl]);
+
+	useEffect(() => {
+		if (!pointerEl) return;
+
+		if (mixBlendModeEnabled) {
+			pointerEl.classList.add('mix-blend-mode');
+		} else {
+			pointerEl.classList.remove('mix-blend-mode');
+		}
+	}, [mixBlendModeEnabled, pointerEl]);
+
+	useEffect(() => {
+		setSize(innerText ? 'lg' : 'sm');
+	}, [innerText]);
 
 	return (
 		<PointerFollowerContext.Provider
-			value={{ xPointer, yPointer, xFollwer, yFollower }}
+			value={{
+				followerSize,
+				innerText,
+				xPointer,
+				yPointer,
+				xFollower,
+				yFollower,
+				initFollower,
+				setFollowerText,
+				toggleMixBlendMode,
+			}}
 		>
 			{children}
 		</PointerFollowerContext.Provider>

@@ -76,7 +76,7 @@ function MenuIcon({ isOpen }: { isOpen: boolean }) {
 
 type HeaderProps = {
 	sidebarOpen: boolean;
-	toggleSidebar: (state: boolean) => void;
+	toggleSidebar(state: boolean): void;
 };
 
 export default function Header({ sidebarOpen, toggleSidebar }: HeaderProps) {

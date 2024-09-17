@@ -272,11 +272,12 @@ html.has-scroll-dragging {
 
 .c-scrollbar_thumb {
   background: #fff;
+  opacity: 1;
 }
 
 /* Pseudo Elements */
 ::-webkit-scrollbar {
-  background: #212529;
+  background: #000;
   width: 5px;
   height: 5px;
 }
@@ -288,7 +289,7 @@ html.has-scroll-dragging {
 }
 
 ::-webkit-scrollbar-corner {
-  background: #212529;
+  background: #000;
 }
 
 /* Base */
@@ -307,7 +308,7 @@ html {
 }
 
 body {
-  background-color: #212529;
+  background-color: #000;
   overflow-x: hidden;
   color: #fff;
   font-family: "Matter-Light", sans-serif;
@@ -626,7 +627,7 @@ em {
 .skills-section {
   background-color: #fff;
   padding: 10rem 0;
-  color: #212529;
+  color: #000;
   width: 100%;
   justify-self: end;
   padding: 0 !important;
@@ -639,7 +640,7 @@ em {
   }
 }
 .works-section {
-  background-color: #212529;
+  background-color: #000;
   padding: 10rem 0;
   color: #fff;
   width: 100%;
@@ -717,7 +718,7 @@ em {
   position: relative;
   border: 1px solid #fff;
   border-radius: 9999px;
-  background-color: #212529;
+  background-color: #000;
   padding: 25px 30px;
   min-width: 200px;
   overflow: hidden;
@@ -743,15 +744,15 @@ em {
   background-color: #fff;
   width: 100%;
   height: 100%;
-  color: #212529;
+  color: #000;
 }
 .button--small {
   padding: 20px;
   font-size: 2rem;
 }
 .button--black {
-  border-color: #212529;
-  background-color: #212529;
+  border-color: #000;
+  background-color: #000;
   color: #fff;
 }
 
@@ -792,7 +793,7 @@ em {
   height: 25px;
 }
 .site-header__menu-button.is-active .site-header__menu-icon span {
-  background: #212529;
+  background: #000;
 }
 .site-header__menu-icon {
   display: flex;
@@ -846,21 +847,25 @@ em {
   }
 }
 .parallax-layout--bg-black {
-  background-color: #212529;
+  background-color: #000;
 }
 .parallax-layout--bg-white {
   background-color: #fff;
 }
 
 .pointer-follower {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
   border-radius: 50%;
   background-color: #fff;
-  width: 10px;
-  height: 10px;
+  pointer-events: none;
+  color: #000;
+  font-size: 15px;
 }
-.pointer-follower--mix-blend-mode {
+.pointer-follower.mix-blend-mode {
   mix-blend-mode: difference;
-  z-index: 9999;
 }
 
 .scroll-progress-bar {

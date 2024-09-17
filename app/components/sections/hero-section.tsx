@@ -1,7 +1,10 @@
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import Button from '~/components/button';
 import ParallaxLayout from '~/components/parallax-layout';
+import { useIsBeingHovered } from '~/hooks';
+import { usePointerFollower } from '~/context/pointer-follower-context';
 
 const ns = 'hero-section';
 
@@ -14,13 +17,25 @@ export default function HeroSection({ id }: HeroSectionProps) {
 		[`${ns}`]: true,
 	});
 
+	const rootRef = useRef(null);
+	const isHoveredOverSection = useIsBeingHovered(rootRef.current!);
+	const { toggleMixBlendMode, setFollowerText } = usePointerFollower();
+
 	const DELAY = 0.75;
 	const firstRowChars = 'My Name Is Ryan.'.split('');
 	const secondRowChars = 'Frontend Engineer'.split('');
 
+	useEffect(() => {
+		if (isHoveredOverSection) {
+			toggleMixBlendMode(true);
+		} else {
+			toggleMixBlendMode(false);
+		}
+	}, [isHoveredOverSection, toggleMixBlendMode]);
+
 	return (
 		<ParallaxLayout id={id}>
-			<div className={rootClassName}>
+			<div className={rootClassName} ref={rootRef}>
 				<div className="container">
 					<div className={`${ns}__content`}>
 						<h1 className={`${ns}__title`}>
@@ -35,6 +50,8 @@ export default function HeroSection({ id }: HeroSectionProps) {
 											delay: DELAY + index * 0.03,
 											ease: 'easeOut',
 										}}
+										onMouseEnter={() => setFollowerText(' ')}
+										onMouseLeave={() => setFollowerText('')}
 									>
 										{char === ' ' ? '\u00A0' : char}
 									</motion.span>
@@ -51,6 +68,8 @@ export default function HeroSection({ id }: HeroSectionProps) {
 											delay: DELAY + (firstRowChars.length + index) * 0.03,
 											ease: 'easeOut',
 										}}
+										onMouseEnter={() => setFollowerText(' ')}
+										onMouseLeave={() => setFollowerText('')}
 									>
 										{char === ' ' ? '\u00A0' : char}
 									</motion.span>
@@ -69,7 +88,12 @@ export default function HeroSection({ id }: HeroSectionProps) {
 								ease: 'easeOut',
 							}}
 						>
-							<Button as="a" mailto="ryansantos86@gmail.com">
+							<Button
+								as="a"
+								mailto="ryansantos86@gmail.com"
+								onMouseEnter={() => setFollowerText(' ')}
+								onMouseLeave={() => setFollowerText('')}
+							>
 								Let&apos;s Connect
 							</Button>
 						</motion.div>

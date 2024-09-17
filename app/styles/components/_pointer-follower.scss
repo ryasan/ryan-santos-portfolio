@@ -1,13 +1,17 @@
 $ns: '.pointer-follower';
 
 #{$ns} {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
 	border-radius: 50%;
 	background-color: $white;
-	width: 10px;
-	height: 10px;
+	pointer-events: none;
+	color: $black;
+	font-size: 15px;
 
-	&--mix-blend-mode {
+	&.mix-blend-mode {
 		mix-blend-mode: difference;
-		z-index: 9999;
 	}
 }

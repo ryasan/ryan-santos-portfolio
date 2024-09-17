@@ -6,7 +6,7 @@ const ns = 'sidebar';
 type SidebarProps = {
 	className?: string;
 	isOpen: boolean;
-	toggleSidebar: (state: boolean) => void;
+	toggleSidebar(state: boolean): void;
 };
 
 export default function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
