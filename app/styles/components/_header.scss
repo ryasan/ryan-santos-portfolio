@@ -11,6 +11,11 @@ $menu-button-width: 25px;
 		height: 100%;
 	}
 
+	&__title {
+		font-family: $recoleta-regular;
+		font-weight: 600;
+	}
+
 	&__nav {
 		display: inline-flex;
 		align-items: center;

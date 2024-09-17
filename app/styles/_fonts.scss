@@ -10,7 +10,11 @@ $matter-reg-italic-src: font-src('Matter-RegularItalic');
 $matter-semibold-src: font-src('Matter-SemiBold');
 $matter-semibold-italic-src: font-src('Matter-SemiBoldItalic');
 
+// Recoleta Font
+$recoleta-reg-src: font-src('Recoleta-Regular');
+
 @at-root {
+	// Matter Font
 	@include font-face(
 		'Matter-Thin',
 		$matter-thin-src,
@@ -70,5 +74,13 @@ $matter-semibold-italic-src: font-src('Matter-SemiBoldItalic');
 		$matter-semibold-italic-src,
 		600,
 		italic
+	);
+
+	// Recoleta Font
+	@include font-face(
+		'Recoleta-Regular',
+		$recoleta-reg-src,
+		400,
+		normal
 	);
 }

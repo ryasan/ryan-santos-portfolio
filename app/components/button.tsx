@@ -99,6 +99,7 @@ export default function Button({
 				className={`${ns}__eclipse`}
 				animate={isHovered ? 'visible' : 'hidden'}
 				variants={eclipseVariants}
+				initial={false}
 				transition={{
 					ease: 'linear',
 				}}
