@@ -8,8 +8,9 @@ import {
 } from '@remix-run/react';
 import type { LinksFunction } from '@remix-run/node';
 
-import PointerFollowerProvider from '~/context/pointer-follower-context';
 import mainStyles from '~/styles/main.css?url';
+import PointerFollowerProvider from '~/context/pointer-follower-context';
+import BurgerMenu from '~/components/burger-menu';
 import ClientOnly from '~/components/client-only';
 import Header from '~/components/header';
 import PointerFollower from '~/components/pointer-follower';
@@ -63,9 +64,10 @@ export default function App() {
 				<ClientOnly>
 					<PointerFollowerProvider>
 						<main ref={scrollContainerRef} data-scroll-container>
-							<Header sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+							<Header />
 							<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 							<Outlet />
+							<BurgerMenu sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 							<PointerFollower />
 						</main>
 					</PointerFollowerProvider>

@@ -1,5 +1,4 @@
 $ns: '.site-header';
-$menu-button-width: 25px;
 
 #{$ns} {
 	height: $site-header-height;
@@ -28,44 +27,6 @@ $menu-button-width: 25px;
 
 		@include at-laptop {
 			display: flex;
-		}
-	}
-
-	&__menu-button {
-		position: fixed;
-		top: calc($site-header-height / 2 - $menu-button-width / 2);
-		right: 40px;
-		z-index: 9999;
-		margin-left: 15px;
-		width: $menu-button-width;
-		height: $menu-button-width;
-
-		&.is-active {
-			#{$ns}__menu-icon span {
-				background: $black;
-			}
-		}
-	}
-
-	&__menu-icon {
-		display: flex;
-		position: relative;
-		flex-direction: column;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-
-		span {
-			display: block;
-			left: 0;
-			transition: background 0.3s ease;
-			background: $white;
-			width: 100%;
-			height: 2px;
-
-			&:not(:first-child) {
-				margin-top: 5px;
-			}
 		}
 	}
 }

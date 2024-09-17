@@ -1,9 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import Button from '~/components/button';
 import ParallaxLayout from '~/components/parallax-layout';
-import { useIsBeingHovered } from '~/hooks';
 import { usePointerFollower } from '~/context/pointer-follower-context';
 
 const ns = 'hero-section';
@@ -18,24 +17,20 @@ export default function HeroSection({ id }: HeroSectionProps) {
 	});
 
 	const rootRef = useRef(null);
-	const isHoveredOverSection = useIsBeingHovered(rootRef.current!);
 	const { toggleMixBlendMode, setFollowerText } = usePointerFollower();
 
 	const DELAY = 0.75;
 	const firstRowChars = 'My Name Is Ryan.'.split('');
 	const secondRowChars = 'Frontend Engineer'.split('');
 
-	useEffect(() => {
-		if (isHoveredOverSection) {
-			toggleMixBlendMode(true);
-		} else {
-			toggleMixBlendMode(false);
-		}
-	}, [isHoveredOverSection, toggleMixBlendMode]);
-
 	return (
 		<ParallaxLayout id={id}>
-			<div className={rootClassName} ref={rootRef}>
+			<div
+				className={rootClassName}
+				ref={rootRef}
+				onMouseEnter={() => toggleMixBlendMode(true)}
+				onMouseLeave={() => toggleMixBlendMode(false)}
+			>
 				<div className="container">
 					<div className={`${ns}__content`}>
 						<h1 className={`${ns}__title`}>

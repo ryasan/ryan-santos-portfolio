@@ -1,7 +1,7 @@
 $ns: '.pointer-follower';
 
 #{$ns} {
-	display: flex;
+	display: none;
 	justify-content: center;
 	align-items: center;
 	z-index: 9999;
@@ -10,6 +10,10 @@ $ns: '.pointer-follower';
 	pointer-events: none;
 	color: $black;
 	font-size: 15px;
+
+	@include at-laptop {
+		display: flex;
+	}
 
 	&.mix-blend-mode {
 		mix-blend-mode: difference;

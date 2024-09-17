@@ -17,3 +17,7 @@
 ## Navigation
 
 * [ ] Add locomotive scroll
+
+## General
+
+* [ ] Split imports.

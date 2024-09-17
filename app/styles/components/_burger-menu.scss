@@ -1,0 +1,40 @@
+$ns: '.burger-menu';
+$button-width: 25px;
+
+#{$ns} {
+	position: fixed;
+	top: calc($site-header-height / 2 - $button-width / 2);
+	right: 40px;
+	z-index: 9999;
+	margin-left: 15px;
+	width: $button-width;
+	height: $button-width;
+
+	&--active {
+		#{$ns}__icon span {
+			background: $black;
+		}
+	}
+
+	&__icon {
+		display: flex;
+		position: relative;
+		flex-direction: column;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+
+		span {
+			display: block;
+			left: 0;
+			transition: background 0.3s ease;
+			background: $white;
+			width: 100%;
+			height: 2px;
+
+			&:not(:first-child) {
+				margin-top: 5px;
+			}
+		}
+	}
+}
