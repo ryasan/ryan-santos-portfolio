@@ -66,21 +66,3 @@ i,
 em {
 	font-style: italic;
 }
-
-/* Pseudo Elements */
-
-::-webkit-scrollbar {
-	background: $background-primary-color;
-	width: 5px;
-	height: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-	/* stylelint-disable-next-line property-no-vendor-prefix */
-	-webkit-border-radius: 1ex;
-	background: $white;
-}
-
-::-webkit-scrollbar-corner {
-	background: $background-primary-color;
-}

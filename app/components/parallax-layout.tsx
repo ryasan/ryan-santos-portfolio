@@ -36,7 +36,7 @@ export default function ParallaxLayout({
 	const y = useParallax(scrollYProgress, 300);
 
 	return (
-		<Element className={rootClassName}>
+		<Element className={rootClassName} data-scroll-section>
 			<div className={`${ns}__content`}>{children}</div>
 			{!disableParallax && (
 				<div className={`${ns}__parallax-anchor`} ref={anchorRef} />

@@ -6,9 +6,14 @@
 @import 'functions';
 @import 'mixins';
 
-/* Vendors & Reset */
+/* Reset & Vendors */
 
 @import 'reset';
+@import 'vendors/locomotive-scroll';
+
+/* Overrides */
+
+@import 'overrides';
 
 /* Base */
 

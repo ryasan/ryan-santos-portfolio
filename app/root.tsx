@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import {
 	Links,
 	Meta,
@@ -7,6 +7,10 @@ import {
 	ScrollRestoration,
 } from '@remix-run/react';
 import type { LinksFunction } from '@remix-run/node';
+import {
+	LocomotiveScrollProvider,
+	type LocomotiveScrollProviderProps,
+} from 'react-locomotive-scroll';
 
 import mainStyles from '~/styles/main.css?url';
 import ClientOnly from '~/components/client-only';
@@ -20,6 +24,13 @@ export const links: LinksFunction = () => {
 
 export default function App() {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
+	const scrollContainerRef = useRef(null);
+
+	const locomotiveScrollProps: LocomotiveScrollProviderProps = {
+		options: { smooth: true, direction: 'vertical' },
+		containerRef: scrollContainerRef,
+		watch: [],
+	};
 
 	function toggleSidebar(state: boolean) {
 		if (state === true || state === false) {
@@ -39,14 +50,16 @@ export default function App() {
 			</head>
 
 			<body>
-				<main>
-					<ClientOnly>
-						<Header sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-						{/* <PointerFollower /> */}
-						<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-						<Outlet />
-					</ClientOnly>
-				</main>
+				<ClientOnly>
+					<LocomotiveScrollProvider {...locomotiveScrollProps}>
+						<main ref={scrollContainerRef} data-scroll-container>
+							<Header sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+							{/* <PointerFollower /> */}
+							<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+							<Outlet />
+						</main>
+					</LocomotiveScrollProvider>
+				</ClientOnly>
 				<ScrollRestoration />
 				<Scripts />
 			</body>

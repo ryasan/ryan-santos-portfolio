@@ -26,7 +26,6 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
 	const { projects } = useLoaderData() as { projects: Project[] };
-	console.log({ projects });
 
 	return (
 		<>

@@ -24,7 +24,7 @@
  *  properties (font-size, line-height, letter-spacing, font-weight). List must
  *  be in this order - pass null to omit the property/rule.
  */
-/* Vendors & Reset */
+/* Reset & Vendors */
 /* Eric Meyer's Reset */
 html,
 body,
@@ -176,6 +176,121 @@ button {
   padding: 0;
 }
 
+/*! locomotive-scroll v4.1.3 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
+/* stylelint-disable */
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+
+html.has-scroll-dragging {
+  user-select: none;
+}
+
+.has-scroll-smooth body {
+  overflow: hidden;
+}
+
+.has-scroll-smooth [data-scroll-container] {
+  min-height: 100vh;
+}
+
+[data-scroll-direction=horizontal] [data-scroll-container] {
+  display: inline-block;
+  height: 100vh;
+  white-space: nowrap;
+}
+
+[data-scroll-direction=horizontal] [data-scroll-section] {
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
+  white-space: nowrap;
+}
+
+.c-scrollbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform-origin: center right;
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.3s;
+  width: 11px;
+  height: 100%;
+}
+
+.c-scrollbar:hover {
+  transform: scaleX(1.45);
+}
+
+.c-scrollbar:hover,
+.has-scroll-scrolling .c-scrollbar,
+.has-scroll-dragging .c-scrollbar {
+  opacity: 1;
+}
+
+[data-scroll-direction=horizontal] .c-scrollbar {
+  top: auto;
+  bottom: 0;
+  transform: scaleY(1);
+  width: 100%;
+  height: 10px;
+}
+
+[data-scroll-direction=horizontal] .c-scrollbar:hover {
+  transform: scaleY(1.3);
+}
+
+.c-scrollbar_thumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.5;
+  cursor: grab;
+  margin: 2px;
+  border-radius: 10px;
+  background-color: black;
+  width: 7px;
+}
+
+.has-scroll-dragging .c-scrollbar_thumb {
+  cursor: grabbing;
+}
+
+[data-scroll-direction=horizontal] .c-scrollbar_thumb {
+  right: auto;
+  bottom: 0;
+}
+
+/* stylelint-enable */
+/* Overrides */
+/* stylelint-disable selector-class-pattern */
+/* Locomotive Scrollbar */
+.c-scrollbar {
+  transform: none !important;
+  transition: none !important;
+}
+
+.c-scrollbar_thumb {
+  background: #fff;
+}
+
+/* Pseudo Elements */
+::-webkit-scrollbar {
+  background: #212529;
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-border-radius: 1ex;
+  background: #fff;
+}
+
+::-webkit-scrollbar-corner {
+  background: #212529;
+}
+
 /* Base */
 /* Baseline Styles */
 html {
@@ -306,23 +421,6 @@ h6 {
 i,
 em {
   font-style: italic;
-}
-
-/* Pseudo Elements */
-::-webkit-scrollbar {
-  background: #212529;
-  width: 5px;
-  height: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  /* stylelint-disable-next-line property-no-vendor-prefix */
-  -webkit-border-radius: 1ex;
-  background: #fff;
-}
-
-::-webkit-scrollbar-corner {
-  background: #212529;
 }
 
 @font-face {

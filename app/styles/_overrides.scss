@@ -1,0 +1,30 @@
+/* stylelint-disable selector-class-pattern */
+
+/* Locomotive Scrollbar */
+
+.c-scrollbar {
+	transform: none !important;
+	transition: none !important;
+}
+
+.c-scrollbar_thumb {
+	background: $white;
+}
+
+/* Pseudo Elements */
+
+::-webkit-scrollbar {
+	background: $background-primary-color;
+	width: 5px;
+	height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	/* stylelint-disable-next-line property-no-vendor-prefix */
+	-webkit-border-radius: 1ex;
+	background: $white;
+}
+
+::-webkit-scrollbar-corner {
+	background: $background-primary-color;
+}

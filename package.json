@@ -23,7 +23,6 @@
     "axios": "^1.7.7",
     "clsx": "^2.1.1",
     "contentful": "^10.15.1",
-    "dotenv": "^16.4.5",
     "framer-motion": "^11.5.4",
     "isbot": "^4.1.0",
     "lodash": "^4.17.21",
