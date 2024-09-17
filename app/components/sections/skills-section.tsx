@@ -1,27 +1,22 @@
 import clsx from 'clsx';
 import ParallaxLayout from '~/components/parallax-layout';
 
-const ns = 'footer-section';
+const ns = 'skills-section';
 
-type FooterSectionProps = {
+type SkillsSectionProps = {
 	id: number | null;
 };
 
-export default function FooterSection({ id }: FooterSectionProps) {
+export default function SkillsSection({ id }: SkillsSectionProps) {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
 	});
 
 	return (
-		<ParallaxLayout
-			className={rootClassName}
-			id={id}
-			as="footer"
-			disableParallax
-		>
+		<ParallaxLayout className={rootClassName} id={id}>
 			<div className="container">
 				<div className={`${ns}__content`}>
-					{/* <h1 className={`${ns}__title`}>FOOTER SECTION</h1> */}
+					<h1 className={`${ns}__title`}>SKILLS SECTION</h1>
 				</div>
 			</div>
 		</ParallaxLayout>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import {
 	Links,
 	Meta,
@@ -20,6 +20,7 @@ export const links: LinksFunction = () => {
 
 export default function App() {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
+	const bodyRef = useRef<HTMLBodyElement>(null);
 
 	function toggleSidebar(state: boolean) {
 		if (state === true || state === false) {
@@ -37,7 +38,8 @@ export default function App() {
 				<Meta />
 				<Links />
 			</head>
-			<body>
+
+			<body ref={bodyRef}>
 				<main>
 					<ClientOnly>
 						<Header sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />

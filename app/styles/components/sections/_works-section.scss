@@ -1,5 +1,78 @@
 $ns: '.works-section';
 
 #{$ns} {
-	// todo
+	margin: 10rem 0;
+
+	&__title {
+		span {
+			display: block;
+		}
+
+		i {
+			margin-left: 10rem;
+		}
+	}
+
+	&__projects {
+		display: grid;
+		grid-template-columns: 1fr;
+		row-gap: 6rem;
+		margin-top: 15rem;
+
+		@include at-tablet {
+			grid-template-columns: repeat(2, 1fr);
+			column-gap: 5.4rem;
+			max-width: 106rem;
+		}
+
+		&-left,
+		&-right {
+			display: flex;
+			row-gap: 6rem;
+			flex-direction: column;
+
+			@include at-tablet {
+				row-gap: 9rem;
+			}
+		}
+
+		&-right {
+			@include at-tablet {
+				margin-top: 30rem;
+			}
+		}
+	}
+
+	&__project {
+		color: $white;
+
+		&:hover {
+			#{$ns}__project-image {
+				transform: scale(0.98);
+
+				img {
+					transform: scale(1.1);
+				}
+			}
+		}
+
+		&-image {
+			transition: transform 0.5s ease-out;
+			border-radius: 3.6rem;
+			width: 100%;
+			overflow: hidden;
+
+			img {
+				transition: transform 0.5s ease-out;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		&-content {
+			margin-top: 2.7rem;
+			font-weight: 600;
+		}
+	}
 }

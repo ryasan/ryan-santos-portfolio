@@ -12,8 +12,8 @@ $menu-button-width: 25px;
 	}
 
 	&__title {
-		font-family: $recoleta-regular;
 		font-weight: 600;
+		font-family: $recoleta-regular;
 	}
 
 	&__nav {
@@ -23,10 +23,11 @@ $menu-button-width: 25px;
 
 	&__menu-text {
 		display: none;
+		align-items: center;
 		margin-right: 55px;
 
 		@include at-laptop {
-			display: block;
+			display: flex;
 		}
 	}
 
@@ -34,10 +35,10 @@ $menu-button-width: 25px;
 		position: fixed;
 		top: calc($site-header-height / 2 - $menu-button-width / 2);
 		right: 40px;
+		z-index: 9999;
 		margin-left: 15px;
 		width: $menu-button-width;
 		height: $menu-button-width;
-		z-index: 9999;
 
 		&.is-active {
 			#{$ns}__menu-icon span {
@@ -57,10 +58,10 @@ $menu-button-width: 25px;
 		span {
 			display: block;
 			left: 0;
+			transition: background 0.3s ease;
 			background: $white;
 			width: 100%;
 			height: 2px;
-			transition: background 0.3s ease;
 
 			&:not(:first-child) {
 				margin-top: 5px;

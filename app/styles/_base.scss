@@ -58,6 +58,10 @@ h6 {
 	font-family: $heading-font-family;
 }
 
+small {
+	@include font-style($body-font-sm-style);
+}
+
 i,
 em {
 	font-style: italic;

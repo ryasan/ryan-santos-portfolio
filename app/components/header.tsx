@@ -87,9 +87,13 @@ export default function Header({ sidebarOpen, toggleSidebar }: HeaderProps) {
 	return (
 		<header className={rootClassName}>
 			<div className="container-fluid">
-				<span className={`${ns}__title`}>Ryan Santos</span>
+				<span className={`${ns}__title`}>
+					<small>Ryan Santos</small>
+				</span>
 				<nav className={`${ns}__nav`}>
-					<span className={`${ns}__menu-text`}>menu</span>
+					<span className={`${ns}__menu-text`}>
+						<small>menu</small>
+					</span>
 					<button
 						className={`${ns}__menu-button${sidebarOpen ? ' is-active' : ''}`}
 						onClick={() => toggleSidebar(!sidebarOpen)}

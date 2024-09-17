@@ -11,14 +11,24 @@ $ns: '.parallax-layout';
 	}
 
 	&__parallax-anchor {
+		display: none;
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
+
+		@include at-tablet {
+			display: block;
+		}
 	}
 
 	&__parallax-item {
+		display: none;
 		position: absolute;
 		right: 0;
 		letter-spacing: 0.3rem;
+
+		@include at-tablet {
+			display: block;
+		}
 	}
 }

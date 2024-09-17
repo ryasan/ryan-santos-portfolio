@@ -86,12 +86,20 @@ $font-breakpoints: (
 
 /* Font Style Maps */
 
-$body-font-style: (
+$body-font-sm-style: (
 	mobile: (
-		1.6rem,
+		1.8rem,
 	),
 	laptop: (
-		1.8rem,
+		2rem,
+	),
+) !default;
+$body-font-style: (
+	mobile: (
+		2rem,
+	),
+	laptop: (
+		3rem,
 	),
 ) !default;
 $heading-1-font-style: (

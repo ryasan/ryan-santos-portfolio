@@ -35,7 +35,10 @@ export default function ParallaxLayout({
 	return (
 		<Element className={rootClassName}>
 			<div className={`${ns}__content`}>{children}</div>
-			<div className={`${ns}__parallax-anchor`} ref={anchorRef} />
+			{!disableParallax && (
+				<div className={`${ns}__parallax-anchor`} ref={anchorRef} />
+			)}
+
 			{typeof id === 'number' && !disableParallax && (
 				<motion.div className={`${ns}__parallax-item`} style={{ y }}>
 					<div className="container">
