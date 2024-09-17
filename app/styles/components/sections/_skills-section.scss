@@ -1,5 +1,21 @@
 $ns: '.skills-section';
 
 #{$ns} {
-	// todo
+	@include section-style($white, $black);
+
+	// border-radius: 50% !important;
+
+	// float: right;
+	justify-self: end;
+	padding: 0 !important;
+	width: auto;
+
+	&__content {
+		// display: inline-block;
+		// align-items: center;
+		// background-color: $white;
+		// width: auto;
+		// height: 100%;
+		// color: $black;
+	}
 }

@@ -1,20 +1,15 @@
 /* Custom Font Sourcing */
 
-@mixin font-face(
-	$family,
-	$src,
-	$weight: normal,
-	$style: normal
-) {
+@mixin font-face($family, $src, $weight: normal, $style: normal) {
 	@font-face {
-		font-family: $family;
+		font-style: $style;
+		font-weight: $weight;
 		src:
 			url('#{$src}.woff') format('woff'),
 			url('#{$src}.woff2') format('woff2'),
 			url('#{$src}.ttf') format('truetype'),
 			url('#{$src}.otf') format('opentype');
-		font-style: $style;
-		font-weight: $weight;
+		font-family: $family;
 	}
 }
 
@@ -126,6 +121,20 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+	}
+}
+
+/* Section Styling */
+
+@mixin section-style($bg-color: $black, $color: $white, $padding: 10rem 0) {
+	background-color: $bg-color;
+	padding: $padding;
+	color: $color;
+	width: 100%;
+
+	@include at-laptop {
+		border-top-left-radius: 7.2rem;
+		border-top-right-radius: 7.2rem;
 	}
 }
 

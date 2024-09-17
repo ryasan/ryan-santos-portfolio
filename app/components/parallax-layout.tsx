@@ -6,6 +6,7 @@ const ns = 'parallax-layout';
 
 type ParallaxLayoutProps = {
 	as?: 'section' | 'header' | 'footer';
+	bgColor?: 'black' | 'white';
 	children: React.ReactNode;
 	className?: string;
 	disableParallax?: boolean;
@@ -18,6 +19,7 @@ function useParallax(value: MotionValue<number>, distance: number) {
 
 export default function ParallaxLayout({
 	as: Element = 'section',
+	bgColor = 'black',
 	children,
 	className,
 	disableParallax,
@@ -26,6 +28,7 @@ export default function ParallaxLayout({
 	const rootClassName = clsx({
 		[`${ns}`]: true,
 		[`${className}`]: className,
+		[`${ns}--bg-${bgColor}`]: bgColor,
 	});
 
 	const anchorRef = useRef<HTMLDivElement>(null);

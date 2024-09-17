@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import axios from 'axios';
-import { getPlaiceholder } from 'plaiceholder';
+// import axios from 'axios';
+// import { getPlaiceholder } from 'plaiceholder';
 
 const SPACE = process.env.CONTENTFUL_SPACE_ID;
 const TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
 
-async function fetchFileAsBuffer(url: string): Promise<Buffer> {
-  const response = await axios.get(url, { responseType: 'arraybuffer' });
-  return Buffer.from(response.data);
-}
+// async function fetchFileAsBuffer(url: string): Promise<Buffer> {
+//   const response = await axios.get(url, { responseType: 'arraybuffer' });
+//   return Buffer.from(response.data);
+// }
 
 async function apiCall(query: string, variables?: any) {
 	const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${SPACE}/environments/master`;
@@ -22,14 +22,6 @@ async function apiCall(query: string, variables?: any) {
 	};
 	return await fetch(fetchUrl, options);
 }
-
-type PlaiceholderResult = {
-	css: string;
-	img: {
-		src: string;
-		blurhash: string;
-	};
-};
 
 async function getProjects() {
 	const query = `
@@ -52,25 +44,27 @@ async function getProjects() {
 	`;
 	const response = await apiCall(query);
 	const json = await response.json();
+	const items = await json.data.projectsCollection?.items;
+	console.log({ items });
 
-	const formattedData = await json.data.projectsCollection.items.map(
+	const formattedData = await json.data?.projectsCollection?.items.map(
 		async (project: Record<string, any>) => {
 			const { title, desc, releaseDate, link, previewImage } = project;
-			const fileBuffer = await fetchFileAsBuffer(previewImage.url);
-			const placeholder = await getPlaiceholder(fileBuffer);
+			// const fileBuffer = await fetchFileAsBuffer(previewImage.url);
+			// const placeholder = await getPlaiceholder(fileBuffer);
 			return {
 				title,
 				desc,
 				releaseDate,
 				link,
-				placeholder,
+				// placeholder,
+				placeholder: null,
 				image: previewImage.url,
 				imageAlt: previewImage.description,
 			};
 		},
 	);
 	return Promise.all(formattedData);
-	// return Promise.all([])
 }
 
 async function getTalks() {

@@ -1,7 +1,9 @@
 $ns: '.works-section';
 
 #{$ns} {
-	margin: 10rem 0;
+	@include section-style($black, $white);
+
+	border-radius: 0 !important;
 
 	&__title {
 		span {

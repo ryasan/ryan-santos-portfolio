@@ -1,4 +1,4 @@
-import { json } from '@remix-run/node';
+import { json } from '@remix-run/server-runtime';
 import { useLoaderData } from '@remix-run/react';
 import type { MetaFunction } from '@netlify/remix-runtime';
 
@@ -26,12 +26,13 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
 	const { projects } = useLoaderData() as { projects: Project[] };
+	console.log({ projects });
 
 	return (
 		<>
 			<HeroSection id={1} />
-			<WorksSection id={2} projects={projects} />
-			{/* <SkillsSection id={3} /> */}
+			{/* <SkillsSection id={2} /> */}
+			<WorksSection id={3} projects={projects} />
 			<FooterSection id={4} />
 		</>
 	);

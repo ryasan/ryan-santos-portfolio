@@ -1,0 +1,16 @@
+$ns: '.tag-cloud';
+
+#{$ns} {
+	position: relative;
+	cursor: pointer;
+
+	&__tag {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform-origin: 50% 50%;
+		transition: all 0.1s;
+		will-change: transform, opacity, filter;
+		font-weight: 800;
+	}
+}

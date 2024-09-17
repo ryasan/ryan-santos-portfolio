@@ -13,15 +13,12 @@ export default function FooterSection({ id }: FooterSectionProps) {
 	});
 
 	return (
-		<ParallaxLayout
-			className={rootClassName}
-			id={id}
-			as="footer"
-			disableParallax
-		>
-			<div className="container">
-				<div className={`${ns}__content`}>
-					{/* <h1 className={`${ns}__title`}>FOOTER SECTION</h1> */}
+		<ParallaxLayout id={id} as="footer" disableParallax>
+			<div className={rootClassName}>
+				<div className="container">
+					<div className={`${ns}__content`}>
+						{/* <h1 className={`${ns}__title`}>FOOTER SECTION</h1> */}
+					</div>
 				</div>
 			</div>
 		</ParallaxLayout>

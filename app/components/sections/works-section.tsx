@@ -12,14 +12,14 @@ type WorksSectionProps = {
 };
 
 function ProductCard({ project }: { project: Project }) {
-	const ref = useRef(null);
-	const isInView = useInView(ref, { once: true, amount: 0.4 });
+	const productCardRef = useRef(null);
+	const isInView = useInView(productCardRef, { once: true, amount: 0.4 });
 
 	return (
 		// eslint-disable-next-line jsx-a11y/anchor-is-valid
 		<a
 			className={`${ns}__project`}
-			ref={ref}
+			ref={productCardRef}
 			style={{
 				opacity: isInView ? 1 : 0,
 				transform: isInView ? 'translateY(0)' : 'translateY(100px)',
@@ -45,26 +45,28 @@ export default function WorksSection({ id, projects }: WorksSectionProps) {
 	const rightProjects = projects.filter((_, i) => i % 2 !== 0);
 
 	return (
-		<ParallaxLayout className={rootClassName} id={id}>
-			<div className="container">
-				<div className={`${ns}__content`}>
-					<h2 className={`${ns}__title h1`}>
-						<span>Featured</span>
-						<span>
-							<i>projects</i>
-						</span>
-					</h2>
+		<ParallaxLayout id={id} bgColor="white">
+			<div className={rootClassName}>
+				<div className="container">
+					<div className={`${ns}__content`}>
+						<h2 className={`${ns}__title h1`}>
+							<span>Featured</span>
+							<span>
+								<i>projects</i>
+							</span>
+						</h2>
 
-					<div className={`${ns}__projects`}>
-						<div className={`${ns}__projects-left`}>
-							{leftProjects.map((project, index) => (
-								<ProductCard key={index} project={project} />
-							))}
-						</div>
-						<div className={`${ns}__projects-right`}>
-							{rightProjects.map((project, index) => (
-								<ProductCard key={index} project={project} />
-							))}
+						<div className={`${ns}__projects`}>
+							<div className={`${ns}__projects-left`}>
+								{leftProjects.map((project, index) => (
+									<ProductCard key={index} project={project} />
+								))}
+							</div>
+							<div className={`${ns}__projects-right`}>
+								{rightProjects.map((project, index) => (
+									<ProductCard key={index} project={project} />
+								))}
+							</div>
 						</div>
 					</div>
 				</div>

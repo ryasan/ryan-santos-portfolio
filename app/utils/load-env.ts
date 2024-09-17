@@ -1,4 +1,4 @@
-import { config } from 'dotenv';
+// import { config } from 'dotenv';
 
-const env = process.env.NODE_ENV || 'development';
-config({ path: `.env.${env}` });
+// const env = process.env.NODE_ENV || 'development';
+// config({ path: `.env.${env}` });
