@@ -2,8 +2,12 @@
 // import axios from 'axios';
 // import { getPlaiceholder } from 'plaiceholder';
 
-const SPACE = process.env.CONTENTFUL_SPACE_ID;
-const TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
+const SPACE = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
+const TOKEN = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
+
+if (!SPACE || !TOKEN) {
+  throw new Error("Contentful space ID and access token must be provided.");
+}
 
 // async function fetchFileAsBuffer(url: string): Promise<Buffer> {
 //   const response = await axios.get(url, { responseType: 'arraybuffer' });
@@ -44,10 +48,8 @@ async function getProjects() {
 	`;
 	const response = await apiCall(query);
 	const json = await response.json();
-	const items = await json.data.projectsCollection?.items;
-	console.log({ items });
 
-	const formattedData = await json.data?.projectsCollection?.items.map(
+	const formattedData = await json.data.projectsCollection.items.map(
 		async (project: Record<string, any>) => {
 			const { title, desc, releaseDate, link, previewImage } = project;
 			// const fileBuffer = await fetchFileAsBuffer(previewImage.url);
