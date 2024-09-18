@@ -24,7 +24,7 @@ $ns: '.works-section';
 		@include at-tablet {
 			grid-template-columns: repeat(2, 1fr);
 			column-gap: 5.4rem;
-			max-width: 106rem;
+			max-width: 95rem;
 		}
 
 		&-left,
@@ -53,7 +53,7 @@ $ns: '.works-section';
 				transform: scale(0.98);
 
 				img {
-					transform: scale(1.1);
+					transform: scale(1.05);
 				}
 			}
 		}
@@ -65,6 +65,7 @@ $ns: '.works-section';
 			overflow: hidden;
 
 			img {
+				display: block;
 				transition: transform 0.5s ease-out;
 				width: 100%;
 				height: 100%;

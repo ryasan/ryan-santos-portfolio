@@ -678,7 +678,7 @@ em {
   .works-section__projects {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 5.4rem;
-    max-width: 106rem;
+    max-width: 95rem;
   }
 }
 .works-section__projects-left, .works-section__projects-right {
@@ -703,7 +703,7 @@ em {
   transform: scale(0.98);
 }
 .works-section__project:hover .works-section__project-image img {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 .works-section__project-image {
   transition: transform 0.5s ease-out;
@@ -712,6 +712,7 @@ em {
   overflow: hidden;
 }
 .works-section__project-image img {
+  display: block;
   transition: transform 0.5s ease-out;
   width: 100%;
   height: 100%;
