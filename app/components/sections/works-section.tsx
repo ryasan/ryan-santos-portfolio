@@ -41,7 +41,9 @@ function ProductCard({
 				<img src={project.image} alt={project.imageAlt || project.title} />
 			</div>
 			<div className={`${ns}__project-content`}>
-				<p>{project.title}</p>
+				<small>
+					<strong>{project.title}</strong> - {project.caption}
+				</small>
 			</div>
 		</a>
 	);

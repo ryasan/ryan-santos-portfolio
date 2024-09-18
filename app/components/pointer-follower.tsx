@@ -18,8 +18,14 @@ export default function PointerFollower({
 	});
 
 	const pointerFollowerRef = useRef<HTMLDivElement>(null);
-	const { initFollower, xFollower, yFollower, innerText, followerSize } =
-		usePointerFollower();
+	const {
+		initFollower,
+		xFollower,
+		yFollower,
+		innerText,
+		followerIsOutOfBounds,
+		followerSize,
+	} = usePointerFollower();
 
 	useEffect(() => {
 		if (pointerFollowerRef.current) {
@@ -39,11 +45,17 @@ export default function PointerFollower({
 
 	const width = followerSize === 'sm' ? 10 : 100;
 
+	console.log({ followerIsOutOfBounds });
+
 	return (
 		<motion.div
 			className={rootClassName}
 			ref={pointerFollowerRef}
-			animate={{ width: width, height: width }}
+			animate={{
+				width: width,
+				height: width,
+				scale: followerIsOutOfBounds ? 0 : 1,
+			}}
 			style={{
 				x: xFollower,
 				y: yFollower,

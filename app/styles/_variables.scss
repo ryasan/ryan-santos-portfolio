@@ -56,12 +56,10 @@ $site-header-height: 60px;
 
 /* Font Families */
 
-$matter-light: 'Matter-Light';
-$matter-light-italic: 'Matter-LightItalic';
-$matter-thin: 'Matter-Thin';
-$recoleta-regular: 'Recoleta-Regular';
-$body-font-family: $matter-light, sans-serif;
-$heading-font-family: $matter-light, sans-serif;
+$matter: 'Matter';
+$recoleta: 'Recoleta';
+$body-font-family: $matter, sans-serif;
+$heading-font-family: $matter, sans-serif;
 
 /* Default Breakpoints For Typography */
 

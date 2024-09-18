@@ -33,6 +33,7 @@ async function getProjects() {
 			projectsCollection(order: releaseDate_DESC) {
 				items {
 					title
+					caption
 					desc {
 						json
 					}
@@ -51,11 +52,12 @@ async function getProjects() {
 
 	const formattedData = await json.data.projectsCollection.items.map(
 		async (project: Record<string, any>) => {
-			const { title, desc, releaseDate, link, previewImage } = project;
+			const { title, desc, releaseDate, link, previewImage, caption } = project;
 			// const fileBuffer = await fetchFileAsBuffer(previewImage.url);
 			// const placeholder = await getPlaiceholder(fileBuffer);
 			return {
 				title,
+				caption,
 				desc,
 				releaseDate,
 				link,

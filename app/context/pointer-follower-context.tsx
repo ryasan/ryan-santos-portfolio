@@ -26,6 +26,7 @@ type PointerFollowerContextType = {
 	yPointer: MotionValue<number>;
 	xFollower: MotionValue<number>;
 	yFollower: MotionValue<number>;
+	followerIsOutOfBounds: boolean;
 	initFollower(element: HTMLElement): void;
 	setFollowerText(text: string): void;
 	toggleMixBlendMode(state?: boolean): void;
@@ -57,6 +58,7 @@ export default function PointerFollowerProvider({
 	const [innerText, setInnerText] = useState('');
 	const [followerSize, setSize] = useState<'sm' | 'lg'>('sm');
 	const [mixBlendModeEnabled, setMixBlendModeEnabled] = useState(false);
+	const [followerIsOutOfBounds, setFollowerIsOutOfBounds] = useState(false);
 	const [pointerEl, setPointerEl] = useState<HTMLElement>();
 
 	function initFollower(element: HTMLElement) {
@@ -79,13 +81,29 @@ export default function PointerFollowerProvider({
 		if (!pointerEl) return;
 		if (window?.innerWidth < 992) return;
 
-		const handlePointerMove = ({ pageX, pageY }: MouseEvent) => {
+		const handlePointerMove = ({
+			pageX,
+			pageY,
+			clientX,
+			clientY,
+		}: MouseEvent) => {
 			const element = pointerEl!;
 
 			frame.read(() => {
 				xPointer.set(pageX - element.offsetLeft - element.offsetWidth / 2);
 				yPointer.set(pageY - element.offsetTop - element.offsetHeight / 2);
 			});
+
+			if (
+				clientX < 5 ||
+				clientY < 5 ||
+				clientX > window.innerWidth - 5 ||
+				clientY > window.innerHeight - 5
+			) {
+				setFollowerIsOutOfBounds(true);
+			} else {
+				setFollowerIsOutOfBounds(false);
+			}
 		};
 
 		window.addEventListener('pointermove', handlePointerMove);
@@ -117,6 +135,7 @@ export default function PointerFollowerProvider({
 				yPointer,
 				xFollower,
 				yFollower,
+				followerIsOutOfBounds,
 				initFollower,
 				setFollowerText,
 				toggleMixBlendMode,

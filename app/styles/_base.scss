@@ -26,40 +26,51 @@ h1 {
 	@include font-style($heading-1-font-style);
 
 	font-family: $heading-font-family;
+	font-weight: 300;
 }
 
 h2 {
 	@include font-style($heading-2-font-style);
 
 	font-family: $heading-font-family;
+	font-weight: 300;
 }
 
 h3 {
 	@include font-style($heading-3-font-style);
 
 	font-family: $heading-font-family;
+	font-weight: 300;
 }
 
 h4 {
 	@include font-style($heading-4-font-style);
 
 	font-family: $heading-font-family;
+	font-weight: 300;
 }
 
 h5 {
 	@include font-style($heading-5-font-style);
 
 	font-family: $heading-font-family;
+	font-weight: 300;
 }
 
 h6 {
 	@include font-style($heading-6-font-style);
 
 	font-family: $heading-font-family;
+	font-weight: 300;
 }
 
 small {
 	@include font-style($body-font-sm-style);
+}
+
+strong {
+	// font-family: $matter-semibold-src;
+	font-weight: 600;
 }
 
 i,

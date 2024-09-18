@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export type Project = {
 	title: string;
+	caption: string;
 	desc: Desc;
 	releaseDate: string;
 	link: string;
