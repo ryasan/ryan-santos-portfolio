@@ -509,7 +509,7 @@ em {
 }
 @media only screen and (min-width: 992px) {
   .container {
-    padding: 0 40px;
+    padding: 0 160px;
   }
 }
 
@@ -520,7 +520,7 @@ em {
 }
 @media only screen and (min-width: 992px) {
   .container-fluid {
-    padding: 0 40px;
+    padding: 0 160px;
   }
 }
 
@@ -639,7 +639,6 @@ em {
   color: #fff;
 }
 .about-section__item-divider svg {
-  width: 100%;
   height: 200px;
 }
 .about-section__item-divider path {
@@ -892,6 +891,12 @@ em {
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  padding: 0 20px;
+}
+@media only screen and (min-width: 992px) {
+  .site-header .container-fluid {
+    padding: 0 40px;
+  }
 }
 .site-header__title {
   font-weight: 600;

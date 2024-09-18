@@ -1,6 +1,12 @@
 import { useRef } from 'react';
 import clsx from 'clsx';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import {
+	motion,
+	useMotionValue,
+	useSpring,
+	useTransform,
+	useInView,
+} from 'framer-motion';
 
 const ns = 'about-section';
 
@@ -36,6 +42,8 @@ function AboutItem({
 }) {
 	const svgRef = useRef<SVGSVGElement>(null);
 	const pathRef = useRef<SVGPathElement>(null);
+	const isInView = useInView(pathRef, { once: true, amount: 0 });
+
 	const x = useMotionValue(561.5); // Initial value is the center of the SVG
 	const y = useMotionValue(100); // Initial value is the center of the SVG
 
@@ -44,6 +52,7 @@ function AboutItem({
 		damping: 10,
 		restDelta: 0.01,
 	});
+
 	const ySpring = useSpring(y, {
 		stiffness: 500,
 		damping: 10,
@@ -51,27 +60,27 @@ function AboutItem({
 	});
 
 	function handleMouseMove(event: React.MouseEvent) {
-		if (svgRef.current) {
-			const rect = svgRef.current.getBoundingClientRect();
-			const mouseX = event.pageX - window.pageXOffset - rect.left;
-			const mouseY = event.pageY - window.pageYOffset - rect.top;
-			x.set(mouseX);
-			y.set(mouseY);
-		}
+		const svgElement = svgRef.current!;
+		const rect = svgElement.getBoundingClientRect();
+		const mouseX = event.pageX - window.pageXOffset - rect.left;
+		const mouseY = event.pageY - window.pageYOffset - rect.top;
+
+		x.set(mouseX);
+		y.set(mouseY);
 	}
 
 	function handleMouseLeave() {
-		if (svgRef.current) {
-			const rect = svgRef.current.getBoundingClientRect();
-			const mouseX = rect.width / 2;
-			const mouseY = rect.height / 2;
-			x.set(mouseX);
-			y.set(mouseY);
-		}
+		const svgElement = svgRef.current!;
+		const rect = svgElement.getBoundingClientRect();
+		const mouseX = rect.width / 2;
+		const mouseY = rect.height / 2;
+
+		x.set(mouseX);
+		y.set(mouseY);
 	}
 
 	const d = useTransform([xSpring, ySpring], ([latestX, latestY]) => {
-		return `M0,100 Q${latestX},${latestY} 1123,100`;
+		return `M0,100 Q${latestX},${latestY} 1120,100`;
 	});
 
 	return (
@@ -81,9 +90,13 @@ function AboutItem({
 				onMouseMove={handleMouseMove}
 				onMouseLeave={handleMouseLeave}
 			>
-				<svg ref={svgRef}>
+				<motion.svg
+					ref={svgRef}
+					animate={{ width: isInView ? '100%' : '0%' }}
+					transition={{ duration: 1 }}
+				>
 					<motion.path ref={pathRef} d={d} />
-				</svg>
+				</motion.svg>
 			</div>
 			<div className={`${ns}__item-text`}>
 				<h2 className={`${ns}__item-title p`}>{title}</h2>

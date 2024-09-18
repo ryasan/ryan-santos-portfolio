@@ -8,6 +8,11 @@ $ns: '.site-header';
 		justify-content: space-between;
 		align-items: center;
 		height: 100%;
+		padding: 0 20px;
+
+		@include at-laptop {
+			padding: 0 40px;
+		}
 	}
 
 	&__title {
