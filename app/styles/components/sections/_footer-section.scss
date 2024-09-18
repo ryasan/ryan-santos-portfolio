@@ -1,5 +1,5 @@
 $ns: '.footer-section';
 
 #{$ns} {
-	margin-top: 50rem;
+	@include section-style;
 }

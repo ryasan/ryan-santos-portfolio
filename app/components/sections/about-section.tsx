@@ -1,0 +1,115 @@
+import { useRef } from 'react';
+import clsx from 'clsx';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+
+const ns = 'about-section';
+
+const aboutItems = [
+	{
+		title: 'Development',
+		description:
+			'I like to code things from scratch, and enjoy bringing ideas to life in the browser.',
+	},
+	{
+		title: 'Design',
+		description:
+			'I value simple content structure, clean design patterns, and thoughtful interactions.',
+	},
+	{
+		title: 'E-commerce',
+		description:
+			'I have experience working with e-commerce platforms like Shopify and Elastic Path.',
+	},
+	{
+		title: 'Content Management',
+		description:
+			'I have experience working with content management systems like WordPress and Contentful.',
+	},
+];
+
+function AboutItem({
+	title,
+	description,
+}: {
+	title: string;
+	description: string;
+}) {
+	const svgRef = useRef<SVGSVGElement>(null);
+	const pathRef = useRef<SVGPathElement>(null);
+	const x = useMotionValue(561.5); // Initial value is the center of the SVG
+	const y = useMotionValue(100); // Initial value is the center of the SVG
+
+	const xSpring = useSpring(x, {
+		stiffness: 500,
+		damping: 10,
+		restDelta: 0.01,
+	});
+	const ySpring = useSpring(y, {
+		stiffness: 500,
+		damping: 10,
+		restDelta: 0.01,
+	});
+
+	function handleMouseMove(event: React.MouseEvent) {
+		if (svgRef.current) {
+			const rect = svgRef.current.getBoundingClientRect();
+			const mouseX = event.pageX - window.pageXOffset - rect.left;
+			const mouseY = event.pageY - window.pageYOffset - rect.top;
+			x.set(mouseX);
+			y.set(mouseY);
+		}
+	}
+
+	function handleMouseLeave() {
+		if (svgRef.current) {
+			const rect = svgRef.current.getBoundingClientRect();
+			const mouseX = rect.width / 2;
+			const mouseY = rect.height / 2;
+			x.set(mouseX);
+			y.set(mouseY);
+		}
+	}
+
+	const d = useTransform([xSpring, ySpring], ([latestX, latestY]) => {
+		return `M0,100 Q${latestX},${latestY} 1123,100`;
+	});
+
+	return (
+		<div className={`${ns}__item`}>
+			<div
+				className={`${ns}__item-divider`}
+				onMouseMove={handleMouseMove}
+				onMouseLeave={handleMouseLeave}
+			>
+				<svg ref={svgRef}>
+					<motion.path ref={pathRef} d={d} />
+				</svg>
+			</div>
+			<div className={`${ns}__item-text`}>
+				<h2 className={`${ns}__item-title p`}>{title}</h2>
+				<p className={`${ns}__item-description small`}>{description}</p>
+			</div>
+		</div>
+	);
+}
+
+export default function AboutSection() {
+	const rootClassName = clsx({
+		[`${ns}`]: true,
+	});
+
+	return (
+		<div className={rootClassName} data-scroll-section>
+			<div className="container">
+				<div className={`${ns}__content`}>
+					<h2 className={`${ns}__title h1`}>working with me</h2>
+					<div className={`${ns}__items`}>
+						{aboutItems.map((item, index) => (
+							<AboutItem key={index} {...item} />
+						))}
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+}

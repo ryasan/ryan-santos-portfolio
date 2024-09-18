@@ -67,7 +67,10 @@ export default function App() {
 							<Header />
 							<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 							<Outlet />
-							<BurgerMenu sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+							<BurgerMenu
+								sidebarOpen={sidebarOpen}
+								toggleSidebar={toggleSidebar}
+							/>
 							<PointerFollower />
 						</main>
 					</PointerFollowerProvider>

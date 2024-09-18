@@ -1,16 +1,11 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import clsx from 'clsx';
-import ParallaxLayout from '~/components/parallax-layout';
 import TagCloud from '~/components/tag-cloud';
 
 const ns = 'skills-section';
 
-type SkillsSectionProps = {
-	id: number | null;
-};
-
-export default function SkillsSection({ id }: SkillsSectionProps) {
+export default function SkillsSection() {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
 	});
@@ -20,19 +15,14 @@ export default function SkillsSection({ id }: SkillsSectionProps) {
 	const maxWidth = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);
 
 	return (
-		<ParallaxLayout id={id} fullHeight={false}>
-			<div className={rootClassName}>
-				<div className="container">
-					<div className={`${ns}__anchor`} ref={anchorRef} />
+		<div className={rootClassName} data-scroll-section>
+			<div className="container">
+				<div className={`${ns}__anchor`} ref={anchorRef} />
 
-					<motion.div
-						className={`${ns}__content`}
-						style={{ maxWidth }}
-					>
-						<TagCloud />
-					</motion.div>
-				</div>
+				<motion.div className={`${ns}__content`} style={{ maxWidth }}>
+					<TagCloud />
+				</motion.div>
 			</div>
-		</ParallaxLayout>
+		</div>
 	);
 }

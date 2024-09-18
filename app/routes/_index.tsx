@@ -2,12 +2,13 @@ import { json } from '@remix-run/server-runtime';
 import { useLoaderData } from '@remix-run/react';
 import type { MetaFunction } from '@netlify/remix-runtime';
 
-import FooterSection from '~/components/sections/footer-section';
+// import FooterSection from '~/components/sections/footer-section';
 import HeroSection from '~/components/sections/hero-section';
-import SkillsSection from '~/components/sections/skills-section';
+// import SkillsSection from '~/components/sections/skills-section';
 import WorksSection from '~/components/sections/works-section';
 import { client } from '~/models/contentful.server';
 import type { Project } from '~/types';
+import AboutSection from '~/components/sections/about-section';
 
 export async function loader() {
 	const projects = await client.getProjects();
@@ -29,10 +30,11 @@ export default function Index() {
 
 	return (
 		<>
-			<HeroSection id={1} />
 			{/* <SkillsSection id={2} /> */}
-			<WorksSection id={3} projects={projects} />
-			<FooterSection id={4} />
+			<HeroSection />
+			<WorksSection projects={projects} />
+			<AboutSection />
+			{/* <FooterSection /> */}
 		</>
 	);
 }

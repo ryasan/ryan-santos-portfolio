@@ -81,12 +81,12 @@ export default function PointerFollowerProvider({
 		if (!pointerEl) return;
 		if (window?.innerWidth < 992) return;
 
-		const handlePointerMove = ({
+		async function handlePointerMove({
 			pageX,
 			pageY,
 			clientX,
 			clientY,
-		}: MouseEvent) => {
+		}: MouseEvent) {
 			const element = pointerEl!;
 
 			frame.read(() => {
@@ -104,7 +104,7 @@ export default function PointerFollowerProvider({
 			} else {
 				setFollowerIsOutOfBounds(false);
 			}
-		};
+		}
 
 		window.addEventListener('pointermove', handlePointerMove);
 

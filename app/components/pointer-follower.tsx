@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import { usePointerFollower } from '~/context/pointer-follower-context';
+import { wait } from '~/utils';
 
 const ns = 'pointer-follower';
 
@@ -17,6 +18,7 @@ export default function PointerFollower({
 		[`mix-blend-mode`]: mixBlendModeEnabled,
 	});
 
+	const [isReady, setIsReady] = useState(false);
 	const pointerFollowerRef = useRef<HTMLDivElement>(null);
 	const {
 		initFollower,
@@ -43,6 +45,12 @@ export default function PointerFollower({
 		}
 	}, []);
 
+	useEffect(() => {
+		wait(2500).then(() => {
+			setIsReady(true);
+		});
+	}, []);
+
 	const width = followerSize === 'sm' ? 10 : 100;
 
 	return (
@@ -57,6 +65,7 @@ export default function PointerFollower({
 			style={{
 				x: xFollower,
 				y: yFollower,
+				opacity: isReady ? 1 : 0,
 			}}
 		>
 			<motion.span

@@ -1,7 +1,7 @@
 $ns: '.works-section';
 
 #{$ns} {
-	@include section-style($black, $white);
+	@include section-style;
 
 	border-radius: 0 !important;
 

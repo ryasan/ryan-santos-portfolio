@@ -1,14 +1,12 @@
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 import clsx from 'clsx';
-import ParallaxLayout from '~/components/parallax-layout';
 import { usePointerFollower } from '~/context/pointer-follower-context';
 import type { Project } from '~/types';
 
 const ns = 'works-section';
 
 type WorksSectionProps = {
-	id: number | null;
 	projects: Project[];
 };
 
@@ -49,7 +47,7 @@ function ProductCard({
 	);
 }
 
-export default function WorksSection({ id, projects }: WorksSectionProps) {
+export default function WorksSection({ projects }: WorksSectionProps) {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
 	});
@@ -67,42 +65,41 @@ export default function WorksSection({ id, projects }: WorksSectionProps) {
 	}
 
 	return (
-		<ParallaxLayout id={id} bgColor="white">
-			<div className={rootClassName}>
-				<div className="container">
-					<div className={`${ns}__content`}>
-						<h2 className={`${ns}__title h1`}>
-							<span>Featured</span>
-							<span>
-								<i>projects</i>
-							</span>
-						</h2>
+		<div className={rootClassName} data-scroll-section>
+			<div className="container">
+				<div className={`${ns}__content`}>
+					<h2 className={`${ns}__title h1`}>
+						<span>Featured</span>
+						<span>
+							<i>projects</i>
+						</span>
+					</h2>
 
-						<div className={`${ns}__projects`}>
-							<div className={`${ns}__projects-left`}>
-								{leftProjects.map((project, index) => (
-									<ProductCard
-										key={index}
-										project={project}
-										onMouseEnter={handleMouseEnter}
-										onMouseLeave={handleMouseLeave}
-									/>
-								))}
-							</div>
-							<div className={`${ns}__projects-right`}>
-								{rightProjects.map((project, index) => (
-									<ProductCard
-										key={index}
-										project={project}
-										onMouseEnter={handleMouseEnter}
-										onMouseLeave={handleMouseLeave}
-									/>
-								))}
-							</div>
+					<div className={`${ns}__projects`}>
+						<div className={`${ns}__projects-left`}>
+							{leftProjects.map((project, index) => (
+								<ProductCard
+									key={index}
+									project={project}
+									onMouseEnter={handleMouseEnter}
+									onMouseLeave={handleMouseLeave}
+								/>
+							))}
+						</div>
+
+						<div className={`${ns}__projects-right`}>
+							{rightProjects.map((project, index) => (
+								<ProductCard
+									key={index}
+									project={project}
+									onMouseEnter={handleMouseEnter}
+									onMouseLeave={handleMouseLeave}
+								/>
+							))}
 						</div>
 					</div>
 				</div>
 			</div>
-		</ParallaxLayout>
+		</div>
 	);
 }

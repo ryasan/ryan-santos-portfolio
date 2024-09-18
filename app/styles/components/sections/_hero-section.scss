@@ -3,8 +3,6 @@ $ns: '.hero-section';
 #{$ns} {
 	@include section-style;
 
-	height: 70rem;
-
 	&__title {
 		max-width: 900px;
 		z-index: 2;
