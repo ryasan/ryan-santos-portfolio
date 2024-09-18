@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import clsx from 'clsx';
 import ParallaxLayout from '~/components/parallax-layout';
 import TagCloud from '~/components/tag-cloud';
 
@@ -15,29 +15,24 @@ export default function SkillsSection({ id }: SkillsSectionProps) {
 		[`${ns}`]: true,
 	});
 
-	const rootRef = useRef(null);
-	const isInView = useInView(rootRef, { once: true, amount: 0.7 });
+	const anchorRef = useRef<HTMLDivElement>(null);
+	const { scrollYProgress } = useScroll({ target: anchorRef });
+	const maxWidth = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);
 
 	return (
-		<ParallaxLayout id={id}>
-			<motion.div
-				className={rootClassName}
-				ref={rootRef}
-				initial={{ width: 'auto', borderRadius: '50%' }}
-				animate={{
-					width: isInView ? '100%' : 'auto',
-					borderRadius: isInView ? '72px 72px 0 0' : '50%',
-				}}
-				// transition={{ duration: 0.5 }}
-			>
+		<ParallaxLayout id={id} fullHeight={false}>
+			<div className={rootClassName}>
 				<div className="container">
-					<div className={`${ns}__content`}>
-						{/* <h1 className={`${ns}__title`}>Skills</h1> */}
+					<div className={`${ns}__anchor`} ref={anchorRef} />
 
+					<motion.div
+						className={`${ns}__content`}
+						style={{ maxWidth }}
+					>
 						<TagCloud />
-					</div>
+					</motion.div>
 				</div>
-			</motion.div>
+			</div>
 		</ParallaxLayout>
 	);
 }

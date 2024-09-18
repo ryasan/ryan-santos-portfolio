@@ -132,10 +132,10 @@
 	color: $color;
 	width: 100%;
 
-	@include at-laptop {
-		border-top-left-radius: 7.2rem;
-		border-top-right-radius: 7.2rem;
-	}
+	// @include at-laptop {
+	// 	border-top-left-radius: 7.2rem;
+	// 	border-top-right-radius: 7.2rem;
+	// }
 }
 
 /*

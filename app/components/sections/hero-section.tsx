@@ -20,11 +20,13 @@ export default function HeroSection({ id }: HeroSectionProps) {
 	const { toggleMixBlendMode, setFollowerText } = usePointerFollower();
 
 	const DELAY = 0.75;
-	const firstRowChars = 'My Name Is Ryan.'.split('');
-	const secondRowChars = 'Frontend Engineer'.split('');
+
+	const iCreateWebsites = 'I Create Websites'.split('');
+	const myNameIsRyan = 'My Name Is Ryan.'.split('');
+	const frontendEngineer = 'Frontend Engineer'.split('');
 
 	return (
-		<ParallaxLayout id={id}>
+		<ParallaxLayout id={id} fullHeight={false}>
 			<div
 				className={rootClassName}
 				ref={rootRef}
@@ -35,7 +37,7 @@ export default function HeroSection({ id }: HeroSectionProps) {
 					<div className={`${ns}__content`}>
 						<h1 className={`${ns}__title`}>
 							<span className="first-row">
-								{firstRowChars.map((char, index) => (
+								{myNameIsRyan.map((char, index) => (
 									<motion.span
 										key={index}
 										initial={{ y: 100, opacity: 0 }}
@@ -53,14 +55,14 @@ export default function HeroSection({ id }: HeroSectionProps) {
 								))}
 							</span>
 							<span className="second-row">
-								{secondRowChars.map((char, index) => (
+								{frontendEngineer.map((char, index) => (
 									<motion.span
 										key={index}
 										initial={{ y: 100, opacity: 0 }}
 										animate={{ y: 0, opacity: 1 }}
 										transition={{
 											duration: 0.25,
-											delay: DELAY + (firstRowChars.length + index) * 0.03,
+											delay: DELAY + (myNameIsRyan.length + index) * 0.03,
 											ease: 'easeOut',
 										}}
 										onMouseEnter={() => setFollowerText(' ')}
@@ -79,7 +81,7 @@ export default function HeroSection({ id }: HeroSectionProps) {
 								duration: 0.25,
 								delay:
 									DELAY * 2 +
-									(firstRowChars.length + secondRowChars.length) * 0.03,
+									(myNameIsRyan.length + frontendEngineer.length) * 0.03,
 								ease: 'easeOut',
 							}}
 						>

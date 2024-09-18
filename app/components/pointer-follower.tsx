@@ -45,8 +45,6 @@ export default function PointerFollower({
 
 	const width = followerSize === 'sm' ? 10 : 100;
 
-	console.log({ followerIsOutOfBounds });
-
 	return (
 		<motion.div
 			className={rootClassName}

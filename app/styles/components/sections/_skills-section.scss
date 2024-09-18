@@ -1,21 +1,48 @@
 $ns: '.skills-section';
 
 #{$ns} {
-	@include section-style($white, $black);
+	position: relative;
+	width: 100%;
+	height: 500px;
 
-	// border-radius: 50% !important;
+	@include at-laptop {
+		padding: 0 100px;
+	}
 
-	// float: right;
-	justify-self: end;
-	padding: 0 !important;
-	width: auto;
+	.container {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+
+	&__container {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
 
 	&__content {
-		// display: inline-block;
-		// align-items: center;
-		// background-color: $white;
-		// width: auto;
-		// height: 100%;
-		// color: $black;
+		display: inline-flex;
+		position: absolute;
+		right: 0;
+		justify-content: space-between;
+		align-items: center;
+		will-change: transform, max-width;
+		border-radius: 500px;
+		background-color: $white;
+		width: 100%;
+		min-width: 500px;
+		height: 500px;
+		color: $black;
+	}
+
+	&__anchor {
+		position: absolute;
+		top: -200px;
+		left: 50%;
+		opacity: 0;
+		width: 0;
+		height: 0;
+		pointer-events: none;
 	}
 }

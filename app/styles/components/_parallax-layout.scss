@@ -26,6 +26,7 @@ $ns: '.parallax-layout';
 		position: absolute;
 		right: 0;
 		letter-spacing: 0.3rem;
+		z-index: 1;
 
 		@include at-tablet {
 			display: block;
@@ -40,5 +41,9 @@ $ns: '.parallax-layout';
 
 	&--bg-white {
 		background-color: $white;
+	}
+
+	&--full-height {
+		min-height: 100vh;
 	}
 }

@@ -10,6 +10,7 @@ type ParallaxLayoutProps = {
 	children: React.ReactNode;
 	className?: string;
 	disableParallax?: boolean;
+	fullHeight?: boolean;
 	id: number | null;
 };
 
@@ -23,12 +24,14 @@ export default function ParallaxLayout({
 	children,
 	className,
 	disableParallax,
+	fullHeight = true,
 	id,
 }: ParallaxLayoutProps) {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
 		[`${className}`]: className,
 		[`${ns}--bg-${bgColor}`]: bgColor,
+		[`${ns}--full-height`]: fullHeight,
 	});
 
 	const anchorRef = useRef<HTMLDivElement>(null);

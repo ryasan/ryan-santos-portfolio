@@ -1,8 +1,9 @@
 $ns: '.hero-section';
 
 #{$ns} {
-	height: 68rem;
-	padding-top: 10rem;
+	@include section-style;
+
+	height: 70rem;
 
 	&__title {
 		max-width: 900px;

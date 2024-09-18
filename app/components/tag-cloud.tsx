@@ -73,7 +73,7 @@ export default function TagCloud () {
 	const tagCloudRef = useRef<HTMLDivElement>(null);
 
 	const { radius, maxSpeed, initSpeed, direction } = {
-		radius: 350,
+		radius: 260,
 		maxSpeed: 20,
 		initSpeed: 40,
 		direction: 135,
