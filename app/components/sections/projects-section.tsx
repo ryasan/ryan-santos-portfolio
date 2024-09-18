@@ -4,13 +4,13 @@ import clsx from 'clsx';
 import { usePointerFollower } from '~/context/pointer-follower-context';
 import type { Project } from '~/types';
 
-const ns = 'works-section';
+const ns = 'projects-section';
 
-type WorksSectionProps = {
+type ProjectsSectionProps = {
 	projects: Project[];
 };
 
-function ProductCard({
+function ProjectCard({
 	project,
 	onMouseEnter,
 	onMouseLeave,
@@ -19,14 +19,14 @@ function ProductCard({
 	onMouseEnter(): void;
 	onMouseLeave(): void;
 }) {
-	const productCardRef = useRef(null);
-	const isInView = useInView(productCardRef, { once: true, amount: 0.4 });
+	const projectCardRef = useRef(null);
+	const isInView = useInView(projectCardRef, { once: true, amount: 0.4 });
 
 	return (
 		// eslint-disable-next-line jsx-a11y/anchor-is-valid
 		<a
 			className={`${ns}__project`}
-			ref={productCardRef}
+			ref={projectCardRef}
 			onMouseEnter={onMouseEnter}
 			onMouseLeave={onMouseLeave}
 			style={{
@@ -47,7 +47,7 @@ function ProductCard({
 	);
 }
 
-export default function WorksSection({ projects }: WorksSectionProps) {
+export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
 	});
@@ -78,7 +78,7 @@ export default function WorksSection({ projects }: WorksSectionProps) {
 					<div className={`${ns}__projects`}>
 						<div className={`${ns}__projects-left`}>
 							{leftProjects.map((project, index) => (
-								<ProductCard
+								<ProjectCard
 									key={index}
 									project={project}
 									onMouseEnter={handleMouseEnter}
@@ -89,7 +89,7 @@ export default function WorksSection({ projects }: WorksSectionProps) {
 
 						<div className={`${ns}__projects-right`}>
 							{rightProjects.map((project, index) => (
-								<ProductCard
+								<ProjectCard
 									key={index}
 									project={project}
 									onMouseEnter={handleMouseEnter}

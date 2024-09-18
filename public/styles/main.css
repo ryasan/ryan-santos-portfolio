@@ -736,74 +736,76 @@ em {
   pointer-events: none;
 }
 
-.works-section {
+.projects-section {
   background-color: #000;
   padding: 10rem 0;
   color: #fff;
   min-height: 100vh;
   width: 100%;
-  border-radius: 0 !important;
 }
-.works-section__title span {
+.projects-section__title span {
   display: block;
 }
-.works-section__title i {
+.projects-section__title i {
   margin-left: 10rem;
 }
-.works-section__projects {
+.projects-section__projects {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 6rem;
   margin-top: 15rem;
 }
 @media only screen and (min-width: 768px) {
-  .works-section__projects {
+  .projects-section__projects {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 5.4rem;
     max-width: 95rem;
   }
 }
-.works-section__projects-left, .works-section__projects-right {
+.projects-section__projects-left, .projects-section__projects-right {
   display: flex;
   row-gap: 6rem;
   flex-direction: column;
 }
 @media only screen and (min-width: 768px) {
-  .works-section__projects-left, .works-section__projects-right {
+  .projects-section__projects-left, .projects-section__projects-right {
     row-gap: 9rem;
   }
 }
 @media only screen and (min-width: 768px) {
-  .works-section__projects-right {
+  .projects-section__projects-right {
     margin-top: 30rem;
   }
 }
-.works-section__project {
+.projects-section__project {
   color: #fff;
 }
-.works-section__project:hover .works-section__project-image {
+.projects-section__project:hover .projects-section__project-image {
   transform: scale(0.98);
 }
-.works-section__project:hover .works-section__project-image img {
+.projects-section__project:hover .projects-section__project-image img {
   transform: scale(1.05);
 }
-.works-section__project-image {
+.projects-section__project-image {
   transition: transform 0.5s ease-out;
   border-radius: 3.6rem;
   width: 100%;
   overflow: hidden;
 }
-.works-section__project-image img {
+.projects-section__project-image img {
   display: block;
   transition: transform 0.5s ease-out;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.works-section__project-content {
+.projects-section__project-content {
+  font-size: 2.4rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.3;
   margin-top: 2.7rem;
 }
-.works-section__project-content small {
+.projects-section__project-content small {
   font-weight: 300;
 }
 

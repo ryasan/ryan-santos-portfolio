@@ -5,7 +5,7 @@ import type { MetaFunction } from '@netlify/remix-runtime';
 // import FooterSection from '~/components/sections/footer-section';
 import HeroSection from '~/components/sections/hero-section';
 // import SkillsSection from '~/components/sections/skills-section';
-import WorksSection from '~/components/sections/works-section';
+import ProjectsSection from '~/components/sections/projects-section';
 import { client } from '~/models/contentful.server';
 import type { Project } from '~/types';
 import AboutSection from '~/components/sections/about-section';
@@ -32,7 +32,7 @@ export default function Index() {
 		<>
 			{/* <SkillsSection id={2} /> */}
 			<HeroSection />
-			<WorksSection projects={projects} />
+			<ProjectsSection projects={projects} />
 			<AboutSection />
 			{/* <FooterSection /> */}
 		</>
