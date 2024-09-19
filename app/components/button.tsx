@@ -2,6 +2,7 @@
 import { useState, type ButtonHTMLAttributes } from 'react';
 import clsx from 'clsx';
 import { motion, type Variants } from 'framer-motion';
+import Icon, { type IconName } from '~/components/icons';
 
 const ns = 'button';
 
@@ -31,6 +32,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	className?: string;
 	mailto?: string;
 	href?: string;
+	icon?: IconName;
 	onClick?(): void;
 	variant?: 'default' | 'black' | 'white' | 'outline-black' | 'outline-white';
 };
@@ -41,9 +43,10 @@ export default function Button({
 	className,
 	mailto,
 	href,
+	icon,
 	onClick,
-	onMouseEnter,
-	onMouseLeave,
+	onMouseEnter = () => {},
+	onMouseLeave = () => {},
 	variant = 'default',
 }: ButtonProps) {
 	const rootClassName = clsx({
@@ -99,11 +102,6 @@ export default function Button({
 			className={rootClassName}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
-			// whileHover={{ scaleX: 1.02 }}
-			// transition={{
-			// 	duration: 0.6,
-			// 	ease: [0.34, 5.56, 0.64, 1],
-			// }}
 			{...props}
 		>
 			<div className={`${ns}__content`}>
@@ -113,6 +111,7 @@ export default function Button({
 					variants={transformVariants}
 				>
 					{children}
+					{icon && <Icon className={`${ns}__icon`} name={icon} />}
 				</motion.span>
 			</div>
 			<motion.span
@@ -123,6 +122,7 @@ export default function Button({
 				transition={{ ease: 'linear' }}
 			>
 				{children}
+				{icon && <Icon className={`${ns}__icon`} name={icon} />}
 			</motion.span>
 		</MotionComponent>
 	);

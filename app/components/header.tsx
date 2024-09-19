@@ -1,4 +1,6 @@
 import clsx from 'clsx';
+import { usePointerFollower } from '~/context/pointer-follower-context';
+import SectionLayout from '~/components/section-layout';
 
 const ns = 'site-header';
 
@@ -7,8 +9,14 @@ export default function Header() {
 		[`${ns}`]: true,
 	});
 
+	const { toggleMixBlendMode } = usePointerFollower();
+
 	return (
-		<header className={rootClassName} data-scroll-section>
+		<SectionLayout
+			className={rootClassName}
+			as="header"
+			onMouseEnter={() => toggleMixBlendMode(true)}
+		>
 			<div className="container-fluid">
 				<span className={`${ns}__title`}>
 					<small>Ryan</small>
@@ -20,6 +28,6 @@ export default function Header() {
 					</span>
 				</nav>
 			</div>
-		</header>
+		</SectionLayout>
 	);
 }

@@ -1,10 +1,10 @@
 $ns: '.projects-section';
 
 #{$ns} {
-	background-color: $white;
-
 	&__inner {
 		@include section-style($black, $white);
+		
+		border-radius: 0 !important;
 	}
 
 	&__title {
@@ -49,6 +49,7 @@ $ns: '.projects-section';
 
 	&__project {
 		color: $white;
+		transition: all 0.5s ease-out;
 
 		&:hover {
 			#{$ns}__project-image {

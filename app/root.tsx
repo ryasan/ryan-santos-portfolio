@@ -66,11 +66,11 @@ export default function App() {
 						<main ref={scrollContainerRef} data-scroll-container>
 							<Header />
 							<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+							<Outlet />
 							<BurgerMenu
 								sidebarOpen={sidebarOpen}
 								toggleSidebar={toggleSidebar}
 							/>
-							<Outlet />
 							<PointerFollower />
 						</main>
 					</PointerFollowerProvider>

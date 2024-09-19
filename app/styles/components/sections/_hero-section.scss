@@ -2,11 +2,18 @@ $ns: '.hero-section';
 
 #{$ns} {
 	background-color: $white;
-	height: 68rem;
-	min-height: 50vh;
+	color: $black;
+	height: calc(100vh - #{$site-header-height});
+	width: 100%;
+	position: fixed;
+	top: $site-header-height;
 
+	+ * {
+		margin-top: calc(100vh - #{$site-header-height});	
+	}
+	
 	&__inner {
-		@include section-style($white, $black);
+		padding: 10rem
 	}
 
 	&__title {
@@ -16,11 +23,15 @@ $ns: '.hero-section';
 		.first-row,
 		.second-row {
 			display: block;
-			padding-bottom: 0.7rem;
+			padding-bottom: 0.8rem;
 			overflow: hidden;
 
 			span {
 				display: inline-block;
+
+				&.highlight {
+					color: $gray-400;
+				}
 			}
 		}
 	}

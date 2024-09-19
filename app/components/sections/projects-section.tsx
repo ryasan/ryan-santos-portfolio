@@ -32,7 +32,6 @@ function ProjectCard({
 			style={{
 				opacity: isInView ? 1 : 0,
 				transform: isInView ? 'translateY(0)' : 'translateY(100px)',
-				transition: 'all 0.5s ease-out',
 			}}
 		>
 			<div className={`${ns}__project-image`}>
@@ -65,7 +64,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 	}
 
 	return (
-		<div className={rootClassName} data-scroll-section>
+		<section className={rootClassName} data-scroll-section>
 			<div className={`${ns}__inner`}>
 				<div className="container">
 					<div className={`${ns}__content`}>
@@ -102,6 +101,6 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 }

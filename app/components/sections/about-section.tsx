@@ -112,7 +112,7 @@ export default function AboutSection() {
 	});
 
 	return (
-		<div className={rootClassName} data-scroll-section>
+		<section className={rootClassName} data-scroll-section>
 			<div className={`${ns}__inner`}>
 				<div className="container">
 					<div className={`${ns}__content`}>
@@ -129,6 +129,6 @@ export default function AboutSection() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 }

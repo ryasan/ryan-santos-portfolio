@@ -15,7 +15,7 @@ export default function SkillsSection() {
 	const maxWidth = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);
 
 	return (
-		<div className={rootClassName} data-scroll-section>
+		<section className={rootClassName} data-scroll-section>
 			<div className={`${ns}__inner`}>
 				<div className="container">
 					<div className={`${ns}__anchor`} ref={anchorRef} />
@@ -25,6 +25,6 @@ export default function SkillsSection() {
 					</motion.div>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 }

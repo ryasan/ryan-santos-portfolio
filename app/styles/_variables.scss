@@ -12,7 +12,7 @@ $gray-900: #212529;
 
 /* Colors */
 
-$black: #000;
+$black: #161616;
 $blue: #2e5bff;
 $green: #2e9775;
 $teal: #20c997;
@@ -148,6 +148,18 @@ $heading-6-font-style: (
 		1.8rem,
 	),
 ) !default;
+
+/* Stacking Order */
+
+// $header-z-index: 9997;
+// $sidebar-z-index: $header-z-index + 1;
+// $burger-menu-z-index: $sidebar-z-index + 1;
+// $pointer-follower-z-index: $burger-menu-z-index + 1;
+
+$z-index-header: 9996;
+$z-index-sidebar: 9997;
+$z-index-burger-menu: 9998;
+$z-index-pointer-follower: 9999;
 
 /* Base URL */
 

@@ -12,7 +12,7 @@ export default function HeroSection() {
 	});
 
 	const rootRef = useRef(null);
-	const { toggleMixBlendMode, setFollowerText } = usePointerFollower();
+	const { toggleMixBlendMode } = usePointerFollower();
 
 	const DELAY = 0.75;
 
@@ -26,25 +26,23 @@ export default function HeroSection() {
 			ref={rootRef}
 			onMouseEnter={() => toggleMixBlendMode(true)}
 			onMouseLeave={() => toggleMixBlendMode(false)}
-			data-scroll-section
 		>
 			<div className={`${ns}__inner`}>
 				<div className="container">
 					<div className={`${ns}__content`}>
 						<h1 className={`${ns}__title`}>
 							<span className="first-row">
-								{myNameIsRyan.map((char, index) => (
+								{myNameIsRyan.map((char, index, arr) => (
 									<motion.span
 										key={index}
+										className={index >= arr.indexOf('R') ? 'highlight' : ''}
 										initial={{ y: 100 }}
 										animate={{ y: 0 }}
 										transition={{
-											duration: 0.5,
+											duration: 0.35,
 											delay: DELAY + index * 0.02,
 											ease: 'easeOut',
 										}}
-										onMouseEnter={() => setFollowerText(' ')}
-										onMouseLeave={() => setFollowerText('')}
 									>
 										{char === ' ' ? '\u00A0' : char}
 									</motion.span>
@@ -58,12 +56,10 @@ export default function HeroSection() {
 										initial={{ y: 100 }}
 										animate={{ y: 0 }}
 										transition={{
-											duration: 0.5,
+											duration: 0.35,
 											delay: DELAY + (myNameIsRyan.length + index) * 0.02,
 											ease: 'easeOut',
 										}}
-										onMouseEnter={() => setFollowerText(' ')}
-										onMouseLeave={() => setFollowerText('')}
 									>
 										{char === ' ' ? '\u00A0' : char}
 									</motion.span>
@@ -76,7 +72,7 @@ export default function HeroSection() {
 								initial={{ y: '100%' }}
 								animate={{ y: 0 }}
 								transition={{
-									duration: 0.5,
+									duration: 0.35,
 									delay:
 										DELAY * 1.5 +
 										(myNameIsRyan.length + frontendEngineer.length) * 0.03,
@@ -86,9 +82,8 @@ export default function HeroSection() {
 								<Button
 									as="a"
 									mailto="ryansantos86@gmail.com"
-									onMouseEnter={() => setFollowerText(' ')}
-									onMouseLeave={() => setFollowerText('')}
 									variant="black"
+									icon="arrow-right"
 								>
 									Let&apos;s Connect
 								</Button>

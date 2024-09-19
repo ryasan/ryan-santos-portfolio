@@ -16,7 +16,8 @@
 
 ## Navigation
 
-* [ ] Add locomotive scroll
+* [x] Add locomotive scroll
+* [ ] Add scroll indicator on top hero
 
 ## General
 
