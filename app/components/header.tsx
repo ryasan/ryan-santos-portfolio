@@ -11,7 +11,8 @@ export default function Header() {
 		<header className={rootClassName} data-scroll-section>
 			<div className="container-fluid">
 				<span className={`${ns}__title`}>
-					<small>Ryan Santos</small>
+					<small>Ryan</small>
+					<small>Santos.</small>
 				</span>
 				<nav className={`${ns}__nav`}>
 					<span className={`${ns}__menu-text`}>

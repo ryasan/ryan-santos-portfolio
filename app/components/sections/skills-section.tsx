@@ -16,12 +16,14 @@ export default function SkillsSection() {
 
 	return (
 		<div className={rootClassName} data-scroll-section>
-			<div className="container">
-				<div className={`${ns}__anchor`} ref={anchorRef} />
+			<div className={`${ns}__inner`}>
+				<div className="container">
+					<div className={`${ns}__anchor`} ref={anchorRef} />
 
-				<motion.div className={`${ns}__content`} style={{ maxWidth }}>
-					<TagCloud />
-				</motion.div>
+					<motion.div className={`${ns}__content`} style={{ maxWidth }}>
+						<TagCloud />
+					</motion.div>
+				</div>
 			</div>
 		</div>
 	);

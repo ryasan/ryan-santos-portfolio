@@ -1,17 +1,23 @@
 $ns: '.hero-section';
 
 #{$ns} {
-	@include section-style;
+	background-color: $white;
+	height: 68rem;
+	min-height: 50vh;
+
+	&__inner {
+		@include section-style($white, $black);
+	}
 
 	&__title {
-		max-width: 900px;
 		z-index: 2;
+		max-width: 900px;
 
 		.first-row,
 		.second-row {
 			display: block;
+			padding-bottom: 0.7rem;
 			overflow: hidden;
-			padding-bottom: 0.5rem;
 
 			span {
 				display: inline-block;
@@ -21,5 +27,7 @@ $ns: '.hero-section';
 
 	&__cta {
 		z-index: 1;
+		margin-top: 7rem;
+		overflow-y: hidden;
 	}
 }

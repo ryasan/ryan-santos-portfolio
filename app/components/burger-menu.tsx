@@ -82,7 +82,6 @@ type BurgerMenuProps = {
 const BurgerMenu = ({ sidebarOpen, toggleSidebar }: BurgerMenuProps) => {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
-		[`${ns}--active`]: sidebarOpen,
 	});
 
 	return (

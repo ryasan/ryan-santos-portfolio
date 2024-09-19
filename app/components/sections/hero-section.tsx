@@ -28,68 +28,73 @@ export default function HeroSection() {
 			onMouseLeave={() => toggleMixBlendMode(false)}
 			data-scroll-section
 		>
-			<div className="container">
-				<div className={`${ns}__content`}>
-					<h1 className={`${ns}__title h2`}>
-						<span className="first-row">
-							{myNameIsRyan.map((char, index) => (
-								<motion.span
-									key={index}
-									initial={{ y: 100, opacity: 0 }}
-									animate={{ y: 0, opacity: 1 }}
-									transition={{
-										duration: 0.5,
-										delay: DELAY + index * 0.02,
-										ease: 'easeOut',
-									}}
+			<div className={`${ns}__inner`}>
+				<div className="container">
+					<div className={`${ns}__content`}>
+						<h1 className={`${ns}__title`}>
+							<span className="first-row">
+								{myNameIsRyan.map((char, index) => (
+									<motion.span
+										key={index}
+										initial={{ y: 100 }}
+										animate={{ y: 0 }}
+										transition={{
+											duration: 0.5,
+											delay: DELAY + index * 0.02,
+											ease: 'easeOut',
+										}}
+										onMouseEnter={() => setFollowerText(' ')}
+										onMouseLeave={() => setFollowerText('')}
+									>
+										{char === ' ' ? '\u00A0' : char}
+									</motion.span>
+								))}
+							</span>
+
+							<span className="second-row">
+								{frontendEngineer.map((char, index) => (
+									<motion.span
+										key={index}
+										initial={{ y: 100 }}
+										animate={{ y: 0 }}
+										transition={{
+											duration: 0.5,
+											delay: DELAY + (myNameIsRyan.length + index) * 0.02,
+											ease: 'easeOut',
+										}}
+										onMouseEnter={() => setFollowerText(' ')}
+										onMouseLeave={() => setFollowerText('')}
+									>
+										{char === ' ' ? '\u00A0' : char}
+									</motion.span>
+								))}
+							</span>
+						</h1>
+
+						<div className={`${ns}__cta`}>
+							<motion.div
+								initial={{ y: '100%' }}
+								animate={{ y: 0 }}
+								transition={{
+									duration: 0.5,
+									delay:
+										DELAY * 1.5 +
+										(myNameIsRyan.length + frontendEngineer.length) * 0.03,
+									ease: 'easeOut',
+								}}
+							>
+								<Button
+									as="a"
+									mailto="ryansantos86@gmail.com"
 									onMouseEnter={() => setFollowerText(' ')}
 									onMouseLeave={() => setFollowerText('')}
+									variant="black"
 								>
-									{char === ' ' ? '\u00A0' : char}
-								</motion.span>
-							))}
-						</span>
-
-						<span className="second-row">
-							{frontendEngineer.map((char, index) => (
-								<motion.span
-									key={index}
-									initial={{ y: 100, opacity: 0 }}
-									animate={{ y: 0, opacity: 1 }}
-									transition={{
-										duration: 0.5,
-										delay: DELAY + (myNameIsRyan.length + index) * 0.02,
-										ease: 'easeOut',
-									}}
-									onMouseEnter={() => setFollowerText(' ')}
-									onMouseLeave={() => setFollowerText('')}
-								>
-									{char === ' ' ? '\u00A0' : char}
-								</motion.span>
-							))}
-						</span>
-					</h1>
-
-					<motion.div
-						className={`${ns}__cta`}
-						initial={{ y: 100, opacity: 0 }}
-						animate={{ y: 70, opacity: 1 }}
-						transition={{
-							duration: 0.5,
-							delay:
-								(DELAY * 1.5) + (myNameIsRyan.length + frontendEngineer.length) * 0.03,
-							ease: 'easeOut',
-						}}
-					>
-						<Button
-							as="a"
-							mailto="ryansantos86@gmail.com"
-							onMouseEnter={() => setFollowerText(' ')}
-							onMouseLeave={() => setFollowerText('')}
-						>
-							Let&apos;s Connect
-						</Button>
-					</motion.div>
+									Let&apos;s Connect
+								</Button>
+							</motion.div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

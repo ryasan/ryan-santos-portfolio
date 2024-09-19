@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ButtonHTMLAttributes } from 'react';
+import { useState, type ButtonHTMLAttributes } from 'react';
 import clsx from 'clsx';
-import { useState } from 'react';
 import { motion, type Variants } from 'framer-motion';
 
 const ns = 'button';
@@ -33,6 +32,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	mailto?: string;
 	href?: string;
 	onClick?(): void;
+	variant?: 'default' | 'black' | 'white' | 'outline-black' | 'outline-white';
 };
 
 export default function Button({
@@ -44,10 +44,12 @@ export default function Button({
 	onClick,
 	onMouseEnter,
 	onMouseLeave,
+	variant = 'default',
 }: ButtonProps) {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
 		[`${className}`]: className,
+		[`${ns}--${variant}`]: variant,
 	});
 
 	const [isHovered, setIsHovered] = useState(false);
@@ -97,11 +99,11 @@ export default function Button({
 			className={rootClassName}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
-			whileHover={{ scaleX: 1.02 }}
-			transition={{
-				duration: 0.6,
-				ease: [0.34, 5.56, 0.64, 1],
-			}}
+			// whileHover={{ scaleX: 1.02 }}
+			// transition={{
+			// 	duration: 0.6,
+			// 	ease: [0.34, 5.56, 0.64, 1],
+			// }}
 			{...props}
 		>
 			<div className={`${ns}__content`}>

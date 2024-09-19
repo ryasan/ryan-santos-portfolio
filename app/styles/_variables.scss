@@ -58,8 +58,9 @@ $site-header-height: 60px;
 
 $matter: 'Matter';
 $recoleta: 'Recoleta';
-$body-font-family: $matter, sans-serif;
-$heading-font-family: $matter, sans-serif;
+$inter-tight: 'Inter Tight';
+$body-font-family: $inter-tight, sans-serif;
+$heading-font-family: $inter-tight, sans-serif;
 
 /* Default Breakpoints For Typography */
 
@@ -104,7 +105,7 @@ $heading-1-font-style: (
 		7.5rem,
 	),
 	laptop: (
-		15rem,
+		10rem,
 	),
 ) !default;
 $heading-2-font-style: (
@@ -112,7 +113,7 @@ $heading-2-font-style: (
 		6rem,
 	),
 	laptop: (
-		10rem,
+		8rem,
 	),
 ) !default;
 $heading-3-font-style: (

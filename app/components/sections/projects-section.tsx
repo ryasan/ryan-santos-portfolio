@@ -66,36 +66,38 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 
 	return (
 		<div className={rootClassName} data-scroll-section>
-			<div className="container">
-				<div className={`${ns}__content`}>
-					<h2 className={`${ns}__title h1`}>
-						<span>Featured</span>
-						<span>
-							<i>projects</i>
-						</span>
-					</h2>
+			<div className={`${ns}__inner`}>
+				<div className="container">
+					<div className={`${ns}__content`}>
+						<h2 className={`${ns}__title h1`}>
+							<span>Featured</span>
+							<span>
+								<i>projects</i>
+							</span>
+						</h2>
 
-					<div className={`${ns}__projects`}>
-						<div className={`${ns}__projects-left`}>
-							{leftProjects.map((project, index) => (
-								<ProjectCard
-									key={index}
-									project={project}
-									onMouseEnter={handleMouseEnter}
-									onMouseLeave={handleMouseLeave}
-								/>
-							))}
-						</div>
+						<div className={`${ns}__projects`}>
+							<div className={`${ns}__projects-left`}>
+								{leftProjects.map((project, index) => (
+									<ProjectCard
+										key={index}
+										project={project}
+										onMouseEnter={handleMouseEnter}
+										onMouseLeave={handleMouseLeave}
+									/>
+								))}
+							</div>
 
-						<div className={`${ns}__projects-right`}>
-							{rightProjects.map((project, index) => (
-								<ProjectCard
-									key={index}
-									project={project}
-									onMouseEnter={handleMouseEnter}
-									onMouseLeave={handleMouseLeave}
-								/>
-							))}
+							<div className={`${ns}__projects-right`}>
+								{rightProjects.map((project, index) => (
+									<ProjectCard
+										key={index}
+										project={project}
+										onMouseEnter={handleMouseEnter}
+										onMouseLeave={handleMouseLeave}
+									/>
+								))}
+							</div>
 						</div>
 					</div>
 				</div>

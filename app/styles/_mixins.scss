@@ -4,11 +4,7 @@
 	@font-face {
 		font-style: $style;
 		font-weight: $weight;
-		src:
-			url('#{$src}.woff') format('woff'),
-			url('#{$src}.woff2') format('woff2'),
-			url('#{$src}.ttf') format('truetype'),
-			url('#{$src}.otf') format('opentype');
+		src: url('#{$src}.ttf') format('truetype');
 		font-family: $family;
 	}
 }
@@ -126,17 +122,17 @@
 
 /* Section Styling */
 
-@mixin section-style($bg-color: $black, $color: $white, $padding: 10rem 0) {
+@mixin section-style($bg-color: $black, $color: $white, $padding: 15rem 0) {
 	background-color: $bg-color;
 	padding: $padding;
-	color: $color;
-	min-height: 100vh;
 	width: 100%;
+	min-height: 100vh;
+	color: $color;
 
-	// @include at-laptop {
-	// 	border-top-left-radius: 7.2rem;
-	// 	border-top-right-radius: 7.2rem;
-	// }
+	@include at-laptop {
+		border-top-left-radius: 7.2rem;
+		border-top-right-radius: 7.2rem;
+	}
 }
 
 /*

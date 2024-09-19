@@ -1,7 +1,11 @@
 $ns: '.about-section';
 
 #{$ns} {
-	@include section-style;
+	background-color: $black;
+
+	&__inner {
+		@include section-style($black, $white);
+	}
 
 	&__items {
 		display: flex;

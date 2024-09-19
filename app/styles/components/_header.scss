@@ -1,6 +1,8 @@
 $ns: '.site-header';
 
 #{$ns} {
+	background-color: $white;
+	color: $black;
 	height: $site-header-height;
 
 	.container-fluid {
@@ -16,8 +18,12 @@ $ns: '.site-header';
 	}
 
 	&__title {
-		font-weight: 600;
-		font-family: $recoleta;
+		font-weight: 800;
+		font-family: $inter-tight;
+
+		small:last-child {
+			color: $gray-400;
+		}
 	}
 
 	&__nav {
