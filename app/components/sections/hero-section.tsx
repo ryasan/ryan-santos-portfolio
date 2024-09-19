@@ -30,7 +30,7 @@ export default function HeroSection() {
 		>
 			<div className="container">
 				<div className={`${ns}__content`}>
-					<h1 className={`${ns}__title`}>
+					<h1 className={`${ns}__title h2`}>
 						<span className="first-row">
 							{myNameIsRyan.map((char, index) => (
 								<motion.span

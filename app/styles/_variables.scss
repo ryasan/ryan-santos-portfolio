@@ -101,26 +101,26 @@ $body-font-style: (
 ) !default;
 $heading-1-font-style: (
 	mobile: (
-		5rem,
+		7.5rem,
+	),
+	laptop: (
+		15rem,
+	),
+) !default;
+$heading-2-font-style: (
+	mobile: (
+		6rem,
 	),
 	laptop: (
 		10rem,
 	),
 ) !default;
-$heading-2-font-style: (
-	mobile: (
-		4.2rem,
-	),
-	laptop: (
-		8rem,
-	),
-) !default;
 $heading-3-font-style: (
 	mobile: (
-		2.4rem,
+		3rem,
 	),
 	laptop: (
-		3rem,
+		4rem,
 	),
 ) !default;
 $heading-4-font-style: (

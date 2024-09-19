@@ -14,8 +14,6 @@ $ns: '.about-section';
 
 		svg {
 			height: 200px;
-
-			// overflow
 		}
 
 		path {
@@ -33,10 +31,11 @@ $ns: '.about-section';
 	}
 
 	&__item-title {
-		text-transform: uppercase;
+		// text-transform: uppercase;
 	}
 
 	&__item-description {
-		font-size: 2.5rem;
+		font-size: 2.4rem;
+		line-height: 1.2;
 	}
 }

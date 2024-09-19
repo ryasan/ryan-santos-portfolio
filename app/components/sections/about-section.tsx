@@ -115,7 +115,11 @@ export default function AboutSection() {
 		<div className={rootClassName} data-scroll-section>
 			<div className="container">
 				<div className={`${ns}__content`}>
-					<h2 className={`${ns}__title h1`}>working with me</h2>
+					<h2 className={`${ns}__title h1`}>
+						<div>
+							What <i>I Do</i>
+						</div>
+					</h2>
 					<div className={`${ns}__items`}>
 						{aboutItems.map((item, index) => (
 							<AboutItem key={index} {...item} />

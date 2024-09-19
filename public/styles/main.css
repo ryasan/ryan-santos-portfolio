@@ -331,12 +331,12 @@ h1 {
 }
 @media screen and (min-width: 375px) {
   h1 {
-    font-size: 5rem;
+    font-size: 7.5rem;
   }
 }
 @media screen and (min-width: 992px) {
   h1 {
-    font-size: 10rem;
+    font-size: 15rem;
   }
 }
 
@@ -346,12 +346,12 @@ h2 {
 }
 @media screen and (min-width: 375px) {
   h2 {
-    font-size: 4.2rem;
+    font-size: 6rem;
   }
 }
 @media screen and (min-width: 992px) {
   h2 {
-    font-size: 8rem;
+    font-size: 10rem;
   }
 }
 
@@ -361,12 +361,12 @@ h3 {
 }
 @media screen and (min-width: 375px) {
   h3 {
-    font-size: 2.4rem;
+    font-size: 3rem;
   }
 }
 @media screen and (min-width: 992px) {
   h3 {
-    font-size: 3rem;
+    font-size: 4rem;
   }
 }
 
@@ -529,12 +529,12 @@ em {
 }
 @media screen and (min-width: 375px) {
   .h1 {
-    font-size: 5rem;
+    font-size: 7.5rem;
   }
 }
 @media screen and (min-width: 992px) {
   .h1 {
-    font-size: 10rem;
+    font-size: 15rem;
   }
 }
 
@@ -543,12 +543,12 @@ em {
 }
 @media screen and (min-width: 375px) {
   .h2 {
-    font-size: 4.2rem;
+    font-size: 6rem;
   }
 }
 @media screen and (min-width: 992px) {
   .h2 {
-    font-size: 8rem;
+    font-size: 10rem;
   }
 }
 
@@ -557,12 +557,12 @@ em {
 }
 @media screen and (min-width: 375px) {
   .h3 {
-    font-size: 2.4rem;
+    font-size: 3rem;
   }
 }
 @media screen and (min-width: 992px) {
   .h3 {
-    font-size: 3rem;
+    font-size: 4rem;
   }
 }
 
@@ -652,11 +652,9 @@ em {
   gap: 5rem;
   max-width: 800px;
 }
-.about-section__item-title {
-  text-transform: uppercase;
-}
 .about-section__item-description {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
+  line-height: 1.2;
 }
 
 .footer-section {
@@ -837,6 +835,7 @@ em {
   background: #fff;
   width: 100%;
   height: 2px;
+  border-radius: 2px;
 }
 .burger-menu__icon span:not(:first-child) {
   margin-top: 5px;
