@@ -2,7 +2,7 @@ import { json } from '@remix-run/server-runtime';
 import { useLoaderData } from '@remix-run/react';
 import type { MetaFunction } from '@netlify/remix-runtime';
 
-// import FooterSection from '~/components/sections/footer-section';
+import FooterSection from '~/components/sections/footer-section';
 import HeroSection from '~/components/sections/hero-section';
 // import SkillsSection from '~/components/sections/skills-section';
 import ProjectsSection from '~/components/sections/projects-section';
@@ -34,7 +34,7 @@ export default function Index() {
 			<HeroSection />
 			<ProjectsSection projects={projects} />
 			<AboutSection />
-			{/* <FooterSection /> */}
+			<FooterSection />
 		</>
 	);
 }

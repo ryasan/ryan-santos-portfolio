@@ -130,8 +130,8 @@
 	color: $color;
 
 	@include at-laptop {
-		border-top-left-radius: 7.2rem;
-		border-top-right-radius: 7.2rem;
+		border-top-left-radius: 3.6rem;
+		border-top-right-radius: 3.6rem;
 	}
 }
 

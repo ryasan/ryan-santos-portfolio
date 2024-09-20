@@ -33,22 +33,27 @@ export default function App() {
 	}
 
 	useEffect(() => {
-		async function getLocomotiveScroll() {
-			const LocomotiveScroll = (await import('locomotive-scroll')).default;
+		// Defer Locomotive Scroll initialization to the end of the event loop
+		const timeoutId = setTimeout(() => {
+			async function initializeLocomotiveScroll() {
+				const LocomotiveScroll = (await import('locomotive-scroll')).default;
 
-			const scroll = new LocomotiveScroll({
-				el: scrollContainerRef.current!,
-				smooth: true,
-				direction: 'vertical',
-			});
-			return scroll;
-		}
+				const scroll = new LocomotiveScroll({
+					el: scrollContainerRef.current!,
+					smooth: true,
+					direction: 'vertical',
+				});
+				return scroll;
+			}
 
-		const scroll = getLocomotiveScroll();
+			const scroll = initializeLocomotiveScroll();
 
-		return () => {
-			scroll.then((s) => s.destroy());
-		};
+			return () => {
+				scroll.then((s) => s.destroy());
+			};
+		}, 0);
+
+		return () => clearTimeout(timeoutId);
 	}, []);
 
 	return (

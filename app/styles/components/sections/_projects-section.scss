@@ -3,8 +3,6 @@ $ns: '.projects-section';
 #{$ns} {
 	&__inner {
 		@include section-style($black, $white);
-		
-		border-radius: 0 !important;
 	}
 
 	&__title {
@@ -48,8 +46,8 @@ $ns: '.projects-section';
 	}
 
 	&__project {
-		color: $white;
 		transition: all 0.5s ease-out;
+		color: $white;
 
 		&:hover {
 			#{$ns}__project-image {

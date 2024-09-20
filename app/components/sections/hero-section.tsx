@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import Button from '~/components/button';
+import Icon from '~/components/icons';
 import { usePointerFollower } from '~/context/pointer-follower-context';
 
 const ns = 'hero-section';
@@ -15,11 +16,10 @@ export default function HeroSection() {
 	const { toggleMixBlendMode } = usePointerFollower();
 
 	const DELAY = 0.75;
-
 	const iCreateWebsites = 'I Create Websites'.split('');
 	const myNameIsRyan = 'My Name Is Ryan.'.split('');
 	const frontendEngineer = 'Frontend Engineer'.split('');
-
+	
 	return (
 		<div
 			className={rootClassName}
@@ -73,9 +73,8 @@ export default function HeroSection() {
 								animate={{ y: 0 }}
 								transition={{
 									duration: 0.35,
-									delay:
-										DELAY * 1.5 +
-										(myNameIsRyan.length + frontendEngineer.length) * 0.03,
+									// prettier-ignore
+									delay: (DELAY * 1.5) + (myNameIsRyan.length + frontendEngineer.length) * 0.02,
 									ease: 'easeOut',
 								}}
 							>
@@ -91,6 +90,21 @@ export default function HeroSection() {
 						</div>
 					</div>
 				</div>
+			</div>
+			<div className={`${ns}__scroll-down`}>
+				<motion.div
+					initial={{ opacity: 0, x: 20 }}
+					animate={{ opacity: 1, x: 0 }}
+					transition={{
+						duration: 0.75,
+						// prettier-ignore
+						delay: (DELAY * 3) + (myNameIsRyan.length + frontendEngineer.length) * 0.02,
+						ease: 'easeOut',
+					}}
+				>
+					<div>Scroll</div>
+					<Icon name="chevron-down" />
+				</motion.div>
 			</div>
 		</div>
 	);

@@ -7,6 +7,7 @@ import {
 	useTransform,
 	useInView,
 } from 'framer-motion';
+import { usePointerFollower } from '~/context/pointer-follower-context';
 
 const ns = 'about-section';
 
@@ -43,7 +44,6 @@ function AboutItem({
 	const svgRef = useRef<SVGSVGElement>(null);
 	const pathRef = useRef<SVGPathElement>(null);
 	const isInView = useInView(pathRef, { once: true, amount: 0 });
-
 	const x = useMotionValue(561.5); // Initial value is the center of the SVG
 	const y = useMotionValue(100); // Initial value is the center of the SVG
 
@@ -111,8 +111,15 @@ export default function AboutSection() {
 		[`${ns}`]: true,
 	});
 
+	const { toggleMixBlendMode } = usePointerFollower();
+
 	return (
-		<section className={rootClassName} data-scroll-section>
+		<section
+			className={rootClassName}
+			onMouseEnter={() => toggleMixBlendMode(true)}
+			onMouseLeave={() => toggleMixBlendMode(false)}
+			data-scroll-section
+		>
 			<div className={`${ns}__inner`}>
 				<div className="container">
 					<div className={`${ns}__content`}>

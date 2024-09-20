@@ -1,19 +1,26 @@
 $ns: '.hero-section';
 
 #{$ns} {
-	background-color: $white;
-	color: $black;
-	height: calc(100vh - #{$site-header-height});
-	width: 100%;
-	position: fixed;
+	position: relative;
 	top: $site-header-height;
+	z-index: 0;
+	background-color: $white;
+	width: 100%;
+	height: calc(100vh - #{$site-header-height});
+	color: $black;
 
-	+ * {
-		margin-top: calc(100vh - #{$site-header-height});	
-	}
-	
 	&__inner {
-		padding: 10rem
+		height: 100%;
+
+		.container {
+			position: relative;
+			height: 100%;
+		}
+	}
+
+	&__content {
+		position: relative;
+		padding: 10rem 0;
 	}
 
 	&__title {
@@ -40,5 +47,40 @@ $ns: '.hero-section';
 		z-index: 1;
 		margin-top: 7rem;
 		overflow-y: hidden;
+	}
+
+	&__scroll-down {
+		display: none;
+		position: absolute;
+		right: -3.1rem;
+		bottom: 11rem;
+		transform: translateX(-50%) rotate(90deg);
+		z-index: 2;
+		font-size: 1.8rem;
+		letter-spacing: 0.2rem;
+
+		@include at-laptop {
+			display: inline-block;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: -40px;
+			width: 30px;
+			height: 1px;
+			background-color: $black;
+		}
+
+		> div {
+			display: flex;
+			align-items: center;
+		}
+
+		svg {
+			display: block;
+			transform: rotate(-90deg);
+		}
 	}
 }

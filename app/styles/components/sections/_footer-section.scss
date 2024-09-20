@@ -1,5 +1,7 @@
 $ns: '.footer-section';
 
 #{$ns} {
-	@include section-style;
+	@include section-style($black, $white);
+
+	border-radius: 0 !important;
 }

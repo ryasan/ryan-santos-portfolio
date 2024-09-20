@@ -4,7 +4,7 @@ $ns: '.about-section';
 	background-color: $black;
 
 	&__inner {
-		@include section-style($black, $white);
+		@include section-style($white, $black);
 	}
 
 	&__items {
@@ -14,7 +14,7 @@ $ns: '.about-section';
 
 	&__item-divider {
 		position: relative;
-		color: $white;
+		color: inherit;
 
 		svg {
 			height: 200px;

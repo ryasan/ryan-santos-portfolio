@@ -26,7 +26,22 @@ function ArrowRightIcon({ className }: { className?: string }) {
 	);
 }
 
-export type IconName = 'arrow-right';
+function ChevronDownIcon({ className }: { className?: string }) {
+	return (
+		<svg
+			className={className}
+			xmlns="http://www.w3.org/2000/svg"
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+		>
+			<path fill="none" d="M0 0h24v24H0z" />
+			<path d="M12 15l-6-6h12z" />
+		</svg>
+	);
+}
+
+export type IconName = 'arrow-right' | 'chevron-down';
 
 type IconProps = {
 	className?: string;
@@ -37,7 +52,9 @@ export default function Icon({ name, ...props }: IconProps) {
 	switch (name) {
 		case 'arrow-right':
 			return <ArrowRightIcon {...props} />;
+		case 'chevron-down':
+			return <ChevronDownIcon {...props} />;
 		default:
-			return null;
+			throw new Error(`Unknown icon name: ${name}`);
 	}
 }
