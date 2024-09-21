@@ -42,6 +42,9 @@ export default function App() {
 					el: scrollContainerRef.current!,
 					smooth: true,
 					direction: 'vertical',
+					tablet: {
+						breakpoint: 0,
+					},
 				});
 				return scroll;
 			}
