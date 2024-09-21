@@ -8,9 +8,11 @@
 }
 
 .c-scrollbar_thumb {
+	mix-blend-mode: difference;
 	background: $white;
 	opacity: 1;
 	width: 5px;
+	z-index: 9999;
 }
 
 /* Pseudo Elements */

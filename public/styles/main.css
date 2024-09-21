@@ -272,9 +272,11 @@ html.has-scroll-dragging {
 }
 
 .c-scrollbar_thumb {
+  mix-blend-mode: difference;
   background: #fff;
   opacity: 1;
   width: 5px;
+  z-index: 9999;
 }
 
 /* Pseudo Elements */
