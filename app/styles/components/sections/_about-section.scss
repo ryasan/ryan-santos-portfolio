@@ -17,7 +17,7 @@ $ns: '.about-section';
 		color: inherit;
 
 		svg {
-			height: 200px;
+			height: 150;
 		}
 
 		path {
@@ -28,18 +28,19 @@ $ns: '.about-section';
 	}
 
 	&__item-text {
-		display: grid;
-		grid-template-columns: 300px 4fr;
+		display: flex;
+		flex-direction: column;
 		gap: 5rem;
 		max-width: 800px;
-	}
 
-	&__item-title {
-		// text-transform: uppercase;
+		@include at-laptop {
+			grid-template-columns: 300px 4fr;
+			display: grid;
+		}
 	}
 
 	&__item-description {
-		font-size: 2.4rem;
+		font-size: 2.2rem;
 		line-height: 1.2;
 	}
 }

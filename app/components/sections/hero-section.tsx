@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import Button from '~/components/button';
 import Icon from '~/components/icons';
-import { usePointerFollower } from '~/context/pointer-follower-context';
+import { usePointerFollower } from '~/context';
+import { useScreenSize } from '~/hooks';
 
 const ns = 'hero-section';
 
@@ -14,14 +15,15 @@ export default function HeroSection() {
 
 	const rootRef = useRef(null);
 	const { toggleMixBlendMode } = usePointerFollower();
+	const { isMobile } = useScreenSize();
 
 	const DELAY = 0.75;
 	const iCreateWebsites = 'I Create Websites'.split('');
 	const myNameIsRyan = 'My Name Is Ryan.'.split('');
 	const frontendEngineer = 'Frontend Engineer'.split('');
-	
+
 	return (
-		<div
+		<section
 			className={rootClassName}
 			ref={rootRef}
 			onMouseEnter={() => toggleMixBlendMode(true)}
@@ -31,40 +33,42 @@ export default function HeroSection() {
 				<div className="container">
 					<div className={`${ns}__content`}>
 						<h1 className={`${ns}__title`}>
-							<span className="first-row">
+							<div className={`${ns}__char-list`}>
 								{myNameIsRyan.map((char, index, arr) => (
-									<motion.span
-										key={index}
-										className={index >= arr.indexOf('R') ? 'highlight' : ''}
-										initial={{ y: 100 }}
-										animate={{ y: 0 }}
-										transition={{
-											duration: 0.35,
-											delay: DELAY + index * 0.02,
-											ease: 'easeOut',
-										}}
-									>
-										{char === ' ' ? '\u00A0' : char}
-									</motion.span>
+									<span className={`${ns}__char`} key={index}>
+										<motion.span
+											className={index >= arr.indexOf('R') ? 'highlight' : ''}
+											initial={{ y: 100 }}
+											animate={{ y: 0 }}
+											transition={{
+												duration: 0.35,
+												delay: DELAY + index * 0.02,
+												ease: 'easeOut',
+											}}
+										>
+											{char === ' ' ? '\u00A0' : char}
+										</motion.span>
+									</span>
 								))}
-							</span>
+							</div>
 
-							<span className="second-row">
+							<div className={`${ns}__char-list`}>
 								{frontendEngineer.map((char, index) => (
-									<motion.span
-										key={index}
-										initial={{ y: 100 }}
-										animate={{ y: 0 }}
-										transition={{
-											duration: 0.35,
-											delay: DELAY + (myNameIsRyan.length + index) * 0.02,
-											ease: 'easeOut',
-										}}
-									>
-										{char === ' ' ? '\u00A0' : char}
-									</motion.span>
+									<span className={`${ns}__char`} key={index}>
+										<motion.span
+											initial={{ y: 100 }}
+											animate={{ y: 0 }}
+											transition={{
+												duration: 0.35,
+												delay: DELAY + (myNameIsRyan.length + index) * 0.02,
+												ease: 'easeOut',
+											}}
+										>
+											{char === ' ' ? '\u00A0' : char}
+										</motion.span>
+									</span>
 								))}
-							</span>
+							</div>
 						</h1>
 
 						<div className={`${ns}__cta`}>
@@ -102,10 +106,11 @@ export default function HeroSection() {
 						ease: 'easeOut',
 					}}
 				>
-					<div>Scroll</div>
+					<span />
+					<span>Scroll</span>
 					<Icon name="chevron-down" />
 				</motion.div>
 			</div>
-		</div>
+		</section>
 	);
 }

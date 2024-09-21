@@ -122,16 +122,18 @@
 
 /* Section Styling */
 
-@mixin section-style($bg-color: $black, $color: $white, $padding: 15rem 0) {
+@mixin section-style($bg-color: $black, $color: $white, $padding: 10rem) {
 	background-color: $bg-color;
-	padding: $padding;
+	padding: $padding 0;
 	width: 100%;
 	min-height: 100vh;
+	overflow-x: hidden;
 	color: $color;
 
-	@include at-laptop {
-		border-top-left-radius: 3.6rem;
+	@include at-tablet {
 		border-top-right-radius: 3.6rem;
+		border-top-left-radius: 3.6rem;
+		padding: calc(#{$padding} * 1.5) 0;
 	}
 }
 

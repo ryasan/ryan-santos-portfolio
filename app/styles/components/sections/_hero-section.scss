@@ -2,7 +2,6 @@ $ns: '.hero-section';
 
 #{$ns} {
 	position: relative;
-	top: $site-header-height;
 	z-index: 0;
 	background-color: $white;
 	width: 100%;
@@ -20,25 +19,28 @@ $ns: '.hero-section';
 
 	&__content {
 		position: relative;
-		padding: 10rem 0;
+		padding: 5rem 0;
+
+		@include at-laptop {
+			padding: 10rem 0;
+		}
 	}
 
 	&__title {
 		z-index: 2;
 		max-width: 900px;
+	}
 
-		.first-row,
-		.second-row {
-			display: block;
-			padding-bottom: 0.8rem;
-			overflow: hidden;
+	&__char {
+		display: inline-block;
+		padding-bottom: 0.8rem;
+		overflow: hidden;
 
-			span {
-				display: inline-block;
+		span {
+			display: inline-block;
 
-				&.highlight {
-					color: $gray-400;
-				}
+			&.highlight {
+				color: $gray-400;
 			}
 		}
 	}
@@ -63,19 +65,21 @@ $ns: '.hero-section';
 			display: inline-block;
 		}
 
-		&::before {
-			content: '';
-			position: absolute;
-			top: 50%;
-			left: -40px;
-			width: 30px;
-			height: 1px;
-			background-color: $black;
-		}
-
 		> div {
 			display: flex;
 			align-items: center;
+
+			span:first-child {
+				&::before {
+					position: absolute;
+					top: 50%;
+					left: -40px;
+					background-color: $black;
+					width: 30px;
+					height: 1px;
+					content: '';
+				}
+			}
 		}
 
 		svg {

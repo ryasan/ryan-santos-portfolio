@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 import clsx from 'clsx';
-import { usePointerFollower } from '~/context/pointer-follower-context';
+import { usePointerFollower } from '~/context';
 import type { Project } from '~/types';
 
 const ns = 'projects-section';

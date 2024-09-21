@@ -7,7 +7,8 @@ import {
 	useTransform,
 	useInView,
 } from 'framer-motion';
-import { usePointerFollower } from '~/context/pointer-follower-context';
+import { usePointerFollower } from '~/context';
+import { useScreenSize } from '~/hooks';
 
 const ns = 'about-section';
 
@@ -41,11 +42,12 @@ function AboutItem({
 	title: string;
 	description: string;
 }) {
+	const {isMobile} = useScreenSize();
 	const svgRef = useRef<SVGSVGElement>(null);
 	const pathRef = useRef<SVGPathElement>(null);
 	const isInView = useInView(pathRef, { once: true, amount: 0 });
 	const x = useMotionValue(561.5); // Initial value is the center of the SVG
-	const y = useMotionValue(100); // Initial value is the center of the SVG
+	const y = useMotionValue(75); // Initial value is the center of the SVG
 
 	const xSpring = useSpring(x, {
 		stiffness: 500,
@@ -80,7 +82,7 @@ function AboutItem({
 	}
 
 	const d = useTransform([xSpring, ySpring], ([latestX, latestY]) => {
-		return `M0,100 Q${latestX},${latestY} 1120,100`;
+		return `M0,75 Q${latestX},${latestY} 1120,75`;
 	});
 
 	return (

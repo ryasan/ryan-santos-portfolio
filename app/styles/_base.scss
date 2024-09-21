@@ -16,7 +16,6 @@ html {
 body {
 	@include font-style($body-font-style);
 
-	overflow-x: hidden;
 	color: $text-primary-color;
 	font-family: $body-font-family;
 	background-color: $white;

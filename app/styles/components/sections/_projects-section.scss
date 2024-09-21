@@ -11,7 +11,9 @@ $ns: '.projects-section';
 		}
 
 		i {
-			margin-left: 10rem;
+			@include at-tablet {
+				margin-left: 10rem;
+			}
 		}
 	}
 

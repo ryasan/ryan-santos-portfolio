@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { usePointerFollower } from '~/context/pointer-follower-context';
+import { usePointerFollower } from '~/context';
 import SectionLayout from '~/components/section-layout';
 
 const ns = 'site-header';

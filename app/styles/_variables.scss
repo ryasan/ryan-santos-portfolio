@@ -110,42 +110,42 @@ $heading-1-font-style: (
 ) !default;
 $heading-2-font-style: (
 	mobile: (
-		6rem,
+		6.5rem,
+	),
+	laptop: (
+		9rem,
+	),
+) !default;
+$heading-3-font-style: (
+	mobile: (
+		5.5rem,
 	),
 	laptop: (
 		8rem,
 	),
 ) !default;
-$heading-3-font-style: (
-	mobile: (
-		3rem,
-	),
-	laptop: (
-		4rem,
-	),
-) !default;
 $heading-4-font-style: (
 	mobile: (
-		2rem,
+		4.5rem,
 	),
 	laptop: (
-		2.4rem,
+		7rem,
 	),
 ) !default;
 $heading-5-font-style: (
 	mobile: (
-		1.8rem,
+		3.5rem,
 	),
 	laptop: (
-		2rem,
+		6rem,
 	),
 ) !default;
 $heading-6-font-style: (
 	mobile: (
-		1.6rem,
+		2.5rem,
 	),
 	laptop: (
-		1.8rem,
+		5rem,
 	),
 ) !default;
 
