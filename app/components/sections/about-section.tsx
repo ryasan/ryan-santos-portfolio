@@ -82,7 +82,7 @@ function AboutItem({
 	}
 
 	const d = useTransform([xSpring, ySpring], ([latestX, latestY]) => {
-		return `M0,75 Q${latestX},${latestY} 1120,75`;
+		return `M0,75 Q${latestX},${latestY} 950,75`;
 	});
 
 	return (

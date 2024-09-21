@@ -328,7 +328,7 @@ body {
 }
 
 h1 {
-  font-family: "Inter Tight", sans-serif;
+  font-family: "Suisse Intl", sans-serif;
   font-weight: 700;
 }
 @media screen and (min-width: 375px) {
@@ -343,7 +343,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Inter Tight", sans-serif;
+  font-family: "Suisse Intl", sans-serif;
   font-weight: 700;
 }
 @media screen and (min-width: 375px) {
@@ -358,7 +358,7 @@ h2 {
 }
 
 h3 {
-  font-family: "Inter Tight", sans-serif;
+  font-family: "Suisse Intl", sans-serif;
   font-weight: 700;
 }
 @media screen and (min-width: 375px) {
@@ -373,7 +373,7 @@ h3 {
 }
 
 h4 {
-  font-family: "Inter Tight", sans-serif;
+  font-family: "Suisse Intl", sans-serif;
   font-weight: 700;
 }
 @media screen and (min-width: 375px) {
@@ -388,7 +388,7 @@ h4 {
 }
 
 h5 {
-  font-family: "Inter Tight", sans-serif;
+  font-family: "Suisse Intl", sans-serif;
   font-weight: 700;
 }
 @media screen and (min-width: 375px) {
@@ -403,7 +403,7 @@ h5 {
 }
 
 h6 {
-  font-family: "Inter Tight", sans-serif;
+  font-family: "Suisse Intl", sans-serif;
   font-weight: 700;
 }
 @media screen and (min-width: 375px) {
@@ -575,8 +575,26 @@ em {
   src: url("/fonts/Recoleta-Regular.ttf") format("truetype");
   font-family: "Recoleta";
 }
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/SuisseIntl-Regular.ttf") format("truetype");
+  font-family: "Suisse Intl";
+}
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/SuisseIntl-Bold.ttf") format("truetype");
+  font-family: "Suisse Intl";
+}
+@font-face {
+  font-style: italic;
+  font-weight: 700;
+  src: url("/fonts/SuisseIntl-BoldItalic.ttf") format("truetype");
+  font-family: "Suisse Intl";
+}
 .container {
-  max-width: 1200px;
+  max-width: 1360px;
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
@@ -599,7 +617,7 @@ em {
 }
 
 .h1 {
-  font-family: "Inter Tight", sans-serif;
+  font-family: "Suisse Intl", sans-serif;
 }
 @media screen and (min-width: 375px) {
   .h1 {
@@ -613,7 +631,7 @@ em {
 }
 
 .h2 {
-  font-family: "Inter Tight", sans-serif;
+  font-family: "Suisse Intl", sans-serif;
 }
 @media screen and (min-width: 375px) {
   .h2 {
@@ -627,7 +645,7 @@ em {
 }
 
 .h3 {
-  font-family: "Inter Tight", sans-serif;
+  font-family: "Suisse Intl", sans-serif;
 }
 @media screen and (min-width: 375px) {
   .h3 {
@@ -641,7 +659,7 @@ em {
 }
 
 .h4 {
-  font-family: "Inter Tight", sans-serif;
+  font-family: "Suisse Intl", sans-serif;
 }
 @media screen and (min-width: 375px) {
   .h4 {
@@ -655,7 +673,7 @@ em {
 }
 
 .h5 {
-  font-family: "Inter Tight", sans-serif;
+  font-family: "Suisse Intl", sans-serif;
 }
 @media screen and (min-width: 375px) {
   .h5 {
@@ -669,7 +687,7 @@ em {
 }
 
 .h6 {
-  font-family: "Inter Tight", sans-serif;
+  font-family: "Suisse Intl", sans-serif;
 }
 @media screen and (min-width: 375px) {
   .h6 {
@@ -714,6 +732,13 @@ em {
     border-top-left-radius: 3.6rem;
     padding: calc(10rem * 1.5) 0;
   }
+}
+.about-section .container {
+  display: flex;
+  justify-content: end;
+}
+.about-section__content {
+  max-width: 95rem;
 }
 .about-section__items {
   display: flex;
@@ -771,6 +796,7 @@ em {
   background-color: #fff;
   width: 100%;
   height: calc(100vh - 60px);
+  overflow-x: hidden;
   color: #161616;
 }
 .hero-section__inner {
@@ -791,18 +817,45 @@ em {
 }
 .hero-section__title {
   z-index: 2;
-  max-width: 900px;
 }
-.hero-section__char {
+.hero-section__title-line {
+  display: block;
+  overflow-y: hidden;
+}
+.hero-section__title-word {
   display: inline-block;
-  padding-bottom: 0.8rem;
-  overflow: hidden;
+  font-size: 5.8rem;
+  line-height: 1rem;
+  letter-spacing: -0.2rem;
+  text-transform: uppercase;
 }
-.hero-section__char span {
+@media only screen and (min-width: 992px) {
+  .hero-section__title-word {
+    font-size: 10.2rem;
+    line-height: 9.18rem;
+    letter-spacing: -0.4rem;
+  }
+}
+.hero-section__title-word span {
   display: inline-block;
 }
-.hero-section__char span.highlight {
-  color: #ced4da;
+.hero-section__description {
+  z-index: 2;
+  margin-top: 4rem;
+  max-width: 45rem;
+  overflow-y: hidden;
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+  letter-spacing: 0.1rem;
+}
+@media only screen and (min-width: 992px) {
+  .hero-section__description {
+    font-size: 3rem;
+    line-height: 3.4rem;
+  }
+}
+.hero-section__description span {
+  display: inline-block;
 }
 .hero-section__cta {
   z-index: 1;
@@ -1073,18 +1126,18 @@ em {
 }
 
 .site-header {
-  background-color: #fff;
-  color: #161616;
-  height: 60px;
   position: relative;
   z-index: 9996;
+  background-color: #fff;
+  height: 60px;
+  color: #161616;
 }
 .site-header .container-fluid {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
   padding: 0 20px;
+  height: 100%;
 }
 @media only screen and (min-width: 992px) {
   .site-header .container-fluid {
@@ -1095,7 +1148,10 @@ em {
   font-weight: 800;
   font-family: "Inter Tight";
 }
-.site-header__title small:last-child {
+.site-header__letter {
+  display: inline-block;
+}
+.site-header__letter.highlight {
   color: #ced4da;
 }
 .site-header__nav {

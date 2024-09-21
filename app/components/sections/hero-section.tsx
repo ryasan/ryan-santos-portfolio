@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import Button from '~/components/button';
 import Icon from '~/components/icons';
 import { usePointerFollower } from '~/context';
-import { useScreenSize } from '~/hooks';
 
 const ns = 'hero-section';
 
@@ -15,12 +14,10 @@ export default function HeroSection() {
 
 	const rootRef = useRef(null);
 	const { toggleMixBlendMode } = usePointerFollower();
-	const { isMobile } = useScreenSize();
 
-	const DELAY = 0.75;
-	const iCreateWebsites = 'I Create Websites'.split('');
-	const myNameIsRyan = 'My Name Is Ryan.'.split('');
-	const frontendEngineer = 'Frontend Engineer'.split('');
+	const delay = 0.75;
+	const frontendEngineer = 'Frontend  Engineer'.split(' ');
+	const myNameIsRyan = 'Ryan  Santos'.split(' ');
 
 	return (
 		<section
@@ -33,43 +30,66 @@ export default function HeroSection() {
 				<div className="container">
 					<div className={`${ns}__content`}>
 						<h1 className={`${ns}__title`}>
-							<div className={`${ns}__char-list`}>
-								{myNameIsRyan.map((char, index, arr) => (
-									<span className={`${ns}__char`} key={index}>
-										<motion.span
-											className={index >= arr.indexOf('R') ? 'highlight' : ''}
-											initial={{ y: 100 }}
-											animate={{ y: 0 }}
-											transition={{
-												duration: 0.35,
-												delay: DELAY + index * 0.02,
-												ease: 'easeOut',
-											}}
-										>
-											{char === ' ' ? '\u00A0' : char}
-										</motion.span>
-									</span>
-								))}
-							</div>
+							<span className={`${ns}__title-line`}>
+								{myNameIsRyan.map((word, index) =>
+									word === '' ? (
+										' '
+									) : (
+										<span className={`${ns}__title-word`} key={index}>
+											<motion.span
+												initial={{ y: 150 }}
+												animate={{ y: 0 }}
+												transition={{
+													duration: 0.35,
+													// prettier-ignore
+													delay: delay + index * 0.02,
+													ease: 'easeInOut',
+												}}
+											>
+												{word}
+											</motion.span>
+										</span>
+									),
+								)}
+							</span>
 
-							<div className={`${ns}__char-list`}>
-								{frontendEngineer.map((char, index) => (
-									<span className={`${ns}__char`} key={index}>
-										<motion.span
-											initial={{ y: 100 }}
-											animate={{ y: 0 }}
-											transition={{
-												duration: 0.35,
-												delay: DELAY + (myNameIsRyan.length + index) * 0.02,
-												ease: 'easeOut',
-											}}
-										>
-											{char === ' ' ? '\u00A0' : char}
-										</motion.span>
-									</span>
-								))}
-							</div>
+							<span className={`${ns}__title-line`}>
+								{frontendEngineer.map((word, index) =>
+									word === '' ? (
+										' '
+									) : (
+										<span className={`${ns}__title-word`} key={index}>
+											<motion.span
+												initial={{ y: 150 }}
+												animate={{ y: 0 }}
+												transition={{
+													duration: 0.35,
+													delay: delay + (myNameIsRyan.length + index) * 0.02,
+													ease: 'easeInOut',
+												}}
+											>
+												{word}
+											</motion.span>
+										</span>
+									),
+								)}
+							</span>
 						</h1>
+
+						<p className={`${ns}__description`}>
+							<motion.span
+								initial={{ y: 150 }}
+								animate={{ y: 0 }}
+								transition={{
+									duration: 0.35,
+									// prettier-ignore
+									delay: (delay * 1.5) + (myNameIsRyan.length + frontendEngineer.length) * 0.02,
+									ease: 'easeInOut',
+								}}
+							>
+								Building beautiful and accessible web experiences.
+							</motion.span>
+						</p>
 
 						<div className={`${ns}__cta`}>
 							<motion.div
@@ -78,7 +98,7 @@ export default function HeroSection() {
 								transition={{
 									duration: 0.35,
 									// prettier-ignore
-									delay: (DELAY * 1.5) + (myNameIsRyan.length + frontendEngineer.length) * 0.02,
+									delay: (delay * 2) + (myNameIsRyan.length + frontendEngineer.length) * 0.02,
 									ease: 'easeOut',
 								}}
 							>
@@ -100,9 +120,9 @@ export default function HeroSection() {
 					initial={{ opacity: 0, x: 20 }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{
-						duration: 0.75,
+						duration: 0.5,
 						// prettier-ignore
-						delay: (DELAY * 3) + (myNameIsRyan.length + frontendEngineer.length) * 0.02,
+						delay: (delay * 3) + (myNameIsRyan.length + frontendEngineer.length) * 0.02,
 						ease: 'easeOut',
 					}}
 				>

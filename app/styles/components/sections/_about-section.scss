@@ -7,6 +7,15 @@ $ns: '.about-section';
 		@include section-style($white, $black);
 	}
 
+	.container {
+		display: flex;
+		justify-content: end;
+	}
+
+	&__content {
+		max-width: 95rem;
+	}
+
 	&__items {
 		display: flex;
 		flex-direction: column;

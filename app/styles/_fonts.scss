@@ -18,6 +18,11 @@ $inter-tight-italic-src: font-src('Inter-Tight-Italic');
 // Recoleta Font
 $recoleta-reg-src: font-src('Recoleta-Regular');
 
+// Suisse Intl Font
+$suisse-intl-reg-src: font-src('SuisseIntl-Regular');
+$suisse-intl-bold-src: font-src('SuisseIntl-Bold');
+$suisse-intl-bold-italic-src: font-src('SuisseIntl-BoldItalic');
+
 @at-root {
 	// Matter Font
 	@include font-face(
@@ -161,5 +166,25 @@ $recoleta-reg-src: font-src('Recoleta-Regular');
 		$recoleta-reg-src,
 		400,
 		normal
+	);
+
+	// Suisse Intl Font
+	@include font-face(
+		'Suisse Intl',
+		$suisse-intl-reg-src,
+		400,
+		normal
+	);
+	@include font-face(
+		'Suisse Intl',
+		$suisse-intl-bold-src,
+		700,
+		normal
+	);
+	@include font-face(
+		'Suisse Intl',
+		$suisse-intl-bold-italic-src,
+		700,
+		italic
 	);
 }

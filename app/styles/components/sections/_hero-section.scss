@@ -6,6 +6,7 @@ $ns: '.hero-section';
 	background-color: $white;
 	width: 100%;
 	height: calc(100vh - #{$site-header-height});
+	overflow-x: hidden;
 	color: $black;
 
 	&__inner {
@@ -28,20 +29,47 @@ $ns: '.hero-section';
 
 	&__title {
 		z-index: 2;
-		max-width: 900px;
+
+		&-line {
+			display: block;
+			overflow-y: hidden;
+		}
+
+		&-word {
+			display: inline-block;
+			font-size: 5.8rem;
+			line-height: 1rem;
+			letter-spacing: -0.2rem;
+			text-transform: uppercase;
+
+			@include at-laptop {
+				font-size: 10.2rem;
+				line-height: 9.18rem;
+				letter-spacing: -0.4rem;
+			}
+
+			span {
+				display: inline-block;
+			}
+		}
 	}
 
-	&__char {
-		display: inline-block;
-		padding-bottom: 0.8rem;
-		overflow: hidden;
+	&__description {
+		z-index: 2;
+		margin-top: 4rem;
+		max-width: 45rem;
+		overflow-y: hidden;
+		font-size: 1.8rem;
+		line-height: 2.6rem;
+		letter-spacing: 0.1rem;
+
+		@include at-laptop {
+			font-size: 3rem;
+			line-height: 3.4rem;
+		}
 
 		span {
 			display: inline-block;
-
-			&.highlight {
-				color: $gray-400;
-			}
 		}
 	}
 

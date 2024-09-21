@@ -1,24 +1,12 @@
 # Todo
 
-## Buttons
-
+* [ ] Split imports
+* [ ] Add parallax
 * [ ] Add focus state to buttons
 * [ ] Add active state to buttons
 * [ ] Add disabled state to buttons
-
-## Images
-
 * [ ] Add placeholder loading state to images
-
-## Project Cards
-
 * [ ] Add project links to cards
-
-## Navigation
-
 * [x] Add locomotive scroll
-* [ ] Add scroll indicator on top hero
-
-## General
-
-* [ ] Split imports.
+* [x] Add scroll indicator on top hero
+* [ ] Remove unused fonts

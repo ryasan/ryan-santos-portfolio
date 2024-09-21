@@ -51,7 +51,7 @@ $widescreen-down: 'max-width: calc(#{map-get($breakpoints, widescreen)} - 1px)';
 
 /* Spacing */
 
-$max-width: 1200px;
+$max-width: 1360px;
 $site-header-height: 60px;
 
 /* Font Families */
@@ -59,8 +59,9 @@ $site-header-height: 60px;
 $matter: 'Matter';
 $recoleta: 'Recoleta';
 $inter-tight: 'Inter Tight';
+$suisse-intl: 'Suisse Intl';
 $body-font-family: $inter-tight, sans-serif;
-$heading-font-family: $inter-tight, sans-serif;
+$heading-font-family: $suisse-intl, sans-serif;
 
 /* Default Breakpoints For Typography */
 

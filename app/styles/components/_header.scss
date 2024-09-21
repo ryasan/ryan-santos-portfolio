@@ -1,18 +1,18 @@
 $ns: '.site-header';
 
 #{$ns} {
-	background-color: $white;
-	color: $black;
-	height: $site-header-height;
 	position: relative;
 	z-index: $z-index-header;
+	background-color: $white;
+	height: $site-header-height;
+	color: $black;
 
 	.container-fluid {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		height: 100%;
 		padding: 0 20px;
+		height: 100%;
 
 		@include at-laptop {
 			padding: 0 40px;
@@ -22,8 +22,12 @@ $ns: '.site-header';
 	&__title {
 		font-weight: 800;
 		font-family: $inter-tight;
+	}
 
-		small:last-child {
+	&__letter {
+		display: inline-block;
+
+		&.highlight {
 			color: $gray-400;
 		}
 	}
