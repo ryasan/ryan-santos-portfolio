@@ -1,0 +1,48 @@
+$ns: '.parallax-item';
+
+#{$ns} {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+
+	@include at-laptop {
+		display: block;
+	}
+
+	&__anchor {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		transform: translateY(-50%);
+		width: 0;
+		height: 0;
+	}
+
+	&__content {
+		pointer-events: auto;
+		position: absolute;
+	}
+
+	&--anchor-left {
+		#{$ns}__content {
+			left: 0;
+		}
+	}
+
+	&--anchor-right {
+		#{$ns}__content {
+			right: 0;
+		}
+	}
+
+	&--anchor-center {
+		#{$ns}__content {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+}

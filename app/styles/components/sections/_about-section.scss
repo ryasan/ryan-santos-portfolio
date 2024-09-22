@@ -5,15 +5,23 @@ $ns: '.about-section';
 
 	&__inner {
 		@include section-style($white, $black);
-	}
 
-	.container {
-		display: flex;
-		justify-content: end;
+		padding: 0 !important;
 	}
 
 	&__content {
-		max-width: 95rem;
+		display: flex;
+		justify-content: end;
+		position: relative;
+
+		&-inner {
+			padding: 10rem 0;
+			max-width: 95rem;
+
+			@include at-laptop {
+				padding: 15rem 0;
+			}
+		}
 	}
 
 	&__items {
@@ -43,8 +51,8 @@ $ns: '.about-section';
 		max-width: 800px;
 
 		@include at-laptop {
-			grid-template-columns: 300px 4fr;
 			display: grid;
+			grid-template-columns: 300px 4fr;
 		}
 	}
 

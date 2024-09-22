@@ -725,6 +725,7 @@ em {
   min-height: 100vh;
   overflow-x: hidden;
   color: #161616;
+  padding: 0 !important;
 }
 @media only screen and (min-width: 768px) {
   .about-section__inner {
@@ -733,12 +734,19 @@ em {
     padding: calc(10rem * 1.5) 0;
   }
 }
-.about-section .container {
+.about-section__content {
   display: flex;
   justify-content: end;
+  position: relative;
 }
-.about-section__content {
+.about-section__content-inner {
+  padding: 10rem 0;
   max-width: 95rem;
+}
+@media only screen and (min-width: 992px) {
+  .about-section__content-inner {
+    padding: 15rem 0;
+  }
 }
 .about-section__items {
   display: flex;
@@ -764,8 +772,8 @@ em {
 }
 @media only screen and (min-width: 992px) {
   .about-section__item-text {
-    grid-template-columns: 300px 4fr;
     display: grid;
+    grid-template-columns: 300px 4fr;
   }
 }
 .about-section__item-description {
@@ -946,6 +954,7 @@ em {
   min-height: 100vh;
   overflow-x: hidden;
   color: #fff;
+  position: relative;
 }
 @media only screen and (min-width: 768px) {
   .projects-section__inner {
@@ -953,6 +962,9 @@ em {
     border-top-left-radius: 3.6rem;
     padding: calc(10rem * 1.5) 0;
   }
+}
+.projects-section__content {
+  position: relative;
 }
 .projects-section__title span {
   display: block;
@@ -1021,6 +1033,9 @@ em {
 }
 .projects-section__project-content small {
   font-weight: 300;
+}
+.projects-section__parallax-item .button {
+  border-color: transparent;
 }
 
 /* Components */
@@ -1167,6 +1182,43 @@ em {
   .site-header__menu-text {
     display: flex;
   }
+}
+
+.parallax-item {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+@media only screen and (min-width: 992px) {
+  .parallax-item {
+    display: block;
+  }
+}
+.parallax-item__anchor {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+}
+.parallax-item__content {
+  pointer-events: auto;
+  position: absolute;
+}
+.parallax-item--anchor-left .parallax-item__content {
+  left: 0;
+}
+.parallax-item--anchor-right .parallax-item__content {
+  right: 0;
+}
+.parallax-item--anchor-center .parallax-item__content {
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .parallax-layout {

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import {
 	Links,
 	Meta,
@@ -15,6 +15,7 @@ import ClientOnly from '~/components/client-only';
 import Header from '~/components/header';
 import PointerFollower from '~/components/pointer-follower';
 import Sidebar from '~/components/sidebar';
+import LocomotiveScrollProvider from '~/context/locomotive-scroll-context';
 
 export const links: LinksFunction = () => {
 	return [{ rel: 'stylesheet', href: mainStyles }];
@@ -22,7 +23,6 @@ export const links: LinksFunction = () => {
 
 export default function App() {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
-	const scrollContainerRef = useRef<HTMLElement>(null);
 
 	function toggleSidebar(state: boolean) {
 		if (state === true || state === false) {
@@ -31,33 +31,6 @@ export default function App() {
 			setSidebarOpen(!sidebarOpen);
 		}
 	}
-
-	useEffect(() => {
-		// Defer Locomotive Scroll initialization to the end of the event loop
-		const timeoutId = setTimeout(() => {
-			async function initializeLocomotiveScroll() {
-				const LocomotiveScroll = (await import('locomotive-scroll')).default;
-
-				const scroll = new LocomotiveScroll({
-					el: scrollContainerRef.current!,
-					smooth: true,
-					direction: 'vertical',
-					tablet: {
-						breakpoint: 0,
-					},
-				});
-				return scroll;
-			}
-
-			const scroll = initializeLocomotiveScroll();
-
-			return () => {
-				scroll.then((s) => s.destroy());
-			};
-		}, 0);
-
-		return () => clearTimeout(timeoutId);
-	}, []);
 
 	return (
 		<html lang="en">
@@ -70,18 +43,20 @@ export default function App() {
 
 			<body>
 				<ClientOnly>
-					<PointerFollowerProvider>
-						<main ref={scrollContainerRef} data-scroll-container>
-							<Header />
-							<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-							<Outlet />
-							<BurgerMenu
-								sidebarOpen={sidebarOpen}
-								toggleSidebar={toggleSidebar}
-							/>
-							<PointerFollower />
-						</main>
-					</PointerFollowerProvider>
+					<LocomotiveScrollProvider>
+						<PointerFollowerProvider>
+							<main id="scroll-container" data-scroll-container>
+								<Header />
+								<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+								<Outlet />
+								<BurgerMenu
+									sidebarOpen={sidebarOpen}
+									toggleSidebar={toggleSidebar}
+								/>
+								<PointerFollower />
+							</main>
+						</PointerFollowerProvider>
+					</LocomotiveScrollProvider>
 				</ClientOnly>
 				<ScrollRestoration />
 				<Scripts />

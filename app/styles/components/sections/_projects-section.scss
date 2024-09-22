@@ -3,6 +3,12 @@ $ns: '.projects-section';
 #{$ns} {
 	&__inner {
 		@include section-style($black, $white);
+
+		position: relative;
+	}
+
+	&__content {
+		position: relative;
 	}
 
 	&__title {
@@ -85,6 +91,12 @@ $ns: '.projects-section';
 			small {
 				font-weight: 300;
 			}
+		}
+	}
+
+	&__parallax-item {
+		.button {
+			border-color: transparent;
 		}
 	}
 }

@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 import clsx from 'clsx';
+import ParallaxItem from '~/components/parallax-item';
+import Button from '~/components/button';
 import { usePointerFollower } from '~/context';
 import type { Project } from '~/types';
 
@@ -98,6 +100,18 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 								))}
 							</div>
 						</div>
+
+						<ParallaxItem
+							className={`${ns}__parallax-item`}
+							anchor="right"
+							initialY={500}
+						>
+							<div className={`${ns}__cta`}>
+								<Button as="a" href="/projects" icon="arrow-right">
+									View Projects
+								</Button>
+							</div>
+						</ParallaxItem>
 					</div>
 				</div>
 			</div>

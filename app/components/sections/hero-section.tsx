@@ -16,8 +16,8 @@ export default function HeroSection() {
 	const { toggleMixBlendMode } = usePointerFollower();
 
 	const delay = 0.75;
-	const frontendEngineer = 'Frontend  Engineer'.split(' ');
-	const myNameIsRyan = 'Ryan  Santos'.split(' ');
+	const textA = 'Ryan  Santos'.split(' ');
+	const textB = 'Frontend  Engineer'.split(' ');
 
 	return (
 		<section
@@ -31,7 +31,7 @@ export default function HeroSection() {
 					<div className={`${ns}__content`}>
 						<h1 className={`${ns}__title`}>
 							<span className={`${ns}__title-line`}>
-								{myNameIsRyan.map((word, index) =>
+								{textA.map((word, index) =>
 									word === '' ? (
 										' '
 									) : (
@@ -54,7 +54,7 @@ export default function HeroSection() {
 							</span>
 
 							<span className={`${ns}__title-line`}>
-								{frontendEngineer.map((word, index) =>
+								{textB.map((word, index) =>
 									word === '' ? (
 										' '
 									) : (
@@ -64,7 +64,7 @@ export default function HeroSection() {
 												animate={{ y: 0 }}
 												transition={{
 													duration: 0.35,
-													delay: delay + (myNameIsRyan.length + index) * 0.02,
+													delay: delay + (textA.length + index) * 0.02,
 													ease: 'easeInOut',
 												}}
 											>
@@ -83,7 +83,7 @@ export default function HeroSection() {
 								transition={{
 									duration: 0.35,
 									// prettier-ignore
-									delay: (delay * 1.5) + (myNameIsRyan.length + frontendEngineer.length) * 0.02,
+									delay: (delay * 1.5) + (textA.length + textB.length) * 0.02,
 									ease: 'easeInOut',
 								}}
 							>
@@ -98,7 +98,7 @@ export default function HeroSection() {
 								transition={{
 									duration: 0.35,
 									// prettier-ignore
-									delay: (delay * 2) + (myNameIsRyan.length + frontendEngineer.length) * 0.02,
+									delay: (delay * 2) + (textA.length + textB.length) * 0.02,
 									ease: 'easeOut',
 								}}
 							>
@@ -122,7 +122,7 @@ export default function HeroSection() {
 					transition={{
 						duration: 0.5,
 						// prettier-ignore
-						delay: (delay * 3) + (myNameIsRyan.length + frontendEngineer.length) * 0.02,
+						delay: (delay * 3) + (textA.length + textB.length) * 0.02,
 						ease: 'easeOut',
 					}}
 				>

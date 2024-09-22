@@ -7,31 +7,51 @@ import {
 	useTransform,
 	useInView,
 } from 'framer-motion';
+import ParallaxItem from '~/components/parallax-item';
 import { usePointerFollower } from '~/context';
-import { useScreenSize } from '~/hooks';
 
 const ns = 'about-section';
 
 const aboutItems = [
+	// {
+	// 	title: 'Development',
+	// 	description:
+	// 		'I like to code things from scratch, and enjoy bringing ideas to life in the browser.',
+	// },
+	// {
+	// 	title: 'Design',
+	// 	description:
+	// 		'I value simple content structure, clean design patterns, and thoughtful interactions.',
+	// },
+	// {
+	// 	title: 'E-commerce',
+	// 	description:
+	// 		'I have experience working with e-commerce platforms like Shopify and Elastic Path.',
+	// },
+	// {
+	// 	title: 'Content Management',
+	// 	description:
+	// 		'I have experience working with content management systems like WordPress and Contentful.',
+	// },
 	{
-		title: 'Development',
+		title: 'Lorem Ipsum',
 		description:
-			'I like to code things from scratch, and enjoy bringing ideas to life in the browser.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus.',
 	},
 	{
-		title: 'Design',
+		title: 'Lorem Ipsum',
 		description:
-			'I value simple content structure, clean design patterns, and thoughtful interactions.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus.',
 	},
 	{
-		title: 'E-commerce',
+		title: 'Lorem Ipsum',
 		description:
-			'I have experience working with e-commerce platforms like Shopify and Elastic Path.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus.',
 	},
 	{
-		title: 'Content Management',
+		title: 'Lorem Ipsum',
 		description:
-			'I have experience working with content management systems like WordPress and Contentful.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus.',
 	},
 ];
 
@@ -42,7 +62,6 @@ function AboutItem({
 	title: string;
 	description: string;
 }) {
-	const {isMobile} = useScreenSize();
 	const svgRef = useRef<SVGSVGElement>(null);
 	const pathRef = useRef<SVGPathElement>(null);
 	const isInView = useInView(pathRef, { once: true, amount: 0 });
@@ -125,16 +144,22 @@ export default function AboutSection() {
 			<div className={`${ns}__inner`}>
 				<div className="container">
 					<div className={`${ns}__content`}>
-						<h2 className={`${ns}__title h1`}>
-							<div>
-								What <i>I Do</i>
+						<div className={`${ns}__content-inner`}>
+							<h2 className={`${ns}__title h1`}>
+								<div>
+									What <i>I Do</i>
+								</div>
+							</h2>
+							<div className={`${ns}__items`}>
+								{aboutItems.map((item, index) => (
+									<AboutItem key={index} {...item} />
+								))}
 							</div>
-						</h2>
-						<div className={`${ns}__items`}>
-							{aboutItems.map((item, index) => (
-								<AboutItem key={index} {...item} />
-							))}
 						</div>
+
+						<ParallaxItem anchor="left" initialY={450}>
+							<h5>#003</h5>
+						</ParallaxItem>
 					</div>
 				</div>
 			</div>

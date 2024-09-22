@@ -18,7 +18,7 @@ const transformVariants: Variants = {
 const eclipseVariants: Variants = {
 	hidden: {
 		borderRadius: '50% 50% 0 0',
-		y: '100%',
+		y: 'calc(100% + 1px)',
 	},
 	visible: {
 		borderRadius: '0%',
