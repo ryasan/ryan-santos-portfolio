@@ -104,7 +104,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 						<ParallaxItem
 							className={`${ns}__parallax-item`}
 							anchor="right"
-							initialY={500}
+							speed="slow"
 						>
 							<div className={`${ns}__cta`}>
 								<Button as="a" href="/projects" icon="arrow-right">

@@ -10,6 +10,7 @@ type ParallaxItemProps = {
 	children: React.ReactNode;
 	className?: string;
 	initialY?: number;
+	speed?: 'slow' | 'medium' | 'fast';
 };
 
 export default function ParallaxItem({
@@ -17,6 +18,7 @@ export default function ParallaxItem({
 	children,
 	className,
 	initialY = 300,
+	speed = 'medium',
 }: ParallaxItemProps) {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
@@ -38,10 +40,12 @@ export default function ParallaxItem({
 
 			if (anchorInView) {
 				const scrollDistance = window.innerHeight - anchorTop;
-				setMotionY(initialY - (scrollDistance / initialY) * initialY);
+				const speedMultiplier = speed === 'slow' ? 0.5 : speed === 'fast' ? 2 : 1;
+				// setMotionY(initialY - (scrollDistance / initialY) * initialY);
+				setMotionY(initialY - (scrollDistance / initialY) * initialY * speedMultiplier);
 			}
 		});
-	}, [anchorInView, initialY, scroll]);
+	}, [anchorInView, initialY, scroll, speed]);
 
 	return (
 		<div className={rootClassName}>

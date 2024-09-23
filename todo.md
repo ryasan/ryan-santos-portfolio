@@ -10,3 +10,4 @@
 * [x] Add locomotive scroll
 * [x] Add scroll indicator on top hero
 * [ ] Remove unused fonts
+* [ ] Fix initial load scroll bug

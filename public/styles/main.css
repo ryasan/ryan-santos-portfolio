@@ -265,7 +265,7 @@ html.has-scroll-dragging {
 /* stylelint-enable */
 /* Overrides */
 /* stylelint-disable selector-class-pattern */
-/* Locomotive Scrollbar */
+/* Locomotive Scroll */
 .c-scrollbar {
   transform: none !important;
   transition: none !important;
@@ -723,7 +723,7 @@ em {
   padding: 10rem 0;
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
   color: #161616;
   padding: 0 !important;
 }
@@ -786,7 +786,7 @@ em {
   padding: 10rem 0;
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
   color: #fff;
   border-radius: 0 !important;
 }
@@ -952,7 +952,7 @@ em {
   padding: 10rem 0;
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
   color: #fff;
   position: relative;
 }

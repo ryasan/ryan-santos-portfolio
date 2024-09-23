@@ -127,7 +127,7 @@
 	padding: $padding 0;
 	width: 100%;
 	min-height: 100vh;
-	overflow-x: hidden;
+	overflow: hidden;
 	color: $color;
 
 	@include at-tablet {
