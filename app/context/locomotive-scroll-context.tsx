@@ -60,9 +60,11 @@ export default function LocomotiveScrollProvider({
 			});
 
 			return () => {
-				_scroll.then((s) => s.destroy());
+				_scroll.then((s) => {
+					s.destroy()
+				});
 			};
-		}, 0);
+		}, 1000);
 
 		return () => clearTimeout(timeoutId);
 	}, []);

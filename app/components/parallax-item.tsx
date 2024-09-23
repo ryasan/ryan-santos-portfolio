@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import clsx from 'clsx';
+import throttle from 'lodash/throttle';
 import { useLocomotiveScroll } from '~/context/locomotive-scroll-context';
 
 const ns = 'parallax-item';
@@ -11,6 +12,7 @@ type ParallaxItemProps = {
 	className?: string;
 	initialY?: number;
 	speed?: 'slow' | 'medium' | 'fast';
+	xOffset?: number;
 };
 
 export default function ParallaxItem({
@@ -33,19 +35,31 @@ export default function ParallaxItem({
 	const anchorInView = useInView(anchorRef);
 	const contentRefHeight = contentRef.current?.clientHeight || 0;
 
-	useEffect(() => {
-		scroll?.on('scroll', () => {
+	const handleScroll = useCallback(
+		throttle(() => {
+			console.log('scrolling');
 			const anchorTop = anchorRef.current?.getBoundingClientRect().top || 0;
 			const anchorInView = anchorTop < window.innerHeight && anchorTop > 0;
 
 			if (anchorInView) {
 				const scrollDistance = window.innerHeight - anchorTop;
-				const speedMultiplier = speed === 'slow' ? 0.5 : speed === 'fast' ? 2 : 1;
-				// setMotionY(initialY - (scrollDistance / initialY) * initialY);
-				setMotionY(initialY - (scrollDistance / initialY) * initialY * speedMultiplier);
+				const speedMultiplier =
+					speed === 'slow' ? 0.5 : speed === 'fast' ? 2 : 1;
+				setMotionY(
+					initialY - (scrollDistance / initialY) * initialY * speedMultiplier,
+				);
 			}
-		});
-	}, [anchorInView, initialY, scroll, speed]);
+		}, 25),
+		[anchorInView, initialY, speed],
+	);
+
+	useEffect(() => {
+		scroll?.on('scroll', handleScroll);
+
+		return () => {
+			scroll?.update();
+		};
+	}, [handleScroll, scroll]);
 
 	return (
 		<div className={rootClassName}>

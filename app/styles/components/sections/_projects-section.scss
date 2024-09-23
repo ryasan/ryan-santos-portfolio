@@ -1,6 +1,8 @@
 $ns: '.projects-section';
 
 #{$ns} {
+	background-color: $white;
+
 	&__inner {
 		@include section-style($black, $white);
 
@@ -94,7 +96,12 @@ $ns: '.projects-section';
 		}
 	}
 
-	&__parallax-item {
+	&__cta {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		transform: translateY(-50%);
+
 		.button {
 			border-color: transparent;
 		}

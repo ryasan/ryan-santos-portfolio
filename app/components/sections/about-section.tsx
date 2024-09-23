@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import clsx from 'clsx';
 import {
 	motion,
@@ -7,8 +7,10 @@ import {
 	useTransform,
 	useInView,
 } from 'framer-motion';
+import Button from '~/components/button';
 import ParallaxItem from '~/components/parallax-item';
 import { usePointerFollower } from '~/context';
+import { wait } from '~/utils';
 
 const ns = 'about-section';
 
@@ -132,7 +134,15 @@ export default function AboutSection() {
 		[`${ns}`]: true,
 	});
 
+	const [copyBtnPressed, setCopyBtnPressed] = useState(false);
 	const { toggleMixBlendMode } = usePointerFollower();
+
+	async function handleCopyEmail() {
+		setCopyBtnPressed(true);
+		await navigator.clipboard.writeText('rysantos86@gmail.com');
+		await wait(2500);
+		setCopyBtnPressed(false);
+	}
 
 	return (
 		<section
@@ -157,9 +167,19 @@ export default function AboutSection() {
 							</div>
 						</div>
 
-						<ParallaxItem anchor="left" initialY={450}>
-							<h5>#003</h5>
-						</ParallaxItem>
+						<div className={`${ns}__cta-container`}>
+							<h5 className={`${ns}__cta-title`}>#003</h5>
+							<div className={`${ns}__cta`}>
+								<Button as="a" href="/">
+									Dowload CV
+								</Button>
+							</div>
+							<div className={`${ns}__cta`}>
+								<Button href="/" onClick={handleCopyEmail}>
+									{copyBtnPressed ? 'Copied!' : 'Copy Email'}
+								</Button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

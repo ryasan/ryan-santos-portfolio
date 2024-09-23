@@ -9,7 +9,7 @@ $ns: '.parallax-item';
 	height: 100%;
 	pointer-events: none;
 
-	@include at-laptop {
+	@include at-desktop {
 		display: block;
 	}
 

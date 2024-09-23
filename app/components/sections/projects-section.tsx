@@ -8,24 +8,22 @@ import type { Project } from '~/types';
 
 const ns = 'projects-section';
 
-type ProjectsSectionProps = {
-	projects: Project[];
+type ProjectCardProps = {
+	project: Project;
+	onMouseEnter(): void;
+	onMouseLeave(): void;
 };
 
 function ProjectCard({
 	project,
 	onMouseEnter,
 	onMouseLeave,
-}: {
-	project: Project;
-	onMouseEnter(): void;
-	onMouseLeave(): void;
-}) {
+}: ProjectCardProps) {
 	const projectCardRef = useRef(null);
 	const isInView = useInView(projectCardRef, { once: true, amount: 0.4 });
 
 	return (
-		// eslint-disable-next-line jsx-a11y/anchor-is-valid
+		// eslint-disable-next-line
 		<a
 			className={`${ns}__project`}
 			ref={projectCardRef}
@@ -47,6 +45,10 @@ function ProjectCard({
 		</a>
 	);
 }
+
+type ProjectsSectionProps = {
+	projects: Project[];
+};
 
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 	const rootClassName = clsx({
@@ -101,17 +103,11 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 							</div>
 						</div>
 
-						<ParallaxItem
-							className={`${ns}__parallax-item`}
-							anchor="right"
-							speed="slow"
-						>
-							<div className={`${ns}__cta`}>
-								<Button as="a" href="/projects" icon="arrow-right">
-									View Projects
-								</Button>
-							</div>
-						</ParallaxItem>
+						<div className={`${ns}__cta`}>
+							<Button as="a" href="/projects" icon="arrow-right">
+								View Projects
+							</Button>
+						</div>
 					</div>
 				</div>
 			</div>
