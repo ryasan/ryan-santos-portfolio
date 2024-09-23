@@ -8,7 +8,6 @@ import {
 	useInView,
 } from 'framer-motion';
 import Button from '~/components/button';
-import ParallaxItem from '~/components/parallax-item';
 import { usePointerFollower } from '~/context';
 import { wait } from '~/utils';
 
@@ -167,7 +166,7 @@ export default function AboutSection() {
 							</div>
 						</div>
 
-						<div className={`${ns}__cta-container`}>
+						<div className={`${ns}__cta-container`} data-scroll data-scroll-speed="3">
 							<h5 className={`${ns}__cta-title`}>#003</h5>
 							<div className={`${ns}__cta`}>
 								<Button as="a" href="/">

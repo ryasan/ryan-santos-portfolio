@@ -62,10 +62,15 @@ $ns: '.about-section';
 	}
 
 	&__cta-container {
+		display: none;
 		position: absolute;
 		top: 50%;
 		left: 0;
 		transform: translateY(-50%);
+
+		@include at-desktop {
+			display: block;
+		}
 	}
 
 	&__cta-title {

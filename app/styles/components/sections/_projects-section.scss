@@ -29,7 +29,7 @@ $ns: '.projects-section';
 		display: grid;
 		grid-template-columns: 1fr;
 		row-gap: 6rem;
-		margin-top: 15rem;
+		margin: 10rem 0;
 
 		@include at-tablet {
 			grid-template-columns: repeat(2, 1fr);
@@ -50,7 +50,7 @@ $ns: '.projects-section';
 
 		&-right {
 			@include at-tablet {
-				margin-top: 30rem;
+				margin-top: 20rem;
 			}
 		}
 	}
@@ -97,10 +97,15 @@ $ns: '.projects-section';
 	}
 
 	&__cta {
+		display: none;
 		position: absolute;
 		top: 50%;
 		right: 0;
 		transform: translateY(-50%);
+
+		@include at-desktop {
+			display: block;
+		}
 
 		.button {
 			border-color: transparent;

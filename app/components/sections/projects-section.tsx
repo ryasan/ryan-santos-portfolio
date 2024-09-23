@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 import clsx from 'clsx';
-import ParallaxItem from '~/components/parallax-item';
 import Button from '~/components/button';
 import { usePointerFollower } from '~/context';
 import type { Project } from '~/types';
@@ -80,7 +79,11 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 						</h2>
 
 						<div className={`${ns}__projects`}>
-							<div className={`${ns}__projects-left`}>
+							<div
+								className={`${ns}__projects-left`}
+								data-scroll
+								data-scroll-speed="1"
+							>
 								{leftProjects.map((project, index) => (
 									<ProjectCard
 										key={index}
@@ -103,8 +106,8 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 							</div>
 						</div>
 
-						<div className={`${ns}__cta`}>
-							<Button as="a" href="/projects" icon="arrow-right">
+						<div className={`${ns}__cta`} data-scroll data-scroll-speed="3">
+							<Button as="a" href="/projects" variant="white">
 								View Projects
 							</Button>
 						</div>

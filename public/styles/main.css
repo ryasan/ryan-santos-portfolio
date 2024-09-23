@@ -781,10 +781,16 @@ em {
   line-height: 1.2;
 }
 .about-section__cta-container {
+  display: none;
   position: absolute;
   top: 50%;
   left: 0;
   transform: translateY(-50%);
+}
+@media only screen and (min-width: 1200px) {
+  .about-section__cta-container {
+    display: block;
+  }
 }
 .about-section__cta-title {
   margin-bottom: 10rem;
@@ -996,7 +1002,7 @@ em {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 6rem;
-  margin-top: 15rem;
+  margin: 10rem 0;
 }
 @media only screen and (min-width: 768px) {
   .projects-section__projects {
@@ -1017,7 +1023,7 @@ em {
 }
 @media only screen and (min-width: 768px) {
   .projects-section__projects-right {
-    margin-top: 30rem;
+    margin-top: 20rem;
   }
 }
 .projects-section__project {
@@ -1053,10 +1059,16 @@ em {
   font-weight: 300;
 }
 .projects-section__cta {
+  display: none;
   position: absolute;
   top: 50%;
   right: 0;
   transform: translateY(-50%);
+}
+@media only screen and (min-width: 1200px) {
+  .projects-section__cta {
+    display: block;
+  }
 }
 .projects-section__cta .button {
   border-color: transparent;
@@ -1108,6 +1120,10 @@ em {
   color: #fff;
   font-size: 2.5rem;
   text-align: center;
+  transition: all 0.5s ease-out;
+}
+.button:hover {
+  border-color: #161616;
 }
 @media only screen and (min-width: 992px) {
   .button {
@@ -1149,6 +1165,22 @@ em {
   font-size: 2rem;
 }
 .button--black {
+  border-color: #161616;
+  background-color: #161616;
+  color: #fff;
+}
+.button--black:hover {
+  border-color: #161616;
+}
+.button--white {
+  border-color: #fff;
+  background-color: #fff;
+  color: #161616;
+}
+.button--white:hover {
+  border-color: #fff;
+}
+.button--white .button__eclipse {
   border-color: #161616;
   background-color: #161616;
   color: #fff;

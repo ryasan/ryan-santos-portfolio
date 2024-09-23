@@ -15,6 +15,11 @@ $ns: '.button';
 	color: $white;
 	font-size: 2.5rem;
 	text-align: center;
+	transition: all 0.5s ease-out;
+
+	&:hover {
+		border-color: $black;
+	}
 
 	@include at-laptop {
 		font-size: 3rem;
@@ -67,6 +72,26 @@ $ns: '.button';
 		border-color: $black;
 		background-color: $black;
 		color: $white;
+
+		&:hover {
+			border-color: $black;
+		}
+	}
+
+	&--white {
+		border-color: $white;
+		background-color: $white;
+		color: $black;
+
+		&:hover {
+			border-color: $white;
+		}
+
+		#{$ns}__eclipse {
+			border-color: $black;
+			background-color: $black;
+			color: $white;
+		}
 	}
 
 	&--outline-black {
