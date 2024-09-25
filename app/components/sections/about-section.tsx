@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import clsx from 'clsx';
 import {
+	frame,
 	motion,
 	useMotionValue,
 	useSpring,
@@ -87,8 +88,10 @@ function AboutItem({
 		const mouseX = event.pageX - window.pageXOffset - rect.left;
 		const mouseY = event.pageY - window.pageYOffset - rect.top;
 
-		x.set(mouseX);
-		y.set(mouseY);
+		frame.read(() => {
+			x.set(mouseX);
+			y.set(mouseY);
+		});
 	}
 
 	function handleMouseLeave() {
@@ -97,8 +100,10 @@ function AboutItem({
 		const mouseX = rect.width / 2;
 		const mouseY = rect.height / 2;
 
-		x.set(mouseX);
-		y.set(mouseY);
+		frame.read(() => {
+			x.set(mouseX);
+			y.set(mouseY);
+		});
 	}
 
 	const d = useTransform([xSpring, ySpring], ([latestX, latestY]) => {
@@ -134,11 +139,11 @@ export default function AboutSection() {
 	});
 
 	const [copyBtnPressed, setCopyBtnPressed] = useState(false);
-	const { toggleMixBlendMode } = usePointerFollower();
+	const { setMixBlendMode } = usePointerFollower();
 
 	async function handleCopyEmail() {
 		setCopyBtnPressed(true);
-		await navigator.clipboard.writeText('rysantos86@gmail.com');
+		await navigator.clipboard.writeText('ryansantos86@gmail.com');
 		await wait(2500);
 		setCopyBtnPressed(false);
 	}
@@ -146,8 +151,8 @@ export default function AboutSection() {
 	return (
 		<section
 			className={rootClassName}
-			onMouseEnter={() => toggleMixBlendMode(true)}
-			onMouseLeave={() => toggleMixBlendMode(false)}
+			onMouseEnter={() => setMixBlendMode(true)}
+			onMouseLeave={() => setMixBlendMode(false)}
 			data-scroll-section
 		>
 			<div className={`${ns}__inner`}>
@@ -166,7 +171,11 @@ export default function AboutSection() {
 							</div>
 						</div>
 
-						<div className={`${ns}__cta-container`} data-scroll data-scroll-speed="3">
+						<div
+							className={`${ns}__cta-container`}
+							data-scroll
+							data-scroll-speed="3"
+						>
 							<h5 className={`${ns}__cta-title`}>#003</h5>
 							<div className={`${ns}__cta`}>
 								<Button as="a" href="/">

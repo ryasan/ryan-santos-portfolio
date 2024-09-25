@@ -6,44 +6,25 @@ import { wait } from '~/utils';
 
 const ns = 'pointer-follower';
 
-type PointerFollowerProps = {
-	mixBlendModeEnabled?: boolean;
-};
-
-export default function PointerFollower({
-	mixBlendModeEnabled,
-}: PointerFollowerProps) {
-	const rootClassName = clsx({
-		[`${ns}`]: true,
-		[`mix-blend-mode`]: mixBlendModeEnabled,
-	});
-
+export default function PointerFollower() {
 	const [isReady, setIsReady] = useState(false);
 	const pointerFollowerRef = useRef<HTMLDivElement>(null);
+
 	const {
-		initFollower,
+		setFollower,
 		xFollower,
 		yFollower,
 		innerText,
 		followerIsOutOfBounds,
 		followerSize,
+		mixBlendModeEnabled,
 	} = usePointerFollower();
 
 	useEffect(() => {
 		if (pointerFollowerRef.current) {
-			initFollower(pointerFollowerRef.current);
+			setFollower(pointerFollowerRef.current);
 		}
-	}, [initFollower]);
-
-	useEffect(() => {
-		const main = document.querySelector('main');
-		const lastChild = main?.lastElementChild;
-
-		// Teleport it to the end of main if it's not already there
-		if (lastChild !== pointerFollowerRef.current) {
-			main?.appendChild(pointerFollowerRef.current!);
-		}
-	}, []);
+	}, [setFollower]);
 
 	useEffect(() => {
 		wait(2500).then(() => {
@@ -51,15 +32,18 @@ export default function PointerFollower({
 		});
 	}, []);
 
-	const width = followerSize === 'sm' ? 10 : 100;
+	const rootClassName = clsx({
+		[`${ns}`]: true,
+		[`${ns}--mix-blend-mode`]: mixBlendModeEnabled,
+	});
 
 	return (
 		<motion.div
 			className={rootClassName}
 			ref={pointerFollowerRef}
 			animate={{
-				width: width,
-				height: width,
+				width: followerSize,
+				height: followerSize,
 				scale: followerIsOutOfBounds ? 0 : 1,
 			}}
 			style={{
@@ -70,8 +54,8 @@ export default function PointerFollower({
 		>
 			<motion.span
 				animate={{
-					scale: followerSize === 'sm' ? 0 : 1,
-					opacity: followerSize === 'sm' ? 0 : 1,
+					scale: followerSize === 10 ? 0 : 1,
+					opacity: followerSize === 10 ? 0 : 1,
 				}}
 			>
 				{innerText}

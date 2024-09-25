@@ -13,7 +13,7 @@ export default function HeroSection() {
 	});
 
 	const rootRef = useRef(null);
-	const { toggleMixBlendMode } = usePointerFollower();
+	const { setMixBlendMode } = usePointerFollower();
 
 	const delay = 0.75;
 	const textA = 'Ryan  Santos'.split(' ');
@@ -23,8 +23,8 @@ export default function HeroSection() {
 		<section
 			className={rootClassName}
 			ref={rootRef}
-			onMouseEnter={() => toggleMixBlendMode(true)}
-			onMouseLeave={() => toggleMixBlendMode(false)}
+			onMouseEnter={() => setMixBlendMode(true)}
+			onMouseLeave={() => setMixBlendMode(false)}
 		>
 			<div className={`${ns}__inner`}>
 				<div className="container">

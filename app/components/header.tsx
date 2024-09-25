@@ -10,7 +10,7 @@ export default function Header() {
 		[`${ns}`]: true,
 	});
 
-	const { toggleMixBlendMode } = usePointerFollower();
+	const { setMixBlendMode } = usePointerFollower();
 
 	const myName = 'LoremIpsum.'.split('');
 
@@ -18,7 +18,7 @@ export default function Header() {
 		<SectionLayout
 			className={rootClassName}
 			as="header"
-			onMouseEnter={() => toggleMixBlendMode(true)}
+			onMouseEnter={() => setMixBlendMode(true)}
 		>
 			<div className="container-fluid">
 				<span className={`${ns}__title`}>

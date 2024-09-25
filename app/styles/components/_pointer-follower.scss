@@ -16,7 +16,7 @@ $ns: '.pointer-follower';
 		display: flex;
 	}
 
-	&.mix-blend-mode {
+	&--mix-blend-mode {
 		mix-blend-mode: difference;
 	}
 }

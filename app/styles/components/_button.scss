@@ -5,6 +5,7 @@ $ns: '.button';
 	position: relative;
 	justify-content: center;
 	align-items: center;
+	transition: all 0.5s ease-out;
 	border: 1px solid $white;
 	border-radius: 9999px;
 	background-color: $black;
@@ -15,15 +16,14 @@ $ns: '.button';
 	color: $white;
 	font-size: 2.5rem;
 	text-align: center;
-	transition: all 0.5s ease-out;
 
 	&:hover {
 		border-color: $black;
 	}
 
 	@include at-laptop {
-		font-size: 3rem;
 		height: 80px;
+		font-size: 3rem;
 	}
 
 	&__content {
@@ -32,9 +32,9 @@ $ns: '.button';
 	}
 
 	&__text {
-		align-items: center;
 		display: flex;
 		justify-content: center;
+		align-items: center;
 		line-height: 2;
 	}
 

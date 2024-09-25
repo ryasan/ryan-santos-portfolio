@@ -11,9 +11,9 @@ type LocomotiveScrollContextType = {
 	scroll: LocomotiveScroll | null;
 };
 
-const LocomotiveScrollContext = createContext<LocomotiveScrollContextType | undefined>(
-	undefined,
-);
+const LocomotiveScrollContext = createContext<
+	LocomotiveScrollContextType | undefined
+>(undefined);
 
 export function useLocomotiveScroll() {
 	const context = useContext(LocomotiveScrollContext);
@@ -36,8 +36,11 @@ export default function LocomotiveScrollProvider({
 		// Defer Locomotive Scroll initialization to the end of the event loop
 		const timeoutId = setTimeout(() => {
 			async function initializeLocomotiveScroll() {
-				const LocomotiveScroll = (await import('locomotive-scroll')).default;
-				const scrollContainer = document.querySelector('#scroll-container') as HTMLElement;
+				const LocomotiveScroll = (await import('locomotive-scroll'))
+					.default;
+				const scrollContainer = document.querySelector(
+					'#scroll-container',
+				) as HTMLElement;
 
 				if (!scrollContainer) {
 					throw new Error('Scroll container not found');
@@ -61,7 +64,7 @@ export default function LocomotiveScrollProvider({
 
 			return () => {
 				_scroll.then((s) => {
-					s.destroy()
+					s.destroy();
 				});
 			};
 		}, 1000);
@@ -75,4 +78,3 @@ export default function LocomotiveScrollProvider({
 		</LocomotiveScrollContext.Provider>
 	);
 }
-
