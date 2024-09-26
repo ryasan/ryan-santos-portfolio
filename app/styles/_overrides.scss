@@ -8,11 +8,21 @@
 }
 
 .c-scrollbar_thumb {
+	opacity: 1;
+	z-index: 9999;
 	mix-blend-mode: difference;
 	background: $white;
-	opacity: 1;
 	width: 5px;
-	z-index: 9999;
+}
+
+/* Mouse Follower */
+
+.mf-cursor {
+	z-index: $z-index-mouse-follower;
+
+	&::before {
+		background: $black;
+	}
 }
 
 /* Pseudo Elements */

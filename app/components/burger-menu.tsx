@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useRef } from 'react';
 import { motion, Variants } from 'framer-motion';
-import { usePointerFollower } from '~/context/pointer-follower-context';
+import { useMouseFollower } from '~/context/mouse-follower-context';
 
 const ns = 'burger-menu';
 
@@ -87,7 +87,16 @@ const BurgerMenu = ({ sidebarOpen, toggleSidebar }: BurgerMenuProps) => {
 	});
 
 	const rootRef = useRef<HTMLButtonElement>(null);
-	const { setStick, removeStick } = usePointerFollower();
+	const { cursor } = useMouseFollower();
+
+	const handleMouseEnter = () => {
+		cursor.setStick(rootRef.current!);
+		cursor.setSkewing(3);
+	}
+
+	const handleMouseLeave = () => {
+		cursor.removeStick();
+	}
 
 	return (
 		<button
@@ -95,8 +104,8 @@ const BurgerMenu = ({ sidebarOpen, toggleSidebar }: BurgerMenuProps) => {
 			ref={rootRef}
 			aria-label={sidebarOpen ? 'Close menu' : 'Open menu'}
 			onClick={() => toggleSidebar(!sidebarOpen)}
-			onMouseEnter={() => setStick(rootRef.current!)}
-			onMouseLeave={() => removeStick(rootRef.current!)}
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
 		>
 			<MenuIcon sidebarOpen={sidebarOpen} />
 		</button>

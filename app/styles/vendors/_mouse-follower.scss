@@ -1,0 +1,154 @@
+/* stylelint-disable */
+
+$mf-color-base: #000 !default;
+$mf-color-text: #fff !default;
+
+.mf-cursor {
+	$root: &;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 250;
+	transition:
+		opacity 0.3s,
+		color 0.4s;
+	contain: layout style size;
+	pointer-events: none;
+	direction: ltr;
+
+	&::before {
+		display: block;
+		position: absolute;
+		top: -24px;
+		left: -24px;
+		transform: scale(0.2);
+		transition:
+			transform 0.25s ease-in-out,
+			opacity 0.1s;
+		border-radius: 50%;
+		background: currentcolor;
+		width: 48px;
+		height: 48px;
+		content: '';
+	}
+
+	&.-inverse {
+		color: invert($mf-color-base);
+	}
+
+	&.-exclusion {
+		@supports (mix-blend-mode: exclusion) {
+			mix-blend-mode: exclusion;
+
+			&::before {
+				background: invert($mf-color-base);
+			}
+		}
+	}
+
+	&.-pointer {
+		&::before {
+			transform: scale(0.15);
+		}
+	}
+
+	&.-text {
+		&::before {
+			transform: scale(1.7);
+			opacity: 0.85;
+		}
+
+		&.-active::before {
+			transform: scale(1.6);
+			transition-duration: 0.2s;
+		}
+	}
+
+	&.-icon {
+		&::before {
+			transform: scale(1.5);
+		}
+
+		&.-active::before {
+			transform: scale(1.4);
+		}
+	}
+
+	&.-hidden {
+		&::before {
+			transform: scale(0);
+		}
+	}
+
+	&-text {
+		display: flex;
+		position: absolute;
+		top: -18px;
+		left: -18px;
+		justify-content: center;
+		align-items: center;
+		transform: scale(0) rotate(10deg);
+		opacity: 0;
+		transition:
+			opacity 0.4s,
+			transform 0.3s;
+		width: 36px;
+		height: 36px;
+		color: $mf-color-text;
+		font-size: 16px;
+		line-height: 20px;
+		text-align: center;
+
+		#{$root}.-text &,
+		#{$root}.-icon & {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+
+	&-media {
+		position: absolute;
+		margin: (-400px * 0.5) 0 0 (-400px * 0.5);
+		width: 400px;
+		height: 400px;
+
+		img,
+		video {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border-radius: 50%;
+
+			@supports (object-fit: cover) {
+				position: static;
+				transform: translateZ(0);
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		&-box {
+			position: relative;
+			transform: scale(0) translateZ(0);
+			opacity: 0;
+			transition:
+				transform 0.35s,
+				opacity 0.2s 0.2s;
+			border-radius: 50%;
+			padding: 1px;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+
+			#{$root}.-media & {
+				transform: scale(0.696);
+				opacity: 1;
+				transition-delay: 0s, 0s;
+				transition-duration: 0.4s, 0.4s;
+			}
+		}
+	}
+}

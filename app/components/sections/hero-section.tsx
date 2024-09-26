@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import Button from '~/components/button';
 import Icon from '~/components/icons';
-import { usePointerFollower } from '~/context';
 
 const ns = 'hero-section';
 
@@ -13,19 +12,13 @@ export default function HeroSection() {
 	});
 
 	const rootRef = useRef(null);
-	const { setMixBlendMode } = usePointerFollower();
 
 	const delay = 0.75;
 	const textA = 'Ryan  Santos'.split(' ');
 	const textB = 'Frontend  Engineer'.split(' ');
 
 	return (
-		<section
-			className={rootClassName}
-			ref={rootRef}
-			onMouseEnter={() => setMixBlendMode(true)}
-			onMouseLeave={() => setMixBlendMode(false)}
-		>
+		<section className={rootClassName} ref={rootRef}>
 			<div className={`${ns}__inner`}>
 				<div className="container">
 					<div className={`${ns}__content`}>
@@ -35,7 +28,10 @@ export default function HeroSection() {
 									word === '' ? (
 										' '
 									) : (
-										<span className={`${ns}__title-word`} key={index}>
+										<span
+											className={`${ns}__title-word`}
+											key={index}
+										>
 											<motion.span
 												initial={{ y: 150 }}
 												animate={{ y: 0 }}
@@ -58,13 +54,19 @@ export default function HeroSection() {
 									word === '' ? (
 										' '
 									) : (
-										<span className={`${ns}__title-word`} key={index}>
+										<span
+											className={`${ns}__title-word`}
+											key={index}
+										>
 											<motion.span
 												initial={{ y: 150 }}
 												animate={{ y: 0 }}
 												transition={{
 													duration: 0.35,
-													delay: delay + (textA.length + index) * 0.02,
+													delay:
+														delay +
+														(textA.length + index) *
+															0.02,
 													ease: 'easeInOut',
 												}}
 											>
@@ -87,7 +89,8 @@ export default function HeroSection() {
 									ease: 'easeInOut',
 								}}
 							>
-								Building beautiful and accessible web experiences.
+								Building beautiful and accessible web
+								experiences.
 							</motion.span>
 						</p>
 

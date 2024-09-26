@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 import clsx from 'clsx';
 import Button from '~/components/button';
-import { usePointerFollower } from '~/context';
 import type { Project } from '~/types';
 
 const ns = 'projects-section';
@@ -54,16 +53,15 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 		[`${ns}`]: true,
 	});
 
-	const { setFollowerText } = usePointerFollower();
 	const leftProjects = projects.filter((_, i) => i % 2 === 0);
 	const rightProjects = projects.filter((_, i) => i % 2 !== 0);
 
 	function handleMouseEnter() {
-		setFollowerText('Explore');
+		// setFollowerText('Explore');
 	}
 
 	function handleMouseLeave() {
-		setFollowerText('');
+		// setFollowerText('');
 	}
 
 	return (

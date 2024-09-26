@@ -152,15 +152,11 @@ $heading-6-font-style: (
 
 /* Stacking Order */
 
-// $header-z-index: 9997;
-// $sidebar-z-index: $header-z-index + 1;
-// $burger-menu-z-index: $sidebar-z-index + 1;
-// $pointer-follower-z-index: $burger-menu-z-index + 1;
-
 $z-index-header: 9996;
 $z-index-sidebar: 9997;
 $z-index-burger-menu: 9998;
 $z-index-pointer-follower: 9999;
+$z-index-mouse-follower: 9999;
 
 /* Base URL */
 

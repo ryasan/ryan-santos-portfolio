@@ -9,7 +9,6 @@ import {
 	useInView,
 } from 'framer-motion';
 import Button from '~/components/button';
-import { usePointerFollower } from '~/context';
 import { wait } from '~/utils';
 
 const ns = 'about-section';
@@ -139,7 +138,6 @@ export default function AboutSection() {
 	});
 
 	const [copyBtnPressed, setCopyBtnPressed] = useState(false);
-	const { setMixBlendMode } = usePointerFollower();
 
 	async function handleCopyEmail() {
 		setCopyBtnPressed(true);
@@ -151,8 +149,6 @@ export default function AboutSection() {
 	return (
 		<section
 			className={rootClassName}
-			onMouseEnter={() => setMixBlendMode(true)}
-			onMouseLeave={() => setMixBlendMode(false)}
 			data-scroll-section
 		>
 			<div className={`${ns}__inner`}>

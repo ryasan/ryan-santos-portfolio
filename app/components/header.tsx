@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { usePointerFollower } from '~/context';
 import SectionLayout from '~/components/section-layout';
 
 const ns = 'site-header';
@@ -10,16 +9,10 @@ export default function Header() {
 		[`${ns}`]: true,
 	});
 
-	const { setMixBlendMode } = usePointerFollower();
-
 	const myName = 'LoremIpsum.'.split('');
 
 	return (
-		<SectionLayout
-			className={rootClassName}
-			as="header"
-			onMouseEnter={() => setMixBlendMode(true)}
-		>
+		<SectionLayout className={rootClassName} as="header">
 			<div className="container-fluid">
 				<span className={`${ns}__title`}>
 					<small>
