@@ -1,18 +1,18 @@
-import clsx from 'clsx';
-import { motion } from 'framer-motion';
-import SectionLayout from '~/components/section-layout';
+import clsx from 'clsx'
+import { motion } from 'framer-motion'
+import SectionLayout from '~/components/section-layout'
 
-const ns = 'site-header';
+const ns = 'site-header'
 
 export default function Header() {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
-	});
+	})
 
-	const myName = 'LoremIpsum.'.split('');
+	const myName = 'LoremIpsum.'.split('')
 
 	return (
-		<SectionLayout className={rootClassName} as="header">
+		<SectionLayout className={rootClassName} as="header" cursorColor="inverse">
 			<div className="container-fluid">
 				<span className={`${ns}__title`}>
 					<small>
@@ -37,11 +37,11 @@ export default function Header() {
 					</small>
 				</span>
 				<nav className={`${ns}__nav`}>
-					<span className={`${ns}__menu-text`}>
+					<span className={`${ns}__nav-text`}>
 						<small>menu</small>
 					</span>
 				</nav>
 			</div>
 		</SectionLayout>
-	);
+	)
 }

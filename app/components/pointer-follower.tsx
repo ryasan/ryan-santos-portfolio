@@ -1,41 +1,41 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import clsx from 'clsx';
-import { usePointerFollower } from '~/context';
-import { wait } from '~/utils';
+import clsx from 'clsx'
+import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { usePointerFollower } from '~/context/pointer-follower-context'
+import { wait } from '~/utils'
 
-const ns = 'pointer-follower';
+const ns = 'pointer-follower'
 
 export default function PointerFollower() {
-	const [isReady, setIsReady] = useState(false);
-	const pointerFollowerRef = useRef<HTMLDivElement>(null);
+	const [isReady, setIsReady] = useState(false)
+	const pointerFollowerRef = useRef<HTMLDivElement>(null)
 
 	const {
+		followerSize,
+		innerText,
+		isMixBlendMode,
+		isOutOfBounds,
 		setFollower,
 		xFollower,
 		yFollower,
-		innerText,
-		followerIsOutOfBounds,
-		followerSize,
-		mixBlendModeEnabled,
-	} = usePointerFollower();
+	} = usePointerFollower()
 
 	useEffect(() => {
 		if (pointerFollowerRef.current) {
-			setFollower(pointerFollowerRef.current);
+			setFollower(pointerFollowerRef.current)
 		}
-	}, [setFollower]);
+	}, [setFollower])
 
 	useEffect(() => {
-		wait(2500).then(() => {
-			setIsReady(true);
-		});
-	}, []);
+		wait(2000)
+			.then(() => setIsReady(true))
+			.catch(() => {})
+	}, [])
 
 	const rootClassName = clsx({
 		[`${ns}`]: true,
-		[`${ns}--mix-blend-mode`]: mixBlendModeEnabled,
-	});
+		[`${ns}--mix-blend-mode`]: isMixBlendMode,
+	})
 
 	return (
 		<motion.div
@@ -44,7 +44,7 @@ export default function PointerFollower() {
 			animate={{
 				width: followerSize,
 				height: followerSize,
-				scale: followerIsOutOfBounds ? 0 : 1,
+				scale: isOutOfBounds ? 0 : 1,
 			}}
 			style={{
 				x: xFollower,
@@ -54,12 +54,12 @@ export default function PointerFollower() {
 		>
 			<motion.span
 				animate={{
-					scale: followerSize === 10 ? 0 : 1,
-					opacity: followerSize === 10 ? 0 : 1,
+					scale: innerText === '' ? 0 : 1,
+					opacity: innerText === '' ? 0 : 1,
 				}}
 			>
 				{innerText}
 			</motion.span>
 		</motion.div>
-	);
+	)
 }

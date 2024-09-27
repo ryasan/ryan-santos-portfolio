@@ -1,47 +1,48 @@
 import {
-	createContext,
-	useContext,
-	ReactNode,
-	useEffect,
-	useReducer,
-	useState,
-} from 'react';
-import {
 	useMotionValue,
 	useSpring,
 	frame,
 	type MotionValue,
 	type Spring,
-} from 'framer-motion';
+} from 'framer-motion'
+import {
+	createContext,
+	useContext,
+	useEffect,
+	useReducer,
+	useState,
+	type ReactNode,
+} from 'react'
 
 /**
  * State types.
  */
 
 type PointerFollowerState = {
-	xFollower?: MotionValue<number>;
-	xPointer?: MotionValue<number>;
-	yFollower?: MotionValue<number>;
-	yPointer?: MotionValue<number>;
-	innerText: string;
-	followerElement?: HTMLElement;
-	followerIsOutOfBounds: boolean;
-	followerSize: 10 | 100;
-	isStuckToElement?: boolean;
-	mixBlendModeEnabled: boolean;
-};
+	xFollower?: MotionValue<number>
+	xPointer?: MotionValue<number>
+	yFollower?: MotionValue<number>
+	yPointer?: MotionValue<number>
+	innerText: string
+	followerElement?: HTMLElement
+	isOutOfBounds: boolean
+	followerSize: number
+	isStuckToElement?: boolean
+	isMixBlendMode: boolean
+}
 
 /**
  * Action types.
  */
 
 type PointerFollowerActions = {
-	setFollower(element: HTMLElement): void;
-	setFollowerText(text: string): void;
-	setMixBlendMode(bool?: boolean): void;
-	setStick(element: HTMLElement): void;
-	removeStick(element: HTMLElement): void;
-};
+	setFollower(element: HTMLElement): void
+	setFollowerSize(size?: number): { reset: () => void }
+	setFollowerText(text: string): void
+	setMixBlendMode(bool?: boolean): void
+	setStick(element: HTMLElement): void
+	removeStick(element: HTMLElement): void
+}
 
 /**
  * Create a context.
@@ -49,20 +50,20 @@ type PointerFollowerActions = {
 
 const PointerFollowerContext = createContext<
 	(PointerFollowerState & PointerFollowerActions) | undefined
->(undefined);
+>(undefined)
 
 /**
  * Custom hook.
  */
 
 export function usePointerFollower() {
-	const context = useContext(PointerFollowerContext);
+	const context = useContext(PointerFollowerContext)
 	if (context === undefined) {
 		throw new Error(
 			'usePointerFollower must be used within a PointerFollowerProvider',
-		);
+		)
 	}
-	return context;
+	return context
 }
 
 /**
@@ -72,21 +73,22 @@ export function usePointerFollower() {
 const initialState: PointerFollowerState = {
 	innerText: '',
 	followerSize: 10,
-	followerIsOutOfBounds: false,
+	isOutOfBounds: false,
 	isStuckToElement: false,
-	mixBlendModeEnabled: false,
-};
+	isMixBlendMode: false,
+}
 
 /**
  * Action types for the pointer follower.
  */
 
 type PointerFollowerAction =
-	| { type: 'SET_FOLLOWER_ELEMENT'; payload: HTMLElement }
+	| { type: 'SET_HTML_ELEMENT'; payload: HTMLElement }
+	| { type: 'SET_SIZE'; payload: number }
 	| { type: 'SET_TEXT'; payload: string }
 	| { type: 'SET_OUT_OF_BOUNDS'; payload: boolean }
-	| { type: 'SET_IS_STUCK_TO_ELEMENT'; payload: boolean }
-	| { type: 'SET_MIX_BLEND_MODE'; payload: boolean };
+	| { type: 'SET_STUCK_TO_ELEMENT'; payload: boolean }
+	| { type: 'SET_MIX_BLEND_MODE'; payload: boolean }
 
 /**
  * State reducer.
@@ -97,35 +99,40 @@ function pointerFollowerReducer(
 	action: PointerFollowerAction,
 ): PointerFollowerState {
 	switch (action.type) {
-		case 'SET_FOLLOWER_ELEMENT':
+		case 'SET_HTML_ELEMENT':
 			return {
 				...state,
 				followerElement: action.payload,
-			};
+			}
+		case 'SET_SIZE':
+			return {
+				...state,
+				followerSize: action.payload,
+			}
 		case 'SET_TEXT':
 			return {
 				...state,
 				innerText: action.payload,
 				followerSize: action.payload ? 100 : 10,
-			};
+			}
 		case 'SET_OUT_OF_BOUNDS':
 			return {
 				...state,
-				followerIsOutOfBounds: action.payload,
-			};
-		case 'SET_IS_STUCK_TO_ELEMENT':
+				isOutOfBounds: action.payload,
+			}
+		case 'SET_STUCK_TO_ELEMENT':
 			return {
 				...state,
 				isStuckToElement: action.payload,
 				followerSize: action.payload ? 100 : 10,
-			};
+			}
 		case 'SET_MIX_BLEND_MODE':
 			return {
 				...state,
-				mixBlendModeEnabled: action.payload,
-			};
+				isMixBlendMode: action.payload,
+			}
 		default:
-			return state;
+			return state
 	}
 }
 
@@ -136,7 +143,7 @@ function pointerFollowerReducer(
 export default function PointerFollowerProvider({
 	children,
 }: {
-	children: ReactNode;
+	children: ReactNode
 }) {
 	/**
 	 * Spring settings.
@@ -147,29 +154,37 @@ export default function PointerFollowerProvider({
 		damping: 30,
 		stiffness: 300,
 		restDelta: 0.001,
-	};
+	}
 
 	/**
 	 * Framer motion values.
 	 *
 	 * @type {MotionValue<number>}
 	 */
-	const xPointer = useMotionValue(0);
-	const yPointer = useMotionValue(0);
+	const xPointer = useMotionValue(0)
+	const yPointer = useMotionValue(0)
 
 	/**
 	 * Spring values.
 	 *
 	 * @type {MotionValue<number>}
 	 */
-	const xFollower = useSpring(xPointer, spring);
-	const yFollower = useSpring(yPointer, spring);
+	const xFollower = useSpring(xPointer, spring)
+	const yFollower = useSpring(yPointer, spring)
 
 	/**
 	 * Follower element.
+	 *
+	 * @type {HTMLElement}
 	 */
-	const [followerElement, setFollowerElement] = useState<HTMLElement>();
-	const [state, dispatch] = useReducer(pointerFollowerReducer, initialState);
+	const [followerElement, setFollowerElement] = useState<HTMLElement>()
+
+	/**
+	 * Reducer.
+	 *
+	 * @type {PointerFollowerState}
+	 */
+	const [state, dispatch] = useReducer(pointerFollowerReducer, initialState)
 
 	/**
 	 * Initialize the follower element.
@@ -177,7 +192,23 @@ export default function PointerFollowerProvider({
 	 * @param {HTMLElement} element
 	 */
 	function setFollower(element: HTMLElement) {
-		setFollowerElement(element);
+		setFollowerElement(element)
+	}
+
+	/**
+	 * Set the size of the follower element.
+	 *
+	 * @param {number} size
+	 */
+	function setFollowerSize(size?: number) {
+		if (typeof size === 'number') {
+			dispatch({ type: 'SET_SIZE', payload: size })
+		}
+		return {
+			reset: function () {
+				dispatch({ type: 'SET_SIZE', payload: 10 })
+			},
+		}
 	}
 
 	/**
@@ -186,7 +217,7 @@ export default function PointerFollowerProvider({
 	 * @param {string} text
 	 */
 	function setFollowerText(text: string) {
-		dispatch({ type: 'SET_TEXT', payload: text });
+		dispatch({ type: 'SET_TEXT', payload: text })
 	}
 
 	/**
@@ -197,8 +228,8 @@ export default function PointerFollowerProvider({
 	function setMixBlendMode(bool?: boolean) {
 		dispatch({
 			type: 'SET_MIX_BLEND_MODE',
-			payload: bool ?? !state.mixBlendModeEnabled,
-		});
+			payload: bool ?? !state.isMixBlendMode,
+		})
 	}
 
 	/**
@@ -207,23 +238,17 @@ export default function PointerFollowerProvider({
 	 * @param {HTMLElement} element
 	 */
 	function setStick(element: HTMLElement) {
-		console.log('setStick');
-		const rect = element.getBoundingClientRect();
-		// const x = rect.top + rect.width / 2;
-		const x = rect.top;
-		// const y = rect.left + rect.height / 2;
-		const y = rect.left;
+		const rect = element.getBoundingClientRect()
+		const x = rect.top + rect.width / 2
+		const y = rect.left + rect.height / 2
+
+		// xPointer.set(x)
+		// yPointer.set(y)
 
 		dispatch({
-			type: 'SET_IS_STUCK_TO_ELEMENT',
+			type: 'SET_STUCK_TO_ELEMENT',
 			payload: true,
-		});
-
-		// frame.read(() => {
-		console.log({x, y});
-			xPointer.set(x);
-			yPointer.set(y);
-		// });
+		})
 	}
 
 	/**
@@ -232,10 +257,10 @@ export default function PointerFollowerProvider({
 	 * @param {HTMLElement} element
 	 */
 	function removeStick(element: HTMLElement) {
-		// dispatch({
-		// 	type: 'SET_IS_STUCK_TO_ELEMENT',
-		// 	payload: false,
-		// });
+		dispatch({
+			type: 'SET_STUCK_TO_ELEMENT',
+			payload: false,
+		})
 	}
 
 	/**
@@ -245,20 +270,17 @@ export default function PointerFollowerProvider({
 	 */
 	useEffect(() => {
 		if (!followerElement || window?.innerWidth < 992) {
-			return;
+			return
 		}
 
 		async function handlePointerMove(event: MouseEvent) {
-			if (state.isStuckToElement) return;
-
-			const { pageX, pageY, clientX, clientY } = event;
-			const el = followerElement!;
+			const { pageX, pageY, clientX, clientY } = event
+			const el = followerElement!
 
 			frame.read(() => {
-				console.log('frame.read');
-				xPointer.set(pageX - el.offsetLeft - el.offsetWidth / 2);
-				yPointer.set(pageY - el.offsetTop - el.offsetHeight / 2);
-			});
+				xPointer.set(pageX - el.offsetLeft - el.offsetWidth / 2)
+				yPointer.set(pageY - el.offsetTop - el.offsetHeight / 2)
+			})
 
 			if (
 				clientX < 5 ||
@@ -266,34 +288,18 @@ export default function PointerFollowerProvider({
 				clientX > window.innerWidth - 5 ||
 				clientY > window.innerHeight - 5
 			) {
-				dispatch({ type: 'SET_OUT_OF_BOUNDS', payload: true });
+				dispatch({ type: 'SET_OUT_OF_BOUNDS', payload: true })
 			} else {
-				dispatch({ type: 'SET_OUT_OF_BOUNDS', payload: false });
+				dispatch({ type: 'SET_OUT_OF_BOUNDS', payload: false })
 			}
 		}
 
-		window.addEventListener('pointermove', handlePointerMove);
+		window.addEventListener('pointermove', handlePointerMove)
 
 		return () => {
-			window.removeEventListener('pointermove', handlePointerMove);
-		};
-	}, [followerElement, state.isStuckToElement]); // eslint-disable-line
-
-	/**
-	 * Append the follower element as the last child of the main element.
-	 *
-	 * @param {HTMLElement} followerElement
-	 */
-	useEffect(() => {
-		if (followerElement) {
-			const main = document.querySelector('main');
-			const lastChild = main?.lastElementChild;
-
-			if (lastChild !== followerElement) {
-				main?.appendChild(followerElement!);
-			}
+			window.removeEventListener('pointermove', handlePointerMove)
 		}
-	}, [followerElement]);
+	}, [followerElement]) // eslint-disable-line
 
 	/**
 	 * Render the provider.
@@ -309,6 +315,7 @@ export default function PointerFollowerProvider({
 				xFollower,
 				yFollower,
 				setFollower,
+				setFollowerSize,
 				setFollowerText,
 				setMixBlendMode,
 				setStick,
@@ -317,5 +324,5 @@ export default function PointerFollowerProvider({
 		>
 			{children}
 		</PointerFollowerContext.Provider>
-	);
+	)
 }

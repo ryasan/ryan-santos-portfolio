@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, type ButtonHTMLAttributes } from 'react';
-import clsx from 'clsx';
-import { motion, type Variants } from 'framer-motion';
-import Icon, { type IconName } from '~/components/icons';
+import clsx from 'clsx'
+import { motion, type Variants } from 'framer-motion'
+import { useState, type ButtonHTMLAttributes } from 'react'
+import Icon, { type IconName } from '~/components/icons'
 
-const ns = 'button';
+const ns = 'button'
 
 const transformVariants: Variants = {
 	hidden: {
@@ -13,7 +13,7 @@ const transformVariants: Variants = {
 	visible: {
 		y: '0%',
 	},
-};
+}
 
 const eclipseVariants: Variants = {
 	hidden: {
@@ -24,18 +24,18 @@ const eclipseVariants: Variants = {
 		borderRadius: '0%',
 		y: '0',
 	},
-};
+}
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-	as?: 'button' | 'a';
-	children: React.ReactNode;
-	className?: string;
-	mailto?: string;
-	href?: string;
-	icon?: IconName;
-	onClick?(): void;
-	variant?: 'default' | 'black' | 'white' | 'outline-black' | 'outline-white';
-};
+	as?: 'button' | 'a'
+	children: React.ReactNode
+	className?: string
+	mailto?: string
+	href?: string
+	icon?: IconName
+	onClick?(): void
+	variant?: 'default' | 'black' | 'white' | 'outline-black' | 'outline-white'
+}
 
 export default function Button({
 	children,
@@ -53,24 +53,24 @@ export default function Button({
 		[`${ns}`]: true,
 		[`${className}`]: className,
 		[`${ns}--${variant}`]: variant,
-	});
+	})
 
-	const [isHovered, setIsHovered] = useState(false);
-	const isDownload = href?.startsWith('.');
-	const isExternal = href?.startsWith('http');
-	const component = as;
+	const [isHovered, setIsHovered] = useState(false)
+	const isDownload = href?.startsWith('.')
+	const isExternal = href?.startsWith('http')
+	const component = as
 
 	function handleMouseEnter(e: any) {
 		if (onMouseEnter) {
-			onMouseEnter(e);
-			setIsHovered(true);
+			onMouseEnter(e)
+			setIsHovered(true)
 		}
 	}
 
 	function handleMouseLeave(e: any) {
 		if (onMouseLeave) {
-			onMouseLeave(e);
-			setIsHovered(false);
+			onMouseLeave(e)
+			setIsHovered(false)
 		}
 	}
 
@@ -93,9 +93,9 @@ export default function Button({
 		...(as === 'button' && {
 			onClick,
 		}),
-	};
+	}
 
-	const MotionComponent = motion[component];
+	const MotionComponent = motion[component]
 
 	return (
 		<MotionComponent
@@ -125,5 +125,5 @@ export default function Button({
 				{icon && <Icon className={`${ns}__icon`} name={icon} />}
 			</motion.span>
 		</MotionComponent>
-	);
+	)
 }

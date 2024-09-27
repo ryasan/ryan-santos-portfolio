@@ -11,6 +11,9 @@ type MouseFollowerContextType = {
 	cursor: MouseFollower;
 };
 
+// Module-level variable to store the singleton instance of MouseFollower.
+let mouseFollowerInstance: MouseFollower | null = null;
+
 const MouseFollowerContext = createContext<
 	MouseFollowerContextType | undefined
 >(undefined);
@@ -34,15 +37,27 @@ export default function MouseFollowerProvider({
 
 	useEffect(() => {
 		async function getCursor() {
+			// Lazy load GSAP to avoid SSR issues.
 			const gsap = (await import('gsap')).default;
+
 			MouseFollower.registerGSAP(gsap);
+
+			// Check if the instance already exists.
+			if (!mouseFollowerInstance) {
+				mouseFollowerInstance = new MouseFollower();
+			}
+
+			setCursor(mouseFollowerInstance);
 		}
 
-		getCursor().then(() => {
-			const cursor = new MouseFollower();
-			setCursor(cursor);
-		});
+		getCursor();
 	}, []);
+
+	useEffect(() => {
+		return () => {
+			cursor?.destroy();
+		};
+	}, [cursor]);
 
 	return (
 		<MouseFollowerContext.Provider value={{ cursor: cursor! }}>

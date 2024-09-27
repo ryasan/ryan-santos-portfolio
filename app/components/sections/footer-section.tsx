@@ -1,14 +1,19 @@
-import clsx from 'clsx';
+import clsx from 'clsx'
+import SectionLayout from '~/components/section-layout'
 
-const ns = 'footer-section';
+const ns = 'footer-section'
 
 export default function FooterSection() {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
-	});
+	})
 
 	return (
-		<footer className={rootClassName} data-scroll-section>
+		<SectionLayout
+			className={rootClassName}
+			as="footer"
+			cursorColor="inverse"
+		>
 			<div className={`${ns}__inner`}>
 				<div className="container">
 					<div className={`${ns}__content`}>
@@ -16,6 +21,6 @@ export default function FooterSection() {
 					</div>
 				</div>
 			</div>
-		</footer>
-	);
+		</SectionLayout>
+	)
 }

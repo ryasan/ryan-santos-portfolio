@@ -5,11 +5,10 @@ $button-width: 25px;
 	position: fixed;
 	top: calc($site-header-height / 2 - $button-width / 2);
 	right: 40px;
-	z-index: $z-index-burger-menu;
+	z-index: $z-index-god - 1;
 	mix-blend-mode: difference;
 	margin-left: 15px;
-	width: $button-width;
-	height: $button-width;
+	padding: 10px;
 
 	&__icon {
 		display: flex;
@@ -24,7 +23,7 @@ $button-width: 25px;
 			left: 0;
 			border-radius: 2px;
 			background: $white;
-			width: 100%;
+			width: $button-width;
 			height: 2px;
 
 			&:not(:first-child) {

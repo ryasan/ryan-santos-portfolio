@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import  { type LinksFunction } from '@remix-run/node';
 import {
 	Links,
 	Meta,
@@ -6,14 +6,15 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from '@remix-run/react';
-import type { LinksFunction } from '@remix-run/node';
+import { useState } from 'react';
 
-import mainStyles from '~/styles/main.css?url';
 import BurgerMenu from '~/components/burger-menu';
 import ClientOnly from '~/components/client-only';
 import Header from '~/components/header';
+import PointerFollower from '~/components/pointer-follower';
 import Providers from '~/components/providers';
 import Sidebar from '~/components/sidebar';
+import mainStyles from '~/styles/main.css?url';
 
 export const links: LinksFunction = () => {
 	return [{ rel: 'stylesheet', href: mainStyles }];
@@ -56,6 +57,7 @@ export default function App() {
 								sidebarOpen={sidebarOpen}
 								toggleSidebar={toggleSidebar}
 							/>
+							<PointerFollower />
 						</main>
 					</Providers>
 				</ClientOnly>

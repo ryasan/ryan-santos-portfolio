@@ -1,4 +1,3 @@
-import { useRef, useState } from 'react';
 import clsx from 'clsx';
 import {
 	frame,
@@ -8,7 +7,9 @@ import {
 	useTransform,
 	useInView,
 } from 'framer-motion';
+import { useRef, useState } from 'react';
 import Button from '~/components/button';
+import SectionLayout from '~/components/section-layout'
 import { wait } from '~/utils';
 
 const ns = 'about-section';
@@ -147,9 +148,10 @@ export default function AboutSection() {
 	}
 
 	return (
-		<section
+		<SectionLayout
 			className={rootClassName}
-			data-scroll-section
+			as="section"
+			cursorColor="inverse"
 		>
 			<div className={`${ns}__inner`}>
 				<div className="container">
@@ -187,6 +189,6 @@ export default function AboutSection() {
 					</div>
 				</div>
 			</div>
-		</section>
+		</SectionLayout>
 	);
 }

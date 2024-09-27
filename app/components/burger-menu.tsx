@@ -1,9 +1,9 @@
-import clsx from 'clsx';
-import { useRef } from 'react';
-import { motion, Variants } from 'framer-motion';
-import { useMouseFollower } from '~/context/mouse-follower-context';
+import clsx from 'clsx'
+import { motion, type Variants } from 'framer-motion'
+import { useRef } from 'react'
+import { usePointerFollower } from '~/context/pointer-follower-context'
 
-const ns = 'burger-menu';
+const ns = 'burger-menu'
 
 const menuIconVariantsA: Variants = {
 	open: {
@@ -26,7 +26,7 @@ const menuIconVariantsA: Variants = {
 		],
 		opacity: [1, 0, 0, 1],
 	},
-};
+}
 
 const menuIconVariantsB: Variants = {
 	open: {
@@ -49,7 +49,7 @@ const menuIconVariantsB: Variants = {
 		],
 		opacity: [1, 0, 0, 1],
 	},
-};
+}
 
 function MenuIcon({ sidebarOpen }: { sidebarOpen: boolean }) {
 	return (
@@ -73,29 +73,29 @@ function MenuIcon({ sidebarOpen }: { sidebarOpen: boolean }) {
 				}}
 			/>
 		</span>
-	);
+	)
 }
 
 type BurgerMenuProps = {
-	sidebarOpen: boolean;
-	toggleSidebar(state: boolean): void;
-};
+	sidebarOpen: boolean
+	toggleSidebar(state: boolean): void
+}
 
 const BurgerMenu = ({ sidebarOpen, toggleSidebar }: BurgerMenuProps) => {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
-	});
+	})
 
-	const rootRef = useRef<HTMLButtonElement>(null);
-	const { cursor } = useMouseFollower();
+	const rootRef = useRef<HTMLButtonElement>(null)
+	const { setFollowerSize, setMixBlendMode } = usePointerFollower()
 
 	const handleMouseEnter = () => {
-		cursor.setStick(rootRef.current!);
-		cursor.setSkewing(3);
+		setMixBlendMode(true)
+		setFollowerSize(60)
 	}
 
 	const handleMouseLeave = () => {
-		cursor.removeStick();
+		setFollowerSize().reset()
 	}
 
 	return (
@@ -109,7 +109,7 @@ const BurgerMenu = ({ sidebarOpen, toggleSidebar }: BurgerMenuProps) => {
 		>
 			<MenuIcon sidebarOpen={sidebarOpen} />
 		</button>
-	);
-};
+	)
+}
 
-export default BurgerMenu;
+export default BurgerMenu

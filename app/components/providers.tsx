@@ -1,14 +1,15 @@
 import LocomotiveScrollProvider from '~/context/locomotive-scroll-context';
 import MouseFollowerProvider from '~/context/mouse-follower-context';
+import PointerFollowerProvider from '~/context/pointer-follower-context';
 
-type ProvidersProps = {
-	children: React.ReactNode;
-};
-
-export default function Providers({ children }: ProvidersProps) {
+export default function Providers({ children }: { children: React.ReactNode }) {
 	return (
 		<LocomotiveScrollProvider>
-			<MouseFollowerProvider>{children}</MouseFollowerProvider>
+			<PointerFollowerProvider>
+				{/* <MouseFollowerProvider> */}
+				{children}
+				{/* </MouseFollowerProvider> */}
+			</PointerFollowerProvider>
 		</LocomotiveScrollProvider>
 	);
 }
