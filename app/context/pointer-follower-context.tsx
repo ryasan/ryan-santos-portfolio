@@ -27,7 +27,7 @@ type PointerFollowerState = {
 	followerElement?: HTMLElement
 	isOutOfBounds: boolean
 	followerSize: number
-	isStuckToElement?: boolean
+	stuckToElement?: HTMLElement | null
 	isMixBlendMode: boolean
 }
 
@@ -36,12 +36,13 @@ type PointerFollowerState = {
  */
 
 type PointerFollowerActions = {
+	resetFollowerSize(): void
 	setFollower(element: HTMLElement): void
-	setFollowerSize(size?: number): { reset: () => void }
+	setFollowerSize(size?: number): void
 	setFollowerText(text: string): void
 	setMixBlendMode(bool?: boolean): void
 	setStick(element: HTMLElement): void
-	removeStick(element: HTMLElement): void
+	removeStick(): void
 }
 
 /**
@@ -74,8 +75,8 @@ const initialState: PointerFollowerState = {
 	innerText: '',
 	followerSize: 10,
 	isOutOfBounds: false,
-	isStuckToElement: false,
 	isMixBlendMode: false,
+	stuckToElement: null,
 }
 
 /**
@@ -87,7 +88,7 @@ type PointerFollowerAction =
 	| { type: 'SET_SIZE'; payload: number }
 	| { type: 'SET_TEXT'; payload: string }
 	| { type: 'SET_OUT_OF_BOUNDS'; payload: boolean }
-	| { type: 'SET_STUCK_TO_ELEMENT'; payload: boolean }
+	| { type: 'SET_STUCK_TO_ELEMENT'; payload: HTMLElement | null }
 	| { type: 'SET_MIX_BLEND_MODE'; payload: boolean }
 
 /**
@@ -123,8 +124,7 @@ function pointerFollowerReducer(
 		case 'SET_STUCK_TO_ELEMENT':
 			return {
 				...state,
-				isStuckToElement: action.payload,
-				followerSize: action.payload ? 100 : 10,
+				stuckToElement: action.payload,
 			}
 		case 'SET_MIX_BLEND_MODE':
 			return {
@@ -204,11 +204,15 @@ export default function PointerFollowerProvider({
 		if (typeof size === 'number') {
 			dispatch({ type: 'SET_SIZE', payload: size })
 		}
-		return {
-			reset: function () {
-				dispatch({ type: 'SET_SIZE', payload: 10 })
-			},
-		}
+	}
+
+	/**
+	 * Reset the follower size.
+	 *
+	 * @returns {void}
+	 */
+	function resetFollowerSize() {
+		dispatch({ type: 'SET_SIZE', payload: 10 })
 	}
 
 	/**
@@ -238,16 +242,9 @@ export default function PointerFollowerProvider({
 	 * @param {HTMLElement} element
 	 */
 	function setStick(element: HTMLElement) {
-		const rect = element.getBoundingClientRect()
-		const x = rect.top + rect.width / 2
-		const y = rect.left + rect.height / 2
-
-		// xPointer.set(x)
-		// yPointer.set(y)
-
 		dispatch({
 			type: 'SET_STUCK_TO_ELEMENT',
-			payload: true,
+			payload: element,
 		})
 	}
 
@@ -256,11 +253,85 @@ export default function PointerFollowerProvider({
 	 *
 	 * @param {HTMLElement} element
 	 */
-	function removeStick(element: HTMLElement) {
+	function removeStick() {
 		dispatch({
 			type: 'SET_STUCK_TO_ELEMENT',
-			payload: false,
+			payload: null,
 		})
+	}
+
+	/**
+	 * Get the position of an element.
+	 *
+	 * @param {HTMLElement}
+	 * @returns {Object}
+	 */
+	function getElementPosition(element: HTMLElement) {
+		const rect = element.getBoundingClientRect()
+		return {
+			x: rect.left + window.scrollX + rect.width / 2,
+			y: rect.top + window.scrollY + rect.height / 2,
+		}
+	}
+
+	/**
+	 * Update the follower position.
+	 *
+	 * @param {MouseEvent} event
+	 */
+	function updateFollowerPosition(event: MouseEvent) {
+		const { pageX, pageY } = event
+		const el = followerElement!
+
+		frame.read(() => {
+			const x = pageX - el.offsetLeft - el.offsetWidth / 2
+			const y = pageY - el.offsetTop - el.offsetHeight / 2
+			xPointer.set(x)
+			yPointer.set(y)
+		})
+	}
+
+	/**
+	 * Check if the follower is stuck to an element.
+	 *
+	 * @param {MouseEvent} event
+	 * @returns {boolean}
+	 */
+	function checkStuckToElement() {
+		const followerEl = followerElement
+		const stuckEl = state.stuckToElement
+		const size = state.followerSize
+
+		if (!stuckEl || !followerEl) return false
+
+		const { x, y } = getElementPosition(stuckEl)
+		xPointer.set(x - Math.floor(size / 2))
+		yPointer.set(y - Math.floor(size / 2))
+
+		return true
+	}
+
+	/**
+	 * Check if the pointer is out of bounds.
+	 *
+	 * @param {MouseEvent} event
+	 * @returns {boolean}
+	 */
+	function checkOutOfBounds(event: MouseEvent) {
+		const { clientX, clientY } = event
+
+		if (
+			clientX < 5 ||
+			clientY < 5 ||
+			clientX > window.innerWidth - 5 ||
+			clientY > window.innerHeight - 5
+		) {
+			dispatch({ type: 'SET_OUT_OF_BOUNDS', payload: true })
+			return true
+		} else {
+			dispatch({ type: 'SET_OUT_OF_BOUNDS', payload: false })
+			return false
+		}
 	}
 
 	/**
@@ -269,29 +340,15 @@ export default function PointerFollowerProvider({
 	 * @param {MouseEvent} event
 	 */
 	useEffect(() => {
-		if (!followerElement || window?.innerWidth < 992) {
-			return
-		}
+		if (!followerElement) return
+		if (window?.innerWidth < 992) return
 
 		async function handlePointerMove(event: MouseEvent) {
-			const { pageX, pageY, clientX, clientY } = event
-			const el = followerElement!
-
-			frame.read(() => {
-				xPointer.set(pageX - el.offsetLeft - el.offsetWidth / 2)
-				yPointer.set(pageY - el.offsetTop - el.offsetHeight / 2)
-			})
-
-			if (
-				clientX < 5 ||
-				clientY < 5 ||
-				clientX > window.innerWidth - 5 ||
-				clientY > window.innerHeight - 5
-			) {
-				dispatch({ type: 'SET_OUT_OF_BOUNDS', payload: true })
-			} else {
-				dispatch({ type: 'SET_OUT_OF_BOUNDS', payload: false })
-			}
+			const isStuckToElement = checkStuckToElement()
+			const isOutOfBounds = checkOutOfBounds(event)
+			if (isStuckToElement) return
+			if (isOutOfBounds) return
+			updateFollowerPosition(event)
 		}
 
 		window.addEventListener('pointermove', handlePointerMove)
@@ -299,7 +356,7 @@ export default function PointerFollowerProvider({
 		return () => {
 			window.removeEventListener('pointermove', handlePointerMove)
 		}
-	}, [followerElement]) // eslint-disable-line
+	}, [followerElement, state.stuckToElement]) // eslint-disable-line
 
 	/**
 	 * Render the provider.
@@ -316,6 +373,7 @@ export default function PointerFollowerProvider({
 				yFollower,
 				setFollower,
 				setFollowerSize,
+				resetFollowerSize,
 				setFollowerText,
 				setMixBlendMode,
 				setStick,

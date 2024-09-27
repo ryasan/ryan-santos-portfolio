@@ -1,67 +1,68 @@
+import MouseFollower from 'mouse-follower'
 import {
 	useContext,
 	useEffect,
 	useState,
 	createContext,
 	type ReactNode,
-} from 'react';
-import MouseFollower from 'mouse-follower';
+} from 'react'
+import { noop } from '~/utils'
 
 type MouseFollowerContextType = {
-	cursor: MouseFollower;
-};
+	cursor: MouseFollower
+}
 
 // Module-level variable to store the singleton instance of MouseFollower.
-let mouseFollowerInstance: MouseFollower | null = null;
+let mouseFollowerInstance: MouseFollower | null = null
 
 const MouseFollowerContext = createContext<
 	MouseFollowerContextType | undefined
->(undefined);
+>(undefined)
 
 export function useMouseFollower() {
-	const context = useContext(MouseFollowerContext);
+	const context = useContext(MouseFollowerContext)
 	if (!context) {
 		throw new Error(
 			'useMouseFollower must be used within a MouseFollowerProvider',
-		);
+		)
 	}
-	return context;
+	return context
 }
 
 export default function MouseFollowerProvider({
 	children,
 }: {
-	children: ReactNode;
+	children: ReactNode
 }) {
-	const [cursor, setCursor] = useState<MouseFollower>();
+	const [cursor, setCursor] = useState<MouseFollower>()
 
 	useEffect(() => {
 		async function getCursor() {
 			// Lazy load GSAP to avoid SSR issues.
-			const gsap = (await import('gsap')).default;
+			const gsap = (await import('gsap')).default
 
-			MouseFollower.registerGSAP(gsap);
+			MouseFollower.registerGSAP(gsap)
 
 			// Check if the instance already exists.
 			if (!mouseFollowerInstance) {
-				mouseFollowerInstance = new MouseFollower();
+				mouseFollowerInstance = new MouseFollower()
 			}
 
-			setCursor(mouseFollowerInstance);
+			setCursor(mouseFollowerInstance)
 		}
 
-		getCursor();
-	}, []);
+		getCursor().then(noop).catch(noop)
+	}, [])
 
 	useEffect(() => {
 		return () => {
-			cursor?.destroy();
-		};
-	}, [cursor]);
+			cursor?.destroy()
+		}
+	}, [cursor])
 
 	return (
 		<MouseFollowerContext.Provider value={{ cursor: cursor! }}>
 			{children}
 		</MouseFollowerContext.Provider>
-	);
+	)
 }

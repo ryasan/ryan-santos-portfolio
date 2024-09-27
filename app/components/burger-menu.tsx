@@ -87,15 +87,23 @@ const BurgerMenu = ({ sidebarOpen, toggleSidebar }: BurgerMenuProps) => {
 	})
 
 	const rootRef = useRef<HTMLButtonElement>(null)
-	const { setFollowerSize, setMixBlendMode } = usePointerFollower()
+	const {
+		resetFollowerSize,
+		setFollowerSize,
+		setMixBlendMode,
+		removeStick,
+		setStick,
+	} = usePointerFollower()
 
 	const handleMouseEnter = () => {
 		setMixBlendMode(true)
 		setFollowerSize(60)
+		setStick(rootRef.current!)
 	}
 
 	const handleMouseLeave = () => {
-		setFollowerSize().reset()
+		resetFollowerSize()
+		removeStick()
 	}
 
 	return (

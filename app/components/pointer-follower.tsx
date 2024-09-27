@@ -21,16 +21,17 @@ export default function PointerFollower() {
 	} = usePointerFollower()
 
 	useEffect(() => {
-		if (pointerFollowerRef.current) {
-			setFollower(pointerFollowerRef.current)
-		}
-	}, [setFollower])
-
-	useEffect(() => {
 		wait(2000)
 			.then(() => setIsReady(true))
 			.catch(noop)
 	}, [])
+
+	useEffect(() => {
+		if (pointerFollowerRef.current) {
+			document.body.prepend(pointerFollowerRef.current)
+			setFollower(pointerFollowerRef.current)
+		}
+	}, [setFollower])
 
 	const rootClassName = clsx({
 		[`${ns}`]: true,
@@ -44,12 +45,12 @@ export default function PointerFollower() {
 			animate={{
 				width: followerSize,
 				height: followerSize,
+				opacity: isReady ? 1 : 0,
 				scale: isOutOfBounds ? 0 : 1,
 			}}
 			style={{
 				x: xFollower,
 				y: yFollower,
-				opacity: isReady ? 1 : 0,
 			}}
 		>
 			<motion.span
