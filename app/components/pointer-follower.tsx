@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { usePointerFollower } from '~/context/pointer-follower-context'
-import { wait } from '~/utils'
+import { noop, wait } from '~/utils'
 
 const ns = 'pointer-follower'
 
@@ -29,7 +29,7 @@ export default function PointerFollower() {
 	useEffect(() => {
 		wait(2000)
 			.then(() => setIsReady(true))
-			.catch(() => {})
+			.catch(noop)
 	}, [])
 
 	const rootClassName = clsx({

@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from 'clsx'
 import {
 	frame,
 	motion,
@@ -6,13 +6,14 @@ import {
 	useSpring,
 	useTransform,
 	useInView,
-} from 'framer-motion';
-import { useRef, useState } from 'react';
-import Button from '~/components/button';
+} from 'framer-motion'
+import { useRef, useState } from 'react'
+import Button from '~/components/button'
+import SectionFill from '~/components/section-fill'
 import SectionLayout from '~/components/section-layout'
-import { wait } from '~/utils';
+import { wait } from '~/utils'
 
-const ns = 'about-section';
+const ns = 'about-section'
 
 const aboutItems = [
 	// {
@@ -55,60 +56,60 @@ const aboutItems = [
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus.',
 	},
-];
+]
 
 function AboutItem({
 	title,
 	description,
 }: {
-	title: string;
-	description: string;
+	title: string
+	description: string
 }) {
-	const svgRef = useRef<SVGSVGElement>(null);
-	const pathRef = useRef<SVGPathElement>(null);
-	const isInView = useInView(pathRef, { once: true, amount: 0 });
-	const x = useMotionValue(561.5); // Initial value is the center of the SVG
-	const y = useMotionValue(75); // Initial value is the center of the SVG
+	const svgRef = useRef<SVGSVGElement>(null)
+	const pathRef = useRef<SVGPathElement>(null)
+	const isInView = useInView(pathRef, { once: true, amount: 0 })
+	const x = useMotionValue(561.5) // Initial value is the center of the SVG
+	const y = useMotionValue(75) // Initial value is the center of the SVG
 
 	const xSpring = useSpring(x, {
 		stiffness: 500,
 		damping: 10,
 		restDelta: 0.01,
-	});
+	})
 
 	const ySpring = useSpring(y, {
 		stiffness: 500,
 		damping: 10,
 		restDelta: 0.01,
-	});
+	})
 
 	function handleMouseMove(event: React.MouseEvent) {
-		const svgElement = svgRef.current!;
-		const rect = svgElement.getBoundingClientRect();
-		const mouseX = event.pageX - window.pageXOffset - rect.left;
-		const mouseY = event.pageY - window.pageYOffset - rect.top;
+		const svgElement = svgRef.current!
+		const rect = svgElement.getBoundingClientRect()
+		const mouseX = event.pageX - window.pageXOffset - rect.left
+		const mouseY = event.pageY - window.pageYOffset - rect.top
 
 		frame.read(() => {
-			x.set(mouseX);
-			y.set(mouseY);
-		});
+			x.set(mouseX)
+			y.set(mouseY)
+		})
 	}
 
 	function handleMouseLeave() {
-		const svgElement = svgRef.current!;
-		const rect = svgElement.getBoundingClientRect();
-		const mouseX = rect.width / 2;
-		const mouseY = rect.height / 2;
+		const svgElement = svgRef.current!
+		const rect = svgElement.getBoundingClientRect()
+		const mouseX = rect.width / 2
+		const mouseY = rect.height / 2
 
 		frame.read(() => {
-			x.set(mouseX);
-			y.set(mouseY);
-		});
+			x.set(mouseX)
+			y.set(mouseY)
+		})
 	}
 
 	const d = useTransform([xSpring, ySpring], ([latestX, latestY]) => {
-		return `M0,75 Q${latestX},${latestY} 950,75`;
-	});
+		return `M0,75 Q${latestX},${latestY} 950,75`
+	})
 
 	return (
 		<div className={`${ns}__item`}>
@@ -126,37 +127,58 @@ function AboutItem({
 				</motion.svg>
 			</div>
 			<div className={`${ns}__item-text`}>
-				<h2 className={`${ns}__item-title p`}>{title}</h2>
+				<h3 className={`${ns}__item-title p`}>{title}</h3>
 				<p className={`${ns}__item-description small`}>{description}</p>
 			</div>
 		</div>
-	);
+	)
 }
 
 export default function AboutSection() {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
-	});
+	})
 
-	const [copyBtnPressed, setCopyBtnPressed] = useState(false);
+	const rootRef = useRef(null)
+	const [copyBtnPressed, setCopyBtnPressed] = useState(false)
 
 	async function handleCopyEmail() {
-		setCopyBtnPressed(true);
-		await navigator.clipboard.writeText('ryansantos86@gmail.com');
-		await wait(2500);
-		setCopyBtnPressed(false);
+		setCopyBtnPressed(true)
+		await navigator.clipboard.writeText('ryansantos86@gmail.com')
+		await wait(2500)
+		setCopyBtnPressed(false)
 	}
 
 	return (
 		<SectionLayout
 			className={rootClassName}
+			ref={rootRef}
 			as="section"
 			cursorColor="inverse"
 		>
 			<div className={`${ns}__inner`}>
+				<SectionFill />
 				<div className="container">
 					<div className={`${ns}__content`}>
-						<div className={`${ns}__content-inner`}>
+						<div
+							className={`${ns}__content-left`}
+							data-scroll
+							data-scroll-speed="3"
+						>
+							<h3 className={`${ns}__cta-title h5`}>#003</h3>
+							<div className={`${ns}__cta`}>
+								<Button as="a" href="/" variant="white">
+									Dowload CV
+								</Button>
+							</div>
+							<div className={`${ns}__cta`}>
+								<Button href="/" onClick={handleCopyEmail} variant="white">
+									{copyBtnPressed ? 'Copied!' : 'Copy Email'}
+								</Button>
+							</div>
+						</div>
+
+						<div className={`${ns}__content-right`}>
 							<h2 className={`${ns}__title h1`}>
 								<div>
 									What <i>I Do</i>
@@ -168,27 +190,9 @@ export default function AboutSection() {
 								))}
 							</div>
 						</div>
-
-						<div
-							className={`${ns}__cta-container`}
-							data-scroll
-							data-scroll-speed="3"
-						>
-							<h5 className={`${ns}__cta-title`}>#003</h5>
-							<div className={`${ns}__cta`}>
-								<Button as="a" href="/">
-									Dowload CV
-								</Button>
-							</div>
-							<div className={`${ns}__cta`}>
-								<Button href="/" onClick={handleCopyEmail}>
-									{copyBtnPressed ? 'Copied!' : 'Copy Email'}
-								</Button>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
 		</SectionLayout>
-	);
+	)
 }

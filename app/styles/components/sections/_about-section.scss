@@ -6,21 +6,30 @@ $ns: '.about-section';
 	&__inner {
 		@include section-style($white, $black);
 
-		padding: 0 !important;
+		position: relative;
 	}
 
 	&__content {
+		color: $white;
 		display: flex;
 		position: relative;
-		justify-content: end;
+		justify-content: space-between;
+		mix-blend-mode: exclusion;
 
-		&-inner {
-			padding: 10rem 0;
-			max-width: 95rem;
+		&-left {
+			display: none;
+			flex-direction: column;
+			justify-content: center;
 
-			@include at-laptop {
-				padding: 15rem 0;
+			@include at-desktop {
+				display: flex;
 			}
+		}
+
+		&-right {
+			flex: 1;
+			max-width: 95rem;
+			width: 100%;
 		}
 	}
 
@@ -59,18 +68,6 @@ $ns: '.about-section';
 	&__item-description {
 		font-size: 2.2rem;
 		line-height: 1.2;
-	}
-
-	&__cta-container {
-		display: none;
-		position: absolute;
-		top: 50%;
-		left: 0;
-		transform: translateY(-50%);
-
-		@include at-desktop {
-			display: block;
-		}
 	}
 
 	&__cta-title {

@@ -1,13 +1,13 @@
-import { json } from '@remix-run/server-runtime';
+import  { type MetaFunction } from '@netlify/remix-runtime';
 import { useLoaderData } from '@remix-run/react';
-import type { MetaFunction } from '@netlify/remix-runtime';
+import { json } from '@remix-run/server-runtime';
 
 import AboutSection from '~/components/sections/about-section';
 import FooterSection from '~/components/sections/footer-section';
 import HeroSection from '~/components/sections/hero-section';
 import ProjectsSection from '~/components/sections/projects-section';
 import { client } from '~/models/contentful.server';
-import type { Project } from '~/types';
+import  { type Project } from '~/types';
 
 export async function loader() {
 	const projects = await client.getProjects();

@@ -1,0 +1,10 @@
+$ns: '.section-fill';
+
+#{$ns} {
+	display: none;
+	background-color: $black;
+
+	@include at-desktop {
+		display: block;
+	}
+}

@@ -6,7 +6,7 @@ $button-width: 25px;
 	top: calc($site-header-height / 2 - $button-width / 2);
 	right: 40px;
 	z-index: $z-index-god - 1;
-	mix-blend-mode: difference;
+	mix-blend-mode: exclusion;
 	margin-left: 15px;
 	padding: 10px;
 

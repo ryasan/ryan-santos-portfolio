@@ -1,18 +1,18 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import clsx from 'clsx';
-import TagCloud from '~/components/tag-cloud';
+import clsx from 'clsx'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
+import TagCloud from '~/components/tag-cloud'
 
-const ns = 'skills-section';
+const ns = 'skills-section'
 
 export default function SkillsSection() {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
-	});
+	})
 
-	const anchorRef = useRef<HTMLDivElement>(null);
-	const { scrollYProgress } = useScroll({ target: anchorRef });
-	const maxWidth = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);
+	const anchorRef = useRef<HTMLDivElement>(null)
+	const { scrollYProgress } = useScroll({ target: anchorRef })
+	const maxWidth = useTransform(scrollYProgress, [0, 1], ['100%', '0%'])
 
 	return (
 		<section className={rootClassName} data-scroll-section>
@@ -26,5 +26,5 @@ export default function SkillsSection() {
 				</div>
 			</div>
 		</section>
-	);
+	)
 }

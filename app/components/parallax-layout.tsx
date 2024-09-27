@@ -1,21 +1,21 @@
-import clsx from 'clsx';
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import clsx from 'clsx'
+import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion'
+import { useRef } from 'react'
 
-const ns = 'parallax-layout';
+const ns = 'parallax-layout'
 
 type ParallaxLayoutProps = {
-	as?: 'section' | 'header' | 'footer';
-	bgColor?: 'black' | 'white';
-	children: React.ReactNode;
-	className?: string;
-	disableParallax?: boolean;
-	fullHeight?: boolean;
-	id: number | null;
-};
+	as?: 'section' | 'header' | 'footer'
+	bgColor?: 'black' | 'white'
+	children: React.ReactNode
+	className?: string
+	disableParallax?: boolean
+	fullHeight?: boolean
+	id: number | null
+}
 
 function useParallax(value: MotionValue<number>, distance: number) {
-	return useTransform(value, [0, 1], [-distance, distance]);
+	return useTransform(value, [0, 1], [-distance, distance])
 }
 
 export default function ParallaxLayout({
@@ -32,11 +32,11 @@ export default function ParallaxLayout({
 		[`${className}`]: className,
 		[`${ns}--bg-${bgColor}`]: bgColor,
 		[`${ns}--full-height`]: fullHeight,
-	});
+	})
 
-	const anchorRef = useRef<HTMLDivElement>(null);
-	const { scrollYProgress } = useScroll({ target: anchorRef });
-	const y = useParallax(scrollYProgress, 300);
+	const anchorRef = useRef<HTMLDivElement>(null)
+	const { scrollYProgress } = useScroll({ target: anchorRef })
+	const y = useParallax(scrollYProgress, 300)
 
 	return (
 		<Element className={rootClassName} data-scroll-section>
@@ -53,5 +53,5 @@ export default function ParallaxLayout({
 				</motion.div>
 			)}
 		</Element>
-	);
+	)
 }

@@ -2,6 +2,10 @@ import clsx from 'clsx'
 import { forwardRef } from 'react'
 import { usePointerFollower } from '~/context/pointer-follower-context'
 
+/**
+ * THIS COMPONENT DOES NOT WORK WELL IN SAFARI
+ */
+
 const ns = 'section-layout'
 
 type Props = {
@@ -61,7 +65,5 @@ const SectionLayout = forwardRef<HTMLDivElement, SectionLayoutProps>(
 		)
 	},
 )
-
-SectionLayout.displayName = 'SectionLayout'
 
 export default SectionLayout

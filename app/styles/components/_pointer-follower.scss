@@ -17,6 +17,6 @@ $ns: '.pointer-follower';
 	}
 
 	&--mix-blend-mode {
-		mix-blend-mode: difference;
+		mix-blend-mode: exclusion;
 	}
 }
