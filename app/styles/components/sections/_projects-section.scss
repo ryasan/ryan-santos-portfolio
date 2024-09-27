@@ -29,7 +29,7 @@ $ns: '.projects-section';
 		display: grid;
 		grid-template-columns: 1fr;
 		row-gap: 6rem;
-		margin: 10rem 0;
+		margin: 15rem 0;
 
 		@include at-tablet {
 			grid-template-columns: repeat(2, 1fr);

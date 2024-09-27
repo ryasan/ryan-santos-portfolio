@@ -85,11 +85,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 							className={`${ns}__projects`}
 							onMouseEnter={() => setMixBlendMode(false)}
 						>
-							<div
-								className={`${ns}__projects-left`}
-								data-scroll
-								data-scroll-speed="1"
-							>
+							<div className={`${ns}__projects-left`}>
 								{leftProjects.map((project, index) => (
 									<ProjectCard
 										key={index}
