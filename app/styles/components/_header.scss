@@ -3,9 +3,9 @@ $ns: '.site-header';
 #{$ns} {
 	position: relative;
 	z-index: $z-index-header;
-	background-color: $white;
+	background-color: $black;
 	height: $site-header-height;
-	color: $black;
+	color: $white;
 
 	.container-fluid {
 		display: flex;

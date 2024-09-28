@@ -326,7 +326,7 @@ html {
 body {
   color: #fff;
   font-family: "Inter Tight", sans-serif;
-  background-color: #fff;
+  background-color: #000;
 }
 @media screen and (min-width: 375px) {
   body {
@@ -828,11 +828,11 @@ em {
 .hero-section {
   position: relative;
   z-index: 0;
-  background-color: #fff;
+  background-color: #000;
   width: 100%;
   height: calc(100vh - 60px);
   overflow-x: hidden;
-  color: #000;
+  color: #fff;
 }
 .hero-section__inner {
   height: 100%;
@@ -906,6 +906,7 @@ em {
   z-index: 2;
   font-size: 1.8rem;
   letter-spacing: 0.2rem;
+  color: #fff;
 }
 @media only screen and (min-width: 992px) {
   .hero-section__scroll-down {
@@ -920,7 +921,7 @@ em {
   position: absolute;
   top: 50%;
   left: -40px;
-  background-color: #000;
+  background-color: #fff;
   width: 30px;
   height: 1px;
   content: "";
@@ -1202,9 +1203,9 @@ em {
 .site-header {
   position: relative;
   z-index: 9996;
-  background-color: #fff;
+  background-color: #000;
   height: 60px;
-  color: #000;
+  color: #fff;
 }
 .site-header .container-fluid {
   display: flex;
@@ -1405,6 +1406,7 @@ em {
 }
 .sidebar__title {
   color: #6c757d;
+  font-family: "Recoleta";
   font-size: 1.8rem;
   font-weight: 100;
   margin-bottom: 5rem;
@@ -1421,6 +1423,7 @@ em {
 .sidebar__menu-link {
   color: #000;
   display: block;
+  font-family: "Recoleta";
 }
 
 .tag-cloud {

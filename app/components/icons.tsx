@@ -36,7 +36,7 @@ function ChevronDownIcon({ className }: { className?: string }) {
 			viewBox="0 0 24 24"
 		>
 			<path fill="none" d="M0 0h24v24H0z" />
-			<path d="M12 15l-6-6h12z" />
+			<path d="M12 15l-6-6h12z" fill="currentColor" />
 		</svg>
 	);
 }

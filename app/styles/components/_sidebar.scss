@@ -40,13 +40,10 @@ $ns: '.sidebar';
 
 	&__title {
 		color: $gray-600;
+		font-family: $recoleta;
 		font-size: 1.8rem;
 		font-weight: 100;
 		margin-bottom: 5rem;
-	}
-
-	&__content {
-		// display: inline-block;
 	}
 
 	&__menu {
@@ -63,5 +60,6 @@ $ns: '.sidebar';
 	&__menu-link {
 		color: $black;
 		display: block;
+		font-family: $recoleta;
 	}
 }

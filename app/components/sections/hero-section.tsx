@@ -17,6 +17,7 @@ export default function HeroSection() {
 	const textA = 'Ryan  Santos'.split(' ')
 	const textB = 'Frontend  Engineer'.split(' ')
 
+	// prettier-ignore
 	return (
 		<SectionLayout
 			className={rootClassName}
@@ -40,7 +41,6 @@ export default function HeroSection() {
 												animate={{ y: 0 }}
 												transition={{
 													duration: 0.35,
-													// prettier-ignore
 													delay: delay + index * 0.02,
 													ease: 'easeInOut',
 												}}
@@ -81,7 +81,6 @@ export default function HeroSection() {
 								animate={{ y: 0 }}
 								transition={{
 									duration: 0.35,
-									// prettier-ignore
 									delay: (delay * 1.5) + (textA.length + textB.length) * 0.02,
 									ease: 'easeInOut',
 								}}
@@ -96,7 +95,6 @@ export default function HeroSection() {
 								animate={{ y: 0 }}
 								transition={{
 									duration: 0.35,
-									// prettier-ignore
 									delay: (delay * 2) + (textA.length + textB.length) * 0.02,
 									ease: 'easeOut',
 								}}
@@ -104,7 +102,7 @@ export default function HeroSection() {
 								<Button
 									as="a"
 									mailto="ryansantos86@gmail.com"
-									variant="black"
+									variant="white"
 									icon="arrow-right"
 								>
 									Let&apos;s Connect
@@ -120,7 +118,6 @@ export default function HeroSection() {
 					animate={{ opacity: 1, x: 0 }}
 					transition={{
 						duration: 0.5,
-						// prettier-ignore
 						delay: (delay * 3) + (textA.length + textB.length) * 0.02,
 						ease: 'easeOut',
 					}}
