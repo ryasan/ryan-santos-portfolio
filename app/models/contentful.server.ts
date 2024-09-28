@@ -2,10 +2,10 @@
 // import axios from 'axios';
 // import { getPlaiceholder } from 'plaiceholder';
 
-const SPACE = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
-const TOKEN = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
+const CONTENTFUL_SPACE_ID = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
+const CONTENTFUL_ACCESS_TOKEN = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
 
-if (!SPACE || !TOKEN) {
+if (!CONTENTFUL_SPACE_ID || !CONTENTFUL_ACCESS_TOKEN) {
   throw new Error("Contentful space ID and access token must be provided.");
 }
 
@@ -15,12 +15,12 @@ if (!SPACE || !TOKEN) {
 // }
 
 async function apiCall(query: string, variables?: any) {
-	const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${SPACE}/environments/master`;
+	const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}/environments/master`;
 	const options = {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			Authorization: `Bearer ${TOKEN}`,
+			Authorization: `Bearer ${CONTENTFUL_ACCESS_TOKEN}`,
 		},
 		body: JSON.stringify({ query, variables }),
 	};
@@ -109,6 +109,10 @@ async function getAllBlogs() {
 					tag
 					sys {
 						firstPublishedAt
+					}
+					openGraphImage {
+						title
+						url
 					}
 				}
 			}

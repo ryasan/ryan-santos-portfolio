@@ -9,8 +9,8 @@ import ProjectsSection from '~/components/sections/projects-section'
 import { client } from '~/models/contentful.server'
 
 export async function loader() {
-	const blogs = await client.getAllBlogs()
-	const projects = await client.getProjects()
+	const blogs = (await client.getAllBlogs()).slice(0, 6)
+	const projects = (await client.getProjects()).slice(0, 6)
 	return json({ blogs, projects })
 }
 
@@ -32,6 +32,7 @@ export default function Index() {
 			<HeroSection />
 			<AboutSection />
 			<ProjectsSection projects={projects} />
+			<BlogsSection blogs={blogs} />
 		</>
 	)
 }

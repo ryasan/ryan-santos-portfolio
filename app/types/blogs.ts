@@ -1,11 +1,17 @@
-export type Blog = {
-	sys: Sys
-	title: string
-	slug: string
-	description: string
-	tag: string[]
+export interface Blog {
+  sys: Sys;
+  title: string;
+  slug: string;
+  description: string;
+  tag: string[];
+  openGraphImage: OpenGraphImage;
 }
 
-type Sys = {
-	firstPublishedAt: string
+interface OpenGraphImage {
+  title: string;
+  url: string;
+}
+
+interface Sys {
+  firstPublishedAt: string;
 }

@@ -4,29 +4,25 @@ import { useRef } from 'react'
 import Button from '~/components/button'
 import SectionLayout from '~/components/section-layout'
 import { usePointerFollower } from '~/context/pointer-follower-context'
-import { type Project } from '~/types'
+import { type Blog } from '~/types'
 
 const ns = 'blogs-section'
 
-type ProjectCardProps = {
-	project: Project
+type BlogCardProps = {
+	blog: Blog
 	onMouseEnter(e: React.MouseEvent): void
 	onMouseLeave(e: React.MouseEvent): void
 }
 
-function ProjectCard({
-	project,
-	onMouseEnter,
-	onMouseLeave,
-}: ProjectCardProps) {
-	const projectCardRef = useRef(null)
-	const isInView = useInView(projectCardRef, { once: true, amount: 0.4 })
+function BlogCard({ blog, onMouseEnter, onMouseLeave }: BlogCardProps) {
+	const blogCardRef = useRef(null)
+	const isInView = useInView(blogCardRef, { once: true, amount: 0.4 })
 
 	return (
 		// eslint-disable-next-line
 		<a
-			className={`${ns}__project`}
-			ref={projectCardRef}
+			className={`${ns}__blog`}
+			ref={blogCardRef}
 			style={{
 				opacity: isInView ? 1 : 0,
 				transform: isInView ? 'translateY(0)' : 'translateY(100px)',
@@ -34,29 +30,30 @@ function ProjectCard({
 			onMouseEnter={onMouseEnter}
 			onMouseLeave={onMouseLeave}
 		>
-			<div className={`${ns}__project-image`}>
-				<img src={project.image} alt={project.imageAlt || project.title} />
+			<div className={`${ns}__blog-image`}>
+				<img
+					src={blog.openGraphImage.url}
+					alt={blog.openGraphImage.title || blog.title}
+					data-media
+				/>
 			</div>
-			<div className={`${ns}__project-content`}>
+			<div className={`${ns}__blog-content`}>
 				<small>
-					<strong>{project.title}</strong> - {project.caption}
+					<strong>{blog.title}</strong> - {blog.description}
 				</small>
 			</div>
 		</a>
 	)
 }
 
-type ProjectsSectionProps = {
-	projects: Project[]
+type BlogsSectionProps = {
+	blogs: Blog[]
 }
 
-export default function ProjectsSection({ projects }: ProjectsSectionProps) {
+export default function BlogsSection({ blogs }: BlogsSectionProps) {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
 	})
-
-	const leftProjects = projects.filter((_, i) => i % 2 === 0)
-	const rightProjects = projects.filter((_, i) => i % 2 !== 0)
 
 	const { setFollowerText, setMixBlendMode } = usePointerFollower()
 
@@ -75,42 +72,29 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 				<div className="container">
 					<div className={`${ns}__content`}>
 						<h2 className={`${ns}__title h1`}>
-							<span>Featured</span>
+							<span>Latest</span>
 							<span>
-								<i>projects</i>
+								<i>blogs</i>
 							</span>
 						</h2>
 
 						<div
-							className={`${ns}__projects`}
+							className={`${ns}__blogs`}
 							onMouseEnter={() => setMixBlendMode(false)}
 						>
-							<div className={`${ns}__projects-left`}>
-								{leftProjects.map((project, index) => (
-									<ProjectCard
-										key={index}
-										project={project}
-										onMouseEnter={handleMouseEnter}
-										onMouseLeave={handleMouseLeave}
-									/>
-								))}
-							</div>
-
-							<div className={`${ns}__projects-right`}>
-								{rightProjects.map((project, index) => (
-									<ProjectCard
-										key={index}
-										project={project}
-										onMouseEnter={handleMouseEnter}
-										onMouseLeave={handleMouseLeave}
-									/>
-								))}
-							</div>
+							{blogs.map((blog, index) => (
+								<BlogCard
+									key={index}
+									blog={blog}
+									onMouseEnter={handleMouseEnter}
+									onMouseLeave={handleMouseLeave}
+								/>
+							))}
 						</div>
 
 						<div className={`${ns}__cta`} data-scroll data-scroll-speed="3">
-							<Button as="a" href="/projects" variant="outline-white">
-								View Projects
+							<Button as="a" href="/blogs" variant="outline-black">
+								View Blogs
 							</Button>
 						</div>
 					</div>
