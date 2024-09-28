@@ -109,7 +109,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 						</div>
 
 						<div className={`${ns}__cta`} data-scroll data-scroll-speed="3">
-							<Button as="a" href="/projects" variant="white">
+							<Button as="a" href="/projects" variant="outline-white">
 								View Projects
 							</Button>
 						</div>

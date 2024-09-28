@@ -747,11 +747,9 @@ em {
   }
 }
 .about-section__content {
-  color: #fff;
   display: flex;
   position: relative;
   justify-content: space-between;
-  mix-blend-mode: exclusion;
 }
 .about-section__content-left {
   display: none;
@@ -1079,9 +1077,6 @@ em {
     display: block;
   }
 }
-.projects-section__cta .button {
-  border-color: transparent;
-}
 
 /* Components */
 .burger-menu {
@@ -1381,6 +1376,7 @@ em {
   width: 100%;
   height: 100vh;
   pointer-events: none;
+  color: #000;
 }
 .sidebar * {
   pointer-events: auto;
@@ -1396,6 +1392,7 @@ em {
   height: 100%;
 }
 .sidebar__panel {
+  padding-top: 60px;
   position: absolute;
   top: 0;
   right: 0;
@@ -1405,6 +1402,25 @@ em {
   max-width: 500px;
   height: 100%;
   overflow-y: auto;
+}
+.sidebar__title {
+  color: #6c757d;
+  font-size: 1.8rem;
+  font-weight: 100;
+  margin-bottom: 5rem;
+}
+.sidebar__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.sidebar__menu-item {
+  color: #000;
+  display: block;
+}
+.sidebar__menu-link {
+  color: #000;
+  display: block;
 }
 
 .tag-cloud {

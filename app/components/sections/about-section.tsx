@@ -9,7 +9,6 @@ import {
 } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Button from '~/components/button'
-import SectionFill from '~/components/section-fill'
 import SectionLayout from '~/components/section-layout'
 import { wait } from '~/utils'
 
@@ -157,7 +156,6 @@ export default function AboutSection() {
 			cursorColor="inverse"
 		>
 			<div className={`${ns}__inner`}>
-				<SectionFill />
 				<div className="container">
 					<div className={`${ns}__content`}>
 						<div
@@ -167,12 +165,12 @@ export default function AboutSection() {
 						>
 							<h3 className={`${ns}__cta-title h5`}>#003</h3>
 							<div className={`${ns}__cta`}>
-								<Button as="a" href="/" variant="white">
+								<Button as="a" href="/" variant="outline-black">
 									Dowload CV
 								</Button>
 							</div>
 							<div className={`${ns}__cta`}>
-								<Button href="/" onClick={handleCopyEmail} variant="white">
+								<Button href="/" onClick={handleCopyEmail} variant="outline-black">
 									{copyBtnPressed ? 'Copied!' : 'Copy Email'}
 								</Button>
 							</div>
