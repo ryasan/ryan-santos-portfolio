@@ -1,0 +1,59 @@
+$ns: '.parallax-section';
+
+#{$ns} {
+	background-color: $black;
+
+	&__inner {
+		@include section-style($white, $black);
+	}
+
+	&__images {
+		@include aspect-ratio-media(3, 5);
+
+		margin: 0 auto;
+		max-width: 65rem;
+		overflow: hidden;
+		position: relative;
+
+		.h1 {
+			color: $white;
+		}
+	}
+
+	&__image {
+		width: 100%;
+		height: 100%;
+
+		img {
+			filter: grayscale(100%);
+		}
+	}
+
+	&__content {
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+
+	&__text-container {
+		color: $black;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		top: 0;
+		left: 0;
+	}
+
+	.h1 {
+		font-family: $matter;
+		font-weight: 300;
+		font-size: 23rem;
+		letter-spacing: 1.3rem;
+		white-space: nowrap;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}

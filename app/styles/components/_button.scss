@@ -7,7 +7,8 @@ $ns: '.button';
 	align-items: center;
 	transition: all 0.5s ease-out;
 	border: 1px solid $white;
-	border-radius: 9999px;
+
+	// border-radius: 9999px;
 	background-color: $black;
 	padding: 0 30px;
 	min-width: 200px;

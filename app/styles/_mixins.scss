@@ -131,8 +131,8 @@
 	color: $color;
 
 	@include at-tablet {
-		border-top-right-radius: 3.6rem;
-		border-top-left-radius: 3.6rem;
+		// border-top-right-radius: 3.6rem;
+		// border-top-left-radius: 3.6rem;
 		padding: calc(#{$padding} * 1.5) 0;
 	}
 }

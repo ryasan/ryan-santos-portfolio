@@ -340,7 +340,7 @@ body {
 }
 
 h1 {
-  font-family: "Suisse Intl", sans-serif;
+  font-family: "Matter", sans-serif;
   font-weight: 700;
 }
 @media screen and (min-width: 375px) {
@@ -355,7 +355,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Suisse Intl", sans-serif;
+  font-family: "Matter", sans-serif;
   font-weight: 700;
 }
 @media screen and (min-width: 375px) {
@@ -370,7 +370,7 @@ h2 {
 }
 
 h3 {
-  font-family: "Suisse Intl", sans-serif;
+  font-family: "Matter", sans-serif;
   font-weight: 700;
 }
 @media screen and (min-width: 375px) {
@@ -385,7 +385,7 @@ h3 {
 }
 
 h4 {
-  font-family: "Suisse Intl", sans-serif;
+  font-family: "Matter", sans-serif;
   font-weight: 700;
 }
 @media screen and (min-width: 375px) {
@@ -400,7 +400,7 @@ h4 {
 }
 
 h5 {
-  font-family: "Suisse Intl", sans-serif;
+  font-family: "Matter", sans-serif;
   font-weight: 700;
 }
 @media screen and (min-width: 375px) {
@@ -415,7 +415,7 @@ h5 {
 }
 
 h6 {
-  font-family: "Suisse Intl", sans-serif;
+  font-family: "Matter", sans-serif;
   font-weight: 700;
 }
 @media screen and (min-width: 375px) {
@@ -629,7 +629,8 @@ em {
 }
 
 .h1 {
-  font-family: "Suisse Intl", sans-serif;
+  font-family: "Matter", sans-serif;
+  font-weight: 300;
 }
 @media screen and (min-width: 375px) {
   .h1 {
@@ -643,7 +644,8 @@ em {
 }
 
 .h2 {
-  font-family: "Suisse Intl", sans-serif;
+  font-family: "Matter", sans-serif;
+  font-weight: 300;
 }
 @media screen and (min-width: 375px) {
   .h2 {
@@ -657,7 +659,8 @@ em {
 }
 
 .h3 {
-  font-family: "Suisse Intl", sans-serif;
+  font-family: "Matter", sans-serif;
+  font-weight: 300;
 }
 @media screen and (min-width: 375px) {
   .h3 {
@@ -671,7 +674,8 @@ em {
 }
 
 .h4 {
-  font-family: "Suisse Intl", sans-serif;
+  font-family: "Matter", sans-serif;
+  font-weight: 300;
 }
 @media screen and (min-width: 375px) {
   .h4 {
@@ -685,7 +689,8 @@ em {
 }
 
 .h5 {
-  font-family: "Suisse Intl", sans-serif;
+  font-family: "Matter", sans-serif;
+  font-weight: 300;
 }
 @media screen and (min-width: 375px) {
   .h5 {
@@ -699,7 +704,8 @@ em {
 }
 
 .h6 {
-  font-family: "Suisse Intl", sans-serif;
+  font-family: "Matter", sans-serif;
+  font-weight: 300;
 }
 @media screen and (min-width: 375px) {
   .h6 {
@@ -741,8 +747,6 @@ em {
 }
 @media only screen and (min-width: 768px) {
   .about-section__inner {
-    border-top-right-radius: 3.6rem;
-    border-top-left-radius: 3.6rem;
     padding: calc(12.5rem * 1.5) 0;
   }
 }
@@ -822,8 +826,6 @@ em {
 }
 @media only screen and (min-width: 768px) {
   .blogs-section__inner {
-    border-top-right-radius: 3.6rem;
-    border-top-left-radius: 3.6rem;
     padding: calc(12.5rem * 1.5) 0;
   }
 }
@@ -872,15 +874,14 @@ em {
   color: #000;
 }
 .blogs-section__blog:hover .blogs-section__blog-image {
-  transform: scale(0.98);
+  transform: scale(1.02);
 }
 .blogs-section__blog:hover .blogs-section__blog-image img {
-  transform: scale(1.05);
+  filter: grayscale(0);
 }
 .blogs-section__blog-image {
   position: relative;
   transition: transform 0.5s ease-out;
-  border-radius: 3.6rem;
   width: 100%;
   overflow: hidden;
 }
@@ -900,10 +901,11 @@ em {
 }
 .blogs-section__blog-image img {
   display: block;
-  transition: transform 0.5s ease-out;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: filter 0.3s ease-out;
+  filter: grayscale(100%);
 }
 .blogs-section__blog-content {
   margin-top: 2.7rem;
@@ -938,8 +940,6 @@ em {
 }
 @media only screen and (min-width: 768px) {
   .footer-section {
-    border-top-right-radius: 3.6rem;
-    border-top-left-radius: 3.6rem;
     padding: calc(12.5rem * 1.5) 0;
   }
 }
@@ -978,6 +978,7 @@ em {
 }
 .hero-section__title-word {
   display: inline-block;
+  font-family: "Suisse Intl";
   font-size: 5.8rem;
   line-height: 1rem;
   letter-spacing: -0.2rem;
@@ -1094,6 +1095,79 @@ em {
   pointer-events: none;
 }
 
+.parallax-section {
+  background-color: #000;
+}
+.parallax-section__inner {
+  background-color: #fff;
+  padding: 12.5rem 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  color: #000;
+}
+@media only screen and (min-width: 768px) {
+  .parallax-section__inner {
+    padding: calc(12.5rem * 1.5) 0;
+  }
+}
+.parallax-section__images {
+  position: relative;
+  margin: 0 auto;
+  max-width: 65rem;
+  overflow: hidden;
+  position: relative;
+}
+.parallax-section__images::before {
+  display: block;
+  padding-top: 166.6666666667%;
+  width: 100%;
+  content: "";
+}
+.parallax-section__images [data-media] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.parallax-section__images .h1 {
+  color: #fff;
+}
+.parallax-section__image {
+  width: 100%;
+  height: 100%;
+}
+.parallax-section__image img {
+  filter: grayscale(100%);
+}
+.parallax-section__content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.parallax-section__text-container {
+  color: #000;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+.parallax-section .h1 {
+  font-family: "Matter";
+  font-weight: 300;
+  font-size: 23rem;
+  letter-spacing: 1.3rem;
+  white-space: nowrap;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .projects-section {
   background-color: #fff;
 }
@@ -1108,8 +1182,6 @@ em {
 }
 @media only screen and (min-width: 768px) {
   .projects-section__inner {
-    border-top-right-radius: 3.6rem;
-    border-top-left-radius: 3.6rem;
     padding: calc(12.5rem * 1.5) 0;
   }
 }
@@ -1154,27 +1226,27 @@ em {
   }
 }
 .projects-section__project {
-  transition: all 0.5s ease-out;
+  transition: all 0.3s ease-out;
   color: #fff;
 }
 .projects-section__project:hover .projects-section__project-image {
-  transform: scale(0.98);
+  transform: scale(1.02);
 }
 .projects-section__project:hover .projects-section__project-image img {
-  transform: scale(1.05);
+  filter: grayscale(0);
 }
 .projects-section__project-image {
-  transition: transform 0.5s ease-out;
-  border-radius: 3.6rem;
+  transition: transform 0.3s ease-out;
   width: 100%;
   overflow: hidden;
 }
 .projects-section__project-image img {
   display: block;
-  transition: transform 0.5s ease-out;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: filter 0.3s ease-out;
+  filter: grayscale(100%);
 }
 .projects-section__project-content {
   margin-top: 2.7rem;
@@ -1235,7 +1307,6 @@ em {
   align-items: center;
   transition: all 0.5s ease-out;
   border: 1px solid #fff;
-  border-radius: 9999px;
   background-color: #000;
   padding: 0 30px;
   min-width: 200px;
@@ -1346,7 +1417,7 @@ em {
   display: inline-block;
 }
 .site-header__letter.highlight {
-  color: #ced4da;
+  color: #495057;
 }
 .site-header__nav {
   display: inline-flex;
@@ -1361,43 +1432,6 @@ em {
   .site-header__nav-text {
     display: flex;
   }
-}
-
-.parallax-item {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-@media only screen and (min-width: 1200px) {
-  .parallax-item {
-    display: block;
-  }
-}
-.parallax-item__anchor {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-}
-.parallax-item__content {
-  pointer-events: auto;
-  position: absolute;
-}
-.parallax-item--anchor-left .parallax-item__content {
-  left: 0;
-}
-.parallax-item--anchor-right .parallax-item__content {
-  right: 0;
-}
-.parallax-item--anchor-center .parallax-item__content {
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .parallax-layout {

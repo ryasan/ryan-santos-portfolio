@@ -17,11 +17,11 @@ const transformVariants: Variants = {
 
 const eclipseVariants: Variants = {
 	hidden: {
-		borderRadius: '50% 50% 0 0',
+		// borderRadius: '50% 50% 0 0',
 		y: 'calc(100% + 1px)',
 	},
 	visible: {
-		borderRadius: '0%',
+		// borderRadius: '0%',
 		y: '0',
 	},
 }
