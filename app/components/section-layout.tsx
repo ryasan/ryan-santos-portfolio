@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { forwardRef } from 'react'
-import { usePointerFollower } from '~/context/pointer-follower-context'
+import { usePointerFollower } from '~/providers/pointer-follower'
 
 /**
  * THIS COMPONENT DOES NOT WORK WELL IN SAFARI

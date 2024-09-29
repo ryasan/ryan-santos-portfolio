@@ -1,44 +1,51 @@
-import  { type LinksFunction } from '@remix-run/node';
+import { type LinksFunction } from '@remix-run/node'
 import {
 	Links,
 	Meta,
 	Outlet,
 	Scripts,
 	ScrollRestoration,
-} from '@remix-run/react';
-import { useState } from 'react';
+} from '@remix-run/react'
+import { useEffect, useState } from 'react'
 
-import BurgerMenu from '~/components/burger-menu';
-import ClientOnly from '~/components/client-only';
-import Header from '~/components/header';
-import PointerFollower from '~/components/pointer-follower';
-import Providers from '~/components/providers';
-import Sidebar from '~/components/sidebar';
-import mainStyles from '~/styles/main.css?url';
+import BurgerMenu from '~/components/burger-menu'
+import ClientOnly from '~/components/client-only'
+import Header from '~/components/header'
+import PointerFollower from '~/components/pointer-follower'
+import Providers from '~/components/providers'
+import Sidebar from '~/components/sidebar'
+import mainStyles from '~/styles/main.css?url'
+import { noop } from '~/utils'
 
 export const links: LinksFunction = () => {
-	return [{ rel: 'stylesheet', href: mainStyles }];
-};
+	return [{ rel: 'stylesheet', href: mainStyles }]
+}
 
 export default function App() {
-	const [sidebarOpen, setSidebarOpen] = useState(false);
+	const [sidebarOpen, setSidebarOpen] = useState(false)
 
 	function toggleSidebar(state: boolean) {
 		if (state === true || state === false) {
-			setSidebarOpen(state);
+			setSidebarOpen(state)
 		} else {
-			setSidebarOpen(!sidebarOpen);
+			setSidebarOpen(!sidebarOpen)
 		}
 	}
+
+	useEffect(() => {
+		async function importVendors() {
+			// Bootstrap venders after load.
+			await import('~/vendors')
+		}
+
+		importVendors().then(noop).catch(noop)
+	}, [])
 
 	return (
 		<html lang="en">
 			<head>
 				<meta charSet="utf-8" />
-				<meta
-					name="viewport"
-					content="width=device-width, initial-scale=1"
-				/>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<Meta />
 				<Links />
 			</head>
@@ -49,10 +56,7 @@ export default function App() {
 						<main id="scroll-container" data-scroll-container>
 							<PointerFollower />
 							<Header />
-							<Sidebar
-								isOpen={sidebarOpen}
-								toggleSidebar={toggleSidebar}
-							/>
+							<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 							<Outlet />
 							<BurgerMenu
 								sidebarOpen={sidebarOpen}
@@ -65,5 +69,5 @@ export default function App() {
 				<Scripts />
 			</body>
 		</html>
-	);
+	)
 }

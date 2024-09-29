@@ -5,6 +5,7 @@ import { json } from '@remix-run/server-runtime'
 import AboutSection from '~/components/sections/about-section'
 import BlogsSection from '~/components/sections/blogs-section'
 import HeroSection from '~/components/sections/hero-section'
+import ParallaxSection from '~/components/sections/parallax-section'
 import ProjectsSection from '~/components/sections/projects-section'
 import { client } from '~/models/contentful.server'
 
@@ -30,7 +31,8 @@ export default function Index() {
 	return (
 		<>
 			<HeroSection />
-			<AboutSection />
+			{/* <AboutSection /> */}
+			<ParallaxSection />	
 			<ProjectsSection projects={projects} />
 			<BlogsSection blogs={blogs} />
 		</>
