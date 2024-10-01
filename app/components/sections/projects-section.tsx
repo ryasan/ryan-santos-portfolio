@@ -3,7 +3,7 @@ import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Button from '~/components/button'
 import SectionLayout from '~/components/section-layout'
-import { usePointerFollower } from '~/providers/pointer-follower'
+import { usePointerFollower } from '~/context/pointer-follower-context'
 import { type Project } from '~/types'
 
 const ns = 'projects-section'

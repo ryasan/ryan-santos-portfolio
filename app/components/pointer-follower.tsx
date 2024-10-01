@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
-import { usePointerFollower } from '~/providers/pointer-follower'
-import { noop, wait } from '~/utils'
+import { usePointerFollower } from '~/context/pointer-follower-context'
+import { noop, teleport, wait } from '~/utils'
 
 const ns = 'pointer-follower'
 
@@ -28,7 +28,7 @@ export default function PointerFollower() {
 
 	useEffect(() => {
 		if (pointerFollowerRef.current) {
-			document.body.prepend(pointerFollowerRef.current)
+			teleport(pointerFollowerRef.current).toStart(document.body)
 			setFollower(pointerFollowerRef.current)
 		}
 	}, [setFollower])

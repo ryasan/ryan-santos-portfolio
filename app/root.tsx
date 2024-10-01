@@ -34,7 +34,7 @@ export default function App() {
 
 	useEffect(() => {
 		async function importVendors() {
-			// Bootstrap venders after load.
+			// Bootstrap vendors after load.
 			await import('~/vendors')
 		}
 
@@ -54,6 +54,7 @@ export default function App() {
 				<ClientOnly>
 					<Providers>
 						<main id="scroll-container" data-scroll-container>
+							<PointerFollower />
 							<Header />
 							<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 							<Outlet />
@@ -61,7 +62,6 @@ export default function App() {
 								sidebarOpen={sidebarOpen}
 								toggleSidebar={toggleSidebar}
 							/>
-							<PointerFollower />
 						</main>
 					</Providers>
 				</ClientOnly>

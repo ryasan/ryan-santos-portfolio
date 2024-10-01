@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { motion, type Variants } from 'framer-motion'
 import { useRef } from 'react'
-import { usePointerFollower } from '~/providers/pointer-follower'
+import { usePointerFollower } from '~/context/pointer-follower-context'
 
 const ns = 'burger-menu'
 

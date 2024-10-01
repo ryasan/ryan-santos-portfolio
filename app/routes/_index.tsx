@@ -2,7 +2,6 @@ import { type MetaFunction } from '@netlify/remix-runtime'
 import { useLoaderData } from '@remix-run/react'
 import { json } from '@remix-run/server-runtime'
 
-import AboutSection from '~/components/sections/about-section'
 import BlogsSection from '~/components/sections/blogs-section'
 import HeroSection from '~/components/sections/hero-section'
 import ProjectsSection from '~/components/sections/projects-section'
@@ -30,7 +29,6 @@ export default function Index() {
 	return (
 		<>
 			<HeroSection />
-			<AboutSection />
 			<ProjectsSection projects={projects} />
 			<BlogsSection blogs={blogs} />
 		</>

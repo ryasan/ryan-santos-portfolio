@@ -1,9 +1,10 @@
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import Button from '~/components/button'
 import Icon from '~/components/icons'
 import SectionLayout from '~/components/section-layout'
+import { teleport } from '~/utils'
 
 const ns = 'hero-section'
 
@@ -13,9 +14,16 @@ export default function HeroSection() {
 	})
 
 	const rootRef = useRef(null)
+	const scrollDownRef = useRef(null)
 	const delay = 0.75
 	const textA = 'Ryan  Santos'.split(' ')
 	const textB = 'Frontend  Engineer'.split(' ')
+
+	useEffect(() => {
+		if (scrollDownRef.current) {
+			teleport(scrollDownRef.current).toEnd(document.body)
+		}
+	}, [])
 
 	// prettier-ignore
 	return (
@@ -102,7 +110,7 @@ export default function HeroSection() {
 								<Button
 									as="a"
 									mailto="ryansantos86@gmail.com"
-									variant="white"
+									variant="black"
 									icon="arrow-right"
 								>
 									Let&apos;s Connect
@@ -112,7 +120,7 @@ export default function HeroSection() {
 					</div>
 				</div>
 			</div>
-			<div className={`${ns}__scroll-down`}>
+			<div className="scroll-down" ref={scrollDownRef}>
 				<motion.div
 					initial={{ opacity: 0, x: 20 }}
 					animate={{ opacity: 1, x: 0 }}
