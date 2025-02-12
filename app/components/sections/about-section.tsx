@@ -15,26 +15,6 @@ import { wait } from '~/utils'
 const ns = 'about-section'
 
 const aboutItems = [
-	// {
-	// 	title: 'Development',
-	// 	description:
-	// 		'I like to code things from scratch, and enjoy bringing ideas to life in the browser.',
-	// },
-	// {
-	// 	title: 'Design',
-	// 	description:
-	// 		'I value simple content structure, clean design patterns, and thoughtful interactions.',
-	// },
-	// {
-	// 	title: 'E-commerce',
-	// 	description:
-	// 		'I have experience working with e-commerce platforms like Shopify and Elastic Path.',
-	// },
-	// {
-	// 	title: 'Content Management',
-	// 	description:
-	// 		'I have experience working with content management systems like WordPress and Contentful.',
-	// },
 	{
 		title: 'Lorem Ipsum',
 		description:
@@ -170,7 +150,11 @@ export default function AboutSection() {
 								</Button>
 							</div>
 							<div className={`${ns}__cta`}>
-								<Button href="/" onClick={handleCopyEmail} variant="outline-black">
+								<Button
+									href="/"
+									onClick={handleCopyEmail}
+									variant="outline-black"
+								>
 									{copyBtnPressed ? 'Copied!' : 'Copy Email'}
 								</Button>
 							</div>

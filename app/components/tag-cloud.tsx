@@ -1,38 +1,24 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useRef, useEffect, useCallback } from 'react'
 import clsx from 'clsx'
+import { isNullOrUndefined } from '~/utils/type-guards'
 
 const ns = 'tag-cloud'
 
-function isNullOrUndefined(arg: unknown) {
-	return arg === null || arg === undefined
-}
-
 const skills = [
 	'React',
-	'GraphQL',
-	'TypeScript',
-	'Prisma',
-	'OOP',
-	'NodeJS',
-	'Laravel',
-	'Functional',
-	'Figma',
-	'Git',
-	'Netlify',
-	'Heroku',
-	'Angular',
-	'SSR',
-	'_Lodash',
-	'Python',
+	'Semantic HTML',
+	'Responsive Design',
+	'Typescript',
+	'Async',
+	'Gatsby',
+	'Next.js',
 	'Redux',
-	'REST',
-	'Cloudinary',
-	'Design Patterns',
-	'SCSS',
-	'TDD',
-	'D3',
-	'PHP',
+	'GraphQL',
+	'Git',
+	'Unit Testing',
+	'Contentful',
+	'WordPress',
+	'GSAP',
 ]
 
 // Position of text tag in sphere
