@@ -2,7 +2,7 @@
 import clsx from 'clsx'
 import { motion, type Variants } from 'framer-motion'
 import { useState, type ButtonHTMLAttributes } from 'react'
-import Icon, { type IconName } from '~/components/icons'
+import Icon from '~/components/icons'
 
 const ns = 'button'
 
@@ -32,7 +32,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	className?: string
 	mailto?: string
 	href?: string
-	icon?: IconName
+	icon?: string
 	onClick?(): void
 	variant?: 'default' | 'black' | 'white' | 'outline-black' | 'outline-white'
 }
@@ -93,6 +93,18 @@ export default function Button({
 		...(as === 'button' && {
 			onClick,
 		}),
+	}
+
+	if (as === 'a') {
+	}
+
+	if (as === 'button') {
+	}
+
+	if (isDownload) {
+	}
+
+	if (mailto) {
 	}
 
 	const MotionComponent = motion[component]

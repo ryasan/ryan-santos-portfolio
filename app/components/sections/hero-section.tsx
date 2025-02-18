@@ -5,8 +5,27 @@ import Button from '~/components/button'
 import Icon from '~/components/icons'
 import SectionLayout from '~/components/section-layout'
 import { teleport } from '~/utils'
+import { usePointerFollower } from '~/context/pointer-follower-context'
 
 const ns = 'hero-section'
+
+const socialLinks = [
+	{
+		icon: 'github',
+		name: 'GitHub',
+		url: 'https://github.com/ryasan',
+	},
+	{
+		icon: 'linkedin',
+		name: 'LinkedIn',
+		url: 'https://www.linkedin.com/in/ryasan86',
+	},
+	{
+		icon: 'codepen',
+		name: 'CodePen',
+		url: 'https://codepen.io/ryasan86',
+	},
+]
 
 export default function HeroSection() {
 	const rootClassName = clsx({
@@ -18,6 +37,16 @@ export default function HeroSection() {
 	const delay = 0.75
 	const textA = 'Ryan  Santos'.split(' ')
 	const textB = 'Frontend  Engineer'.split(' ')
+
+	const { resetFollowerSize, setFollowerSize } = usePointerFollower()
+
+	function handleSocialLinkEnter() {
+		setFollowerSize(0)
+	}
+
+	function handleSocialLinkLeave() {
+		resetFollowerSize()
+	}
 
 	useEffect(() => {
 		if (scrollDownRef.current) {
@@ -93,7 +122,7 @@ export default function HeroSection() {
 									ease: 'easeInOut',
 								}}
 							>
-								Building beautiful and accessible web experiences.
+								Building beautiful web experiences one line of code at a time.
 							</motion.span>
 						</p>
 
@@ -116,6 +145,30 @@ export default function HeroSection() {
 									Let&apos;s Connect
 								</Button>
 							</motion.div>
+						</div>
+
+						<div className={`${ns}__social`}>
+							{socialLinks.map((link, index) => (
+								<motion.a
+									key={index}
+									href={link.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									className={`${ns}__social-link`}
+									onMouseEnter={handleSocialLinkEnter}
+									onMouseLeave={handleSocialLinkLeave}
+									initial={{ y: 150 }}
+									animate={{ y: 0 }}
+									transition={{
+										duration: 0.35,
+										delay: (delay * 2.5) + (textA.length + textB.length) * 0.02 + index * 0.02,
+										ease: 'easeOut',
+									}}
+								>
+									<Icon name={link.icon} />
+									<span className="visually-hidden">{link.name}</span>
+								</motion.a>
+							))}
 						</div>
 					</div>
 				</div>

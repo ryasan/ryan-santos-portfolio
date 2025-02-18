@@ -60,3 +60,16 @@
 
 	font-family: $body-font-family;
 }
+
+/* Screen Reader */
+
+.visually-hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	position: absolute;
+	margin: -1px;
+	padding: 0;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
