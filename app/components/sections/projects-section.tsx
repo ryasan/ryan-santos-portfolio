@@ -26,13 +26,16 @@ function ProjectCard({
 		// eslint-disable-next-line
 		<a
 			className={`${ns}__project`}
+			href={project.link}
+			onMouseEnter={onMouseEnter}
+			onMouseLeave={onMouseLeave}
 			ref={projectCardRef}
+			rel="noopener noreferrer"
+			target="_blank"
 			style={{
 				opacity: isInView ? 1 : 0,
 				transform: isInView ? 'translateY(0)' : 'translateY(100px)',
 			}}
-			onMouseEnter={onMouseEnter}
-			onMouseLeave={onMouseLeave}
 		>
 			<div className={`${ns}__project-image`}>
 				<img src={project.image} alt={project.imageAlt || project.title} />

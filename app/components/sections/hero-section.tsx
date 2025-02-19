@@ -9,6 +9,7 @@ import { usePointerFollower } from '~/context/pointer-follower-context'
 
 const ns = 'hero-section'
 
+// Todo: Add these to Contentful
 const socialLinks = [
 	{
 		icon: 'github',

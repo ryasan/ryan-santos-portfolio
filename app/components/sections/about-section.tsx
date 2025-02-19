@@ -14,6 +14,7 @@ import { wait } from '~/utils'
 
 const ns = 'about-section'
 
+// Todo: Add these to Contentful
 const aboutItems = [
 	{
 		title: 'Lorem Ipsum',
