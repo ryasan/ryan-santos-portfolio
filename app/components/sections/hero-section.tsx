@@ -138,7 +138,9 @@ export default function HeroSection() {
 							>
 								<Button
 									as="a"
-									mailto="ryansantos86@gmail.com"
+									href="mailto:ryansantos86@gmail.com"
+									rel="noopener noreferrer"
+									target="_blank"
 									variant="black"
 									icon="arrow-right"
 								>

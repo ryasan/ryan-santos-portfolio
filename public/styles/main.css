@@ -1007,7 +1007,7 @@ em {
 }
 .hero-section__description {
   z-index: 2;
-  margin-top: 4rem;
+  margin-top: 3rem;
   max-width: 50rem;
   overflow-y: hidden;
   font-size: 1.8rem;
@@ -1018,21 +1018,28 @@ em {
   .hero-section__description {
     font-size: 3rem;
     line-height: 3.4rem;
+    margin-top: 6rem;
   }
 }
 .hero-section__description span {
   display: inline-block;
 }
 .hero-section__cta {
-  margin-top: 7rem;
+  margin-top: 3rem;
   overflow-y: hidden;
   z-index: 1;
+}
+@media only screen and (min-width: 992px) {
+  .hero-section__cta {
+    margin-top: 6rem;
+  }
 }
 .hero-section__social {
   align-items: center;
   display: flex;
-  margin-top: 7rem;
-  justify-content: space-between;
+  margin-top: 5rem;
+  justify-content: start;
+  gap: 7rem;
   overflow-y: hidden;
   padding: 0.5rem 0;
 }
@@ -1040,6 +1047,7 @@ em {
   .hero-section__social {
     justify-content: center;
     gap: 15rem;
+    margin-top: 10rem;
   }
 }
 .hero-section__social-link {

@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import clsx from 'clsx'
 import { motion, type Variants } from 'framer-motion'
-import { useState, type ButtonHTMLAttributes } from 'react'
+import {
+	useState,
+	type AnchorHTMLAttributes,
+	type ButtonHTMLAttributes,
+} from 'react'
 import Icon from '~/components/icons'
 
 const ns = 'button'
@@ -26,28 +30,24 @@ const eclipseVariants: Variants = {
 	},
 }
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-	as?: 'button' | 'a'
-	children: React.ReactNode
-	className?: string
-	mailto?: string
-	href?: string
-	icon?: string
-	onClick?(): void
-	variant?: 'default' | 'black' | 'white' | 'outline-black' | 'outline-white'
-}
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+	AnchorHTMLAttributes<HTMLAnchorElement> & {
+		as?: 'button' | 'a'
+		icon?: string
+		variant?: 'default' | 'black' | 'white' | 'outline-black' | 'outline-white'
+	}
 
 export default function Button({
 	children,
 	as = 'button',
 	className,
-	mailto,
 	href,
 	icon,
 	onClick,
 	onMouseEnter = () => {},
 	onMouseLeave = () => {},
 	variant = 'default',
+	...props
 }: ButtonProps) {
 	const rootClassName = clsx({
 		[`${ns}`]: true,
@@ -61,50 +61,43 @@ export default function Button({
 	const component = as
 
 	function handleMouseEnter(e: any) {
-		if (onMouseEnter) {
+		if (typeof onMouseEnter === 'function') {
 			onMouseEnter(e)
 			setIsHovered(true)
 		}
 	}
 
 	function handleMouseLeave(e: any) {
-		if (onMouseLeave) {
+		if (typeof onMouseLeave === 'function') {
 			onMouseLeave(e)
 			setIsHovered(false)
 		}
 	}
 
-	const props = {
-		...(as === 'a' && {
-			href,
-			onClick,
-			target: isExternal ? '_blank' : undefined,
-			rel: 'noopener noreferrer',
-		}),
-		...(isDownload && {
-			href,
-			download: true,
-		}),
-		...(mailto && {
-			href: `mailto:${mailto}`,
-			target: '_blank',
-			rel: 'noopener noreferrer',
-		}),
-		...(as === 'button' && {
-			onClick,
-		}),
-	}
-
-	if (as === 'a') {
-	}
-
-	if (as === 'button') {
-	}
-
-	if (isDownload) {
-	}
-
-	if (mailto) {
+	const getProps = () => {
+		if (as === 'a') {
+			return {
+				...props,
+				href,
+				onClick,
+				target: isExternal ? '_blank' : undefined,
+				rel: isExternal ? 'noopener noreferrer' : props.rel,
+			}
+		}
+		if (as === 'button') {
+			return {
+				...props,
+				onClick,
+			}
+		}
+		if (isDownload) {
+			return {
+				...props,
+				href,
+				download: true,
+			}
+		}
+		return props as any
 	}
 
 	const MotionComponent = motion[component]
@@ -114,7 +107,7 @@ export default function Button({
 			className={rootClassName}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
-			{...props}
+			{...getProps()}
 		>
 			<div className={`${ns}__content`}>
 				<motion.span
