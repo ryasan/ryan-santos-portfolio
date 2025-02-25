@@ -9,7 +9,7 @@ export default function Header() {
 		[`${ns}`]: true,
 	})
 
-	const myName = 'HelloWorld.'.split('')
+	const myName = 'HelloWorld'.split('')
 
 	return (
 		<SectionLayout className={rootClassName} as="header" cursorColor="inverse">
