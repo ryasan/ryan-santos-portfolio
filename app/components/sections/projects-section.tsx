@@ -23,7 +23,6 @@ function ProjectCard({
 	const isInView = useInView(projectCardRef, { once: true, amount: 0.4 })
 
 	return (
-		// eslint-disable-next-line
 		<a
 			className={`${ns}__project`}
 			href={project.link}
