@@ -1,11 +1,18 @@
 import clsx from 'clsx'
-import { Link } from '@remix-run/react';
+import { Link } from '@remix-run/react'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+
 import Button from '~/components/button'
 import SectionLayout from '~/components/section-layout'
-import { usePointerFollower } from '~/context/pointer-follower'
+import { FreeMode, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import { type Blog } from '~/types'
+import { usePointerFollower } from '~/context/pointer-follower'
+
+import 'swiper/css'
+import 'swiper/css/free-mode'
+import 'swiper/css/pagination'
 
 const ns = 'blogs-section'
 
@@ -16,20 +23,20 @@ type BlogCardProps = {
 }
 
 function BlogCard({ blog, onMouseEnter, onMouseLeave }: BlogCardProps) {
-	const blogCardRef = useRef(null)
-	const isInView = useInView(blogCardRef, { once: true, amount: 0.4 })
+	// const blogCardRef = useRef(null)
+	// const isInView = useInView(blogCardRef, { once: true, amount: 0.4 })
 
 	return (
 		<Link
 			className={`${ns}__blog`}
 			to={`/blog/${blog.slug}`}
-			ref={blogCardRef}
+			// ref={blogCardRef}
 			onMouseEnter={onMouseEnter}
 			onMouseLeave={onMouseLeave}
-			style={{
-				opacity: isInView ? 1 : 0,
-				transform: isInView ? 'translateY(0)' : 'translateY(100px)',
-			}}
+			// style={{
+			// 	opacity: isInView ? 1 : 0,
+			// 	transform: isInView ? 'translateY(0)' : 'translateY(100px)',
+			// }}
 		>
 			<div className={`${ns}__blog-image`}>
 				<img
@@ -58,8 +65,11 @@ export default function BlogsSection({ blogs }: BlogsSectionProps) {
 
 	const { setFollowerText, setMixBlendMode } = usePointerFollower()
 
+	const blogsRef = useRef(null)
+	const isInView = useInView(blogsRef, { once: true, amount: 0.4 })
+
 	function handleMouseEnter() {
-		setFollowerText('Explore')
+		setFollowerText('Drag')
 		setMixBlendMode(false)
 	}
 
@@ -81,21 +91,36 @@ export default function BlogsSection({ blogs }: BlogsSectionProps) {
 
 						<div
 							className={`${ns}__blogs`}
-							onMouseEnter={() => setMixBlendMode(false)}
+							ref={blogsRef}
+							// style={{
+							// 	opacity: isInView ? 1 : 0,
+							// 	transform: isInView ? 'translateY(0)' : 'translateY(100px)',
+							// }}
 						>
-							{blogs.map((blog, index) => (
-								<BlogCard
-									key={index}
-									blog={blog}
-									onMouseEnter={handleMouseEnter}
-									onMouseLeave={handleMouseLeave}
-								/>
-							))}
+							<Swiper
+								spaceBetween={30}
+								freeMode={true}
+								modules={[FreeMode, Pagination]}
+								breakpoints={{
+									320: { slidesPerView: 1.1 },
+									768: { slidesPerView: 2.4 },
+								}}
+							>
+								{blogs.map((blog, index) => (
+									<SwiperSlide key={index}>
+										<BlogCard
+											blog={blog}
+											onMouseEnter={handleMouseEnter}
+											onMouseLeave={handleMouseLeave}
+										/>
+									</SwiperSlide>
+								))}
+							</Swiper>
 						</div>
 
-						<div className={`${ns}__cta`} data-scroll data-scroll-speed="3">
+						<div className={`${ns}__cta`}>
 							<Button as="a" href="/blogs" variant="outline-black">
-								View Blogs
+								View Posts
 							</Button>
 						</div>
 					</div>

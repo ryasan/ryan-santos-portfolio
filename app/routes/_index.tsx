@@ -2,7 +2,7 @@ import { type MetaFunction } from '@netlify/remix-runtime'
 import { useLoaderData } from '@remix-run/react'
 import { json } from '@remix-run/server-runtime'
 
-// import BlogsSection from '~/components/sections/blogs-section'
+import BlogsSection from '~/components/sections/blogs-section'
 import HeroSection from '~/components/sections/hero-section'
 import ProjectsSection from '~/components/sections/projects-section'
 import { client } from '~/models/contentful.server'
@@ -15,7 +15,9 @@ export async function loader() {
 
 export const meta: MetaFunction = () => {
 	return [
-		{ title: 'Home - Ryan Santos Portfolio' },
+		{
+			title: 'Home - Ryan Santos Portfolio',
+		},
 		{
 			name: 'description',
 			content: 'A portfolio site showcasing the works of Ryan Santos',
@@ -30,7 +32,7 @@ export default function Index() {
 		<>
 			<HeroSection />
 			<ProjectsSection projects={projects} />
-			{/* <BlogsSection blogs={blogs} /> */}
+			<BlogsSection blogs={blogs} />
 		</>
 	)
 }

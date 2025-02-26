@@ -11,7 +11,7 @@ $ns: '.button';
 	background-color: $black;
 	padding: 0 30px;
 	min-width: 200px;
-	height: 60px;
+	height: 50px;
 	overflow: hidden;
 	color: $white;
 	font-size: 2.5rem;
@@ -22,7 +22,7 @@ $ns: '.button';
 	}
 
 	@include at-laptop {
-		height: 80px;
+		height: 60px;
 		font-size: 3rem;
 	}
 

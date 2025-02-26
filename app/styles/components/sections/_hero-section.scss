@@ -82,6 +82,14 @@ $ns: '.hero-section';
 		@include at-laptop {
 			margin-top: 6rem;
 		}
+
+		.button {
+			height: 60px;
+
+			@include at-laptop {
+				height: 80px;
+			}
+		}
 	}
 
 	&__social {
