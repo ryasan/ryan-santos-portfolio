@@ -1,3 +1,4 @@
+export * from './call-all'
 export * from './get-class'
 export * from './noop'
 export * from './teleport'
