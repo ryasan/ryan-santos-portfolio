@@ -52,7 +52,7 @@ type BlogsSectionProps = {
 
 export default function BlogsSection({ blogs }: BlogsSectionProps) {
 	const rootClassName = clsx({
-		[`${ns}`]: true,
+		[ns]: true,
 	})
 
 	const { setFollowerText, setMixBlendMode } = usePointerFollower()

@@ -83,7 +83,7 @@ type BurgerMenuProps = {
 
 const BurgerMenu = ({ sidebarOpen, toggleSidebar }: BurgerMenuProps) => {
 	const rootClassName = clsx({
-		[`${ns}`]: true,
+		[ns]: true,
 	})
 
 	const rootRef = useRef<HTMLButtonElement>(null)

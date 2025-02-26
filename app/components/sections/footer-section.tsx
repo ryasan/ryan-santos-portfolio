@@ -5,7 +5,7 @@ const ns = 'footer-section'
 
 export default function FooterSection() {
 	const rootClassName = clsx({
-		[`${ns}`]: true,
+		[ns]: true,
 	})
 
 	return (

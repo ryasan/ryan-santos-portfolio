@@ -141,7 +141,7 @@ export default function TagCloud() {
 	}, [tagCloudRef])
 
 	const rootClassName = clsx({
-		[`${ns}`]: true,
+		[ns]: true,
 	})
 
 	return (

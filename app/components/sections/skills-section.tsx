@@ -7,7 +7,7 @@ const ns = 'skills-section'
 
 export default function SkillsSection() {
 	const rootClassName = clsx({
-		[`${ns}`]: true,
+		[ns]: true,
 	})
 
 	const anchorRef = useRef<HTMLDivElement>(null)

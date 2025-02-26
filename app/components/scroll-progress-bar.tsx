@@ -5,7 +5,7 @@ const ns = 'scroll-progress-bar';
 
 const ScrollProgressBar = () => {
 	const rootClassName = clsx({
-		[`${ns}`]: true,
+		[ns]: true,
 	});
 
 	const { scrollYProgress } = useScroll();

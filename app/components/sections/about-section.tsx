@@ -116,7 +116,7 @@ function AboutItem({
 
 export default function AboutSection() {
 	const rootClassName = clsx({
-		[`${ns}`]: true,
+		[ns]: true,
 	})
 
 	const rootRef = useRef(null)

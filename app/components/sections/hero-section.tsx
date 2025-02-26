@@ -30,7 +30,7 @@ const socialLinks = [
 
 export default function HeroSection() {
 	const rootClassName = clsx({
-		[`${ns}`]: true,
+		[ns]: true,
 	})
 
 	const rootRef = useRef(null)

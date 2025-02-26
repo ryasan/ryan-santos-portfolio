@@ -19,7 +19,7 @@ type SidebarProps = {
 
 export default function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
 	const rootClassName = clsx({
-		[`${ns}`]: true,
+		[ns]: true,
 	})
 
 	return (

@@ -6,7 +6,7 @@ const ns = 'site-header'
 
 export default function Header() {
 	const rootClassName = clsx({
-		[`${ns}`]: true,
+		[ns]: true,
 	})
 
 	const myName = 'HelloWorld'.split('')

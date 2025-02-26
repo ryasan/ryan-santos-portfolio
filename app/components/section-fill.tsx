@@ -6,7 +6,7 @@ const ns = 'section-fill'
 
 function SectionFill() {
 	const rootClassName = clsx({
-		[`${ns}`]: true,
+		[ns]: true,
 	})
 
 	const rootRef = useRef<HTMLDivElement>(null)
