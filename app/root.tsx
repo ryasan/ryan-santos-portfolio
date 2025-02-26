@@ -46,6 +46,7 @@ export default function App() {
 					<Providers>
 						<main id="scroll-container" data-scroll-container>
 							<RootLayout>
+								{/* Animated routes. */}
 								{/* <AnimatePresence mode="wait" initial={false}>
 									<motion.div
 										key={location.pathname}
