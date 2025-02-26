@@ -7,6 +7,7 @@ import {
 	type ButtonHTMLAttributes,
 } from 'react'
 import Icon from '~/components/icons'
+import { noop } from '~/utils'
 
 const ns = 'button'
 
@@ -44,8 +45,8 @@ export default function Button({
 	href,
 	icon,
 	onClick,
-	onMouseEnter = () => {},
-	onMouseLeave = () => {},
+	onMouseEnter = noop,
+	onMouseLeave = noop,
 	variant = 'default',
 	...props
 }: ButtonProps) {
