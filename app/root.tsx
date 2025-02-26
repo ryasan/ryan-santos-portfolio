@@ -1,4 +1,6 @@
 import { type LinksFunction } from '@remix-run/node'
+import { useLocation } from '@remix-run/react'
+// import { AnimatePresence, motion } from 'framer-motion'
 import {
 	Links,
 	Meta,
@@ -6,14 +8,11 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from '@remix-run/react'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
-import BurgerMenu from '~/components/burger-menu'
 import ClientOnly from '~/components/client-only'
-import Header from '~/components/header'
-import PointerFollower from '~/components/pointer-follower'
 import Providers from '~/components/providers'
-import Sidebar from '~/components/sidebar'
+import RootLayout from '~/components/root-layout'
 import mainStyles from '~/styles/main.css?url'
 import { noop } from '~/utils'
 
@@ -22,15 +21,7 @@ export const links: LinksFunction = () => {
 }
 
 export default function App() {
-	const [sidebarOpen, setSidebarOpen] = useState(false)
-
-	function toggleSidebar(state: boolean) {
-		if (state === true || state === false) {
-			setSidebarOpen(state)
-		} else {
-			setSidebarOpen(!sidebarOpen)
-		}
-	}
+	const location = useLocation()
 
 	useEffect(() => {
 		async function importVendors() {
@@ -54,14 +45,19 @@ export default function App() {
 				<ClientOnly>
 					<Providers>
 						<main id="scroll-container" data-scroll-container>
-							<PointerFollower />
-							<Header />
-							<Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-							<Outlet />
-							<BurgerMenu
-								sidebarOpen={sidebarOpen}
-								toggleSidebar={toggleSidebar}
-							/>
+							<RootLayout>
+								{/* <AnimatePresence mode="wait" initial={false}>
+									<motion.div
+										key={location.pathname}
+										initial={{ x: '-10%', opacity: 0 }}
+										animate={{ x: '0', opacity: 1 }}
+										exit={{ y: '-10%', opacity: 0 }}
+										transition={{ duration: 0.3 }}
+									> */}
+								<Outlet />
+								{/* </motion.div>
+								</AnimatePresence> */}
+							</RootLayout>
 						</main>
 					</Providers>
 				</ClientOnly>

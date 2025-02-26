@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { Link } from '@remix-run/react'
 import { motion } from 'framer-motion'
 import SectionLayout from '~/components/section-layout'
 
@@ -14,7 +15,7 @@ export default function Header() {
 	return (
 		<SectionLayout className={rootClassName} as="header" cursorColor="inverse">
 			<div className="container-fluid">
-				<span className={`${ns}__title`}>
+				<Link className={`${ns}__title`} to="/">
 					<small>
 						{myName.map((letter, index, arr) => (
 							<motion.span
@@ -35,7 +36,7 @@ export default function Header() {
 							</motion.span>
 						))}
 					</small>
-				</span>
+				</Link>
 				<nav className={`${ns}__nav`}>
 					<span className={`${ns}__nav-text`}>
 						<small>menu</small>

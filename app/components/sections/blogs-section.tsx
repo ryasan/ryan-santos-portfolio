@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { Link } from '@remix-run/react';
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Button from '~/components/button'
@@ -19,15 +20,16 @@ function BlogCard({ blog, onMouseEnter, onMouseLeave }: BlogCardProps) {
 	const isInView = useInView(blogCardRef, { once: true, amount: 0.4 })
 
 	return (
-		<a
+		<Link
 			className={`${ns}__blog`}
+			to={`/blog/${blog.slug}`}
 			ref={blogCardRef}
+			onMouseEnter={onMouseEnter}
+			onMouseLeave={onMouseLeave}
 			style={{
 				opacity: isInView ? 1 : 0,
 				transform: isInView ? 'translateY(0)' : 'translateY(100px)',
 			}}
-			onMouseEnter={onMouseEnter}
-			onMouseLeave={onMouseLeave}
 		>
 			<div className={`${ns}__blog-image`}>
 				<img
@@ -41,7 +43,7 @@ function BlogCard({ blog, onMouseEnter, onMouseLeave }: BlogCardProps) {
 					<strong>{blog.title}</strong> - {blog.description}
 				</small>
 			</div>
-		</a>
+		</Link>
 	)
 }
 

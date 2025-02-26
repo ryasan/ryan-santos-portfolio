@@ -1385,6 +1385,7 @@ em {
   }
 }
 .site-header__title {
+  color: #000;
   font-weight: 800;
   font-family: "Inter Tight";
 }
