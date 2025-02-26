@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
-import { usePointerFollower } from '~/context/pointer-follower-context'
+import { usePointerFollower } from '~/context/pointer-follower'
 import { noop, teleport, wait } from '~/utils'
 
 const ns = 'pointer-follower'

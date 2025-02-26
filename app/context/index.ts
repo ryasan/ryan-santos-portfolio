@@ -1,1 +1,1 @@
-export * from './pointer-follower-context';
+export * from './pointer-follower';

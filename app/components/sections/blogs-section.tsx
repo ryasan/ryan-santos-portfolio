@@ -3,7 +3,7 @@ import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Button from '~/components/button'
 import SectionLayout from '~/components/section-layout'
-import { usePointerFollower } from '~/context/pointer-follower-context'
+import { usePointerFollower } from '~/context/pointer-follower'
 import { type Blog } from '~/types'
 
 const ns = 'blogs-section'
@@ -19,7 +19,6 @@ function BlogCard({ blog, onMouseEnter, onMouseLeave }: BlogCardProps) {
 	const isInView = useInView(blogCardRef, { once: true, amount: 0.4 })
 
 	return (
-		// eslint-disable-next-line
 		<a
 			className={`${ns}__blog`}
 			ref={blogCardRef}

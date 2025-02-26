@@ -5,7 +5,7 @@ import Button from '~/components/button'
 import Icon from '~/components/icons'
 import SectionLayout from '~/components/section-layout'
 import { teleport } from '~/utils'
-import { usePointerFollower } from '~/context/pointer-follower-context'
+import { usePointerFollower } from '~/context/pointer-follower'
 
 const ns = 'hero-section'
 
