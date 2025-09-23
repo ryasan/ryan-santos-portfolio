@@ -24,27 +24,20 @@ $max-width: 1360px;
 $site-header-height: 60px;
 
 // Font Families
-$matter: 'Matter';
-$recoleta: 'Recoleta';
-$inter-tight: 'Inter Tight';
-$suisse-intl: 'Suisse Intl';
-$body-font-family: $inter-tight, sans-serif;
-$heading-font-family: $suisse-intl, sans-serif;
+$body-font-family: 'Poppins', sans-serif;
+$heading-font-family: 'Poppins', sans-serif;
 
 // Default Breakpoints For Typography
 $font-breakpoints: (
-	mobile:
-		map-get(
+	mobile: map-get(
 			$map: $breakpoints,
 			$key: 'mobile',
 		),
-	tablet:
-		map-get(
+	tablet: map-get(
 			$map: $breakpoints,
 			$key: 'tablet',
 		),
-	laptop:
-		map-get(
+	laptop: map-get(
 			$map: $breakpoints,
 			$key: 'laptop',
 		),

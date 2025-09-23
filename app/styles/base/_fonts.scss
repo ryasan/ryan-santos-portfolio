@@ -1,189 +1,41 @@
-// Matter Font
-$matter-thin-src: font-src('Matter-Thin');
-$matter-thin-italic-src: font-src('Matter-ThinItalic');
-$matter-light-src: font-src('Matter-Light');
-$matter-light-italic-src: font-src('Matter-LightItalic');
-$matter-medium-src: font-src('Matter-Medium');
-$matter-medium-italic-src: font-src('Matter-MediumItalic');
-$matter-reg-src: font-src('Matter-Regular');
-$matter-reg-italic-src: font-src('Matter-RegularItalic');
-$matter-semibold-src: font-src('Matter-SemiBold');
-$matter-semibold-italic-src: font-src('Matter-SemiBoldItalic');
+// Poppins Font Variables
+$poppins-thin-src: font-src('Poppins-Thin');
+$poppins-thin-italic-src: font-src('Poppins-ThinItalic');
+$poppins-extralight-src: font-src('Poppins-ExtraLight');
+$poppins-extralight-italic-src: font-src('Poppins-ExtraLightItalic');
+$poppins-light-src: font-src('Poppins-Light');
+$poppins-light-italic-src: font-src('Poppins-LightItalic');
+$poppins-regular-src: font-src('Poppins-Regular');
+$poppins-italic-src: font-src('Poppins-Italic');
+$poppins-medium-src: font-src('Poppins-Medium');
+$poppins-medium-italic-src: font-src('Poppins-MediumItalic');
+$poppins-semibold-src: font-src('Poppins-SemiBold');
+$poppins-semibold-italic-src: font-src('Poppins-SemiBoldItalic');
+$poppins-bold-src: font-src('Poppins-Bold');
+$poppins-bold-italic-src: font-src('Poppins-BoldItalic');
+$poppins-extrabold-src: font-src('Poppins-ExtraBold');
+$poppins-extrabold-italic-src: font-src('Poppins-ExtraBoldItalic');
+$poppins-black-src: font-src('Poppins-Black');
+$poppins-black-italic-src: font-src('Poppins-BlackItalic');
 
-// Inter Tight Font
-$inter-tight-src: font-src('Inter-Tight');
-$inter-tight-italic-src: font-src('Inter-Tight-Italic');
-
-// Recoleta Font
-$recoleta-reg-src: font-src('Recoleta-Regular');
-
-// Suisse Intl Font
-$suisse-intl-reg-src: font-src('SuisseIntl-Regular');
-$suisse-intl-bold-src: font-src('SuisseIntl-Bold');
-$suisse-intl-bold-italic-src: font-src('SuisseIntl-BoldItalic');
-
+// Poppins Font Faces
 @at-root {
-	// Matter Font Faces
-	@include font-face(
-		'Matter',
-		$matter-thin-src,
-		100,
-		normal
-	);
-	@include font-face(
-		'Matter',
-		$matter-thin-italic-src,
-		100,
-		italic
-	);
-	@include font-face(
-		'Matter',
-		$matter-light-src,
-		300,
-		normal
-	);
-	@include font-face(
-		'Matter',
-		$matter-light-italic-src,
-		300,
-		italic
-	);
-	@include font-face(
-		'Matter',
-		$matter-reg-src,
-		400,
-		normal
-	);
-	@include font-face(
-		'Matter',
-		$matter-reg-italic-src,
-		400,
-		italic
-	);
-	@include font-face(
-		'Matter',
-		$matter-medium-src,
-		500,
-		normal
-	);
-	@include font-face(
-		'Matter',
-		$matter-medium-italic-src,
-		500,
-		italic
-	);
-	@include font-face(
-		'Matter',
-		$matter-semibold-src,
-		600,
-		normal
-	);
-	@include font-face(
-		'Matter',
-		$matter-semibold-italic-src,
-		600,
-		italic
-	);
-
-	// Inter Tight Font Faces
-	@include font-face(
-		'Inter Tight',
-		$inter-tight-src,
-		400,
-		normal
-	);
-	@include font-face(
-		'Inter Tight',
-		$inter-tight-italic-src,
-		400,
-		italic
-	);
-	@include font-face(
-		'Inter Tight',
-		$inter-tight-src,
-		500,
-		normal
-	);
-	@include font-face(
-		'Inter Tight',
-		$inter-tight-italic-src,
-		500,
-		italic
-	);
-	@include font-face(
-		'Inter Tight',
-		$inter-tight-src,
-		600,
-		normal
-	);
-	@include font-face(
-		'Inter Tight',
-		$inter-tight-italic-src,
-		600,
-		italic
-	);
-	@include font-face(
-		'Inter Tight',
-		$inter-tight-src,
-		700,
-		normal
-	);
-	@include font-face(
-		'Inter Tight',
-		$inter-tight-italic-src,
-		700,
-		italic
-	);
-	@include font-face(
-		'Inter Tight',
-		$inter-tight-src,
-		800,
-		normal
-	);
-	@include font-face(
-		'Inter Tight',
-		$inter-tight-italic-src,
-		800,
-		italic
-	);
-	@include font-face(
-		'Inter Tight',
-		$inter-tight-src,
-		900,
-		normal
-	);
-	@include font-face(
-		'Inter Tight',
-		$inter-tight-italic-src,
-		900,
-		italic
-	);
-
-	// Recoleta Font
-	@include font-face(
-		'Recoleta',
-		$recoleta-reg-src,
-		400,
-		normal
-	);
-
-	// Suisse Intl Font
-	@include font-face(
-		'Suisse Intl',
-		$suisse-intl-reg-src,
-		400,
-		normal
-	);
-	@include font-face(
-		'Suisse Intl',
-		$suisse-intl-bold-src,
-		700,
-		normal
-	);
-	@include font-face(
-		'Suisse Intl',
-		$suisse-intl-bold-italic-src,
-		700,
-		italic
-	);
+	@include font-face('Poppins', $poppins-thin-src, 100, normal);
+	@include font-face('Poppins', $poppins-thin-italic-src, 100, italic);
+	@include font-face('Poppins', $poppins-extralight-src, 200, normal);
+	@include font-face('Poppins', $poppins-extralight-italic-src, 200, italic);
+	@include font-face('Poppins', $poppins-light-src, 300, normal);
+	@include font-face('Poppins', $poppins-light-italic-src, 300, italic);
+	@include font-face('Poppins', $poppins-regular-src, 400, normal);
+	@include font-face('Poppins', $poppins-italic-src, 400, italic);
+	@include font-face('Poppins', $poppins-medium-src, 500, normal);
+	@include font-face('Poppins', $poppins-medium-italic-src, 500, italic);
+	@include font-face('Poppins', $poppins-semibold-src, 600, normal);
+	@include font-face('Poppins', $poppins-semibold-italic-src, 600, italic);
+	@include font-face('Poppins', $poppins-bold-src, 700, normal);
+	@include font-face('Poppins', $poppins-bold-italic-src, 700, italic);
+	@include font-face('Poppins', $poppins-extrabold-src, 800, normal);
+	@include font-face('Poppins', $poppins-extrabold-italic-src, 800, italic);
+	@include font-face('Poppins', $poppins-black-src, 900, normal);
+	@include font-face('Poppins', $poppins-black-italic-src, 900, italic);
 }
