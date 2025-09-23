@@ -17,3 +17,4 @@
 * [ ] Look into replacing Locomotive Scroll with React Locomotive Scroll
 * [ ] Update `main.scss` to `_main.scss` the opposite for every other SCSS file
 * [ ] Add command that automatically updates GraphQL types from Contentful
+* [ ] Wrap `Outlet` in an `AnimatePresence` provider

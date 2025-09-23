@@ -2,4 +2,4 @@
 
 ## Chat Rules
 
-- Do not automatically make code suggestions within a file. Keep your changes in snippets within the chat.
+- Do not automatically make changes to any files after receiving a prompt. Keep your suggested changes contained within the chat.

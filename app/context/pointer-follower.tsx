@@ -15,6 +15,21 @@ import {
 } from 'react'
 
 /**
+ * Constants.
+ */
+
+const SPRING_CONFIG = {
+	damping: 30,
+	stiffness: 300,
+	restDelta: 0.001,
+}
+
+const DEFAULT_FOLLOWER_SIZE = 10
+const TEXT_FOLLOWER_SIZE = 100
+const OUT_OF_BOUNDS_THRESHOLD = 5
+const MOBILE_BREAKPOINT = 992
+
+/**
  * State types.
  */
 
@@ -73,7 +88,7 @@ export function usePointerFollower() {
 
 const initialState: PointerFollowerState = {
 	innerText: '',
-	followerSize: 10,
+	followerSize: DEFAULT_FOLLOWER_SIZE,
 	isOutOfBounds: false,
 	isMixBlendMode: false,
 	stuckToElement: null,
@@ -114,7 +129,9 @@ function pointerFollowerReducer(
 			return {
 				...state,
 				innerText: action.payload,
-				followerSize: action.payload ? 100 : 10,
+				followerSize: action.payload
+					? TEXT_FOLLOWER_SIZE
+					: DEFAULT_FOLLOWER_SIZE,
 			}
 		case 'SET_OUT_OF_BOUNDS':
 			return {
@@ -212,7 +229,7 @@ export default function PointerFollowerProvider({
 	 * @returns {void}
 	 */
 	function resetFollowerSize() {
-		dispatch({ type: 'SET_SIZE', payload: 10 })
+		dispatch({ type: 'SET_SIZE', payload: DEFAULT_FOLLOWER_SIZE })
 	}
 
 	/**
@@ -268,6 +285,7 @@ export default function PointerFollowerProvider({
 	 */
 	function getElementPosition(element: HTMLElement) {
 		const rect = element.getBoundingClientRect()
+
 		return {
 			x: rect.left + window.scrollX + rect.width / 2,
 			y: rect.top + window.scrollY + rect.height / 2,
@@ -286,6 +304,7 @@ export default function PointerFollowerProvider({
 		frame.read(() => {
 			const x = pageX - el.offsetLeft - el.offsetWidth / 2
 			const y = pageY - el.offsetTop - el.offsetHeight / 2
+
 			xPointer.set(x)
 			yPointer.set(y)
 		})
@@ -305,6 +324,7 @@ export default function PointerFollowerProvider({
 		if (!stuckEl || !followerEl) return false
 
 		const { x, y } = getElementPosition(stuckEl)
+		
 		xPointer.set(x - Math.floor(size / 2))
 		yPointer.set(y - Math.floor(size / 2))
 
@@ -321,10 +341,10 @@ export default function PointerFollowerProvider({
 		const { clientX, clientY } = event
 
 		if (
-			clientX < 5 ||
-			clientY < 5 ||
-			clientX > window.innerWidth - 5 ||
-			clientY > window.innerHeight - 5
+			clientX < OUT_OF_BOUNDS_THRESHOLD ||
+			clientY < OUT_OF_BOUNDS_THRESHOLD ||
+			clientX > window.innerWidth - OUT_OF_BOUNDS_THRESHOLD ||
+			clientY > window.innerHeight - OUT_OF_BOUNDS_THRESHOLD
 		) {
 			dispatch({ type: 'SET_OUT_OF_BOUNDS', payload: true })
 			return true
@@ -341,13 +361,14 @@ export default function PointerFollowerProvider({
 	 */
 	useEffect(() => {
 		if (!followerElement) return
-		if (window?.innerWidth < 992) return
+		if (window?.innerWidth < MOBILE_BREAKPOINT) return
 
 		async function handlePointerMove(event: MouseEvent) {
 			const isStuckToElement = checkStuckToElement()
 			const isOutOfBounds = checkOutOfBounds(event)
-			if (isStuckToElement) return
-			if (isOutOfBounds) return
+
+			if (isStuckToElement || isOutOfBounds) return
+
 			updateFollowerPosition(event)
 		}
 

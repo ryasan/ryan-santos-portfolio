@@ -1,5 +1,3 @@
-import { SVGAttributes, SVGProps } from 'react'
-
 function ArrowRightIcon({ className }: { className?: string }) {
 	return (
 		<svg
