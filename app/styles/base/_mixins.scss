@@ -1,5 +1,4 @@
-/* Custom Font Sourcing */
-
+// Custom Font Sourcing
 @mixin font-face($family, $src, $weight: normal, $style: normal) {
 	@font-face {
 		font-style: $style;
@@ -9,8 +8,7 @@
 	}
 }
 
-/* Screen Reader */
-
+// Screen Reader
 @mixin visually-hidden() {
 	border: 0;
 	clip: rect(0 0 0 0);
@@ -22,8 +20,7 @@
 	overflow: hidden;
 }
 
-/* Media Queries */
-
+// Media Queries
 @mixin at-tablet {
 	@media only screen and ($tablet-up) {
 		@content;
@@ -72,8 +69,7 @@
 	}
 }
 
-/* Hiding Elements */
-
+// Hiding Elements
 @mixin hidden-tablet-down {
 	@include tablet-down {
 		display: none;
@@ -98,8 +94,7 @@
 	}
 }
 
-/* Aspect Ratio Padding Trick */
-
+// Aspect Ratio Padding Trick
 @mixin aspect-ratio-media($width, $height) {
 	position: relative;
 
@@ -120,8 +115,7 @@
 	}
 }
 
-/* Section Styling */
-
+// Section Styling
 @mixin section-style($bg-color: $black, $color: $white, $padding: 12.5rem) {
 	background-color: $bg-color;
 	padding: $padding 0;
@@ -137,11 +131,8 @@
 	}
 }
 
-/*
- *  Creates typography styles given a map of breakpoints ($font-breakpoints is default)
- *  and a map of font styles.
- */
-
+// Creates typography styles given a map of breakpoints ($font-breakpoints is default)
+// and a map of font styles.
 @mixin font-style($fs-map, $fs-breakpoints: $font-breakpoints) {
 	@each $fs-breakpoint, $fs-font-size in $fs-map {
 		@if not $fs-breakpoint {
@@ -160,11 +151,9 @@
 	}
 }
 
-/*
- *  Utility function for mixin font-style. Accepts a font size or a sass list of 
- *  properties (font-size, line-height, letter-spacing, font-weight). List must
- *  be in this order - pass null to omit the property/rule.
- */
+// Utility function for mixin font-style. Accepts a font size or a sass list of
+// properties (font-size, line-height, letter-spacing, font-weight). List must
+// be in this order - pass null to omit the property/rule.
 @mixin make-font-style($fs-rules) {
 	// If $fs-rules is a list, include the following properties
 	@if type-of($fs-rules) == 'list' {

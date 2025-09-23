@@ -11,7 +11,6 @@ $matter-semibold-src: font-src('Matter-SemiBold');
 $matter-semibold-italic-src: font-src('Matter-SemiBoldItalic');
 
 // Inter Tight Font
-
 $inter-tight-src: font-src('Inter-Tight');
 $inter-tight-italic-src: font-src('Inter-Tight-Italic');
 
@@ -24,7 +23,7 @@ $suisse-intl-bold-src: font-src('SuisseIntl-Bold');
 $suisse-intl-bold-italic-src: font-src('SuisseIntl-BoldItalic');
 
 @at-root {
-	// Matter Font
+	// Matter Font Faces
 	@include font-face(
 		'Matter',
 		$matter-thin-src,
@@ -86,7 +85,7 @@ $suisse-intl-bold-italic-src: font-src('SuisseIntl-BoldItalic');
 		italic
 	);
 
-	// Inter Tight Font
+	// Inter Tight Font Faces
 	@include font-face(
 		'Inter Tight',
 		$inter-tight-src,

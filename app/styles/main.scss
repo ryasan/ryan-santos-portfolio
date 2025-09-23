@@ -1,46 +1,22 @@
 @charset 'UTF-8';
 
-/* Config & Helpers */
-
-@import 'variables';
-@import 'functions';
-@import 'mixins';
-
-/* Reset & Vendors */
-
-@import 'reset';
+// Vendors
 @import 'vendors/locomotive-scroll';
 
-// @import 'vendors/mouse-follower';
+// Base
+@import 'base/variables';
+@import 'base/functions';
+@import 'base/mixins';
+@import 'base/reset';
+@import 'base/global';
+@import 'base/fonts';
+@import 'base/helpers';
 
-/* Overrides */
+// Overrides
+@import 'base/overrides';
 
-@import 'overrides';
+// Components
+// @import 'components/_component-example';
 
-/* Base */
-
-@import 'base';
-@import 'fonts';
-@import 'helpers';
-
-/* Sections */
-
-@import 'components/sections/about-section';
-@import 'components/sections/blogs-section';
-@import 'components/sections/footer-section';
-@import 'components/sections/hero-section';
-@import 'components/sections/skills-section';
-@import 'components/sections/projects-section';
-
-/* Components */
-
-@import 'components/burger-menu';
-@import 'components/button';
-@import 'components/header';
-@import 'components/parallax-layout';
-@import 'components/pointer-follower';
-@import 'components/scroll-progress-bar';
-@import 'components/section-fill';
-@import 'components/section-layout';
-@import 'components/sidebar';
-@import 'components/tag-cloud';
+// Sections
+// @import 'components/sections/_section-example';

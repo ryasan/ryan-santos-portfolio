@@ -7,6 +7,7 @@ import { client } from '~/models/contentful.server'
 export async function loader() {
 	const blogs = (await client.getAllBlogs()).slice(0, 6)
 	const projects = (await client.getProjects()).slice(0, 6)
+
 	return json({ blogs, projects })
 }
 

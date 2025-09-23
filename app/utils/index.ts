@@ -1,6 +1,4 @@
 export * from './call-all'
-export * from './get-class'
 export * from './noop'
-export * from './teleport'
 export * from './type-guards'
 export * from './wait'
