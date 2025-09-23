@@ -19,3 +19,4 @@
 * [ ] Add command that automatically updates GraphQL types from Contentful
 * [ ] Wrap `Outlet` in an `AnimatePresence` provider
 * [ ] Use a different strategy for loading vendors in `main-layout.tsx`
+* [ ] Remove unused packages

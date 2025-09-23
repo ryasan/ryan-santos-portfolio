@@ -20,8 +20,22 @@ $desktop-down: 'max-width: calc(#{map-get($breakpoints, desktop)} - 1px)';
 $widescreen-down: 'max-width: calc(#{map-get($breakpoints, widescreen)} - 1px)';
 
 // Spacing
-$max-width: 1360px;
-$site-header-height: 60px;
+$s-0: 0;
+$s-05: 2px;
+$s-1: 4px;
+$s-2: 8px;
+$s-25: 12px;
+$s-3: 10px;
+$s-35: 14px;
+$s-4: 16px;
+$s-5: 20px;
+$s-6: 24px;
+$s-7: 28px;
+$s-8: 32px;
+$s-10: 40px;
+$s-14: 56px;
+$s-16: 64px;
+$s-20: 80px;
 
 // Font Families
 $body-font-family: 'Poppins', sans-serif;
@@ -41,72 +55,6 @@ $font-breakpoints: (
 			$map: $breakpoints,
 			$key: 'laptop',
 		),
-) !default;
-
-// Font Style Maps
-$body-font-sm-style: (
-	mobile: (
-		1.8rem,
-	),
-	laptop: (
-		2rem,
-	),
-) !default;
-$body-font-style: (
-	mobile: (
-		2rem,
-	),
-	laptop: (
-		3rem,
-	),
-) !default;
-$heading-1-font-style: (
-	mobile: (
-		7.5rem,
-	),
-	laptop: (
-		10rem,
-	),
-) !default;
-$heading-2-font-style: (
-	mobile: (
-		6.5rem,
-	),
-	laptop: (
-		9rem,
-	),
-) !default;
-$heading-3-font-style: (
-	mobile: (
-		5.5rem,
-	),
-	laptop: (
-		8rem,
-	),
-) !default;
-$heading-4-font-style: (
-	mobile: (
-		4.5rem,
-	),
-	laptop: (
-		7rem,
-	),
-) !default;
-$heading-5-font-style: (
-	mobile: (
-		3.5rem,
-	),
-	laptop: (
-		6rem,
-	),
-) !default;
-$heading-6-font-style: (
-	mobile: (
-		2.5rem,
-	),
-	laptop: (
-		5rem,
-	),
 ) !default;
 
 // Stacking Order

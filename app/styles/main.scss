@@ -4,19 +4,13 @@
 @import 'vendors/locomotive-scroll';
 
 // Base
-@import 'base/variables';
-@import 'base/functions';
-@import 'base/mixins';
-@import 'base/reset';
-@import 'base/global';
-@import 'base/fonts';
-@import 'base/helpers';
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+@import 'reset';
+@import 'base';
+@import 'fonts';
+@import 'helpers';
 
 // Overrides
-@import 'base/overrides';
-
-// Components
-// @import 'components/_component-example';
-
-// Sections
-// @import 'components/sections/_section-example';
+@import 'overrides';

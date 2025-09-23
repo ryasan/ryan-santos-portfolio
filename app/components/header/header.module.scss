@@ -1,0 +1,18 @@
+.header {
+	padding: $s-6 $s-4;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	@include at-tablet {
+		padding: $s-6 $s-10;
+	}
+}
+
+.logo {
+	// Styles Go Here
+}
+
+.navigationBox {
+	// Styles Go Here
+}

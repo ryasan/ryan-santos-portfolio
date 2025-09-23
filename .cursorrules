@@ -3,3 +3,18 @@
 ## Chat Rules
 
 - Do not automatically make changes to any files after receiving a prompt. Keep your suggested changes contained within the chat.
+
+## Commit Messages
+
+**Example Commit Message:**
+```
+Fix: Clarify error message for invalid input.
+
+This commit refactors the input validation logic to provide more specific and user-friendly error messages when invalid data is submitted. Previously, a generic "Invalid input" message was shown, which did not help users understand the nature of the issue.
+
+The updated error messages now clearly indicate which field is problematic and why, improving the user experience and reducing confusion. For example, instead of a generic error, users will now see messages like "Email address is invalid" or "Password must be at least 8 characters long."
+```
+
+- **Subject Line:** The first line of the commit message should be limited to 50 characters or less. It should be written in the imperative mood.
+- **Blank Line:** A blank line should be included between the subject line and the body of the commit message.
+- **Body:** If necessary, add more detailed information about the commit. Wrap it at 72 characters.

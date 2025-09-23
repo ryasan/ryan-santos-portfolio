@@ -1,0 +1,63 @@
+
+// Container Styles
+.container {
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+
+	@include at-tablet {
+		width: 750px;
+	}
+
+	@include at-laptop {
+		width: 810px;
+	}
+}
+
+// Typography
+
+// Spacing Styles
+.mb-8 {
+	margin-bottom: $s-2;
+}
+
+.mb-12 {
+	margin-bottom: $s-25;
+}
+
+.mb-14 {
+	margin-bottom: $s-35;
+}
+
+.mb-16 {
+	margin-bottom: $s-4;
+}
+
+.mb-24 {
+	margin-bottom: $s-6;
+}
+
+.mb-32 {
+	margin-bottom: $s-8;
+}
+
+.mb-40 {
+	margin-bottom: $s-10;
+}
+
+.mb-56 {
+	margin-bottom: $s-14;
+}
+
+// Screen Reader
+.visually-hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	position: absolute;
+	margin: -1px;
+	padding: 0;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
