@@ -1,31 +1,4 @@
 import LocomotiveScroll from 'locomotive-scroll'
-import { wait } from '~/utils'
-
-// const scrollContainer = document.querySelector(
-// 	'#scroll-container',
-// ) as HTMLElement
-
-// if (!scrollContainer) {
-// 	throw new Error('Scroll container not found')
-// }
-
-// wait(1000)
-// 	.then(() => {
-// 		new LocomotiveScroll({
-// 			el: scrollContainer,
-// 			smooth: true,
-// 			direction: 'vertical',
-// 			tablet: {
-// 				breakpoint: 0,
-// 			},
-// 		})
-// 	})
-// 	.catch((error) => {
-// 		console.error(error)
-// 	})
-// 	.finally(() => {
-// 		console.log('Locomotive Scroll initialized')
-// 	})
 
 let scrollInstance: LocomotiveScroll | null = null
 
@@ -68,7 +41,7 @@ function destroyLocomotiveScroll() {
 	}
 }
 
-function waitForDOMReady(delay: number = 100): Promise<void> {
+function waitForDOMReady(): Promise<void> {
 	return new Promise((resolve) => {
 		if (document.readyState === 'loading') {
 			document.addEventListener('DOMContentLoaded', () => resolve())
@@ -80,14 +53,9 @@ function waitForDOMReady(delay: number = 100): Promise<void> {
 
 // Initialize when DOM is ready
 waitForDOMReady()
-  .then(() => {
-    // Small delay to ensure all content is rendered
-    return new Promise(resolve => setTimeout(resolve, 100))
-  })
-  .then(initLocomotiveScroll)
-  .catch(error => {
-    console.error('Error during scroll initialization:', error)
-  })
-
+	.then(initLocomotiveScroll)
+	.catch((error) => {
+		console.error('Error during scroll initialization:', error)
+	})
 
 export { initLocomotiveScroll, destroyLocomotiveScroll }

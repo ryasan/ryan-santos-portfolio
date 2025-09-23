@@ -1,5 +1,5 @@
 import { type LinksFunction } from '@remix-run/node'
-import { useLocation } from '@remix-run/react'
+// import { useLocation } from '@remix-run/react'
 // import { AnimatePresence, motion } from 'framer-motion'
 import {
 	Links,
@@ -21,11 +21,12 @@ export const links: LinksFunction = () => {
 }
 
 export default function App() {
-	const location = useLocation()
+	// const location = useLocation()
 
 	useEffect(() => {
+		// Bootstrap vendors after load
 		async function importVendors() {
-			// Bootstrap vendors after load.
+			// @Todo: Load this using client-only methods
 			await import('~/vendors')
 		}
 

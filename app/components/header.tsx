@@ -10,7 +10,7 @@ export default function Header() {
 		[ns]: true,
 	})
 
-	const myName = 'HelloWorld'.split('')
+	const myName = 'RyanSantos'.split('')
 
 	return (
 		<SectionLayout className={rootClassName} as="header" cursorColor="inverse">
@@ -21,7 +21,7 @@ export default function Header() {
 							<motion.span
 								className={clsx({
 									[`${ns}__letter`]: true,
-									[`highlight`]: index > arr.indexOf('o'),
+									[`highlight`]: index > arr.indexOf('n'),
 								})}
 								key={index}
 								initial={{ scale: 0, opacity: 0 }}
