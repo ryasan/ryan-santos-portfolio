@@ -232,6 +232,35 @@ button {
   padding: 0;
 }
 
+:root {
+  --content-color: #111316;
+  --content-color-2: #111316;
+  --background-primary-color: #fff;
+  --background-secondary-color: #F4F4F4;
+  --line-color: #D4D4D4;
+  --blue-color: #E5EDFF;
+  --green-color: #D0FBD0;
+  --yellow-color: #FFF4CC;
+  --red-color: #FCC;
+}
+
+[data-theme=dark] {
+  --content-color: #fff;
+  --content-color-2: #D4D4D4;
+  --background-primary-color: #111316;
+  --background-secondary-color: #272727;
+  --line-color: #424345;
+  --blue-color: #4C6BB9;
+  --green-color: #4CB84E;
+  --yellow-color: #B7A14E;
+  --red-color: #B74D4E;
+}
+
+[data-theme=dark] [data-hide-on-theme=dark],
+[data-theme=light] [data-hide-on-theme=light] {
+  display: none;
+}
+
 html {
   box-sizing: border-box;
   font-size: 10px;
@@ -246,9 +275,9 @@ html {
 }
 
 body {
-  color: #fff;
+  color: var(--content-color);
   font-family: "Inter Tight", sans-serif;
-  background-color: #fff;
+  background-color: var(--background-primary-color);
 }
 @media screen and (min-width: 375px) {
   body {
@@ -372,7 +401,7 @@ em {
 }
 
 ::-webkit-scrollbar {
-  background: #000;
+  background: var(--background-primary-color);
   width: 5px;
   height: 5px;
 }
@@ -380,11 +409,11 @@ em {
 ::-webkit-scrollbar-thumb {
   /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-border-radius: 1ex;
-  background: #fff;
+  background: var(--content-color);
 }
 
 ::-webkit-scrollbar-corner {
-  background: #000;
+  background: var(--background-primary-color);
 }
 
 @font-face {
@@ -685,7 +714,7 @@ em {
   opacity: 1;
   z-index: 9999;
   mix-blend-mode: difference;
-  background: #fff;
+  background: var(--content-color);
   width: 5px;
 }
 

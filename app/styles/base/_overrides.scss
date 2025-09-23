@@ -10,6 +10,6 @@
 	opacity: 1;
 	z-index: $z-index-above-all;
 	mix-blend-mode: difference;
-	background: $white;
+	background: var(--content-color);
 	width: 5px;
 }
