@@ -7,9 +7,6 @@ import {
 	ScrollRestoration,
 } from '@remix-run/react'
 
-import ClientOnly from '~/components/client-only'
-import Providers from '~/components/providers'
-import MainLayout from '~/components/main-layout'
 import mainStyles from '~/styles/main.css?url'
 
 export const links: LinksFunction = () => {
@@ -27,13 +24,9 @@ export default function App() {
 			</head>
 
 			<body>
-				<ClientOnly>
-					<Providers>
-						<MainLayout>
-							<Outlet />
-						</MainLayout>
-					</Providers>
-				</ClientOnly>
+				<main>
+					<Outlet />
+				</main>
 				<ScrollRestoration />
 				<Scripts />
 			</body>
