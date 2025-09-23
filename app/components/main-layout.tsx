@@ -21,12 +21,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
 	}
 
 	useEffect(() => {
-		// Bootstrap vendors after load
 		async function importVendors() {
-			// @Todo: Load this using client-only methods
 			try {
 				await import('~/vendors')
-				console.log('Vendors imported successfully')
 			} catch (error) {
 				console.error('Error importing vendors:', error)
 			}

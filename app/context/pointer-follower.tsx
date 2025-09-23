@@ -18,10 +18,11 @@ import {
  * Constants.
  */
 
-const SPRING_CONFIG = {
+const SPRING_CONFIG: Partial<Spring> = {
 	damping: 30,
-	stiffness: 300,
+	stiffness: 500,
 	restDelta: 0.001,
+	mass: 0.01,
 }
 
 const DEFAULT_FOLLOWER_SIZE = 10
@@ -163,17 +164,6 @@ export default function PointerFollowerProvider({
 	children: ReactNode
 }) {
 	/**
-	 * Spring settings.
-	 *
-	 * @type {Partial<Spring>}
-	 */
-	const spring: Partial<Spring> = {
-		damping: 30,
-		stiffness: 300,
-		restDelta: 0.001,
-	}
-
-	/**
 	 * Framer motion values.
 	 *
 	 * @type {MotionValue<number>}
@@ -186,8 +176,8 @@ export default function PointerFollowerProvider({
 	 *
 	 * @type {MotionValue<number>}
 	 */
-	const xFollower = useSpring(xPointer, spring)
-	const yFollower = useSpring(yPointer, spring)
+	const xFollower = useSpring(xPointer, SPRING_CONFIG)
+	const yFollower = useSpring(yPointer, SPRING_CONFIG)
 
 	/**
 	 * Follower element.

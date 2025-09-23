@@ -6,7 +6,6 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from '@remix-run/react'
-import { useEffect } from 'react'
 
 import ClientOnly from '~/components/client-only'
 import Providers from '~/components/providers'
