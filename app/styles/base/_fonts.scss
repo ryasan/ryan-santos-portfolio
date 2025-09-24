@@ -1,8 +1,8 @@
 // Poppins Font Variables
 $poppins-thin-src: font-src('Poppins-Thin');
 $poppins-thin-italic-src: font-src('Poppins-ThinItalic');
-$poppins-extralight-src: font-src('Poppins-ExtraLight');
-$poppins-extralight-italic-src: font-src('Poppins-ExtraLightItalic');
+$poppins-extra-light-src: font-src('Poppins-ExtraLight');
+$poppins-extra-light-italic-src: font-src('Poppins-ExtraLightItalic');
 $poppins-light-src: font-src('Poppins-Light');
 $poppins-light-italic-src: font-src('Poppins-LightItalic');
 $poppins-regular-src: font-src('Poppins-Regular');
@@ -22,8 +22,8 @@ $poppins-black-italic-src: font-src('Poppins-BlackItalic');
 @at-root {
 	@include font-face('Poppins', $poppins-thin-src, 100, normal);
 	@include font-face('Poppins', $poppins-thin-italic-src, 100, italic);
-	@include font-face('Poppins', $poppins-extralight-src, 200, normal);
-	@include font-face('Poppins', $poppins-extralight-italic-src, 200, italic);
+	@include font-face('Poppins', $poppins-extra-light-src, 200, normal);
+	@include font-face('Poppins', $poppins-extra-light-italic-src, 200, italic);
 	@include font-face('Poppins', $poppins-light-src, 300, normal);
 	@include font-face('Poppins', $poppins-light-italic-src, 300, italic);
 	@include font-face('Poppins', $poppins-regular-src, 400, normal);

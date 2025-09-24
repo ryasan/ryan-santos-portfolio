@@ -263,7 +263,6 @@ button {
 
 html {
   box-sizing: border-box;
-  font-size: 10px;
 }
 
 *,
@@ -353,7 +352,7 @@ p,
   color: var(--content-color-2);
 }
 
-.body2 {
+.body-2 {
   font-size: 14px;
   font-style: normal;
   font-weight: 300;
