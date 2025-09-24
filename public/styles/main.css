@@ -201,7 +201,7 @@ h1,
   font-size: 36px;
   line-height: 150%;
   letter-spacing: 0;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--content-color);
 }
 @media only screen and (max-width: calc(768px - 1px)) {
@@ -216,7 +216,7 @@ h2,
   font-size: 28px;
   line-height: 150%;
   letter-spacing: 0;
-  font-weight: 500;
+  font-weight: 600;
 }
 @media only screen and (max-width: calc(768px - 1px)) {
   h2,
@@ -230,7 +230,7 @@ h3,
   font-size: 22px;
   line-height: 150%;
   letter-spacing: 0;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 h4,
@@ -238,7 +238,7 @@ h4,
   font-size: 20px;
   line-height: 150%;
   letter-spacing: 0;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 h5,
@@ -246,7 +246,7 @@ h5,
   font-size: 16px;
   line-height: 150%;
   letter-spacing: 0;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 h6,
@@ -254,14 +254,14 @@ h6,
   font-size: 16px;
   line-height: 150%;
   letter-spacing: 0;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 p,
 .body {
   font-size: 16px;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 170%;
   color: var(--content-color-2);
 }
@@ -269,7 +269,7 @@ p,
 .body-2 {
   font-size: 14px;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 170%;
   color: var(--content-color-2);
 }
@@ -277,14 +277,14 @@ p,
 .label {
   font-size: 14px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 120%;
 }
 
 .link {
   font-size: 14px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 170%;
   color: var(--content-color);
 }
@@ -292,14 +292,14 @@ p,
 .badge {
   font-size: 12px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 170%;
 }
 
 .code {
   font-size: 14px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 120%;
 }
 

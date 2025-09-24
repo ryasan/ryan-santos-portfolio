@@ -1,0 +1,33 @@
+@import '../../base/variables';
+@import '../../base/mixins';
+
+.hero {
+	display: block;
+}
+
+.box {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: $s-10;
+	border-bottom: 1px solid var(--line-color);
+}
+
+.info {
+	width: 100%;
+	max-width: 600px;
+}
+
+.link {
+	margin-bottom: $s-6;
+}
+
+@include tablet-down {
+	.box {
+		flex-direction: column;
+		gap: $s-4;
+	}
+
+	.link {
+		margin-bottom: $s-8;
+	}
+}

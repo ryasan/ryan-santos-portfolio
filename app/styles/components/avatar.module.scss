@@ -1,0 +1,31 @@
+@import '../base/variables';
+@import '../base/mixins';
+
+.avatar {
+	width: 136px;
+	height: 136px;
+	border: 1px solid var(--line-color);
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	img {
+		width: calc(100% - $s-2);
+		height: calc(100% - $s-2);
+		border-radius: 100%;
+	}	
+}
+
+@media screen and (width <= 610px) {
+	.avatar {
+			height: 80px;
+			width: 80px;
+	}
+}
+
+.avatarPlaceholder {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

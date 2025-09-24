@@ -2,6 +2,7 @@ import type { MetaFunction } from '@netlify/remix-runtime'
 import { useLoaderData } from '@remix-run/react'
 import { json } from '@remix-run/server-runtime'
 import { client } from '~/services/contentful.server'
+import Hero from '~/components/sections/hero'
 
 export async function loader() {
 	const blogs = (await client.getAllBlogs()).slice(0, 6)
@@ -27,8 +28,7 @@ export default function Index() {
 
 	return (
 		<>
-			{/* <HeroSection />
-			<ProjectsSection projects={projects} /> */}
+			<Hero />
 		</>
 	)
 }
