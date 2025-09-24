@@ -1,4 +1,4 @@
-// Custom Font Sourcing
+// Custom font sourcing
 @mixin font-face($family, $src, $weight: normal, $style: normal) {
 	@font-face {
 		font-style: $style;
@@ -8,7 +8,7 @@
 	}
 }
 
-// Screen Reader
+// Screen reader
 @mixin visually-hidden() {
 	border: 0;
 	clip: rect(0 0 0 0);
@@ -20,115 +20,26 @@
 	overflow: hidden;
 }
 
-// Media Queries
-@mixin at-tablet {
-	@media only screen and ($tablet-up) {
-		@content;
-	}
+// Aspect ratio
+@mixin aspect-ratio($width, $height: null) {
+  // If only one value provided, treat as ratio (e.g., 16/9)
+  @if not $height {
+    aspect-ratio: $width;
+  } @else {
+    // If two values provided, calculate ratio
+    aspect-ratio: calc($width / $height);
+  }
 }
 
-@mixin tablet-down {
-	@media only screen and ($tablet-down) {
-		@content;
-	}
-}
-
-@mixin at-laptop {
-	@media only screen and ($laptop-up) {
-		@content;
-	}
-}
-
-@mixin laptop-down {
-	@media only screen and ($laptop-down) {
-		@content;
-	}
-}
-
-@mixin at-desktop {
-	@media only screen and ($desktop-up) {
-		@content;
-	}
-}
-
-@mixin desktop-down {
-	@media only screen and ($desktop-down) {
-		@content;
-	}
-}
-
-@mixin at-widescreen {
-	@media only screen and ($widescreen-up) {
-		@content;
-	}
-}
-
-@mixin widescreen-down {
-	@media only screen and ($widescreen-down) {
-		@content;
-	}
-}
-
-// Hiding Elements
-@mixin hidden-tablet-down {
-	@include tablet-down {
-		display: none;
-	}
-}
-
-@mixin hidden-tablet-up {
-	@include at-tablet {
-		display: none;
-	}
-}
-
-@mixin hidden-laptop-down {
-	@include laptop-down {
-		display: none;
-	}
-}
-
-@mixin hidden-laptop-up {
-	@include at-laptop {
-		display: none;
-	}
-}
-
-// Aspect Ratio Padding Trick
-@mixin aspect-ratio-media($width, $height) {
-	position: relative;
-
-	&::before {
-		display: block;
-		padding-top: (calc($height / $width)) * 100%;
-		width: 100%;
-		content: '';
-	}
-
-	[data-media] {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-}
-
-// Section Styling
-@mixin section-style($bg-color: $black, $color: $white, $padding: 12.5rem) {
-	background-color: $bg-color;
-	padding: $padding 0;
-	width: 100%;
-	min-height: 100vh;
-	overflow: hidden;
-	color: $color;
-
-	@include at-tablet {
-		border-top-right-radius: 3.6rem;
-		border-top-left-radius: 3.6rem;
-		padding: calc(#{$padding} * 1.5) 0;
-	}
+// Aspect ratio for media elements
+@mixin aspect-ratio-media($width, $height: null) {
+  @include aspect-ratio($width, $height);
+  
+  [data-media] {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 // Creates typography styles given a map of breakpoints ($font-breakpoints is default)

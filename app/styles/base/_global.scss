@@ -57,7 +57,7 @@ h1,
 	font-weight: 600;
 	color: var(--content-color);
 
-	@include tablet-down {
+	@media (max-width: $tablet) {
 		font-size: 28px;
 	}
 }
@@ -69,7 +69,7 @@ h2,
 	letter-spacing: 0;
 	font-weight: 600;
 
-	@include tablet-down {
+	@media (max-width: $tablet) {
 		font-size: 24px;
 	}
 }

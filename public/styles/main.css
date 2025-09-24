@@ -204,7 +204,7 @@ h1,
   font-weight: 600;
   color: var(--content-color);
 }
-@media only screen and (max-width: calc(768px - 1px)) {
+@media (max-width: 768px) {
   h1,
   .h1 {
     font-size: 28px;
@@ -218,7 +218,7 @@ h2,
   letter-spacing: 0;
   font-weight: 600;
 }
-@media only screen and (max-width: calc(768px - 1px)) {
+@media (max-width: 768px) {
   h2,
   .h2 {
     font-size: 24px;
@@ -451,12 +451,12 @@ em {
   margin-right: auto;
   margin-left: auto;
 }
-@media only screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .container {
     width: 750px;
   }
 }
-@media only screen and (min-width: 992px) {
+@media (min-width: 992px) {
   .container {
     width: 810px;
   }

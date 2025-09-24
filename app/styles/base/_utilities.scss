@@ -1,20 +1,20 @@
-// Container Styles
+// Container styles
 .container {
 	padding-right: 15px;
 	padding-left: 15px;
 	margin-right: auto;
 	margin-left: auto;
 
-	@include at-tablet {
+	@media (min-width: $tablet) {
 		width: 750px;
 	}
 
-	@include at-laptop {
+	@media (min-width: $laptop) {
 		width: 810px;
 	}
 }
 
-// Spacing Styles
+// Spacing styles
 .mb-8 {
 	margin-bottom: $s-2;
 }
@@ -47,7 +47,7 @@
 	margin-bottom: $s-14;
 }
 
-// Screen Reader
+// Screen reader
 .sr-only {
 	position: absolute;
 	width: 1px;

@@ -13,7 +13,7 @@ function Avatar({ src, alt = 'Avatar' }: AvatarProps) {
 				<Image src={src} alt={alt} />
 			) : (
 				<Image
-					src="/images/avatar-placeholder.png"
+					src="/images/github-avatar.png"
 					alt="Avatar Placeholder"
 					className={styles.avatarPlaceholder}
 				/>

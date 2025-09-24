@@ -21,13 +21,24 @@
 	margin-bottom: $s-6;
 }
 
-@include tablet-down {
+// @include tablet-down {
+// 	.box {
+// 		flex-direction: column;
+// 		gap: $s-4;
+// 	}
+
+// 	.link {
+// 		margin-bottom: $s-8;
+// 	}
+// }
+
+@media (max-width: $tablet) {
 	.box {
-		flex-direction: column;
-		gap: $s-4;
+			flex-direction: column;
+			gap: $s-4;
 	}
 
 	.link {
-		margin-bottom: $s-8;
+			margin-bottom: $s-8;
 	}
 }

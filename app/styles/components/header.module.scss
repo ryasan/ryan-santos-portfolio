@@ -7,8 +7,8 @@
 	align-items: center;
 	justify-content: space-between;
 
-	@include at-tablet {
-		padding: $s-6 $s-10;
+	@media (max-width: $tablet) {
+		padding: $s-6 $s-4;
 	}
 }
 
