@@ -1,4 +1,4 @@
-import { Theme } from '~/hooks/use-theme'
+import { Theme } from '~/types'
 
 // Theme
 export const LIGHT_THEME: Theme = 'light'
