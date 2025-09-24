@@ -1,5 +1,5 @@
-@import 'app/styles/base/variables';
-@import 'app/styles/base/mixins';
+@import '../base/variables';
+@import '../base/mixins';
 
 .header {
 	padding: $s-6 $s-4;

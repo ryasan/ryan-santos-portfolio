@@ -1,8 +1,7 @@
-import { type MetaFunction } from '@netlify/remix-runtime'
+import type { MetaFunction } from '@netlify/remix-runtime'
 import { useLoaderData } from '@remix-run/react'
 import { json } from '@remix-run/server-runtime'
-
-import { client } from '~/models/contentful.server'
+import { client } from '~/services/contentful.server'
 
 export async function loader() {
 	const blogs = (await client.getAllBlogs()).slice(0, 6)

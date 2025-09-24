@@ -1,17 +1,13 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 1 | @import 'app/styles/base/variables';
- *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
- *   '
- *   app/styles/components/header.module.scss 1:9  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import 'app/styles/base/variables';\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   app/styles/components/header.module.scss 1:9  root stylesheet";
+.header {
+  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+@media only screen and (min-width: 768px) {
+  .header {
+    padding: 24px 40px;
+  }
+}
+
+/*# sourceMappingURL=header.module.css.map */

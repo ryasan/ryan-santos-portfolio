@@ -1,4 +1,8 @@
-import { type LinksFunction } from '@remix-run/node'
+import {
+	json,
+	type LinksFunction,
+	type LoaderFunctionArgs,
+} from '@remix-run/node'
 import {
 	Links,
 	Meta,
@@ -6,17 +10,38 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from '@remix-run/react'
+import ClientHintScript, { getHints } from '~/components/client-hint-script'
 import GlobalLayout from '~/components/global-layout'
 import mainStyles from '~/styles/main.css?url'
+import type { Theme } from '~/types'
+import { useTheme } from '~/hooks'
+import { getTheme } from '~/services/theme.server'
 
 export const links: LinksFunction = () => {
 	return [{ rel: 'stylesheet', href: mainStyles }]
 }
 
-export default function App() {
+export async function loader({ request }: LoaderFunctionArgs) {
+	return json({
+		requestInfo: {
+			hints: getHints(request),
+			userPrefs: {
+				theme: getTheme(request),
+			},
+		},
+	})
+}
+
+type DocumentProps = {
+	children: React.ReactNode
+	theme?: Theme
+}
+
+function Document({ children, theme = 'dark' }: DocumentProps) {
 	return (
-		<html lang="en">
+		<html lang="en" data-theme={theme}>
 			<head>
+				<ClientHintScript />
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<Meta />
@@ -24,12 +49,31 @@ export default function App() {
 			</head>
 
 			<body>
-				<GlobalLayout>
-					<Outlet />
-				</GlobalLayout>
+				<GlobalLayout>{children}</GlobalLayout>
 				<ScrollRestoration />
 				<Scripts />
 			</body>
 		</html>
+	)
+}
+
+function App() {
+	const theme = useTheme()
+
+	return (
+		<Document theme={theme}>
+			<Outlet />
+		</Document>
+	)
+}
+
+export default App
+
+export function ErrorBoundary() {
+	return (
+		<Document>
+			{/* @Todo: Add error UI */}
+			<div>Error</div>
+		</Document>
 	)
 }
