@@ -23,6 +23,17 @@ export default function App() {
 				</MainLayout>
 				<ScrollRestoration />
 				<Scripts />
+				{/* Prevent theme flash by setting theme before React hydrates */}
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `
+							(function() {
+								const theme = localStorage.getItem('theme') || 'dark';
+								document.documentElement.dataset.theme = theme;
+							})();
+						`,
+					}}
+				/>
 			</body>
 		</html>
 	)
