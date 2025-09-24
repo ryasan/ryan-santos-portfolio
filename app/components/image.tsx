@@ -90,7 +90,7 @@ function Image({
 
 export default Image
 
-// @Todo: Add placeholder generation
+// @Todo: Improve image experience by loading placeholder and then the image
 
 // // Utility function to generate blur placeholder
 // export async function getImagePlaceholder(src: string) {
