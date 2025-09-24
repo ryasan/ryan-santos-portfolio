@@ -12,7 +12,10 @@ function Header() {
 				<div data-hide-on-theme={LIGHT_THEME}>RyanSantos.dev</div>
 			</a>
 			<div className={styles.navigationBox}>
-				<ThemeToggle />
+				<ThemeToggle
+					darkImage="/public/images/sun.svg"
+					lightImage="/public/images/moon.svg"
+				/>
 			</div>
 		</header>
 	)
