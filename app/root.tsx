@@ -1,3 +1,4 @@
+import { type LinksFunction } from '@remix-run/node'
 import {
 	Links,
 	Meta,
@@ -6,6 +7,11 @@ import {
 	ScrollRestoration,
 } from '@remix-run/react'
 import GlobalLayout from '~/components/global-layout'
+import mainStyles from '~/styles/main.css?url'
+
+export const links: LinksFunction = () => {
+	return [{ rel: 'stylesheet', href: mainStyles }]
+}
 
 export default function App() {
 	return (
@@ -23,17 +29,6 @@ export default function App() {
 				</GlobalLayout>
 				<ScrollRestoration />
 				<Scripts />
-				{/* Prevent theme flash by setting theme before React hydrates */}
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `
-							(function() {
-								const theme = localStorage.getItem('theme') || 'dark';
-								document.documentElement.dataset.theme = theme;
-							})();
-						`,
-					}}
-				/>
 			</body>
 		</html>
 	)

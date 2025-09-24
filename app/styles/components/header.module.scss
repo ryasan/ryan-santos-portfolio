@@ -1,3 +1,6 @@
+@import 'app/styles/base/variables';
+@import 'app/styles/base/mixins';
+
 .header {
 	padding: $s-6 $s-4;
 	display: flex;

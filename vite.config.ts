@@ -8,11 +8,4 @@ export default defineConfig({
 	build: {
 		cssMinify: process.env.NODE_ENV === 'production',
 	},
-	css: {
-		preprocessorOptions: {
-			scss: {
-				additionalData: `@import "./app/styles/main";`
-			}
-		}
-	}
 })
