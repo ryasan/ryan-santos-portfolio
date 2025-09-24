@@ -1,0 +1,40 @@
+.imageContainer {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+.imagePlaceholder {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  transform: scale(1.1);
+}
+
+.imageError {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/*# sourceMappingURL=image.module.css.map */

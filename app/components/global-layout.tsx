@@ -2,13 +2,13 @@ import clsx from 'clsx'
 import Header from '~/components/header'
 import Footer from '~/components/footer'
 
-const ns = 'main-layout'
+const ns = 'global-layout'
 
-type MainLayoutProps = {
+type GlobalLayoutProps = {
 	children: React.ReactNode
 }
 
-function MainLayout({ children }: MainLayoutProps) {
+function GlobalLayout({ children }: GlobalLayoutProps) {
 	const rootClassName = clsx(ns)
 
 	return (
@@ -20,4 +20,4 @@ function MainLayout({ children }: MainLayoutProps) {
 	)
 }
 
-export default MainLayout
+export default GlobalLayout

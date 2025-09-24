@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { getPlaiceholder } from 'plaiceholder';
-import styles from './image.module.scss';
+// import { getPlaiceholder } from 'plaiceholder';
+import styles from '~/styles/components/image.module.scss';
 
 interface ImageProps {
   src: string;

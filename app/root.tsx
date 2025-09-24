@@ -5,7 +5,7 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from '@remix-run/react'
-import MainLayout from '~/components/main-layout'
+import GlobalLayout from '~/components/global-layout'
 
 export default function App() {
 	return (
@@ -18,9 +18,9 @@ export default function App() {
 			</head>
 
 			<body>
-				<MainLayout>
+				<GlobalLayout>
 					<Outlet />
-				</MainLayout>
+				</GlobalLayout>
 				<ScrollRestoration />
 				<Scripts />
 				{/* Prevent theme flash by setting theme before React hydrates */}

@@ -1,5 +1,5 @@
 import ThemeToggle from '~/components/theme-toggle'
-import styles from './header.module.scss'
+import styles from '~/styles/components/header.module.scss'
 import { LIGHT_THEME, DARK_THEME } from '~/utils/constants'
 
 // @Todo: Fetch navigation data in Contentful

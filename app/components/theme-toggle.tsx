@@ -1,5 +1,5 @@
 import Image from '~/components/image'
-import styles from './theme-toggle.module.scss'
+import styles from '~/styles/components/theme-toggle.module.scss'
 import { useTheme } from '~/hooks/use-theme'
 import { DARK_THEME, LIGHT_THEME } from '~/utils/constants'
 
