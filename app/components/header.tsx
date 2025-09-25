@@ -8,8 +8,8 @@ function Header() {
 	return (
 		<header className={styles.header}>
 			<a className={styles.logo}>
-				<div data-hide-on-theme={DARK_THEME}>RyanSantos.dev</div>
-				<div data-hide-on-theme={LIGHT_THEME}>RyanSantos.dev</div>
+				<div data-hide-on-theme={DARK_THEME}>ryan-santos.com</div>
+				<div data-hide-on-theme={LIGHT_THEME}>ryan-santos.com</div>
 			</a>
 			<div className={styles.navigationBox}>
 				<ThemeToggle

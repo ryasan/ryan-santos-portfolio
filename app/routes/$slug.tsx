@@ -28,6 +28,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	}
 
 	const { page } = data
+
 	return [
 		{ title: page.seoMetadata?.title || page.title },
 		{
@@ -47,11 +48,14 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 
 export default function DynamicPage() {
 	const { page } = useLoaderData<typeof loader>()
+
 	return (
 		<div>
-			{page.pageSectionsCollection?.items?.map((section: PageSection, index: number) => (
-				<SectionRenderer key={index} section={section} />
-			))}
+			{page.pageSectionsCollection?.items?.map(
+				(section: PageSection, index: number) => (
+					<SectionRenderer key={index} section={section} />
+				),
+			)}
 		</div>
 	)
 }

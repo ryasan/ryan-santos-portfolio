@@ -1,34 +1,9 @@
-import type { MetaFunction } from '@netlify/remix-runtime'
-import { useLoaderData } from '@remix-run/react'
-import { json } from '@remix-run/server-runtime'
-import { client } from '~/services/contentful.server'
-import Hero from '~/components/sections/hero'
+import { redirect } from '@remix-run/node'
 
 export async function loader() {
-	const blogs = (await client.getAllBlogs()).slice(0, 6)
-	const projects = (await client.getProjects()).slice(0, 6)
-
-	return json({ blogs, projects })
-}
-
-export const meta: MetaFunction = () => {
-	return [
-		{
-			title: 'Home - Ryan Santos Portfolio',
-		},
-		{
-			name: 'description',
-			content: 'A portfolio site showcasing the works of Ryan Santos',
-		},
-	]
+	return redirect('/home')
 }
 
 export default function Index() {
-	const { projects } = useLoaderData<typeof loader>()
-
-	return (
-		<>
-			<Hero />
-		</>
-	)
+	return null
 }

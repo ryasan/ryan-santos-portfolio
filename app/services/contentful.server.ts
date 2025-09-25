@@ -24,6 +24,7 @@ async function apiCall(query: string, variables?: any) {
 		},
 		body: JSON.stringify({ query, variables }),
 	}
+
 	return await fetch(fetchUrl, options)
 }
 
@@ -71,6 +72,7 @@ async function getProjects() {
 				}
 			},
 		)
+
 		return Promise.all(formattedData)
 	} catch (error) {
 		console.error('Something went wrong while fetching all projects', error)
