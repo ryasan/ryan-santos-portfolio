@@ -5,5 +5,10 @@ export async function loader() {
 }
 
 export default function Index() {
-	return null
+	return (
+		<div>
+			<h1>Welcome to the root page!</h1>
+			<p>This will not be shown if the loader redirects to /home.</p>
+		</div>
+	)
 }
