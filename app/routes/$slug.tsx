@@ -1,10 +1,10 @@
 // app/routes/$slug.tsx
+import SectionRenderer from '~/components/section-renderer'
 import type { LoaderFunctionArgs, MetaFunction } from '@netlify/remix-runtime'
-import { useLoaderData } from '@remix-run/react'
-import { json } from '@remix-run/server-runtime'
-import Hero from '~/components/sections/hero'
-import { client } from '~/services/contentful.server'
 import type { PageSection } from '~/types/pages'
+import { client } from '~/services/contentful.server'
+import { json } from '@remix-run/server-runtime'
+import { useLoaderData } from '@remix-run/react'
 
 export async function loader({ params }: LoaderFunctionArgs) {
 	const { slug } = params
@@ -50,22 +50,12 @@ export default function DynamicPage() {
 	const { page } = useLoaderData<typeof loader>()
 
 	return (
-		<div>
+		<>
 			{page.pageSectionsCollection?.items?.map(
 				(section: PageSection, index: number) => (
 					<SectionRenderer key={index} section={section} />
 				),
 			)}
-		</div>
+		</>
 	)
-}
-
-// Component to render different section types
-function SectionRenderer({ section }: { section: PageSection }) {
-	switch (section.__typename) {
-		case 'HeroSection':
-			return <Hero data={section} />
-		default:
-			return null
-	}
 }

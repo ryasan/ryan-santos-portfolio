@@ -1,14 +1,54 @@
-import { redirect } from '@remix-run/node'
+import type { MetaFunction } from '@netlify/remix-runtime'
+import { client } from '~/services/contentful.server'
+import { json } from '@remix-run/server-runtime'
+import { useLoaderData } from '@remix-run/react'
+import { PageSection } from '~/types/pages';
+import SectionRenderer from '~/components/section-renderer';
 
 export async function loader() {
-	return redirect('/home')
+	const page = await client.getPageBySlug('home')
+
+	if (!page) {
+		throw new Response('Not Found', { status: 404 })
+	}
+
+	return json({ page })
+}
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+	if (!data?.page) {
+		return [{ title: 'Page Not Found' }]
+	}
+
+	const { page } = data
+
+	return [
+		{ title: page.seoMetadata?.title || page.title },
+		{
+			name: 'description',
+			content: page.seoMetadata?.description || 'Page description',
+		},
+		...(page.seoMetadata?.ogImage
+			? [
+					{
+						property: 'og:image',
+						content: page.seoMetadata.ogImage.url,
+					},
+				]
+			: []),
+	]
 }
 
 export default function Index() {
+	const { page } = useLoaderData<typeof loader>()
+
 	return (
-		<div>
-			<h1>Welcome to the root page!</h1>
-			<p>This will not be shown if the loader redirects to /home.</p>
-		</div>
+		<>
+			{page.pageSectionsCollection?.items?.map(
+				(section: PageSection, index: number) => (
+					<SectionRenderer key={index} section={section} />
+				),
+			)}
+		</>
 	)
 }

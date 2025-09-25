@@ -1,3 +1,18 @@
+@import '../base/variables';
+
 .footer {
-	// Styles Go Here
+	padding: $s-6 $s-10;
+	display: flex;
+	align-items: center;
+	margin-top: auto;
+}
+
+@media (max-width: $tablet) {
+	.footer {
+		padding-left: 0;
+	}
+
+	.container {
+		margin-left: 0 !important;
+	}
 }

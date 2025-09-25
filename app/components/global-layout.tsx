@@ -1,5 +1,6 @@
-import Header from '~/components/header'
 import Footer from '~/components/footer'
+import Header from '~/components/header'
+import styles from '~/styles/components/global-layout.module.scss'
 
 type GlobalLayoutProps = {
 	children: React.ReactNode
@@ -7,7 +8,7 @@ type GlobalLayoutProps = {
 
 function GlobalLayout({ children }: GlobalLayoutProps) {
 	return (
-		<main>
+		<main className={styles.main}>
 			<Header />
 			{children}
 			<Footer />

@@ -1,3 +1,17 @@
+.footer {
+  padding: 24px 40px;
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+}
 
+@media (max-width: 768px) {
+  .footer {
+    padding-left: 0;
+  }
+  .container {
+    margin-left: 0 !important;
+  }
+}
 
 /*# sourceMappingURL=footer.module.css.map */

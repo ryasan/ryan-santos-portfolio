@@ -20,3 +20,4 @@
 * [ ] Wrap `Outlet` in an `AnimatePresence` provider
 * [ ] Use a different strategy for loading vendors in `main-layout.tsx`
 * [ ] Remove unused packages
+* [ ] Put footer content in Contentful
