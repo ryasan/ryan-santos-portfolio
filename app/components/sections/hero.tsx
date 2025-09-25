@@ -1,19 +1,19 @@
 import Avatar from '~/components/avatar'
 import Link from '~/components/link'
+import RichText from '~/components/rich-text'
 import styles from '~/styles/components/sections/hero.module.scss'
 import type { HeroSection } from '~/types'
-import RichText from '~/components/rich-text'
 
 type HeroProps = {
 	data?: HeroSection
 }
 
 function Hero({ data }: HeroProps) {
-	const hasAvatar = Boolean(data?.avatar?.url)
-	const hasTitle = Boolean(data?.title?.json)
-	const hasSubtitle = Boolean(data?.subtitle?.json)
-	const hasDescription = Boolean(data?.description?.json)
-	const hasLink = Boolean(data?.link?.url) && Boolean(data?.link?.label)
+	const hasAvatar = data?.avatar?.url
+	const hasTitle = data?.title?.json
+	const hasSubtitle = data?.subtitle?.json
+	const hasDescription = data?.description?.json
+	const hasLink = data?.link?.url && data?.link?.label
 
 	return (
 		<section className={styles.hero}>
