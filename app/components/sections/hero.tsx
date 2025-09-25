@@ -2,9 +2,10 @@ import Avatar from '~/components/avatar'
 import Link from '~/components/link'
 import styles from '~/styles/components/sections/hero.module.scss'
 import type { HeroSection } from '~/types'
+import RichText from '~/components/rich-text'
 
 type HeroProps = {
-	data: HeroSection
+	data?: HeroSection
 }
 
 // @todo: Remove later
@@ -12,27 +13,41 @@ const placeholderData = {
 	title: `Ryan Santos`,
 	subtitle: 'Frontend Engineer in Los Angeles, He/Him',
 	link: {
-		url: `https://medium.com/@ryansantos`,
+		url: `https://medium.com/@ryansantos86`,
 		title: `medium.com`,
 	},
-	description: `I'm a frontend engineer with a passion for building beautiful and functional web applications. My mission is to inspire and drive innovation in the industry. Drop a line and let's connect!`,
+	description: `I'm a frontend engineer with a passion for building beautiful and functional web applications. My mission is to inspire and drive innovation in the industry. Drop a line and let's connect.`,
 }
 
 function Hero({ data }: HeroProps) {
+	const hasAvatar = Boolean(data?.avatar?.url)
+	const hasTitle = Boolean(data?.title?.json)
+	const hasSubtitle = Boolean(data?.subtitle?.json)
+	const hasDescription = Boolean(data?.description?.json)
+	const hasLink = Boolean(data?.link?.url) && Boolean(data?.link?.label)
+
 	return (
 		<section className={styles.hero}>
 			<div className="container">
 				<div className={styles.box}>
 					<div>
-						<Avatar src={undefined} alt={undefined} />
+						{hasAvatar && (
+							<Avatar src={data?.avatar?.url} alt={data?.avatar?.title} />
+						)}
 					</div>
 					<div className={styles.info}>
-						<h1 className="mb-8">{placeholderData.title}</h1>
-						<h2 className="body-2 mb-8">{placeholderData.subtitle}</h2>
-						<Link className={styles.link} to={placeholderData.link.url}>
-							{placeholderData.link.title}
-						</Link>
-						<p className="body-2">{placeholderData.description}</p>
+						{hasTitle && <RichText data={data?.title.json} className="mb-8" />}
+						{hasSubtitle && (
+							<RichText data={data?.subtitle.json} className="mb-8" />
+						)}
+						{hasLink && (
+							<Link className={styles.link} to={data?.link.url || ''}>
+								{data?.link.label}
+							</Link>
+						)}
+						{hasDescription && (
+							<RichText data={data?.description.json} />
+						)}
 					</div>
 				</div>
 			</div>

@@ -10,12 +10,12 @@ function Avatar({ src, alt = 'Avatar' }: AvatarProps) {
 	return (
 		<div className={styles.avatar}>
 			{src ? (
-				<Image src={src} alt={alt} />
+				<img src={src} alt={alt} />
 			) : (
-				<Image
+				<img
+					className={styles.avatarPlaceholder}
 					src="/images/github-avatar.png"
 					alt="Avatar Placeholder"
-					className={styles.avatarPlaceholder}
 				/>
 			)}
 		</div>

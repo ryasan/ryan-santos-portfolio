@@ -21,14 +21,25 @@ export type PageSection = {
 
 export type HeroSection = {
   __typename: 'HeroSection'
-  title: string
-  subtitle?: string
-  backgroundImage?: {
+  isTopOfPage: boolean
+  title: {
+    json: any
+  }
+  subtitle: {
+    json: any
+  }
+  description: {
+    json: any
+  }
+  link: {
+    label: string
     url: string
+  }
+  avatar: {
+    url: string
+    title: string
     description: string
   }
-  ctaText?: string
-  ctaLink?: string
 }
 
 export type AboutSection = {

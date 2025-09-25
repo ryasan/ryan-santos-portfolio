@@ -16,6 +16,8 @@
   "dependencies": {
     "@conform-to/react": "^1.10.1",
     "@conform-to/zod": "^1.10.1",
+    "@contentful/rich-text-react-renderer": "^16.1.5",
+    "@contentful/rich-text-types": "^17.2.4",
     "@gsap/react": "^2.1.1",
     "@netlify/edge-functions": "^2.3.1",
     "@netlify/remix-edge-adapter": "^3.2.1",

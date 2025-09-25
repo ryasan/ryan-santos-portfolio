@@ -1,6 +1,9 @@
 .hero {
   display: block;
 }
+.hero p {
+  font-size: 14px !important;
+}
 
 .box {
   display: flex;

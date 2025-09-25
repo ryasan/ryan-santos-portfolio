@@ -1,12 +1,4 @@
 // Breakpoints
-// $min-width-sm: 320px;
-// $min-width-sm-plus: 510px;
-// $min-width-sm-plus-plus: 610px;
-// $min-width-md: 768px;
-// $min-width-l: 992px;
-// $min-width-xl: 1200px;
-// $min-width-xxl: 1440px;
-
 $mobile-sm: 320px;
 $mobile-md: 510px;
 $mobile-lg: 610px;
@@ -36,22 +28,6 @@ $s-20: 80px;
 // Font families
 $body-font-family: 'Poppins', sans-serif;
 $heading-font-family: 'Poppins', sans-serif;
-
-// // Default breakpoints for typography
-// $font-breakpoints: (
-// 	mobile: map-get(
-// 			$map: $breakpoints,
-// 			$key: 'mobile',
-// 		),
-// 	tablet: map-get(
-// 			$map: $breakpoints,
-// 			$key: 'tablet',
-// 		),
-// 	laptop: map-get(
-// 			$map: $breakpoints,
-// 			$key: 'laptop',
-// 		),
-// ) !default;
 
 // Stacking order
 $z-index-header: 9996;
