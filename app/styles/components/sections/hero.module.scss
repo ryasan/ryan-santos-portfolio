@@ -3,10 +3,6 @@
 
 .hero {
 	display: block;
-
-	p {
-		font-size: 14px !important;
-	}
 }
 
 .box {
@@ -19,22 +15,15 @@
 .info {
 	width: 100%;
 	max-width: 600px;
+
+	p {
+		font-size: 14px !important;
+	}
 }
 
 .link {
 	margin-bottom: $s-6;
 }
-
-// @include tablet-down {
-// 	.box {
-// 		flex-direction: column;
-// 		gap: $s-4;
-// 	}
-
-// 	.link {
-// 		margin-bottom: $s-8;
-// 	}
-// }
 
 @media (max-width: $tablet) {
 	.box {

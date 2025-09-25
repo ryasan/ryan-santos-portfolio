@@ -1,9 +1,6 @@
 .hero {
   display: block;
 }
-.hero p {
-  font-size: 14px !important;
-}
 
 .box {
   display: flex;
@@ -15,6 +12,9 @@
 .info {
   width: 100%;
   max-width: 600px;
+}
+.info p {
+  font-size: 14px !important;
 }
 
 .link {
