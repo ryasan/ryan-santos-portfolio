@@ -2,7 +2,7 @@
 @import '../base/mixins';
 
 .header {
-	padding: $s-6 $s-4;
+	padding: $s-6 $s-10;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -17,5 +17,6 @@
 }
 
 .navigationBox {
-	// Styles Go Here
+	display: flex;
+	align-items: center;
 }

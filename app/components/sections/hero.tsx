@@ -8,17 +8,6 @@ type HeroProps = {
 	data?: HeroSection
 }
 
-// @todo: Remove later
-const placeholderData = {
-	title: `Ryan Santos`,
-	subtitle: 'Frontend Engineer in Los Angeles, He/Him',
-	link: {
-		url: `https://medium.com/@ryansantos86`,
-		title: `medium.com`,
-	},
-	description: `I'm a frontend engineer with a passion for building beautiful and functional web applications. My mission is to inspire and drive innovation in the industry. Drop a line and let's connect.`,
-}
-
 function Hero({ data }: HeroProps) {
 	const hasAvatar = Boolean(data?.avatar?.url)
 	const hasTitle = Boolean(data?.title?.json)
