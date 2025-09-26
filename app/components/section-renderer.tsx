@@ -1,5 +1,5 @@
 import type { PageSection } from '~/types/pages'
-import Hero from './sections/hero'
+import HeroSection from './sections/hero-section'
 
 type SectionRendererProps = {
 	section: PageSection
@@ -10,7 +10,7 @@ export default function SectionRenderer({ section }: SectionRendererProps) {
 
 	switch (typename) {
 		case 'HeroSection':
-			return <Hero data={section} />
+			return <HeroSection data={section} />
 		// Add more section types as you build them
 		// case 'AboutSection':
 		//   return <AboutSection data={section} />

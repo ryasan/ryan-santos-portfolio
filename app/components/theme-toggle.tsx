@@ -1,8 +1,8 @@
-import { useFetcher } from '@remix-run/react'
 import Image from '~/components/image'
 import styles from '~/styles/components/theme-toggle.module.scss'
-import { useTheme } from '~/hooks'
 import { DARK_THEME, LIGHT_THEME } from '~/utils/constants'
+import { useFetcher } from '@remix-run/react'
+import { useTheme } from '~/hooks'
 
 type ThemeToggleProps = {
 	darkImage?: string

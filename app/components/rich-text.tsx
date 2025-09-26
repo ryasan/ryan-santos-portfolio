@@ -1,9 +1,9 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types'
-import type { Document } from '@contentful/rich-text-types'
-import clsx from 'clsx'
 import Link from '~/components/link'
+import clsx from 'clsx'
 import styles from '~/styles/components/rich-text.module.scss'
+import type { Document } from '@contentful/rich-text-types'
+import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 type RichTextProps = {
 	data: Document | any

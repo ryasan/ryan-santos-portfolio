@@ -4,11 +4,11 @@ import RichText from '~/components/rich-text'
 import styles from '~/styles/components/sections/hero.module.scss'
 import type { HeroSection } from '~/types'
 
-type HeroProps = {
+type HeroSectionProps = {
 	data?: HeroSection
 }
 
-export default function Hero({ data }: HeroProps) {
+export default function HeroSection({ data }: HeroSectionProps) {
 	return (
 		<section className={styles.hero}>
 			<div className="container">

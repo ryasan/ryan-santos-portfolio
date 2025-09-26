@@ -1,8 +1,8 @@
 import clsx from 'clsx'
-import { Link as RemixLink } from '@remix-run/react'
-import type { LinkProps as RemixLinkProps } from '@remix-run/react'
 import styles from '~/styles/components/link.module.scss'
+import type { LinkProps as RemixLinkProps } from '@remix-run/react'
 import { ArrowUpRightIcon } from '~/components/icons'
+import { Link as RemixLink } from '@remix-run/react'
 
 type LinkProps = {
 	to: string

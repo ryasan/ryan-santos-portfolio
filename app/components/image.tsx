@@ -1,7 +1,7 @@
-import clsx from 'clsx'
-import { useState } from 'react'
 // import { getPlaiceholder } from 'plaiceholder';
+import clsx from 'clsx'
 import styles from '~/styles/components/image.module.scss'
+import { useState } from 'react'
 
 interface ImageProps {
 	src: string
