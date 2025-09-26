@@ -1,4 +1,3 @@
-import Image from '~/components/image'
 import styles from '~/styles/components/avatar.module.scss'
 
 type AvatarProps = {
@@ -6,7 +5,7 @@ type AvatarProps = {
 	alt?: string
 }
 
-function Avatar({ src, alt = 'Avatar' }: AvatarProps) {
+export default function Avatar({ src, alt = 'Avatar' }: AvatarProps) {
 	return (
 		<div className={styles.avatar}>
 			{src ? (
@@ -21,5 +20,3 @@ function Avatar({ src, alt = 'Avatar' }: AvatarProps) {
 		</div>
 	)
 }
-
-export default Avatar

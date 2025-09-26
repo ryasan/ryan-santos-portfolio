@@ -13,7 +13,7 @@ export const { getHints } = hintsUtils;
  * if they are not set then reloads the page if any cookie was set to an
  * inaccurate value.
  */
-function ClientHintScript() {
+export default function ClientHintScript() {
 	return (
 		<script
 			dangerouslySetInnerHTML={{
@@ -22,5 +22,3 @@ function ClientHintScript() {
 		/>
 	)
 }
-
-export default ClientHintScript

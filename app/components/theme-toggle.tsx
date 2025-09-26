@@ -9,7 +9,7 @@ type ThemeToggleProps = {
 	lightImage?: string
 }
 
-function ThemeToggle({ darkImage = '', lightImage = '' }: ThemeToggleProps) {
+export default function ThemeToggle({ darkImage = '', lightImage = '' }: ThemeToggleProps) {
 	const theme = useTheme()
 	const fetcher = useFetcher()
 
@@ -38,8 +38,6 @@ function ThemeToggle({ darkImage = '', lightImage = '' }: ThemeToggleProps) {
 		</button>
 	)
 }
-
-export default ThemeToggle
 
 // function ThemeToggle({
 // 	userPreference,

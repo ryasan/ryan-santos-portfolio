@@ -4,7 +4,7 @@ import { LIGHT_THEME, DARK_THEME } from '~/utils/constants'
 
 // @Todo: Fetch navigation data in Contentful
 
-function Header() {
+export default function Header() {
 	return (
 		<header className={styles.header}>
 			<a className={styles.logo}>
@@ -20,5 +20,3 @@ function Header() {
 		</header>
 	)
 }
-
-export default Header

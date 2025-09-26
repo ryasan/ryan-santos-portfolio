@@ -17,7 +17,7 @@ interface ImageProps {
 	quality?: number
 }
 
-function Image({
+export default function Image({
 	src,
 	alt,
 	width,
@@ -87,8 +87,6 @@ function Image({
 		</div>
 	)
 }
-
-export default Image
 
 // @Todo: Improve image experience by loading placeholder and then the image
 

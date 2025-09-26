@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import styles from '~/styles/components/footer.module.scss'
 
-function Footer() {
+export default function Footer() {
 	return (
 		<footer className={styles.footer}>
 			<div className={clsx('container', styles.container)}>
@@ -10,5 +10,3 @@ function Footer() {
 		</footer>
 	)
 }
-
-export default Footer

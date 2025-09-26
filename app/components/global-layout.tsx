@@ -6,7 +6,7 @@ type GlobalLayoutProps = {
 	children: React.ReactNode
 }
 
-function GlobalLayout({ children }: GlobalLayoutProps) {
+export default function GlobalLayout({ children }: GlobalLayoutProps) {
 	return (
 		<main className={styles.main}>
 			<Header />
@@ -15,5 +15,3 @@ function GlobalLayout({ children }: GlobalLayoutProps) {
 		</main>
 	)
 }
-
-export default GlobalLayout

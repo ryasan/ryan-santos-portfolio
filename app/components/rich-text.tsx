@@ -56,7 +56,7 @@ const renderOptions = {
 	},
 }
 
-function RichText({ data, className }: RichTextProps) {
+export default function RichText({ data, className }: RichTextProps) {
 	// Handle empty or invalid data
 	if (!data || !data.nodeType) {
 		return null
@@ -68,5 +68,3 @@ function RichText({ data, className }: RichTextProps) {
 		</div>
 	)
 }
-
-export default RichText

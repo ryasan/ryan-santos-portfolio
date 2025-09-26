@@ -21,7 +21,7 @@ function isExternalLink(url: string): boolean {
 	)
 }
 
-function Link({
+export default function Link({
 	to,
 	children,
 	className,
@@ -52,5 +52,3 @@ function Link({
 		</RemixLink>
 	)
 }
-
-export default Link

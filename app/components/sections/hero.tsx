@@ -8,7 +8,7 @@ type HeroProps = {
 	data?: HeroSection
 }
 
-function Hero({ data }: HeroProps) {
+export default function Hero({ data }: HeroProps) {
 	return (
 		<section className={styles.hero}>
 			<div className="container">
@@ -39,5 +39,3 @@ function Hero({ data }: HeroProps) {
 		</section>
 	)
 }
-
-export default Hero

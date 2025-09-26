@@ -1,6 +1,6 @@
 import { SVGProps } from 'react'
 
-function ArrowUpRightIcon(props: SVGProps<SVGSVGElement>) {
+export default function ArrowUpRightIcon(props: SVGProps<SVGSVGElement>) {
 	return (
 		<svg
 			width="24"
@@ -19,5 +19,3 @@ function ArrowUpRightIcon(props: SVGProps<SVGSVGElement>) {
 		</svg>
 	)
 }
-
-export default ArrowUpRightIcon
