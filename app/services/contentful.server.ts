@@ -113,42 +113,6 @@ async function getPageByTitle(title: string) {
 }
 
 async function getPageBySlug(slug: string) {
-	const query = `
-		query ($slug: String) {
-		  pageCollection(where: { slug: $slug }, limit: 1) {
-		    items {
-		      slug
-		      pageSectionsCollection {
-		        items {
-		          ... on HeroSection {
-								__typename
-		            isTopOfPage
-		            title {
-		              json
-		            }
-		            subtitle {
-		              json
-		            }
-		            description {
-		              json
-		            }
-		            link {
-		              label
-		              url
-		            }
-		            avatar {
-		              url
-		              title
-		              description
-		            }
-		          }
-		        }
-		      }
-		    }
-		  }
-		}
-  `
-
 	const variables = { slug }
 
 	try {
