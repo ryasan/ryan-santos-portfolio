@@ -1,0 +1,41 @@
+.experienceSection {
+  display: block;
+}
+
+.box {
+  border-bottom: 1px solid var(--line-color);
+  padding: 40px 0;
+}
+
+.experienceList {
+  display: block;
+}
+
+.info {
+  max-width: 600px;
+  padding-bottom: 32px;
+}
+
+.experienceItem {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 32px;
+}
+.experienceItem:not(:last-child) .info {
+  border-bottom: 1px solid var(--line-color);
+}
+
+.yearRange {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .experienceItem {
+    flex-direction: column;
+  }
+  .yearRange {
+    margin-bottom: 8px;
+  }
+}
+
+/*# sourceMappingURL=experience-section.module.css.map */

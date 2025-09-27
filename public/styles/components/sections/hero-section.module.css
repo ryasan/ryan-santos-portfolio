@@ -1,12 +1,12 @@
-.hero {
+.heroSection {
   display: block;
 }
 
 .box {
+  border-bottom: 1px solid var(--line-color);
   display: flex;
   justify-content: space-between;
   padding-bottom: 40px;
-  border-bottom: 1px solid var(--line-color);
 }
 
 .info {
@@ -27,8 +27,8 @@
     gap: 16px;
   }
   .link {
-    margin-bottom: 32px;
+    margin-bottom: 8px;
   }
 }
 
-/*# sourceMappingURL=hero.module.css.map */
+/*# sourceMappingURL=hero-section.module.css.map */

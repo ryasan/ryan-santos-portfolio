@@ -1,15 +1,15 @@
 @import '../../base/variables';
 @import '../../base/mixins';
 
-.hero {
+.heroSection {
 	display: block;
 }
 
 .box {
+	border-bottom: 1px solid var(--line-color);
 	display: flex;
 	justify-content: space-between;
-	padding-bottom: $s-10;
-	border-bottom: 1px solid var(--line-color);
+	padding-bottom: $space-40;
 }
 
 .info {
@@ -22,16 +22,16 @@
 }
 
 .link {
-	margin-bottom: $s-6;
+	margin-bottom: $space-24;
 }
 
 @media (max-width: $tablet) {
 	.box {
 			flex-direction: column;
-			gap: $s-4;
+			gap: $space-16;
 	}
 
 	.link {
-			margin-bottom: $s-8;
+			margin-bottom: $space-8;
 	}
 }

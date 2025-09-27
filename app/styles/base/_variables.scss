@@ -8,22 +8,22 @@ $desktop: 1200px;
 $desktop-lg: 1440px;
 
 // Spacing
-$s-0: 0;
-$s-05: 2px;
-$s-1: 4px;
-$s-2: 8px;
-$s-25: 12px;
-$s-3: 10px;
-$s-35: 14px;
-$s-4: 16px;
-$s-5: 20px;
-$s-6: 24px;
-$s-7: 28px;
-$s-8: 32px;
-$s-10: 40px;
-$s-14: 56px;
-$s-16: 64px;
-$s-20: 80px;
+$space-0: 0; // $s-0 These are the old values
+$space-2: 2px; // $s-05
+$space-4: 4px; // $s-1
+$space-8: 8px; // $s-2
+$space-10: 10px; // $s-3
+$space-12: 12px; // $s-25
+$space-14: 14px; // $s-35
+$space-16: 16px; // $s-4
+$space-20: 20px; // $s-5
+$space-24: 24px; // $s-6
+$space-28: 28px; // $s-7
+$space-32: 32px; // $s-8
+$space-40: 40px; // $s-10
+$space-56: 56px; // $s-14
+$space-64: 64px; // $s-16
+$space-80: 80px; // $s-20
 
 // Font families
 $body-font-family: 'Poppins', sans-serif;

@@ -1,5 +1,5 @@
 import { gql } from '~/utils/gql'
-import { HERO_SECTION_FRAGMENT } from './fragments/hero-section.gql'
+import { EXPERIENCE_SECTION_FRAGMENT, HERO_SECTION_FRAGMENT } from './fragments'
 
 export const GET_PAGE_BY_SLUG_QUERY = gql`
 	query GetPageBySlug($slug: String) {
@@ -7,32 +7,16 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 			items {
 				slug
 				pageSectionsCollection {
+					__typename
 					items {
+						...ExperienceSectionFields
 						...HeroSectionFields
-
-						... on ExperienceSection {
-							__typename
-							sys {
-								id
-							}
-							experienceTitle: title
-							experienceCollection {
-								items {
-									startDate
-									endDate
-									company
-									jobTitle
-									description {
-										json
-									}
-								}
-							}
-						}
 					}
 				}
 			}
 		}
 	}
+	${EXPERIENCE_SECTION_FRAGMENT}
 	${HERO_SECTION_FRAGMENT}
 `
 

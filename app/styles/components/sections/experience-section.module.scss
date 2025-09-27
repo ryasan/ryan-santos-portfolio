@@ -1,0 +1,45 @@
+@import '../../base/variables';
+
+.experienceSection {
+	display: block;
+}
+
+.box {
+	border-bottom: 1px solid var(--line-color);
+	padding: $space-40 0;
+}
+
+.experienceList {
+	display: block;
+}
+
+.info {
+	max-width: 600px;
+	padding-bottom: $space-32;
+}
+
+.experienceItem {
+	display: flex;
+	justify-content: space-between;
+	padding-top: $space-32;
+
+	&:not(:last-child) {
+		.info {
+			border-bottom: 1px solid var(--line-color);
+		}
+	}
+}
+
+.yearRange {
+	white-space: nowrap;
+}
+
+@media (max-width: $tablet) {
+	.experienceItem {
+		flex-direction: column;
+	}
+
+	.yearRange {
+		margin-bottom: $space-8;
+	}
+}

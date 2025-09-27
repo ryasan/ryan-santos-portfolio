@@ -23,11 +23,11 @@
 .linkBox {
 	display: flex;
 	align-items: center;
-	height: $s-6;
+	height: $space-24;
 	width: fit-content;
 
   svg {
-		padding-left: $s-1;
+		padding-left: $space-4;
 		transition: 0.2s ease;
 		min-width: 24px;
 	}

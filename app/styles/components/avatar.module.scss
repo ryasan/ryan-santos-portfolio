@@ -11,8 +11,8 @@
 	align-items: center;
 
 	img {
-		width: calc(100% - $s-2);
-		height: calc(100% - $s-2);
+		width: calc(100% - $space-8);
+		height: calc(100% - $space-8);
 		border-radius: 100%;
 	}	
 }

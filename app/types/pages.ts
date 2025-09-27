@@ -1,5 +1,8 @@
 // app/types/pages.ts
 export type FlexiblePage = {
+	sys: {
+		id: string
+	}
 	title: string
 	slug: string
 	sections: PageSection[]
@@ -28,6 +31,9 @@ export type PageSection = {
 
 export type HeroSection = {
 	__typename: 'HeroSection'
+	sys: {
+		id: string
+	}
 	isTopOfPage: boolean
 	title: {
 		json: any
@@ -51,6 +57,9 @@ export type HeroSection = {
 
 export type AboutSection = {
 	__typename: 'AboutSection'
+	sys: {
+		id: string
+	}
 	title: string
 	content: {
 		json: any
@@ -63,6 +72,9 @@ export type AboutSection = {
 
 export type ProjectsSection = {
 	__typename: 'ProjectsSection'
+	sys: {
+		id: string
+	}
 	title: string
 	description?: string
 	showFeatured?: boolean
@@ -71,6 +83,9 @@ export type ProjectsSection = {
 
 export type ContactSection = {
 	__typename: 'ContactSection'
+	sys: {
+		id: string
+	}
 	title: string
 	description?: string
 	email?: string
@@ -82,6 +97,9 @@ export type ContactSection = {
 
 export type CustomSection = {
 	__typename: 'CustomSection'
+	sys: {
+		id: string
+	}
 	title: string
 	content: {
 		json: any
@@ -91,6 +109,9 @@ export type CustomSection = {
 
 export type ExperienceSection = {
 	__typename: 'ExperienceSection'
+	sys: {
+		id: string
+	}
 	experienceTitle: string
 	experienceCollection: {
 		items: ExperienceItem[]
@@ -98,8 +119,12 @@ export type ExperienceSection = {
 }
 
 export type ExperienceItem = {
+	sys: {
+		id: string
+	}
 	startDate: string
 	endDate: string
+	isCurrent: boolean
 	company: string
 	jobTitle: string
 	description: {

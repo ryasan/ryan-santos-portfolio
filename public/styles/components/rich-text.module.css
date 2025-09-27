@@ -1,3 +1,21 @@
-
+.richText p {
+  margin-bottom: 16px;
+}
+.richText p:last-child {
+  margin-bottom: 0;
+}
+.richText h2, .richText h3, .richText h4, .richText h5, .richText h6 {
+  margin-bottom: 12px;
+  margin-top: 24px;
+}
+.richText h2:first-child, .richText h3:first-child, .richText h4:first-child, .richText h5:first-child, .richText h6:first-child {
+  margin-top: 0;
+}
+.richText ul, .richText ol {
+  margin-bottom: 16px;
+}
+.richText blockquote {
+  margin-bottom: 16px;
+}
 
 /*# sourceMappingURL=rich-text.module.css.map */

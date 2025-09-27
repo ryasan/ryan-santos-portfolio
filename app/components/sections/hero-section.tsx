@@ -1,7 +1,7 @@
 import Avatar from '~/components/avatar'
 import Link from '~/components/link'
 import RichText from '~/components/rich-text'
-import styles from '~/styles/components/sections/hero.module.scss'
+import styles from '~/styles/components/sections/hero-section.module.scss'
 import type { HeroSection } from '~/types'
 
 type HeroSectionProps = {
@@ -10,7 +10,7 @@ type HeroSectionProps = {
 
 export default function HeroSection({ data }: HeroSectionProps) {
 	return (
-		<section className={styles.hero}>
+		<section className={styles.heroSection}>
 			<div className="container">
 				<div className={styles.box}>
 					<div>
