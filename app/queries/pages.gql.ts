@@ -1,45 +1,7 @@
 import { gql } from '~/utils/gql'
+import { HERO_SECTION_FRAGMENT } from './fragments/hero-section.gql'
 
 export const GET_PAGE_BY_SLUG_QUERY = gql`
-	fragment HeroSectionFields on HeroSection {
-		__typename
-		isTopOfPage
-		title {
-			json
-		}
-		subtitle {
-			json
-		}
-		description {
-			json
-		}
-		link {
-			label
-			url
-		}
-		avatar {
-			url
-			title
-			description
-		}
-	}
-
-	# fragment ExperienceSectionFields on ExperienceSection {
-	# 	__typename
-	# 	title
-	# 	experienceCollection {
-	# 		items {
-	# 			startDate
-	# 			endDate
-	# 			company
-	# 			jobTitle
-	# 			description {
-	# 				json
-	# 			}
-	# 		}
-	# 	}
-	# }
-
 	query GetPageBySlug($slug: String) {
 		pageCollection(where: { slug: $slug }, limit: 1) {
 			items {
@@ -50,24 +12,28 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 
 						... on ExperienceSection {
 							__typename
-							# title
-							# experienceCollection {
-							# 	items {
-							# 		startDate
-							# 		endDate
-							# 		company
-							# 		jobTitle
-							# 		description {
-							# 			json
-							# 		}
-							# 	}
-							# }
+							sys {
+								id
+							}
+							experienceTitle: title
+							experienceCollection {
+								items {
+									startDate
+									endDate
+									company
+									jobTitle
+									description {
+										json
+									}
+								}
+							}
 						}
 					}
 				}
 			}
 		}
 	}
+	${HERO_SECTION_FRAGMENT}
 `
 
 export const GET_PAGE_BY_TITLE_QUERY = gql`

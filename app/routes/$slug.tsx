@@ -51,11 +51,10 @@ export default function DynamicPage() {
 
 	return (
 		<>
-			{page.pageSectionsCollection?.items?.map(
-				(section: PageSection, index: number) => (
-					<SectionRenderer key={index} section={section} />
-				),
-			)}
+			{page.pageSectionsCollection?.items?.map((section: PageSection) => {
+				if (!section?.sys?.id) return null
+				return <SectionRenderer key={section.sys.id} section={section} />
+			})}
 		</>
 	)
 }

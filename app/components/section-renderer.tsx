@@ -1,16 +1,19 @@
 import type { PageSection } from '~/types/pages'
 import HeroSection from './sections/hero-section'
+import ExperienceSection from './sections/experience-section'
 
 type SectionRendererProps = {
 	section: PageSection
 }
 
 export default function SectionRenderer({ section }: SectionRendererProps) {
-	const typename = section.__typename
+	const typename = section?.__typename
 
 	switch (typename) {
 		case 'HeroSection':
 			return <HeroSection data={section} />
+		case 'ExperienceSection':
+			return <ExperienceSection data={section} />
 		// Add more section types as you build them
 		// case 'AboutSection':
 		//   return <AboutSection data={section} />
