@@ -2,6 +2,14 @@
 // import axios from 'axios';
 // import { getPlaiceholder } from 'plaiceholder';
 
+import {
+	GET_ALL_PROJECTS_QUERY,
+	GET_ALL_BLOGS_QUERY,
+	GET_BLOG_BY_SLUG_QUERY,
+	GET_PAGE_BY_SLUG_QUERY,
+	GET_PAGE_BY_TITLE_QUERY,
+} from '~/queries'
+
 const CONTENTFUL_SPACE_ID = import.meta.env.VITE_CONTENTFUL_SPACE_ID
 const CONTENTFUL_ACCESS_TOKEN = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN
 
@@ -28,29 +36,9 @@ async function apiCall(query: string, variables?: any) {
 	return await fetch(fetchUrl, options)
 }
 
-async function getProjects() {
-	const query = `
-		{
-			projectsCollection(order: releaseDate_DESC) {
-				items {
-					title
-					caption
-					desc {
-						json
-					}
-					releaseDate
-					link
-					previewImage {
-						description
-						url
-					}
-				}
-			}
-		}
-	`
-
+async function getAllProjects() {
 	try {
-		const response = await apiCall(query)
+		const response = await apiCall(GET_ALL_PROJECTS_QUERY)
 		const json = await response.json()
 
 		const formattedData = await json.data.projectsCollection.items.map(
@@ -80,62 +68,9 @@ async function getProjects() {
 	}
 }
 
-async function getTalks() {
-	const query = `
-		{
-			talksCollection {
-				items {
-					sys {
-						id
-					}
-					title
-					description {
-						json
-					}
-					link
-					type
-					previewImage {
-						description
-						url
-					}
-				}
-			}
-		}
-	`
-
-	try {
-		const response = await apiCall(query)
-		const json = await response.json()
-		return await json.data.talksCollection.items
-	} catch (error) {
-		console.error('Something went wrong while fetching all talks', error)
-		return null
-	}
-}
-
 async function getAllBlogs() {
-	const query = `
-		{
-			blogCollection(order: sys_firstPublishedAt_DESC) {
-				items {
-					title
-					slug
-					description
-					tag
-					sys {
-						firstPublishedAt
-					}
-					openGraphImage {
-						title
-						url
-					}
-				}
-			}
-		}
-	`
-
 	try {
-		const response = await apiCall(query)
+		const response = await apiCall(GET_ALL_BLOGS_QUERY)
 		const json = await response.json()
 		return await json.data.blogCollection.items
 	} catch (error) {
@@ -144,35 +79,13 @@ async function getAllBlogs() {
 	}
 }
 
-async function getSingleBlog(slug: string) {
-	const query = `
-		query ($slug: String) {
-			blogCollection(where: { slug: $slug }) {
-				items {
-					title
-					description
-					tag
-					canonicalUrl
-					blogBody {
-						json
-					}
-					sys {
-						publishedAt
-					}
-					openGraphImage {
-						url
-					}
-				}
-			}
-		}
-	`
-
+async function getBlogBySlug(slug: string) {
 	const variables = {
 		slug: slug,
 	}
 
 	try {
-		const response = await apiCall(query, variables)
+		const response = await apiCall(GET_BLOG_BY_SLUG_QUERY, variables)
 		const json = await response.json()
 		return await json.data.blogCollection.items[0]
 	} catch (error) {
@@ -181,28 +94,13 @@ async function getSingleBlog(slug: string) {
 	}
 }
 
-async function getPage(title: string) {
-	const query = `
-		query ($title: String) {
-			pageCollection(where: { title: $title }) {
-				items {
-					seoMetadata {
-						title
-						ogImage {
-							url
-						}
-						description
-					}
-				}
-			}
-		}
-	`
+async function getPageByTitle(title: string) {
 	const variables = {
 		title: title,
 	}
 
 	try {
-		const response = await apiCall(query, variables)
+		const response = await apiCall(GET_PAGE_BY_TITLE_QUERY, variables)
 		const json = await response.json()
 		return await json.data.pageCollection.items[0]
 	} catch (error) {
@@ -254,7 +152,7 @@ async function getPageBySlug(slug: string) {
 	const variables = { slug }
 
 	try {
-		const response = await apiCall(query, variables)
+		const response = await apiCall(GET_PAGE_BY_SLUG_QUERY, variables)
 		const json = await response.json()
 		return await json.data.pageCollection.items[0]
 	} catch (error) {
@@ -264,10 +162,9 @@ async function getPageBySlug(slug: string) {
 }
 
 export const client = {
-	getProjects,
-	getTalks,
+	getAllProjects,
 	getAllBlogs,
-	getSingleBlog,
-	getPage,
+	getBlogBySlug,
+	getPageByTitle,
 	getPageBySlug,
 }
