@@ -18,32 +18,13 @@ const renderOptions = {
 	},
 	renderNode: {
 		[BLOCKS.UL_LIST]: (node: any, children: React.ReactNode) => (
-			<ul style={{ paddingLeft: '24px', listStyleType: 'disc' }}>{children}</ul>
+			<ul>{children}</ul>
 		),
 		[BLOCKS.OL_LIST]: (node: any, children: React.ReactNode) => (
-			<ol style={{ paddingLeft: '24px', listStyleType: 'decimal' }}>
-				{children}
-			</ol>
+			<ol>{children}</ol>
 		),
 		[BLOCKS.QUOTE]: (node: any, children: React.ReactNode) => (
-			<blockquote
-				style={{
-					borderLeft: '4px solid var(--line-color)',
-					paddingLeft: '24px',
-					fontStyle: 'italic',
-					color: 'var(--content-color-2)',
-				}}
-			>
-				{children}
-			</blockquote>
-		),
-		[BLOCKS.HR]: () => (
-			<hr
-				style={{
-					border: 'none',
-					borderTop: '1px solid var(--line-color)',
-				}}
-			/>
+			<blockquote>{children}</blockquote>
 		),
 		[INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => (
 			<Link to={node.data.uri}>{children}</Link>

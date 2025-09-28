@@ -7,9 +7,7 @@ export const HERO_SECTION_FRAGMENT = gql`
 			id
 		}
 		isTopOfPage
-		title {
-			json
-		}
+		title
 		subtitle {
 			json
 		}

@@ -4,18 +4,42 @@
 .richText p:last-child {
   margin-bottom: 0;
 }
-.richText h2, .richText h3, .richText h4, .richText h5, .richText h6 {
+.richText h2,
+.richText h3,
+.richText h4,
+.richText h5,
+.richText h6 {
   margin-bottom: 12px;
   margin-top: 24px;
 }
-.richText h2:first-child, .richText h3:first-child, .richText h4:first-child, .richText h5:first-child, .richText h6:first-child {
+.richText h2:first-child,
+.richText h3:first-child,
+.richText h4:first-child,
+.richText h5:first-child,
+.richText h6:first-child {
   margin-top: 0;
 }
-.richText ul, .richText ol {
+.richText ul {
+  list-style: disc;
   margin-bottom: 16px;
+  padding-left: 24px;
+}
+.richText ol {
+  list-style: decimal;
+  margin-bottom: 16px;
+  padding-left: 24px;
 }
 .richText blockquote {
+  border-left: 4px solid var(--line-color);
+  color: var(--content-color-2);
+  font-style: italic;
   margin-bottom: 16px;
+  padding-left: 24px;
+}
+.richText hr {
+  border-top: 1px solid var(--line-color);
+  border: none;
+  margin: 16px;
 }
 
 /*# sourceMappingURL=rich-text.module.css.map */

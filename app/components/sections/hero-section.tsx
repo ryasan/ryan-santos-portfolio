@@ -19,8 +19,11 @@ export default function HeroSection({ data }: HeroSectionProps) {
 						)}
 					</div>
 					<div className={styles.info}>
-						{data?.title?.json && (
-							<RichText data={data?.title.json} className="mb-8" />
+						{data?.title && data?.isTopOfPage && (
+							<h1 className="mb-8">{data?.title}</h1>
+						)}
+						{data?.title && !data?.isTopOfPage && (
+							<h2 className="h1 mb-8">{data?.title}</h2>
 						)}
 						{data?.subtitle?.json && (
 							<RichText data={data?.subtitle.json} className="mb-8" />

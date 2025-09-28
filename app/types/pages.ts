@@ -35,9 +35,7 @@ export type HeroSection = {
 		id: string
 	}
 	isTopOfPage: boolean
-	title: {
-		json: any
-	}
+	title: string
 	subtitle: {
 		json: any
 	}

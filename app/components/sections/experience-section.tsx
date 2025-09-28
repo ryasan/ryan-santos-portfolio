@@ -16,7 +16,7 @@ export default function ExperienceSection({ data }: ExperienceSectionProps) {
 			<div className="container">
 				<div className={styles.box}>
 					{data?.experienceTitle && (
-						<p className="label">{data?.experienceTitle}</p>
+						<h2 className="label">{data?.experienceTitle}</h2>
 					)}
 
 					<ul className={styles.experienceList}>
@@ -25,14 +25,14 @@ export default function ExperienceSection({ data }: ExperienceSectionProps) {
 								<li className={styles.experienceItem} key={item.sys.id}>
 									<div className={styles.yearRange}>
 										{item.startDate && item.endDate && (
-											<p>
+											<div>
 												{extractYear(item.startDate)} -{' '}
 												{item.isCurrent ? 'now' : extractYear(item.endDate)}
-											</p>
+											</div>
 										)}
 									</div>
 									<div className={styles.info}>
-										{item.jobTitle && item.company && (
+										{(item.jobTitle || item.company) && (
 											<h3 className="mb-16">
 												{[item.jobTitle, item.company]
 													.filter(Boolean)
