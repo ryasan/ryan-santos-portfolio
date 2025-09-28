@@ -17,7 +17,7 @@ export default function Header({ data }: HeaderProps) {
 					{data?.logoImageLightMode?.url && (
 						<img
 							src={data?.logoImageLightMode?.url}
-							alt={data?.logoImageLightMode?.title || 'Light Mode Logo'}
+							alt={data?.logoImageLightMode?.title || 'Ryan Santos Portfolio logo'}
 						/>
 					)}
 				</div>
@@ -25,7 +25,7 @@ export default function Header({ data }: HeaderProps) {
 					{data?.logoImageDarkMode?.url && (
 						<img
 							src={data?.logoImageDarkMode?.url}
-							alt={data?.logoImageDarkMode?.title || 'Dark Mode Logo'}
+							alt={data?.logoImageDarkMode?.title || 'Ryan Santos Portfolio logo'}
 						/>
 					)}
 				</div>

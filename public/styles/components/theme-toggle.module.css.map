@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"theme-toggle.module.css"}
+{"version":3,"sourceRoot":"","sources":["../../../app/styles/components/theme-toggle.module.scss"],"names":[],"mappings":"AAAA;EACC","file":"theme-toggle.module.css"}
