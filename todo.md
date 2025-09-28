@@ -22,3 +22,5 @@
 * [ ] Remove unused packages
 * [ ] Put footer content in Contentful
 * [ ] Fix alias for graphql fields
+* [ ] Add open graph images to Contentful
+* [ ] Add better error handling for Contentful queries

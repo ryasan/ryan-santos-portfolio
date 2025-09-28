@@ -15,8 +15,8 @@ export default function ExperienceSection({ data }: ExperienceSectionProps) {
 		<section className={styles.experienceSection}>
 			<div className="container">
 				<div className={styles.box}>
-					{data?.experienceTitle && (
-						<h2 className="label">{data?.experienceTitle}</h2>
+					{data?.title && (
+						<h2 className="label">{data?.title}</h2>
 					)}
 
 					<ul className={styles.experienceList}>

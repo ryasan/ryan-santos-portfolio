@@ -110,7 +110,7 @@ export type ExperienceSection = {
 	sys: {
 		id: string
 	}
-	experienceTitle: string
+	title: string
 	experienceCollection: {
 		items: ExperienceItem[]
 	}

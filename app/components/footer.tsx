@@ -5,7 +5,7 @@ export default function Footer() {
 	return (
 		<footer className={styles.footer}>
 			<div className={clsx('container', styles.container)}>
-				<p>Copyright © {new Date().getFullYear()} Ryan Santos</p>
+				<p className="body-2">Copyright © {new Date().getFullYear()} Ryan Santos</p>
 			</div>
 		</footer>
 	)

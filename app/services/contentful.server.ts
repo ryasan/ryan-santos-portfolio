@@ -3,8 +3,8 @@
 // import { getPlaiceholder } from 'plaiceholder';
 
 import {
-	GET_ALL_PROJECTS_QUERY,
 	GET_ALL_BLOGS_QUERY,
+	GET_ALL_PROJECTS_QUERY,
 	GET_BLOG_BY_SLUG_QUERY,
 	GET_PAGE_BY_SLUG_QUERY,
 	GET_PAGE_BY_TITLE_QUERY,

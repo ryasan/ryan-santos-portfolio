@@ -14,7 +14,7 @@ export default function Avatar({ src, alt = 'Avatar' }: AvatarProps) {
 				<img
 					className={styles.avatarPlaceholder}
 					src="/images/github-avatar.png"
-					alt="Avatar Placeholder"
+					alt="Default avatar picture"
 				/>
 			)}
 		</div>

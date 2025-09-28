@@ -16,6 +16,9 @@
   padding-bottom: 32px;
   width: 100%;
 }
+.info h3 {
+  line-height: 1;
+}
 
 .experienceItem {
   display: flex;

@@ -6,7 +6,7 @@ export const EXPERIENCE_SECTION_FRAGMENT = gql`
 		sys {
 			id
 		}
-		experienceTitle: title
+		title
 		experienceCollection {
 			items {
 				sys {
