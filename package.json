@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run build:css && remix vite:build",
     "build:css": "sass app/styles/:public/styles",
-    "clean": "rm -rf build node_modules",
+    "clean": "rm -rf build node_modules package-lock.json",
     "dev": "concurrently \"npm run sass:dev\" \"remix vite:dev\"",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "sass:dev": "sass --watch app/styles/:public/styles",
