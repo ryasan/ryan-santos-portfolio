@@ -17,7 +17,7 @@ const icons = {
 
 const renderIcon = (icon?: string) => {
 	const Icon = icons[icon?.toLowerCase() as keyof typeof icons]
-	return Icon ? <Icon className={styles.icon} /> : null
+	return Icon ? <Icon className={styles.icon} aria-hidden="true" /> : null
 }
 
 type SocialSectionProps = {

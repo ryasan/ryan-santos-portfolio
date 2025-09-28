@@ -1,17 +1,15 @@
-import Image from '~/components/image'
 import styles from '~/styles/components/theme-toggle.module.scss'
 import { DARK_THEME, LIGHT_THEME } from '~/utils/constants'
 import { useFetcher } from '@remix-run/react'
 import { useTheme } from '~/hooks'
+import { MoonIcon, SunIcon } from '~/components/icons'
 
-type ThemeToggleProps = {
-	darkImage?: string
-	lightImage?: string
-}
-
-export default function ThemeToggle({ darkImage = '', lightImage = '' }: ThemeToggleProps) {
+export default function ThemeToggle() {
 	const theme = useTheme()
 	const fetcher = useFetcher()
+
+	const isDarkMode = theme === DARK_THEME
+	const ariaLabel = isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'
 
 	const toggleTheme = () => {
 		const updatedTheme = theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME
@@ -26,14 +24,14 @@ export default function ThemeToggle({ darkImage = '', lightImage = '' }: ThemeTo
 		<button
 			className={styles.themeToggle}
 			onClick={toggleTheme}
-			title="Toggle Theme"
-			aria-label="Toggle Theme"
+			aria-label={ariaLabel}
+			type="button"
 		>
 			<div data-hide-on-theme={DARK_THEME}>
-				<Image src={lightImage} alt="Dark Theme" />
+				<SunIcon className={styles.icon} aria-hidden="true" />
 			</div>
 			<div data-hide-on-theme={LIGHT_THEME}>
-				<Image src={darkImage} alt="Light Theme" />
+				<MoonIcon className={styles.icon} aria-hidden="true" />
 			</div>
 		</button>
 	)

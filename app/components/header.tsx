@@ -49,10 +49,7 @@ export default function Header({ data }: HeaderProps) {
 						)
 					})}
 				</nav>
-				<ThemeToggle
-					darkImage="/public/images/sun.svg"
-					lightImage="/public/images/moon.svg"
-				/>
+				<ThemeToggle />
 			</div>
 		</header>
 	)
