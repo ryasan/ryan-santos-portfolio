@@ -2,10 +2,10 @@ import Avatar from '~/components/avatar'
 import Link from '~/components/link'
 import RichText from '~/components/rich-text'
 import styles from '~/styles/components/sections/hero-section.module.scss'
-import type { HeroSection } from '~/types'
+import { type HeroSection as HeroSectionType } from '~/types'
 
 type HeroSectionProps = {
-	data?: HeroSection
+	data?: HeroSectionType
 }
 
 export default function HeroSection({ data }: HeroSectionProps) {

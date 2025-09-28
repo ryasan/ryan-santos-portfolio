@@ -33,6 +33,12 @@
 			border-bottom: 1px solid var(--line-color);
 		}
 	}
+
+	&:last-child {
+		.info {
+			padding-bottom: 0;
+		}
+	}
 }
 
 .yearRange {

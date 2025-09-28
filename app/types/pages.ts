@@ -3,12 +3,12 @@ export type FlexiblePage = {
 	sys: {
 		id: string
 	}
-	title: string
-	slug: string
-	sections: PageSection[]
+	title?: string
+	slug?: string
+	sections?: PageSection[]
 	seoMetadata?: {
-		title: string
-		description: string
+		title?: string
+		description?: string
 		ogImage?: {
 			url: string
 		}
@@ -22,11 +22,10 @@ export type PageSection = {
 	}
 } & (
 	| HeroSection
-	| AboutSection
 	| ProjectsSection
-	| ContactSection
 	| CustomSection
 	| ExperienceSection
+	| SocialSection
 )
 
 export type HeroSection = {
@@ -34,37 +33,22 @@ export type HeroSection = {
 	sys: {
 		id: string
 	}
-	isTopOfPage: boolean
-	title: string
-	subtitle: {
-		json: any
+	isTopOfPage?: boolean
+	title?: string
+	subtitle?: {
+		json?: any
 	}
-	description: {
-		json: any
+	description?: {
+		json?: any
 	}
-	link: {
-		label: string
-		url: string
+	link?: {
+		label?: string
+		url?: string
 	}
-	avatar: {
-		url: string
-		title: string
-		description: string
-	}
-}
-
-export type AboutSection = {
-	__typename: 'AboutSection'
-	sys: {
-		id: string
-	}
-	title: string
-	content: {
-		json: any
-	}
-	image?: {
-		url: string
-		description: string
+	avatar?: {
+		url?: string
+		title?: string
+		description?: string
 	}
 }
 
@@ -73,24 +57,10 @@ export type ProjectsSection = {
 	sys: {
 		id: string
 	}
-	title: string
+	title?: string
 	description?: string
 	showFeatured?: boolean
 	maxItems?: number
-}
-
-export type ContactSection = {
-	__typename: 'ContactSection'
-	sys: {
-		id: string
-	}
-	title: string
-	description?: string
-	email?: string
-	socialLinks?: Array<{
-		name: string
-		url: string
-	}>
 }
 
 export type CustomSection = {
@@ -110,9 +80,9 @@ export type ExperienceSection = {
 	sys: {
 		id: string
 	}
-	title: string
-	experienceCollection: {
-		items: ExperienceItem[]
+	title?: string
+	experienceCollection?: {
+		items?: ExperienceItem[]
 	}
 }
 
@@ -120,12 +90,27 @@ export type ExperienceItem = {
 	sys: {
 		id: string
 	}
-	startDate: string
-	endDate: string
-	isCurrent: boolean
-	company: string
-	jobTitle: string
-	description: {
-		json: any
+	startDate?: string
+	endDate?: string
+	isCurrent?: boolean
+	company?: string
+	jobTitle?: string
+	description?: {
+		json?: any
+	}
+}
+
+export type SocialSection = {
+	__typename: 'SocialSection'
+	sys: {
+		id: string
+	}
+	title?: string
+	socialLinksCollection?: {
+		items?: Array<{
+			label?: string
+			url?: string
+			icon?: string
+		}>
 	}
 }

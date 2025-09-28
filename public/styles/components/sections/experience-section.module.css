@@ -28,6 +28,9 @@
 .experienceItem:not(:last-child) .info {
   border-bottom: 1px solid var(--line-color);
 }
+.experienceItem:last-child .info {
+  padding-bottom: 0;
+}
 
 .yearRange {
   white-space: nowrap;

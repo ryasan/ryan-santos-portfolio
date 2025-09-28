@@ -1,10 +1,12 @@
 import type { PageSection } from '~/types/pages'
-import HeroSection from './sections/hero-section'
 import ExperienceSection from './sections/experience-section'
+import HeroSection from './sections/hero-section'
+import SocialSection from './sections/social-section'
 
 const sections = {
-	HeroSection: HeroSection,
 	ExperienceSection: ExperienceSection,
+	HeroSection: HeroSection,
+	SocialSection: SocialSection,
 } as const
 
 type SectionRendererProps = {

@@ -24,3 +24,4 @@
 * [ ] Fix alias for graphql fields
 * [ ] Add open graph images to Contentful
 * [ ] Add better error handling for Contentful queries
+* [ ] Optimize Contentful images
