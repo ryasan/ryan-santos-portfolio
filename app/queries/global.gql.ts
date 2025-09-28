@@ -4,7 +4,12 @@ export const GET_GLOBAL_HEADER_QUERY = gql`
 	query GetGlobalHeader {
 		globalHeaderCollection(where: { internalName: "Global Header" }) {
 			items {
-				logoImage {
+				logoImageDarkMode {
+					url
+					title
+					description
+				}
+				logoImageLightMode {
 					url
 					title
 					description

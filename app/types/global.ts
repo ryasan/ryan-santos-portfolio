@@ -1,9 +1,12 @@
+export interface GlobalLogo {
+	url?: string
+	title?: string
+	description?: string
+}
+
 export interface GlobalHeader {
-	logoImage?: {
-		url?: string
-		title?: string
-		description?: string
-	}
+	logoImageDarkMode?: GlobalLogo
+	logoImageLightMode?: GlobalLogo
 	logoLink?: {
 		url?: string
 		label?: string

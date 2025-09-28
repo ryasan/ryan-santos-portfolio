@@ -13,8 +13,22 @@ export default function Header({ data }: HeaderProps) {
 	return (
 		<header className={styles.header}>
 			<RemixLink className={styles.logo} to="/" aria-label="Home page">
-				<div data-hide-on-theme={DARK_THEME}>ryan-santos.com</div>
-				<div data-hide-on-theme={LIGHT_THEME}>ryan-santos.com</div>
+				<div data-hide-on-theme={DARK_THEME}>
+					{data?.logoImageLightMode?.url && (
+						<img
+							src={data?.logoImageLightMode?.url}
+							alt={data?.logoImageLightMode?.title || 'Light Mode Logo'}
+						/>
+					)}
+				</div>
+				<div data-hide-on-theme={LIGHT_THEME}>
+					{data?.logoImageDarkMode?.url && (
+						<img
+							src={data?.logoImageDarkMode?.url}
+							alt={data?.logoImageDarkMode?.title || 'Dark Mode Logo'}
+						/>
+					)}
+				</div>
 			</RemixLink>
 			<div className={styles.navigationBox}>
 				<nav className={styles.navigation}>

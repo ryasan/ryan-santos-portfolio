@@ -8,6 +8,9 @@
 .logo {
   color: var(--content-color);
 }
+.logo img {
+  display: block;
+}
 
 .navigationBox {
   display: flex;

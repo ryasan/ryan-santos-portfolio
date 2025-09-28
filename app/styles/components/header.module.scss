@@ -10,6 +10,13 @@
 
 .logo {
 	color: var(--content-color);
+
+	// display: flex;
+	// align-items: center;
+
+	img {
+		display: block;
+	}
 }
 
 .navigationBox {
