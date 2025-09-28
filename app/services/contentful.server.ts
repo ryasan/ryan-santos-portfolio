@@ -3,6 +3,8 @@
 // import { getPlaiceholder } from 'plaiceholder';
 
 import {
+	GET_GLOBAL_HEADER_QUERY,
+	GET_GLOBAL_FOOTER_QUERY,
 	GET_ALL_BLOGS_QUERY,
 	GET_ALL_PROJECTS_QUERY,
 	GET_BLOG_BY_SLUG_QUERY,
@@ -34,6 +36,34 @@ async function apiCall(query: string, variables?: any) {
 	}
 
 	return await fetch(fetchUrl, options)
+}
+
+async function getGlobalHeader() {
+	try {
+		const response = await apiCall(GET_GLOBAL_HEADER_QUERY)
+		const json = await response.json()
+		return await json.data.globalHeaderCollection.items[0]
+	} catch (error) {
+		console.error(
+			'Something went wrong while fetching the global header',
+			error,
+		)
+		return null
+	}
+}
+
+async function getGlobalFooter() {
+	try {
+		const response = await apiCall(GET_GLOBAL_FOOTER_QUERY)
+		const json = await response.json()
+		return await json.data.globalFooterCollection.items[0]
+	} catch (error) {
+		console.error(
+			'Something went wrong while fetching the global footer',
+			error,
+		)
+		return null
+	}
 }
 
 async function getAllProjects() {
@@ -126,9 +156,11 @@ async function getPageBySlug(slug: string) {
 }
 
 export const client = {
-	getAllProjects,
+	getGlobalHeader,
+	getGlobalFooter,
 	getAllBlogs,
+	getAllProjects,
 	getBlogBySlug,
-	getPageByTitle,
 	getPageBySlug,
+	getPageByTitle,
 }

@@ -4,11 +4,6 @@
   align-items: center;
   justify-content: space-between;
 }
-@media (max-width: 768px) {
-  .header {
-    padding: 24px 16px;
-  }
-}
 
 .logo {
   color: var(--content-color);
@@ -17,6 +12,47 @@
 .navigationBox {
   display: flex;
   align-items: center;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-right: 64px;
+}
+
+.link {
+  position: relative;
+}
+.link::before {
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  content: "";
+  height: 1px;
+  width: 100%;
+  transform: scaleX(0);
+  will-change: transform;
+  background: var(--content-color);
+  transform-origin: right center;
+  transition: transform 0.5s cubic-bezier(1, 0, 0, 1);
+}
+.link:hover::before {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.activeLink::before {
+  transform: scaleX(1);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 24px 16px;
+  }
+  .navigation {
+    margin-right: 32px;
+  }
 }
 
 /*# sourceMappingURL=header.module.css.map */

@@ -13,23 +13,28 @@ import {
 import ClientHintScript, { getHints } from '~/components/client-hint-script'
 import GlobalLayout from '~/components/global-layout'
 import mainStyles from '~/styles/main.css?url'
-import type { Theme } from '~/types'
-import { useTheme } from '~/hooks'
+import { client } from '~/services/contentful.server'
 import { getTheme } from '~/services/theme.server'
+import { type Theme } from '~/types'
+import { useLoaderData } from '@remix-run/react'
+import { useTheme } from '~/hooks'
 
 export const links: LinksFunction = () => {
 	return [{ rel: 'stylesheet', href: mainStyles }]
 }
 
 export async function loader({ request }: LoaderFunctionArgs) {
-	return json({
-		requestInfo: {
-			hints: getHints(request),
-			userPrefs: {
-				theme: getTheme(request),
-			},
+	const headerData = await client.getGlobalHeader()
+	const footerData = await client.getGlobalFooter()
+
+	const requestInfo = {
+		hints: getHints(request),
+		userPrefs: {
+			theme: getTheme(request),
 		},
-	})
+	}
+
+	return json({ headerData, footerData, requestInfo })
 }
 
 type DocumentProps = {
@@ -38,6 +43,8 @@ type DocumentProps = {
 }
 
 function Document({ children, theme = 'dark' }: DocumentProps) {
+	const data = useLoaderData<typeof loader>()
+
 	return (
 		<html lang="en" data-theme={theme}>
 			<head>
@@ -49,7 +56,7 @@ function Document({ children, theme = 'dark' }: DocumentProps) {
 			</head>
 
 			<body>
-				<GlobalLayout>{children}</GlobalLayout>
+				<GlobalLayout data={data}>{children}</GlobalLayout>
 				<ScrollRestoration />
 				<Scripts />
 			</body>
@@ -73,7 +80,7 @@ export function ErrorBoundary() {
 	return (
 		<Document>
 			{/* @Todo: Add error UI */}
-			<div>Error</div>
+			<div>Something went wrong while loading the page</div>
 		</Document>
 	)
 }
