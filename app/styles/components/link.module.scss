@@ -26,12 +26,6 @@
 	height: $space-24;
 	width: fit-content;
 
-  svg {
-		padding-left: $space-4;
-		transition: 0.2s ease;
-		min-width: 24px;
-	}
-
 	&:hover {
 		.link {
 			&::before {
@@ -47,5 +41,7 @@
 }
 
 .icon {
-	width: 28px;
+	margin-left: $space-8;
+	transition: 0.2s ease;
+	width: 16px;
 }

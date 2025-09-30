@@ -4,7 +4,15 @@ import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
-	plugins: [remix(), netlifyPlugin(), tsconfigPaths()],
+	plugins: [
+		remix({
+			future: {
+				v3_fetcherPersist: true,
+			},
+		}),
+		netlifyPlugin(),
+		tsconfigPaths(),
+	],
 	build: {
 		cssMinify: process.env.NODE_ENV === 'production',
 	},
