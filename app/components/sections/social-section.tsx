@@ -1,6 +1,6 @@
 import Link from '~/components/link'
 import styles from '~/styles/components/sections/social-section.module.scss'
-import { type SocialSection as SocialSectionType } from '~/types'
+import { SocialSection as SocialSectionType } from '~/types'
 import {
 	CodepenIcon,
 	EnvelopeIcon,

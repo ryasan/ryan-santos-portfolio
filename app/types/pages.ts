@@ -21,10 +21,11 @@ export type PageSection = {
 		id: string
 	}
 } & (
-	| HeroSection
-	| ProjectsSection
+	| CarouselSection
 	| CustomSection
 	| ExperienceSection
+	| HeroSection
+	| ProjectsSection
 	| SocialSection
 )
 
@@ -75,17 +76,6 @@ export type CustomSection = {
 	layout?: 'default' | 'wide' | 'centered'
 }
 
-export type ExperienceSection = {
-	__typename: 'ExperienceSection'
-	sys: {
-		id: string
-	}
-	title?: string
-	experienceCollection?: {
-		items?: ExperienceItem[]
-	}
-}
-
 export type ExperienceItem = {
 	sys: {
 		id: string
@@ -100,6 +90,17 @@ export type ExperienceItem = {
 	}
 }
 
+export type ExperienceSection = {
+	__typename: 'ExperienceSection'
+	sys: {
+		id: string
+	}
+	title?: string
+	experienceCollection?: {
+		items?: ExperienceItem[]
+	}
+}
+
 export type SocialSection = {
 	__typename: 'SocialSection'
 	sys: {
@@ -107,10 +108,26 @@ export type SocialSection = {
 	}
 	title?: string
 	socialLinksCollection?: {
-		items?: Array<{
+		items?: {
 			label?: string
 			url?: string
 			icon?: string
-		}>
+		}[]
 	}
+}
+
+export type CarouselSection = {
+	__typename: 'CarouselSection'
+	sys: {
+		id: string
+	}
+	slides?: {
+		image?: {
+			description?: string
+			title?: string
+			url: string
+		}
+		title: string
+		description: string
+	}[]
 }

@@ -2,7 +2,7 @@ import Avatar from '~/components/avatar'
 import Link from '~/components/link'
 import RichText from '~/components/rich-text'
 import styles from '~/styles/components/sections/hero-section.module.scss'
-import { type HeroSection as HeroSectionType } from '~/types'
+import { HeroSection as HeroSectionType } from '~/types'
 
 type HeroSectionProps = {
 	data?: HeroSectionType

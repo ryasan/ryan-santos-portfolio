@@ -1,6 +1,6 @@
 import RichText from '~/components/rich-text'
 import styles from '~/styles/components/sections/experience-section.module.scss'
-import { type ExperienceSection as ExperienceSectionType } from '~/types'
+import { ExperienceSection as ExperienceSectionType } from '~/types'
 
 type ExperienceSectionProps = {
 	data?: ExperienceSectionType
