@@ -3,6 +3,7 @@ import styles from '~/styles/components/link.module.scss'
 import type { LinkProps as RemixLinkProps } from '@remix-run/react'
 import { ArrowUpRightIcon } from '~/components/icons'
 import { Link as RemixLink } from '@remix-run/react'
+import { isExternalLink } from '~/utils'
 
 type LinkProps = {
 	to: string
@@ -11,15 +12,6 @@ type LinkProps = {
 	target?: string
 	rel?: string
 } & Omit<RemixLinkProps, 'to' | 'children' | 'className'>
-
-function isExternalLink(url: string): boolean {
-	return (
-		url.startsWith('http://') ||
-		url.startsWith('https://') ||
-		url.startsWith('mailto:') ||
-		url.startsWith('tel:')
-	)
-}
 
 export default function Link({
 	to,

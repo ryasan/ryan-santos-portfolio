@@ -14,4 +14,10 @@ export type Projects = {
 		description?: string
 		url?: string
 	}
+	contentfulMetadata?: {
+		tags?: {
+			id?: string
+			name?: string
+		}[]
+	}
 }

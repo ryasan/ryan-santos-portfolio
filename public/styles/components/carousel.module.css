@@ -2,4 +2,23 @@
   display: block;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.slider {
+  opacity: 0;
+}
+.slider.visible {
+  opacity: 1;
+}
+
 /*# sourceMappingURL=carousel.module.css.map */

@@ -1,3 +1,25 @@
+@import '../base/variables';
+
 .carousel {
 	display: block;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.navigation {
+	display: flex;
+	align-items: center;
+	gap: $space-16;
+}
+
+.slider {
+	opacity: 0;
+
+	&.visible {
+			opacity: 1
+	}
 }

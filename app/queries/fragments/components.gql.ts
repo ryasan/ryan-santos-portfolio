@@ -32,6 +32,12 @@ export const BLOG_FRAGMENT = gql`
 			description
 			url
 		}
+		contentfulMetadata {
+			tags {
+				id
+				name
+			}
+		}
 	}
 `
 
@@ -51,6 +57,12 @@ export const PROJECTS_FRAGMENT = gql`
 		previewImage {
 			description
 			url
+		}
+		contentfulMetadata {
+			tags {
+				id
+				name
+			}
 		}
 	}
 `

@@ -16,4 +16,10 @@ export interface Blog {
     description?: string;
     url?: string;
   };
+  contentfulMetadata?: {
+    tags?: {
+      id?: string;
+      name?: string;
+    }[];
+  };
 }

@@ -9,6 +9,7 @@ export const normalizeData = {
 			description: data.description,
 			image: data.openGraphImage?.url,
 			link: data.slug,
+			tags: data.contentfulMetadata?.tags?.map((tag) => tag.name),
 		}
 	},
 	fromProjectsToCard: (data: Projects) => {
@@ -18,6 +19,7 @@ export const normalizeData = {
 			description: data.caption,
 			image: data.previewImage?.url,
 			link: data.link,
+			tags: data.contentfulMetadata?.tags?.map((tag) => tag.name),
 		}
 	},
 }

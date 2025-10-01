@@ -1,6 +1,5 @@
 import ArticleCard from '~/components/article-card'
 import Carousel from '~/components/carousel'
-import clsx from 'clsx'
 import styles from '~/styles/components/sections/carousel-section.module.scss'
 import { CarouselSection as CarouselSectionType } from '~/types'
 import { normalizeData } from '~/utils'
@@ -14,21 +13,22 @@ export default function CarouselSection({ data }: CarouselSectionProps) {
 		const slideType = item.__typename
 		if (slideType === 'Blog') return normalizeData.fromBlogToCard(item)
 		if (slideType === 'Projects') return normalizeData.fromProjectsToCard(item)
+
+		console.warn(`Unknown slide type: ${slideType}`)
 		return null
 	})
 
-	const slides = normalizedSlides?.map((slide) => (
-		<ArticleCard key={slide?.eyebrow} {...slide} />
+	const slides = normalizedSlides?.map((slide, index) => (
+		<ArticleCard key={index} {...slide} />
 	))
 
-
-	console.log(data)
 	return (
 		<div className={styles.carouselSection}>
-			<div className="container">
-				<h2 className={clsx("mb-32", styles.title)}>{data?.title}</h2>
-				<Carousel slides={slides || []} slidesPerView={data?.slidesPerView} />
-			</div>
+			<Carousel
+				slides={slides || []}
+				slidesPerView={data?.slidesPerView}
+				title={data?.title}
+			/>
 		</div>
 	)
 }
