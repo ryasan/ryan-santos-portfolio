@@ -19,7 +19,7 @@ export default function Carousel({
 }: CarouselProps) {
 	const { isMatching } = useMatchMedia('(max-width:768px)', true)
 
-	const memoOptions = useMemo(
+	const memoizedSliderOptions = useMemo(
 		() => ({
 			initial: 0,
 			loop: false,
@@ -34,7 +34,7 @@ export default function Carousel({
 		[isMatching],
 	)
 
-	const [sliderRef, instanceRef] = useKeenSlider(memoOptions)
+	const [sliderRef, instanceRef] = useKeenSlider(memoizedSliderOptions)
 
 	return (
 		<div className={styles.carousel}>
