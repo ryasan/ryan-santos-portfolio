@@ -1,3 +1,5 @@
+import { Blog, Projects } from '.'
+
 // app/types/pages.ts
 export type FlexiblePage = {
 	sys: {
@@ -121,13 +123,9 @@ export type CarouselSection = {
 	sys: {
 		id: string
 	}
-	slides?: {
-		image?: {
-			description?: string
-			title?: string
-			url: string
-		}
-		title: string
-		description: string
-	}[]
+	title?: string
+	slidesPerView?: number
+	slidesCollection?: {
+		items?: (Blog | Projects)[]
+	}
 }

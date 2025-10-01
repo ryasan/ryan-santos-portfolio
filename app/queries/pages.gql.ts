@@ -1,5 +1,11 @@
 import { gql } from '~/utils/gql'
-import { EXPERIENCE_SECTION_FRAGMENT, HERO_SECTION_FRAGMENT, SEO_METADATA_FRAGMENT, SOCIAL_SECTION_FRAGMENT } from './fragments'
+import {
+	CAROUSEL_SECTION_FRAGMENT,
+	EXPERIENCE_SECTION_FRAGMENT,
+	HERO_SECTION_FRAGMENT,
+	SEO_METADATA_FRAGMENT,
+	SOCIAL_SECTION_FRAGMENT,
+} from './fragments'
 
 export const GET_PAGE_BY_SLUG_QUERY = gql`
 	query GetPageBySlug($slug: String) {
@@ -12,6 +18,7 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 				pageSectionsCollection {
 					__typename
 					items {
+						...CarouselSectionFields
 						...ExperienceSectionFields
 						...HeroSectionFields
 						...SocialSectionFields
@@ -20,9 +27,10 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 			}
 		}
 	}
-	${SEO_METADATA_FRAGMENT}
+	${CAROUSEL_SECTION_FRAGMENT}
 	${EXPERIENCE_SECTION_FRAGMENT}
 	${HERO_SECTION_FRAGMENT}
+	${SEO_METADATA_FRAGMENT}
 	${SOCIAL_SECTION_FRAGMENT}
 `
 

@@ -1,2 +1,2 @@
-export * from './seo-metadata.gql'
+export * from './components.gql'
 export * from './sections.gql'

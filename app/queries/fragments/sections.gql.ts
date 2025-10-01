@@ -1,3 +1,4 @@
+import { BLOG_FRAGMENT, PROJECTS_FRAGMENT } from '~/queries/fragments'
 import { gql } from '~/utils/gql'
 
 export const HERO_SECTION_FRAGMENT = gql`
@@ -66,4 +67,24 @@ export const SOCIAL_SECTION_FRAGMENT = gql`
 			}
 		}
 	}
+`
+
+export const CAROUSEL_SECTION_FRAGMENT = gql`
+	fragment CarouselSectionFields on CarouselSection {
+		__typename
+		sys {
+			id
+		}
+		title
+		slidesPerView
+		slidesCollection {
+			items {
+				__typename
+				...BlogFields
+				...ProjectFields
+			}
+		}
+	}
+	${BLOG_FRAGMENT}
+	${PROJECTS_FRAGMENT}
 `
