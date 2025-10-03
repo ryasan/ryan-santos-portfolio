@@ -86,6 +86,9 @@ export type ExperienceItem = {
 	endDate?: string
 	isCurrent?: boolean
 	company?: string
+	title?: {
+		json?: any
+	}
 	jobTitle?: string
 	description?: {
 		json?: any

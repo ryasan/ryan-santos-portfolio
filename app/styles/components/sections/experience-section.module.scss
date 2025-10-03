@@ -18,8 +18,17 @@
 	padding-bottom: $space-32;
 	width: 100%;
 
-	h3 {
-		line-height: 1;
+	.title {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p {
+			line-height: 1;
+			margin-bottom: $space-16;
+		}
 	}
 }
 

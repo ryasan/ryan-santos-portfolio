@@ -4,7 +4,7 @@
   "sideEffects": false,
   "type": "commonjs",
   "scripts": {
-    "build": "npm run build:css && remix vite:build",
+    "build": "npm run typecheck && npm run build:css && remix vite:build",
     "build:css": "sass app/styles/:public/styles",
     "clean": "rm -rf build node_modules package-lock.json",
     "dev": "concurrently \"npm run sass:dev\" \"remix vite:dev\"",

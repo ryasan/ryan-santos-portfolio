@@ -9,7 +9,7 @@ type ArticleCardProps = {
 	description?: string
 	image?: string
 	link?: string
-	tags?: string[]
+	tags?: (string | undefined)[]
 	isBig?: boolean
 	horizontal?: boolean
 }
@@ -24,7 +24,6 @@ export default function ArticleCard({
 	isBig = true,
 	horizontal = false,
 }: ArticleCardProps) {
-	console.log(tags)
 	const Component = link ? RemixLink : 'div'
 	const isExternal = isExternalLink(link || '')
 

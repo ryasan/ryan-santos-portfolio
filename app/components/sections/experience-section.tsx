@@ -30,15 +30,15 @@ export default function ExperienceSection({ data }: ExperienceSectionProps) {
 										)}
 									</div>
 									<div className={styles.info}>
-										{(item.jobTitle || item.company) && (
-											<h3 className="mb-16">
-												{[item.jobTitle, item.company]
-													.filter(Boolean)
-													.join(' @ ')}
-											</h3>
+										{item.title?.json && (
+											<div className={styles.title}>
+												<RichText data={item.title.json} />
+											</div>
 										)}
 										{item.description?.json && (
-											<RichText data={item.description.json} />
+											<div className={styles.description}>
+												<RichText data={item.description.json} />
+											</div>
 										)}
 									</div>
 								</li>
