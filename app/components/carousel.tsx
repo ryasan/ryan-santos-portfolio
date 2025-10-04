@@ -4,18 +4,19 @@ import { ArrowLeftIcon, ArrowRightIcon } from '~/components/icons'
 import { useKeenSlider } from 'keen-slider/react'
 import { useMatchMedia } from '~/hooks'
 import { useMemo } from 'react'
+
 import 'keen-slider/keen-slider.min.css'
 
 type CarouselProps = {
-	title?: string
-	slides: JSX.Element[]
-	slidesPerView?: number
+	title?: string | null
+	slides: (JSX.Element | null)[]
+	slidesPerView?: number | null
 }
 
 export default function Carousel({
 	title,
 	slides,
-	slidesPerView = 2,
+	slidesPerView,
 }: CarouselProps) {
 	const { isMatching } = useMatchMedia('(max-width:768px)', true)
 
@@ -24,7 +25,7 @@ export default function Carousel({
 			initial: 0,
 			loop: false,
 			slides: {
-				perView: isMatching ? 1 : slidesPerView,
+				perView: isMatching ? 1 : (slidesPerView || 2),
 				spacing: 30,
 			},
 			created: (slider: any) => {

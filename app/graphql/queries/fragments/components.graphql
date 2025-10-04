@@ -1,0 +1,10 @@
+fragment SeoMetadataFields on SeoMetaData {
+	__typename
+	title
+	description
+	ogImage {
+		title
+		description
+		url
+	}
+}

@@ -1,6 +1,6 @@
 import Link from '~/components/link'
 import styles from '~/styles/components/sections/social-section.module.scss'
-import { SocialSection as SocialSectionType } from '~/types'
+import { SocialSection as SocialSectionType } from '~/graphql/__generated/sdk'
 import {
 	CodepenIcon,
 	EnvelopeIcon,
@@ -33,11 +33,12 @@ export default function SocialSection({ data }: SocialSectionProps) {
 
 					<ul className={styles.socialList}>
 						{data?.socialLinksCollection?.items?.map((social) => {
+							if (!social) return null
 							if (!social.url || !social.label) return null
 
 							return (
 								<li className={styles.socialItem} key={social.label}>
-									{renderIcon(social.icon)}
+									{renderIcon(social.icon || '')}
 									<Link className="link" to={social.url}>
 										{social.label}
 									</Link>

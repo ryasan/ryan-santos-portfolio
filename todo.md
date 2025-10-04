@@ -25,3 +25,4 @@
 * [ ] Add open graph images to Contentful
 * [ ] Add better error handling for Contentful queries
 * [ ] Optimize Contentful images
+* [ ] Move TS Contentful query files to GraphQL files

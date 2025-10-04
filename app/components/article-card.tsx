@@ -3,33 +3,32 @@ import styles from '~/styles/components/article-card.module.scss'
 import { Link as RemixLink } from '@remix-run/react'
 import { isExternalLink } from '~/utils'
 
+export type NormalizedArticleCard = {
+	eyebrow?: string | null
+	title?: string | null
+	description?: string | null
+	image?: string | null
+	link?: string | null
+	tags?: (string | undefined)[] | null
+}
+
 type ArticleCardProps = {
-	eyebrow?: string
-	title?: string
-	description?: string
-	image?: string
-	link?: string
-	tags?: (string | undefined)[]
+	data: NormalizedArticleCard
 	isBig?: boolean
 	horizontal?: boolean
 }
 
 export default function ArticleCard({
-	eyebrow,
-	title,
-	description,
-	image,
-	link,
-	tags,
+	data,
 	isBig = true,
 	horizontal = false,
 }: ArticleCardProps) {
-	const Component = link ? RemixLink : 'div'
-	const isExternal = isExternalLink(link || '')
+	const Component = data.link ? RemixLink : 'div'
+	const isExternal = isExternalLink(data.link || '')
 
 	return (
 		<Component
-			to={link || ''}
+			to={data.link || ''}
 			target={isExternal ? '_blank' : undefined}
 			className={clsx(
 				styles.articleCard,
@@ -38,18 +37,26 @@ export default function ArticleCard({
 			)}
 		>
 			<div className={styles.imageWrapper}>
-				{image && (
-					<img className={styles.articleImage} src={image} alt={title} />
+				{data.image && (
+					<img
+						className={styles.articleImage}
+						src={data.image}
+						alt={data.title || ''}
+					/>
 				)}
 			</div>
 			<div className={styles.content}>
-				{eyebrow && <p className="badge mb-12">{eyebrow}</p>}
-				{title && <h3 className="h3 mb-24">{title}</h3>}
-				{description && horizontal && <p className="body">{description}</p>}
-				{tags && (
+				{data.eyebrow && <p className="badge mb-12">{data.eyebrow}</p>}
+				{data.title && <h3 className="h3 mb-24">{data.title}</h3>}
+				{data.description && horizontal && (
+					<p className="body">{data.description}</p>
+				)}
+				{data.tags && (
 					<div className={styles.tags}>
-						{tags.map((tag) => (
-							<p key={tag} className={clsx("badge", styles.tag)}>{tag}</p>
+						{data.tags.map((tag) => (
+							<p key={tag} className={clsx('badge', styles.tag)}>
+								{tag}
+							</p>
 						))}
 					</div>
 				)}
