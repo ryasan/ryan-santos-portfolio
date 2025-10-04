@@ -16,7 +16,11 @@ import mainStyles from '~/styles/main.css?url'
 import { client } from '~/services/contentful.server'
 import { getTheme } from '~/services/theme.server'
 import { type Theme } from '~/types'
-import { useLoaderData } from '@remix-run/react'
+import {
+	isRouteErrorResponse,
+	useLoaderData,
+	useRouteError,
+} from '@remix-run/react'
 import { useTheme } from '~/hooks'
 
 export const links: LinksFunction = () => {
@@ -77,9 +81,28 @@ function App() {
 export default App
 
 export function ErrorBoundary() {
+	const error = useRouteError()
+
+	if (isRouteErrorResponse(error)) {
+		return (
+			<div style={{ color: '#de292c', padding: '1rem' }}>
+				<h1>Error {error.status}</h1>
+				<p>{error.data}</p>
+			</div>
+		)
+	}
+
+	if (error instanceof Error) {
+		return (
+			<div style={{ color: '#de292c', padding: '1rem' }}>
+				<h1>Error</h1>
+				<p>{error.message}</p>
+			</div>
+		)
+	}
+
 	return (
 		<Document>
-			{/* @Todo: Add error UI */}
 			<div>Something went wrong while loading the page</div>
 		</Document>
 	)

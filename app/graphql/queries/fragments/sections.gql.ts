@@ -1,4 +1,4 @@
-import { BLOG_FRAGMENT, PROJECTS_FRAGMENT } from '~/queries/fragments'
+import { BLOG_FRAGMENT, PROJECTS_FRAGMENT } from '~/graphql/queries/fragments'
 import { gql } from '~/utils/gql'
 
 export const HERO_SECTION_FRAGMENT = gql`

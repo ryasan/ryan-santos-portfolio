@@ -10,7 +10,7 @@ import {
 	GET_BLOG_BY_SLUG_QUERY,
 	GET_PAGE_BY_SLUG_QUERY,
 	GET_PAGE_BY_TITLE_QUERY,
-} from '~/queries'
+} from '~/graphql/queries'
 
 const CONTENTFUL_SPACE_ID = import.meta.env.VITE_CONTENTFUL_SPACE_ID
 const CONTENTFUL_ACCESS_TOKEN = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN
@@ -48,7 +48,7 @@ async function getGlobalHeader() {
 			'Something went wrong while fetching the global header',
 			error,
 		)
-		return null
+		throw error
 	}
 }
 
@@ -62,7 +62,7 @@ async function getGlobalFooter() {
 			'Something went wrong while fetching the global footer',
 			error,
 		)
-		return null
+		throw error
 	}
 }
 
@@ -94,7 +94,7 @@ async function getAllProjects() {
 		return Promise.all(formattedData)
 	} catch (error) {
 		console.error('Something went wrong while fetching all projects', error)
-		return null
+		throw error
 	}
 }
 
@@ -105,7 +105,7 @@ async function getAllBlogs() {
 		return await json.data.blogCollection.items
 	} catch (error) {
 		console.error('Something went wrong while fetching all blogs', error)
-		return null
+		throw error
 	}
 }
 
@@ -120,7 +120,7 @@ async function getBlogBySlug(slug: string) {
 		return await json.data.blogCollection.items[0]
 	} catch (error) {
 		console.error('Something went wrong while fetching the blog by slug', error)
-		return null
+		throw error
 	}
 }
 
@@ -138,7 +138,7 @@ async function getPageByTitle(title: string) {
 			'Something went wrong while fetching the page by title',
 			error,
 		)
-		return null
+		throw error
 	}
 }
 
@@ -151,7 +151,7 @@ async function getPageBySlug(slug: string) {
 		return await json.data.pageCollection.items[0]
 	} catch (error) {
 		console.error('Something went wrong while fetching the page by slug', error)
-		return null
+		throw error
 	}
 }
 

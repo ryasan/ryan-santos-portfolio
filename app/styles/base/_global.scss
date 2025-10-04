@@ -49,6 +49,7 @@ body {
 	height: 100vh;
 }
 
+// Typography
 h1,
 .h1 {
 	font-size: 36px;
@@ -76,98 +77,115 @@ h2,
 
 h3,
 .h3 {
-  font-size: 22px;
-  line-height: 150%;
-  letter-spacing: 0;
-  font-weight: 600;
+	font-size: 22px;
+	line-height: 150%;
+	letter-spacing: 0;
+	font-weight: 600;
 }
 
 h4,
 .h4 {
-  font-size: 20px;
-  line-height: 150%;
-  letter-spacing: 0;
-  font-weight: 600;
+	font-size: 20px;
+	line-height: 150%;
+	letter-spacing: 0;
+	font-weight: 600;
 }
 
 h5,
 .h5 {
-  font-size: 16px;
-  line-height: 150%;
-  letter-spacing: 0;
-  font-weight: 600;
+	font-size: 16px;
+	line-height: 150%;
+	letter-spacing: 0;
+	font-weight: 600;
 }
 
 h6,
 .h6 {
-  font-size: 16px;
-  line-height: 150%;
-  letter-spacing: 0;
-  font-weight: 600;
+	font-size: 16px;
+	line-height: 150%;
+	letter-spacing: 0;
+	font-weight: 600;
 }
 
 p,
 .body {
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 170%;
-  color: var(--content-color-2);
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 170%;
+	color: var(--content-color-2);
 }
 
 .body-2 {
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 170%;
-  color: var(--content-color-2);
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 170%;
+	color: var(--content-color-2);
 }
 
 .label {
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 120%; 
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 120%;
 }
 
 .link {
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 170%; 
-  color: var(--content-color);
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 170%;
+	color: var(--content-color);
 }
 
 .badge {
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 170%; 
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 170%;
 }
 
 .code {
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 120%; 
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 120%;
+}
+
+// Colors
+.error {
+	color: var(--red-color);
+}
+
+.success {
+	color: var(--green-color);
+}
+
+.warning {
+	color: var(--yellow-color);
+}
+
+.info {
+	color: var(--blue-color);
 }
 
 /* stylelint-disable */
 pre {
-  white-space: pre-wrap; // css-3
-  white-space: -moz-pre-wrap; // Mozilla, since 1999
-  white-space: -pre-wrap; // Opera 4-6
-  white-space: -o-pre-wrap; // Opera 7
-  word-wrap: break-word; // Internet Explorer 5.5+
+	white-space: pre-wrap; // css-3
+	white-space: -moz-pre-wrap; // Mozilla, since 1999
+	white-space: -pre-wrap; // Opera 4-6
+	white-space: -o-pre-wrap; // Opera 7
+	word-wrap: break-word; // Internet Explorer 5.5+
 }
 /* stylelint-enable */
 
 strong {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 em {
-  font-style: italic;
+	font-style: italic;
 }
 
 // Scrollbar
