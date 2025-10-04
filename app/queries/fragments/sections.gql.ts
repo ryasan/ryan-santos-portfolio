@@ -63,6 +63,9 @@ export const SOCIAL_SECTION_FRAGMENT = gql`
 		title
 		socialLinksCollection {
 			items {
+				sys {
+					id
+				}
 				label
 				url
 				icon

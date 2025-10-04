@@ -1,7 +1,7 @@
 // app/routes/$slug.tsx
 import SectionRenderer from '~/components/section-renderer'
 import type { LoaderFunctionArgs, MetaFunction } from '@netlify/remix-runtime'
-import type { PageSection } from '~/types/pages'
+import type { PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
 import { useLoaderData } from '@remix-run/react'
@@ -51,7 +51,7 @@ export default function DynamicPage() {
 
 	return (
 		<>
-			{page.pageSectionsCollection?.items?.map((section: PageSection) => {
+			{page.pageSectionsCollection?.items?.map((section: PagePageSectionsItem) => {
 				if (!section?.sys?.id) return null
 				return <SectionRenderer key={section.sys.id} section={section} />
 			})}

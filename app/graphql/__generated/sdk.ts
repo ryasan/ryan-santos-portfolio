@@ -3284,7 +3284,20 @@ export type CfslidesMultiTypeNestedFilter = {
   title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
+export type SeoMetadataFieldsFragment = { __typename: 'SeoMetaData', title?: string | null, description?: string | null, ogImage?: { __typename?: 'Asset', title?: string | null, description?: string | null, url?: string | null } | null };
 
+export const SeoMetadataFieldsFragmentDoc = gql`
+    fragment SeoMetadataFields on SeoMetaData {
+  __typename
+  title
+  description
+  ogImage {
+    title
+    description
+    url
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 

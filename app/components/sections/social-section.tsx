@@ -13,9 +13,9 @@ const icons = {
 	email: EnvelopeIcon,
 	github: GithubIcon,
 	linkedin: LinkedinIcon,
-}
+} as const
 
-const renderIcon = (icon?: string) => {
+const getIcon = (icon?: string) => {
 	const Icon = icons[icon?.toLowerCase() as keyof typeof icons]
 	return Icon ? <Icon className={styles.icon} aria-hidden="true" /> : null
 }
@@ -33,12 +33,11 @@ export default function SocialSection({ data }: SocialSectionProps) {
 
 					<ul className={styles.socialList}>
 						{data?.socialLinksCollection?.items?.map((social) => {
-							if (!social) return null
-							if (!social.url || !social.label) return null
+							if (!social?.url || !social?.label) return null
 
 							return (
-								<li className={styles.socialItem} key={social.label}>
-									{renderIcon(social.icon || '')}
+								<li className={styles.socialItem} key={social.sys.id}>
+									{getIcon(social.icon || '')}
 									<Link className="link" to={social.url}>
 										{social.label}
 									</Link>

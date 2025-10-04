@@ -1,9 +1,9 @@
+import SectionRenderer from '~/components/section-renderer'
 import type { MetaFunction } from '@netlify/remix-runtime'
+import { PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
 import { useLoaderData } from '@remix-run/react'
-import { PageSection } from '~/types/pages'
-import SectionRenderer from '~/components/section-renderer'
 
 export async function loader() {
 	const page = await client.getPageBySlug('home')
@@ -44,7 +44,7 @@ export default function Index() {
 
 	return (
 		<>
-			{page.pageSectionsCollection?.items?.map((section: PageSection) => {
+			{page.pageSectionsCollection?.items?.map((section: PagePageSectionsItem) => {
 				if (!section?.sys?.id) return null
 				return <SectionRenderer key={section.sys.id} section={section} />
 			})}

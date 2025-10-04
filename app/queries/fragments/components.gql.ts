@@ -3,6 +3,9 @@ import { gql } from '~/utils/gql'
 export const SEO_METADATA_FRAGMENT = gql`
 	fragment SeoMetadataFields on SeoMetaData {
 		__typename
+		sys {
+			id
+		}
 		title
 		description
 		ogImage {

@@ -1,7 +1,7 @@
 import ThemeToggle from '~/components/theme-toggle'
 import clsx from 'clsx'
 import styles from '~/styles/components/header.module.scss'
-import { GlobalHeader } from '~/types'
+import { GlobalHeader } from '~/graphql/__generated/sdk'
 import { LIGHT_THEME, DARK_THEME } from '~/utils/constants'
 import { Link as RemixLink, NavLink } from '@remix-run/react'
 
@@ -17,7 +17,9 @@ export default function Header({ data }: HeaderProps) {
 					{data?.logoImageLightMode?.url && (
 						<img
 							src={data?.logoImageLightMode?.url}
-							alt={data?.logoImageLightMode?.title || 'Ryan Santos Portfolio logo'}
+							alt={
+								data?.logoImageLightMode?.title || 'Ryan Santos Portfolio logo'
+							}
 						/>
 					)}
 				</div>
@@ -25,7 +27,9 @@ export default function Header({ data }: HeaderProps) {
 					{data?.logoImageDarkMode?.url && (
 						<img
 							src={data?.logoImageDarkMode?.url}
-							alt={data?.logoImageDarkMode?.title || 'Ryan Santos Portfolio logo'}
+							alt={
+								data?.logoImageDarkMode?.title || 'Ryan Santos Portfolio logo'
+							}
 						/>
 					)}
 				</div>
@@ -33,13 +37,12 @@ export default function Header({ data }: HeaderProps) {
 			<div className={styles.navigationBox}>
 				<nav className={styles.navigation}>
 					{data?.menuItemsCollection?.items?.map((item) => {
-						const itemUrl = item.internalPage?.slug || item.url
-						if (!itemUrl || !item.label) return null
+						if (!item) return null
 
 						return (
 							<NavLink
 								key={item.label}
-								to={itemUrl}
+								to={item.internalPage?.slug || item.url || ''}
 								className={({ isActive }) =>
 									clsx('link', styles.link, isActive && styles.activeLink)
 								}

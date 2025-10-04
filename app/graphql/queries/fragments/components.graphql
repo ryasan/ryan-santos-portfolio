@@ -1,5 +1,8 @@
 fragment SeoMetadataFields on SeoMetaData {
 	__typename
+	sys {
+		id
+	}
 	title
 	description
 	ogImage {

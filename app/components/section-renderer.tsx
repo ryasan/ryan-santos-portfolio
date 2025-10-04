@@ -1,4 +1,4 @@
-import type { PageSection } from '~/types/pages'
+import type { PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import CarouselSection from './sections/carousel-section'
 import ExperienceSection from './sections/experience-section'
 import HeroSection from './sections/hero-section'
@@ -12,7 +12,7 @@ const sections = {
 } as const
 
 type SectionRendererProps = {
-	section: PageSection
+	section: PagePageSectionsItem
 }
 
 export default function SectionRenderer({ section }: SectionRendererProps) {

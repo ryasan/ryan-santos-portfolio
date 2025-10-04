@@ -1,7 +1,7 @@
 import Footer from '~/components/footer'
 import Header from '~/components/header'
 import styles from '~/styles/components/global-layout.module.scss'
-import { GlobalHeader, GlobalFooter } from '~/types'
+import { GlobalHeader, GlobalFooter } from '~/graphql/__generated/sdk'
 
 type GlobalLayoutProps = {
 	children: React.ReactNode

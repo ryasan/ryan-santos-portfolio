@@ -22,7 +22,6 @@ export default function CarouselSection({ data }: CarouselSectionProps) {
 
 	const slides = normalizedSlides?.map((slide, index) => {
 		if (!slide) return null
-
 		return <ArticleCard key={slide?.id || index} data={slide} />
 	})
 
