@@ -2,9 +2,8 @@
 
 ## Chat Rules
 
-- Do not automatically make changes to any files after receiving a prompt. Keep your suggested changes contained within the chat.
-- Always ask before making changes to existing files.
-- Suggest changes in code blocks rather than implementing them directly.
+- Suggest changes in code blocks within chat rather than making changes directly.
+- Always ask before adding, removing, or modifying any files.
 
 ## File Organization
 
