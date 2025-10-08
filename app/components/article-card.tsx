@@ -1,9 +1,10 @@
 import clsx from 'clsx'
 import styles from '~/styles/components/article-card.module.scss'
-import { Link as RemixLink } from '@remix-run/react'
+import { Link as RemixLink, useNavigate } from '@remix-run/react'
 import { isExternalLink } from '~/utils'
 
 export type NormalizedArticleCard = {
+	type?: 'blog' | 'projects' | null
 	eyebrow?: string | null
 	title?: string | null
 	description?: string | null
@@ -25,6 +26,16 @@ export default function ArticleCard({
 }: ArticleCardProps) {
 	const Component = data.link ? RemixLink : 'div'
 	const isExternal = isExternalLink(data.link || '')
+
+	const navigate = useNavigate()
+
+	const handleTagClick = (tag: string) => {
+		if (!tag || !data.type) return
+
+		const searchParams = new URLSearchParams({ tag })
+		const path = `${data.type}?${searchParams.toString()}`.toLowerCase()
+		navigate(path)
+	}
 
 	return (
 		<Component
@@ -53,11 +64,21 @@ export default function ArticleCard({
 				)}
 				{data.tags && (
 					<div className={styles.tags}>
-						{data.tags.map((tag) => (
-							<p key={tag} className={clsx('badge', styles.tag)}>
-								{tag}
-							</p>
-						))}
+						{data.tags.map((tag) => {
+							if (!tag) return null
+							return (
+								<button
+									className={clsx('link badge', styles.tag)}
+									key={tag}
+									onClick={(e) => {
+										e.preventDefault()
+										handleTagClick(tag)
+									}}
+								>
+									{tag}
+								</button>
+							)
+						})}
 					</div>
 				)}
 			</div>

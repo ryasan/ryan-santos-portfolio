@@ -64,7 +64,11 @@
 	transition: 0.2s ease;
 	border-radius: 4px;
 	display: inline-block;
-	text-transform: capitalize;
+	text-transform: lowercase;
+
+	&:hover {
+		border-color: var(--content-color);
+	}
 }
 
 @media screen and (max-width: $tablet) {

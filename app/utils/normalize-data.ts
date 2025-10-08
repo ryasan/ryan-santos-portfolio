@@ -10,6 +10,7 @@ const getTags = (data: Blog | Projects) => {
 export const normalizeData = {
 	fromBlogToCard: (data: Blog) => ({
 		id: data.sys?.id,
+		type: 'blog',
 		eyebrow: formatDate(data.sys?.publishedAt || ''),
 		title: data.title,
 		description: data.description,
@@ -19,6 +20,7 @@ export const normalizeData = {
 	}),
 	fromProjectsToCard: (data: Projects) => ({
 		id: data.sys?.id,
+		type: 'projects',
 		eyebrow: '',
 		title: data.title,
 		description: data.caption,
