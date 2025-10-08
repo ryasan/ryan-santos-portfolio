@@ -26,12 +26,12 @@ export default function CarouselSection({ data }: CarouselSectionProps) {
 	})
 
 	return (
-		<div className={styles.carouselSection}>
+		<section className={styles.carouselSection}>
 			<Carousel
 				slides={slides || []}
 				slidesPerView={data?.slidesPerView}
 				title={data?.title}
 			/>
-		</div>
+		</section>
 	)
 }

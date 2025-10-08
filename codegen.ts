@@ -21,14 +21,7 @@ const config: CodegenConfig = {
 		},
 	],
 	generates: {
-		// 'app/graphql/__generated/graphql.schema.json': {
-		// 	plugins: ['introspection'],
-		// },
-		// 'app/graphql/__generated/graphql.schema.graphql': {
-		// 	plugins: ['schema-ast'],
-		// },
 		'app/graphql/__generated/sdk.ts': {
-			documents: ['app/graphql/queries/**/*.graphql'],
 			plugins: [
 				'typescript',
 				'typescript-operations',

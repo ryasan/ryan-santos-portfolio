@@ -1,4 +1,4 @@
-import { gql } from '~/utils/gql'
+import { gql } from 'graphql-request'
 
 export const SEO_METADATA_FRAGMENT = gql`
 	fragment SeoMetadataFields on SeoMetaData {

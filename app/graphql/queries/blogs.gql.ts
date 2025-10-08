@@ -1,5 +1,5 @@
 import { BLOG_FRAGMENT } from './fragments'
-import { gql } from '~/utils/gql'
+import { gql } from 'graphql-request'
 
 export const GET_ALL_BLOGS_QUERY = gql`
 	query GetAllBlogs {

@@ -1,5 +1,5 @@
 import { BLOG_FRAGMENT, PROJECTS_FRAGMENT } from '~/graphql/queries/fragments'
-import { gql } from '~/utils/gql'
+import { gql } from 'graphql-request'
 
 export const HERO_SECTION_FRAGMENT = gql`
 	fragment HeroSectionFields on HeroSection {
@@ -92,4 +92,21 @@ export const CAROUSEL_SECTION_FRAGMENT = gql`
 	}
 	${BLOG_FRAGMENT}
 	${PROJECTS_FRAGMENT}
+`
+
+export const ARTICLE_GRID_SECTION_FRAGMENT = gql`
+	fragment ArticleGridSectionFields on ArticleGridSection {
+		__typename
+		sys {
+			id
+		}
+		title
+		articlesCollection {
+			items {
+				__typename
+				...ProjectFields
+				...BlogFields
+			}
+		}
+	}
 `

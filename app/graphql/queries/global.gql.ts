@@ -1,4 +1,4 @@
-import { gql } from '~/utils/gql'
+import { gql } from 'graphql-request'
 
 export const GET_GLOBAL_HEADER_QUERY = gql`
 	query GetGlobalHeader {

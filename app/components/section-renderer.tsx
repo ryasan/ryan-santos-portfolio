@@ -1,10 +1,12 @@
-import type { PagePageSectionsItem } from '~/graphql/__generated/sdk'
+import ArticleGridSection from './sections/article-grid-section'
 import CarouselSection from './sections/carousel-section'
 import ExperienceSection from './sections/experience-section'
 import HeroSection from './sections/hero-section'
 import SocialSection from './sections/social-section'
+import type { PagePageSectionsItem } from '~/graphql/__generated/sdk'
 
 const sections = {
+	ArticleGridSection: ArticleGridSection,
 	CarouselSection: CarouselSection,
 	ExperienceSection: ExperienceSection,
 	HeroSection: HeroSection,

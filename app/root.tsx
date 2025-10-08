@@ -82,10 +82,11 @@ export default App
 
 export function ErrorBoundary() {
 	const error = useRouteError()
+	const errorStyles = { color: '#de292c', padding: '1rem' }
 
 	if (isRouteErrorResponse(error)) {
 		return (
-			<div style={{ color: '#de292c', padding: '1rem' }}>
+			<div style={errorStyles}>
 				<h1>Error {error.status}</h1>
 				<p>{error.data}</p>
 			</div>
@@ -94,7 +95,7 @@ export function ErrorBoundary() {
 
 	if (error instanceof Error) {
 		return (
-			<div style={{ color: '#de292c', padding: '1rem' }}>
+			<div style={errorStyles}>
 				<h1>Error</h1>
 				<p>{error.message}</p>
 			</div>
