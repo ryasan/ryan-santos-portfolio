@@ -47,7 +47,7 @@ export default function ArticleCard({
 			</div>
 			<div className={styles.content}>
 				{data.eyebrow && <p className="badge mb-12">{data.eyebrow}</p>}
-				{data.title && <h3 className="h3 mb-24">{data.title}</h3>}
+				{data.title && <h3 className="h5 mb-24">{data.title}</h3>}
 				{data.description && horizontal && (
 					<p className="body">{data.description}</p>
 				)}

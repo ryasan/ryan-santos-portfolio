@@ -5,7 +5,9 @@ import CodepenIcon from './codepen'
 import EnvelopeIcon from './envelope'
 import GithubIcon from './github'
 import LinkedinIcon from './linkedin'
+import ListBulletsIcon from './list-bullets'
 import MoonIcon from './moon'
+import SquaresFourIcon from './squares-four'
 import SunIcon from './sun'
 
 export {
@@ -16,6 +18,8 @@ export {
 	EnvelopeIcon,
 	GithubIcon,
 	LinkedinIcon,
+	ListBulletsIcon,
 	MoonIcon,
+	SquaresFourIcon,
 	SunIcon,
 }

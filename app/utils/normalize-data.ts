@@ -19,7 +19,7 @@ export const normalizeData = {
 	}),
 	fromProjectsToCard: (data: Projects) => ({
 		id: data.sys?.id,
-		eyebrow: formatDate(data.releaseDate || ''),
+		eyebrow: '',
 		title: data.title,
 		description: data.caption,
 		image: data.previewImage?.url,

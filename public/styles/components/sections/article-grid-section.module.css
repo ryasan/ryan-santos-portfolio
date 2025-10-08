@@ -3,4 +3,32 @@
   padding: 40px 0;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+}
+
+.controlButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  padding: 8px;
+  border-radius: 4px;
+  transition: 200ms ease;
+}
+.controlButton:hover {
+  box-shadow: 0 0 0 1px var(--line-color);
+}
+.controlButton.active {
+  background-color: var(--background-secondary-color);
+}
+
 /*# sourceMappingURL=article-grid-section.module.css.map */
