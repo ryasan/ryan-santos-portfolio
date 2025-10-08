@@ -13,7 +13,7 @@ type ArticleGridSectionProps = {
 
 export default function ArticleGridSection({ data }: ArticleGridSectionProps) {
 	const [view, setView] = useState<'list' | 'grid'>('list')
-	const { isMatching } = useMatchMedia('(max-width:768px)', true)
+	const { isMatching } = useMatchMedia('(max-width:768px)', false)
 
 	// prettier-ignore
 	const normalizedArticles = data?.articlesCollection?.items?.map((article) => {
