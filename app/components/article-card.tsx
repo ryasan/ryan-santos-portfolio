@@ -4,7 +4,7 @@ import { Link as RemixLink, useNavigate } from '@remix-run/react'
 import { isExternalLink } from '~/utils'
 
 export type NormalizedArticleCard = {
-	type?: 'blog' | 'projects' | null
+	type?: string | null
 	eyebrow?: string | null
 	title?: string | null
 	description?: string | null
