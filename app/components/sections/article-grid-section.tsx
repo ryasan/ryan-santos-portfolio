@@ -9,7 +9,7 @@ type ArticleGridSectionProps = {
 }
 
 export default function ArticleGridSection({ data }: ArticleGridSectionProps) {
-	const [view, setView] = useState<'list' | 'grid'>('grid')
+	const [view, setView] = useState<'list' | 'grid'>('list')
 
 	return (
 		<section className={styles.articleGridSection}>
