@@ -13,11 +13,10 @@ export default function CarouselSection({ data }: CarouselSectionProps) {
 		if (!item) return null
 
 		const slideType = item.__typename
+
 		if (slideType === 'Blog') return normalizeData.fromBlogToCard(item)
 		if (slideType === 'Projects') return normalizeData.fromProjectsToCard(item)
-
-		console.warn(`Unknown slide type: ${slideType}`)
-		return null
+		else console.warn(`Unknown slide type: ${slideType}`)
 	})
 
 	const slides = normalizedSlides?.map((slide, index) => {

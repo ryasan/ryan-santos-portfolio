@@ -9,7 +9,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: $space-20;
+	margin-bottom: $space-40;
 }
 
 .controls {
@@ -32,5 +32,28 @@
 
 	&.active {
 		background-color: var(--background-secondary-color);
+	}
+}
+
+.articleList {
+	&.list {
+		display: flex;
+		flex-direction: column;
+		gap: $space-40;
+	}
+
+	&.grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: $space-30;
+	}
+}
+
+@media (max-width: $tablet) {
+	.articleList {
+		&.grid {
+			grid-template-columns: repeat(1, 1fr);
+			gap: $space-40;
+		}
 	}
 }

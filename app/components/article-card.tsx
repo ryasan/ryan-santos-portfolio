@@ -33,7 +33,7 @@ export default function ArticleCard({
 		if (!tag || !data.type) return
 
 		const searchParams = new URLSearchParams({ tag })
-		const path = `${data.type}?${searchParams.toString()}`.toLowerCase()
+		const path = `/${data.type}?${searchParams.toString()}`
 		navigate(path)
 	}
 
@@ -60,12 +60,13 @@ export default function ArticleCard({
 				{data.eyebrow && <p className="badge mb-12">{data.eyebrow}</p>}
 				{data.title && <h3 className="h5 mb-24">{data.title}</h3>}
 				{data.description && horizontal && (
-					<p className="body">{data.description}</p>
+					<p className="body mb-16">{data.description}</p>
 				)}
 				{data.tags && (
 					<div className={styles.tags}>
 						{data.tags.map((tag) => {
 							if (!tag) return null
+
 							return (
 								<button
 									className={clsx('link badge', styles.tag)}
