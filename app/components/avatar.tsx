@@ -9,7 +9,7 @@ export default function Avatar({ src, alt = 'Avatar' }: AvatarProps) {
 	return (
 		<div className={styles.avatar}>
 			{src ? (
-				<img src={src} alt={alt} />
+				<img className={styles.avatarImage} src={src} alt={alt} />
 			) : (
 				<img
 					className={styles.avatarPlaceholder}

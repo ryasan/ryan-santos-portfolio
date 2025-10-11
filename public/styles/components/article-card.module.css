@@ -51,12 +51,14 @@
 }
 
 .tag {
-  padding: 4px 12px;
-  border: 1px solid var(--line-color);
-  transition: 0.2s ease;
+  align-items: center;
   border-radius: 4px;
-  display: inline-block;
+  border: 1px solid var(--line-color);
+  display: flex;
+  justify-content: center;
+  padding: 4px 12px;
   text-transform: lowercase;
+  transition: 0.2s ease;
 }
 .tag:hover {
   border-color: var(--content-color);

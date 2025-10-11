@@ -1,6 +1,7 @@
 import ArrowLeftIcon from './arrow-left'
 import ArrowRightIcon from './arrow-right'
 import ArrowUpRightIcon from './arrow-up-right'
+import CloseIcon from './close'
 import CodepenIcon from './codepen'
 import EnvelopeIcon from './envelope'
 import GithubIcon from './github'
@@ -14,6 +15,7 @@ export {
 	ArrowLeftIcon,
 	ArrowRightIcon,
 	ArrowUpRightIcon,
+	CloseIcon,
 	CodepenIcon,
 	EnvelopeIcon,
 	GithubIcon,
