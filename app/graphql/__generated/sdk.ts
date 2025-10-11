@@ -120,7 +120,6 @@ export type ArticleGridSectionFilter = {
 export type ArticleGridSectionLinkingCollections = {
   __typename?: 'ArticleGridSectionLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
-  pageBlogCollection?: Maybe<PageBlogCollection>;
   pageCollection?: Maybe<PageCollection>;
 };
 
@@ -128,15 +127,6 @@ export type ArticleGridSectionLinkingCollections = {
 export type ArticleGridSectionLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-export type ArticleGridSectionLinkingCollectionsPageBlogCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<ArticleGridSectionLinkingCollectionsPageBlogCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
@@ -150,21 +140,6 @@ export type ArticleGridSectionLinkingCollectionsPageCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export enum ArticleGridSectionLinkingCollectionsPageBlogCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
 export enum ArticleGridSectionLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
@@ -177,7 +152,9 @@ export enum ArticleGridSectionLinkingCollectionsPageCollectionOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
 }
 
 export enum ArticleGridSectionOrder {
@@ -769,7 +746,6 @@ export type CarouselSectionFilter = {
 export type CarouselSectionLinkingCollections = {
   __typename?: 'CarouselSectionLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
-  pageBlogCollection?: Maybe<PageBlogCollection>;
   pageCollection?: Maybe<PageCollection>;
 };
 
@@ -777,15 +753,6 @@ export type CarouselSectionLinkingCollections = {
 export type CarouselSectionLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-export type CarouselSectionLinkingCollectionsPageBlogCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<CarouselSectionLinkingCollectionsPageBlogCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
@@ -799,21 +766,6 @@ export type CarouselSectionLinkingCollectionsPageCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export enum CarouselSectionLinkingCollectionsPageBlogCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
 export enum CarouselSectionLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
@@ -826,7 +778,9 @@ export enum CarouselSectionLinkingCollectionsPageCollectionOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
 }
 
 export enum CarouselSectionOrder {
@@ -1334,7 +1288,6 @@ export type ExperienceSectionFilter = {
 export type ExperienceSectionLinkingCollections = {
   __typename?: 'ExperienceSectionLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
-  pageBlogCollection?: Maybe<PageBlogCollection>;
   pageCollection?: Maybe<PageCollection>;
 };
 
@@ -1342,15 +1295,6 @@ export type ExperienceSectionLinkingCollections = {
 export type ExperienceSectionLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-export type ExperienceSectionLinkingCollectionsPageBlogCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<ExperienceSectionLinkingCollectionsPageBlogCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
@@ -1364,21 +1308,6 @@ export type ExperienceSectionLinkingCollectionsPageCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export enum ExperienceSectionLinkingCollectionsPageBlogCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
 export enum ExperienceSectionLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
@@ -1391,7 +1320,9 @@ export enum ExperienceSectionLinkingCollectionsPageCollectionOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
 }
 
 export enum ExperienceSectionOrder {
@@ -1794,7 +1725,6 @@ export type HeroSectionFilter = {
 export type HeroSectionLinkingCollections = {
   __typename?: 'HeroSectionLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
-  pageBlogCollection?: Maybe<PageBlogCollection>;
   pageCollection?: Maybe<PageCollection>;
 };
 
@@ -1802,15 +1732,6 @@ export type HeroSectionLinkingCollections = {
 export type HeroSectionLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-export type HeroSectionLinkingCollectionsPageBlogCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<HeroSectionLinkingCollectionsPageBlogCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
@@ -1824,21 +1745,6 @@ export type HeroSectionLinkingCollectionsPageCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export enum HeroSectionLinkingCollectionsPageBlogCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
 export enum HeroSectionLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
@@ -1851,7 +1757,9 @@ export enum HeroSectionLinkingCollectionsPageCollectionOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
 }
 
 export enum HeroSectionOrder {
@@ -2021,7 +1929,7 @@ export type Link = Entry & _Node & {
   _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
   internalName?: Maybe<Scalars['String']['output']>;
-  internalPage?: Maybe<LinkInternalPage>;
+  internalPage?: Maybe<Page>;
   label?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<LinkLinkingCollections>;
   sys: Sys;
@@ -2039,6 +1947,7 @@ export type LinkInternalNameArgs = {
 export type LinkInternalPageArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<PageFilter>;
 };
 
 
@@ -2078,6 +1987,7 @@ export type LinkFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalPage?: InputMaybe<CfPageNestedFilter>;
   internalPage_exists?: InputMaybe<Scalars['Boolean']['input']>;
   label?: InputMaybe<Scalars['String']['input']>;
   label_contains?: InputMaybe<Scalars['String']['input']>;
@@ -2095,8 +2005,6 @@ export type LinkFilter = {
   url_not_contains?: InputMaybe<Scalars['String']['input']>;
   url_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
-
-export type LinkInternalPage = Page | PageBlog;
 
 export type LinkLinkingCollections = {
   __typename?: 'LinkLinkingCollections';
@@ -2189,6 +2097,7 @@ export type Page = Entry & _Node & {
   seoMetadata?: Maybe<SeoMetaData>;
   slug?: Maybe<Scalars['String']['output']>;
   sys: Sys;
+  type?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -2227,173 +2136,11 @@ export type PageSlugArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
-/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/pageBlog) */
-export type PageBlog = Entry & _Node & {
-  __typename?: 'PageBlog';
-  _id: Scalars['ID']['output'];
-  contentfulMetadata: ContentfulMetadata;
-  internalName?: Maybe<Scalars['String']['output']>;
-  linkedFrom?: Maybe<PageBlogLinkingCollections>;
-  pageSectionsCollection?: Maybe<PageBlogPageSectionsCollection>;
-  seoMetadata?: Maybe<SeoMetaData>;
-  slug?: Maybe<Scalars['String']['output']>;
-  sys: Sys;
-};
 
-
-/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/pageBlog) */
-export type PageBlogInternalNameArgs = {
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/page) */
+export type PageTypeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
-
-
-/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/pageBlog) */
-export type PageBlogLinkedFromArgs = {
-  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/pageBlog) */
-export type PageBlogPageSectionsCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<PageBlogPageSectionsFilter>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/pageBlog) */
-export type PageBlogSeoMetadataArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  where?: InputMaybe<SeoMetaDataFilter>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/pageBlog) */
-export type PageBlogSlugArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type PageBlogCollection = {
-  __typename?: 'PageBlogCollection';
-  items: Array<Maybe<PageBlog>>;
-  limit: Scalars['Int']['output'];
-  skip: Scalars['Int']['output'];
-  total: Scalars['Int']['output'];
-};
-
-export type PageBlogFilter = {
-  AND?: InputMaybe<Array<InputMaybe<PageBlogFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<PageBlogFilter>>>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  internalName?: InputMaybe<Scalars['String']['input']>;
-  internalName_contains?: InputMaybe<Scalars['String']['input']>;
-  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  internalName_not?: InputMaybe<Scalars['String']['input']>;
-  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
-  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  pageSections?: InputMaybe<CfpageSectionsMultiTypeNestedFilter>;
-  pageSectionsCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  seoMetadata?: InputMaybe<CfSeoMetaDataNestedFilter>;
-  seoMetadata_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  slug?: InputMaybe<Scalars['String']['input']>;
-  slug_contains?: InputMaybe<Scalars['String']['input']>;
-  slug_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  slug_not?: InputMaybe<Scalars['String']['input']>;
-  slug_not_contains?: InputMaybe<Scalars['String']['input']>;
-  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  sys?: InputMaybe<SysFilter>;
-};
-
-export type PageBlogLinkingCollections = {
-  __typename?: 'PageBlogLinkingCollections';
-  entryCollection?: Maybe<EntryCollection>;
-  linkCollection?: Maybe<LinkCollection>;
-};
-
-
-export type PageBlogLinkingCollectionsEntryCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-export type PageBlogLinkingCollectionsLinkCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<PageBlogLinkingCollectionsLinkCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-};
-
-export enum PageBlogLinkingCollectionsLinkCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  LabelAsc = 'label_ASC',
-  LabelDesc = 'label_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  UrlAsc = 'url_ASC',
-  UrlDesc = 'url_DESC'
-}
-
-export enum PageBlogOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-export type PageBlogPageSectionsCollection = {
-  __typename?: 'PageBlogPageSectionsCollection';
-  items: Array<Maybe<PageBlogPageSectionsItem>>;
-  limit: Scalars['Int']['output'];
-  skip: Scalars['Int']['output'];
-  total: Scalars['Int']['output'];
-};
-
-export type PageBlogPageSectionsFilter = {
-  AND?: InputMaybe<Array<InputMaybe<PageBlogPageSectionsFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<PageBlogPageSectionsFilter>>>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  internalName?: InputMaybe<Scalars['String']['input']>;
-  internalName_contains?: InputMaybe<Scalars['String']['input']>;
-  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  internalName_not?: InputMaybe<Scalars['String']['input']>;
-  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
-  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  sys?: InputMaybe<SysFilter>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  title_contains?: InputMaybe<Scalars['String']['input']>;
-  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  title_not?: InputMaybe<Scalars['String']['input']>;
-  title_not_contains?: InputMaybe<Scalars['String']['input']>;
-  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type PageBlogPageSectionsItem = ArticleGridSection | CarouselSection | ExperienceSection | HeroSection | SocialSection;
 
 export type PageCollection = {
   __typename?: 'PageCollection';
@@ -2426,6 +2173,13 @@ export type PageFilter = {
   slug_not_contains?: InputMaybe<Scalars['String']['input']>;
   slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  type_contains?: InputMaybe<Scalars['String']['input']>;
+  type_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  type_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type_not?: InputMaybe<Scalars['String']['input']>;
+  type_not_contains?: InputMaybe<Scalars['String']['input']>;
+  type_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type PageLinkingCollections = {
@@ -2480,7 +2234,9 @@ export enum PageOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
 }
 
 export type PagePageSectionsCollection = {
@@ -2779,8 +2535,6 @@ export type Query = {
   link?: Maybe<Link>;
   linkCollection?: Maybe<LinkCollection>;
   page?: Maybe<Page>;
-  pageBlog?: Maybe<PageBlog>;
-  pageBlogCollection?: Maybe<PageBlogCollection>;
   pageCollection?: Maybe<PageCollection>;
   projects?: Maybe<Projects>;
   projectsCollection?: Maybe<ProjectsCollection>;
@@ -2994,23 +2748,6 @@ export type QueryPageArgs = {
 };
 
 
-export type QueryPageBlogArgs = {
-  id: Scalars['String']['input'];
-  locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-
-export type QueryPageBlogCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<PageBlogOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<PageBlogFilter>;
-};
-
-
 export type QueryPageCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -3182,7 +2919,6 @@ export type SeoMetaDataFilter = {
 export type SeoMetaDataLinkingCollections = {
   __typename?: 'SeoMetaDataLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
-  pageBlogCollection?: Maybe<PageBlogCollection>;
   pageCollection?: Maybe<PageCollection>;
 };
 
@@ -3190,15 +2926,6 @@ export type SeoMetaDataLinkingCollections = {
 export type SeoMetaDataLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-export type SeoMetaDataLinkingCollectionsPageBlogCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<SeoMetaDataLinkingCollectionsPageBlogCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
@@ -3212,21 +2939,6 @@ export type SeoMetaDataLinkingCollectionsPageCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export enum SeoMetaDataLinkingCollectionsPageBlogCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
 export enum SeoMetaDataLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
@@ -3239,7 +2951,9 @@ export enum SeoMetaDataLinkingCollectionsPageCollectionOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
 }
 
 export enum SeoMetaDataOrder {
@@ -3475,7 +3189,6 @@ export type SocialSectionFilter = {
 export type SocialSectionLinkingCollections = {
   __typename?: 'SocialSectionLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
-  pageBlogCollection?: Maybe<PageBlogCollection>;
   pageCollection?: Maybe<PageCollection>;
 };
 
@@ -3483,15 +3196,6 @@ export type SocialSectionLinkingCollections = {
 export type SocialSectionLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-export type SocialSectionLinkingCollectionsPageBlogCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<SocialSectionLinkingCollectionsPageBlogCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
@@ -3505,21 +3209,6 @@ export type SocialSectionLinkingCollectionsPageCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export enum SocialSectionLinkingCollectionsPageBlogCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
 export enum SocialSectionLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
@@ -3532,7 +3221,9 @@ export enum SocialSectionLinkingCollectionsPageCollectionOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
 }
 
 export enum SocialSectionOrder {
@@ -3721,6 +3412,36 @@ export type CfLinkNestedFilter = {
   url_not?: InputMaybe<Scalars['String']['input']>;
   url_not_contains?: InputMaybe<Scalars['String']['input']>;
   url_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CfPageNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfPageNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfPageNestedFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']['input']>;
+  internalName_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName_not?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  pageSectionsCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  seoMetadata_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  slug_contains?: InputMaybe<Scalars['String']['input']>;
+  slug_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  slug_not?: InputMaybe<Scalars['String']['input']>;
+  slug_not_contains?: InputMaybe<Scalars['String']['input']>;
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sys?: InputMaybe<SysFilter>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  type_contains?: InputMaybe<Scalars['String']['input']>;
+  type_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  type_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type_not?: InputMaybe<Scalars['String']['input']>;
+  type_not_contains?: InputMaybe<Scalars['String']['input']>;
+  type_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type CfSeoMetaDataNestedFilter = {
