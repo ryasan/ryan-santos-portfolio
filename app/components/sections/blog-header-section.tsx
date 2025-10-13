@@ -18,24 +18,18 @@ export default function BlogHeaderSection({ data }: BlogHeaderSectionProps) {
 			? `${data?.author?.firstName} ${data?.author?.lastName}`
 			: ''
 
-	const handleBack = () => {
-		// Pop the current route
-		navigate(-1)
-	}
-
 	return (
 		<section className={styles.blogHeaderSection}>
 			<div className="container">
-				{/* Back Button */}
 				<button
 					className={clsx(styles.linkBox, linkStyles.linkBox)}
-					onClick={handleBack}
+					onClick={() => navigate(-1)}
 				>
 					<ArrowLeftIcon className={clsx(styles.icon, linkStyles.icon)} />
 					<span className={clsx('link', linkStyles.link)}>Back</span>
 				</button>
 
-				<h1 className="mb-32">{data?.title}</h1>
+				{data?.title && <h1 className="mb-32">{data?.title}</h1>}
 
 				<div className={styles.author}>
 					{data?.author?.avatar?.url && (
@@ -46,14 +40,14 @@ export default function BlogHeaderSection({ data }: BlogHeaderSectionProps) {
 							size="small"
 						/>
 					)}
-					<div className={styles.authorInfo}>
-						{name && <h5 className="h5">{name}</h5>}
-						{data?.publishDate && (
-							<div className="body-2">
-								{formatDate(data?.publishDate)}
-							</div>
-						)}
-					</div>
+					{(name || data?.publishDate) && (
+						<div className={styles.authorInfo}>
+							{name && <h5 className="h5">{name}</h5>}
+							{data?.publishDate && (
+								<div className="body-2">{formatDate(data?.publishDate)}</div>
+							)}
+						</div>
+					)}
 				</div>
 			</div>
 		</section>

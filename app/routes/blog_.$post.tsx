@@ -1,4 +1,6 @@
-import BlogHeaderSection from '~/components/sections/blog-header-section';
+import BlogHeaderSection from '~/components/sections/blog-header-section'
+import BlogRichTextSection from '~/components/sections/blog-rich-text-section'
+import HeroImageSection from '~/components/sections/hero-image-section'
 import { client } from '~/services/contentful.server'
 import { json, LoaderFunctionArgs } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
@@ -17,15 +19,16 @@ export default function BlogPost() {
 	const { blog } = useLoaderData<typeof loader>()
 
 	return (
-		<div className="container">
-			{/* Header Section - Back Button, Post Title, Author Layout - Avatar, Name, Date */}
+		<>
 			<BlogHeaderSection data={blog} />
-			{/* Hero Section - Main Image */}
+			<HeroImageSection data={{ image: blog.openGraphImage }} />
 			{/* Rich Text Section - Post Content */}
+			<BlogRichTextSection data={{ content: blog.blogBody }} />
+			
 			{/* Tags Section - Post Tags */}
 			{/* Related Posts Section - Post Related Posts */}
 			{/* Comments Section - Post Comments */}
 			{/* Share Buttons Section - Post Share Buttons */}
-		</div>
+		</>
 	)
 }

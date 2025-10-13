@@ -1,0 +1,19 @@
+.heroImageSection {
+  margin: 0;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-height: 686px;
+  aspect-ratio: auto 1440/686;
+}
+
+@media (max-width: 610px) {
+  .image img {
+    max-height: 250px;
+  }
+}
+
+/*# sourceMappingURL=hero-image-section.module.css.map */

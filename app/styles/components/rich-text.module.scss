@@ -1,7 +1,8 @@
 @import '../base/variables';
 
 .richText {
-	p {
+	p,
+	pre {
 		margin-bottom: $space-16; // 16px spacing between paragraphs
 
 		&:last-child {
@@ -10,6 +11,7 @@
 	}
 
 	// Add spacing for other elements too
+	h1,
 	h2,
 	h3,
 	h4,

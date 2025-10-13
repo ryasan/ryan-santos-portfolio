@@ -39,6 +39,7 @@
     "mouse-follower": "^1.1.2",
     "plaiceholder": "^3.0.0",
     "react-locomotive-scroll": "^0.2.2",
+    "react-syntax-highlighter": "^15.6.6",
     "sharp": "^0.33.5",
     "swiper": "^11.2.4",
     "zod": "^4.1.11"
@@ -54,6 +55,7 @@
     "@types/lodash": "^4.17.7",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "@typescript-eslint/eslint-plugin": "^8.24.0",
     "concurrently": "^9.0.1",
     "dotenv": "^17.2.3",
