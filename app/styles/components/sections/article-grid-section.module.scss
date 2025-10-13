@@ -18,12 +18,14 @@
 }
 
 .controlButton {
+	align-items: center;
 	background-color: transparent;
+	border-radius: $space-4;
 	border: none;
 	cursor: pointer;
-	padding: 0;
+	display: flex;
+	justify-content: center;
 	padding: $space-8;
-	border-radius: $space-4;
 	transition: 200ms ease;
 	
 	&:hover {

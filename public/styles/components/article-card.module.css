@@ -26,7 +26,10 @@
 }
 
 .description {
-  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .bigCard .imageWrapper {
@@ -35,12 +38,11 @@
 }
 
 .horizontal {
-  display: flex;
+  display: grid;
+  grid-template-columns: 240px 1fr;
   gap: 32px;
 }
 .horizontal .imageWrapper {
-  height: 166px;
-  width: 240px;
   margin-bottom: 0;
 }
 

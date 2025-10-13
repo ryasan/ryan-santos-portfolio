@@ -29,3 +29,13 @@ export const normalizeData = {
 		tags: getTags(data),
 	}),
 }
+
+export const normalizeSlide = (data?: Blog | Projects | null) => {
+	if (!data) return null
+
+	const slideType = data.__typename
+
+	if (slideType === 'Blog') return normalizeData.fromBlogToCard(data)
+	if (slideType === 'Projects') return normalizeData.fromProjectsToCard(data)
+	else console.warn(`Unknown slide type: ${slideType}`)
+}

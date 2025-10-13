@@ -1,0 +1,11 @@
+@import '../../base/variables';
+
+.blogPostsSection {
+	padding: 0 0 $space-40;
+}
+
+.posts {
+	display: flex;
+	flex-direction: column;
+	gap: $space-40;
+}

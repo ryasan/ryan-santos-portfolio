@@ -2,27 +2,19 @@ import ArticleCard from '~/components/article-card'
 import Carousel from '~/components/carousel'
 import styles from '~/styles/components/sections/carousel-section.module.scss'
 import { CarouselSection as CarouselSectionType } from '~/graphql/__generated/sdk'
-import { normalizeData } from '~/utils'
+import { normalizeSlide } from '~/utils'
 
 type CarouselSectionProps = {
 	data?: CarouselSectionType
 }
 
 export default function CarouselSection({ data }: CarouselSectionProps) {
-	const normalizedSlides = data?.slidesCollection?.items?.map((item) => {
-		if (!item) return null
-
-		const slideType = item.__typename
-
-		if (slideType === 'Blog') return normalizeData.fromBlogToCard(item)
-		if (slideType === 'Projects') return normalizeData.fromProjectsToCard(item)
-		else console.warn(`Unknown slide type: ${slideType}`)
-	})
-
-	const slides = normalizedSlides?.map((slide, index) => {
-		if (!slide) return null
-		return <ArticleCard key={slide?.id || index} data={slide} />
-	})
+	const slides = data?.slidesCollection?.items
+		.map(normalizeSlide)
+		.map((slide, index) => {
+			if (!slide) return null
+			return <ArticleCard key={slide?.id || index} data={slide} isBig />
+		})
 
 	return (
 		<section className={styles.carouselSection}>

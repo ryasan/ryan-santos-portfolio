@@ -1,3 +1,4 @@
+import BlogPostsSection from '~/components/sections/blog-posts-section'
 import BlogTagFilterSection from '~/components/sections/blog-tag-filter-section'
 import SectionRenderer from '~/components/section-renderer'
 import type { MetaFunction } from '@netlify/remix-runtime'
@@ -53,8 +54,8 @@ export default function BlogPage() {
 					return <SectionRenderer key={section.sys.id} section={section} />
 				},
 			)}
-			<BlogTagFilterSection data={{ title: 'Find blog by topics' }} />
-			{/* Section - Filtered Blog Posts (Try to do it using server side routing logic) */}
+			<BlogTagFilterSection data={{ title: 'Search blog by topics' }} />
+			<BlogPostsSection />
 		</BlogFilterProvider>
 	)
 }

@@ -31,20 +31,20 @@ export default function SocialSection({ data }: SocialSectionProps) {
 				<div className={styles.box}>
 					{data?.title && <h2 className="label">{data.title}</h2>}
 
-					<ul className={styles.socialList}>
+					<div className={styles.socialList}>
 						{data?.socialLinksCollection?.items?.map((social) => {
 							if (!social?.url || !social?.label) return null
 
 							return (
-								<li className={styles.socialItem} key={social.sys.id}>
+								<div className={styles.socialItem} key={social.sys.id}>
 									{getIcon(social.icon || '')}
 									<Link className="link" to={social.url}>
 										{social.label}
 									</Link>
-								</li>
+								</div>
 							)
 						})}
-					</ul>
+					</div>
 				</div>
 			</div>
 		</section>

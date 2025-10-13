@@ -17,12 +17,12 @@ export default function ExperienceSection({ data }: ExperienceSectionProps) {
 				<div className={styles.box}>
 					{data?.title && <h2 className="label">{data?.title}</h2>}
 
-					<ul className={styles.experienceList}>
+					<div className={styles.experienceList}>
 						{data?.experienceCollection?.items?.map((item) => {
 							if (!item) return null
 
 							return (
-								<li className={styles.experienceItem} key={item.sys.id}>
+								<div className={styles.experienceItem} key={item.sys.id}>
 									<div className={styles.yearRange}>
 										{item.startDate && item.endDate && (
 											<div>
@@ -43,10 +43,10 @@ export default function ExperienceSection({ data }: ExperienceSectionProps) {
 											</div>
 										)}
 									</div>
-								</li>
+								</div>
 							)
 						})}
-					</ul>
+					</div>
 				</div>
 			</div>
 		</section>

@@ -21,7 +21,7 @@ type ArticleCardProps = {
 
 export default function ArticleCard({
 	data,
-	isBig = true,
+	isBig = false,
 	horizontal = false,
 }: ArticleCardProps) {
 	const Component = data.link ? RemixLink : 'div'
@@ -58,9 +58,11 @@ export default function ArticleCard({
 			</div>
 			<div className={styles.content}>
 				{data.eyebrow && <p className="badge mb-12">{data.eyebrow}</p>}
-				{data.title && <h3 className="h5 mb-24">{data.title}</h3>}
+				{data.title && <h3 className="h5 mb-16">{data.title}</h3>}
 				{data.description && horizontal && (
-					<p className="body mb-16">{data.description}</p>
+					<p className={clsx('body-2 mb-16', styles.description)}>
+						{data.description}
+					</p>
 				)}
 				{data.tags && (
 					<div className={styles.tags}>
