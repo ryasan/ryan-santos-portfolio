@@ -1,0 +1,33 @@
+.blogHeaderSection {
+  padding: 40px 0;
+  margin-bottom: 40px;
+}
+
+.linkBox {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  width: fit-content;
+  margin-bottom: 40px;
+}
+.linkBox:hover .link::before {
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+.linkBox:hover svg {
+  transform: translateX(-4px);
+}
+
+.icon {
+  margin-right: 8px;
+  margin-left: 0;
+  width: 24px;
+}
+
+.author {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+}
+
+/*# sourceMappingURL=blog-header-section.module.css.map */

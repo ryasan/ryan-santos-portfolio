@@ -1,0 +1,39 @@
+@import '../../base/variables';
+
+.blogHeaderSection {
+	padding: $space-40 0;
+	margin-bottom: $space-40;
+}
+
+.linkBox {
+	display: flex;
+	align-items: center;
+	height: $space-24;
+	width: fit-content;
+	margin-bottom: $space-40;
+
+	&:hover {
+		.link {
+			&::before {
+				transform: scaleX(0);
+				transform-origin: right center;
+			}
+		}
+
+		svg {
+			transform: translateX(-4px);
+		}
+	}
+}
+
+.icon {
+	margin-right: $space-8;
+	margin-left: 0;
+	width: $space-24;
+}
+
+.author {
+	align-items: center;
+	display: flex;
+	gap: $space-16;
+}

@@ -16,6 +16,23 @@ export const SEO_METADATA_FRAGMENT = gql`
 	}
 `
 
+export const PERSON_FRAGMENT = gql`
+	fragment PersonFields on Person {
+		__typename
+		sys {
+			id
+		}
+		firstName
+		lastName
+		headline
+		avatar {
+			title
+			description
+			url
+		}
+	}
+`
+
 export const BLOG_FRAGMENT = gql`
 	fragment BlogFields on Blog {
 		__typename
@@ -27,6 +44,9 @@ export const BLOG_FRAGMENT = gql`
 		description
 		canonicalUrl
 		publishDate
+		author {
+			...PersonFields
+		}
 		blogBody {
 			json
 		}
@@ -42,6 +62,7 @@ export const BLOG_FRAGMENT = gql`
 			}
 		}
 	}
+	${PERSON_FRAGMENT}
 `
 
 export const PROJECTS_FRAGMENT = gql`

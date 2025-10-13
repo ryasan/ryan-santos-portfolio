@@ -326,6 +326,7 @@ export type AssetLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
   globalHeaderCollection?: Maybe<GlobalHeaderCollection>;
   heroSectionCollection?: Maybe<HeroSectionCollection>;
+  personCollection?: Maybe<PersonCollection>;
   projectsCollection?: Maybe<ProjectsCollection>;
   seoMetaDataCollection?: Maybe<SeoMetaDataCollection>;
 };
@@ -356,6 +357,14 @@ export type AssetLinkingCollectionsGlobalHeaderCollectionArgs = {
 
 
 export type AssetLinkingCollectionsHeroSectionCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type AssetLinkingCollectionsPersonCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -405,6 +414,7 @@ export enum AssetOrder {
 export type Blog = Entry & _Node & {
   __typename?: 'Blog';
   _id: Scalars['ID']['output'];
+  author?: Maybe<Person>;
   blogBody?: Maybe<BlogBlogBody>;
   canonicalUrl?: Maybe<Scalars['String']['output']>;
   contentfulMetadata: ContentfulMetadata;
@@ -415,6 +425,14 @@ export type Blog = Entry & _Node & {
   slug?: Maybe<Scalars['String']['output']>;
   sys: Sys;
   title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/blog) */
+export type BlogAuthorArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<PersonFilter>;
 };
 
 
@@ -525,6 +543,8 @@ export type BlogCollection = {
 export type BlogFilter = {
   AND?: InputMaybe<Array<InputMaybe<BlogFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<BlogFilter>>>;
+  author?: InputMaybe<CfPersonNestedFilter>;
+  author_exists?: InputMaybe<Scalars['Boolean']['input']>;
   blogBody_contains?: InputMaybe<Scalars['String']['input']>;
   blogBody_exists?: InputMaybe<Scalars['Boolean']['input']>;
   blogBody_not_contains?: InputMaybe<Scalars['String']['input']>;
@@ -2270,6 +2290,164 @@ export type PagePageSectionsFilter = {
 
 export type PagePageSectionsItem = ArticleGridSection | CarouselSection | ExperienceSection | HeroSection | SocialSection;
 
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/person) */
+export type Person = Entry & _Node & {
+  __typename?: 'Person';
+  _id: Scalars['ID']['output'];
+  avatar?: Maybe<Asset>;
+  contentfulMetadata: ContentfulMetadata;
+  firstName?: Maybe<Scalars['String']['output']>;
+  headline?: Maybe<Scalars['String']['output']>;
+  internalName?: Maybe<Scalars['String']['output']>;
+  lastName?: Maybe<Scalars['String']['output']>;
+  linkedFrom?: Maybe<PersonLinkingCollections>;
+  sys: Sys;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/person) */
+export type PersonAvatarArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/person) */
+export type PersonFirstNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/person) */
+export type PersonHeadlineArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/person) */
+export type PersonInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/person) */
+export type PersonLastNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/person) */
+export type PersonLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PersonCollection = {
+  __typename?: 'PersonCollection';
+  items: Array<Maybe<Person>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type PersonFilter = {
+  AND?: InputMaybe<Array<InputMaybe<PersonFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<PersonFilter>>>;
+  avatar_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  firstName?: InputMaybe<Scalars['String']['input']>;
+  firstName_contains?: InputMaybe<Scalars['String']['input']>;
+  firstName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  firstName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  firstName_not?: InputMaybe<Scalars['String']['input']>;
+  firstName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  firstName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  headline?: InputMaybe<Scalars['String']['input']>;
+  headline_contains?: InputMaybe<Scalars['String']['input']>;
+  headline_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  headline_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  headline_not?: InputMaybe<Scalars['String']['input']>;
+  headline_not_contains?: InputMaybe<Scalars['String']['input']>;
+  headline_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName?: InputMaybe<Scalars['String']['input']>;
+  internalName_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName_not?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  lastName?: InputMaybe<Scalars['String']['input']>;
+  lastName_contains?: InputMaybe<Scalars['String']['input']>;
+  lastName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  lastName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  lastName_not?: InputMaybe<Scalars['String']['input']>;
+  lastName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  lastName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type PersonLinkingCollections = {
+  __typename?: 'PersonLinkingCollections';
+  blogCollection?: Maybe<BlogCollection>;
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type PersonLinkingCollectionsBlogCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<PersonLinkingCollectionsBlogCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PersonLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export enum PersonLinkingCollectionsBlogCollectionOrder {
+  CanonicalUrlAsc = 'canonicalUrl_ASC',
+  CanonicalUrlDesc = 'canonicalUrl_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
+  PublishDateAsc = 'publishDate_ASC',
+  PublishDateDesc = 'publishDate_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export enum PersonOrder {
+  FirstNameAsc = 'firstName_ASC',
+  FirstNameDesc = 'firstName_DESC',
+  HeadlineAsc = 'headline_ASC',
+  HeadlineDesc = 'headline_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  LastNameAsc = 'lastName_ASC',
+  LastNameDesc = 'lastName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/projects) */
 export type Projects = Entry & _Node & {
   __typename?: 'Projects';
@@ -2536,6 +2714,8 @@ export type Query = {
   linkCollection?: Maybe<LinkCollection>;
   page?: Maybe<Page>;
   pageCollection?: Maybe<PageCollection>;
+  person?: Maybe<Person>;
+  personCollection?: Maybe<PersonCollection>;
   projects?: Maybe<Projects>;
   projectsCollection?: Maybe<ProjectsCollection>;
   seoMetaData?: Maybe<SeoMetaData>;
@@ -2755,6 +2935,23 @@ export type QueryPageCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<PageFilter>;
+};
+
+
+export type QueryPersonArgs = {
+  id: Scalars['String']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryPersonCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<PersonOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<PersonFilter>;
 };
 
 
@@ -3442,6 +3639,42 @@ export type CfPageNestedFilter = {
   type_not?: InputMaybe<Scalars['String']['input']>;
   type_not_contains?: InputMaybe<Scalars['String']['input']>;
   type_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CfPersonNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfPersonNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfPersonNestedFilter>>>;
+  avatar_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  firstName?: InputMaybe<Scalars['String']['input']>;
+  firstName_contains?: InputMaybe<Scalars['String']['input']>;
+  firstName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  firstName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  firstName_not?: InputMaybe<Scalars['String']['input']>;
+  firstName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  firstName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  headline?: InputMaybe<Scalars['String']['input']>;
+  headline_contains?: InputMaybe<Scalars['String']['input']>;
+  headline_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  headline_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  headline_not?: InputMaybe<Scalars['String']['input']>;
+  headline_not_contains?: InputMaybe<Scalars['String']['input']>;
+  headline_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName?: InputMaybe<Scalars['String']['input']>;
+  internalName_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName_not?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  lastName?: InputMaybe<Scalars['String']['input']>;
+  lastName_contains?: InputMaybe<Scalars['String']['input']>;
+  lastName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  lastName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  lastName_not?: InputMaybe<Scalars['String']['input']>;
+  lastName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  lastName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sys?: InputMaybe<SysFilter>;
 };
 
 export type CfSeoMetaDataNestedFilter = {
