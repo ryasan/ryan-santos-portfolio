@@ -10,7 +10,7 @@ import { useLoaderData } from '@remix-run/react'
 
 export async function loader() {
 	const page = await client.getPageBySlug('blog')
-	const blogs = await client.getAllBlogs()
+	const blogs = await client.getAllBlogs('publishDate_DESC')
 
 	if (!page) {
 		throw new Response('Not Found', { status: 404 })

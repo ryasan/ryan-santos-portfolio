@@ -11,7 +11,7 @@ export const normalizeData = {
 	fromBlogToCard: (data: Blog) => ({
 		id: data.sys?.id,
 		type: 'blog',
-		eyebrow: formatDate(data.sys?.publishedAt || ''),
+		eyebrow: formatDate(data.publishDate || ''),
 		title: data.title,
 		description: data.description,
 		image: data.openGraphImage?.url,

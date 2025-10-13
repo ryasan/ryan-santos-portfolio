@@ -13,9 +13,10 @@ export const formatDate = (inputDate: string) => {
 	const date = new Date(dateString)
 	if (isNaN(date.getTime())) return ''
 
-	const month = String(date.getMonth() + 1).padStart(2, '0')
-	const day = String(date.getDate()).padStart(2, '0')
-	const year = date.getFullYear()
+	// Use UTC methods to avoid timezone offset issues
+	const month = String(date.getUTCMonth() + 1).padStart(2, '0')
+	const day = String(date.getUTCDate()).padStart(2, '0')
+	const year = date.getUTCFullYear()
 
 	return `${month}-${day}-${year}`
 }

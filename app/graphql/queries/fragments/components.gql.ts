@@ -21,12 +21,12 @@ export const BLOG_FRAGMENT = gql`
 		__typename
 		sys {
 			id
-			publishedAt
 		}
 		title
 		slug
 		description
 		canonicalUrl
+		publishDate
 		blogBody {
 			json
 		}

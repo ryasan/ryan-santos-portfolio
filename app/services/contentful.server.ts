@@ -98,9 +98,9 @@ async function getAllProjects() {
 	}
 }
 
-async function getAllBlogs() {
+async function getAllBlogs(order?: string) {
 	try {
-		const response = await apiCall(GET_ALL_BLOGS_QUERY)
+		const response = await apiCall(GET_ALL_BLOGS_QUERY, { order })
 		const json = await response.json()
 		return await json.data.blogCollection.items
 	} catch (error) {
@@ -110,12 +110,8 @@ async function getAllBlogs() {
 }
 
 async function getBlogBySlug(slug: string) {
-	const variables = {
-		slug: slug,
-	}
-
 	try {
-		const response = await apiCall(GET_BLOG_BY_SLUG_QUERY, variables)
+		const response = await apiCall(GET_BLOG_BY_SLUG_QUERY, { slug })
 		const json = await response.json()
 		return await json.data.blogCollection.items[0]
 	} catch (error) {
@@ -125,12 +121,8 @@ async function getBlogBySlug(slug: string) {
 }
 
 async function getPageByTitle(title: string) {
-	const variables = {
-		title: title,
-	}
-
 	try {
-		const response = await apiCall(GET_PAGE_BY_TITLE_QUERY, variables)
+		const response = await apiCall(GET_PAGE_BY_TITLE_QUERY, { title })
 		const json = await response.json()
 		return await json.data.pageCollection.items[0]
 	} catch (error) {
@@ -143,10 +135,8 @@ async function getPageByTitle(title: string) {
 }
 
 async function getPageBySlug(slug: string) {
-	const variables = { slug }
-
 	try {
-		const response = await apiCall(GET_PAGE_BY_SLUG_QUERY, variables)
+		const response = await apiCall(GET_PAGE_BY_SLUG_QUERY, { slug })
 		const json = await response.json()
 		return await json.data.pageCollection.items[0]
 	} catch (error) {
