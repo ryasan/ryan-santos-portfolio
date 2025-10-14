@@ -4,8 +4,8 @@ import { Document } from '@contentful/rich-text-types'
 
 type BlogRichTextSectionProps = {
 	data?: {
-		content: {
-			json: Document
+		content?: {
+			json?: Document
 		}
 	}
 }
@@ -16,7 +16,7 @@ export default function BlogRichTextSection({
 	return (
 		<section className={styles.blogRichTextSection}>
 			<div className="container">
-				{data?.content.json && <RichText data={data?.content.json} />}
+				{data?.content?.json && <RichText data={data?.content?.json} />}
 			</div>
 		</section>
 	)

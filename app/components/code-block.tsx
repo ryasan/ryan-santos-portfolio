@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import styles from '~/styles/components/code-block.module.scss'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { oneLight, twilight, } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { duotoneLight, duotoneSea, } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useTheme } from '~/hooks'
 
 const processCodeString = (code: string) => {
@@ -19,7 +19,7 @@ type CodeBlockProps = {
 export default function CodeBlock({ code }: CodeBlockProps) {
 	const { parsedCode, language } = processCodeString(String(code))
 	const theme = useTheme()
-	const style = theme === 'dark' ? twilight : oneLight
+	const style = theme === 'dark' ? duotoneSea : duotoneLight
 
 	// If it's a short string meant to be used inline, just return the string
 	if (language === 'plaintext') {
