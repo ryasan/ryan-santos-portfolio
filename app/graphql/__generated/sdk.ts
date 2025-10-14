@@ -927,6 +927,7 @@ export type ExperienceItem = Entry & _Node & {
   endDate?: Maybe<Scalars['DateTime']['output']>;
   internalName?: Maybe<Scalars['String']['output']>;
   isCurrent?: Maybe<Scalars['Boolean']['output']>;
+  jobTitle?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ExperienceItemLinkingCollections>;
   startDate?: Maybe<Scalars['DateTime']['output']>;
   sys: Sys;
@@ -960,6 +961,12 @@ export type ExperienceItemInternalNameArgs = {
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/experienceItem) */
 export type ExperienceItemIsCurrentArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/experienceItem) */
+export type ExperienceItemJobTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -1070,6 +1077,13 @@ export type ExperienceItemFilter = {
   isCurrent?: InputMaybe<Scalars['Boolean']['input']>;
   isCurrent_exists?: InputMaybe<Scalars['Boolean']['input']>;
   isCurrent_not?: InputMaybe<Scalars['Boolean']['input']>;
+  jobTitle?: InputMaybe<Scalars['String']['input']>;
+  jobTitle_contains?: InputMaybe<Scalars['String']['input']>;
+  jobTitle_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  jobTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jobTitle_not?: InputMaybe<Scalars['String']['input']>;
+  jobTitle_not_contains?: InputMaybe<Scalars['String']['input']>;
+  jobTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   startDate?: InputMaybe<Scalars['DateTime']['input']>;
   startDate_exists?: InputMaybe<Scalars['Boolean']['input']>;
   startDate_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1109,6 +1123,8 @@ export type ExperienceItemLinkingCollectionsExperienceSectionCollectionArgs = {
 };
 
 export enum ExperienceItemLinkingCollectionsExperienceSectionCollectionOrder {
+  EnableScrollAnimationAsc = 'enableScrollAnimation_ASC',
+  EnableScrollAnimationDesc = 'enableScrollAnimation_DESC',
   InsertDividersAsc = 'insertDividers_ASC',
   InsertDividersDesc = 'insertDividers_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -1134,6 +1150,8 @@ export enum ExperienceItemOrder {
   InternalNameDesc = 'internalName_DESC',
   IsCurrentAsc = 'isCurrent_ASC',
   IsCurrentDesc = 'isCurrent_DESC',
+  JobTitleAsc = 'jobTitle_ASC',
+  JobTitleDesc = 'jobTitle_DESC',
   StartDateAsc = 'startDate_ASC',
   StartDateDesc = 'startDate_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1199,12 +1217,19 @@ export type ExperienceSection = Entry & _Node & {
   __typename?: 'ExperienceSection';
   _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
+  enableScrollAnimation?: Maybe<Scalars['Boolean']['output']>;
   experienceCollection?: Maybe<ExperienceSectionExperienceCollection>;
   insertDividers?: Maybe<Scalars['Boolean']['output']>;
   internalName?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ExperienceSectionLinkingCollections>;
   sys: Sys;
   title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/experienceSection) */
+export type ExperienceSectionEnableScrollAnimationArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -1267,6 +1292,8 @@ export enum ExperienceSectionExperienceCollectionOrder {
   InternalNameDesc = 'internalName_DESC',
   IsCurrentAsc = 'isCurrent_ASC',
   IsCurrentDesc = 'isCurrent_DESC',
+  JobTitleAsc = 'jobTitle_ASC',
+  JobTitleDesc = 'jobTitle_DESC',
   StartDateAsc = 'startDate_ASC',
   StartDateDesc = 'startDate_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1283,6 +1310,9 @@ export type ExperienceSectionFilter = {
   AND?: InputMaybe<Array<InputMaybe<ExperienceSectionFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<ExperienceSectionFilter>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  enableScrollAnimation?: InputMaybe<Scalars['Boolean']['input']>;
+  enableScrollAnimation_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  enableScrollAnimation_not?: InputMaybe<Scalars['Boolean']['input']>;
   experience?: InputMaybe<CfExperienceItemNestedFilter>;
   experienceCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   insertDividers?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1346,6 +1376,8 @@ export enum ExperienceSectionLinkingCollectionsPageCollectionOrder {
 }
 
 export enum ExperienceSectionOrder {
+  EnableScrollAnimationAsc = 'enableScrollAnimation_ASC',
+  EnableScrollAnimationDesc = 'enableScrollAnimation_DESC',
   InsertDividersAsc = 'insertDividers_ASC',
   InsertDividersDesc = 'insertDividers_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -3567,6 +3599,13 @@ export type CfExperienceItemNestedFilter = {
   isCurrent?: InputMaybe<Scalars['Boolean']['input']>;
   isCurrent_exists?: InputMaybe<Scalars['Boolean']['input']>;
   isCurrent_not?: InputMaybe<Scalars['Boolean']['input']>;
+  jobTitle?: InputMaybe<Scalars['String']['input']>;
+  jobTitle_contains?: InputMaybe<Scalars['String']['input']>;
+  jobTitle_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  jobTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jobTitle_not?: InputMaybe<Scalars['String']['input']>;
+  jobTitle_not_contains?: InputMaybe<Scalars['String']['input']>;
+  jobTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   startDate?: InputMaybe<Scalars['DateTime']['input']>;
   startDate_exists?: InputMaybe<Scalars['Boolean']['input']>;
   startDate_gt?: InputMaybe<Scalars['DateTime']['input']>;

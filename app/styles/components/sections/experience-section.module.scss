@@ -11,6 +11,29 @@
 
 .experienceList {
 	display: block;
+	position: relative;
+	padding-left: 2rem; // Space for the progress bar
+}
+
+.progressBar {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 2px;
+	background-color: rgb(128 128 128 / 20%); // Light background track
+	overflow: hidden;
+}
+
+.progressFill {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0;
+	background: var(--content-color);
+	transition: height 0.1s ease-out;
+	box-shadow: 0 0 10px var(--content-color); // Add a glow effect
 }
 
 .info {
@@ -30,18 +53,23 @@
 			margin-bottom: $space-16;
 		}
 	}
+
+	.company {
+		margin-bottom: $space-16;
+	}
 }
 
 .experienceItem {
 	display: flex;
 	justify-content: space-between;
 	padding-top: $space-32;
+	padding-bottom: 128px;
 
-	&:not(:last-child) {
-		.info {
-			border-bottom: 1px solid var(--line-color);
-		}
-	}
+	// &:not(:last-child) {
+	// 	.info {
+	// 		border-bottom: 1px solid var(--line-color);
+	// 	}
+	// }
 
 	&:last-child {
 		.info {

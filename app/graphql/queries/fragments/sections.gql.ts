@@ -34,6 +34,7 @@ export const EXPERIENCE_SECTION_FRAGMENT = gql`
 			id
 		}
 		title
+		enableScrollAnimation
 		experienceCollection {
 			items {
 				sys {
@@ -43,6 +44,7 @@ export const EXPERIENCE_SECTION_FRAGMENT = gql`
 				endDate
 				isCurrent
 				company
+				jobTitle
 				title {
 					json
 				}
