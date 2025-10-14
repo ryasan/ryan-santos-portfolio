@@ -1,9 +1,10 @@
-.richText p,
-.richText pre {
-  margin-bottom: 16px;
+.richText p {
+  margin: 16px 0;
 }
-.richText p:last-child,
-.richText pre:last-child {
+.richText p:first-child {
+  margin-top: 0;
+}
+.richText p:last-child {
   margin-bottom: 0;
 }
 .richText h1,
@@ -12,8 +13,7 @@
 .richText h4,
 .richText h5,
 .richText h6 {
-  margin-bottom: 12px;
-  margin-top: 24px;
+  margin: 32px 0;
 }
 .richText h1:first-child,
 .richText h2:first-child,
