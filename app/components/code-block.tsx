@@ -1,10 +1,24 @@
-import clsx from 'clsx';
+import clsx from 'clsx'
 import styles from '~/styles/components/code-block.module.scss'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { duotoneLight, duotoneSea, } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { twilight, prism } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { useState } from 'react'
 import { useTheme } from '~/hooks'
 
-const processCodeString = (code: string) => {
+/**
+ * Triple backticks are used to define a code block in Markdown.
+ * This function extracts the language and the code from the string.
+ *
+ * @returns {Object} An object containing the parsed code and the language
+ * @property {string} parsedCode - The parsed code
+ * @property {string} language - The language of the code
+ *
+ * @example
+ * ```javascript
+ * console.log('Hello, world!')
+ * ```
+ */
+const parseCodeString = (code: string) => {
 	const trimmedCode = code.trim()
 	const language = trimmedCode.match(/```(\w+)/)?.[1] || 'plaintext'
 	const parsedCode = trimmedCode.replace(/^```(\w+)?|```(\w+)?$/g, '').trim()
@@ -17,25 +31,44 @@ type CodeBlockProps = {
 }
 
 export default function CodeBlock({ code }: CodeBlockProps) {
-	const { parsedCode, language } = processCodeString(String(code))
-	const theme = useTheme()
-	const style = theme === 'dark' ? duotoneSea : duotoneLight
+	const [copySuccess, setCopySuccess] = useState(false)
+	const { parsedCode, language } = parseCodeString(String(code))
 
-	// If it's a short string meant to be used inline, just return the string
+	// If it's a short string meant to be used inline, just return the code span
 	if (language === 'plaintext') {
 		return (
-			<span >
-				<code className={clsx(styles.codespan, 'codespan')}>{String(parsedCode)}</code>
-			</span>
+			<code className={clsx(styles.codespan, 'codespan')}>
+				{String(parsedCode)}
+			</code>
 		)
 	}
 
+	const theme = useTheme()
+	const style = theme === 'dark' ? twilight : prism
+
+	const copyToClipboard = () => {
+		if (parsedCode) {
+			navigator.clipboard.writeText(parsedCode)
+			setCopySuccess(true)
+			setTimeout(() => {
+				setCopySuccess(false)
+			}, 1000)
+		}
+	}
+
 	return (
-		<div className={styles.codeBlock}>
+		<div className={styles.container}>
+			<button
+				className={styles.copyButton}
+				onClick={copyToClipboard}
+				title="Copy to clipboard"
+			>
+				{copySuccess ? 'Copied' : 'Copy'}
+			</button>
 			<SyntaxHighlighter
+				className={styles.codeBlock}
 				language={language}
 				style={style}
-				className={styles.codeBlock}
 			>
 				{String(parsedCode)}
 			</SyntaxHighlighter>

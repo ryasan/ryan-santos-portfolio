@@ -1,5 +1,21 @@
 @import '../base/variables';
 
+.container {
+	position: relative;
+}
+
+.copyButton {
+	position: absolute;
+	top: $space-8;
+	right: $space-8;
+	background-color: var(--background-secondary-color);
+	color: var(--content-color);
+	border-radius: $space-4;
+	padding: $space-4 $space-8;
+	font-size: 12px;
+	font-weight: 600;
+}
+
 .codeBlock {
 	pre {
 		margin: $space-24 0 !important;

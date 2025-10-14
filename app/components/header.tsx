@@ -18,7 +18,7 @@ export default function Header({ data }: HeaderProps) {
 						<img
 							src={data?.logoImageLightMode?.url}
 							alt={
-								data?.logoImageLightMode?.title || 'Ryan Santos Portfolio logo'
+								data?.logoImageLightMode?.title || 'Ryan Santos portfolio logo'
 							}
 						/>
 					)}
@@ -28,7 +28,7 @@ export default function Header({ data }: HeaderProps) {
 						<img
 							src={data?.logoImageDarkMode?.url}
 							alt={
-								data?.logoImageDarkMode?.title || 'Ryan Santos Portfolio logo'
+								data?.logoImageDarkMode?.title || 'Ryan Santos portfolio logo'
 							}
 						/>
 					)}
