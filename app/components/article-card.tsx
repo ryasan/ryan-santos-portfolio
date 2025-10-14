@@ -17,12 +17,14 @@ type ArticleCardProps = {
 	data: NormalizedArticleCard
 	isBig?: boolean
 	horizontal?: boolean
+	forceDescription?: boolean
 }
 
 export default function ArticleCard({
 	data,
-	isBig = false,
-	horizontal = false,
+	isBig,
+	horizontal,
+	forceDescription,
 }: ArticleCardProps) {
 	const Component = data.link ? RemixLink : 'div'
 	const isExternal = isExternalLink(data.link || '')
@@ -59,7 +61,7 @@ export default function ArticleCard({
 			<div className={styles.content}>
 				{data.eyebrow && <p className="badge mb-12">{data.eyebrow}</p>}
 				{data.title && <h3 className="h5 mb-16">{data.title}</h3>}
-				{data.description && horizontal && (
+				{data.description && (horizontal || forceDescription) && (
 					<p className={clsx('body-2 mb-16', styles.description)}>
 						{data.description}
 					</p>
