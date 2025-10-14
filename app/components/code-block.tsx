@@ -8,7 +8,6 @@ const processCodeString = (code: string) => {
 	const trimmedCode = code.trim()
 	const language = trimmedCode.match(/```(\w+)/)?.[1] || 'plaintext'
 	const parsedCode = trimmedCode.replace(/^```(\w+)?|```(\w+)?$/g, '').trim()
-	console.log({ parsedCode, language })
 
 	return { parsedCode, language }
 }
