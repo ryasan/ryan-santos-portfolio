@@ -1,4 +1,5 @@
 import RichText from '~/components/rich-text'
+import clsx from 'clsx';
 import styles from '~/styles/components/sections/experience-section.module.scss'
 import { ExperienceSection as ExperienceSectionType } from '~/graphql/__generated/sdk'
 import { useEffect, useState, useRef } from 'react'
@@ -76,25 +77,26 @@ export default function ExperienceSection({ data }: ExperienceSectionProps) {
 						)}
 
 						{/* Experience items */}
-						{data?.experienceCollection?.items?.map((item) => {
+						{data?.experienceCollection?.items?.map((item, index) => {
 							if (!item) return null
 
 							return (
-								<div className={styles.experienceItem} key={item.sys.id}>
+								<div className={clsx(styles.experienceItem, animateScroll && styles.extraPadding)} key={item.sys.id}>
 									<div className={styles.yearRange}>
 										{item.startDate && item.endDate && (
-											<div>
-												{extractYear(item.startDate)} -{' '}
-												{item.isCurrent ? 'now' : extractYear(item.endDate)}
+											<div className={styles.yearRangeText}>
+												{/* {extractYear(item.startDate)} -{' '}
+												{item.isCurrent ? 'now' : extractYear(item.endDate)} */}
+												{index < 10 ? '0' : ''}{index + 1}
 											</div>
 										)}
 									</div>
 									<div className={styles.info}>
 										{item.jobTitle && (
-											<div className="label mb-2">{item.jobTitle}</div>
+											<div className={clsx("label mb-8", styles.jobTitle)}>{item.jobTitle}</div>
 										)}
 										{item.company && (
-											<div className="h2 mb-16">{item.company}</div>
+											<div className={clsx("h2 mb-16", styles.company)}>{item.company}</div>
 										)}
 										{item.description?.json && (
 											<div className={styles.description}>

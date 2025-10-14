@@ -5,24 +5,20 @@
 }
 
 .box {
-	border-bottom: 1px solid var(--line-color);
+	// border-bottom: 1px solid var(--line-color);
 	padding: $space-40 0;
-}
-
-.experienceList {
-	display: block;
-	position: relative;
-	padding-left: 2rem; // Space for the progress bar
 }
 
 .progressBar {
 	position: absolute;
-	left: 0;
-	top: 0;
+	left: 30px;
+	top: 1px;
 	bottom: 0;
 	width: 2px;
-	background-color: rgb(128 128 128 / 20%); // Light background track
+
+	// background-color: rgb(128 128 128 / 20%); // Light background track
 	overflow: hidden;
+	z-index: -1;
 }
 
 .progressFill {
@@ -51,19 +47,32 @@
 		p {
 			line-height: 1;
 			margin-bottom: $space-16;
+			font-weight: 300;
 		}
+	}
+
+	.jobTitle {
+		font-weight: 300;
 	}
 
 	.company {
 		margin-bottom: $space-16;
+		line-height: 1;
+		font-weight: 300;
 	}
+}
+
+.experienceList {
+	display: block;
+	position: relative;
+	margin-top: $space-32;
+
+	// padding-left: 2rem; // Space for the progress bar
 }
 
 .experienceItem {
 	display: flex;
 	justify-content: space-between;
-	padding-top: $space-32;
-	padding-bottom: 128px;
 
 	// &:not(:last-child) {
 	// 	.info {
@@ -76,10 +85,30 @@
 			padding-bottom: 0;
 		}
 	}
+
+	&.extraPadding {
+		padding-bottom: 128px;
+	}
 }
 
-.yearRange {
+.yearRangeText {
+	display: inline-block;
 	white-space: nowrap;
+	background-color: var(--background-primary-color);
+	position: relative;
+	font-size: 50px;
+	font-weight: 300;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: -25px;
+		left: 0;
+		width: 100%;
+		height: calc(100% + 50px);
+		z-index: -1;
+		background-color: var(--background-primary-color);
+	}
 }
 
 @media (max-width: $tablet) {

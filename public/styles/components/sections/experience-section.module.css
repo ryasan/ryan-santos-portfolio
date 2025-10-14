@@ -3,24 +3,17 @@
 }
 
 .box {
-  border-bottom: 1px solid var(--line-color);
   padding: 40px 0;
-}
-
-.experienceList {
-  display: block;
-  position: relative;
-  padding-left: 2rem;
 }
 
 .progressBar {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 30px;
+  top: 1px;
   bottom: 0;
   width: 2px;
-  background-color: rgba(128, 128, 128, 0.2);
   overflow: hidden;
+  z-index: -1;
 }
 
 .progressFill {
@@ -48,23 +41,51 @@
 .info .title p {
   line-height: 1;
   margin-bottom: 16px;
+  font-weight: 300;
+}
+.info .jobTitle {
+  font-weight: 300;
 }
 .info .company {
   margin-bottom: 16px;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.experienceList {
+  display: block;
+  position: relative;
+  margin-top: 32px;
 }
 
 .experienceItem {
   display: flex;
   justify-content: space-between;
-  padding-top: 32px;
-  padding-bottom: 128px;
 }
 .experienceItem:last-child .info {
   padding-bottom: 0;
 }
+.experienceItem.extraPadding {
+  padding-bottom: 128px;
+}
 
-.yearRange {
+.yearRangeText {
+  display: inline-block;
   white-space: nowrap;
+  background-color: var(--background-primary-color);
+  position: relative;
+  font-size: 50px;
+  font-weight: 300;
+}
+.yearRangeText::before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 50px);
+  z-index: -1;
+  background-color: var(--background-primary-color);
 }
 
 @media (max-width: 768px) {
