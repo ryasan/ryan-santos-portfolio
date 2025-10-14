@@ -1,47 +1,16 @@
+import clsx from 'clsx';
+import styles from '~/styles/components/code-block.module.scss'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import {
-	oneLight,
-	twilight,
-} from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { oneLight, twilight, } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useTheme } from '~/hooks'
 
-const detectLanguage = (code: string) => {
+const processCodeString = (code: string) => {
 	const trimmedCode = code.trim()
+	const language = trimmedCode.match(/```(\w+)/)?.[1] || 'plaintext'
+	const parsedCode = trimmedCode.replace(/^```(\w+)?|```(\w+)?$/g, '').trim()
+	console.log({ parsedCode, language })
 
-	if (
-		/function\s+\w+\s*\(.*\)\s*:\s*\w+/.test(trimmedCode) ||
-		/:\s*(string|number|boolean)/.test(trimmedCode)
-	) {
-		return 'typescript'
-	}
-
-	if (
-		/import\s.+from\s['"].+['"]/.test(trimmedCode) ||
-		/export\s(default|const|function)/.test(trimmedCode)
-	) {
-		return 'javascript'
-	}
-
-	if (
-		/<[A-Za-z]+\s?[^>]*>/.test(trimmedCode) &&
-		/<\/[A-Za-z]+>/.test(trimmedCode)
-	) {
-		return 'html'
-	}
-
-	if (/^\s*\.(\w+)\s*\{[^}]+\}/m.test(trimmedCode)) {
-		return 'css'
-	}
-
-	if (/class\s+\w+/.test(trimmedCode) && /def\s+\w+/.test(trimmedCode)) {
-		return 'python'
-	}
-
-	if (/SELECT\s+.+\s+FROM/i.test(trimmedCode)) {
-		return 'sql'
-	}
-
-	return 'plaintext'
+	return { parsedCode, language }
 }
 
 type CodeBlockProps = {
@@ -49,13 +18,28 @@ type CodeBlockProps = {
 }
 
 export default function CodeBlock({ code }: CodeBlockProps) {
-	const language = detectLanguage(String(code))
+	const { parsedCode, language } = processCodeString(String(code))
 	const theme = useTheme()
 	const style = theme === 'dark' ? twilight : oneLight
 
+	// If it's a short string meant to be used inline, just return the string
+	if (language === 'plaintext') {
+		return (
+			<span >
+				<code className={clsx(styles.codespan, 'codespan')}>{String(parsedCode)}</code>
+			</span>
+		)
+	}
+
 	return (
-		<SyntaxHighlighter language={language} style={style}>
-			{String(code)}
-		</SyntaxHighlighter>
+		<div className={styles.codeBlock}>
+			<SyntaxHighlighter
+				language={language}
+				style={style}
+				className={styles.codeBlock}
+			>
+				{String(parsedCode)}
+			</SyntaxHighlighter>
+		</div>
 	)
 }

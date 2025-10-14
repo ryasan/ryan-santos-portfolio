@@ -1,0 +1,22 @@
+@import '../base/variables';
+
+.codeBlock {
+	pre {
+		margin: 0 0 $space-16 !important;
+
+	}
+
+	&:last-child {
+		pre {
+			margin-bottom: 0 !important;
+		}
+	}
+}
+
+.codespan {
+	padding: $space-2 $space-4;
+	background-color: var(--background-secondary-color);
+	color: var(--content-color);
+	border-radius: $space-2;
+	font-weight: 600;
+}

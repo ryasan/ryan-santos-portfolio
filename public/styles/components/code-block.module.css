@@ -1,0 +1,16 @@
+.codeBlock pre {
+  margin: 0 0 16px !important;
+}
+.codeBlock:last-child pre {
+  margin-bottom: 0 !important;
+}
+
+.codespan {
+  padding: 2px 4px;
+  background-color: var(--background-secondary-color);
+  color: var(--content-color);
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=code-block.module.css.map */
