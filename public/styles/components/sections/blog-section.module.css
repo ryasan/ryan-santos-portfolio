@@ -1,11 +1,18 @@
-.blogTagFilterSection {
+.blogSection {
   padding: 40px 0;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .tagList {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-bottom: 40px;
 }
 
 .tag {
@@ -35,4 +42,4 @@
   height: 12px;
 }
 
-/*# sourceMappingURL=blog-tag-filter-section.module.css.map */
+/*# sourceMappingURL=blog-section.module.css.map */

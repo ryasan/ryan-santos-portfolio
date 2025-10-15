@@ -1,13 +1,20 @@
 @import '../../base/variables';
 
-.blogTagFilterSection {
+.blogSection {
 	padding: $space-40 0;
+}
+
+.posts {
+	display: flex;
+	flex-direction: column;
+	gap: $space-40;
 }
 
 .tagList {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
+	margin-bottom: $space-40;
 }
 
 .tag {

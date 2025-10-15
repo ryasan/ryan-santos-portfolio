@@ -28,3 +28,4 @@
 * [ ] Move TS Contentful query files to GraphQL files
 * [ ] Figure out how to get error checking in the UI with vite-plugin-checker
 * [ ] Add GraphQL introspection and schema ast plugins to codegen
+* [ ] Add read time to blog posts

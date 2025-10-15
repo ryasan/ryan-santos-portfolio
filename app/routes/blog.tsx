@@ -1,5 +1,4 @@
-import BlogPostsSection from '~/components/sections/blog-posts-section'
-import BlogTagFilterSection from '~/components/sections/blog-tag-filter-section'
+import BlogSection from '~/components/sections/blog-section'
 import SectionRenderer from '~/components/section-renderer'
 import type { MetaFunction } from '@netlify/remix-runtime'
 import type { PagePageSectionsItem } from '~/graphql/__generated/sdk'
@@ -54,8 +53,7 @@ export default function BlogPage() {
 					return <SectionRenderer key={section.sys.id} section={section} />
 				},
 			)}
-			<BlogTagFilterSection data={{ title: 'Search blog by topics' }} />
-			<BlogPostsSection />
+			<BlogSection />
 		</BlogFilterProvider>
 	)
 }
