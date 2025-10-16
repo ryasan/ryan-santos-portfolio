@@ -17,9 +17,10 @@
   width: 100%;
 }
 .info .jobTitle {
+  color: var(--content-color);
+  font-weight: 500;
   line-height: 1;
   margin-bottom: 8px;
-  font-weight: 500;
 }
 .info .company {
   line-height: 1;
