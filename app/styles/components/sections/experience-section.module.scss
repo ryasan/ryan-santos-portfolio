@@ -18,17 +18,15 @@
 	padding-bottom: $space-32;
 	width: 100%;
 
-	.title {
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6,
-		p {
-			line-height: 1;
-			margin-bottom: $space-16;
-		}
+	.jobTitle {
+		line-height: 1;
+		margin-bottom: $space-8;
+		font-weight: 500;
+	}
+
+	.company {
+		line-height: 1;
+		margin-bottom: $space-16;
 	}
 }
 
@@ -52,6 +50,10 @@
 
 .yearRange {
 	white-space: nowrap;
+
+	div {
+		line-height: 1;
+	}
 }
 
 @media (max-width: $tablet) {

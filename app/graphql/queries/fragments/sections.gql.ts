@@ -43,6 +43,7 @@ export const EXPERIENCE_SECTION_FRAGMENT = gql`
 				endDate
 				isCurrent
 				company
+				jobTitle
 				title {
 					json
 				}

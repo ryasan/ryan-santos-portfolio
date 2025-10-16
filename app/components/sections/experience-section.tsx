@@ -1,4 +1,5 @@
 import RichText from '~/components/rich-text'
+import clsx from 'clsx'
 import styles from '~/styles/components/sections/experience-section.module.scss'
 import { ExperienceSection as ExperienceSectionType } from '~/graphql/__generated/sdk'
 
@@ -25,17 +26,22 @@ export default function ExperienceSection({ data }: ExperienceSectionProps) {
 								<div className={styles.experienceItem} key={item.sys.id}>
 									<div className={styles.yearRange}>
 										{item.startDate && item.endDate && (
-											<div>
+											<div className="body-2">
 												{extractYear(item.startDate)} -{' '}
 												{item.isCurrent ? 'now' : extractYear(item.endDate)}
 											</div>
 										)}
 									</div>
 									<div className={styles.info}>
-										{item.title?.json && (
-											<div className={styles.title}>
-												<RichText data={item.title.json} />
+										{item.jobTitle && (
+											<div className={clsx(styles.jobTitle, 'body-2')}>
+												{item.jobTitle}
 											</div>
+										)}
+										{item.company && (
+											<h3 className={clsx(styles.company, 'h2')}>
+												{item.company}
+											</h3>
 										)}
 										{item.description?.json && (
 											<div className={styles.description}>

@@ -16,13 +16,12 @@
   padding-bottom: 32px;
   width: 100%;
 }
-.info .title h1,
-.info .title h2,
-.info .title h3,
-.info .title h4,
-.info .title h5,
-.info .title h6,
-.info .title p {
+.info .jobTitle {
+  line-height: 1;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.info .company {
   line-height: 1;
   margin-bottom: 16px;
 }
@@ -41,6 +40,9 @@
 
 .yearRange {
   white-space: nowrap;
+}
+.yearRange div {
+  line-height: 1;
 }
 
 @media (max-width: 768px) {
