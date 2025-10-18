@@ -1,3 +1,4 @@
+import AnimatePresence from '~/components/animate-presence'
 import Avatar from '~/components/avatar'
 import Link from '~/components/link'
 import RichText from '~/components/rich-text'
@@ -34,7 +35,9 @@ export default function HeroSection({ data }: HeroSectionProps) {
 							</Link>
 						)}
 						{data?.description?.json && (
-							<RichText data={data?.description.json} />
+							<AnimatePresence enter="fade" exit={null} speed="slow">
+								<RichText data={data?.description.json} />
+							</AnimatePresence>
 						)}
 					</div>
 				</div>
