@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import styles from '~/styles/components/article-card.module.scss'
 import { Link as RemixLink, useNavigate } from '@remix-run/react'
 import { isExternalLink } from '~/utils'
+import { useState } from 'react'
 
 export type NormalizedArticleCard = {
 	type?: string | null
@@ -18,6 +19,7 @@ type ArticleCardProps = {
 	isBig?: boolean
 	horizontal?: boolean
 	forceDescription?: boolean
+	disableImageAnimation?: boolean
 }
 
 export default function ArticleCard({
@@ -25,11 +27,13 @@ export default function ArticleCard({
 	isBig,
 	horizontal,
 	forceDescription,
+	disableImageAnimation = false,
 }: ArticleCardProps) {
+	const navigate = useNavigate()
+	const [isImageLoaded, setIsImageLoaded] = useState(false)
+
 	const Component = data.link ? RemixLink : 'div'
 	const isExternal = isExternalLink(data.link || '')
-
-	const navigate = useNavigate()
 
 	const handleTagClick = (tag: string) => {
 		if (!tag || !data.type) return
@@ -47,6 +51,9 @@ export default function ArticleCard({
 				styles.articleCard,
 				isBig && styles.bigCard,
 				horizontal && styles.horizontal,
+				!disableImageAnimation && isImageLoaded
+					? styles.loaded
+					: styles.loading,
 			)}
 		>
 			<div className={styles.imageWrapper}>
@@ -55,6 +62,16 @@ export default function ArticleCard({
 						className={styles.articleImage}
 						src={data.image}
 						alt={data.title || ''}
+						onLoad={() => {
+							console.log('image loaded via onLoad')
+							setIsImageLoaded(true)
+						}}
+						ref={(img) => {
+							if (img?.complete) {
+								console.log('image loaded via ref')
+								setIsImageLoaded(true)
+							}
+						}}
 					/>
 				)}
 			</div>

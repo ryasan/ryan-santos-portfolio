@@ -59,27 +59,27 @@
 }
 
 .fade-in {
-	animation: fade-in ease-in-out;
+	animation: fade-in ease-in-out forwards;
 }
 
 .fade-out {
-	animation: fade-out ease-in-out;
+	animation: fade-out ease-in-out forwards;
 }
 
 .slide-in {
-	animation: slide-in ease-in-out;
+	animation: slide-in ease-in-out forwards;
 }
 
 .slide-out {
-	animation: slide-out ease-in-out;
+	animation: slide-out ease-in-out forwards;
 }
 
 .zoom-in {
-	animation: zoom-in ease-in-out;
+	animation: zoom-in ease-in-out forwards;
 }
 
 .zoom-out {
-	animation: zoom-out ease-in-out;
+	animation: zoom-out ease-in-out forwards;
 }
 
 .duration-fast {

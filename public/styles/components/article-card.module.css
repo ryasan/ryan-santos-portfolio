@@ -1,13 +1,20 @@
 .articleImage {
   width: 100%;
   height: 100%;
-  transition: 0.2s ease;
+  transition: transform 0.5s ease;
   object-fit: cover;
 }
 
 .articleCard {
   width: 100%;
   color: var(--content-color);
+  transition: opacity 0.75s ease-in-out;
+}
+.articleCard.loading {
+  opacity: 0;
+}
+.articleCard.loaded {
+  opacity: 1;
 }
 .articleCard:hover .articleImage {
   transform: scale(1.1);

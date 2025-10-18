@@ -1,3 +1,4 @@
+import AnimatePresence from '~/components/animate-presence'
 import ArticleCard from '~/components/article-card'
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/blog-section.module.scss'
@@ -23,7 +24,7 @@ export default function BlogSection() {
 			<div className="container">
 				<h2 className="h5 mb-12">Search blog by topics</h2>
 
-				<div className={styles.tagList}>
+				<AnimatePresence  className={styles.tagList} enter="fade" exit={null} speed="slow">
 					{tags.map((tag) => {
 						if (!tag.name) return null
 						return (
@@ -49,7 +50,7 @@ export default function BlogSection() {
 							<span className="sr-only">Clear all tags</span>
 						</button>
 					)}
-				</div>
+				</AnimatePresence>
 
 				<div className={styles.posts}>
 					{filteredPosts.map(normalizeSlide).map((post) => {
