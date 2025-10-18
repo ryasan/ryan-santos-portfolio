@@ -63,12 +63,10 @@ export default function ArticleCard({
 						src={data.image}
 						alt={data.title || ''}
 						onLoad={() => {
-							console.log('image loaded via onLoad')
 							setIsImageLoaded(true)
 						}}
 						ref={(img) => {
 							if (img?.complete) {
-								console.log('image loaded via ref')
 								setIsImageLoaded(true)
 							}
 						}}

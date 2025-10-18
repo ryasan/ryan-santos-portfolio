@@ -24,7 +24,7 @@ export default function BlogSection() {
 			<div className="container">
 				<h2 className="h5 mb-12">Search blog by topics</h2>
 
-				<AnimatePresence  className={styles.tagList} enter="fade" exit={null} speed="slow">
+				<AnimatePresence  className={styles.tagList} enter="fade" exit={null}>
 					{tags.map((tag) => {
 						if (!tag.name) return null
 						return (

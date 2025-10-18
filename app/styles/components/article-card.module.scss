@@ -4,14 +4,14 @@
 .articleImage {
 	width: 100%;
 	height: 100%;
-	transition: transform 0.5s ease;
+	transition: transform 0.2s ease;
 	object-fit: cover;
 }
 
 .articleCard {
 	width: 100%;
 	color: var(--content-color);
-	transition: opacity 0.75s ease-in-out;
+	transition: opacity 0.2s ease-in-out;
 
 	&.loading {
 		opacity: 0;
@@ -33,6 +33,10 @@
 	height: 166px;
 	border-radius: $space-8;
 	margin-bottom: $space-20;
+
+	[data-theme='light'] & {
+		border: 1px solid var(--line-color);
+	}
 
 	@media (max-width: $tablet) {
 		height: 228px;
