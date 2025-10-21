@@ -14,7 +14,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
 			<div className="container">
 				<div className={styles.box}>
 					<Avatar
-						src={data?.avatar?.url || '/images/github-avatar.png'}
+						src={data?.avatar?.url}
 						alt={data?.avatar?.title || ''}
 					/>
 					<div className={styles.info}>

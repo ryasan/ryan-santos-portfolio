@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import styles from '~/styles/components/avatar.module.scss'
 
 type AvatarProps = {
-	src?: string
+	src?: string | null
 	alt?: string
 	className?: string
 	size?: 'small' | 'medium'

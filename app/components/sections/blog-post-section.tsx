@@ -34,14 +34,12 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 					{data?.title && <h1 className="mb-32">{data?.title}</h1>}
 
 					<div className={styles.author}>
-						{data?.author?.avatar?.url && (
-							<Avatar
-								className={styles.avatar}
-								src={data?.author?.avatar?.url}
-								alt={name}
-								size="small"
-							/>
-						)}
+						<Avatar
+							className={styles.avatar}
+							src={data?.author?.avatar?.url}
+							alt={name}
+							size="small"
+						/>
 						{(name || data?.publishDate) && (
 							<div className={styles.authorInfo}>
 								{name && <h5 className="h5">{name}</h5>}
