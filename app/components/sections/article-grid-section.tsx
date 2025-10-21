@@ -70,6 +70,7 @@ export default function ArticleGridSection({ data }: ArticleGridSectionProps) {
 									data={article}
 									horizontal={view === 'list'}
 									isBig={false}
+									forceDescription={isMatching}
 								/>
 							)
 						})}

@@ -13,7 +13,7 @@ export default function CarouselSection({ data }: CarouselSectionProps) {
 		.map(normalizeSlide)
 		.map((slide, index) => {
 			if (!slide) return null
-			return <ArticleCard key={slide?.id || index} data={slide} isBig />
+			return <ArticleCard key={slide?.id || index} data={slide} isBig forceDescription />
 		})
 
 	return (

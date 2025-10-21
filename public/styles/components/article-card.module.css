@@ -26,9 +26,6 @@
   border-radius: 8px;
   margin-bottom: 20px;
 }
-[data-theme=light] .imageWrapper {
-  border: 1px solid var(--line-color);
-}
 @media (max-width: 768px) {
   .imageWrapper {
     height: 228px;
