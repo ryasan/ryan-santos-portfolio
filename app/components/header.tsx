@@ -14,26 +14,10 @@ export default function Header({ data }: HeaderProps) {
 		<header className={styles.header}>
 			<RemixLink className={styles.logo} to="/" aria-label="Home page">
 				<div data-hide-on-theme={DARK_THEME}>
-					{/* {data?.logoImageLightMode?.url && (
-						<img
-							src={data?.logoImageLightMode?.url}
-							alt={
-								data?.logoImageLightMode?.title || 'Ryan Santos portfolio logo'
-							}
-						/>
-					)} */}
 					<span className={clsx('link', styles.logoText1)}>Ryan</span>
 					<span className={clsx('link', styles.logoText2)}>Santos</span>
 				</div>
 				<div data-hide-on-theme={LIGHT_THEME}>
-					{/* {data?.logoImageDarkMode?.url && (
-						<img
-							src={data?.logoImageDarkMode?.url}
-							alt={
-								data?.logoImageDarkMode?.title || 'Ryan Santos portfolio logo'
-							}
-						/>
-					)} */}
 					<span className={clsx('link', styles.logoText1)}>Ryan</span>
 					<span className={clsx('link', styles.logoText2)}>Santos</span>
 				</div>
