@@ -34,10 +34,6 @@
 	border-radius: $space-8;
 	margin-bottom: $space-20;
 
-	[data-theme='light'] & {
-		border: 1px solid var(--line-color);
-	}
-
 	@media (max-width: $tablet) {
 		height: 228px;
 	}
