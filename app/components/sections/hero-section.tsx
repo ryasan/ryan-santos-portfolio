@@ -13,11 +13,10 @@ export default function HeroSection({ data }: HeroSectionProps) {
 		<section className={styles.heroSection}>
 			<div className="container">
 				<div className={styles.box}>
-					<div>
-						{data?.avatar?.url && (
-							<Avatar src={data?.avatar?.url} alt={data?.avatar?.title || ''} />
-						)}
-					</div>
+					<Avatar
+						src={data?.avatar?.url || '/images/github-avatar.png'}
+						alt={data?.avatar?.title || ''}
+					/>
 					<div className={styles.info}>
 						{data?.title && data?.isTopOfPage && (
 							<h1 className="mb-8">{data?.title}</h1>
