@@ -4,6 +4,8 @@
 	--content-color-2: #111316;
 	--background-primary-color: #fff;
 	--background-secondary-color: #f4f4f4;
+	--background-primary-color-rgb: 255, 255, 255;
+	--background-secondary-color-rgb: 244, 244, 244;
 	--line-color: #d4d4d4;
 	--blue-color: #e5edff;
 	--green-color: #d0fbd0;
@@ -16,6 +18,8 @@
 	--content-color-2: #d4d4d4;
 	--background-primary-color: #111316;
 	--background-secondary-color: #272727;
+	--background-primary-color-rgb: 17, 19, 22;
+	--background-secondary-color-rgb: 39, 39, 39;
 	--line-color: #424345;
 	--blue-color: #4c6bb9;
 	--green-color: #4cb84e;
@@ -30,7 +34,7 @@
 
 html {
 	box-sizing: border-box;
-	scrollbar-gutter: stable; // Reserve space for scrollbar
+	// scrollbar-gutter: stable; // Reserve space for scrollbar
 }
 
 *,
@@ -53,106 +57,147 @@ body {
 // Typography
 h1,
 .h1 {
-	font-size: 36px;
-	line-height: 150%;
-	letter-spacing: 0;
+	font-size: 150px;
+	line-height: 80%;
+	letter-spacing: -.04em;
 	font-weight: 600;
 	color: var(--content-color);
+	text-transform: uppercase;
+
+	@media (max-width: $desktop) {
+		font-size: 108px;
+	}
 
 	@media (max-width: $tablet) {
-		font-size: 28px;
+		font-size: 52px;
 	}
 }
 
 h2,
 .h2 {
-	font-size: 28px;
-	line-height: 150%;
-	letter-spacing: 0;
+	font-size: 52px;
+	line-height: 80%;
+	letter-spacing: -.04em;
 	font-weight: 600;
+
+	@media (max-width: $desktop) {
+		font-size: 48px;
+	}
+
+	@media (max-width: $tablet) {
+		font-size: 36px;
+	}
+}
+
+h3,
+.h3 {
+	font-size: 36px;
+	line-height: 150%;
+	letter-spacing: -.04em;
+	font-weight: 600;
+
+	@media (max-width: $desktop) {
+		font-size: 32px;
+	}
 
 	@media (max-width: $tablet) {
 		font-size: 24px;
 	}
 }
 
-h3,
-.h3 {
-	font-size: 22px;
-	line-height: 150%;
-	letter-spacing: 0;
-	font-weight: 600;
-}
-
 h4,
 .h4 {
-	font-size: 20px;
+	font-size: 32px;
 	line-height: 150%;
-	letter-spacing: 0;
+	letter-spacing: -.04em;
 	font-weight: 600;
+
+	@media (max-width: $desktop) {
+		font-size: 28px;
+	}
+
+	@media (max-width: $tablet) {
+		font-size: 24px;
+	}
 }
 
 h5,
 .h5 {
 	font-size: 16px;
-	line-height: 150%;
-	letter-spacing: 0;
+	line-height: 80%;
+	letter-spacing: -.04em;
 	font-weight: 600;
+
+	@media (max-width: $desktop) {
+		font-size: 24px;
+	}
+
+	@media (max-width: $tablet) {
+		font-size: 20px;
+	}
 }
 
 h6,
 .h6 {
 	font-size: 16px;
-	line-height: 150%;
-	letter-spacing: 0;
+	line-height: 80%;
+	letter-spacing: -.04em;
 	font-weight: 600;
+
+	@media (max-width: $desktop) {
+		font-size: 16px;
+	}
+
+	@media (max-width: $tablet) {
+		font-size: 14px;
+	}
 }
 
 p,
 .body {
-	font-size: 16px;
+	font-size: 20px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 170%;
+	line-height: 100%;
 	color: var(--content-color-2);
 }
 
 .body-2 {
-	font-size: 14px;
+	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 170%;
+	line-height: 100%;
 	color: var(--content-color-2);
 }
 
 .label {
-	font-size: 14px;
+	font-size: 16px;
 	font-style: normal;
 	font-weight: 600;
-	line-height: 120%;
+	line-height: 100%;
 }
 
 .link {
-	font-size: 14px;
+	font-size: 20px;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 170%;
+	line-height: 100%;
 	color: var(--content-color);
 }
 
 .badge {
-	font-size: 12px;
+	font-size: 16px;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 170%;
+	line-height: 100%;
 }
 
 code,
 .code {
-	font-size: 14px;
+	font-size: 16px;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 120%;
+	line-height: 100%;
 }
 
 // Colors

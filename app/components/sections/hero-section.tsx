@@ -1,8 +1,6 @@
-import Avatar from '~/components/avatar'
-import Link from '~/components/link'
-import RichText from '~/components/rich-text'
 import styles from '~/styles/components/sections/hero-section.module.scss'
 import { HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
+import clsx from 'clsx'
 
 type HeroSectionProps = {
 	data?: HeroSectionType
@@ -13,28 +11,10 @@ export default function HeroSection({ data }: HeroSectionProps) {
 		<section className={styles.heroSection}>
 			<div className="container">
 				<div className={styles.box}>
-					<Avatar
-						src={data?.avatar?.url}
-						alt={data?.avatar?.title || ''}
-					/>
-					<div className={styles.info}>
-						{data?.title && data?.isTopOfPage && (
-							<h1 className="mb-8">{data?.title}</h1>
-						)}
-						{data?.title && !data?.isTopOfPage && (
-							<h2 className="h1 mb-8">{data?.title}</h2>
-						)}
-						{data?.subtitle?.json && (
-							<RichText data={data?.subtitle.json} className="mb-8" />
-						)}
-						{data?.link?.url && data?.link?.label && (
-							<Link className={styles.link} to={data?.link.url || ''}>
-								{data?.link.label}
-							</Link>
-						)}
-						{data?.description?.json && (
-							<RichText data={data?.description.json} />
-						)}
+					<h1 className={clsx(styles.title, 'mb-20')}>Frontend Engineer</h1>
+					<div className={styles.subtitle}>
+						<div>Currently building <br /> things @ Envoy</div>
+						<div>(2022 - Present)</div>
 					</div>
 				</div>
 			</div>

@@ -1,17 +1,9 @@
 // Container styles
 .container {
-	padding-right: 15px;
-	padding-left: 15px;
-	margin-right: auto;
-	margin-left: auto;
-
-	@media (min-width: $tablet) {
-		width: 750px;
-	}
-
-	@media (min-width: $laptop) {
-		width: 810px;
-	}
+	margin: 0 auto;
+	max-width: 1440px;
+	padding: 0 $space-24;
+	width: 100%;
 }
 
 // Spacing styles
@@ -22,6 +14,7 @@ $spacing-values: (
 	12: $space-12,
 	14: $space-14,
 	16: $space-16,
+	20: $space-20,
 	24: $space-24,
 	32: $space-32,
 	40: $space-40,

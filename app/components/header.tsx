@@ -12,35 +12,41 @@ type HeaderProps = {
 export default function Header({ data }: HeaderProps) {
 	return (
 		<header className={styles.header}>
-			<RemixLink className={styles.logo} to="/" aria-label="Home page">
-				<div data-hide-on-theme={DARK_THEME}>
-					<span className={clsx('link', styles.logoText1)}>Ryan</span>
-					<span className={clsx('link', styles.logoText2)}>Santos</span>
-				</div>
-				<div data-hide-on-theme={LIGHT_THEME}>
-					<span className={clsx('link', styles.logoText1)}>Ryan</span>
-					<span className={clsx('link', styles.logoText2)}>Santos</span>
-				</div>
-			</RemixLink>
-			<div className={styles.navigationBox}>
-				<nav className={styles.navigation}>
-					{data?.menuItemsCollection?.items?.map((item) => {
-						if (!item) return null
+			<div className="container">
+				<div className={styles.container}>
+					<RemixLink className={styles.logo} to="/" aria-label="Home page">
+						<div data-hide-on-theme={DARK_THEME}>
+							<span className={clsx('link', styles.logoText1)}>Ryan</span>
+							&nbsp;
+							<span className={clsx('link', styles.logoText2)}>Santos</span>
+						</div>
+						<div data-hide-on-theme={LIGHT_THEME}>
+							<span className={clsx('link', styles.logoText1)}>Ryan</span>
+							&nbsp;
+							<span className={clsx('link', styles.logoText2)}>Santos</span>
+						</div>
+					</RemixLink>
+					<div className={styles.navigationBox}>
+						<nav className={styles.navigation}>
+							{data?.menuItemsCollection?.items?.map((item) => {
+								if (!item) return null
 
-						return (
-							<NavLink
-								key={item.label}
-								to={item.internalPage?.slug || item.url || ''}
-								className={({ isActive }) =>
-									clsx('link', styles.link, isActive && styles.activeLink)
-								}
-							>
-								{item.label}
-							</NavLink>
-						)
-					})}
-				</nav>
-				<ThemeToggle />
+								return (
+									<NavLink
+										key={item.label}
+										to={item.internalPage?.slug || item.url || ''}
+										className={({ isActive }) =>
+											clsx('link', styles.link, isActive && styles.activeLink)
+										}
+									>
+										{item.label}
+									</NavLink>
+								)
+							})}
+						</nav>
+						{/* <ThemeToggle /> */}
+					</div>
+				</div>
 			</div>
 		</header>
 	)

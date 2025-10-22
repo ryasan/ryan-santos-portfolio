@@ -3,35 +3,30 @@
 
 .heroSection {
 	display: block;
+	padding: $space-120 0;
 }
 
 .box {
-	border-bottom: 1px solid var(--line-color);
+	margin: 0 auto;
+	max-width: 1000px;
+}
+
+.title {
+	text-align: center;
+}
+
+.subtitle {
+	align-items: center;
 	display: flex;
+	gap: $space-10;
 	justify-content: space-between;
-	padding-bottom: $space-40;
-}
+	margin: 0 auto;
+	max-width: 500px;
+	text-transform: uppercase;
+	font-weight: 600;
 
-.info {
-	width: 100%;
-	max-width: 600px;
-
-	p {
-		font-size: 14px !important;
-	}
-}
-
-.link {
-	margin-bottom: $space-24;
-}
-
-@media (max-width: $tablet) {
-	.box {
-			flex-direction: column;
-			gap: $space-16;
-	}
-
-	.link {
-			margin-bottom: $space-32;
+	@media (max-width: $tablet) {
+		flex-direction: column;
+		text-align: center;
 	}
 }

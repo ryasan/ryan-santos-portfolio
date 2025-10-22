@@ -1,3 +1,4 @@
+import HeroSection from '~/components/sections/hero-section'
 import SectionRenderer from '~/components/section-renderer'
 import type { MetaFunction } from '@netlify/remix-runtime'
 import { PagePageSectionsItem } from '~/graphql/__generated/sdk'
@@ -45,6 +46,7 @@ export default function Index() {
 	return (
 		<>
 			{/* Hero Section */}
+			<HeroSection />
 			{/* Text Reveal Section */}
 			{/* Featured Projects Section */}
 			{/* Experience Section */}
