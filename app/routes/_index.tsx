@@ -44,10 +44,12 @@ export default function Index() {
 
 	return (
 		<>
-			{page.pageSectionsCollection?.items?.map((section: PagePageSectionsItem) => {
-				if (!section?.sys?.id) return null
-				return <SectionRenderer key={section.sys.id} section={section} />
-			})}
+			{/* Hero Section */}
+			{/* Text Reveal Section */}
+			{/* Featured Projects Section */}
+			{/* Experience Section */}
+			{/* Contact Section */}
+			{/* Footer Section */}
 		</>
 	)
 }
