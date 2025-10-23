@@ -13,12 +13,12 @@ import {
 import ClientHintScript, { getHints } from '~/components/client-hint-script'
 import GlobalLayout from '~/components/global-layout'
 import mainStyles from '~/styles/main.css?url'
-import { client } from '~/services/contentful.server'
+// import { client } from '~/services/contentful.server'
 import { getTheme } from '~/services/theme.server'
 import { type Theme } from '~/types'
 import {
 	isRouteErrorResponse,
-	useLoaderData,
+	// useLoaderData,
 	useRouteError,
 } from '@remix-run/react'
 import { useTheme } from '~/hooks'
@@ -28,8 +28,8 @@ export const links: LinksFunction = () => {
 }
 
 export async function loader({ request }: LoaderFunctionArgs) {
-	const headerData = await client.getGlobalHeader()
-	const footerData = await client.getGlobalFooter()
+	// const headerData = await client.getGlobalHeader()
+	// const footerData = await client.getGlobalFooter()
 
 	const requestInfo = {
 		hints: getHints(request),
@@ -38,7 +38,8 @@ export async function loader({ request }: LoaderFunctionArgs) {
 		},
 	}
 
-	return json({ headerData, footerData, requestInfo })
+	// return json({ headerData, footerData, requestInfo })
+	return json({ requestInfo })
 }
 
 type DocumentProps = {
@@ -47,7 +48,7 @@ type DocumentProps = {
 }
 
 function Document({ children, theme = 'dark' }: DocumentProps) {
-	const data = useLoaderData<typeof loader>()
+	// const data = useLoaderData<typeof loader>()
 
 	return (
 		<html lang="en" data-theme={theme}>
@@ -60,7 +61,8 @@ function Document({ children, theme = 'dark' }: DocumentProps) {
 			</head>
 
 			<body>
-				<GlobalLayout data={data}>{children}</GlobalLayout>
+				{/* <GlobalLayout data={data}>{children}</GlobalLayout> */}
+				<GlobalLayout>{children}</GlobalLayout>
 				<ScrollRestoration />
 				<Scripts />
 			</body>
