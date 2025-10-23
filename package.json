@@ -25,6 +25,7 @@
     "@netlify/edge-functions": "^2.3.1",
     "@netlify/remix-edge-adapter": "^3.2.1",
     "@netlify/remix-runtime": "^2.2.0",
+    "@react-three/fiber": "^8.15.19",
     "@remix-run/node": "^2.12.0",
     "@remix-run/react": "^2.12.0",
     "@remix-run/serve": "^2.12.0",
@@ -38,10 +39,12 @@
     "lodash": "^4.17.21",
     "mouse-follower": "^1.1.2",
     "plaiceholder": "^3.0.0",
+    "popmotion": "^11.0.5",
     "react-locomotive-scroll": "^0.2.2",
     "react-syntax-highlighter": "^15.6.6",
     "sharp": "^0.33.5",
     "swiper": "^11.2.4",
+    "three": "^0.180.0",
     "zod": "^4.1.11"
   },
   "devDependencies": {
@@ -56,6 +59,7 @@
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "@types/three": "^0.180.0",
     "@typescript-eslint/eslint-plugin": "^8.24.0",
     "concurrently": "^9.0.1",
     "dotenv": "^17.2.3",

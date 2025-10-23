@@ -1,0 +1,19 @@
+@import '../base/variables';
+
+.textBlock {
+	display: block;
+	margin: $space-120 auto;
+	max-width: 892px;
+
+	&.left {
+		text-align: left;
+	}
+
+	&.center {
+		text-align: center;
+	}
+
+	&.right {
+		text-align: right;
+	}
+}

@@ -12,7 +12,19 @@
 }
 
 .title {
+	margin-bottom: $space-20;
+	overflow: hidden;
 	text-align: center;
+}
+
+.wordMask {
+	display: inline-block;
+	overflow: hidden;
+}
+
+.word {
+	display: inline-block;
+	will-change: transform;
 }
 
 .subtitle {

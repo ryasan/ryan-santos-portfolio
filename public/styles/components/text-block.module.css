@@ -1,0 +1,16 @@
+.textBlock {
+  display: block;
+  margin: 120px auto;
+  max-width: 892px;
+}
+.textBlock.left {
+  text-align: left;
+}
+.textBlock.center {
+  text-align: center;
+}
+.textBlock.right {
+  text-align: right;
+}
+
+/*# sourceMappingURL=text-block.module.css.map */

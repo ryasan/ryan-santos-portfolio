@@ -1,10 +1,12 @@
 import HeroSection from '~/components/sections/hero-section'
 import SectionRenderer from '~/components/section-renderer'
+import TextRevealSection from '~/components/sections/text-reveal-section'
 import type { MetaFunction } from '@netlify/remix-runtime'
 import { PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
 import { useLoaderData } from '@remix-run/react'
+import SpaceSceneSection from '~/components/sections/space-scene-section';
 
 export async function loader() {
 	const page = await client.getPageBySlug('home')
@@ -47,7 +49,10 @@ export default function Index() {
 		<>
 			{/* Hero Section */}
 			<HeroSection />
+			{/* Space Scene Section */}
+			{/* <SpaceSceneSection /> */}
 			{/* Text Reveal Section */}
+			<TextRevealSection />
 			{/* Featured Projects Section */}
 			{/* Experience Section */}
 			{/* Contact Section */}

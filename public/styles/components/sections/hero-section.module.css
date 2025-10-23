@@ -9,7 +9,19 @@
 }
 
 .title {
+  margin-bottom: 20px;
+  overflow: hidden;
   text-align: center;
+}
+
+.wordMask {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.word {
+  display: inline-block;
+  will-change: transform;
 }
 
 .subtitle {
