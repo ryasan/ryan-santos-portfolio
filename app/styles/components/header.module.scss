@@ -5,6 +5,11 @@
 	padding: $space-24 $space-40;
 	backdrop-filter: blur(15px);
 	background-color: rgba(var(--background-primary-color-rgb), 0.8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: $z-index-header;
 }
 
 .container {
