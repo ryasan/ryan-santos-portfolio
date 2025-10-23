@@ -35,9 +35,9 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 		blocks.forEach((block, index) => {
 			ScrollTrigger.create({
 				trigger: block,
-				start: 'center center',
+				start: 'bottom bottom',
 				end: 'center center',
-				onEnter: () => {
+				onEnter: (args: any) => {
 					// Fade in current block
 					gsap.to(block, { opacity: 1, duration: 0.6, ease: 'power2.out' })
 					// Fade out all other blocks
@@ -51,7 +51,7 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 						}
 					})
 				},
-				onEnterBack: () => {
+				onEnterBack: (args: any) => {
 					// Fade in current block when scrolling up
 					gsap.to(block, { opacity: 1, duration: 0.6, ease: 'power2.out' })
 					// Fade out all other blocks
