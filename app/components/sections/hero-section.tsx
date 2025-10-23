@@ -1,69 +1,110 @@
 import styles from '~/styles/components/sections/hero-section.module.scss'
 import { HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
-import { motion } from 'framer-motion'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap } from 'gsap'
+import { useEffect, useRef } from 'react'
+
+const mockTitleWords = ['Creative', 'Frontend', 'Engineer']
+
+gsap.registerPlugin(ScrollTrigger)
 
 type HeroSectionProps = {
 	data?: HeroSectionType
 }
 
 export default function HeroSection({ data }: HeroSectionProps) {
-	const words = ['Creative', 'Frontend', 'Engineer']
+	const sectionRef = useRef<HTMLElement>(null)
+	const boxRef = useRef<HTMLDivElement>(null)
+	const titleWordRefs = useRef<(HTMLSpanElement | null)[]>([])
+	const subtitleRef = useRef<HTMLDivElement>(null)
+
+	useEffect(() => {
+		const section = sectionRef.current
+		const box = boxRef.current
+		const titleWords = titleWordRefs.current
+		const subtitle = subtitleRef.current
+
+		if (!section || !box || !subtitle || !titleWords.length) return
+
+		const animationTimeline = gsap.timeline()
+
+		// Animate title words
+		titleWords.forEach((word, index) => {
+			animationTimeline.to(
+				word,
+				{
+					y: 0,
+					duration: 0.75,
+					ease: 'power2.inOut',
+				},
+				index * 0.075,
+			)
+		})
+
+		// Animate subtitle after title
+		animationTimeline.to(
+			subtitle,
+			{
+				opacity: 1,
+				duration: 1,
+				ease: 'power2.out',
+			},
+			titleWords.length * 0.25,
+		)
+
+		// Scroll-driven shrinking animation
+		ScrollTrigger.create({
+			trigger: section,
+			start: 'top top',
+			end: '+=500px',
+			scrub: 1,
+			onUpdate: (self) => {
+				const progress = self.progress
+				const scale = 1 - progress * 0.3
+				const opacity = 1 - progress * 1
+
+				gsap.to(box, {
+					scale,
+					opacity,
+					duration: 0.1,
+					ease: 'none',
+				})
+			},
+		})
+
+		// Cleanup
+		return () => {
+			ScrollTrigger.getAll().forEach((trigger) => {
+				if (trigger.trigger === section) {
+					trigger.kill()
+				}
+			})
+		}
+	}, [])
 
 	return (
-		<section className={styles.heroSection}>
+		<section className={styles.heroSection} ref={sectionRef}>
 			<div className="container">
-				<div className={styles.box}>
+				<div className={styles.box} ref={boxRef}>
 					<h1 className={styles.title}>
-						{words.map((word, index) => (
+						{mockTitleWords.map((word, index) => (
 							<span className={styles.wordMask} key={index}>
-								<motion.span
+								<span
 									className={styles.word}
-									initial="hidden"
-									animate="visible"
-									variants={{
-										hidden: {
-											transform:
-												'translateY(calc(100% + 10px)) perspective(1200px)',
-										},
-										visible: {
-											transform: 'translateY(0) perspective(1200px)',
-											transition: {
-												duration: 0.75,
-												ease: [0.6, 0.1, 0.25, 1],
-												delay: index * 0.075,
-											},
-										},
-									}}
-									key={index}
+									ref={(el) => (titleWordRefs.current[index] = el)}
 								>
 									{word}
-								</motion.span>
-								{index < words.length - 1 && <br />}
+								</span>
+								{index < mockTitleWords.length - 1 && <br />}
 							</span>
 						))}
 					</h1>
-					<motion.div
-						className={styles.subtitle}
-						initial="hidden"
-						animate="visible"
-						variants={{
-							hidden: {
-								opacity: 0,
-							},
-							visible: {
-								opacity: 1,
-								transition: {
-									duration: 1,
-									delay: 0.75,
-								},
-							},
-						}}
-					>
+					<div className={styles.subtitle} ref={subtitleRef}>
 						<div>
 							Currently building <br /> things @ Envoy
 						</div>
 						<div>(2022 - Present)</div>
-					</motion.div>
+					</div>
 				</div>
 			</div>
 		</section>

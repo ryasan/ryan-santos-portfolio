@@ -9,7 +9,7 @@ import { useTransform, useScroll, useTime } from 'framer-motion'
 
 const Icosahedron = () => {
 	const theme = useTheme()
-	const color = theme === 'light' ? '#111111' : '#ffffff'
+	const color = theme === 'light' ? '#111316' : '#ffffff'
 
 	return (
 		<mesh rotation-x={0.35}>
@@ -22,7 +22,7 @@ const Icosahedron = () => {
 const Star = ({ p }: { p: number }) => {
 	const ref = useRef<THREE.Mesh>(null)
 	const theme = useTheme()
-	const color = theme === 'light' ? '#111111' : '#ffffff'
+	const color = theme === 'light' ? '#111316' : '#ffffff'
 
 	useLayoutEffect(() => {
 		const distance = mix(2, 3.5, Math.random())

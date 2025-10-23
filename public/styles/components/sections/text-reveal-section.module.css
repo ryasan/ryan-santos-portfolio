@@ -3,4 +3,16 @@
   padding: 120px 0;
 }
 
+.textBlocks {
+  position: relative;
+}
+
+.textBlockWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  will-change: opacity;
+}
+
 /*# sourceMappingURL=text-reveal-section.module.css.map */

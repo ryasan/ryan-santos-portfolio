@@ -1,11 +1,15 @@
 .heroSection {
-  display: block;
   padding: 120px 0;
+  display: flex;
+  align-items: center;
 }
 
 .box {
   margin: 0 auto;
   max-width: 1000px;
+  transform-origin: center top;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .title {
@@ -17,11 +21,13 @@
 .wordMask {
   display: inline-block;
   overflow: hidden;
+  position: relative;
 }
 
 .word {
   display: inline-block;
-  will-change: transform;
+  will-change: transform, opacity;
+  transform: translateY(110%);
 }
 
 .subtitle {
@@ -33,6 +39,8 @@
   max-width: 500px;
   text-transform: uppercase;
   font-weight: 600;
+  will-change: opacity;
+  opacity: 0;
 }
 @media (max-width: 768px) {
   .subtitle {

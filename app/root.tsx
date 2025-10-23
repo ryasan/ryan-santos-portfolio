@@ -85,52 +85,19 @@ export function ErrorBoundary() {
 	const errorStyles = { color: '#de292c', padding: '1rem' }
 
 	if (isRouteErrorResponse(error)) {
-		console.error('Route Error:', {
-			status: error.status,
-			data: error.data,
-			statusText: error.statusText,
-		})
-
 		return (
 			<div style={errorStyles}>
 				<h1>Error {error.status}</h1>
 				<p>{error.data}</p>
-				<details>
-					<summary>Debug Info</summary>
-					<pre>
-						{JSON.stringify(
-							{
-								status: error.status,
-								statusText: error.statusText,
-								data: error.data,
-							},
-							null,
-							2,
-						)}
-					</pre>
-				</details>
 			</div>
 		)
 	}
 
 	if (error instanceof Error) {
-		console.error('Application Error:', {
-			message: error.message,
-			stack: error.stack,
-			name: error.name,
-			cause: error.cause,
-		})
-
 		return (
 			<div style={errorStyles}>
 				<h1>Error</h1>
 				<p>{error.message}</p>
-				<details>
-					<summary>Stack Trace</summary>
-					<pre style={{ fontSize: '12px', overflow: 'auto' }}>
-						{error.stack}
-					</pre>
-				</details>
 			</div>
 		)
 	}
