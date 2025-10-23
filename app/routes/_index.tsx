@@ -1,3 +1,4 @@
+import FeaturedArticlesSection from '~/components/sections/featured-articles-section'
 import HeroSection from '~/components/sections/hero-section'
 // import SectionRenderer from '~/components/section-renderer'
 import TextRevealSection from '~/components/sections/text-reveal-section'
@@ -10,12 +11,13 @@ import { useLoaderData } from '@remix-run/react'
 
 export async function loader() {
 	const page = await client.getPageBySlug('home')
+	const projects = await client.getAllProjects()
 
 	if (!page) {
 		throw new Response('Not Found', { status: 404 })
 	}
 
-	return json({ page })
+	return json({ page, projects })
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
@@ -43,7 +45,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 }
 
 export default function Index() {
-	const { page } = useLoaderData<typeof loader>()
+	const { page, projects } = useLoaderData<typeof loader>()
 
 	return (
 		<>
@@ -54,8 +56,9 @@ export default function Index() {
 			{/* Text Reveal Section */}
 			<TextRevealSection />
 			{/* Featured Projects Section */}
-			<div style={{ height: '100vh' }} />
+			<FeaturedArticlesSection data={{ title: 'Featured Projects', articles: projects }} />
 			{/* Experience Section */}
+			<div style={{ height: '100vh' }}></div>
 			{/* Contact Section */}
 			{/* Footer Section */}
 		</>

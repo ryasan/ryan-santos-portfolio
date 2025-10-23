@@ -71,27 +71,28 @@ async function getAllProjects() {
 		const response = await apiCall(GET_ALL_PROJECTS_QUERY)
 		const json = await response.json()
 
-		const formattedData = await json.data.projectsCollection.items.map(
-			async (project: Record<string, any>) => {
-				const { title, desc, releaseDate, link, previewImage, caption } =
-					project
-				// const fileBuffer = await fetchFileAsBuffer(previewImage.url);
-				// const placeholder = await getPlaiceholder(fileBuffer);
-				return {
-					title,
-					caption,
-					desc,
-					releaseDate,
-					link,
-					// placeholder,
-					placeholder: null,
-					image: previewImage.url,
-					imageAlt: previewImage.description,
-				}
-			},
-		)
+		// const formattedData = await json.data.projectsCollection.items.map(
+		// 	async (project: Record<string, any>) => {
+		// 		const { title, desc, releaseDate, link, previewImage, caption } =
+		// 			project
+		// 		// const fileBuffer = await fetchFileAsBuffer(previewImage.url);
+		// 		// const placeholder = await getPlaiceholder(fileBuffer);
+		// 		return {
+		// 			title,
+		// 			caption,
+		// 			desc,
+		// 			releaseDate,
+		// 			link,
+		// 			// placeholder,
+		// 			placeholder: null,
+		// 			image: previewImage.url,
+		// 			imageAlt: previewImage.description,
+		// 		}
+		// 	},
+		// )
 
-		return Promise.all(formattedData)
+		// return Promise.all(formattedData)
+		return await json.data.projectsCollection.items
 	} catch (error) {
 		console.error('Something went wrong while fetching all projects', error)
 		throw error
