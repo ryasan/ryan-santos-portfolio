@@ -125,14 +125,12 @@ export function ErrorBoundary() {
 			<div style={errorStyles}>
 				<h1>Error</h1>
 				<p>{error.message}</p>
-				{process.env.NODE_ENV === 'development' && (
-					<details>
-						<summary>Stack Trace</summary>
-						<pre style={{ fontSize: '12px', overflow: 'auto' }}>
-							{error.stack}
-						</pre>
-					</details>
-				)}
+				<details>
+					<summary>Stack Trace</summary>
+					<pre style={{ fontSize: '12px', overflow: 'auto' }}>
+						{error.stack}
+					</pre>
+				</details>
 			</div>
 		)
 	}
