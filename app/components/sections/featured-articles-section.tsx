@@ -29,7 +29,6 @@ export default function FeaturedArticlesSection({
 
 		if (!title || !subtitle) return
 
-		// Show title and subtitle when scrolling down
 		ScrollTrigger.create({
 			trigger: title,
 			start: 'bottom bottom-=200px',

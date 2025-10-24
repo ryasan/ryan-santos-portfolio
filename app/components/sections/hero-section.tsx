@@ -26,37 +26,26 @@ export default function HeroSection({ data }: HeroSectionProps) {
 
 		if (!section || !box || !subtitle || !titleWords.length) return
 
-		const animationTimeline = gsap.timeline()
-
-		// Animate title words
 		titleWords.forEach((word, index) => {
-			animationTimeline.to(
-				word,
-				{
-					y: 0,
-					duration: 0.75,
-					ease: 'power2.inOut',
-				},
-				index * 0.075,
-			)
+			gsap.to(word, {
+				y: 0,
+				duration: 0.75,
+				ease: 'power2.inOut',
+				delay: index * 0.075,
+			})
 		})
 
-		// Animate subtitle after title
-		animationTimeline.to(
-			subtitle,
-			{
-				opacity: 1,
-				duration: 1,
-				ease: 'power2.out',
-			},
-			titleWords.length * 0.25,
-		)
+		gsap.to(subtitle, {
+			opacity: 1,
+			duration: 1,
+			ease: 'power2.out',
+			delay: titleWords.length * 0.25,
+		})
 
-		// Scroll-driven shrinking animation
 		ScrollTrigger.create({
 			trigger: section,
 			start: 'top top',
-			end: '+=1500px',
+			end: 'bottom bottom',
 			scrub: 1,
 			onUpdate: (self) => {
 				const progress = self.progress
@@ -72,7 +61,6 @@ export default function HeroSection({ data }: HeroSectionProps) {
 			},
 		})
 
-		// Cleanup
 		return () => {
 			ScrollTrigger.getAll().forEach((trigger) => {
 				if (trigger.trigger === section) {
@@ -83,7 +71,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
 	}, [])
 
 	return (
-		<section className={styles.heroSection} ref={sectionRef}>
+		<section className={styles.section} ref={sectionRef}>
 			<div className="container">
 				<div className={styles.stickyBox} ref={boxRef}>
 					<h1 className={styles.title}>
