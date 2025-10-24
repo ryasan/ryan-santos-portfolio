@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import styles from '~/styles/components/sections/hero-section.module.scss'
 import { HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -14,17 +15,17 @@ type HeroSectionProps = {
 
 export default function HeroSection({ data }: HeroSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
-	const boxRef = useRef<HTMLDivElement>(null)
+	const stickyBoxRef = useRef<HTMLDivElement>(null)
 	const titleWordRefs = useRef<(HTMLSpanElement | null)[]>([])
 	const subtitleRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
 		const section = sectionRef.current
-		const box = boxRef.current
+		const stickyBox = stickyBoxRef.current
 		const titleWords = titleWordRefs.current
 		const subtitle = subtitleRef.current
 
-		if (!section || !box || !subtitle || !titleWords.length) return
+		if (!section || !stickyBox || !subtitle || !titleWords.length) return
 
 		titleWords.forEach((word, index) => {
 			gsap.to(word, {
@@ -52,7 +53,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
 				const scale = 1 - progress * 0.3
 				const opacity = 1 - progress * 1
 
-				gsap.to(box, {
+				gsap.to(stickyBox, {
 					scale,
 					opacity,
 					duration: 0.1,
@@ -73,7 +74,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
 	return (
 		<section className={styles.section} ref={sectionRef}>
 			<div className="container">
-				<div className={styles.stickyBox} ref={boxRef}>
+				<div className={styles.stickyBox} ref={stickyBoxRef}>
 					<h1 className={styles.title}>
 						{mockTitleWords.map((word, index) => (
 							<span className={styles.wordMask} key={index}>
@@ -87,7 +88,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
 							</span>
 						))}
 					</h1>
-					<div className={styles.subtitle} ref={subtitleRef}>
+					<div className={clsx(styles.subtitle, "h5")} ref={subtitleRef}>
 						<div>
 							Currently building <br /> things @ Envoy
 						</div>

@@ -1,13 +1,13 @@
 @import '../../base/variables';
 
-.textRevealSection {
+.section {
 	display: block;
 	padding: $space-120 0;
 }
 
 .box {
 	margin: 0 auto;
-	max-width: 892px;
+	max-width: 850px;
 	position: relative;
 }
 
@@ -17,7 +17,7 @@
 	justify-content: center;
 	margin: 250px 0;
 	opacity: 0;
-	will-change: opacity;
+	will-change: opacity, transform;
 
 	&:first-child {
 		margin-top: 0;

@@ -213,19 +213,19 @@ h1,
 @media (max-width: 1200px) {
   h1,
   .h1 {
-    font-size: 108px;
+    font-size: 110px;
   }
 }
 @media (max-width: 768px) {
   h1,
   .h1 {
-    font-size: 52px;
+    font-size: 70px;
   }
 }
 
 h2,
 .h2 {
-  font-size: 52px;
+  font-size: 64px;
   line-height: 1;
   letter-spacing: -0.04em;
   font-weight: 600;
@@ -233,13 +233,13 @@ h2,
 @media (max-width: 1200px) {
   h2,
   .h2 {
-    font-size: 48px;
+    font-size: 52px;
   }
 }
 @media (max-width: 768px) {
   h2,
   .h2 {
-    font-size: 36px;
+    font-size: 40px;
   }
 }
 
@@ -279,53 +279,22 @@ h4,
 @media (max-width: 768px) {
   h4,
   .h4 {
-    font-size: 24px;
-  }
-}
-
-h5,
-.h5 {
-  font-size: 16px;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  font-weight: 600;
-}
-@media (max-width: 1200px) {
-  h5,
-  .h5 {
-    font-size: 24px;
-  }
-}
-@media (max-width: 768px) {
-  h5,
-  .h5 {
     font-size: 20px;
   }
 }
 
+h5,
 h6,
+.h5,
 .h6 {
   font-size: 16px;
   line-height: 1;
-  letter-spacing: -0.04em;
   font-weight: 600;
-}
-@media (max-width: 1200px) {
-  h6,
-  .h6 {
-    font-size: 16px;
-  }
-}
-@media (max-width: 768px) {
-  h6,
-  .h6 {
-    font-size: 14px;
-  }
 }
 
 p,
 .body {
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 1;
@@ -333,7 +302,7 @@ p,
 }
 
 .body-2 {
-  font-size: 16px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 1;
@@ -341,14 +310,15 @@ p,
 }
 
 .label {
-  font-size: 16px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 600;
   line-height: 1;
+  color: var(--content-color-2);
 }
 
 .link {
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 1;
@@ -356,7 +326,7 @@ p,
 }
 
 .badge {
-  font-size: 16px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 1;
@@ -364,7 +334,7 @@ p,
 
 code,
 .code {
-  font-size: 16px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 1;

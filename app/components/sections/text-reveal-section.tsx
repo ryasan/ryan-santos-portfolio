@@ -6,11 +6,11 @@ import { useEffect, useRef } from 'react'
 
 const mockTextBlocks = [
 	{
-		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.',
+		text: 'I build applications that combine performance with thoughtful design.',
 		type: 'heading',
 	},
 	{
-		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.',
+		text: 'I care about the small details that make a big difference.',
 		type: 'heading',
 	},
 ]
@@ -31,44 +31,65 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 
 		if (!section || blocks.length === 0) return
 
-		// Hide all blocks when scrolling up and section is no longer in view
 		ScrollTrigger.create({
 			trigger: section,
+			onLeave: () => {
+				blocks.forEach((block) => {
+					gsap.to(block, {
+						y: 100,
+						opacity: 0,
+						duration: 0.75,
+						ease: 'power2.out',
+					})
+				})
+			},
 			onLeaveBack: () => {
 				blocks.forEach((block) => {
-					gsap.to(block, { opacity: 0, duration: 1, ease: 'power2.out' })
+					gsap.to(block, {
+						opacity: 0,
+						duration: 0.75,
+						ease: 'power2.out',
+					})
 				})
 			},
 		})
 
-		blocks.forEach((block, index) => {
+		blocks.forEach((currentBlock, currentIndex) => {
 			ScrollTrigger.create({
-				trigger: block,
-				start: 'bottom bottom',
-				end: 'center center',
-				onEnter: (args: any) => {
-					// Fade in current block
-					gsap.to(block, { opacity: 1, duration: 1, ease: 'power2.out' })
-					// Fade out all other blocks
+				trigger: currentBlock,
+				start: 'bottom bottom-=150px',
+				end: 'top top+=150px',
+				onEnter: () => {
+					gsap.to(currentBlock, {
+						opacity: 1,
+						duration: 0.75,
+						ease: 'power2.out',
+					})
+
 					blocks.forEach((otherBlock, otherIndex) => {
-						if (otherIndex !== index) {
+						if (otherIndex < currentIndex) {
 							gsap.to(otherBlock, {
+								y: 100,
 								opacity: 0,
-								duration: 1,
+								duration: 0.75,
 								ease: 'power2.out',
 							})
 						}
 					})
 				},
-				onEnterBack: (args: any) => {
-					// Fade in current block when scrolling up
-					gsap.to(block, { opacity: 1, duration: 1, ease: 'power2.out' })
-					// Fade out all other blocks
+				onEnterBack: () => {
+					gsap.to(currentBlock, {
+						y: 0,
+						opacity: 1,
+						duration: 0.75,
+						ease: 'power2.out',
+					})
+
 					blocks.forEach((otherBlock, otherIndex) => {
-						if (otherIndex !== index) {
+						if (otherIndex !== currentIndex) {
 							gsap.to(otherBlock, {
 								opacity: 0,
-								duration: 1,
+								duration: 0.75,
 								ease: 'power2.out',
 							})
 						}
@@ -77,7 +98,6 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 			})
 		})
 
-		// Cleanup
 		return () => {
 			ScrollTrigger.getAll().forEach((trigger) => {
 				if (trigger.trigger) {
@@ -90,13 +110,13 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 				}
 			})
 		}
-	}, [mockTextBlocks.length])
+	}, [])
 
 	return (
-		<section className={styles.textRevealSection} ref={sectionRef}>
+		<section className={styles.section} ref={sectionRef}>
 			<div className="container">
 				<div className={styles.box}>
-					{mockTextBlocks.map((block: any, index: number) => (
+					{mockTextBlocks.map((block, index) => (
 						<div
 							className={styles.textBlock}
 							ref={(el) => (blockRefs.current[index] = el)}

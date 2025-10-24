@@ -3,11 +3,7 @@ import styles from '~/styles/components/text-block.module.scss'
 
 type TextBlockProps = {
 	align?: 'left' | 'center' | 'right'
-	block: {
-		id: string
-		text: string
-		type?: 'heading' | 'paragraph' | 'subheading'
-	}
+	block: any
 	index: number
 }
 
