@@ -4,15 +4,24 @@
 }
 
 .textBlocks {
+  margin: 0 auto;
+  max-width: 892px;
   position: relative;
 }
 
 .textBlockWrapper {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
+  margin: 250px 0;
   opacity: 0;
   will-change: opacity;
+}
+.textBlockWrapper:first-child {
+  margin-top: 0;
+}
+.textBlockWrapper:last-child {
+  margin-bottom: 0;
 }
 
 /*# sourceMappingURL=text-reveal-section.module.css.map */

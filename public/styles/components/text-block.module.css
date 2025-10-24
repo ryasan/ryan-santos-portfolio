@@ -1,10 +1,5 @@
 .textBlock {
   display: block;
-  margin: 140px auto;
-  max-width: 892px;
-}
-.textBlock:first-child {
-  margin-top: 0;
 }
 .textBlock.left {
   text-align: left;

@@ -2,12 +2,6 @@
 
 .textBlock {
 	display: block;
-	margin: $space-140 auto;
-	max-width: 892px;
-
-	&:first-child {
-		margin-top: 0
-	}
 
 	&.left {
 		text-align: left;
