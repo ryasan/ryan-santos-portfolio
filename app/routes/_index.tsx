@@ -56,7 +56,7 @@ export default function Index() {
 			{/* Text Reveal Section */}
 			<TextRevealSection />
 			{/* Featured Projects Section */}
-			<FeaturedArticlesSection data={{ title: 'Featured Projects', articles: projects }} />
+			<FeaturedArticlesSection data={{ title: 'Featured Work', articles: projects }} />
 			{/* Experience Section */}
 			<div style={{ height: '100vh' }}></div>
 			{/* Contact Section */}

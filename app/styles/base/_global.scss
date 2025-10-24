@@ -58,7 +58,7 @@ body {
 h1,
 .h1 {
 	font-size: 150px;
-	line-height: 80%;
+	line-height: 0.8;
 	letter-spacing: -.04em;
 	font-weight: 600;
 	color: var(--content-color);
@@ -76,7 +76,7 @@ h1,
 h2,
 .h2 {
 	font-size: 52px;
-	line-height: 100%;
+	line-height: 1;
 	letter-spacing: -.04em;
 	font-weight: 600;
 
@@ -92,7 +92,7 @@ h2,
 h3,
 .h3 {
 	font-size: 36px;
-	line-height: 100%;
+	line-height: 1;
 	letter-spacing: -.04em;
 	font-weight: 600;
 
@@ -108,7 +108,7 @@ h3,
 h4,
 .h4 {
 	font-size: 32px;
-	line-height: 100%;
+	line-height: 1;
 	letter-spacing: -.04em;
 	font-weight: 600;
 
@@ -124,7 +124,7 @@ h4,
 h5,
 .h5 {
 	font-size: 16px;
-	line-height: 100%;
+	line-height: 1;
 	letter-spacing: -.04em;
 	font-weight: 600;
 
@@ -140,7 +140,7 @@ h5,
 h6,
 .h6 {
 	font-size: 16px;
-	line-height: 100%;
+	line-height: 1;
 	letter-spacing: -.04em;
 	font-weight: 600;
 
@@ -158,7 +158,7 @@ p,
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 100%;
+	line-height: 1;
 	color: var(--content-color-2);
 }
 
@@ -166,7 +166,7 @@ p,
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 100%;
+	line-height: 1;
 	color: var(--content-color-2);
 }
 
@@ -174,14 +174,14 @@ p,
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 600;
-	line-height: 100%;
+	line-height: 1;
 }
 
 .link {
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 100%;
+	line-height: 1;
 	color: var(--content-color);
 }
 
@@ -189,7 +189,7 @@ p,
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 100%;
+	line-height: 1;
 }
 
 code,
@@ -197,7 +197,7 @@ code,
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 100%;
+	line-height: 1;
 }
 
 // Colors

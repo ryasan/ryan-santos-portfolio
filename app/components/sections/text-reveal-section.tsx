@@ -31,7 +31,16 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 
 		if (!section || blocks.length === 0) return
 
-		// Create ScrollTrigger for each block
+		// Hide all blocks when scrolling up and section is no longer in view
+		ScrollTrigger.create({
+			trigger: section,
+			onLeaveBack: () => {
+				blocks.forEach((block) => {
+					gsap.to(block, { opacity: 0, duration: 0.6, ease: 'power2.out' })
+				})
+			},
+		})
+
 		blocks.forEach((block, index) => {
 			ScrollTrigger.create({
 				trigger: block,
@@ -71,11 +80,13 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 		// Cleanup
 		return () => {
 			ScrollTrigger.getAll().forEach((trigger) => {
-				if (
-					trigger.trigger &&
-					blocks.includes(trigger.trigger as HTMLDivElement)
-				) {
-					trigger.kill()
+				if (trigger.trigger) {
+					if (blocks.includes(trigger.trigger as HTMLDivElement)) {
+						trigger.kill()
+					}
+					if (trigger.trigger === section) {
+						trigger.kill()
+					}
 				}
 			})
 		}
