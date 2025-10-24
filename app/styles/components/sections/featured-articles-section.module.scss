@@ -110,13 +110,32 @@
 
 .articleTitle {
 	font-weight: 500;
+
+	[data-theme='light'] & {
+		color: var(--background-secondary-color);
+	}
 }
 
 .articleDescription {
 	color: var(--content-color-2);
 	font-weight: 500;
+
+	[data-theme='light'] & {
+		color: var(--background-secondary-color);
+	}
 }
 
 .articleLink {
 	margin-top: auto;
+
+	[data-theme='light'] & {
+		background-color: var(--background-primary-color);
+		color: var(--content-color);
+	}
+
+	&:hover {
+		[data-theme='light'] & {
+			background-color: var(--background-secondary-color);
+		}
+	}
 }

@@ -96,14 +96,27 @@
 .articleTitle {
   font-weight: 500;
 }
+[data-theme=light] .articleTitle {
+  color: var(--background-secondary-color);
+}
 
 .articleDescription {
   color: var(--content-color-2);
   font-weight: 500;
 }
+[data-theme=light] .articleDescription {
+  color: var(--background-secondary-color);
+}
 
 .articleLink {
   margin-top: auto;
+}
+[data-theme=light] .articleLink {
+  background-color: var(--background-primary-color);
+  color: var(--content-color);
+}
+[data-theme=light] .articleLink:hover {
+  background-color: var(--background-secondary-color);
 }
 
 /*# sourceMappingURL=featured-articles-section.module.css.map */
