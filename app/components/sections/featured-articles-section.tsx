@@ -66,17 +66,35 @@ export default function FeaturedArticlesSection({
 
 						return (
 							<div
-								className={clsx(styles.articleCard, styles[cardAlignment])}
+								className={clsx(styles.articleContainer, styles[cardAlignment])}
 								key={index}
 							>
-								<div className={styles.articleImage}>
-									{article?.image && (
-										<img
-											className={styles.articleImage}
-											src={article.image}
-											alt={article.title || ''}
-										/>
-									)}
+								<div className={styles.articleCard}>
+									<div className={styles.articleImage}>
+										{article?.image && (
+											<img
+												className={styles.articleImage}
+												src={article.image}
+												alt={article.title || ''}
+											/>
+										)}
+									</div>
+									<div className={styles.articleContent}>
+										<h3 className={clsx(styles.articleTitle, 'h3 mb-16')}>
+											{article.title}
+										</h3>
+										<p className={clsx(styles.articleDescription, 'h4 mb-16')}>
+											{article.description}
+										</p>
+										<a
+											className={clsx(styles.articleLink, 'body')}
+											href={article.link || ''}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											View Project
+										</a>
+									</div>
 								</div>
 							</div>
 						)

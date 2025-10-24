@@ -62,7 +62,6 @@ h1,
 	letter-spacing: -0.04em;
 	font-weight: 600;
 	color: var(--content-color);
-	text-transform: uppercase;
 
 	@media (max-width: $desktop) {
 		font-size: 110px;
@@ -79,6 +78,7 @@ h2,
 	line-height: 1;
 	letter-spacing: -0.04em;
 	font-weight: 600;
+	color: var(--content-color);
 
 	@media (max-width: $desktop) {
 		font-size: 52px;
@@ -95,6 +95,7 @@ h3,
 	line-height: 1;
 	letter-spacing: -0.04em;
 	font-weight: 600;
+	color: var(--content-color);
 
 	@media (max-width: $desktop) {
 		font-size: 32px;
@@ -111,6 +112,7 @@ h4,
 	line-height: 1;
 	letter-spacing: -0.04em;
 	font-weight: 600;
+	color: var(--content-color);
 
 	@media (max-width: $desktop) {
 		font-size: 28px;
@@ -125,9 +127,10 @@ h5,
 h6,
 .h5,
 .h6 {
-	font-size: 16px;
+	font-size: 20px;
 	line-height: 1;
 	font-weight: 600;
+	color: var(--content-color);
 }
 
 p,

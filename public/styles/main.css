@@ -208,7 +208,6 @@ h1,
   letter-spacing: -0.04em;
   font-weight: 600;
   color: var(--content-color);
-  text-transform: uppercase;
 }
 @media (max-width: 1200px) {
   h1,
@@ -229,6 +228,7 @@ h2,
   line-height: 1;
   letter-spacing: -0.04em;
   font-weight: 600;
+  color: var(--content-color);
 }
 @media (max-width: 1200px) {
   h2,
@@ -249,6 +249,7 @@ h3,
   line-height: 1;
   letter-spacing: -0.04em;
   font-weight: 600;
+  color: var(--content-color);
 }
 @media (max-width: 1200px) {
   h3,
@@ -269,6 +270,7 @@ h4,
   line-height: 1;
   letter-spacing: -0.04em;
   font-weight: 600;
+  color: var(--content-color);
 }
 @media (max-width: 1200px) {
   h4,
@@ -287,9 +289,10 @@ h5,
 h6,
 .h5,
 .h6 {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1;
   font-weight: 600;
+  color: var(--content-color);
 }
 
 p,
