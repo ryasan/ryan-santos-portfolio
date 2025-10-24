@@ -53,7 +53,7 @@ export default function FeaturedArticlesSection({
 					<h2 className={clsx(styles.title, 'h1 mb-56')} ref={titleRef}>
 						{data?.title}
 					</h2>
-					<p className={clsx(styles.subtitle, 'body-1')} ref={subtitleRef}>
+					<p className={clsx(styles.subtitle, 'h5')} ref={subtitleRef}>
 						(SCROLL TO EXPLORE)
 					</p>
 				</div>
