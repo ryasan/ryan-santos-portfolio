@@ -3,6 +3,7 @@ import ArrowRightIcon from './arrow-right'
 import ArrowUpRightIcon from './arrow-up-right'
 import CloseIcon from './close'
 import CodepenIcon from './codepen'
+import CopySimpleIcon from './copy-simple'
 import EnvelopeIcon from './envelope'
 import GithubIcon from './github'
 import LinkedinIcon from './linkedin'
@@ -17,6 +18,7 @@ export {
 	ArrowUpRightIcon,
 	CloseIcon,
 	CodepenIcon,
+	CopySimpleIcon,
 	EnvelopeIcon,
 	GithubIcon,
 	LinkedinIcon,

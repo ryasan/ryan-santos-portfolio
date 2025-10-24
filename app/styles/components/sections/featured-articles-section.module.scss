@@ -1,6 +1,6 @@
 @import '../../base/variables';
 
-.featuredArticlesSection {
+.section {
 	padding: $space-40 0;
 	position: relative;
 }
@@ -17,9 +17,13 @@
 	z-index: -1;
 }
 
-.title,
+.title {
+	opacity: 0;
+}
+
 .subtitle {
 	opacity: 0;
+	color: var(--content-color-2);
 }
 
 .articleList {
@@ -115,15 +119,4 @@
 
 .articleLink {
 	margin-top: auto;
-	background-color: var(--content-color);
-	color: var(--background-primary-color);
-	padding: $space-12 $space-24;
-	border-radius: 100px;
-	text-transform: uppercase;
-	font-weight: 500;
-	transition: all 0.2s ease;
-
-	&:hover {
-		background-color: var(--content-color-2);
-	}
 }

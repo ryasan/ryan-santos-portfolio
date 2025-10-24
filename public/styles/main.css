@@ -335,6 +335,20 @@ p,
   line-height: 1;
 }
 
+.button {
+  background-color: var(--content-color);
+  color: var(--background-primary-color);
+  padding: 12px 24px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  font-size: 16px;
+}
+.button:hover {
+  background-color: var(--content-color-2);
+}
+
 code,
 .code {
   font-size: 12px;

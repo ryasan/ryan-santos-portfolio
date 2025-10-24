@@ -1,13 +1,14 @@
+// import SectionRenderer from '~/components/section-renderer'
+// import SpaceSceneSection from '~/components/sections/space-scene-section';
+// import { PagePageSectionsItem } from '~/graphql/__generated/sdk'
+import ContactSection from '~/components/sections/contact-section'
 import FeaturedArticlesSection from '~/components/sections/featured-articles-section'
 import HeroSection from '~/components/sections/hero-section'
-// import SectionRenderer from '~/components/section-renderer'
 import TextRevealSection from '~/components/sections/text-reveal-section'
 import type { MetaFunction } from '@netlify/remix-runtime'
-// import { PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
 import { useLoaderData } from '@remix-run/react'
-// import SpaceSceneSection from '~/components/sections/space-scene-section';
 
 export async function loader() {
 	const page = await client.getPageBySlug('home')
@@ -58,8 +59,8 @@ export default function Index() {
 			{/* Featured Projects Section */}
 			<FeaturedArticlesSection data={{ title: 'Featured Work', articles: projects }} />
 			{/* Experience Section */}
-			<div style={{ height: '100vh' }}></div>
 			{/* Contact Section */}
+			<ContactSection />
 			{/* Footer Section */}
 		</>
 	)

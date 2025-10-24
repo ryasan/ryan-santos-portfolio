@@ -47,7 +47,7 @@ export default function FeaturedArticlesSection({
 	}, [])
 
 	return (
-		<section className={styles.featuredArticlesSection}>
+		<section className={styles.section}>
 			<div className="container">
 				<div className={styles.stickyBox}>
 					<h2 className={clsx(styles.title, 'h1 mb-56')} ref={titleRef}>
@@ -87,7 +87,7 @@ export default function FeaturedArticlesSection({
 											{article.description}
 										</p>
 										<a
-											className={clsx(styles.articleLink, 'body')}
+											className={clsx(styles.articleLink, 'button')}
 											href={article.link || ''}
 											target="_blank"
 											rel="noopener noreferrer"
