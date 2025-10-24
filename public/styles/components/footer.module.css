@@ -6,6 +6,10 @@
   text-transform: uppercase;
 }
 
+.container p {
+  white-space: pre-wrap;
+}
+
 @media (max-width: 768px) {
   .footer {
     padding-left: 0;

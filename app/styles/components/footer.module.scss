@@ -8,6 +8,12 @@
 	text-transform: uppercase;
 }
 
+.container {
+	p {
+		white-space: pre-wrap;
+	}
+}
+
 @media (max-width: $tablet) {
 	.footer {
 		padding-left: 0;
