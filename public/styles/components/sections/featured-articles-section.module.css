@@ -108,5 +108,8 @@
   font-weight: 500;
   transition: all 0.2s ease;
 }
+.articleLink:hover {
+  background-color: var(--content-color-2);
+}
 
 /*# sourceMappingURL=featured-articles-section.module.css.map */
