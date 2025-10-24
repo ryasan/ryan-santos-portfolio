@@ -56,7 +56,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
 		ScrollTrigger.create({
 			trigger: section,
 			start: 'top top',
-			end: '+=500px',
+			end: '+=1500px',
 			scrub: 1,
 			onUpdate: (self) => {
 				const progress = self.progress
@@ -85,7 +85,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
 	return (
 		<section className={styles.heroSection} ref={sectionRef}>
 			<div className="container">
-				<div className={styles.box} ref={boxRef}>
+				<div className={styles.stickyBox} ref={boxRef}>
 					<h1 className={styles.title}>
 						{mockTitleWords.map((word, index) => (
 							<span className={styles.wordMask} key={index}>
@@ -106,6 +106,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
 						<div>(2022 - Present)</div>
 					</div>
 				</div>
+				<div className={styles.box} />
 			</div>
 		</section>
 	)

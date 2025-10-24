@@ -3,13 +3,13 @@
   padding: 120px 0;
 }
 
-.textBlocks {
+.box {
   margin: 0 auto;
   max-width: 892px;
   position: relative;
 }
 
-.textBlockWrapper {
+.textBlock {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -17,10 +17,10 @@
   opacity: 0;
   will-change: opacity;
 }
-.textBlockWrapper:first-child {
+.textBlock:first-child {
   margin-top: 0;
 }
-.textBlockWrapper:last-child {
+.textBlock:last-child {
   margin-bottom: 0;
 }
 

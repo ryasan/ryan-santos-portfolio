@@ -29,27 +29,20 @@ export default function FeaturedArticlesSection({
 
 		if (!title || !subtitle) return
 
-		gsap.set(title, { opacity: 0 })
-		gsap.set(subtitle, { opacity: 0 })
-
 		// Show title and subtitle when scrolling down
 		ScrollTrigger.create({
 			trigger: title,
-			start: 'bottom bottom',
-			// end: 'bottom bottom',
-			once: true,
+			start: 'bottom bottom-=200px',
 			onEnter: () => {
-				gsap.to(title, { opacity: 1, duration: 1.5, ease: 'power2.out' })
+				gsap.to(title, { opacity: 1, duration: 1, ease: 'power2.out' })
 			},
 		})
 
 		ScrollTrigger.create({
 			trigger: subtitle,
-			// start: 'top top',
-			// end: 'bottom bottom',
-			once: true,
+			start: 'bottom bottom-=200px',
 			onEnter: () => {
-				gsap.to(subtitle, { opacity: 1, duration: 1.5, ease: 'power2.out' })
+				gsap.to(subtitle, { opacity: 1, duration: 1, ease: 'power2.out' })
 			},
 		})
 	}, [])
@@ -57,40 +50,38 @@ export default function FeaturedArticlesSection({
 	return (
 		<section className={styles.featuredArticlesSection}>
 			<div className="container">
-				<div className={styles.container}>
-					<div className={styles.stickyContent}>
-						<h2 className={clsx(styles.title, 'h1 mb-56')} ref={titleRef}>
-							{data?.title}
-						</h2>
-						<p className={clsx(styles.subtitle, 'body-1')} ref={subtitleRef}>
-							(SCROLL TO EXPLORE)
-						</p>
-					</div>
+				<div className={styles.stickyBox}>
+					<h2 className={clsx(styles.title, 'h1 mb-56')} ref={titleRef}>
+						{data?.title}
+					</h2>
+					<p className={clsx(styles.subtitle, 'body-1')} ref={subtitleRef}>
+						(SCROLL TO EXPLORE)
+					</p>
+				</div>
 
-					<div className={styles.articleList}>
-						{data?.articles.map(normalizeSlide).map((article, index) => {
-							if (!article) return null
-							const cardIndex = index % cardAlignments.length
-							const cardAlignment = cardAlignments[cardIndex] || 'center'
+				<div className={styles.articleList}>
+					{data?.articles.map(normalizeSlide).map((article, index) => {
+						if (!article) return null
+						const cardIndex = index % cardAlignments.length
+						const cardAlignment = cardAlignments[cardIndex] || 'center'
 
-							return (
-								<div
-									className={clsx(styles.articleCard, styles[cardAlignment])}
-									key={index}
-								>
-									<div className={styles.articleImage}>
-										{article?.image && (
-											<img
-												className={styles.articleImage}
-												src={article.image}
-												alt={article.title || ''}
-											/>
-										)}
-									</div>
+						return (
+							<div
+								className={clsx(styles.articleCard, styles[cardAlignment])}
+								key={index}
+							>
+								<div className={styles.articleImage}>
+									{article?.image && (
+										<img
+											className={styles.articleImage}
+											src={article.image}
+											alt={article.title || ''}
+										/>
+									)}
 								</div>
-							)
-						})}
-					</div>
+							</div>
+						)
+					})}
 				</div>
 			</div>
 		</section>

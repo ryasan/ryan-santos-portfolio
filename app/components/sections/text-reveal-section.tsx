@@ -68,7 +68,7 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 						if (otherIndex !== index) {
 							gsap.to(otherBlock, {
 								opacity: 0,
-								duration: 0.6,
+								duration: 1,
 								ease: 'power2.out',
 							})
 						}
@@ -95,10 +95,10 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 	return (
 		<section className={styles.textRevealSection} ref={sectionRef}>
 			<div className="container">
-				<div className={styles.textBlocks}>
+				<div className={styles.box}>
 					{mockTextBlocks.map((block: any, index: number) => (
 						<div
-							className={styles.textBlockWrapper}
+							className={styles.textBlock}
 							ref={(el) => (blockRefs.current[index] = el)}
 							key={index}
 						>

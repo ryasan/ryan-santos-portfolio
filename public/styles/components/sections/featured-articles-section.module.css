@@ -1,12 +1,9 @@
 .featuredArticlesSection {
   padding: 40px 0;
-}
-
-.container {
   position: relative;
 }
 
-.stickyContent {
+.stickyBox {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,6 +13,11 @@
   top: 0;
   height: 100vh;
   z-index: -1;
+}
+
+.title,
+.subtitle {
+  opacity: 0;
 }
 
 .articleList {

@@ -2,13 +2,10 @@
 
 .featuredArticlesSection {
 	padding: $space-40 0;
-}
-
-.container {
 	position: relative;
 }
 
-.stickyContent {
+.stickyBox {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -20,10 +17,10 @@
 	z-index: -1;
 }
 
-// .title,
-// .subtitle {
-// 	opacity: 0;
-// }
+.title,
+.subtitle {
+	opacity: 0;
+}
 
 .articleList {
 	max-width: 1200px;

@@ -1,16 +1,21 @@
 .heroSection {
-  padding: 120px 0;
-  display: flex;
-  align-items: center;
-  min-height: calc(100vh - 68px);
+  position: relative;
 }
 
 .box {
+  height: 1800px;
+}
+
+.stickyBox {
   margin: 0 auto;
   max-width: 1000px;
-  transform-origin: center top;
+  transform-origin: top center;
   will-change: transform, opacity;
   backface-visibility: hidden;
+  padding-top: 120px;
+  position: sticky;
+  top: 100px;
+  z-index: 1;
 }
 
 .title {
