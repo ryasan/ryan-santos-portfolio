@@ -36,7 +36,7 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 			trigger: section,
 			onLeaveBack: () => {
 				blocks.forEach((block) => {
-					gsap.to(block, { opacity: 0, duration: 0.6, ease: 'power2.out' })
+					gsap.to(block, { opacity: 0, duration: 1, ease: 'power2.out' })
 				})
 			},
 		})
@@ -48,13 +48,13 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 				end: 'center center',
 				onEnter: (args: any) => {
 					// Fade in current block
-					gsap.to(block, { opacity: 1, duration: 0.6, ease: 'power2.out' })
+					gsap.to(block, { opacity: 1, duration: 1, ease: 'power2.out' })
 					// Fade out all other blocks
 					blocks.forEach((otherBlock, otherIndex) => {
 						if (otherIndex !== index) {
 							gsap.to(otherBlock, {
 								opacity: 0,
-								duration: 0.6,
+								duration: 1,
 								ease: 'power2.out',
 							})
 						}
@@ -62,7 +62,7 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 				},
 				onEnterBack: (args: any) => {
 					// Fade in current block when scrolling up
-					gsap.to(block, { opacity: 1, duration: 0.6, ease: 'power2.out' })
+					gsap.to(block, { opacity: 1, duration: 1, ease: 'power2.out' })
 					// Fade out all other blocks
 					blocks.forEach((otherBlock, otherIndex) => {
 						if (otherIndex !== index) {
