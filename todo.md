@@ -31,3 +31,4 @@
 * [ ] Add read time to blog posts
 * [ ] Look into "GSAP Text"
 * [ ] Look into "Glassmorphism"
+* [ ] Add mouse follower
