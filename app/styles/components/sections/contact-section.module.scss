@@ -1,11 +1,11 @@
 @import '../../base/variables';
 
 .section {
+	border-top: 1px solid var(--line-color);
 	position: relative;
 }
 
 .box {
-	border-top: 1px solid var(--line-color);
 	padding: $space-120 0;
 	display: flex;
 	flex-direction: column;

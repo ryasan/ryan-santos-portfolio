@@ -26,7 +26,7 @@ export default function ContactSection() {
 			<div className="container">
 				<div className={styles.box}>
 					<h2 className={clsx(styles.title, 'h1 mb-56')}>
-						Let's get to know each other
+						Let's get to know each other.
 					</h2>
 					<button
 						className={clsx(styles.copyButton, 'button')}
