@@ -41,3 +41,23 @@
 .copyIcon {
 	fill: var(--background-primary-color);
 }
+
+.socialLinks {
+	display: flex;
+	align-items: center;
+	gap: $space-56;
+	margin-top: $space-24;
+
+	a {
+		transition: opacity 0.2s ease;
+	}
+
+	a:hover {
+		opacity: 0.8;
+	}
+}
+
+.icon {
+	width: 32px;
+	height: 32px;
+}

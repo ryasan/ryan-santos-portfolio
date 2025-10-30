@@ -42,4 +42,22 @@
   fill: var(--background-primary-color);
 }
 
+.socialLinks {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  margin-top: 24px;
+}
+.socialLinks a {
+  transition: opacity 0.2s ease;
+}
+.socialLinks a:hover {
+  opacity: 0.8;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+}
+
 /*# sourceMappingURL=contact-section.module.css.map */
