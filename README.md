@@ -66,3 +66,9 @@ netlify deploy --build
 # production deployment
 netlify deploy --build --prod
 ```
+
+## Libraries
+
+### Phosphor Icons
+
+[Phosphor Icons](https://phosphoricons.com/) are used for the icons in the project.
