@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/hero-section.module.scss'
+import { ArrowRightIcon } from '~/components/icons'
 import { HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
@@ -8,20 +9,23 @@ import { useRef } from 'react'
 
 type HeroSectionProps = {
 	data?: HeroSectionType
+	id?: string
 }
 
-export default function HeroSection({ data }: HeroSectionProps) {
+export default function HeroSection({ data, id }: HeroSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
 	const stickyBoxRef = useRef<HTMLDivElement>(null)
 	const subtitleRef = useRef<HTMLDivElement>(null)
+	const scrollToExploreRef = useRef<HTMLDivElement>(null)
 
 	useGSAP(
 		() => {
 			const section = sectionRef.current
 			const stickyBox = stickyBoxRef.current
 			const subtitle = subtitleRef.current
+			const scrollToExplore = scrollToExploreRef.current
 
-			if (!section || !stickyBox || !subtitle) return
+			if (!section || !stickyBox || !subtitle || !scrollToExplore) return
 
 			gsap.to('.word', {
 				y: 0,
@@ -31,6 +35,13 @@ export default function HeroSection({ data }: HeroSectionProps) {
 			})
 
 			gsap.to(subtitle, {
+				opacity: 1,
+				duration: 1,
+				ease: 'power2.out',
+				delay: 0.75,
+			})
+
+			gsap.to(scrollToExplore, {
 				opacity: 1,
 				duration: 1,
 				ease: 'power2.out',
@@ -53,6 +64,12 @@ export default function HeroSection({ data }: HeroSectionProps) {
 						duration: 0.1,
 						ease: 'none',
 					})
+
+					gsap.to(scrollToExplore, {
+						opacity,
+						duration: 0.1,
+						ease: 'none',
+					})
 				},
 			})
 		},
@@ -60,7 +77,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
 	)
 
 	return (
-		<section className={styles.section} ref={sectionRef}>
+		<section className={styles.section} ref={sectionRef} id={id}>
 			<div className="container">
 				<div className={styles.stickyBox} ref={stickyBoxRef}>
 					{data?.title && (
@@ -82,6 +99,12 @@ export default function HeroSection({ data }: HeroSectionProps) {
 						)}
 					</div>
 				</div>
+				{data?.isTopOfPage && (
+					<div className={styles.scrollToExplore} ref={scrollToExploreRef}>
+						<span>Scroll to explore</span>
+						<ArrowRightIcon className={styles.arrowRightIcon} />
+					</div>
+				)}
 				<div className={styles.box} />
 			</div>
 		</section>

@@ -2,6 +2,7 @@ import { gql } from 'graphql-request'
 import {
 	ARTICLE_GRID_SECTION_FRAGMENT,
 	CAROUSEL_SECTION_FRAGMENT,
+	CONTACT_SECTION_FRAGMENT,
 	EXPERIENCE_SECTION_FRAGMENT,
 	FEATURED_ARTICLES_SECTION_FRAGMENT,
 	HERO_SECTION_FRAGMENT,
@@ -15,6 +16,7 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 		pageCollection(where: { slug: $slug }, limit: 1) {
 			items {
 				slug
+				jumpLinksEnabled
 				seoMetadata {
 					...SeoMetadataFields
 				}
@@ -23,6 +25,7 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 					items {
 						...ArticleGridSectionFields
 						...CarouselSectionFields
+						...ContactSectionFields
 						...ExperienceSectionFields
 						...FeaturedArticlesSectionFields
 						...HeroSectionFields
@@ -35,6 +38,7 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 	}
 	${ARTICLE_GRID_SECTION_FRAGMENT}
 	${CAROUSEL_SECTION_FRAGMENT}
+	${CONTACT_SECTION_FRAGMENT}
 	${EXPERIENCE_SECTION_FRAGMENT}
 	${FEATURED_ARTICLES_SECTION_FRAGMENT}
 	${HERO_SECTION_FRAGMENT}

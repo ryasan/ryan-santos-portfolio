@@ -143,6 +143,8 @@ export type ArticleGridSectionLinkingCollectionsPageCollectionArgs = {
 export enum ArticleGridSectionLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinksEnabledAsc = 'jumpLinksEnabled_ASC',
+  JumpLinksEnabledDesc = 'jumpLinksEnabled_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -780,6 +782,8 @@ export type CarouselSectionLinkingCollectionsPageCollectionArgs = {
 export enum CarouselSectionLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinksEnabledAsc = 'jumpLinksEnabled_ASC',
+  JumpLinksEnabledDesc = 'jumpLinksEnabled_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -947,6 +951,8 @@ export type ContactSectionLinkingCollectionsPageCollectionArgs = {
 export enum ContactSectionLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinksEnabledAsc = 'jumpLinksEnabled_ASC',
+  JumpLinksEnabledDesc = 'jumpLinksEnabled_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1522,6 +1528,8 @@ export type ExperienceSectionLinkingCollectionsPageCollectionArgs = {
 export enum ExperienceSectionLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinksEnabledAsc = 'jumpLinksEnabled_ASC',
+  JumpLinksEnabledDesc = 'jumpLinksEnabled_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1708,6 +1716,8 @@ export type FeaturedArticlesSectionLinkingCollectionsPageCollectionArgs = {
 export enum FeaturedArticlesSectionLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinksEnabledAsc = 'jumpLinksEnabled_ASC',
+  JumpLinksEnabledDesc = 'jumpLinksEnabled_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -2101,6 +2111,8 @@ export type HeroSectionLinkingCollectionsPageCollectionArgs = {
 export enum HeroSectionLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinksEnabledAsc = 'jumpLinksEnabled_ASC',
+  JumpLinksEnabledDesc = 'jumpLinksEnabled_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -2376,6 +2388,7 @@ export type Page = Entry & _Node & {
   _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
   internalName?: Maybe<Scalars['String']['output']>;
+  jumpLinksEnabled?: Maybe<Scalars['Boolean']['output']>;
   linkedFrom?: Maybe<PageLinkingCollections>;
   pageSectionsCollection?: Maybe<PagePageSectionsCollection>;
   seoMetadata?: Maybe<SeoMetaData>;
@@ -2387,6 +2400,12 @@ export type Page = Entry & _Node & {
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/page) */
 export type PageInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/page) */
+export type PageJumpLinksEnabledArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -2445,6 +2464,9 @@ export type PageFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jumpLinksEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+  jumpLinksEnabled_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  jumpLinksEnabled_not?: InputMaybe<Scalars['Boolean']['input']>;
   pageSections?: InputMaybe<CfpageSectionsMultiTypeNestedFilter>;
   pageSectionsCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   seoMetadata?: InputMaybe<CfSeoMetaDataNestedFilter>;
@@ -2509,6 +2531,8 @@ export enum PageLinkingCollectionsLinkCollectionOrder {
 export enum PageOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinksEnabledAsc = 'jumpLinksEnabled_ASC',
+  JumpLinksEnabledDesc = 'jumpLinksEnabled_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -3501,6 +3525,8 @@ export type SeoMetaDataLinkingCollectionsPageCollectionArgs = {
 export enum SeoMetaDataLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinksEnabledAsc = 'jumpLinksEnabled_ASC',
+  JumpLinksEnabledDesc = 'jumpLinksEnabled_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -3798,6 +3824,8 @@ export type SocialSectionLinkingCollectionsPageCollectionArgs = {
 export enum SocialSectionLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinksEnabledAsc = 'jumpLinksEnabled_ASC',
+  JumpLinksEnabledDesc = 'jumpLinksEnabled_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -4137,6 +4165,8 @@ export type TextRevealSectionLinkingCollectionsPageCollectionArgs = {
 export enum TextRevealSectionLinkingCollectionsPageCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinksEnabledAsc = 'jumpLinksEnabled_ASC',
+  JumpLinksEnabledDesc = 'jumpLinksEnabled_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -4297,6 +4327,9 @@ export type CfPageNestedFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jumpLinksEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+  jumpLinksEnabled_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  jumpLinksEnabled_not?: InputMaybe<Scalars['Boolean']['input']>;
   pageSectionsCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   seoMetadata_exists?: InputMaybe<Scalars['Boolean']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;

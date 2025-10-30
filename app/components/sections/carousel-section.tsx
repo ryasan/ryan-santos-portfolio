@@ -6,9 +6,10 @@ import { normalizeSlide } from '~/utils'
 
 type CarouselSectionProps = {
 	data?: CarouselSectionType
+	id?: string
 }
 
-export default function CarouselSection({ data }: CarouselSectionProps) {
+export default function CarouselSection({ data, id }: CarouselSectionProps) {
 	const slides = data?.slidesCollection?.items
 		.map(normalizeSlide)
 		.map((slide, index) => {
@@ -17,7 +18,7 @@ export default function CarouselSection({ data }: CarouselSectionProps) {
 		})
 
 	return (
-		<section className={styles.carouselSection}>
+		<section className={styles.carouselSection} id={id}>
 			<Carousel
 				slides={slides || []}
 				slidesPerView={data?.slidesPerView}

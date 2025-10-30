@@ -15,9 +15,10 @@ const mockTextBlocks = [
 
 type TextRevealSectionProps = {
 	data?: any
+	id?: string
 }
 
-export default function TextRevealSection({ data }: TextRevealSectionProps) {
+export default function TextRevealSection({ data, id }: TextRevealSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
 	const blockRefs = useRef<(HTMLDivElement | null)[]>([])
 
@@ -96,7 +97,7 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 	}, [])
 
 	return (
-		<section className={styles.section} ref={sectionRef}>
+		<section className={styles.section} ref={sectionRef} id={id}>
 			<div className="container">
 				{data?.textRevealListCollection?.items && (
 					<div className={styles.box}>

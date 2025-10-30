@@ -1,7 +1,7 @@
-import ContactSection from '~/components/sections/contact-section'
-import SectionRenderer from '~/components/section-renderer';
+import JumpLinks from '~/components/jump-links'
+import SectionRenderer from '~/components/section-renderer'
 import type { MetaFunction } from '@netlify/remix-runtime'
-import { PagePageSectionsItem } from '~/graphql/__generated/sdk';
+import { PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
 import { useLoaderData } from '@remix-run/react'
@@ -42,16 +42,23 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 
 export default function Index() {
 	const { page } = useLoaderData<typeof loader>()
+	const sections = page.pageSectionsCollection?.items
 
 	return (
 		<>
-			{page.pageSectionsCollection?.items?.map(
-				(section: PagePageSectionsItem) => {
-					if (!section?.sys?.id) return null
-					return <SectionRenderer key={section.sys.id} section={section} />
-				},
+			{sections?.map((section: PagePageSectionsItem) => {
+				if (!section?.sys?.id) return null
+				return (
+					<SectionRenderer
+						key={section.sys.id}
+						section={section}
+						id={section.sys.id}
+					/>
+				)
+			})}
+			{page.jumpLinksEnabled && sections?.length > 0 && (
+				<JumpLinks sections={sections} />
 			)}
-			<ContactSection />
 		</>
 	)
 }

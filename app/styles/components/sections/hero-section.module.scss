@@ -62,3 +62,23 @@
 	will-change: transform, opacity;
 	transform: translateY(110%);
 }
+
+.scrollToExplore {
+	display: inline-flex;
+	align-items: center;
+	gap: $space-8;
+	justify-content: center;
+	transform: rotate(90deg);
+	transform-origin: left top;
+	position: fixed;
+	bottom: 200px;
+	left: 48px;
+	opacity: 0;
+	will-change: opacity;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.arrowRightIcon {
+	height: 20px;
+}

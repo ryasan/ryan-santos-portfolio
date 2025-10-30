@@ -9,9 +9,10 @@ import { useEffect, useState } from 'react'
 
 type ArticleGridSectionProps = {
 	data?: ArticleGridSectionType
+	id?: string
 }
 
-export default function ArticleGridSection({ data }: ArticleGridSectionProps) {
+export default function ArticleGridSection({ data, id }: ArticleGridSectionProps) {
 	const [view, setView] = useState<'list' | 'grid'>('list')
 	const { isMatching } = useMatchMedia('(max-width:768px)', false)
 
@@ -20,7 +21,7 @@ export default function ArticleGridSection({ data }: ArticleGridSectionProps) {
 	}, [isMatching])
 
 	return (
-		<section className={styles.articleGridSection}>
+		<section className={styles.articleGridSection} id={id}>
 			<div className="container">
 				<div className={styles.header}>
 					<h2 className="h1">{data?.title}</h2>

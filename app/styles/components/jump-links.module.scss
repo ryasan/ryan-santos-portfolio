@@ -1,0 +1,46 @@
+@import '../base/variables';
+
+.jumpLinks {
+	display: none;
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%) rotate(-90deg);
+	right: -50px;
+	align-items: center;
+	gap: $space-32;
+}
+
+@media (min-width: $desktop-lg) {
+	.jumpLinks {
+		display: flex;
+	}
+}
+
+.link {
+	position: relative;
+
+	span::before {
+		display: none;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 2px;
+		height: 30px;
+		border-radius: 100px;
+		background-color: transparent;
+		opacity: 0;
+		transition: opacity 0.5s ease;
+	}
+	
+	&.active {
+		&::after {
+			background-color: var(--content-color);
+			opacity: 1;
+		}
+	}
+}

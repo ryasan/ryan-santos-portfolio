@@ -10,12 +10,22 @@ const paddingClasses = {
 
 type SectionProps = {
 	children: React.ReactNode
+	className?: string
+	id?: string
 	paddingSize: 'none' | 'small' | 'medium' | 'large'
 }
 
-export default function Section({ children, paddingSize }: SectionProps) {
+export default function Section({
+	children,
+	className,
+	id,
+	paddingSize,
+}: SectionProps) {
 	return (
-		<section className={clsx(styles.section, paddingClasses[paddingSize])}>
+		<section
+			className={clsx(styles.section, paddingClasses[paddingSize], className)}
+			id={id}
+		>
 			{children}
 		</section>
 	)

@@ -22,11 +22,12 @@ const getIcon = (icon?: string) => {
 
 type SocialSectionProps = {
 	data?: SocialSectionType
+	id?: string
 }
 
-export default function SocialSection({ data }: SocialSectionProps) {
+export default function SocialSection({ data, id }: SocialSectionProps) {
 	return (
-		<section className={styles.socialSection}>
+		<section className={styles.socialSection} id={id}>
 			<div className="container">
 				<div className={styles.box}>
 					{data?.title && <h2 className="label">{data.title}</h2>}

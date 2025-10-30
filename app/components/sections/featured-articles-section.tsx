@@ -12,10 +12,12 @@ const cardAlignments = ['left', 'right', 'center']
 
 type FeaturedArticlesSectionProps = {
 	data?: FeaturedArticlesSection
+	id?: string
 }
 
 export default function FeaturedArticlesSection({
 	data,
+	id,
 }: FeaturedArticlesSectionProps) {
 	const titleRef = useRef<HTMLHeadingElement>(null)
 	const subtitleRef = useRef<HTMLParagraphElement>(null)
@@ -52,7 +54,7 @@ export default function FeaturedArticlesSection({
 	}, [])
 
 	return (
-		<section className={styles.section}>
+		<section className={styles.section} id={id}>
 			<div className="container">
 				<div className={styles.stickyBox}>
 					{data?.title && (

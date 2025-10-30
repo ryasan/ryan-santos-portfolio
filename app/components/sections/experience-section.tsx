@@ -5,15 +5,16 @@ import { ExperienceSection as ExperienceSectionType } from '~/graphql/__generate
 
 type ExperienceSectionProps = {
 	data?: ExperienceSectionType
+	id?: string
 }
 
 function extractYear(date: string) {
 	return date.split('-')[0]
 }
 
-export default function ExperienceSection({ data }: ExperienceSectionProps) {
+export default function ExperienceSection({ data, id }: ExperienceSectionProps) {
 	return (
-		<section className={styles.experienceSection}>
+		<section className={styles.experienceSection} id={id}>
 			<div className="container">
 				<div className={styles.box}>
 					{data?.title && <h2 className="label">{data?.title}</h2>}
