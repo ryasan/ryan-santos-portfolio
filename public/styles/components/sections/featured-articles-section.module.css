@@ -15,12 +15,7 @@
   z-index: -1;
 }
 
-.title {
-  opacity: 0;
-}
-
 .subtitle {
-  opacity: 0;
   color: var(--content-color-2);
 }
 

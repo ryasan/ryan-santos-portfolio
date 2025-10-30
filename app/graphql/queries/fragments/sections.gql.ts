@@ -126,10 +126,32 @@ export const FEATURED_ARTICLES_SECTION_FRAGMENT = gql`
 			id
 		}
 		title
+		subtitle
 		paddingSize
 		featuredArticlesCollection {
 			items {
 				...ProjectFields
+			}
+		}
+	}
+`
+
+export const CONTACT_SECTION_FRAGMENT = gql`
+	fragment ContactSectionFields on ContactSection {
+		__typename
+		sys {
+			id
+		}
+		title
+		email
+		socialLinksCollection {
+			items {
+				sys {
+					id
+				}
+				label
+				url
+				icon
 			}
 		}
 	}

@@ -17,6 +17,7 @@ type FeaturedArticlesSectionProps = {
 export default function FeaturedArticlesSection({
 	data,
 }: FeaturedArticlesSectionProps) {
+	console.log(data)
 	const titleRef = useRef<HTMLHeadingElement>(null)
 	const subtitleRef = useRef<HTMLParagraphElement>(null)
 
@@ -55,12 +56,16 @@ export default function FeaturedArticlesSection({
 		<section className={styles.section}>
 			<div className="container">
 				<div className={styles.stickyBox}>
-					<h2 className={clsx(styles.title, 'h1 mb-56')} ref={titleRef}>
-						{data?.title}
-					</h2>
-					<p className={clsx(styles.subtitle, 'h5')} ref={subtitleRef}>
-						(SCROLL TO EXPLORE)
-					</p>
+					{data?.title && (
+						<h2 className={clsx(styles.title, 'h1 mb-56')} ref={titleRef}>
+							{data.title}
+						</h2>
+					)}
+					{data?.subtitle && (
+						<p className={clsx(styles.subtitle, 'h5')} ref={subtitleRef}>
+							{data.subtitle}
+						</p>
+					)}
 				</div>
 
 				{data?.featuredArticlesCollection && (
@@ -71,7 +76,6 @@ export default function FeaturedArticlesSection({
 								if (!article) return null
 								const cardIndex = index % cardAlignments.length
 								const cardAlignment = cardAlignments[cardIndex] || 'center'
-								console.log(article)
 
 								return (
 									<div
@@ -79,7 +83,7 @@ export default function FeaturedArticlesSection({
 											styles.articleContainer,
 											styles[cardAlignment],
 										)}
-										key={index}
+										key={article.id}
 									>
 										<div className={styles.articleCard}>
 											<div className={styles.articleImage}>
@@ -99,16 +103,16 @@ export default function FeaturedArticlesSection({
 												)}
 												{article.caption && (
 													<p
-														className={clsx(
-															styles.articleCaption,
-															'h4 mb-16',
-														)}
+														className={clsx(styles.articleCaption, 'h4 mb-16')}
 													>
 														{article.caption}
 													</p>
 												)}
 												{article.description && (
-													<RichText className={styles.articleDescription} data={article.description} />
+													<RichText
+														className={styles.articleDescription}
+														data={article.description}
+													/>
 												)}
 												{article.link && (
 													<a

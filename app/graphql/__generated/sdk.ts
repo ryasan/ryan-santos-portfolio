@@ -835,6 +835,176 @@ export type CarouselSectionSlidesFilter = {
 
 export type CarouselSectionSlidesItem = Blog | Projects;
 
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/contactSection) */
+export type ContactSection = Entry & _Node & {
+  __typename?: 'ContactSection';
+  _id: Scalars['ID']['output'];
+  contentfulMetadata: ContentfulMetadata;
+  email?: Maybe<Scalars['String']['output']>;
+  internalName?: Maybe<Scalars['String']['output']>;
+  linkedFrom?: Maybe<ContactSectionLinkingCollections>;
+  socialLinksCollection?: Maybe<ContactSectionSocialLinksCollection>;
+  sys: Sys;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/contactSection) */
+export type ContactSectionEmailArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/contactSection) */
+export type ContactSectionInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/contactSection) */
+export type ContactSectionLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/contactSection) */
+export type ContactSectionSocialLinksCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ContactSectionSocialLinksCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<SocialLinkFilter>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/contactSection) */
+export type ContactSectionTitleArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ContactSectionCollection = {
+  __typename?: 'ContactSectionCollection';
+  items: Array<Maybe<ContactSection>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type ContactSectionFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ContactSectionFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ContactSectionFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  email_contains?: InputMaybe<Scalars['String']['input']>;
+  email_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  email_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  email_not?: InputMaybe<Scalars['String']['input']>;
+  email_not_contains?: InputMaybe<Scalars['String']['input']>;
+  email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName?: InputMaybe<Scalars['String']['input']>;
+  internalName_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName_not?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  socialLinks?: InputMaybe<CfSocialLinkNestedFilter>;
+  socialLinksCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  title_contains?: InputMaybe<Scalars['String']['input']>;
+  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title_not?: InputMaybe<Scalars['String']['input']>;
+  title_not_contains?: InputMaybe<Scalars['String']['input']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ContactSectionLinkingCollections = {
+  __typename?: 'ContactSectionLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+  pageCollection?: Maybe<PageCollection>;
+};
+
+
+export type ContactSectionLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ContactSectionLinkingCollectionsPageCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ContactSectionLinkingCollectionsPageCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export enum ContactSectionLinkingCollectionsPageCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
+}
+
+export enum ContactSectionOrder {
+  EmailAsc = 'email_ASC',
+  EmailDesc = 'email_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export type ContactSectionSocialLinksCollection = {
+  __typename?: 'ContactSectionSocialLinksCollection';
+  items: Array<Maybe<SocialLink>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export enum ContactSectionSocialLinksCollectionOrder {
+  IconAsc = 'icon_ASC',
+  IconDesc = 'icon_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  LabelAsc = 'label_ASC',
+  LabelDesc = 'label_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  UrlAsc = 'url_ASC',
+  UrlDesc = 'url_DESC'
+}
+
 export type ContentfulMetadata = {
   __typename?: 'ContentfulMetadata';
   concepts: Array<Maybe<TaxonomyConcept>>;
@@ -2375,7 +2545,7 @@ export type PagePageSectionsFilter = {
   sys?: InputMaybe<SysFilter>;
 };
 
-export type PagePageSectionsItem = ArticleGridSection | CarouselSection | ExperienceSection | FeaturedArticlesSection | HeroSection | SocialSection | TextRevealSection;
+export type PagePageSectionsItem = ArticleGridSection | CarouselSection | ContactSection | ExperienceSection | FeaturedArticlesSection | HeroSection | SocialSection | TextRevealSection;
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/person) */
 export type Person = Entry & _Node & {
@@ -2815,6 +2985,8 @@ export type Query = {
   blogCollection?: Maybe<BlogCollection>;
   carouselSection?: Maybe<CarouselSection>;
   carouselSectionCollection?: Maybe<CarouselSectionCollection>;
+  contactSection?: Maybe<ContactSection>;
+  contactSectionCollection?: Maybe<ContactSectionCollection>;
   entryCollection?: Maybe<EntryCollection>;
   experienceItem?: Maybe<ExperienceItem>;
   experienceItemCollection?: Maybe<ExperienceItemCollection>;
@@ -2928,6 +3100,23 @@ export type QueryCarouselSectionCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<CarouselSectionFilter>;
+};
+
+
+export type QueryContactSectionArgs = {
+  id: Scalars['String']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryContactSectionCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ContactSectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ContactSectionFilter>;
 };
 
 
@@ -3429,8 +3618,18 @@ export type SocialLinkFilter = {
 
 export type SocialLinkLinkingCollections = {
   __typename?: 'SocialLinkLinkingCollections';
+  contactSectionCollection?: Maybe<ContactSectionCollection>;
   entryCollection?: Maybe<EntryCollection>;
   socialSectionCollection?: Maybe<SocialSectionCollection>;
+};
+
+
+export type SocialLinkLinkingCollectionsContactSectionCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<SocialLinkLinkingCollectionsContactSectionCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -3449,6 +3648,23 @@ export type SocialLinkLinkingCollectionsSocialSectionCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
+
+export enum SocialLinkLinkingCollectionsContactSectionCollectionOrder {
+  EmailAsc = 'email_ASC',
+  EmailDesc = 'email_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
 
 export enum SocialLinkLinkingCollectionsSocialSectionCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
