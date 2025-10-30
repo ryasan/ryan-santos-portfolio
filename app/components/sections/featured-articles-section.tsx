@@ -1,6 +1,7 @@
+import RichText from '~/components/rich-text'
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/featured-articles-section.module.scss'
-import type { Projects, Blog } from '~/graphql/__generated/sdk'
+import type { FeaturedArticlesSection } from '~/graphql/__generated/sdk'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
 import { normalizeSlide } from '~/utils'
@@ -10,10 +11,7 @@ import { useRef } from 'react'
 const cardAlignments = ['left', 'right', 'center']
 
 type FeaturedArticlesSectionProps = {
-	data?: {
-		title: string
-		articles: (Projects | Blog)[]
-	}
+	data?: FeaturedArticlesSection
 }
 
 export default function FeaturedArticlesSection({
@@ -65,48 +63,70 @@ export default function FeaturedArticlesSection({
 					</p>
 				</div>
 
-				<div className={styles.articleList}>
-					{data?.articles.map(normalizeSlide).map((article, index) => {
-						if (!article) return null
-						const cardIndex = index % cardAlignments.length
-						const cardAlignment = cardAlignments[cardIndex] || 'center'
+				{data?.featuredArticlesCollection && (
+					<div className={styles.articleList}>
+						{data.featuredArticlesCollection.items
+							.map(normalizeSlide)
+							.map((article, index) => {
+								if (!article) return null
+								const cardIndex = index % cardAlignments.length
+								const cardAlignment = cardAlignments[cardIndex] || 'center'
+								console.log(article)
 
-						return (
-							<div
-								className={clsx(styles.articleContainer, styles[cardAlignment])}
-								key={index}
-							>
-								<div className={styles.articleCard}>
-									<div className={styles.articleImage}>
-										{article?.image && (
-											<img
-												className={styles.articleImage}
-												src={article.image}
-												alt={article.title || ''}
-											/>
+								return (
+									<div
+										className={clsx(
+											styles.articleContainer,
+											styles[cardAlignment],
 										)}
+										key={index}
+									>
+										<div className={styles.articleCard}>
+											<div className={styles.articleImage}>
+												{article?.image && (
+													<img
+														className={styles.articleImage}
+														src={article.image}
+														alt={article.title || ''}
+													/>
+												)}
+											</div>
+											<div className={styles.articleContent}>
+												{article.title && (
+													<h3 className={clsx(styles.articleTitle, 'h3 mb-16')}>
+														{article.title}
+													</h3>
+												)}
+												{article.caption && (
+													<p
+														className={clsx(
+															styles.articleDescription,
+															'h4 mb-16',
+														)}
+													>
+														{article.caption}
+													</p>
+												)}
+												{article.description && (
+													<RichText data={article.description} />
+												)}
+												{article.link && (
+													<a
+														className={clsx(styles.articleLink, 'button')}
+														href={article.link || ''}
+														target="_blank"
+														rel="noopener noreferrer"
+													>
+														View Project
+													</a>
+												)}
+											</div>
+										</div>
 									</div>
-									<div className={styles.articleContent}>
-										<h3 className={clsx(styles.articleTitle, 'h3 mb-16')}>
-											{article.title}
-										</h3>
-										<p className={clsx(styles.articleDescription, 'h4 mb-16')}>
-											{article.description}
-										</p>
-										<a
-											className={clsx(styles.articleLink, 'button')}
-											href={article.link || ''}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											View Project
-										</a>
-									</div>
-								</div>
-							</div>
-						)
-					})}
-				</div>
+								)
+							})}
+					</div>
+				)}
 			</div>
 		</section>
 	)

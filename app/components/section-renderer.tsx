@@ -1,16 +1,20 @@
 import ArticleGridSection from './sections/article-grid-section'
 import CarouselSection from './sections/carousel-section'
 import ExperienceSection from './sections/experience-section'
+import FeaturedArticlesSection from './sections/featured-articles-section'
 import HeroSection from './sections/hero-section'
 import SocialSection from './sections/social-section'
+import TextRevealSection from './sections/text-reveal-section'
 import type { PagePageSectionsItem } from '~/graphql/__generated/sdk'
 
 const sections = {
 	ArticleGridSection: ArticleGridSection,
 	CarouselSection: CarouselSection,
 	ExperienceSection: ExperienceSection,
+	FeaturedArticlesSection: FeaturedArticlesSection,
 	HeroSection: HeroSection,
 	SocialSection: SocialSection,
+	TextRevealSection: TextRevealSection,
 } as const
 
 type SectionRendererProps = {
@@ -19,9 +23,9 @@ type SectionRendererProps = {
 
 export default function SectionRenderer({ section }: SectionRendererProps) {
 	const key = section?.__typename
-	const Section = sections[key as keyof typeof sections]
+	const PageSection = sections[key as keyof typeof sections]
 
-	if (!Section) return null
+	if (!PageSection) return null
 
-	return <Section data={section as any} />
+	return <PageSection data={section as any} />
 }

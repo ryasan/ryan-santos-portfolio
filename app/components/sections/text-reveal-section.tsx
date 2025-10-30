@@ -1,6 +1,7 @@
 import TextBlock from '~/components/text-block'
 import styles from '~/styles/components/sections/text-reveal-section.module.scss'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { TextRevealItem } from '~/graphql/__generated/sdk'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
@@ -97,17 +98,21 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 	return (
 		<section className={styles.section} ref={sectionRef}>
 			<div className="container">
-				<div className={styles.box}>
-					{mockTextBlocks.map((block, index) => (
-						<div
-							className={styles.textBlock}
-							ref={(el) => (blockRefs.current[index] = el)}
-							key={index}
-						>
-							<TextBlock block={block} align="center" index={index} />
-						</div>
-					))}
-				</div>
+				{data?.textRevealListCollection?.items && (
+					<div className={styles.box}>
+						{data.textRevealListCollection.items.map(
+							(block: TextRevealItem, index: number) => (
+								<div
+									className={styles.textBlock}
+									ref={(el) => (blockRefs.current[index] = el)}
+									key={index}
+								>
+									<TextBlock block={block} align="center" index={index} />
+								</div>
+							),
+						)}
+					</div>
+				)}
 			</div>
 		</section>
 	)

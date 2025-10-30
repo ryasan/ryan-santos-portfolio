@@ -7,23 +7,11 @@ export const HERO_SECTION_FRAGMENT = gql`
 		sys {
 			id
 		}
-		isTopOfPage
 		title
-		subtitle {
-			json
-		}
-		description {
-			json
-		}
-		link {
-			label
-			url
-		}
-		avatar {
-			url
-			title
-			description
-		}
+		leftSubtitle
+		rightSubtitle
+		isTopOfPage
+		paddingSize
 	}
 `
 
@@ -107,6 +95,41 @@ export const ARTICLE_GRID_SECTION_FRAGMENT = gql`
 				__typename
 				...ProjectFields
 				...BlogFields
+			}
+		}
+	}
+`
+
+export const TEXT_REVEAL_SECTION_FRAGMENT = gql`
+	fragment TextRevealSectionFields on TextRevealSection {
+		__typename
+		sys {
+			id
+		}
+		paddingSize
+		textRevealListCollection {
+			items {
+				sys {
+					id
+				}
+				text
+				type
+			}
+		}
+	}
+`
+
+export const FEATURED_ARTICLES_SECTION_FRAGMENT = gql`
+	fragment FeaturedArticlesSectionFields on FeaturedArticlesSection {
+		__typename
+		sys {
+			id
+		}
+		title
+		paddingSize
+		featuredArticlesCollection {
+			items {
+				...ProjectFields
 			}
 		}
 	}

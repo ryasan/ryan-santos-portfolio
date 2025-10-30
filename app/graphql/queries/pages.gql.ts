@@ -3,9 +3,11 @@ import {
 	ARTICLE_GRID_SECTION_FRAGMENT,
 	CAROUSEL_SECTION_FRAGMENT,
 	EXPERIENCE_SECTION_FRAGMENT,
+	FEATURED_ARTICLES_SECTION_FRAGMENT,
 	HERO_SECTION_FRAGMENT,
 	SEO_METADATA_FRAGMENT,
 	SOCIAL_SECTION_FRAGMENT,
+	TEXT_REVEAL_SECTION_FRAGMENT,
 } from './fragments'
 
 export const GET_PAGE_BY_SLUG_QUERY = gql`
@@ -22,8 +24,10 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 						...ArticleGridSectionFields
 						...CarouselSectionFields
 						...ExperienceSectionFields
+						...FeaturedArticlesSectionFields
 						...HeroSectionFields
 						...SocialSectionFields
+						...TextRevealSectionFields
 					}
 				}
 			}
@@ -32,9 +36,11 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 	${ARTICLE_GRID_SECTION_FRAGMENT}
 	${CAROUSEL_SECTION_FRAGMENT}
 	${EXPERIENCE_SECTION_FRAGMENT}
+	${FEATURED_ARTICLES_SECTION_FRAGMENT}
 	${HERO_SECTION_FRAGMENT}
 	${SEO_METADATA_FRAGMENT}
 	${SOCIAL_SECTION_FRAGMENT}
+	${TEXT_REVEAL_SECTION_FRAGMENT}
 `
 
 export const GET_PAGE_BY_TITLE_QUERY = gql`

@@ -45,6 +45,11 @@
   }
 }
 
+.leftSubtitle,
+.rightSubtitle {
+  max-width: 250px;
+}
+
 .wordMask {
   display: inline-block;
   overflow: hidden;

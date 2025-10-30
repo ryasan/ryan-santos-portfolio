@@ -32,3 +32,4 @@
 * [ ] Look into "GSAP Text"
 * [ ] Look into "Glassmorphism"
 * [ ] Add mouse follower
+* [ ] Put contact section in Contentful

@@ -6,8 +6,6 @@ import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
 
-const mockTitleWords = ['Creative', 'Frontend', 'Engineer']
-
 type HeroSectionProps = {
 	data?: HeroSectionType
 }
@@ -65,19 +63,23 @@ export default function HeroSection({ data }: HeroSectionProps) {
 		<section className={styles.section} ref={sectionRef}>
 			<div className="container">
 				<div className={styles.stickyBox} ref={stickyBoxRef}>
-					<h1 className={styles.title}>
-						{mockTitleWords.map((word, index) => (
-							<span className={styles.wordMask} key={index}>
-								<span className={clsx(styles.word, 'word')}>{word}</span>
-								{index < mockTitleWords.length - 1 && <br />}
-							</span>
-						))}
-					</h1>
+					{data?.title && (
+						<h1 className={styles.title}>
+							{data.title.split(' ').map((word, index, array) => (
+								<span className={styles.wordMask} key={index}>
+									<span className={clsx(styles.word, 'word')}>{word}</span>
+									{index < array.length - 1 && <br />}
+								</span>
+							))}
+						</h1>
+					)}
 					<div className={clsx(styles.subtitle, 'h5')} ref={subtitleRef}>
-						<div>
-							Currently building <br /> things @ Envoy
-						</div>
-						<div>(2022 - Present)</div>
+						{data?.leftSubtitle && (
+							<div className={styles.leftSubtitle}>{data?.leftSubtitle}</div>
+						)}
+						{data?.rightSubtitle && (
+							<div className={styles.rightSubtitle}>{data?.rightSubtitle}</div>
+						)}
 					</div>
 				</div>
 				<div className={styles.box} />

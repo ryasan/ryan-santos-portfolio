@@ -1,0 +1,15 @@
+@import '../../base/variables';
+
+.section {
+	&.padding-sm {
+		padding: $space-40 0;
+	}
+
+	&.padding-md {
+		padding: $space-80 0;
+	}
+
+	&.padding-lg {
+		padding: $space-120 0;
+	}
+}

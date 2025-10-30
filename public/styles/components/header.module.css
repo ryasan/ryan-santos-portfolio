@@ -1,7 +1,7 @@
 .header {
   padding: 24px 40px;
   backdrop-filter: blur(15px);
-  background-color: rgba(var(--background-primary-color-rgb), 0.7);
+  background-color: rgba(var(--background-primary-color-rgb), 0.8);
   height: 68px;
   position: sticky;
   top: 0;
