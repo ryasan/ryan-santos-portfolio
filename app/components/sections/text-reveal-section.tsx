@@ -92,7 +92,7 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 				},
 			})
 		})
-	})
+	}, [])
 
 	return (
 		<section className={styles.section} ref={sectionRef}>

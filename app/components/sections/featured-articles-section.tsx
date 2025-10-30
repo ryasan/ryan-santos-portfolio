@@ -32,7 +32,11 @@ export default function FeaturedArticlesSection({
 			trigger: title,
 			start: 'bottom bottom-=200px',
 			onEnter: () => {
-				gsap.to(title, { opacity: 1, duration: 1, ease: 'power2.out' })
+				gsap.to(title, {
+					opacity: 1,
+					duration: 1,
+					ease: 'power2.out',
+				})
 			},
 		})
 
@@ -40,10 +44,14 @@ export default function FeaturedArticlesSection({
 			trigger: subtitle,
 			start: 'bottom bottom-=200px',
 			onEnter: () => {
-				gsap.to(subtitle, { opacity: 1, duration: 1, ease: 'power2.out' })
+				gsap.to(subtitle, {
+					opacity: 1,
+					duration: 1,
+					ease: 'power2.out',
+				})
 			},
 		})
-	})
+	}, [])
 
 	return (
 		<section className={styles.section}>

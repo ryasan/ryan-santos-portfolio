@@ -15,52 +15,51 @@ type HeroSectionProps = {
 export default function HeroSection({ data }: HeroSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
 	const stickyBoxRef = useRef<HTMLDivElement>(null)
-	const titleWordRefs = useRef<(HTMLSpanElement | null)[]>([])
 	const subtitleRef = useRef<HTMLDivElement>(null)
 
-	useGSAP(() => {
-		const section = sectionRef.current
-		const stickyBox = stickyBoxRef.current
-		const titleWords = titleWordRefs.current
-		const subtitle = subtitleRef.current
+	useGSAP(
+		() => {
+			const section = sectionRef.current
+			const stickyBox = stickyBoxRef.current
+			const subtitle = subtitleRef.current
 
-		if (!section || !stickyBox || !subtitle || !titleWords.length) return
+			if (!section || !stickyBox || !subtitle) return
 
-		titleWords.forEach((word, index) => {
-			gsap.to(word, {
+			gsap.to('.word', {
 				y: 0,
 				duration: 0.75,
 				ease: 'power2.inOut',
-				delay: index * 0.075,
+				stagger: 0.1,
 			})
-		})
 
-		gsap.to(subtitle, {
-			opacity: 1,
-			duration: 1,
-			ease: 'power2.out',
-			delay: titleWords.length * 0.25,
-		})
+			gsap.to(subtitle, {
+				opacity: 1,
+				duration: 1,
+				ease: 'power2.out',
+				delay: 0.75,
+			})
 
-		ScrollTrigger.create({
-			trigger: section,
-			start: 'top top',
-			end: 'bottom bottom',
-			scrub: 1,
-			onUpdate: (self) => {
-				const progress = self.progress
-				const scale = 1 - progress * 0.3
-				const opacity = 1 - progress * 1
+			ScrollTrigger.create({
+				trigger: section,
+				start: 'top top',
+				end: 'bottom bottom',
+				scrub: 1,
+				onUpdate: (self) => {
+					const progress = self.progress
+					const scale = 1 - progress * 0.3
+					const opacity = 1 - progress * 1
 
-				gsap.to(stickyBox, {
-					scale,
-					opacity,
-					duration: 0.1,
-					ease: 'none',
-				})
-			},
-		})
-	})
+					gsap.to(stickyBox, {
+						scale,
+						opacity,
+						duration: 0.1,
+						ease: 'none',
+					})
+				},
+			})
+		},
+		{ scope: sectionRef },
+	)
 
 	return (
 		<section className={styles.section} ref={sectionRef}>
@@ -69,17 +68,12 @@ export default function HeroSection({ data }: HeroSectionProps) {
 					<h1 className={styles.title}>
 						{mockTitleWords.map((word, index) => (
 							<span className={styles.wordMask} key={index}>
-								<span
-									className={styles.word}
-									ref={(el) => (titleWordRefs.current[index] = el)}
-								>
-									{word}
-								</span>
+								<span className={clsx(styles.word, 'word')}>{word}</span>
 								{index < mockTitleWords.length - 1 && <br />}
 							</span>
 						))}
 					</h1>
-					<div className={clsx(styles.subtitle, "h5")} ref={subtitleRef}>
+					<div className={clsx(styles.subtitle, 'h5')} ref={subtitleRef}>
 						<div>
 							Currently building <br /> things @ Envoy
 						</div>
