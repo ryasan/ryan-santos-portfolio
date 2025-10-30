@@ -116,9 +116,17 @@
 	}
 }
 
-.articleDescription {
+.articleCaption {
 	color: var(--content-color-2);
 	font-weight: 500;
+
+	[data-theme='light'] & {
+		color: var(--background-secondary-color);
+	}
+}
+
+.articleDescription p {
+	color: var(--content-color);
 
 	[data-theme='light'] & {
 		color: var(--background-secondary-color);

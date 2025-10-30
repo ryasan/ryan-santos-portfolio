@@ -100,7 +100,7 @@ export default function FeaturedArticlesSection({
 												{article.caption && (
 													<p
 														className={clsx(
-															styles.articleDescription,
+															styles.articleCaption,
 															'h4 mb-16',
 														)}
 													>
@@ -108,7 +108,7 @@ export default function FeaturedArticlesSection({
 													</p>
 												)}
 												{article.description && (
-													<RichText data={article.description} />
+													<RichText className={styles.articleDescription} data={article.description} />
 												)}
 												{article.link && (
 													<a
