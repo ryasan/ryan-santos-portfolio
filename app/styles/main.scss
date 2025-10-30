@@ -1,5 +1,8 @@
 @charset 'UTF-8';
 
+// Vendor
+@import 'vendors/mouse-follower';
+
 // Base
 @import 'base/variables';
 @import 'base/functions';
@@ -9,4 +12,3 @@
 @import 'base/fonts';
 @import 'base/utilities';
 @import 'base/overrides';
-

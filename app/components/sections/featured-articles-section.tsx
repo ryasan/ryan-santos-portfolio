@@ -17,7 +17,6 @@ type FeaturedArticlesSectionProps = {
 export default function FeaturedArticlesSection({
 	data,
 }: FeaturedArticlesSectionProps) {
-	console.log(data)
 	const titleRef = useRef<HTMLHeadingElement>(null)
 	const subtitleRef = useRef<HTMLParagraphElement>(null)
 

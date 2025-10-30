@@ -1,5 +1,6 @@
 import ClientHintScript, { getHints } from '~/components/client-hint-script'
 import GlobalLayout from '~/components/global-layout'
+import MouseFollower from 'mouse-follower'
 import mainStyles from '~/styles/main.css?url'
 import {
 	Links,
@@ -25,9 +26,15 @@ import {
 import { type Theme } from '~/types'
 import { useGSAP } from '@gsap/react'
 import { useTheme } from '~/hooks'
+import 'mouse-follower/dist/mouse-follower.min.css'
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(useGSAP)
+MouseFollower.registerGSAP(gsap)
+
+if (typeof window !== 'undefined') {
+	new MouseFollower()
+}
 
 export const links: LinksFunction = () => {
 	return [{ rel: 'stylesheet', href: mainStyles }]

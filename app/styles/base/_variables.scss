@@ -35,9 +35,9 @@ $body-font-family: 'Poppins', sans-serif;
 $heading-font-family: 'Poppins', sans-serif;
 
 // Stacking order
-$z-index-header: 9996;
-$z-index-sidebar: 9997;
-$z-index-above-all: 9999;
+$z-index-header: 230;
+$z-index-sidebar: 240;
+$z-index-above-all: 250;
 
 // Header height
 $header-height: 68px;

@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/contact-section.module.scss'
+import type { ContactSection } from '~/graphql/__generated/sdk'
 import {
 	CodepenIcon,
 	CopySimpleIcon,
