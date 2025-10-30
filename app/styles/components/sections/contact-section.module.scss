@@ -30,7 +30,7 @@
 }
 
 .copyButton {
-	margin-top: $space-120;
+	margin-top: $space-64;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -46,7 +46,7 @@
 	display: flex;
 	align-items: center;
 	gap: $space-56;
-	margin-top: $space-24;
+	margin-top: $space-32;
 
 	a {
 		transition: opacity 0.2s ease;
