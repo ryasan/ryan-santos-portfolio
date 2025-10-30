@@ -1,8 +1,6 @@
-import {
-	json,
-	type LinksFunction,
-	type LoaderFunctionArgs,
-} from '@remix-run/node'
+import ClientHintScript, { getHints } from '~/components/client-hint-script'
+import GlobalLayout from '~/components/global-layout'
+import mainStyles from '~/styles/main.css?url'
 import {
 	Links,
 	Meta,
@@ -10,18 +8,26 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from '@remix-run/react'
-import ClientHintScript, { getHints } from '~/components/client-hint-script'
-import GlobalLayout from '~/components/global-layout'
-import mainStyles from '~/styles/main.css?url'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { client } from '~/services/contentful.server'
 import { getTheme } from '~/services/theme.server'
-import { type Theme } from '~/types'
+import { gsap } from 'gsap'
 import {
 	isRouteErrorResponse,
 	useLoaderData,
 	useRouteError,
 } from '@remix-run/react'
+import {
+	json,
+	type LinksFunction,
+	type LoaderFunctionArgs,
+} from '@remix-run/node'
+import { type Theme } from '~/types'
+import { useGSAP } from '@gsap/react'
 import { useTheme } from '~/hooks'
+
+gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(useGSAP)
 
 export const links: LinksFunction = () => {
 	return [{ rel: 'stylesheet', href: mainStyles }]

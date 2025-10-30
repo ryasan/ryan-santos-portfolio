@@ -4,9 +4,8 @@ import type { Projects, Blog } from '~/graphql/__generated/sdk'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
 import { normalizeSlide } from '~/utils'
-import { useEffect, useRef } from 'react'
-
-gsap.registerPlugin(ScrollTrigger)
+import { useGSAP } from '@gsap/react'
+import { useRef } from 'react'
 
 const cardAlignments = ['left', 'right', 'center']
 
@@ -23,7 +22,7 @@ export default function FeaturedArticlesSection({
 	const titleRef = useRef<HTMLHeadingElement>(null)
 	const subtitleRef = useRef<HTMLParagraphElement>(null)
 
-	useEffect(() => {
+	useGSAP(() => {
 		const title = titleRef.current
 		const subtitle = subtitleRef.current
 
@@ -44,7 +43,7 @@ export default function FeaturedArticlesSection({
 				gsap.to(subtitle, { opacity: 1, duration: 1, ease: 'power2.out' })
 			},
 		})
-	}, [])
+	})
 
 	return (
 		<section className={styles.section}>

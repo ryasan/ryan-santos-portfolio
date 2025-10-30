@@ -2,20 +2,15 @@ import TextBlock from '~/components/text-block'
 import styles from '~/styles/components/sections/text-reveal-section.module.scss'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
-import { useEffect, useRef } from 'react'
+import { useGSAP } from '@gsap/react'
+import { useRef } from 'react'
 
 const mockTextBlocks = [
 	{
 		text: 'I build applications that combine performance with thoughtful design.',
 		type: 'heading',
 	},
-	{
-		text: 'I care about the small details that make a big difference.',
-		type: 'heading',
-	},
 ]
-
-gsap.registerPlugin(ScrollTrigger)
 
 type TextRevealSectionProps = {
 	data?: any
@@ -25,7 +20,7 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
 	const blockRefs = useRef<(HTMLDivElement | null)[]>([])
 
-	useEffect(() => {
+	useGSAP(() => {
 		const section = sectionRef.current
 		const blocks = blockRefs.current.filter(Boolean)
 
@@ -97,20 +92,7 @@ export default function TextRevealSection({ data }: TextRevealSectionProps) {
 				},
 			})
 		})
-
-		return () => {
-			ScrollTrigger.getAll().forEach((trigger) => {
-				if (trigger.trigger) {
-					if (blocks.includes(trigger.trigger as HTMLDivElement)) {
-						trigger.kill()
-					}
-					if (trigger.trigger === section) {
-						trigger.kill()
-					}
-				}
-			})
-		}
-	}, [])
+	})
 
 	return (
 		<section className={styles.section} ref={sectionRef}>

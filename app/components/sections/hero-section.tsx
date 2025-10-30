@@ -3,11 +3,10 @@ import styles from '~/styles/components/sections/hero-section.module.scss'
 import { HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
-import { useEffect, useRef } from 'react'
+import { useGSAP } from '@gsap/react'
+import { useRef } from 'react'
 
 const mockTitleWords = ['Creative', 'Frontend', 'Engineer']
-
-gsap.registerPlugin(ScrollTrigger)
 
 type HeroSectionProps = {
 	data?: HeroSectionType
@@ -19,7 +18,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
 	const titleWordRefs = useRef<(HTMLSpanElement | null)[]>([])
 	const subtitleRef = useRef<HTMLDivElement>(null)
 
-	useEffect(() => {
+	useGSAP(() => {
 		const section = sectionRef.current
 		const stickyBox = stickyBoxRef.current
 		const titleWords = titleWordRefs.current
@@ -61,15 +60,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
 				})
 			},
 		})
-
-		return () => {
-			ScrollTrigger.getAll().forEach((trigger) => {
-				if (trigger.trigger === section) {
-					trigger.kill()
-				}
-			})
-		}
-	}, [])
+	})
 
 	return (
 		<section className={styles.section} ref={sectionRef}>
