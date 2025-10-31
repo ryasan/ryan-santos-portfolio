@@ -9,9 +9,14 @@
 	margin: 0 auto;
 	max-width: 1000px;
 	width: 100%;
+	min-height: 80vh;
 	transform-origin: top center;
 	will-change: transform, opacity;
 	backface-visibility: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .spacer {
@@ -19,7 +24,6 @@
 }
 
 .title {
-	margin-top: $space-140;
 	margin-bottom: $space-20;
 	overflow: hidden;
 	text-align: center;

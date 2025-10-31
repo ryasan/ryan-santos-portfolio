@@ -7,9 +7,14 @@
   margin: 0 auto;
   max-width: 1000px;
   width: 100%;
+  min-height: 80vh;
   transform-origin: top center;
   will-change: transform, opacity;
   backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .spacer {
@@ -17,7 +22,6 @@
 }
 
 .title {
-  margin-top: 140px;
   margin-bottom: 20px;
   overflow: hidden;
   text-align: center;
