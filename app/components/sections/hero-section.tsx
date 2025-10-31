@@ -55,7 +55,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				trigger: section,
 				pin: stickyBox,
 				start: 'top top',
-				end: 'bottom bottom',
+				end: 'bottom bottom-=300px',
 				pinSpacing: false,
 			})
 	

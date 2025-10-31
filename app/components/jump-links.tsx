@@ -47,20 +47,22 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 
 	return (
 		<div className={styles.jumpLinks} ref={jumpLinksRef}>
-			{sections.map((section, index) => {
-				if (!section?.sys?.id) return null
+			{sections
+				.map((section, index) => {
+					if (!section?.sys?.id) return null
 
-				const isActive = hashWithoutHash === section.sys.id
+					const isActive = hashWithoutHash === section.sys.id
 
-				return (
-					<Link
-						className={clsx(styles.link, isActive && styles.active)}
-						key={section.sys.id}
-						to={`#${section.sys.id}`}
-						onClick={(e) => handleClick(e, section)}
-					>{`${index < 10 ? '0' : ''}${index + 1}`}</Link>
-				)
-			})}
+					return (
+						<Link
+							className={clsx(styles.link, isActive && styles.active)}
+							key={section.sys.id}
+							to={`#${section.sys.id}`}
+							onClick={(e) => handleClick(e, section)}
+						>{`${index < 10 ? '0' : ''}${index + 1}`}</Link>
+					)
+				})
+				.reverse()}
 		</div>
 	)
 }
