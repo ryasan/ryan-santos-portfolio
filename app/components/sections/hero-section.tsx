@@ -23,10 +23,10 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 			const subtitle = subtitleRef.current
 			const scrollToExplore = document.querySelector('.scroll-to-explore')
 
+			if (!section || !stickyBox || !subtitle || !scrollToExplore) return
+
 			const shouldShowScrollToExplore =
 				typeof window !== 'undefined' && window.scrollY === 0
-			
-			if (!section || !stickyBox || !subtitle || !scrollToExplore) return
 
 			gsap.to('.word', {
 				y: 0,
