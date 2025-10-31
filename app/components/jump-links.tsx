@@ -1,5 +1,5 @@
 import Link from '~/components/link'
-import clsx from 'clsx';
+import clsx from 'clsx'
 import styles from '~/styles/components/jump-links.module.scss'
 import { PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import { useLocation } from '@remix-run/react'

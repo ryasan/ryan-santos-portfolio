@@ -11,10 +11,7 @@ type GlobalLayoutProps = {
 	}
 }
 
-export default function GlobalLayout({
-	children,
-	data,
-}: GlobalLayoutProps) {
+export default function GlobalLayout({ children, data }: GlobalLayoutProps) {
 	return (
 		<main className={styles.main}>
 			<Header data={data?.headerData} />

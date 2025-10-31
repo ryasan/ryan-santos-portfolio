@@ -77,7 +77,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 	)
 
 	return (
-		<section className={styles.section} ref={sectionRef} id={id}>
+		<section className={styles.section} id={id} ref={sectionRef}>
 			<div className="container">
 				<div className={styles.stickyBox} ref={stickyBoxRef}>
 					{data?.title && (
@@ -100,7 +100,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 					</div>
 				</div>
 				{data?.isTopOfPage && (
-					<div className={clsx(styles.scrollToExplore, 'badge')} ref={scrollToExploreRef}>
+					<div className={clsx(styles.scrollToExplore, 'link')} ref={scrollToExploreRef}>
 						<span>Scroll to explore</span>
 						<ArrowRightIcon className={styles.arrowRightIcon} />
 					</div>

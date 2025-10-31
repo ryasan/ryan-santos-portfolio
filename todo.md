@@ -33,3 +33,4 @@
 * [ ] Look into "Glassmorphism"
 * [ ] Add mouse follower
 * [ ] Put contact section in Contentful
+* [ ] Add GSAP ScrollSmoother

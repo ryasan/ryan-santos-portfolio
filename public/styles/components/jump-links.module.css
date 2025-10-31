@@ -16,25 +16,5 @@
 .link {
   position: relative;
 }
-.link span::before {
-  display: none;
-}
-.link::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 30px;
-  border-radius: 100px;
-  background-color: transparent;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.link.active::after {
-  background-color: var(--content-color);
-  opacity: 1;
-}
 
 /*# sourceMappingURL=jump-links.module.css.map */

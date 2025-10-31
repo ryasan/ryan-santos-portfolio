@@ -1,4 +1,5 @@
 import JumpLinks from '~/components/jump-links'
+import ScrollSmoothLayout from '~/components/scroll-smooth-layout'
 import SectionRenderer from '~/components/section-renderer'
 import type { MetaFunction } from '@netlify/remix-runtime'
 import { PagePageSectionsItem } from '~/graphql/__generated/sdk'

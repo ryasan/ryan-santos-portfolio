@@ -26,8 +26,7 @@ import { type Theme } from '~/types'
 import { useGSAP } from '@gsap/react'
 import { useTheme } from '~/hooks'
 
-gsap.registerPlugin(ScrollTrigger)
-gsap.registerPlugin(useGSAP)
+gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 export const links: LinksFunction = () => {
 	return [{ rel: 'stylesheet', href: mainStyles }]

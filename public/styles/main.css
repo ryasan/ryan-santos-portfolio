@@ -182,6 +182,7 @@ button {
 html {
   box-sizing: border-box;
   scrollbar-gutter: stable;
+  scroll-behavior: smooth;
 }
 
 *,
