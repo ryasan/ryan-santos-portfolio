@@ -7,14 +7,14 @@
 	right: -114px;
 	gap: $space-32;
 	width: 300px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	display: none;
 }
 
 @media (min-width: $desktop-lg) {
 	.jumpLinks {
 		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 }
 
