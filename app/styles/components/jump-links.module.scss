@@ -1,13 +1,15 @@
 @import '../base/variables';
 
 .jumpLinks {
-	display: none;
 	position: fixed;
 	top: 50%;
 	transform: translateY(-50%) rotate(-90deg);
-	right: -50px;
-	align-items: center;
+	right: -114px;
 	gap: $space-32;
+	width: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @media (min-width: $desktop-lg) {

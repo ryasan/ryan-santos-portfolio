@@ -12,18 +12,20 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 	const location = useLocation()
 	const hash = location.hash
 	const hashWithoutHash = hash.slice(1)
+	const globalFooter = { id: 'global-footer', link: '#global-footer' }
 
 	return (
 		<div className={styles.jumpLinks}>
-			{sections.map((section, index) => {
-				if (!section?.sys?.id) return null
-				const isActive = hashWithoutHash === section.sys.id
+			{[...sections, globalFooter].map((section, index) => {
+				const id = 'sys' in section ? section.sys.id : section.id
+				if (!id) return null
+				const isActive = hashWithoutHash === id
 
 				return (
 					<Link
 						className={clsx(styles.link, isActive && styles.active)}
-						key={section.sys.id}
-						to={`#${section.sys.id}`}
+						key={id}
+						to={`#${id}`}
 					>{`${index < 10 ? '0' : ''}${index + 1}`}</Link>
 				)
 			})}

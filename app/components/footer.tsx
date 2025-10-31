@@ -12,7 +12,7 @@ type FooterProps = {
 
 export default function Footer({ data }: FooterProps) {
 	return (
-		<footer className={styles.footer}>
+		<footer className={styles.footer} id="global-footer">
 			<div className={clsx('container', styles.container)}>
 				{data?.copyRightText && (
 					<p className="body-2">

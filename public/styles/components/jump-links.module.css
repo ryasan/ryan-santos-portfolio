@@ -1,11 +1,13 @@
 .jumpLinks {
-  display: none;
   position: fixed;
   top: 50%;
   transform: translateY(-50%) rotate(-90deg);
-  right: -50px;
-  align-items: center;
+  right: -114px;
   gap: 32px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (min-width: 1440px) {
