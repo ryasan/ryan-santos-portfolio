@@ -1,9 +1,7 @@
-@import '../base/variables';
-
 .scrollToExplore {
 	display: inline-flex;
 	align-items: center;
-	gap: $space-8;
+	gap: 8px;
 	justify-content: center;
 	transform: rotate(90deg);
 	transform-origin: left top;
