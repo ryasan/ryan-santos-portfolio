@@ -19,13 +19,15 @@ export default function TextRevealSection({
 	id,
 }: TextRevealSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
-	const blockRefs = useRef<(HTMLDivElement | null)[]>([])
+	const blockListRef = useRef<HTMLDivElement>(null)
 
 	useGSAP(() => {
 		const section = sectionRef.current
-		const blocks = blockRefs.current.filter(Boolean)
+		const blockList = blockListRef.current
 
-		if (!section || blocks.length === 0) return
+		if (!section || !blockList) return
+
+		const blocks = gsap.utils.toArray<HTMLDivElement>(blockList.children)
 
 		ScrollTrigger.create({
 			trigger: section,
@@ -99,20 +101,18 @@ export default function TextRevealSection({
 		<section className={styles.section} ref={sectionRef} id={id}>
 			<div className="container">
 				<div className={styles.box}>
-					{data?.textRevealListCollection?.items?.map(
-						(block: TextRevealItem | null, index: number) => {
-							if (!block) return null
-							return (
-								<div
-									className={styles.textBlock}
-									ref={(el) => (blockRefs.current[index] = el)}
-									key={index}
-								>
-									<TextBlock block={block} align="center" index={index} />
-								</div>
-							)
-						},
-					)}
+					<div ref={blockListRef}>
+						{data?.textRevealListCollection?.items?.map(
+							(block: TextRevealItem | null, index: number) => {
+								if (!block) return null
+								return (
+									<div className={styles.textBlock} key={index}>
+										<TextBlock block={block} align="center" index={index} />
+									</div>
+								)
+							},
+						)}
+					</div>
 				</div>
 			</div>
 		</section>
