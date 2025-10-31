@@ -1,11 +1,8 @@
 @import '../../base/variables';
 
 .section {
+	padding-top: $header-height;
 	position: relative;
-}
-
-.spacer {
-	height: 100vh;
 }
 
 .stickyBox {
@@ -15,13 +12,14 @@
 	transform-origin: top center;
 	will-change: transform, opacity;
 	backface-visibility: hidden;
-	padding-top: $space-120;
-	position: sticky;
-	top: 100px;
-	z-index: 1;
+}
+
+.spacer {
+	height: 100vh;
 }
 
 .title {
+	margin-top: $space-140;
 	margin-bottom: $space-20;
 	overflow: hidden;
 	text-align: center;
@@ -52,7 +50,7 @@
 }
 
 .wordMask {
-	display: inline-block;
+	display: block;
 	overflow: hidden;
 	position: relative;
 }

@@ -1,9 +1,6 @@
 .section {
+  padding-top: 68px;
   position: relative;
-}
-
-.spacer {
-  height: 100vh;
 }
 
 .stickyBox {
@@ -13,13 +10,14 @@
   transform-origin: top center;
   will-change: transform, opacity;
   backface-visibility: hidden;
-  padding-top: 120px;
-  position: sticky;
-  top: 100px;
-  z-index: 1;
+}
+
+.spacer {
+  height: 100vh;
 }
 
 .title {
+  margin-top: 140px;
   margin-bottom: 20px;
   overflow: hidden;
   text-align: center;
@@ -51,7 +49,7 @@
 }
 
 .wordMask {
-  display: inline-block;
+  display: block;
   overflow: hidden;
   position: relative;
 }

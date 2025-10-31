@@ -38,6 +38,7 @@ export default function FeaturedArticlesSection({
 			start: 'top top',
 			end: 'bottom bottom',
 			pinSpacing: false,
+			markers: true,
 		})
 
 		ScrollTrigger.create({

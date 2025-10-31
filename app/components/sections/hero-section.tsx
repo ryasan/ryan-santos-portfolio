@@ -53,6 +53,14 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 
 			ScrollTrigger.create({
 				trigger: section,
+				pin: stickyBox,
+				start: 'top top',
+				end: 'bottom bottom',
+				pinSpacing: false,
+			})
+	
+			ScrollTrigger.create({
+				trigger: section,
 				start: 'top top',
 				end: 'bottom bottom',
 				scrub: 1,
@@ -110,13 +118,12 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				<div className={styles.stickyBox} ref={stickyBoxRef}>
 					{data?.titleWords && (
 						<h1 className={styles.title}>
-							{data.titleWords?.map((word, index, array) => {
+							{data.titleWords?.map((word, index) => {
 								if (!word) return null
 
 								return (
 									<span className={styles.wordMask} key={index}>
 										<span className={clsx(styles.word, 'word')}>{word}</span>
-										{index < array.length - 1 && <br />}
 									</span>
 								)
 							})}
