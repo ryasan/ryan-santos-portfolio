@@ -23,6 +23,9 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 			const subtitle = subtitleRef.current
 			const scrollToExplore = document.querySelector('.scroll-to-explore')
 
+			const shouldShowScrollToExplore =
+				typeof window !== 'undefined' && window.scrollY === 0
+			
 			if (!section || !stickyBox || !subtitle || !scrollToExplore) return
 
 			gsap.to('.word', {
@@ -39,12 +42,14 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				delay: 0.75,
 			})
 
-			gsap.to(scrollToExplore, {
-				opacity: 1,
-				duration: 1,
-				ease: 'power2.out',
-				delay: 0.75,
-			})
+			if (shouldShowScrollToExplore) {
+				gsap.to(scrollToExplore, {
+					opacity: 1,
+					duration: 1,
+					ease: 'power2.out',
+					delay: 0.75,
+				})
+			}
 
 			ScrollTrigger.create({
 				trigger: section,
@@ -70,30 +75,29 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 					})
 				},
 			})
-			gsap.to(section, {
-				scrollTrigger: {
-					trigger: section,
-					start: 'top top',
-					end: 'bottom bottom',
-					scrub: 1,
-					onUpdate: (self) => {
-						const progress = self.progress
-						const scale = 1 - progress * 0.3
-						const opacity = 1 - progress * 1
 
-						gsap.to(stickyBox, {
-							scale,
-							opacity,
-							duration: 0.1,
-							ease: 'none',
-						})
+			ScrollTrigger.create({
+				trigger: section,
+				start: 'top top',
+				end: 'bottom bottom',
+				scrub: 1,
+				onUpdate: (self) => {
+					const progress = self.progress
+					const scale = 1 - progress * 0.3
+					const opacity = 1 - progress * 1
 
-						gsap.to(scrollToExplore, {
-							opacity,
-							duration: 0.1,
-							ease: 'none',
-						})
-					},
+					gsap.to(stickyBox, {
+						scale,
+						opacity,
+						duration: 0.1,
+						ease: 'none',
+					})
+
+					gsap.to(scrollToExplore, {
+						opacity,
+						duration: 0.1,
+						ease: 'none',
+					})
 				},
 			})
 		},
