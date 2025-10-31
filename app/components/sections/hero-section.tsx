@@ -108,7 +108,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				<div className={styles.stickyBox} ref={stickyBoxRef}>
 					{data?.title && (
 						<h1 className={styles.title}>
-							{data.title.split(' ').map((word, index, array) => (
+							{data.titleWords?.map((word, index, array) => (
 								<span className={styles.wordMask} key={index}>
 									<span className={clsx(styles.word, 'word')}>{word}</span>
 									{index < array.length - 1 && <br />}
