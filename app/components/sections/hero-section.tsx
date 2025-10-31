@@ -72,6 +72,32 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 					})
 				},
 			})
+			gsap.to(section, {
+				scrollTrigger: {
+					trigger: section,
+					start: 'top top',
+					end: 'bottom bottom',
+					scrub: 1,
+					onUpdate: (self) => {
+						const progress = self.progress
+						const scale = 1 - progress * 0.3
+						const opacity = 1 - progress * 1
+	
+						gsap.to(stickyBox, {
+							scale,
+							opacity,
+							duration: 0.1,
+							ease: 'none',
+						})
+	
+						gsap.to(scrollToExplore, {
+							opacity,
+							duration: 0.1,
+							ease: 'none',
+						})
+					},
+				},
+			})
 		},
 		{ scope: sectionRef },
 	)
