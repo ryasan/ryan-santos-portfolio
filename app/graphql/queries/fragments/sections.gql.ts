@@ -7,7 +7,6 @@ export const HERO_SECTION_FRAGMENT = gql`
 		sys {
 			id
 		}
-		title
 		titleWords
 		leftSubtitle
 		rightSubtitle

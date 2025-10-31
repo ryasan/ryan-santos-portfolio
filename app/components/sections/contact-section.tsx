@@ -67,6 +67,7 @@ export default function ContactSection({ data, id }: ContactSectionProps) {
 									href={social.url}
 									target="_blank"
 									rel="noopener noreferrer"
+									aria-label={social.label}
 								>
 									{getIcon(social.icon || '')}
 								</a>

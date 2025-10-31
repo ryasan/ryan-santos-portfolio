@@ -82,14 +82,14 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 						const progress = self.progress
 						const scale = 1 - progress * 0.3
 						const opacity = 1 - progress * 1
-	
+
 						gsap.to(stickyBox, {
 							scale,
 							opacity,
 							duration: 0.1,
 							ease: 'none',
 						})
-	
+
 						gsap.to(scrollToExplore, {
 							opacity,
 							duration: 0.1,
@@ -106,14 +106,18 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 		<section className={styles.section} id={id} ref={sectionRef}>
 			<div className="container">
 				<div className={styles.stickyBox} ref={stickyBoxRef}>
-					{data?.title && (
+					{data?.titleWords && (
 						<h1 className={styles.title}>
-							{data.titleWords?.map((word, index, array) => (
-								<span className={styles.wordMask} key={index}>
-									<span className={clsx(styles.word, 'word')}>{word}</span>
-									{index < array.length - 1 && <br />}
-								</span>
-							))}
+							{data.titleWords?.map((word, index, array) => {
+								if (!word) return null
+
+								return (
+									<span className={styles.wordMask} key={index}>
+										<span className={clsx(styles.word, 'word')}>{word}</span>
+										{index < array.length - 1 && <br />}
+									</span>
+								)
+							})}
 						</h1>
 					)}
 					<div className={clsx(styles.subtitle, 'h5')} ref={subtitleRef}>
@@ -126,7 +130,10 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 					</div>
 				</div>
 				{data?.isTopOfPage && (
-					<div className={clsx(styles.scrollToExplore, 'link')} ref={scrollToExploreRef}>
+					<div
+						className={clsx(styles.scrollToExplore, 'link')}
+						ref={scrollToExploreRef}
+					>
 						<span>Scroll to explore</span>
 						<ArrowRightIcon className={styles.arrowRightIcon} />
 					</div>

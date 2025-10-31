@@ -1987,7 +1987,6 @@ export type HeroSection = Entry & _Node & {
   paddingSize?: Maybe<Scalars['String']['output']>;
   rightSubtitle?: Maybe<Scalars['String']['output']>;
   sys: Sys;
-  title?: Maybe<Scalars['String']['output']>;
   titleWords?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
 
@@ -2024,12 +2023,6 @@ export type HeroSectionPaddingSizeArgs = {
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/heroSection) */
 export type HeroSectionRightSubtitleArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/heroSection) */
-export type HeroSectionTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -2083,17 +2076,10 @@ export type HeroSectionFilter = {
   rightSubtitle_not_contains?: InputMaybe<Scalars['String']['input']>;
   rightSubtitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
-  title?: InputMaybe<Scalars['String']['input']>;
   titleWords_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   titleWords_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   titleWords_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   titleWords_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  title_contains?: InputMaybe<Scalars['String']['input']>;
-  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  title_not?: InputMaybe<Scalars['String']['input']>;
-  title_not_contains?: InputMaybe<Scalars['String']['input']>;
-  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type HeroSectionLinkingCollections = {
@@ -2156,9 +2142,7 @@ export enum HeroSectionOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
 export enum ImageFormat {
