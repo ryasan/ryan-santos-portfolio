@@ -48,6 +48,7 @@ export default function Index() {
 
 	return (
 		<>
+			<ScrollToExplore />
 			<ScrollSmoothLayout>
 				{sections?.map((section: PagePageSectionsItem) => {
 					if (!section?.sys?.id) return null
@@ -60,9 +61,6 @@ export default function Index() {
 					)
 				})}
 			</ScrollSmoothLayout>
-
-			<ScrollToExplore />
-
 			{page.jumpLinksEnabled && sections?.length > 0 && (
 				<JumpLinks sections={sections} />
 			)}

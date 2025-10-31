@@ -9,9 +9,7 @@ type ScrollToExploreProps = {
 	children?: React.ReactNode
 }
 
-export default function ScrollToExplore({
-	children = 'Scroll To Explore',
-}: ScrollToExploreProps) {
+export default function ScrollToExplore({ children }: ScrollToExploreProps) {
 	const scrollToExploreRef = useRef<HTMLDivElement>(null)
 
 	useGSAP(() => {
@@ -32,7 +30,7 @@ export default function ScrollToExplore({
 			className={clsx(styles.scrollToExplore, 'scroll-to-explore', 'link')}
 			ref={scrollToExploreRef}
 		>
-			<span>{children}</span>
+			<span>{children || 'Scroll To Explore'}</span>
 			<ArrowRightIcon className={styles.arrowRightIcon} />
 		</div>
 	)

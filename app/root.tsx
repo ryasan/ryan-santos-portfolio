@@ -9,6 +9,7 @@ import {
 	ScrollRestoration,
 } from '@remix-run/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import { client } from '~/services/contentful.server'
 import { getTheme } from '~/services/theme.server'
 import { gsap } from 'gsap'
@@ -26,7 +27,7 @@ import { type Theme } from '~/types'
 import { useGSAP } from '@gsap/react'
 import { useTheme } from '~/hooks'
 
-gsap.registerPlugin(ScrollTrigger, useGSAP)
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP)
 
 export const links: LinksFunction = () => {
 	return [{ rel: 'stylesheet', href: mainStyles }]
