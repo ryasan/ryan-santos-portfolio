@@ -19,5 +19,8 @@
 .link {
   position: relative;
 }
+.link span {
+  font-size: 22px;
+}
 
 /*# sourceMappingURL=jump-links.module.css.map */
