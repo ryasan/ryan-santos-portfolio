@@ -10,11 +10,8 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	position: sticky;
 	text-align: center;
-	top: 0;
 	height: 100vh;
-	z-index: -1;
 }
 
 .title {
@@ -29,6 +26,7 @@
 .articleList {
 	max-width: 1200px;
 	margin: 0 auto;
+	padding: 100vh 0;
 }
 
 .articleContainer {
@@ -44,14 +42,6 @@
 
 	&.right {
 		justify-content: flex-end;
-	}
-
-	&:first-child {
-		margin-top: 100vh;
-	}
-
-	&:last-child {
-		height: 200vh;
 	}
 }
 
@@ -146,4 +136,11 @@
 			background-color: var(--background-secondary-color);
 		}
 	}
+}
+
+.spacer {
+	height: 30px;
+	width: 200px;
+	background-color: yellow;
+	z-index: -1;
 }

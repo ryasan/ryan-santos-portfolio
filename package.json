@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run codegen && npm run typecheck && npm run build:css && remix vite:build",
     "build:css": "sass app/styles/:public/styles",
-    "clean": "rm -rf build node_modules package-lock.json",
+    "clean": "rm -rf build node_modules",
     "codegen": "graphql-codegen --config codegen.ts",
     "codegen:watch": "graphql-codegen --config codegen.ts --watch",
     "dev": "concurrently \"npm run sass:dev\" \"remix vite:dev\"",

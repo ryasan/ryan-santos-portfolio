@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import styles from '~/styles/components/jump-links.module.scss'
 import { PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import { gsap } from 'gsap'
+import { smoother } from '~/root'
 import { useGSAP } from '@gsap/react'
 import { useLocation } from '@remix-run/react'
 import { useRef } from 'react'
@@ -41,6 +42,9 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 						className={clsx(styles.link, isActive && styles.active)}
 						key={section.sys.id}
 						to={`#${section.sys.id}`}
+						onClick={(e) => {
+							console.log(e)
+						}}
 					>{`${index < 10 ? '0' : ''}${index + 1}`}</Link>
 				)
 			})}

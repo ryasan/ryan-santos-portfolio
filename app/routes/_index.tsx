@@ -1,5 +1,6 @@
 import JumpLinks from '~/components/jump-links'
 import ScrollSmoothLayout from '~/components/scroll-smooth-layout'
+import ScrollToExplore from '~/components/scroll-to-explore'
 import SectionRenderer from '~/components/section-renderer'
 import type { MetaFunction } from '@netlify/remix-runtime'
 import { PagePageSectionsItem } from '~/graphql/__generated/sdk'
@@ -47,16 +48,21 @@ export default function Index() {
 
 	return (
 		<>
-			{sections?.map((section: PagePageSectionsItem) => {
-				if (!section?.sys?.id) return null
-				return (
-					<SectionRenderer
-						key={section.sys.id}
-						section={section}
-						id={section.sys.id}
-					/>
-				)
-			})}
+			<ScrollSmoothLayout>
+				{sections?.map((section: PagePageSectionsItem) => {
+					if (!section?.sys?.id) return null
+					return (
+						<SectionRenderer
+							key={section.sys.id}
+							section={section}
+							id={section.sys.id}
+						/>
+					)
+				})}
+			</ScrollSmoothLayout>
+
+			<ScrollToExplore />
+
 			{page.jumpLinksEnabled && sections?.length > 0 && (
 				<JumpLinks sections={sections} />
 			)}

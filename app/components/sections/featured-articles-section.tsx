@@ -19,14 +19,26 @@ export default function FeaturedArticlesSection({
 	data,
 	id,
 }: FeaturedArticlesSectionProps) {
+	const sectionRef = useRef<HTMLElement>(null)
+	const stickyBoxRef = useRef<HTMLDivElement>(null)
 	const titleRef = useRef<HTMLHeadingElement>(null)
 	const subtitleRef = useRef<HTMLParagraphElement>(null)
 
 	useGSAP(() => {
+		const section = sectionRef.current
+		const stickyBox = stickyBoxRef.current
 		const title = titleRef.current
 		const subtitle = subtitleRef.current
 
-		if (!title || !subtitle) return
+		if (!section || !stickyBox || !title || !subtitle) return
+
+		ScrollTrigger.create({
+			trigger: section,
+			pin: stickyBox,
+			start: 'top top',
+			end: 'bottom bottom',
+			pinSpacing: false,
+		})
 
 		ScrollTrigger.create({
 			trigger: title,
@@ -54,9 +66,9 @@ export default function FeaturedArticlesSection({
 	}, [])
 
 	return (
-		<section className={styles.section} id={id}>
+		<section className={styles.section} id={id} ref={sectionRef}>
 			<div className="container">
-				<div className={styles.stickyBox}>
+				<div className={styles.stickyBox} ref={stickyBoxRef}>
 					{data?.title && (
 						<h2 className={clsx(styles.title, 'h1 mb-56')} ref={titleRef}>
 							{data.title}

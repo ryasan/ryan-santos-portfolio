@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/hero-section.module.scss'
-import { ArrowRightIcon } from '~/components/icons'
 import { HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
@@ -16,14 +15,13 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
 	const stickyBoxRef = useRef<HTMLDivElement>(null)
 	const subtitleRef = useRef<HTMLDivElement>(null)
-	const scrollToExploreRef = useRef<HTMLDivElement>(null)
 
 	useGSAP(
 		() => {
 			const section = sectionRef.current
 			const stickyBox = stickyBoxRef.current
 			const subtitle = subtitleRef.current
-			const scrollToExplore = scrollToExploreRef.current
+			const scrollToExplore = document.querySelector('.scroll-to-explore')
 
 			if (!section || !stickyBox || !subtitle || !scrollToExplore) return
 
@@ -129,16 +127,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 						)}
 					</div>
 				</div>
-				{data?.isTopOfPage && (
-					<div
-						className={clsx(styles.scrollToExplore, 'link')}
-						ref={scrollToExploreRef}
-					>
-						<span>Scroll to explore</span>
-						<ArrowRightIcon className={styles.arrowRightIcon} />
-					</div>
-				)}
-				<div className={styles.box} />
+				<div className={clsx('hero-spacer', styles.spacer)} />
 			</div>
 		</section>
 	)
