@@ -45,3 +45,20 @@ $spacing-values: (
 	border: 0;
 	white-space: nowrap; // Prevents wrapping
 }
+
+// Colors
+.error {
+	color: var(--red-color);
+}
+
+.success {
+	color: var(--green-color);
+}
+
+.warning {
+	color: var(--yellow-color);
+}
+
+.info {
+	color: var(--blue-color);
+}

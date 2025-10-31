@@ -1,4 +1,4 @@
-// app/routes/$slug.tsx
+import JumpLinks from '~/components/jump-links'
 import SectionRenderer from '~/components/section-renderer'
 import type { LoaderFunctionArgs, MetaFunction } from '@netlify/remix-runtime'
 import type { PagePageSectionsItem } from '~/graphql/__generated/sdk'
@@ -48,13 +48,23 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 
 export default function DynamicPage() {
 	const { page } = useLoaderData<typeof loader>()
+	const sections = page.pageSectionsCollection?.items
 
 	return (
 		<>
-			{page.pageSectionsCollection?.items?.map((section: PagePageSectionsItem) => {
+			{sections?.map((section: PagePageSectionsItem) => {
 				if (!section?.sys?.id) return null
-				return <SectionRenderer key={section.sys.id} section={section} />
+				return (
+					<SectionRenderer
+						key={section.sys.id}
+						section={section}
+						id={section.sys.id}
+					/>
+				)
 			})}
+			{page.jumpLinksEnabled && sections?.length > 0 && (
+				<JumpLinks sections={sections} />
+			)}
 		</>
 	)
 }

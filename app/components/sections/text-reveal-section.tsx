@@ -106,9 +106,13 @@ export default function TextRevealSection({
 							(block: TextRevealItem | null, index: number) => {
 								if (!block) return null
 								return (
-									<div className={styles.textBlock} key={index}>
-										<TextBlock block={block} align="center" index={index} />
-									</div>
+									<TextBlock
+										className={styles.textBlock}
+										block={block}
+										align="center"
+										index={index}
+										key={index}
+									/>
 								)
 							},
 						)}

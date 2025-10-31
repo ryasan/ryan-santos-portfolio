@@ -199,6 +199,10 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  transition: color 0.5s ease, background-color 0.5s ease;
+}
+body * {
+  transition: color 0.5s ease, background-color 0.5s ease;
 }
 
 h1,
@@ -355,22 +359,6 @@ code,
   font-style: normal;
   font-weight: 500;
   line-height: 1;
-}
-
-.error {
-  color: var(--red-color);
-}
-
-.success {
-  color: var(--green-color);
-}
-
-.warning {
-  color: var(--yellow-color);
-}
-
-.info {
-  color: var(--blue-color);
 }
 
 /* stylelint-disable */
@@ -621,6 +609,22 @@ em {
   clip-path: inset(50%);
   border: 0;
   white-space: nowrap;
+}
+
+.error {
+  color: var(--red-color);
+}
+
+.success {
+  color: var(--green-color);
+}
+
+.warning {
+  color: var(--yellow-color);
+}
+
+.info {
+  color: var(--blue-color);
 }
 
 /* stylelint-disable selector-class-pattern */

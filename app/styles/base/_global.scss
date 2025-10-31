@@ -52,6 +52,11 @@ body {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
+	transition: color 0.5s ease, background-color 0.5s ease;
+
+	* {
+		transition: color 0.5s ease, background-color 0.5s ease;
+	}
 }
 
 // Typography
@@ -194,23 +199,6 @@ code,
 	font-style: normal;
 	font-weight: 500;
 	line-height: 1;
-}
-
-// Colors
-.error {
-	color: var(--red-color);
-}
-
-.success {
-	color: var(--green-color);
-}
-
-.warning {
-	color: var(--yellow-color);
-}
-
-.info {
-	color: var(--blue-color);
 }
 
 /* stylelint-disable */

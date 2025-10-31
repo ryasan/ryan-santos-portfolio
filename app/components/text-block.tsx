@@ -6,11 +6,12 @@ type TextBlockProps = {
 	align?: 'left' | 'center' | 'right'
 	block: TextRevealItem
 	index: number
+	className?: string
 }
 
-export default function TextBlock({ block, align }: TextBlockProps) {
+export default function TextBlock({ block, align, className }: TextBlockProps) {
 	return (
-		<div className={clsx(styles.textBlock, align && styles[align])}>
+		<div className={clsx(styles.textBlock, align && styles[align], className)}>
 			{block.type === 'heading' && <h2>{block.text}</h2>}
 			{block.type === 'subheading' && <h3>{block.text}</h3>}
 			{block.type === 'description' && <p>{block.text}</p>}

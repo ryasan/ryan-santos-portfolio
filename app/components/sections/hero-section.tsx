@@ -100,7 +100,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 					</div>
 				</div>
 				{data?.isTopOfPage && (
-					<div className={styles.scrollToExplore} ref={scrollToExploreRef}>
+					<div className={clsx(styles.scrollToExplore, 'badge')} ref={scrollToExploreRef}>
 						<span>Scroll to explore</span>
 						<ArrowRightIcon className={styles.arrowRightIcon} />
 					</div>
