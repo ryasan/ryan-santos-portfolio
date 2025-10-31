@@ -8,8 +8,8 @@ import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
 
 type HeroSectionProps = {
-	data?: HeroSectionType
 	id?: string
+	data?: HeroSectionType
 }
 
 export default function HeroSection({ data, id }: HeroSectionProps) {

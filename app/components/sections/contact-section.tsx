@@ -20,8 +20,8 @@ const getIcon = (icon?: string) => {
 	return Icon ? <Icon className={styles.icon} aria-hidden="true" /> : null
 }
 type ContactSectionProps = {
-	data?: ContactSection
 	id?: string
+	data?: ContactSection
 }
 
 export default function ContactSection({ data, id }: ContactSectionProps) {

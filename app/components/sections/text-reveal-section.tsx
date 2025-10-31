@@ -1,24 +1,23 @@
 import TextBlock from '~/components/text-block'
 import styles from '~/styles/components/sections/text-reveal-section.module.scss'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { TextRevealItem } from '~/graphql/__generated/sdk'
+import {
+	TextRevealItem,
+	TextRevealSection as TextRevealSectionType,
+} from '~/graphql/__generated/sdk'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
 
-const mockTextBlocks = [
-	{
-		text: 'I build applications that combine performance with thoughtful design.',
-		type: 'heading',
-	},
-]
-
 type TextRevealSectionProps = {
-	data?: any
 	id?: string
+	data?: TextRevealSectionType
 }
 
-export default function TextRevealSection({ data, id }: TextRevealSectionProps) {
+export default function TextRevealSection({
+	data,
+	id,
+}: TextRevealSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
 	const blockRefs = useRef<(HTMLDivElement | null)[]>([])
 
@@ -99,10 +98,11 @@ export default function TextRevealSection({ data, id }: TextRevealSectionProps) 
 	return (
 		<section className={styles.section} ref={sectionRef} id={id}>
 			<div className="container">
-				{data?.textRevealListCollection?.items && (
-					<div className={styles.box}>
-						{data.textRevealListCollection.items.map(
-							(block: TextRevealItem, index: number) => (
+				<div className={styles.box}>
+					{data?.textRevealListCollection?.items?.map(
+						(block: TextRevealItem | null, index: number) => {
+							if (!block) return null
+							return (
 								<div
 									className={styles.textBlock}
 									ref={(el) => (blockRefs.current[index] = el)}
@@ -110,10 +110,10 @@ export default function TextRevealSection({ data, id }: TextRevealSectionProps) 
 								>
 									<TextBlock block={block} align="center" index={index} />
 								</div>
-							),
-						)}
-					</div>
-				)}
+							)
+						},
+					)}
+				</div>
 			</div>
 		</section>
 	)

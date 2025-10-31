@@ -11,8 +11,8 @@ import { useRef } from 'react'
 const cardAlignments = ['left', 'right', 'center']
 
 type FeaturedArticlesSectionProps = {
-	data?: FeaturedArticlesSection
 	id?: string
+	data?: FeaturedArticlesSection
 }
 
 export default function FeaturedArticlesSection({
