@@ -18,6 +18,8 @@ export default function ScrollSmoothLayout({
 		const instance = ScrollSmoother.create({
 			smooth: 2,
 			effects: true,
+			ignoreMobileResize: true,
+			normalizeScroll: true,
 		})
 
 		return () => {
