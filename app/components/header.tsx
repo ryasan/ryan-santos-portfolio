@@ -27,7 +27,7 @@ export default function Header({ data }: HeaderProps) {
 						</div>
 					</RemixLink>
 					<div className={styles.navigationBox}>
-						{/* <nav className={styles.navigation}>
+						<nav className={styles.navigation}>
 							{data?.menuItemsCollection?.items?.map((item) => {
 								if (!item) return null
 
@@ -43,7 +43,7 @@ export default function Header({ data }: HeaderProps) {
 									</NavLink>
 								)
 							})}
-						</nav> */}
+						</nav>
 						<ThemeToggle />
 					</div>
 				</div>

@@ -1,4 +1,5 @@
 import BlogSection from '~/components/sections/blog-section'
+import ScrollSmoothLayout from '~/components/scroll-smooth-layout'
 import SectionRenderer from '~/components/section-renderer'
 import type { MetaFunction } from '@netlify/remix-runtime'
 import type { PagePageSectionsItem } from '~/graphql/__generated/sdk'
@@ -47,13 +48,15 @@ export default function BlogPage() {
 
 	return (
 		<BlogFilterProvider initialPosts={blogs}>
-			{page.pageSectionsCollection?.items?.map(
-				(section: PagePageSectionsItem) => {
-					if (!section?.sys?.id) return null
-					return <SectionRenderer key={section.sys.id} section={section} />
-				},
-			)}
-			<BlogSection />
+			<ScrollSmoothLayout>
+				{page.pageSectionsCollection?.items?.map(
+					(section: PagePageSectionsItem) => {
+						if (!section?.sys?.id) return null
+						return <SectionRenderer key={section.sys.id} section={section} />
+					},
+				)}
+				<BlogSection />
+			</ScrollSmoothLayout>
 		</BlogFilterProvider>
 	)
 }

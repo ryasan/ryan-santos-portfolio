@@ -22,7 +22,7 @@ export default function BlogSection() {
 	return (
 		<section className={styles.blogSection}>
 			<div className="container">
-				<h2 className="h5 mb-12">Search blog by topics</h2>
+				<h2 className="h4 mb-12">Search blog by topics</h2>
 
 				<AnimatePresence  className={styles.tagList} enter="fade" exit={null}>
 					{tags.map((tag) => {
@@ -31,8 +31,7 @@ export default function BlogSection() {
 							<button
 								key={tag.id}
 								className={clsx(
-									'link badge',
-									styles.tag,
+									'button',
 									selectedTags.includes(tag.name) && styles.active,
 								)}
 								onClick={() => tag.name && toggleTag(tag.name)}
@@ -53,7 +52,7 @@ export default function BlogSection() {
 				</AnimatePresence>
 
 				<div className={styles.posts}>
-					{filteredPosts.map(normalizeSlide).map((post) => {
+					{/* {filteredPosts.map(normalizeSlide).map((post) => {
 						if (!post) return null
 						return (
 							<ArticleCard
@@ -63,7 +62,7 @@ export default function BlogSection() {
 								forceDescription
 							/>
 						)
-					})}
+					})} */}
 				</div>
 			</div>
 		</section>
