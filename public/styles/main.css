@@ -345,7 +345,7 @@ p,
   font-weight: 500;
   transition: all 0.2s ease;
   font-size: 16px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
 }
 .button:hover {
   background-color: var(--content-color-2);

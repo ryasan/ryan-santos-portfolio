@@ -39,8 +39,8 @@ export default function BlogSection() {
 					<button
 						onClick={clearTags}
 						className={clsx(
-							'button',
-							selectedTags.length > 0 && 'button--outline',
+							styles.tag,
+							selectedTags.length === 0 && styles.active,
 						)}
 					>
 						All
@@ -52,7 +52,7 @@ export default function BlogSection() {
 							<button
 								key={tag.id}
 								className={clsx(
-									'button button--outline',
+									styles.tag,
 									selectedTags.includes(tag.name) && styles.active,
 								)}
 								onClick={() => tag.name && toggleTag(tag.name)}

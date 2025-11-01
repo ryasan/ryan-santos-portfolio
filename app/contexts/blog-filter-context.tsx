@@ -9,25 +9,16 @@ import { useSearchParams } from '@remix-run/react'
 import { Blog, ContentfulTag } from '~/graphql/__generated/sdk'
 
 interface BlogFilterContextValue {
-	// Search state
 	searchQuery: string
 	setSearchQuery: (query: string) => void
-
-	// Tags filter state
 	selectedTags: string[]
+	tags: ContentfulTag[]
 	toggleTag: (tag: string) => void
 	clearTags: () => void
-
-	// Combined filter state
-	filteredPosts: Blog[] // Replace 'any' with your actual blog post type
+	filteredPosts: Blog[]
 	setAllPosts: (posts: any[]) => void
-
-	// URL sync
 	syncFiltersToUrl: () => void
 	clearAllFilters: () => void
-
-	// Tags
-	tags: ContentfulTag[]
 }
 
 const BlogFilterContext = createContext<BlogFilterContextValue | undefined>(

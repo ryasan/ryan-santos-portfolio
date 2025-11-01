@@ -23,8 +23,24 @@
 .tagList {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 14px;
   margin-bottom: 40px;
+}
+
+.tag {
+  padding: 12px 24px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  font-size: 16px;
+  background-color: transparent;
+  color: var(--content-color);
+  position: relative;
+  border: 2px solid var(--content-color);
+}
+.tag:hover {
+  box-shadow: 0 0 0 2px var(--background-primary-color), 0 0 0 4px var(--content-color);
 }
 
 .clearTagsButton {
@@ -43,9 +59,6 @@
 .active {
   background-color: var(--content-color);
   color: var(--background-primary-color);
-}
-.active:hover {
-  background-color: var(--content-color-2);
 }
 
 .closeIcon {
