@@ -1,37 +1,61 @@
-import AnimatePresence from '~/components/animate-presence'
 import ArticleCard from '~/components/article-card'
 import clsx from 'clsx'
+import gsap from 'gsap'
 import styles from '~/styles/components/sections/blog-section.module.scss'
 import { CloseIcon } from '~/components/icons'
 import { normalizeSlide } from '~/utils/normalize-data'
 import { useBlogFilter } from '~/contexts/blog-filter-context'
 import { useEffect, useState } from 'react'
+import { useGSAP } from '@gsap/react'
 import { useMatchMedia } from '~/hooks'
+import { useRef } from 'react'
 
 export default function BlogSection() {
-	const [view, setView] = useState<'list' | 'grid'>('list')
-	const { isMatching } = useMatchMedia('(max-width:768px)', false)
+	const sectionRef = useRef<HTMLElement>(null)
 	const { tags, selectedTags, toggleTag, clearTags, filteredPosts } =
 		useBlogFilter()
 
-	useEffect(() => {
-		if (isMatching) setView('grid')
-		else setView('list')
-	}, [isMatching])
+	useGSAP(() => {
+		const section = sectionRef.current
+		if (!section) return
+
+		gsap.to(section, {
+			opacity: 1,
+			duration: 1,
+			// ease: 'power2.out',
+			// delay: 0.25,
+		})
+	}, [])
+
 
 	return (
-		<section className={styles.blogSection}>
+		<section className={styles.blogSection} ref={sectionRef}>
 			<div className="container">
-				<h2 className="h4 mb-12">Search blog by topics</h2>
+				<h2 className={clsx(styles.title, 'h2 mb-56')}>
+					Thoughts on the <span>web</span>.
+				</h2>
 
-				<AnimatePresence  className={styles.tagList} enter="fade" exit={null}>
+				<div className="h4 mb-40">Search insights by topics</div>
+
+				<div className={styles.tagList}>
+					<button
+						onClick={clearTags}
+						className={clsx(
+							'button',
+							selectedTags.length > 0 && 'button--outline',
+						)}
+					>
+						All
+					</button>
+
 					{tags.map((tag) => {
 						if (!tag.name) return null
 						return (
 							<button
 								key={tag.id}
 								className={clsx(
-									'button',
+									styles.tag,
+									'button button--outline',
 									selectedTags.includes(tag.name) && styles.active,
 								)}
 								onClick={() => tag.name && toggleTag(tag.name)}
@@ -40,19 +64,10 @@ export default function BlogSection() {
 							</button>
 						)
 					})}
-					{selectedTags.length > 0 && (
-						<button
-							onClick={clearTags}
-							className={clsx('link badge', styles.tag)}
-						>
-							<CloseIcon className={styles.closeIcon} />
-							<span className="sr-only">Clear all tags</span>
-						</button>
-					)}
-				</AnimatePresence>
+				</div>
 
-				<div className={styles.posts}>
-					{/* {filteredPosts.map(normalizeSlide).map((post) => {
+				{/* <div className={styles.posts}>
+					{filteredPosts.map(normalizeSlide).map((post) => {
 						if (!post) return null
 						return (
 							<ArticleCard
@@ -62,8 +77,8 @@ export default function BlogSection() {
 								forceDescription
 							/>
 						)
-					})} */}
-				</div>
+					})}
+				</div> */}
 			</div>
 		</section>
 	)

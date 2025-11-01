@@ -188,6 +188,17 @@ p,
 	&:hover {
 		background-color: var(--content-color-2);
 	}
+
+	&--outline {
+		background-color: transparent;
+		border: 1px solid var(--content-color);
+		color: var(--content-color);
+
+		&:hover {
+			background-color: var(--content-color);
+			color: var(--background-primary-color);
+		}
+	}
 }
 
 code,

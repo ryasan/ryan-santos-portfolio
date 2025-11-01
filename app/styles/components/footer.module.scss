@@ -6,6 +6,8 @@
 	align-items: center;
 	margin-top: auto;
 	text-transform: uppercase;
+	position: relative;
+	z-index: $z-index-above-all;
 }
 
 .container {

@@ -2,7 +2,19 @@
 
 .blogSection {
 	margin-top: $header-height;
-	padding: $space-40 0;
+	min-height: 100vh;
+	padding: $space-80 0;
+	opacity: 0;
+	will-change: opacity;
+}
+
+.title {
+	line-height: 1;
+	max-width: 1000px;
+
+	span {
+		color: var(--content-color-2);
+	}
 }
 
 .posts {
@@ -16,25 +28,40 @@
 	flex-wrap: wrap;
 	gap: 8px;
 	margin-bottom: $space-40;
-	opacity: 0;
 }
 
 .tag {
-	align-items: center;
-	border-radius: 4px;
-	border: 1px solid var(--line-color);
+	// align-items: center;
+	// border-radius: 4px;
+	// border: 1px solid var(--line-color);
+	// display: flex;
+	// justify-content: center;
+	// padding: 4px 12px;
+	// text-transform: lowercase;
+	// transition: 0.2s ease;
+	// height: $space-40;
+	// width: fit-content;
+
+	// &:hover {
+	// 	border-color: var(--content-color);
+	// }
+
+	// &:has(.closeIcon) {
+	// 	padding: 4px 6px;
+	// }
+}
+
+.clearTagsButton {
+	border-radius: 50%;
+	width: $space-40;
+	height: $space-40;
+	padding: 0;
 	display: flex;
+	align-items: center;
 	justify-content: center;
-	padding: 4px 12px;
-	text-transform: lowercase;
-	transition: 0.2s ease;
 
-	&:hover {
-		border-color: var(--content-color);
-	}
-
-	&:has(.closeIcon) {
-		padding: 4px 6px;
+	svg {
+		fill: var(--background-primary-color);
 	}
 }
 

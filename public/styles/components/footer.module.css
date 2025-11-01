@@ -4,6 +4,8 @@
   align-items: center;
   margin-top: auto;
   text-transform: uppercase;
+  position: relative;
+  z-index: 250;
 }
 
 .container p {

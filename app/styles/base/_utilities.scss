@@ -2,8 +2,14 @@
 .container {
 	margin: 0 auto;
 	max-width: 1440px;
-	padding: 0 $space-24;
+	padding: 0 $space-40;
 	width: 100%;
+}
+
+@media (max-width: $tablet) {
+	.container {
+		padding: 0 $space-24;
+	}
 }
 
 // Spacing styles

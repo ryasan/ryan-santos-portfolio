@@ -2,7 +2,7 @@
 @import '../base/mixins';
 
 .header {
-	padding: $space-24 $space-40;
+	padding: $space-24 0;
 	backdrop-filter: blur(15px);
 	background-color: rgba(var(--background-primary-color-rgb), 0.8);
 	height: $header-height;
@@ -78,7 +78,7 @@
 
 @media (max-width: $tablet) {
 	.header {
-		padding: $space-24 $space-16;
+		padding: $space-24 0;
 	}
 
 	.navigation {
