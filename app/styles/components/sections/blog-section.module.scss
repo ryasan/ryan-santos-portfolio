@@ -30,27 +30,6 @@
 	margin-bottom: $space-40;
 }
 
-.tag {
-	// align-items: center;
-	// border-radius: 4px;
-	// border: 1px solid var(--line-color);
-	// display: flex;
-	// justify-content: center;
-	// padding: 4px 12px;
-	// text-transform: lowercase;
-	// transition: 0.2s ease;
-	// height: $space-40;
-	// width: fit-content;
-
-	// &:hover {
-	// 	border-color: var(--content-color);
-	// }
-
-	// &:has(.closeIcon) {
-	// 	padding: 4px 6px;
-	// }
-}
-
 .clearTagsButton {
 	border-radius: 50%;
 	width: $space-40;
@@ -68,6 +47,10 @@
 .active {
 	background-color: var(--content-color);
 	color: var(--background-primary-color);
+
+	&:hover {
+		background-color: var(--content-color-2);
+	}
 }
 
 .closeIcon {

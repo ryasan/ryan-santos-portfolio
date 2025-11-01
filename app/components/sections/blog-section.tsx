@@ -22,8 +22,6 @@ export default function BlogSection() {
 		gsap.to(section, {
 			opacity: 1,
 			duration: 1,
-			// ease: 'power2.out',
-			// delay: 0.25,
 		})
 	}, [])
 
@@ -54,7 +52,6 @@ export default function BlogSection() {
 							<button
 								key={tag.id}
 								className={clsx(
-									styles.tag,
 									'button button--outline',
 									selectedTags.includes(tag.name) && styles.active,
 								)}
