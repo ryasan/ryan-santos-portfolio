@@ -75,6 +75,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 						opacity,
 						duration: 0.1,
 						ease: 'none',
+						transformOrigin: 'top center',
 					})
 
 					gsap.to(scrollToExplore, {
