@@ -49,9 +49,6 @@ body {
 	background-color: var(--background-primary-color);
 	color: var(--content-color);
 	font-family: $body-font-family;
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
 	transition: color 0.5s ease, background-color 0.5s ease;
 
 	* {

@@ -57,6 +57,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				start: 'top top',
 				end: 'bottom bottom-=300px',
 				pinSpacing: false,
+				anticipatePin: 1,
 			})
 	
 			ScrollTrigger.create({
