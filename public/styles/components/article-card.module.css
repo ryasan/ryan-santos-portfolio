@@ -1,7 +1,13 @@
 .articleImage {
+  aspect-ratio: 13/9;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.articleImage img {
   width: 100%;
   height: 100%;
-  transition: transform 0.2s ease;
+  transition: transform 0.4s ease;
   object-fit: cover;
 }
 
@@ -16,20 +22,8 @@
 .articleCard.loaded {
   opacity: 1;
 }
-.articleCard:hover .articleImage {
+.articleCard:hover .articleImage img {
   transform: scale(1.1);
-}
-
-.imageWrapper {
-  overflow: hidden;
-  height: 166px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-@media (max-width: 768px) {
-  .imageWrapper {
-    height: 228px;
-  }
 }
 
 .description {
@@ -39,7 +33,7 @@
   overflow: hidden;
 }
 
-.bigCard .imageWrapper {
+.bigCard .articleImage {
   overflow: hidden;
   height: 260px;
 }
@@ -49,7 +43,7 @@
   grid-template-columns: 240px 1fr;
   gap: 32px;
 }
-.horizontal .imageWrapper {
+.horizontal .articleImage {
   margin-bottom: 0;
 }
 
@@ -61,11 +55,11 @@
 
 .tag {
   align-items: center;
-  border-radius: 4px;
+  border-radius: 100px;
   border: 1px solid var(--line-color);
   display: flex;
   justify-content: center;
-  padding: 4px 12px;
+  padding: 6px 16px;
   text-transform: lowercase;
   transition: 0.2s ease;
 }
@@ -77,7 +71,7 @@
   .articleImage {
     height: 228px !important;
   }
-  .imageWrapper {
+  .articleImage img {
     height: 228px !important;
   }
 }

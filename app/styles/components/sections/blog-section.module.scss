@@ -1,8 +1,8 @@
 @import '../../base/variables';
 
 .blogSection {
-	margin-top: $header-height;
 	min-height: 100vh;
+	margin-top: $header-height;
 	padding: $space-80 0;
 	opacity: 0;
 	will-change: opacity;
@@ -17,10 +17,10 @@
 	}
 }
 
-.posts {
-	display: flex;
-	flex-direction: column;
-	gap: $space-40;
+.postList {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: $space-30;
 }
 
 .tagList {

@@ -56,7 +56,7 @@ export default function ArticleCard({
 					: styles.loading,
 			)}
 		>
-			<div className={styles.imageWrapper}>
+			<div className={styles.articleImage}>
 				{data.image && (
 					<img
 						className={styles.articleImage}
@@ -77,7 +77,7 @@ export default function ArticleCard({
 				{data.eyebrow && <p className="badge mb-12">{data.eyebrow}</p>}
 				{data.title && <h3 className="h5 mb-16">{data.title}</h3>}
 				{data.description && (horizontal || forceDescription) && (
-					<p className={clsx('body-2 mb-16', styles.description)}>
+					<p className={clsx('body mb-16', styles.description)}>
 						{data.description}
 					</p>
 				)}

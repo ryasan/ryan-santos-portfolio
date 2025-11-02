@@ -5,12 +5,14 @@ import CloseIcon from './close'
 import CodepenIcon from './codepen'
 import CopySimpleIcon from './copy-simple'
 import EnvelopeIcon from './envelope'
+import FacebookIcon from './facebook'
 import GithubIcon from './github'
 import LinkedinIcon from './linkedin'
 import ListBulletsIcon from './list-bullets'
 import MoonIcon from './moon'
 import SquaresFourIcon from './squares-four'
 import SunIcon from './sun'
+import TwitterIcon from './twitter'
 
 export {
 	ArrowLeftIcon,
@@ -20,10 +22,12 @@ export {
 	CodepenIcon,
 	CopySimpleIcon,
 	EnvelopeIcon,
+	FacebookIcon,
 	GithubIcon,
 	LinkedinIcon,
 	ListBulletsIcon,
 	MoonIcon,
 	SquaresFourIcon,
 	SunIcon,
+	TwitterIcon,
 }

@@ -48,15 +48,13 @@ export default function BlogPage() {
 
 	return (
 		<BlogFilterProvider initialPosts={blogs}>
-			<ScrollSmoothLayout>
-				{page.pageSectionsCollection?.items?.map(
-					(section: PagePageSectionsItem) => {
-						if (!section?.sys?.id) return null
-						return <SectionRenderer key={section.sys.id} section={section} />
-					},
-				)}
-				<BlogSection />
-			</ScrollSmoothLayout>
+			{page.pageSectionsCollection?.items?.map(
+				(section: PagePageSectionsItem) => {
+					if (!section?.sys?.id) return null
+					return <SectionRenderer key={section.sys.id} section={section} />
+				},
+			)}
+			<BlogSection />
 		</BlogFilterProvider>
 	)
 }

@@ -7,6 +7,12 @@ import { ArrowLeftIcon } from '~/components/icons'
 import { Blog } from '~/graphql/__generated/sdk'
 import { formatDate } from '~/utils'
 import { useNavigate } from '@remix-run/react'
+import {
+	TwitterIcon,
+	FacebookIcon,
+	LinkedinIcon,
+	CopySimpleIcon,
+} from '~/components/icons'
 
 type BlogPostSectionProps = {
 	data?: Blog
@@ -31,7 +37,7 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 						<span className={clsx('link', linkStyles.link)}>Back</span>
 					</button>
 
-					{data?.title && <h1 className="mb-32">{data?.title}</h1>}
+					{data?.title && <h1 className="mb-32 h2">{data?.title}</h1>}
 
 					<div className={styles.author}>
 						<Avatar
@@ -44,7 +50,7 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 							<div className={styles.authorInfo}>
 								{name && <h5 className="h5">{name}</h5>}
 								{data?.publishDate && (
-									<div className="body-2">{formatDate(data?.publishDate)}</div>
+									<div className="body">{formatDate(data?.publishDate)}</div>
 								)}
 							</div>
 						)}
@@ -53,21 +59,54 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 			</div>
 
 			{data?.openGraphImage?.url && (
-				<div className={styles.heroImage}>
-					<img
-						src={data?.openGraphImage?.url}
-						alt={data?.openGraphImage?.title || ''}
-					/>
-				</div>
-			)}
-
-			{data?.blogBody?.json && (
-				<div className={styles.blogBody}>
-					<div className="container">
-						{data?.blogBody?.json && <RichText data={data?.blogBody?.json} />}
+				<div className="container">
+					<div className={styles.heroImage}>
+						<img
+							src={data?.openGraphImage?.url}
+							alt={data?.openGraphImage?.title || ''}
+						/>
 					</div>
 				</div>
 			)}
+
+			<div className="container">
+				<div className={styles.layout}>
+					{data?.blogBody?.json && (
+						<div className={styles.blogBody}>
+							{data?.blogBody?.json && <RichText data={data?.blogBody?.json} />}
+						</div>
+					)}
+
+					{/* Share Actions */}
+					<div className={styles.shareActions}>
+						<button
+							className={styles.shareCopyButton}
+							title="Share this article via link"
+						>
+							<span>Copy Link</span>
+							<CopySimpleIcon className={styles.shareIcon} />
+						</button>
+						<button
+							className={styles.shareButton}
+							title="Share this article on Twitter"
+						>
+							<TwitterIcon className={styles.shareIcon} />
+						</button>
+						<button
+							className={styles.shareButton}
+							title="Share this article on LinkedIn"
+						>
+							<LinkedinIcon className={styles.shareIcon} />
+						</button>
+						<button
+							className={styles.shareButton}
+							title="Share this article on Facebook"
+						>
+							<FacebookIcon className={styles.shareIcon} />
+						</button>
+					</div>
+				</div>
+			</div>
 
 			{/* Tags - Post Tags */}
 			{/* Related Posts - Post Related Posts */}

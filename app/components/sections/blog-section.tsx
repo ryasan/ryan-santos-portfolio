@@ -25,12 +25,11 @@ export default function BlogSection() {
 		})
 	}, [])
 
-
 	return (
 		<section className={styles.blogSection} ref={sectionRef}>
 			<div className="container">
 				<h2 className={clsx(styles.title, 'h2 mb-56')}>
-					Thoughts on the <span>web</span>.
+					Thought bubbles on the <span>web</span>.
 				</h2>
 
 				<div className="h4 mb-40">Search insights by topics</div>
@@ -63,19 +62,12 @@ export default function BlogSection() {
 					})}
 				</div>
 
-				{/* <div className={styles.posts}>
+				<div className={styles.postList}>
 					{filteredPosts.map(normalizeSlide).map((post) => {
 						if (!post) return null
-						return (
-							<ArticleCard
-								key={post.id}
-								data={post}
-								horizontal={view === 'list'}
-								forceDescription
-							/>
-						)
+						return <ArticleCard key={post.id} data={post} forceDescription />
 					})}
-				</div> */}
+				</div>
 			</div>
 		</section>
 	)

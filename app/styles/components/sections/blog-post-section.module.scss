@@ -1,6 +1,7 @@
 @import '../../base/variables';
 
 .blogPostSection {
+	margin-top: $header-height;
 	padding: $space-40 0;
 }
 
@@ -39,6 +40,10 @@
 	align-items: center;
 	display: flex;
 	gap: $space-16;
+	
+	h5 {
+		margin-bottom: $space-6;
+	}
 }
 
 .heroImage {
@@ -48,6 +53,7 @@
 		object-fit: cover;
 		max-height: 686px;
 		aspect-ratio: auto 1440 / 686;
+		border-radius: 10px;
 	}
 }
 
@@ -59,6 +65,49 @@
 	}
 }
 
-.blogBody {
+.layout {
 	margin-top: $space-40;
+	display: grid;
+	grid-template-columns: 70% 30%;
+
+	@media (max-width: $tablet) {
+		display: block;
+	}
+}
+
+.blogBody {
+	margin-bottom: $space-64;
+}
+
+.shareActions {
+	display: flex;
+	align-items: start;
+	justify-content: end;
+	gap: $space-16;
+	margin-bottom: $space-64;
+}
+
+.shareButton,
+.shareCopyButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--content-color);
+	border: 1px solid var(--line-color);
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	transition: all 0.2s ease;
+
+	&:hover {
+		border-color: var(--content-color);
+	}
+}
+
+.shareCopyButton {
+	width: fit-content;
+	border-radius: 100px;
+	gap: $space-8;
+	padding: 0 15px;
+	font-weight: 500;
 }

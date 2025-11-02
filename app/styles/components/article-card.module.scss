@@ -2,10 +2,18 @@
 @import '../base/mixins';
 
 .articleImage {
-	width: 100%;
-	height: 100%;
-	transition: transform 0.2s ease;
-	object-fit: cover;
+	// Wide aspect ratio
+	aspect-ratio: 13 / 9;
+	overflow: hidden;
+	border-radius: $space-8;
+	margin-bottom: $space-20;
+
+	img {
+		width: 100%;
+		height: 100%;
+		transition: transform 0.4s ease;
+		object-fit: cover;
+	}
 }
 
 .articleCard {
@@ -22,20 +30,9 @@
 	}
 
 	&:hover {
-		.articleImage {
+		.articleImage img {
 			transform: scale(1.1);
 		}
-	}
-}
-
-.imageWrapper {
-	overflow: hidden;
-	height: 166px;
-	border-radius: $space-8;
-	margin-bottom: $space-20;
-
-	@media (max-width: $tablet) {
-		height: 228px;
 	}
 }
 
@@ -44,7 +41,7 @@
 }
 
 .bigCard {
-	.imageWrapper {
+	.articleImage {
 		overflow: hidden;
 		height: 260px;
 	}
@@ -55,7 +52,7 @@
 	grid-template-columns: 240px 1fr;
 	gap: $space-32;
 
-	.imageWrapper {
+	.articleImage {
 		margin-bottom: 0;
 	}
 }
@@ -68,11 +65,11 @@
 
 .tag {
 	align-items: center;
-	border-radius: 4px;
+	border-radius: 100px;
 	border: 1px solid var(--line-color);
 	display: flex;
 	justify-content: center;
-	padding: 4px 12px;
+	padding: 6px 16px;
 	text-transform: lowercase;
 	transition: 0.2s ease;
 
@@ -86,7 +83,7 @@
 		height: 228px !important;
 	}
 
-	.imageWrapper {
+	.articleImage img {
 		height: 228px !important;
 	}
 }
