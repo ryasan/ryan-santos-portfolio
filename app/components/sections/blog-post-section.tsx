@@ -1,32 +1,57 @@
 import Avatar from '~/components/avatar'
 import RichText from '~/components/rich-text'
 import clsx from 'clsx'
+import gsap from 'gsap'
 import linkStyles from '~/styles/components/link.module.scss'
 import styles from '~/styles/components/sections/blog-post-section.module.scss'
 import { ArrowLeftIcon } from '~/components/icons'
 import { Blog } from '~/graphql/__generated/sdk'
-import { formatDate } from '~/utils'
-import { useNavigate } from '@remix-run/react'
 import {
 	TwitterIcon,
 	FacebookIcon,
 	LinkedinIcon,
 	CopySimpleIcon,
 } from '~/components/icons'
+import { formatDate } from '~/utils'
+import { useGSAP } from '@gsap/react'
+import { useLocation, useNavigate } from '@remix-run/react'
+import { useRef, useState } from 'react'
 
 type BlogPostSectionProps = {
 	data?: Blog
 }
 
 export default function BlogPostSection({ data }: BlogPostSectionProps) {
+	const [copySuccess, setCopySuccess] = useState(false)
+	const { pathname } = useLocation()
+	const sectionRef = useRef<HTMLElement>(null)
 	const navigate = useNavigate()
+
 	const name =
 		data?.author?.firstName && data?.author?.lastName
 			? `${data?.author?.firstName} ${data?.author?.lastName}`
 			: ''
 
+	const copyToClipboard = () => {
+		navigator.clipboard.writeText(`${window.location.origin}${pathname}`)
+		setCopySuccess(true)
+		setTimeout(() => {
+			setCopySuccess(false)
+		}, 2000)
+	}
+
+	useGSAP(() => {
+		const section = sectionRef.current
+		if (!section) return
+
+		gsap.to(section, {
+			opacity: 1,
+			duration: 1,
+		})
+	}, [])
+
 	return (
-		<section className={styles.blogPostSection}>
+		<section className={styles.blogPostSection} ref={sectionRef}>
 			<div className={styles.header}>
 				<div className="container">
 					<button
@@ -82,8 +107,9 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 						<button
 							className={styles.shareCopyButton}
 							title="Share this article via link"
+							onClick={copyToClipboard}
 						>
-							<span>Copy Link</span>
+							<span>{copySuccess ? 'Copied' : 'Copy Link'}</span>
 							<CopySimpleIcon className={styles.shareIcon} />
 						</button>
 						<button

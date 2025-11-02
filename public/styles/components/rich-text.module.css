@@ -1,5 +1,6 @@
 .richText p {
   margin: 16px 0;
+  font-size: 18px;
 }
 .richText p:first-child {
   margin-top: 0;

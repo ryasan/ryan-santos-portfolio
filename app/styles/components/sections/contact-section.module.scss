@@ -35,10 +35,13 @@
 	align-items: center;
 	justify-content: center;
 	gap: $space-8;
-	width: 300px;
+	width: 320px;
 }
 
 .copyIcon {
+	width: 24px;
+	height: 24px;
+	flex-shrink: 0;
 	fill: var(--background-primary-color);
 }
 

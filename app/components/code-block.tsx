@@ -52,7 +52,7 @@ export default function CodeBlock({ code }: CodeBlockProps) {
 			setCopySuccess(true)
 			setTimeout(() => {
 				setCopySuccess(false)
-			}, 1000)
+			}, 2000)
 		}
 	}
 

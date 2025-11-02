@@ -1,6 +1,8 @@
 .blogPostSection {
   margin-top: 68px;
   padding: 40px 0;
+  opacity: 0;
+  will-change: opacity;
 }
 
 .header {
@@ -82,8 +84,8 @@
   color: var(--content-color);
   border: 1px solid var(--line-color);
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 43px;
+  height: 43px;
   transition: all 0.2s ease;
 }
 .shareButton:hover,
@@ -92,11 +94,12 @@
 }
 
 .shareCopyButton {
-  width: fit-content;
   border-radius: 100px;
   gap: 8px;
   padding: 0 15px;
   font-weight: 500;
+  font-size: 14px;
+  width: 128px;
 }
 
 /*# sourceMappingURL=blog-post-section.module.css.map */

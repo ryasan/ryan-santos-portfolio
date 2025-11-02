@@ -1,5 +1,4 @@
 import JumpLinks from '~/components/jump-links'
-import ScrollSmoothLayout from '~/components/scroll-smooth-layout'
 import SectionRenderer from '~/components/section-renderer'
 import type { LoaderFunctionArgs, MetaFunction } from '@netlify/remix-runtime'
 import type { PagePageSectionsItem } from '~/graphql/__generated/sdk'
@@ -53,18 +52,16 @@ export default function DynamicPage() {
 
 	return (
 		<>
-			<ScrollSmoothLayout>
-				{sections?.map((section: PagePageSectionsItem) => {
-					if (!section?.sys?.id) return null
-					return (
-						<SectionRenderer
-							key={section.sys.id}
-							section={section}
-							id={section.sys.id}
-						/>
-					)
-				})}
-			</ScrollSmoothLayout>
+			{sections?.map((section: PagePageSectionsItem) => {
+				if (!section?.sys?.id) return null
+				return (
+					<SectionRenderer
+						key={section.sys.id}
+						section={section}
+						id={section.sys.id}
+					/>
+				)
+			})}
 			{page.jumpLinksEnabled && sections?.length > 0 && (
 				<JumpLinks sections={sections} />
 			)}

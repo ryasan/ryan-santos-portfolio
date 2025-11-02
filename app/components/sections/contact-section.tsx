@@ -7,7 +7,7 @@ import {
 	GithubIcon,
 	LinkedinIcon,
 } from '~/components/icons'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 const icons = {
 	codepen: CodepenIcon,
@@ -30,15 +30,10 @@ export default function ContactSection({ data, id }: ContactSectionProps) {
 	const copyToClipboard = () => {
 		navigator.clipboard.writeText(data?.email || '')
 		setCopySuccess(true)
+		setTimeout(() => {
+			setCopySuccess(false)
+		}, 2000)
 	}
-
-	useEffect(() => {
-		if (copySuccess) {
-			setTimeout(() => {
-				setCopySuccess(false)
-			}, 1000)
-		}
-	}, [copySuccess])
 
 	return (
 		<section className={styles.section} id={id}>

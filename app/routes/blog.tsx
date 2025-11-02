@@ -1,5 +1,4 @@
 import BlogSection from '~/components/sections/blog-section'
-import ScrollSmoothLayout from '~/components/scroll-smooth-layout'
 import SectionRenderer from '~/components/section-renderer'
 import type { MetaFunction } from '@netlify/remix-runtime'
 import type { PagePageSectionsItem } from '~/graphql/__generated/sdk'
