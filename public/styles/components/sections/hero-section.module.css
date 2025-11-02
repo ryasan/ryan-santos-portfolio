@@ -6,7 +6,7 @@
   margin: 0 auto;
   max-width: 1000px;
   width: 100%;
-  min-height: 100lvh;
+  min-height: 90lvh;
   will-change: transform, opacity;
   backface-visibility: hidden;
   display: flex;
