@@ -20,6 +20,11 @@
   gap: 30px;
 }
 
+@media (max-width: 768px) {
+  .postList {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 .tagList {
   display: flex;
   flex-wrap: wrap;

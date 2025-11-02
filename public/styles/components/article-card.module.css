@@ -1,5 +1,6 @@
 .articleImage {
   aspect-ratio: 13/9;
+  width: 100%;
   overflow: hidden;
   border-radius: 8px;
   margin-bottom: 20px;

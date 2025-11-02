@@ -23,6 +23,12 @@
 	gap: $space-30;
 }
 
+@media (max-width: $tablet) {
+	.postList {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
 .tagList {
 	display: flex;
 	flex-wrap: wrap;

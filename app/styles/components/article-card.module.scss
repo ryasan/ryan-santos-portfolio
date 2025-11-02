@@ -2,8 +2,8 @@
 @import '../base/mixins';
 
 .articleImage {
-	// Wide aspect ratio
 	aspect-ratio: 13 / 9;
+	width: 100%;
 	overflow: hidden;
 	border-radius: $space-8;
 	margin-bottom: $space-20;
