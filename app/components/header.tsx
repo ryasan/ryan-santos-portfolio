@@ -23,7 +23,6 @@ export default function Header({ data }: HeaderProps) {
 			opacity: 1,
 			duration: 1,
 			ease: 'power2.out',
-			delay: 0.75,
 		})
 	}, [])
 
