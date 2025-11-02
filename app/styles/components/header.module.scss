@@ -2,6 +2,7 @@
 @import '../base/mixins';
 
 .header {
+	opacity: 0;
 	padding: $space-24 0;
 	backdrop-filter: blur(15px);
 	background-color: rgba(var(--background-primary-color-rgb), 0.8);

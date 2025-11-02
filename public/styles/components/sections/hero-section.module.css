@@ -1,5 +1,4 @@
 .section {
-  padding-top: 68px;
   position: relative;
 }
 
@@ -7,7 +6,7 @@
   margin: 0 auto;
   max-width: 1000px;
   width: 100%;
-  min-height: 80vh;
+  min-height: 100lvh;
   will-change: transform, opacity;
   backface-visibility: hidden;
   display: flex;
@@ -17,7 +16,7 @@
 }
 
 .spacer {
-  height: 100vh;
+  height: 100lvh;
 }
 
 .title {

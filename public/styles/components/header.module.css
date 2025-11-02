@@ -1,4 +1,5 @@
 .header {
+  opacity: 0;
   padding: 24px 0;
   backdrop-filter: blur(15px);
   background-color: rgba(var(--background-primary-color-rgb), 0.8);
