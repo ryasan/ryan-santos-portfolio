@@ -46,7 +46,7 @@ export default function BlogPage() {
 	const { page, blogs } = useLoaderData<typeof loader>()
 
 	return (
-		<BlogFilterProvider initialPosts={blogs}>
+		<>
 			{page.pageSectionsCollection?.items?.map(
 				(section: PagePageSectionsItem) => {
 					if (!section?.sys?.id) return null
@@ -54,6 +54,6 @@ export default function BlogPage() {
 				},
 			)}
 			<BlogSection />
-		</BlogFilterProvider>
+		</>
 	)
 }
