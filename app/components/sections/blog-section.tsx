@@ -109,12 +109,12 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 					})}
 				</div>
 
-				<div className={styles.postList}>
+				{/* <div className={styles.postList}>
 					{filteredPosts.map(normalizeSlide).map((post) => {
 						if (!post) return null
 						return <ArticleCard key={post.id} data={post} forceDescription />
 					})}
-				</div>
+				</div> */}
 			</div>
 		</section>
 	)
