@@ -12,8 +12,8 @@ import { useRef } from 'react'
 
 export default function BlogSection() {
 	const sectionRef = useRef<HTMLElement>(null)
-	const { tags, selectedTags, toggleTag, clearTags, filteredPosts } =
-		useBlogFilter()
+	// const { tags, selectedTags, toggleTag, clearTags, filteredPosts } =
+	// 	useBlogFilter()
 
 	useGSAP(() => {
 		const section = sectionRef.current
@@ -30,7 +30,7 @@ export default function BlogSection() {
 			<div className="container">
 				<h1 className="h2 mb-40">Search insights by topics</h1>
 
-				<div className={styles.tagList}>
+				{/* <div className={styles.tagList}>
 					<button
 						onClick={clearTags}
 						className={clsx(
@@ -63,7 +63,7 @@ export default function BlogSection() {
 						if (!post) return null
 						return <ArticleCard key={post.id} data={post} forceDescription />
 					})}
-				</div>
+				</div> */}
 			</div>
 		</section>
 	)

@@ -45,5 +45,5 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 export default function BlogPage() {
 	// const { page, blogs } = useLoaderData<typeof loader>()
 
-	return <h1>Blog</h1>
+	return <BlogSection />
 }
