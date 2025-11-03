@@ -1,4 +1,5 @@
 import Link from '~/components/link'
+import Teleport from '~/components/teleport'
 import clsx from 'clsx'
 import styles from '~/styles/components/jump-links.module.scss'
 import { PagePageSectionsItem } from '~/graphql/__generated/sdk'
@@ -6,15 +7,17 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useLocation } from '@remix-run/react'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 type JumpLinksProps = {
 	sections: PagePageSectionsItem[]
 }
 
 export default function JumpLinks({ sections }: JumpLinksProps) {
+	const [isTeleported, setIsTeleported] = useState(false)
 	const jumpLinksRef = useRef<HTMLDivElement>(null)
 	const location = useLocation()
+
 	const hash = location.hash
 	const hashWithoutHash = hash.slice(1)
 
@@ -35,7 +38,7 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 	useGSAP(() => {
 		const jumpLinks = jumpLinksRef.current
 
-		if (!jumpLinks) return
+		if (!jumpLinks || !isTeleported) return
 
 		gsap.to(jumpLinks, {
 			opacity: 1,
@@ -43,26 +46,28 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 			ease: 'power2.out',
 			delay: 0.75,
 		})
-	}, [])
+	}, [isTeleported])
 
 	return (
-		<div className={styles.jumpLinks} ref={jumpLinksRef}>
-			{sections
-				.map((section, index) => {
-					if (!section?.sys?.id) return null
+		<Teleport to="#global-main" onReady={() => setIsTeleported(true)}>
+			<div className={styles.jumpLinks} ref={jumpLinksRef}>
+				{sections
+					.map((section, index) => {
+						if (!section?.sys?.id) return null
 
-					const isActive = hashWithoutHash === section.sys.id
+						const isActive = hashWithoutHash === section.sys.id
 
-					return (
-						<Link
-							className={clsx(styles.link, isActive && styles.active)}
-							key={section.sys.id}
-							to={`#${section.sys.id}`}
-							onClick={(e) => handleClick(e, section)}
-						>{`${index < 10 ? '0' : ''}${index + 1}`}</Link>
-					)
-				})
-				.reverse()}
-		</div>
+						return (
+							<Link
+								className={clsx(styles.link, isActive && styles.active)}
+								key={section.sys.id}
+								to={`#${section.sys.id}`}
+								onClick={(e) => handleClick(e, section)}
+							>{`${index < 10 ? '0' : ''}${index + 1}`}</Link>
+						)
+					})
+					.reverse()}
+			</div>
+		</Teleport>
 	)
 }

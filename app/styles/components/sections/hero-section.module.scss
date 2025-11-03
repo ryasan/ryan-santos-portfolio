@@ -1,6 +1,6 @@
 @import '../../base/variables';
 
-.section {
+.heroSection {
 	position: relative;
 }
 
@@ -60,6 +60,26 @@
 
 .word {
 	display: inline-block;
-	will-change: transform, opacity;
+	will-change: transform;
 	transform: translateY(110%);
+}
+
+.scrollToExplore {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	justify-content: center;
+	transform: rotate(90deg);
+	transform-origin: left top;
+	position: fixed;
+	bottom: 200px;
+	left: 45px;
+	opacity: 0;
+	will-change: opacity;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.arrowRightIcon {
+	height: 20px;
 }

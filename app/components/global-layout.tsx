@@ -1,6 +1,7 @@
 import Header from '~/components/header'
-import styles from '~/styles/components/global-layout.module.scss'
+import ScrollSmoothLayout from '~/components/scroll-smooth-layout'
 import { GlobalHeader, GlobalFooter } from '~/graphql/__generated/sdk'
+import { useRef } from 'react'
 
 type GlobalLayoutProps = {
 	children: React.ReactNode
@@ -11,10 +12,13 @@ type GlobalLayoutProps = {
 }
 
 export default function GlobalLayout({ children, data }: GlobalLayoutProps) {
+	const mainRef = useRef<HTMLDivElement>(null)
+
 	return (
-		<main className={styles.main}>
+		<main id="global-main" ref={mainRef}>
 			<Header data={data?.headerData} />
-			{children}
+			<ScrollSmoothLayout>{children}</ScrollSmoothLayout>
+			{/* Teleport any elements that shouldn't be affected by the scroll smoother here */}
 		</main>
 	)
 }

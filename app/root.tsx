@@ -1,19 +1,9 @@
-import ClientHintScript, { getHints } from '~/components/client-hint-script'
-import GlobalLayout from '~/components/global-layout'
-import mainStyles from '~/styles/main.css?url'
 import {
 	Links,
 	Meta,
 	Outlet,
 	Scripts,
 	ScrollRestoration,
-} from '@remix-run/react'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ScrollSmoother } from 'gsap/ScrollSmoother'
-import { client } from '~/services/contentful.server'
-import { getTheme } from '~/services/theme.server'
-import { gsap } from 'gsap'
-import {
 	isRouteErrorResponse,
 	useLoaderData,
 	useRouteError,
@@ -23,6 +13,14 @@ import {
 	type LinksFunction,
 	type LoaderFunctionArgs,
 } from '@remix-run/node'
+import ClientHintScript, { getHints } from '~/components/client-hint-script'
+import GlobalLayout from '~/components/global-layout'
+import mainStyles from '~/styles/main.css?url'
+import { ScrollSmoother } from 'gsap/ScrollSmoother'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { client } from '~/services/contentful.server'
+import { getTheme } from '~/services/theme.server'
+import { gsap } from 'gsap'
 import { type Theme } from '~/types'
 import { useGSAP } from '@gsap/react'
 import { useTheme } from '~/hooks'

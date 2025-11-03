@@ -36,7 +36,7 @@ export default function ContactSection({ data, id }: ContactSectionProps) {
 	}
 
 	return (
-		<section className={styles.section} id={id}>
+		<section className={styles.contactSection} id={id}>
 			<div className="container">
 				<div className={styles.box}>
 					{data?.title && (

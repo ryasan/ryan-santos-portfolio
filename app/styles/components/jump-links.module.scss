@@ -9,6 +9,7 @@
 	width: 300px;
 	display: none;
 	opacity: 0;
+	will-change: opacity;
 }
 
 @media (min-width: $desktop-lg) {

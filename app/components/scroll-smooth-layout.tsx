@@ -3,16 +3,12 @@ import { useGSAP } from '@gsap/react'
 
 type ScrollSmoothLayoutProps = {
 	children: React.ReactNode
-	disabled?: boolean
 }
 
 export default function ScrollSmoothLayout({
 	children,
-	disabled = false,
 }: ScrollSmoothLayoutProps) {
 	useGSAP(() => {
-		if (disabled) return
-
 		// Only enable on desktop (non-touch devices)
 		const isTouchDevice =
 			'ontouchstart' in window || navigator.maxTouchPoints > 0
@@ -29,7 +25,7 @@ export default function ScrollSmoothLayout({
 		return () => {
 			instance.kill()
 		}
-	}, [disabled])
+	}, [])
 
 	return (
 		<div id="smooth-wrapper">

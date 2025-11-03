@@ -98,7 +98,7 @@ export default function TextRevealSection({
 	}, [])
 
 	return (
-		<section className={styles.section} id={id} ref={sectionRef}>
+		<section className={styles.textRevealSection} id={id} ref={sectionRef}>
 			<div className="container">
 				<div className={styles.box}>
 					<div ref={blockListRef}>

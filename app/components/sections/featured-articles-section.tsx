@@ -67,7 +67,7 @@ export default function FeaturedArticlesSection({
 	}, [])
 
 	return (
-		<section className={styles.section} id={id} ref={sectionRef}>
+		<section className={styles.featuredArticlesSection} id={id} ref={sectionRef}>
 			<div className="container">
 				<div className={styles.stickyBox} ref={stickyBoxRef}>
 					{data?.title && (
