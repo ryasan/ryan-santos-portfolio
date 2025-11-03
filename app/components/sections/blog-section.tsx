@@ -2,18 +2,69 @@ import ArticleCard from '~/components/article-card'
 import clsx from 'clsx'
 import gsap from 'gsap'
 import styles from '~/styles/components/sections/blog-section.module.scss'
-import { CloseIcon } from '~/components/icons'
+import { Blog, ContentfulTag } from '~/graphql/__generated/sdk'
 import { normalizeSlide } from '~/utils/normalize-data'
-import { useBlogFilter } from '~/contexts/blog-filter-context'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
-import { useMatchMedia } from '~/hooks'
-import { useRef } from 'react'
+import { useSearchParams } from '@remix-run/react'
 
-export default function BlogSection() {
+type BlogSectionProps = {
+	posts: Blog[]
+	tags: ContentfulTag[]
+}
+
+export default function BlogSection({ posts, tags }: BlogSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
-	// const { tags, selectedTags, toggleTag, clearTags, filteredPosts } =
-	// 	useBlogFilter()
+
+	const [searchParams, setSearchParams] = useSearchParams()
+	const [filteredPosts, setFilteredPosts] = useState<Blog[]>(posts)
+	const [selectedTags, setSelectedTags] = useState<string[]>(() => {
+		const tagsParam = searchParams.get('tags')
+		return tagsParam ? tagsParam.split(',').filter(Boolean) : []
+	})
+
+	const toggleTag = (tag: string) => {
+		setSelectedTags((prev) =>
+			prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
+		)
+	}
+
+	const clearTags = () => {
+		setSelectedTags([])
+	}
+
+	// Update URL parameters when filters change
+	useEffect(() => {
+		const params = new URLSearchParams()
+
+		if (selectedTags.length > 0) {
+			params.set('tags', selectedTags.join(','))
+		}
+
+		// Only update URL if params changed
+		const newSearchString = params.toString()
+		const currentSearchString = searchParams.toString()
+
+		if (newSearchString !== currentSearchString) {
+			setSearchParams(params, { replace: true })
+		}
+	}, [selectedTags])
+
+	useEffect(() => {
+		let filtered = [...posts]
+
+		if (selectedTags.length > 0) {
+			filtered = filtered.filter((post) => {
+				const postTags = post.contentfulMetadata?.tags?.filter(Boolean) || []
+
+				return selectedTags.some((selectedTag) =>
+					postTags.some((tag) => tag && tag.name === selectedTag),
+				)
+			})
+		}
+
+		setFilteredPosts(filtered)
+	}, [selectedTags, posts])
 
 	useGSAP(() => {
 		const section = sectionRef.current
@@ -30,7 +81,7 @@ export default function BlogSection() {
 			<div className="container">
 				<h1 className="h2 mb-40">Search insights by topics</h1>
 
-				{/* <div className={styles.tagList}>
+				<div className={styles.tagList}>
 					<button
 						onClick={clearTags}
 						className={clsx(
@@ -63,7 +114,7 @@ export default function BlogSection() {
 						if (!post) return null
 						return <ArticleCard key={post.id} data={post} forceDescription />
 					})}
-				</div> */}
+				</div>
 			</div>
 		</section>
 	)
