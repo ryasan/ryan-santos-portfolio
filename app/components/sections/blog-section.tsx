@@ -23,15 +23,15 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 		return tagsParam ? tagsParam.split(',').filter(Boolean) : []
 	})
 
-	// const toggleTag = (tag: string) => {
-	// 	setSelectedTags((prev) =>
-	// 		prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
-	// 	)
-	// }
+	const toggleTag = (tag: string) => {
+		setSelectedTags((prev) =>
+			prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
+		)
+	}
 
-	// const clearTags = () => {
-	// 	setSelectedTags([])
-	// }
+	const clearTags = () => {
+		setSelectedTags([])
+	}
 
 	// Update URL parameters when filters change
 	useEffect(() => {
@@ -82,7 +82,7 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 				<h1 className="h2 mb-40">Search insights by topics</h1>
 
 				<div className={styles.tagList}>
-					{/* <button
+					<button
 						onClick={clearTags}
 						className={clsx(
 							styles.tag,
@@ -106,7 +106,7 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 								{tag.name}
 							</button>
 						)
-					})} */}
+					})}
 				</div>
 
 				<div className={styles.postList}>
