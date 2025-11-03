@@ -2,20 +2,18 @@
 
 .richText {
 	p {
-		margin: $space-16 0; // 16px spacing between paragraphs
+		margin: $space-24 0;
 		font-size: 18px;
 
-
 		&:first-child {
-			margin-top: 0; // Remove margin from first paragraph
+			margin-top: 0;
 		}
 
 		&:last-child {
-			margin-bottom: 0; // Remove margin from last paragraph
+			margin-bottom: 0;
 		}
 	}
 
-	// Add spacing for other elements too
 	h1,
 	h2,
 	h3,
