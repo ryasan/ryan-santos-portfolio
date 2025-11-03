@@ -1,6 +1,5 @@
 import BlogSection from '~/components/sections/blog-section'
-import SectionRenderer from '~/components/section-renderer'
-import type { Blog, ContentfulTag, PagePageSectionsItem } from '~/graphql/__generated/sdk'
+import type { Blog, ContentfulTag } from '~/graphql/__generated/sdk'
 import type { MetaFunction } from '@netlify/remix-runtime'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
@@ -43,31 +42,23 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 }
 
 export default function BlogPage() {
-	const { page, blogs } = useLoaderData<typeof loader>()
+	const { blogs } = useLoaderData<typeof loader>()
 
-	// const tags = useMemo(() => {
-	// 	const uniqueTags: ContentfulTag[] = []
+	const tags = useMemo(() => {
+		const uniqueTags: ContentfulTag[] = []
 
-	// 	blogs.forEach((blog: Blog) => {
-	// 		blog.contentfulMetadata?.tags?.filter(Boolean).forEach((tag) => {
-	// 			if (tag && !uniqueTags.some((t) => t?.name === tag?.name)) {
-	// 				uniqueTags.push(tag)
-	// 			}
-	// 		})
-	// 	})
+		blogs.forEach((blog: Blog) => {
+			blog.contentfulMetadata?.tags?.filter(Boolean).forEach((tag) => {
+				if (tag && !uniqueTags.some((t) => t?.name === tag?.name)) {
+					uniqueTags.push(tag)
+				}
+			})
+		})
 
-	// 	return uniqueTags
-	// }, [blogs])
+		return uniqueTags
+	}, [blogs])
 
 	return (
-		<>
-			{/* {page.pageSectionsCollection?.items?.map(
-				(section: PagePageSectionsItem) => {
-					if (!section?.sys?.id) return null
-					return <SectionRenderer key={section.sys.id} section={section} />
-				},
-			)} */}
-			<BlogSection posts={blogs} tags={[]} />
-		</>
+		<BlogSection posts={blogs} tags={tags} />
 	)
 }
