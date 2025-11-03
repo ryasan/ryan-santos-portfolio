@@ -32,13 +32,10 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 			? `${data?.author?.firstName} ${data?.author?.lastName}`
 			: ''
 
-	const copyToClipboard = () => {
-		navigator.clipboard.writeText(`${window.location.origin}${pathname}`)
-		setCopySuccess(true)
-		setTimeout(() => {
-			setCopySuccess(false)
-		}, 2000)
-	}
+	const shareUrl =
+		typeof window !== 'undefined' ? `${window.location.origin}${pathname}` : ''
+
+	const shareTitle = data?.title || 'Check out this article'
 
 	const shareOnTwitter = () => {
 		const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTitle)}&url=${encodeURIComponent(shareUrl)}`
@@ -53,6 +50,14 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 	const shareOnFacebook = () => {
 		const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`
 		window.open(url, '_blank', 'noopener,noreferrer,width=550,height=420')
+	}
+
+	const copyToClipboard = () => {
+		navigator.clipboard.writeText(`${window.location.origin}${pathname}`)
+		setCopySuccess(true)
+		setTimeout(() => {
+			setCopySuccess(false)
+		}, 2000)
 	}
 
 	useGSAP(() => {
