@@ -61,12 +61,12 @@ export default function BlogPage() {
 
 	return (
 		<>
-			{page.pageSectionsCollection?.items?.map(
+			{/* {page.pageSectionsCollection?.items?.map(
 				(section: PagePageSectionsItem) => {
 					if (!section?.sys?.id) return null
 					return <SectionRenderer key={section.sys.id} section={section} />
 				},
-			)}
+			)} */}
 			<BlogSection posts={blogs} tags={[]} />
 		</>
 	)
