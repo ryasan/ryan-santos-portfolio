@@ -34,3 +34,4 @@
 * [ ] Add mouse follower
 * [ ] Put contact section in Contentful
 * [ ] Add GSAP ScrollSmoother
+* [ ] Fix flash bug that happens when navigating from blog page to home page
