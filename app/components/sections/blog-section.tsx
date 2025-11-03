@@ -28,11 +28,7 @@ export default function BlogSection() {
 	return (
 		<section className={styles.blogSection} ref={sectionRef}>
 			<div className="container">
-				<h2 className={clsx(styles.title, 'h2 mb-56')}>
-					Thought bubbles on the <span>web</span>.
-				</h2>
-
-				<div className="h4 mb-40">Search insights by topics</div>
+				<h1 className="h2 mb-40">Search insights by topics</h1>
 
 				<div className={styles.tagList}>
 					<button

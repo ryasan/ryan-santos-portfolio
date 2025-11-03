@@ -40,6 +40,21 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 		}, 2000)
 	}
 
+	const shareOnTwitter = () => {
+		const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTitle)}&url=${encodeURIComponent(shareUrl)}`
+		window.open(url, '_blank', 'noopener,noreferrer,width=550,height=420')
+	}
+
+	const shareOnLinkedIn = () => {
+		const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`
+		window.open(url, '_blank', 'noopener,noreferrer,width=550,height=420')
+	}
+
+	const shareOnFacebook = () => {
+		const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`
+		window.open(url, '_blank', 'noopener,noreferrer,width=550,height=420')
+	}
+
 	useGSAP(() => {
 		const section = sectionRef.current
 		if (!section) return
@@ -102,30 +117,32 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 						</div>
 					)}
 
-					{/* Share Actions */}
 					<div className={styles.shareActions}>
 						<button
 							className={styles.shareCopyButton}
-							title="Share this article via link"
 							onClick={copyToClipboard}
+							title="Share this article via link"
 						>
 							<span>{copySuccess ? 'Copied' : 'Copy Link'}</span>
 							<CopySimpleIcon className={styles.shareIcon} />
 						</button>
 						<button
 							className={styles.shareButton}
+							onClick={shareOnTwitter}
 							title="Share this article on Twitter"
 						>
 							<TwitterIcon className={styles.shareIcon} />
 						</button>
 						<button
 							className={styles.shareButton}
+							onClick={shareOnLinkedIn}
 							title="Share this article on LinkedIn"
 						>
 							<LinkedinIcon className={styles.shareIcon} />
 						</button>
 						<button
 							className={styles.shareButton}
+							onClick={shareOnFacebook}
 							title="Share this article on Facebook"
 						>
 							<FacebookIcon className={styles.shareIcon} />
@@ -137,7 +154,6 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 			{/* Tags - Post Tags */}
 			{/* Related Posts - Post Related Posts */}
 			{/* Comments - Post Comments */}
-			{/* Share Buttons - Post Share Buttons */}
 		</section>
 	)
 }

@@ -94,6 +94,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	white-space: nowrap;
 	color: var(--content-color);
 	border: 1px solid var(--line-color);
 	border-radius: 50%;

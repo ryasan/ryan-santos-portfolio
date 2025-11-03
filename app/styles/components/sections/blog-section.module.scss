@@ -46,7 +46,7 @@
 	background-color: transparent;
 	color: var(--content-color);
 	position: relative;
-	border: 2px solid var(--content-color);
+	border: 1px solid var(--content-color);
 	
 	&:hover {
 		box-shadow: 0 0 0 2px var(--background-primary-color), 0 0 0 4px var(--content-color);
