@@ -45,19 +45,19 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 export default function BlogPage() {
 	const { page, blogs } = useLoaderData<typeof loader>()
 
-	const tags = useMemo(() => {
-		const uniqueTags: ContentfulTag[] = []
+	// const tags = useMemo(() => {
+	// 	const uniqueTags: ContentfulTag[] = []
 
-		blogs.forEach((blog: Blog) => {
-			blog.contentfulMetadata?.tags?.filter(Boolean).forEach((tag) => {
-				if (tag && !uniqueTags.some((t) => t?.name === tag?.name)) {
-					uniqueTags.push(tag)
-				}
-			})
-		})
+	// 	blogs.forEach((blog: Blog) => {
+	// 		blog.contentfulMetadata?.tags?.filter(Boolean).forEach((tag) => {
+	// 			if (tag && !uniqueTags.some((t) => t?.name === tag?.name)) {
+	// 				uniqueTags.push(tag)
+	// 			}
+	// 		})
+	// 	})
 
-		return uniqueTags
-	}, [blogs])
+	// 	return uniqueTags
+	// }, [blogs])
 
 	return (
 		<>
@@ -67,7 +67,7 @@ export default function BlogPage() {
 					return <SectionRenderer key={section.sys.id} section={section} />
 				},
 			)}
-			<BlogSection posts={blogs} tags={tags} />
+			<BlogSection posts={blogs} tags={[]} />
 		</>
 	)
 }

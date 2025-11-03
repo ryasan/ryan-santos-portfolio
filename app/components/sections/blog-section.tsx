@@ -92,7 +92,7 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 						All
 					</button>
 
-					{tags.map((tag) => {
+					{/* {tags.map((tag) => {
 						if (!tag.name) return null
 						return (
 							<button
@@ -106,7 +106,7 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 								{tag.name}
 							</button>
 						)
-					})}
+					})} */}
 				</div>
 
 				{/* <div className={styles.postList}>
