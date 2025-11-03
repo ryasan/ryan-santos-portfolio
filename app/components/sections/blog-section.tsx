@@ -16,55 +16,55 @@ type BlogSectionProps = {
 export default function BlogSection({ posts, tags }: BlogSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
 
-	const [searchParams, setSearchParams] = useSearchParams()
+	// const [searchParams, setSearchParams] = useSearchParams()
 	const [filteredPosts, setFilteredPosts] = useState<Blog[]>(posts)
-	const [selectedTags, setSelectedTags] = useState<string[]>(() => {
-		const tagsParam = searchParams.get('tags')
-		return tagsParam ? tagsParam.split(',').filter(Boolean) : []
-	})
+	// const [selectedTags, setSelectedTags] = useState<string[]>(() => {
+	// 	const tagsParam = searchParams.get('tags')
+	// 	return tagsParam ? tagsParam.split(',').filter(Boolean) : []
+	// })
 
-	const toggleTag = (tag: string) => {
-		setSelectedTags((prev) =>
-			prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
-		)
-	}
+	// const toggleTag = (tag: string) => {
+	// 	setSelectedTags((prev) =>
+	// 		prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
+	// 	)
+	// }
 
-	const clearTags = () => {
-		setSelectedTags([])
-	}
+	// const clearTags = () => {
+	// 	setSelectedTags([])
+	// }
 
-	// Update URL parameters when filters change
-	useEffect(() => {
-		const params = new URLSearchParams()
+	// // Update URL parameters when filters change
+	// useEffect(() => {
+	// 	const params = new URLSearchParams()
 
-		if (selectedTags.length > 0) {
-			params.set('tags', selectedTags.join(','))
-		}
+	// 	if (selectedTags.length > 0) {
+	// 		params.set('tags', selectedTags.join(','))
+	// 	}
 
-		// Only update URL if params changed
-		const newSearchString = params.toString()
-		const currentSearchString = searchParams.toString()
+	// 	// Only update URL if params changed
+	// 	const newSearchString = params.toString()
+	// 	const currentSearchString = searchParams.toString()
 
-		if (newSearchString !== currentSearchString) {
-			setSearchParams(params, { replace: true })
-		}
-	}, [selectedTags])
+	// 	if (newSearchString !== currentSearchString) {
+	// 		setSearchParams(params, { replace: true })
+	// 	}
+	// }, [selectedTags])
 
-	useEffect(() => {
-		let filtered = [...posts]
+	// useEffect(() => {
+	// 	let filtered = [...posts]
 
-		if (selectedTags.length > 0) {
-			filtered = filtered.filter((post) => {
-				const postTags = post.contentfulMetadata?.tags?.filter(Boolean) || []
+	// 	if (selectedTags.length > 0) {
+	// 		filtered = filtered.filter((post) => {
+	// 			const postTags = post.contentfulMetadata?.tags?.filter(Boolean) || []
 
-				return selectedTags.some((selectedTag) =>
-					postTags.some((tag) => tag && tag.name === selectedTag),
-				)
-			})
-		}
+	// 			return selectedTags.some((selectedTag) =>
+	// 				postTags.some((tag) => tag && tag.name === selectedTag),
+	// 			)
+	// 		})
+	// 	}
 
-		setFilteredPosts(filtered)
-	}, [selectedTags, posts])
+	// 	setFilteredPosts(filtered)
+	// }, [selectedTags, posts])
 
 	useGSAP(() => {
 		const section = sectionRef.current
@@ -82,7 +82,7 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 				<h1 className="h2 mb-40">Search insights by topics</h1>
 
 				<div className={styles.tagList}>
-					<button
+					{/* <button
 						onClick={clearTags}
 						className={clsx(
 							styles.tag,
@@ -90,7 +90,7 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 						)}
 					>
 						All
-					</button>
+					</button> */}
 
 					{/* {tags.map((tag) => {
 						if (!tag.name) return null
