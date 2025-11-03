@@ -81,8 +81,8 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 			<div className="container">
 				<h1 className="h2 mb-40">Search insights by topics</h1>
 
-				{/* <div className={styles.tagList}>
-					<button
+				<div className={styles.tagList}>
+					{/* <button
 						onClick={clearTags}
 						className={clsx(
 							styles.tag,
@@ -106,8 +106,8 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 								{tag.name}
 							</button>
 						)
-					})}
-				</div> */}
+					})} */}
+				</div>
 
 				<div className={styles.postList}>
 					{filteredPosts.map(normalizeSlide).map((post) => {
