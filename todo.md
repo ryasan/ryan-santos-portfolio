@@ -35,3 +35,6 @@
 * [ ] Put contact section in Contentful
 * [ ] Add GSAP ScrollSmoother
 * [ ] Fix flash bug that happens when navigating from blog page to home page
+* [ ] Layouts of other pages should be spaced out. Reference the homepage layout.
+* [ ] Revisit loading state of blog listing page
+* [ ] Add dual pane scroll driven animation

@@ -6,12 +6,21 @@
   position: absolute;
   top: 8px;
   right: 8px;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
   background-color: var(--background-secondary-color);
   color: var(--content-color);
   border-radius: 4px;
-  padding: 4px 8px;
-  font-size: 12px;
-  font-weight: 600;
+  height: 30px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.copyIcon {
+  width: 18px;
+  height: 18px;
+  fill: var(--content-color);
 }
 
 .codeBlock pre {
