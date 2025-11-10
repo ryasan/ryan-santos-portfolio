@@ -136,6 +136,15 @@ export const FEATURED_ARTICLES_SECTION_FRAGMENT = gql`
 	}
 `
 
+export const TERMINAL_ANIMATION_SECTION_FRAGMENT = gql`
+	fragment TerminalAnimationSectionFields on TerminalAnimationSection {
+		__typename
+		sys {
+			id
+		}
+	}
+`
+
 export const CONTACT_SECTION_FRAGMENT = gql`
 	fragment ContactSectionFields on ContactSection {
 		__typename

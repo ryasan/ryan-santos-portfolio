@@ -8,6 +8,7 @@ import {
 	HERO_SECTION_FRAGMENT,
 	SEO_METADATA_FRAGMENT,
 	SOCIAL_SECTION_FRAGMENT,
+	TERMINAL_ANIMATION_SECTION_FRAGMENT,
 	TEXT_REVEAL_SECTION_FRAGMENT,
 } from './fragments'
 
@@ -30,6 +31,7 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 						...FeaturedArticlesSectionFields
 						...HeroSectionFields
 						...SocialSectionFields
+						...TerminalAnimationSectionFields
 						...TextRevealSectionFields
 					}
 				}
@@ -44,6 +46,7 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 	${HERO_SECTION_FRAGMENT}
 	${SEO_METADATA_FRAGMENT}
 	${SOCIAL_SECTION_FRAGMENT}
+	${TERMINAL_ANIMATION_SECTION_FRAGMENT}
 	${TEXT_REVEAL_SECTION_FRAGMENT}
 `
 
