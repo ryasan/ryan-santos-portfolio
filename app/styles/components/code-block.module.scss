@@ -8,12 +8,25 @@
 	position: absolute;
 	top: $space-8;
 	right: $space-8;
+	display: flex;
+	align-items: center;
+	padding: $space-4 $space-8;
 	background-color: var(--background-secondary-color);
 	color: var(--content-color);
 	border-radius: $space-4;
-	padding: $space-4 $space-8;
-	font-size: 18px;
-	font-weight: 600;
+	font-size: 16px;
+	font-weight: 500;
+	transition: all 0.2s ease;
+
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+.copyIcon {
+	width: 16px;
+	height: 16px;
+	fill: var(--content-color);
 }
 
 .codeBlock {

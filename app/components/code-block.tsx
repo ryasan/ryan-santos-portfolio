@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import styles from '~/styles/components/code-block.module.scss'
+import { CopySimpleIcon } from '~/components/icons'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {
 	atomDark,
@@ -7,7 +8,6 @@ import {
 } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useState } from 'react'
 import { useTheme } from '~/hooks'
-
 /**
  * Triple backticks are used to define a code block in Markdown.
  * This function extracts the language and the code from the string.
@@ -66,7 +66,7 @@ export default function CodeBlock({ code }: CodeBlockProps) {
 				onClick={copyToClipboard}
 				title="Copy to clipboard"
 			>
-				{copySuccess ? 'Copied' : 'Copy'}
+				{copySuccess ? 'Copied' : <CopySimpleIcon className={styles.copyIcon} />}
 			</button>
 			<SyntaxHighlighter
 				className={styles.codeBlock}
