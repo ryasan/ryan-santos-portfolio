@@ -1,7 +1,10 @@
 import clsx from 'clsx'
 import styles from '~/styles/components/code-block.module.scss'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { twilight, prism } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import {
+	atomDark,
+	oneLight,
+} from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useState } from 'react'
 import { useTheme } from '~/hooks'
 
@@ -44,7 +47,7 @@ export default function CodeBlock({ code }: CodeBlockProps) {
 	}
 
 	const theme = useTheme()
-	const style = theme === 'dark' ? twilight : prism
+	const style = theme === 'dark' ? atomDark : oneLight
 
 	const copyToClipboard = () => {
 		if (parsedCode) {
@@ -69,6 +72,16 @@ export default function CodeBlock({ code }: CodeBlockProps) {
 				className={styles.codeBlock}
 				language={language}
 				style={style}
+				customStyle={{
+					fontFamily: 'Fira Code, monospace',
+					fontSize: '18px',
+				}}
+				codeTagProps={{
+					style: {
+						fontFamily: 'Fira Code, monospace',
+						fontSize: '18px',
+					},
+				}}
 			>
 				{String(parsedCode)}
 			</SyntaxHighlighter>

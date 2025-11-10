@@ -18,8 +18,16 @@ $poppins-extrabold-italic-src: font-src('Poppins-ExtraBoldItalic');
 $poppins-black-src: font-src('Poppins-Black');
 $poppins-black-italic-src: font-src('Poppins-BlackItalic');
 
-// Poppins font faces
+// Fira Code font variables
+$fira-code-bold-src: font-src('FiraCode-Bold');
+$fira-code-light-src: font-src('FiraCode-Light');
+$fira-code-medium-src: font-src('FiraCode-Medium');
+$fira-code-regular-src: font-src('FiraCode-Regular');
+$fira-code-retina-src: font-src('FiraCode-Retina');
+$fira-code-semibold-src: font-src('FiraCode-SemiBold');
+
 @at-root {
+	// Poppins font faces
 	@include font-face('Poppins', $poppins-thin-src, 100, normal);
 	@include font-face('Poppins', $poppins-thin-italic-src, 100, italic);
 	@include font-face('Poppins', $poppins-extra-light-src, 200, normal);
@@ -38,4 +46,12 @@ $poppins-black-italic-src: font-src('Poppins-BlackItalic');
 	@include font-face('Poppins', $poppins-extrabold-italic-src, 800, italic);
 	@include font-face('Poppins', $poppins-black-src, 900, normal);
 	@include font-face('Poppins', $poppins-black-italic-src, 900, italic);
+
+	// Fira Code font faces
+	@include font-face('Fira Code', $fira-code-bold-src, 700, normal);
+	@include font-face('Fira Code', $fira-code-light-src, 300, normal);
+	@include font-face('Fira Code', $fira-code-medium-src, 500, normal);
+	@include font-face('Fira Code', $fira-code-regular-src, 400, normal);
+	@include font-face('Fira Code', $fira-code-retina-src, 400, normal);
+	@include font-face('Fira Code', $fira-code-semibold-src, 600, normal);
 }
