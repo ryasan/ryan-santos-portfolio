@@ -12,17 +12,14 @@
   background-color: var(--background-secondary-color);
   color: var(--content-color);
   border-radius: 4px;
-  font-size: 16px;
+  height: 30px;
+  font-size: 18px;
   font-weight: 500;
-  transition: all 0.2s ease;
-}
-.copyButton:hover {
-  opacity: 0.8;
 }
 
 .copyIcon {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   fill: var(--content-color);
 }
 
