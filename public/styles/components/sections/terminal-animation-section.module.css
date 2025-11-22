@@ -23,6 +23,7 @@
 }
 
 .body {
+  overflow: hidden;
   position: relative;
   height: 60lvh;
   padding: 16px;
