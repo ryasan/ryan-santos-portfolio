@@ -1,0 +1,63 @@
+@import '../../base/variables';
+
+.marqueeSection {
+	display: block;
+	padding: $space-40 0;
+	overflow: hidden;
+}
+
+.marquee {
+	display: flex;
+	width: 100%;
+	overflow: hidden;
+	user-select: none;
+
+	// Gradient mask for fade effect on edges
+	mask-image: linear-gradient(
+		to right,
+		transparent,
+		black 10%,
+		black 90%,
+		transparent
+	);
+
+	// Spacing between rows
+	&:not(:last-child) {
+		margin-bottom: $space-40;
+	}
+}
+
+.track {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	gap: $space-80;
+	padding-right: $space-80; // Ensure equal spacing between the end of first track and start of second
+	min-width: 100%;
+	animation: scroll 30s linear infinite;
+	will-change: transform;
+}
+
+// Pause animation on hover
+.marquee:hover .track {
+	animation-play-state: paused;
+}
+
+.item {
+	font-size: 4rem;
+	font-weight: 700;
+	white-space: nowrap;
+	text-transform: uppercase;
+	line-height: 1;
+	color: var(--content-color);
+}
+
+@keyframes scroll {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(-100%);
+	}
+}

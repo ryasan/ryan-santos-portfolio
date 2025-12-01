@@ -156,3 +156,21 @@ export const CONTACT_SECTION_FRAGMENT = gql`
 		}
 	}
 `
+
+export const MARQUEE_SECTION_FRAGMENT = gql`
+	fragment MarqueeSectionFields on MarqueeSection {
+		__typename
+		sys {
+			id
+		}
+		title
+		marqueeRowsCollection {
+			items {
+				sys {
+					id
+				}
+				marqueeItems
+			}
+		}
+	}
+`

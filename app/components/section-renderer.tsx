@@ -4,6 +4,7 @@ import ContactSection from './sections/contact-section'
 import ExperienceSection from './sections/experience-section'
 import FeaturedArticlesSection from './sections/featured-articles-section'
 import HeroSection from './sections/hero-section'
+import MarqueeSection from '~/components/sections/marquee-section';
 import SocialSection from './sections/social-section'
 import TextRevealSection from './sections/text-reveal-section'
 import type { PagePageSectionsItem } from '~/graphql/__generated/sdk'
@@ -15,6 +16,7 @@ const sections = {
 	ExperienceSection: ExperienceSection,
 	FeaturedArticlesSection: FeaturedArticlesSection,
 	HeroSection: HeroSection,
+	MarqueeSection: MarqueeSection,
 	SocialSection: SocialSection,
 	TextRevealSection: TextRevealSection,
 } as const

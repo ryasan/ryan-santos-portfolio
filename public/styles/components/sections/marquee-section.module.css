@@ -1,0 +1,51 @@
+.marqueeSection {
+  display: block;
+  padding: 40px 0;
+  overflow: hidden;
+}
+
+.marquee {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+.marquee:not(:last-child) {
+  margin-bottom: 40px;
+}
+
+.track {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  padding-right: 80px;
+  min-width: 100%;
+  animation: scroll 30s linear infinite;
+  will-change: transform;
+}
+
+.marquee:hover .track {
+  animation-play-state: paused;
+}
+
+.item {
+  font-size: 4rem;
+  font-weight: 700;
+  white-space: nowrap;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--content-color);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/*# sourceMappingURL=marquee-section.module.css.map */
