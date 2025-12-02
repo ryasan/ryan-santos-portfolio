@@ -51,12 +51,14 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				delay: 0.75,
 			})
 
-			gsap.to(scrollToExplore, {
-				opacity: 1,
-				duration: 1,
-				ease: 'power2.out',
-				delay: 0.75,
-			})
+			if (window.scrollY === 0) {
+				gsap.to(scrollToExplore, {
+					opacity: 1,
+					duration: 1,
+					ease: 'power2.out',
+					delay: 0.75,
+				})
+			}
 
 			ScrollTrigger.create({
 				trigger: section,

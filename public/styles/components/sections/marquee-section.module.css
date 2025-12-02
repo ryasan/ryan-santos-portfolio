@@ -4,6 +4,10 @@
   overflow: hidden;
 }
 
+.title {
+  color: var(--content-color-2);
+}
+
 .marquee {
   display: flex;
   width: 100%;
@@ -14,6 +18,9 @@
 .marquee:not(:last-child) {
   margin-bottom: 40px;
 }
+.marquee.reverse .track {
+  animation-direction: reverse;
+}
 
 .track {
   flex-shrink: 0;
@@ -22,7 +29,7 @@
   gap: 80px;
   padding-right: 80px;
   min-width: 100%;
-  animation: scroll 30s linear infinite;
+  animation: scroll 60s linear infinite;
   will-change: transform;
 }
 
@@ -31,12 +38,10 @@
 }
 
 .item {
-  font-size: 4rem;
-  font-weight: 700;
+  font-size: 5rem;
+  font-weight: 600;
   white-space: nowrap;
-  text-transform: uppercase;
-  line-height: 1;
-  color: var(--content-color);
+  line-height: 1.5;
 }
 
 @keyframes scroll {
