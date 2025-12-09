@@ -42,28 +42,28 @@
 	gap: $space-80;
 	padding-right: $space-80; // Ensure equal spacing between the end of first track and start of second
 	min-width: 100%;
-	animation: scroll 60s linear infinite;
 	will-change: transform;
 }
 
-// Pause animation on hover
-.marquee:hover .track {
-	animation-play-state: paused;
-}
-
 .item {
-	font-size: 5rem;
-	font-weight: 600;
-	white-space: nowrap;
-	line-height: 1.5;
+	display: flex;
+	align-items: center;
+	gap: $space-80;
 }
 
-@keyframes scroll {
-	from {
-		transform: translateX(0);
-	}
+.text {
+	font-weight: 700;
+	white-space: nowrap;
+	line-height: 1;
+	font-size: 15rem;
+	color: var(--content-color);
+}
 
-	to {
-		transform: translateX(-100%);
-	}
+.delimiter {
+	font-size: 2rem;
+	font-weight: 500;
+	color: var(--content-color-2);
+	white-space: nowrap;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
 }

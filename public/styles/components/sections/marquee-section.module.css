@@ -29,28 +29,30 @@
   gap: 80px;
   padding-right: 80px;
   min-width: 100%;
-  animation: scroll 60s linear infinite;
   will-change: transform;
 }
 
-.marquee:hover .track {
-  animation-play-state: paused;
-}
-
 .item {
-  font-size: 5rem;
-  font-weight: 600;
-  white-space: nowrap;
-  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 80px;
 }
 
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+.text {
+  font-weight: 700;
+  white-space: nowrap;
+  line-height: 1;
+  font-size: 15rem;
+  color: var(--content-color);
+}
+
+.delimiter {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--content-color-2);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 /*# sourceMappingURL=marquee-section.module.css.map */
