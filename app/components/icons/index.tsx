@@ -1,6 +1,7 @@
 import ArrowLeftIcon from './arrow-left'
 import ArrowRightIcon from './arrow-right'
 import ArrowUpRightIcon from './arrow-up-right'
+import AtomIcon from './atom'
 import CloseIcon from './close'
 import CodepenIcon from './codepen'
 import CopySimpleIcon from './copy-simple'
@@ -18,6 +19,7 @@ export {
 	ArrowLeftIcon,
 	ArrowRightIcon,
 	ArrowUpRightIcon,
+	AtomIcon,
 	CloseIcon,
 	CodepenIcon,
 	CopySimpleIcon,

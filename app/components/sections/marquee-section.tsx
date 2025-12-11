@@ -1,14 +1,14 @@
+import { MarqueeSection as MarqueeSectionType } from '~/graphql/__generated/sdk'
 import { clsx } from 'clsx'
-import { useRef } from 'react'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { MarqueeSection as MarqueeSectionType } from '~/graphql/__generated/sdk'
+import { useRef } from 'react'
 import styles from '~/styles/components/sections/marquee-section.module.scss'
 
 const mockItems = [
-	{ text: 'STRATEGIC', delimiter: 'mindful' },
-	{ text: 'INNOVATIVE', delimiter: 'creative' },
-	{ text: 'DEDICATED', delimiter: 'delivery' },
+	{ text: 'STRATEGY', delimiter: 'mindful' },
+	{ text: 'INNOVATION', delimiter: 'creative' },
+	{ text: 'EXECUTION', delimiter: 'organized' },
 ]
 
 type MarqueeSectionProps = {
@@ -61,7 +61,13 @@ export default function MarqueeSection({ data, id }: MarqueeSectionProps) {
 										key={`${rowIndex}-${index}`}
 										style={{ display: 'contents' }}
 									>
-										<span className={clsx(styles.text, 'h1')}>
+										<span
+											className={clsx(
+												'h1',
+												styles.text,
+												(rowIndex + index) % 2 !== 0 && styles.outline,
+											)}
+										>
 											{repeatedItem.text}
 										</span>
 										<span className={styles.delimiter}>

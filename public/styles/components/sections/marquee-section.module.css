@@ -1,6 +1,6 @@
 .marqueeSection {
   display: block;
-  padding: 40px 0;
+  padding: 140px 0;
   overflow: hidden;
 }
 
@@ -44,6 +44,10 @@
   line-height: 1;
   font-size: 15rem;
   color: var(--content-color);
+}
+.text.outline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--content-color);
 }
 
 .delimiter {
