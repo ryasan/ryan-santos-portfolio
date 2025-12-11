@@ -50,6 +50,11 @@
   -webkit-text-stroke: 2px var(--content-color);
 }
 
+@media (max-width: 768px) {
+  .text {
+    font-size: 7.5rem;
+  }
+}
 .delimiter {
   font-size: 2rem;
   font-weight: 500;
