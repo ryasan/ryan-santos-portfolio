@@ -64,12 +64,6 @@
 	}
 }
 
-@media (max-width: $tablet) {
-	.text {
-		font-size: 7.5rem;
-	}
-}
-
 .delimiter {
 	font-size: 2rem;
 	font-weight: 500;
@@ -77,4 +71,18 @@
 	white-space: nowrap;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
+}
+
+@media (max-width: $tablet) {
+	.item {
+		gap: $space-20;
+	}
+
+	.text {
+		font-size: 7.5rem;
+	}
+
+	.delimiter {
+		font-size: 1rem;
+	}
 }

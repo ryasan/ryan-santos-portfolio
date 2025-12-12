@@ -6,9 +6,9 @@ import { useRef } from 'react'
 import styles from '~/styles/components/sections/marquee-section.module.scss'
 
 const mockItems = [
-	{ text: 'STRATEGY', delimiter: 'mindful' },
-	{ text: 'COLLECTIVE', delimiter: 'collab' },
-	{ text: 'INNOVATION', delimiter: 'impact' },
+	{ text: 'STRATEGY', delimiter: 'purpose' },
+	{ text: 'COLLECTIVE', delimiter: 'human' },
+	{ text: 'INNOVATION', delimiter: 'integrity' },
 ]
 
 type MarqueeSectionProps = {

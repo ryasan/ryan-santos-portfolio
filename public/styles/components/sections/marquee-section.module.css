@@ -50,11 +50,6 @@
   -webkit-text-stroke: 2px var(--content-color);
 }
 
-@media (max-width: 768px) {
-  .text {
-    font-size: 7.5rem;
-  }
-}
 .delimiter {
   font-size: 2rem;
   font-weight: 500;
@@ -62,6 +57,18 @@
   white-space: nowrap;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .item {
+    gap: 20px;
+  }
+  .text {
+    font-size: 7.5rem;
+  }
+  .delimiter {
+    font-size: 1rem;
+  }
 }
 
 /*# sourceMappingURL=marquee-section.module.css.map */
