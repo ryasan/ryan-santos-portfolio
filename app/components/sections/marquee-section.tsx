@@ -7,8 +7,8 @@ import styles from '~/styles/components/sections/marquee-section.module.scss'
 
 const mockItems = [
 	{ text: 'STRATEGY', delimiter: 'mindful' },
-	{ text: 'INNOVATION', delimiter: 'creative' },
-	{ text: 'EXECUTION', delimiter: 'organized' },
+	{ text: 'COLLECTIVE', delimiter: 'collab' },
+	{ text: 'INNOVATION', delimiter: 'impact' },
 ]
 
 type MarqueeSectionProps = {
@@ -29,10 +29,10 @@ export default function MarqueeSection({ data, id }: MarqueeSectionProps) {
 				gsap.fromTo(
 					track,
 					{
-						xPercent: isReverse ? -5 : 0,
+						xPercent: isReverse ? -60 : -57,
 					},
 					{
-						xPercent: isReverse ? 0 : -5,
+						xPercent: isReverse ? -57 : -60,
 						ease: 'none',
 						scrollTrigger: {
 							trigger: sectionRef.current,
@@ -65,7 +65,7 @@ export default function MarqueeSection({ data, id }: MarqueeSectionProps) {
 											className={clsx(
 												'h1',
 												styles.text,
-												(rowIndex + index) % 2 !== 0 && styles.outline,
+												(rowIndex + index) % 2 === 0 && styles.outline,
 											)}
 										>
 											{repeatedItem.text}
