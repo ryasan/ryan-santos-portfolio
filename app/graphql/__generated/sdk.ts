@@ -2056,6 +2056,7 @@ export type HeroCubeSection = Entry & _Node & {
   _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
   internalName?: Maybe<Scalars['String']['output']>;
+  isTopOfPage?: Maybe<Scalars['Boolean']['output']>;
   linkedFrom?: Maybe<HeroCubeSectionLinkingCollections>;
   sys: Sys;
   textItems?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -2064,6 +2065,13 @@ export type HeroCubeSection = Entry & _Node & {
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/heroCubeSection) */
 export type HeroCubeSectionInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/heroCubeSection) */
+export type HeroCubeSectionIsTopOfPageArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -2100,6 +2108,9 @@ export type HeroCubeSectionFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  isTopOfPage?: InputMaybe<Scalars['Boolean']['input']>;
+  isTopOfPage_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  isTopOfPage_not?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
   textItems_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   textItems_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2154,6 +2165,8 @@ export enum HeroCubeSectionLinkingCollectionsPageCollectionOrder {
 export enum HeroCubeSectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  IsTopOfPageAsc = 'isTopOfPage_ASC',
+  IsTopOfPageDesc = 'isTopOfPage_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',

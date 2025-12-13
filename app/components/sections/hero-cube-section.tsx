@@ -1,12 +1,16 @@
 import * as THREE from 'three'
 import ClientOnly from '~/components/client-only'
+import clsx from 'clsx'
+import styles from '~/styles/components/sections/hero-cube-section.module.scss'
 import type { HeroCubeSection as HeroCubeSectionType } from '~/graphql/__generated/sdk'
+import { ArrowRightIcon } from '~/components/icons'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { DARK_COLOR, LIGHT_COLOR } from '~/utils/constants'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Text, PerspectiveCamera, Edges } from '@react-three/drei'
+import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { useRef, useState, useEffect } from 'react'
+import { useRef } from 'react'
 import { useTheme } from '~/hooks/use-theme'
 
 type CubeProps = {
@@ -135,22 +139,45 @@ type HeroCubeSectionProps = {
 
 export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 	const containerRef = useRef<HTMLDivElement>(null)
-	const triggerRef = useRef<HTMLDivElement>(null)
+	const stickyBoxRef = useRef<HTMLDivElement>(null)
+	const scrollToExploreRef = useRef<HTMLDivElement>(null)
 	// Mutable ref to share scroll progress with the Canvas without re-renders
 	const progress = useRef(0)
 
 	useGSAP(
 		() => {
-			if (!triggerRef.current) return
+			const stickyBox = stickyBoxRef.current
+			const scrollToExplore = scrollToExploreRef.current
+
+			if (!stickyBox || !scrollToExplore) return
+
+			gsap.to(stickyBox, {
+				opacity: 1,
+				duration: 1,
+				ease: 'power2.out',
+				delay: 0.75,
+			})
+
+			gsap.to(scrollToExplore, {
+				opacity: 1,
+				duration: 1,
+				ease: 'power2.out',
+				delay: 0.75,
+			})
 
 			ScrollTrigger.create({
-				trigger: triggerRef.current,
+				trigger: stickyBox,
 				start: 'top top',
 				end: '+=400%', // Pin for 4 screens
 				pin: true,
 				scrub: 1, // Smooth scrubbing
 				onUpdate: (self) => {
 					progress.current = self.progress
+					gsap.to(scrollToExplore, {
+						opacity: 1 - progress.current * 1,
+						duration: 0.1,
+						ease: 'none',
+					})
 				},
 			})
 		},
@@ -158,16 +185,9 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 	)
 
 	return (
-		<section
-			id={id}
-			ref={containerRef}
-			style={{ position: 'relative', zIndex: 10 }}
-		>
+		<section className={styles.heroCubeSection} id={id} ref={containerRef}>
 			{/* The trigger element needs to fill the viewport to start */}
-			<div
-				ref={triggerRef}
-				style={{ height: '100vh', width: '100%', overflow: 'hidden' }}
-			>
+			<div className={styles.stickyBox} ref={stickyBoxRef}>
 				<ClientOnly>
 					<Canvas>
 						<PerspectiveCamera makeDefault position={[0, 0, 6]} />
@@ -176,6 +196,15 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 						<Cube rotationProgress={progress} textItems={data?.textItems} />
 					</Canvas>
 				</ClientOnly>
+
+				{/* Scroll to explore button */}
+				<div
+					className={clsx(styles.scrollToExplore, 'link')}
+					ref={scrollToExploreRef}
+				>
+					<span>Scroll To Explore</span>
+					<ArrowRightIcon className={styles.arrowRightIcon} />
+				</div>
 			</div>
 		</section>
 	)

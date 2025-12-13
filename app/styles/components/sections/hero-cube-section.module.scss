@@ -1,0 +1,33 @@
+.heroCubeSection {
+	position: relative;
+	z-index: 10;
+}
+
+.stickyBox {
+	height: 100lvh;
+	width: 100%;
+	opacity: 0;
+	overflow: hidden;
+	will-change: opacity;
+	backface-visibility: hidden;
+}
+
+.scrollToExplore {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	justify-content: center;
+	transform: rotate(90deg);
+	transform-origin: left top;
+	position: absolute;
+	bottom: 200px;
+	left: 45px;
+	opacity: 0;
+	will-change: opacity;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.arrowRightIcon {
+	height: 20px;
+}

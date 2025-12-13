@@ -182,5 +182,6 @@ export const HERO_CUBE_SECTION_FRAGMENT = gql`
 			id
 		}
 		textItems
+		isTopOfPage
 	}
 `
