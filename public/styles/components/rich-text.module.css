@@ -63,6 +63,9 @@
     padding-left: 16px;
   }
 }
+.richText li {
+  line-height: 1.8;
+}
 .richText blockquote {
   border-left: 4px solid var(--line-color);
   color: var(--content-color-2);

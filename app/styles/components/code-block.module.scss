@@ -55,4 +55,9 @@
 	color: var(--content-color);
 	border-radius: $space-2;
 	font-weight: 600;
+	font-size: 1em;
+
+	@media (max-width: $tablet) {
+		font-size: 0.8em;
+	}
 }

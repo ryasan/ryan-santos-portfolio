@@ -47,6 +47,12 @@
   color: var(--content-color);
   border-radius: 2px;
   font-weight: 600;
+  font-size: 1em;
+}
+@media (max-width: 768px) {
+  .codespan {
+    font-size: 0.8em;
+  }
 }
 
 /*# sourceMappingURL=code-block.module.css.map */
