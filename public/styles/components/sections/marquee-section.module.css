@@ -13,7 +13,7 @@
   width: 100%;
   overflow: hidden;
   user-select: none;
-  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 .marquee:not(:last-child) {
   margin-bottom: 40px;
