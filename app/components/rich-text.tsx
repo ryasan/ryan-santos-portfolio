@@ -28,6 +28,11 @@ const renderOptions = {
 		[BLOCKS.QUOTE]: (node: any, children: React.ReactNode) => (
 			<blockquote>{children}</blockquote>
 		),
+		[BLOCKS.TABLE]: (node: any, children: React.ReactNode) => (
+			<div className={styles.tableWrapper}>
+				<table>{children}</table>
+			</div>
+		),
 		[INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => (
 			<Link to={node.data.uri}>{children}</Link>
 		),

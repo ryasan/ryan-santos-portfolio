@@ -81,19 +81,33 @@
 		margin: $space-32 0;
 	}
 
-	table {
-		background-color: var(--background-secondary-color);
-		border-radius: 8px;
-		padding: $space-16;
-		border-collapse: collapse;
+	.tableWrapper {
 		width: 100%;
-		overflow: hidden;
+		overflow-x: auto;
 		margin: $space-24 0;
+		-webkit-overflow-scrolling: touch;
+
+		table {
+			margin: 0;
+			background-color: var(--background-secondary-color);
+			border-radius: 8px;
+			padding: $space-16;
+			border-collapse: collapse;
+			width: 100%;
+		}
 	}
 
 	th,
 	td {
 		text-align: left;
 		padding: $space-12;
+
+		p {
+			font-size: 18px;
+
+			@media (max-width: $tablet) {
+				font-size: 16px;
+			}
+		}
 	}
 }
