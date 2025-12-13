@@ -1,8 +1,10 @@
-import { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Text, PerspectiveCamera } from '@react-three/drei'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Text, PerspectiveCamera, Edges } from '@react-three/drei'
 import { useGSAP } from '@gsap/react'
+import { useRef } from 'react'
+import { useTheme } from '~/hooks/use-theme'
+import { DARK_COLOR, LIGHT_COLOR } from '~/utils/constants'
 import * as THREE from 'three'
 
 interface CubeProps {
@@ -11,11 +13,13 @@ interface CubeProps {
 
 const Cube = ({ rotationProgress }: CubeProps) => {
 	const meshRef = useRef<THREE.Mesh>(null)
+	const theme = useTheme()
 
 	// Configuration
 	const cubeSize = 3
 	const txtOffset = cubeSize / 2 + 0.01 // Slightly offset text to avoid z-fighting
-	const textColor = '#ffffff'
+	const contentColor = theme === 'light' ? DARK_COLOR : LIGHT_COLOR
+	const backgroundColor = theme === 'light' ? LIGHT_COLOR : DARK_COLOR
 	const fontSize = 0.35
 
 	useFrame((state) => {
@@ -52,19 +56,21 @@ const Cube = ({ rotationProgress }: CubeProps) => {
 	return (
 		<mesh ref={meshRef}>
 			<boxGeometry args={[cubeSize, cubeSize, cubeSize]} />
-			<meshStandardMaterial color="#1a1a1a" roughness={0.4} metalness={0.1} />
+			<meshBasicMaterial color={backgroundColor} toneMapped={false} />
+
+			<Edges color={contentColor} lineWidth={5} />
 
 			{/* Side 1: Front (0 deg) */}
 			<Text
 				position={[0, 0, txtOffset]}
 				fontSize={fontSize}
-				color={textColor}
+				color={contentColor}
 				anchorX="center"
 				anchorY="middle"
 				textAlign="center"
 				maxWidth={cubeSize - 0.2}
 			>
-				Hi, my name is Ryan
+				Hi, my name is Ryan.
 			</Text>
 
 			{/* Side 2: Right (-90 deg) */}
@@ -72,13 +78,13 @@ const Cube = ({ rotationProgress }: CubeProps) => {
 				position={[txtOffset, 0, 0]}
 				rotation={[0, Math.PI / 2, 0]}
 				fontSize={fontSize}
-				color={textColor}
+				color={contentColor}
 				anchorX="center"
 				anchorY="middle"
 				textAlign="center"
 				maxWidth={cubeSize - 0.2}
 			>
-				I'm a Frontend Developer
+				I'm a Frontend Developer.
 			</Text>
 
 			{/* Side 3: Back (-180 deg) */}
@@ -86,13 +92,13 @@ const Cube = ({ rotationProgress }: CubeProps) => {
 				position={[0, 0, -txtOffset]}
 				rotation={[0, Math.PI, 0]}
 				fontSize={fontSize}
-				color={textColor}
+				color={contentColor}
 				anchorX="center"
 				anchorY="middle"
 				textAlign="center"
 				maxWidth={cubeSize - 0.2}
 			>
-				I like to build web stuff to improve people's lives
+				Which means I build web stuff.
 			</Text>
 
 			{/* Side 4: Left (-270 deg) */}
@@ -100,13 +106,13 @@ const Cube = ({ rotationProgress }: CubeProps) => {
 				position={[-txtOffset, 0, 0]}
 				rotation={[0, -Math.PI / 2, 0]}
 				fontSize={fontSize}
-				color={textColor}
+				color={contentColor}
 				anchorX="center"
 				anchorY="middle"
 				textAlign="center"
 				maxWidth={cubeSize - 0.2}
 			>
-				Keep scrolling to find out more
+				Currently building @ Envoy.
 			</Text>
 		</mesh>
 	)
