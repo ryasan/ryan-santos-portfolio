@@ -29,26 +29,23 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 			name: 'description',
 			content: page.seoMetadata?.description || 'Page description',
 		},
+		{
+			property: 'og:title',
+			content: page.seoMetadata?.title || page.title,
+		},
+		{
+			property: 'og:description',
+			content: page.seoMetadata?.description || 'Page description',
+		},
+		{
+			property: 'og:url',
+			content: 'https://ryan-santos.com',
+		},
 		...(page.seoMetadata?.ogImage
 			? [
 					{
-						property: 'og:title',
-						content: page.seoMetadata?.title || page.title,
-					},
-					{
-						property: 'og:description',
-						content: page.seoMetadata?.description || 'Page description',
-					},
-					{
 						property: 'og:image',
 						content: page.seoMetadata.ogImage.url,
-					},
-					{
-						property: 'og:url',
-						content:
-							typeof window !== 'undefined'
-								? window.location.href
-								: 'https://ryan-santos.com',
 					},
 				]
 			: []),
