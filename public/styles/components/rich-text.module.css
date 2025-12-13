@@ -83,5 +83,19 @@
   border-top: 1px solid var(--line-color);
   margin: 32px 0;
 }
+.richText table {
+  background-color: var(--background-secondary-color);
+  border-radius: 8px;
+  padding: 16px;
+  border-collapse: collapse;
+  width: 100%;
+  overflow: hidden;
+  margin: 24px 0;
+}
+.richText th,
+.richText td {
+  text-align: left;
+  padding: 12px;
+}
 
 /*# sourceMappingURL=rich-text.module.css.map */

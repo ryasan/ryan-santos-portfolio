@@ -78,7 +78,11 @@
 }
 
 .blogBody {
-	margin-bottom: $space-64;
+	margin-bottom: $space-120;
+	
+	@media (max-width: $tablet) {
+		margin-bottom: $space-40;
+	}
 }
 
 .shareActions {

@@ -80,4 +80,20 @@
 		border-top: 1px solid var(--line-color);
 		margin: $space-32 0;
 	}
+
+	table {
+		background-color: var(--background-secondary-color);
+		border-radius: 8px;
+		padding: $space-16;
+		border-collapse: collapse;
+		width: 100%;
+		overflow: hidden;
+		margin: $space-24 0;
+	}
+
+	th,
+	td {
+		text-align: left;
+		padding: $space-12;
+	}
 }

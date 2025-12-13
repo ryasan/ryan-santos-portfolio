@@ -65,7 +65,12 @@
 }
 
 .blogBody {
-  margin-bottom: 64px;
+  margin-bottom: 120px;
+}
+@media (max-width: 768px) {
+  .blogBody {
+    margin-bottom: 40px;
+  }
 }
 
 .shareActions {
