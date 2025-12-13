@@ -4,6 +4,7 @@ import ContactSection from './sections/contact-section'
 import ExperienceSection from './sections/experience-section'
 import FeaturedArticlesSection from './sections/featured-articles-section'
 import HeroSection from './sections/hero-section'
+import HeroCubeSection from './sections/hero-cube-section'
 import MarqueeSection from '~/components/sections/marquee-section';
 import SocialSection from './sections/social-section'
 import TextRevealSection from './sections/text-reveal-section'
@@ -16,6 +17,7 @@ const sections = {
 	ExperienceSection: ExperienceSection,
 	FeaturedArticlesSection: FeaturedArticlesSection,
 	HeroSection: HeroSection,
+	HeroCubeSection: HeroCubeSection,
 	MarqueeSection: MarqueeSection,
 	SocialSection: SocialSection,
 	TextRevealSection: TextRevealSection,

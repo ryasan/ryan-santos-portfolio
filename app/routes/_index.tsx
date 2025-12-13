@@ -1,5 +1,4 @@
 import JumpLinks from '~/components/jump-links'
-import HeroCubeSection from '~/components/sections/hero-cube-section'
 import SectionRenderer from '~/components/section-renderer'
 import type { MetaFunction } from '@netlify/remix-runtime'
 import { PagePageSectionsItem } from '~/graphql/__generated/sdk'
@@ -47,7 +46,6 @@ export default function Index() {
 
 	return (
 		<>
-			<HeroCubeSection />
 			{sections?.map((section: PagePageSectionsItem) => {
 				if (!section?.sys?.id) return null
 				return (
