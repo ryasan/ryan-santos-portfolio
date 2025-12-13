@@ -65,7 +65,6 @@
   align-items: start;
   padding: 40px;
   transition: all 0.4s ease-out;
-  transform: translateY(10px);
   opacity: 0;
   visibility: hidden;
 }
@@ -80,7 +79,6 @@
   filter: blur(3px) grayscale(50%) brightness(0.5);
 }
 .articleCard:hover .articleContent, .articleCard.active .articleContent {
-  transform: translateY(0);
   opacity: 1;
   visibility: visible;
 }
