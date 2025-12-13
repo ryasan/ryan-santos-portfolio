@@ -65,7 +65,6 @@ export default function MarqueeSection({ data, id }: MarqueeSectionProps) {
 											className={clsx(
 												'h1',
 												styles.text,
-												// (rowIndex + index) % 2 !== 0 && styles.outline,
 												styles.outline
 											)}
 										>
