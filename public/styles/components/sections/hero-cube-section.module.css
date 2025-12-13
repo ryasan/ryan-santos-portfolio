@@ -4,7 +4,7 @@
 }
 
 .stickyBox {
-  height: 100lvh;
+  height: 100svh;
   width: 100%;
   opacity: 0;
   overflow: hidden;
