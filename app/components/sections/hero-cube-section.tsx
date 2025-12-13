@@ -1,4 +1,4 @@
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Text, PerspectiveCamera, Edges } from '@react-three/drei'
 import { useGSAP } from '@gsap/react'
@@ -14,13 +14,20 @@ interface CubeProps {
 const Cube = ({ rotationProgress }: CubeProps) => {
 	const meshRef = useRef<THREE.Mesh>(null)
 	const theme = useTheme()
+	const { viewport } = useThree()
 
 	// Configuration
-	const cubeSize = 3
+
+	// Adjust cube size based on viewport width to fit on mobile screens
+	const responsiveSize = viewport.width * 0.75
+	const cubeSize = Math.min(3, responsiveSize)
+	
 	const txtOffset = cubeSize / 2 + 0.01 // Slightly offset text to avoid z-fighting
 	const contentColor = theme === 'light' ? DARK_COLOR : LIGHT_COLOR
 	const backgroundColor = theme === 'light' ? LIGHT_COLOR : DARK_COLOR
-	const fontSize = 0.35
+	
+	// Scale font size relative to cube size (base ratio approx 0.35/3 ≈ 0.116)
+	const fontSize = cubeSize * 0.12
 
 	useFrame((state) => {
 		if (!meshRef.current) return
