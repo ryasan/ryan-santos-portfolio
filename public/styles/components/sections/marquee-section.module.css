@@ -53,7 +53,7 @@
 .delimiter {
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--content-color-2);
+  color: var(--content-color);
   white-space: nowrap;
   text-transform: uppercase;
   letter-spacing: 0.1em;

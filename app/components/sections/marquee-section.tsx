@@ -8,7 +8,7 @@ import styles from '~/styles/components/sections/marquee-section.module.scss'
 const mockItems = [
 	{ text: 'STRATEGIC', delimiter: 'purpose' },
 	{ text: 'COLLABORATIVE', delimiter: 'human' },
-	{ text: 'INNOVATIVE', delimiter: 'integrity' },
+	{ text: 'EXPERIMENTAL', delimiter: 'integrity' },
 ]
 
 type MarqueeSectionProps = {
@@ -65,7 +65,8 @@ export default function MarqueeSection({ data, id }: MarqueeSectionProps) {
 											className={clsx(
 												'h1',
 												styles.text,
-												(rowIndex + index) % 2 !== 0 && styles.outline,
+												// (rowIndex + index) % 2 !== 0 && styles.outline,
+												styles.outline
 											)}
 										>
 											{repeatedItem.text}
