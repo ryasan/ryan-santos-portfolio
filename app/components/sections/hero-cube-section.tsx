@@ -1,17 +1,19 @@
+import * as THREE from 'three'
+import type { HeroCubeSection as HeroCubeSectionType } from '~/graphql/__generated/sdk'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { DARK_COLOR, LIGHT_COLOR } from '~/utils/constants'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Text, PerspectiveCamera, Edges } from '@react-three/drei'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
 import { useTheme } from '~/hooks/use-theme'
-import { DARK_COLOR, LIGHT_COLOR } from '~/utils/constants'
-import * as THREE from 'three'
 
-interface CubeProps {
+type CubeProps = {
 	rotationProgress: React.MutableRefObject<number>
+	textItems: HeroCubeSectionType['textItems']
 }
 
-const Cube = ({ rotationProgress }: CubeProps) => {
+const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 	const meshRef = useRef<THREE.Mesh>(null)
 	const theme = useTheme()
 	const { viewport } = useThree()
@@ -77,7 +79,7 @@ const Cube = ({ rotationProgress }: CubeProps) => {
 				textAlign="center"
 				maxWidth={cubeSize - 0.2}
 			>
-				Hi, my name is Ryan.
+				{textItems?.[0]}
 			</Text>
 
 			{/* Side 2: Right (-90 deg) */}
@@ -91,7 +93,7 @@ const Cube = ({ rotationProgress }: CubeProps) => {
 				textAlign="center"
 				maxWidth={cubeSize - 0.2}
 			>
-				I'm a Frontend Developer.
+				{textItems?.[1]}
 			</Text>
 
 			{/* Side 3: Back (-180 deg) */}
@@ -105,7 +107,7 @@ const Cube = ({ rotationProgress }: CubeProps) => {
 				textAlign="center"
 				maxWidth={cubeSize - 0.2}
 			>
-				Which means I build web stuff.
+				{textItems?.[2]}
 			</Text>
 
 			{/* Side 4: Left (-270 deg) */}
@@ -119,13 +121,18 @@ const Cube = ({ rotationProgress }: CubeProps) => {
 				textAlign="center"
 				maxWidth={cubeSize - 0.2}
 			>
-				Currently building @ Envoy.
+				{textItems?.[3]}
 			</Text>
 		</mesh>
 	)
 }
 
-export default function HeroCubeSection(props: any) {
+type HeroCubeSectionProps = {
+	data?: HeroCubeSectionType
+	id?: string
+}
+
+export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 	const containerRef = useRef<HTMLDivElement>(null)
 	const triggerRef = useRef<HTMLDivElement>(null)
 	// Mutable ref to share scroll progress with the Canvas without re-renders
@@ -150,7 +157,7 @@ export default function HeroCubeSection(props: any) {
 	)
 
 	return (
-		<div ref={containerRef} style={{ position: 'relative', zIndex: 10 }}>
+		<section id={id} ref={containerRef} style={{ position: 'relative', zIndex: 10 }}>
 			{/* The trigger element needs to fill the viewport to start */}
 			<div
 				ref={triggerRef}
@@ -160,9 +167,9 @@ export default function HeroCubeSection(props: any) {
 					<PerspectiveCamera makeDefault position={[0, 0, 6]} />
 					<ambientLight intensity={0.6} />
 					<directionalLight position={[5, 5, 5]} intensity={1.5} />
-					<Cube rotationProgress={progress} />
+					<Cube rotationProgress={progress} textItems={data?.textItems} />
 				</Canvas>
 			</div>
-		</div>
+		</section>
 	)
 }

@@ -174,3 +174,13 @@ export const MARQUEE_SECTION_FRAGMENT = gql`
 		}
 	}
 `
+
+export const HERO_CUBE_SECTION_FRAGMENT = gql`
+	fragment HeroCubeSectionFields on HeroCubeSection {
+		__typename
+		sys {
+			id
+		}
+		textItems
+	}
+`

@@ -2050,6 +2050,120 @@ export enum GlobalHeaderOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/heroCubeSection) */
+export type HeroCubeSection = Entry & _Node & {
+  __typename?: 'HeroCubeSection';
+  _id: Scalars['ID']['output'];
+  contentfulMetadata: ContentfulMetadata;
+  internalName?: Maybe<Scalars['String']['output']>;
+  linkedFrom?: Maybe<HeroCubeSectionLinkingCollections>;
+  sys: Sys;
+  textItems?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/heroCubeSection) */
+export type HeroCubeSectionInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/heroCubeSection) */
+export type HeroCubeSectionLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/heroCubeSection) */
+export type HeroCubeSectionTextItemsArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type HeroCubeSectionCollection = {
+  __typename?: 'HeroCubeSectionCollection';
+  items: Array<Maybe<HeroCubeSection>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type HeroCubeSectionFilter = {
+  AND?: InputMaybe<Array<InputMaybe<HeroCubeSectionFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<HeroCubeSectionFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']['input']>;
+  internalName_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName_not?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sys?: InputMaybe<SysFilter>;
+  textItems_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  textItems_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  textItems_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  textItems_exists?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type HeroCubeSectionLinkingCollections = {
+  __typename?: 'HeroCubeSectionLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+  pageCollection?: Maybe<PageCollection>;
+};
+
+
+export type HeroCubeSectionLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type HeroCubeSectionLinkingCollectionsPageCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<HeroCubeSectionLinkingCollectionsPageCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export enum HeroCubeSectionLinkingCollectionsPageCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  JumpLinksEnabledAsc = 'jumpLinksEnabled_ASC',
+  JumpLinksEnabledDesc = 'jumpLinksEnabled_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
+}
+
+export enum HeroCubeSectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/heroSection) */
 export type HeroSection = Entry & _Node & {
   __typename?: 'HeroSection';
@@ -2926,7 +3040,7 @@ export type PagePageSectionsFilter = {
   sys?: InputMaybe<SysFilter>;
 };
 
-export type PagePageSectionsItem = ArticleGridSection | CarouselSection | ContactSection | ExperienceSection | FeaturedArticlesSection | HeroSection | MarqueeSection | SocialSection | TerminalAnimationSection | TextRevealSection;
+export type PagePageSectionsItem = ArticleGridSection | CarouselSection | ContactSection | ExperienceSection | FeaturedArticlesSection | HeroCubeSection | HeroSection | MarqueeSection | SocialSection | TerminalAnimationSection | TextRevealSection;
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/person) */
 export type Person = Entry & _Node & {
@@ -3396,6 +3510,8 @@ export type Query = {
   globalFooterCollection?: Maybe<GlobalFooterCollection>;
   globalHeader?: Maybe<GlobalHeader>;
   globalHeaderCollection?: Maybe<GlobalHeaderCollection>;
+  heroCubeSection?: Maybe<HeroCubeSection>;
+  heroCubeSectionCollection?: Maybe<HeroCubeSectionCollection>;
   heroSection?: Maybe<HeroSection>;
   heroSectionCollection?: Maybe<HeroSectionCollection>;
   link?: Maybe<Link>;
@@ -3639,6 +3755,25 @@ export type QueryGlobalHeaderCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<GlobalHeaderFilter>;
+};
+
+
+export type QueryHeroCubeSectionArgs = {
+  id: Scalars['String']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryHeroCubeSectionCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<HeroCubeSectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<HeroCubeSectionFilter>;
 };
 
 

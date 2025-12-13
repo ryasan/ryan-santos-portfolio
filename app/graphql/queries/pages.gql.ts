@@ -6,6 +6,7 @@ import {
 	EXPERIENCE_SECTION_FRAGMENT,
 	FEATURED_ARTICLES_SECTION_FRAGMENT,
 	HERO_SECTION_FRAGMENT,
+	HERO_CUBE_SECTION_FRAGMENT,
 	MARQUEE_SECTION_FRAGMENT,
 	SEO_METADATA_FRAGMENT,
 	SOCIAL_SECTION_FRAGMENT,
@@ -30,6 +31,7 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 						...ExperienceSectionFields
 						...FeaturedArticlesSectionFields
 						...HeroSectionFields
+						...HeroCubeSectionFields
 						...MarqueeSectionFields
 						...SocialSectionFields
 						...TextRevealSectionFields
@@ -44,6 +46,7 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 	${EXPERIENCE_SECTION_FRAGMENT}
 	${FEATURED_ARTICLES_SECTION_FRAGMENT}
 	${HERO_SECTION_FRAGMENT}
+	${HERO_CUBE_SECTION_FRAGMENT}
 	${MARQUEE_SECTION_FRAGMENT}
 	${SEO_METADATA_FRAGMENT}
 	${SOCIAL_SECTION_FRAGMENT}
