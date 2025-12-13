@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Text, PerspectiveCamera } from '@react-three/drei'
-import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import * as THREE from 'three'
@@ -46,7 +45,7 @@ const Cube = ({ rotationProgress }: CubeProps) => {
 		// Combine scroll rotation with mouse tilt
 		meshRef.current.rotation.y = scrollRotY + mouseTiltY
 		meshRef.current.rotation.x = mouseTiltX
-		// Optional: slight roll for better feel
+		// Slight roll for better feel
 		meshRef.current.rotation.z = -state.mouse.x * (tiltStrength * 0.5)
 	})
 
@@ -113,7 +112,6 @@ const Cube = ({ rotationProgress }: CubeProps) => {
 	)
 }
 
-// Accepts props to be compatible with SectionRenderer if needed
 export default function HeroCubeSection(props: any) {
 	const containerRef = useRef<HTMLDivElement>(null)
 	const triggerRef = useRef<HTMLDivElement>(null)
@@ -127,7 +125,7 @@ export default function HeroCubeSection(props: any) {
 			ScrollTrigger.create({
 				trigger: triggerRef.current,
 				start: 'top top',
-				end: '+=400%', // Pin for 400% of the viewport height (4 screens)
+				end: '+=400%', // Pin for 4 screens
 				pin: true,
 				scrub: 1, // Smooth scrubbing
 				onUpdate: (self) => {
