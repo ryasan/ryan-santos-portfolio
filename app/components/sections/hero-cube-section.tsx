@@ -5,7 +5,7 @@ import styles from '~/styles/components/sections/hero-cube-section.module.scss'
 import type { HeroCubeSection as HeroCubeSectionType } from '~/graphql/__generated/sdk'
 import { ArrowRightIcon } from '~/components/icons'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { DARK_COLOR, LIGHT_COLOR } from '~/utils/constants'
+import { BLACK, WHITE } from '~/utils/constants'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Text, PerspectiveCamera, Edges } from '@react-three/drei'
 import { gsap } from 'gsap'
@@ -30,8 +30,8 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 	const cubeSize = Math.min(3, responsiveSize)
 
 	const txtOffset = cubeSize / 2 + 0.01 // Slightly offset text to avoid z-fighting
-	const contentColor = theme === 'light' ? DARK_COLOR : LIGHT_COLOR
-	const backgroundColor = theme === 'light' ? LIGHT_COLOR : DARK_COLOR
+	const contentColor = theme === 'light' ? BLACK : WHITE
+	const backgroundColor = theme === 'light' ? WHITE : BLACK
 
 	// Scale font size relative to cube size (base ratio approx 0.35/3 ≈ 0.116)
 	const fontSize = cubeSize * 0.12
