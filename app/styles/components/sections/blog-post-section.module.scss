@@ -73,7 +73,9 @@
 	grid-template-columns: 70% 30%;
 
 	@media (max-width: $tablet) {
-		display: block;
+		display: flex;
+		flex-direction: column;
+		flex-direction: column-reverse;
 	}
 }
 
@@ -91,6 +93,11 @@
 	justify-content: end;
 	gap: $space-16;
 	margin-bottom: $space-64;
+
+	@media (max-width: $tablet) {
+		justify-content: start;
+		margin-bottom: $space-40;
+	}
 }
 
 .shareButton,

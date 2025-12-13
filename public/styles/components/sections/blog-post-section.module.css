@@ -60,7 +60,9 @@
 }
 @media (max-width: 768px) {
   .layout {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    flex-direction: column-reverse;
   }
 }
 
@@ -79,6 +81,12 @@
   justify-content: end;
   gap: 16px;
   margin-bottom: 64px;
+}
+@media (max-width: 768px) {
+  .shareActions {
+    justify-content: start;
+    margin-bottom: 40px;
+  }
 }
 
 .shareButton,
