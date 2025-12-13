@@ -6,9 +6,9 @@ import { useRef } from 'react'
 import styles from '~/styles/components/sections/marquee-section.module.scss'
 
 const mockItems = [
-	{ text: 'STRATEGY', delimiter: 'purpose' },
-	{ text: 'COLLECTIVE', delimiter: 'human' },
-	{ text: 'INNOVATION', delimiter: 'integrity' },
+	{ text: 'STRATEGIC', delimiter: 'purpose' },
+	{ text: 'COLLABORATIVE', delimiter: 'human' },
+	{ text: 'INNOVATIVE', delimiter: 'integrity' },
 ]
 
 type MarqueeSectionProps = {
@@ -65,7 +65,7 @@ export default function MarqueeSection({ data, id }: MarqueeSectionProps) {
 											className={clsx(
 												'h1',
 												styles.text,
-												(rowIndex + index) % 2 === 0 && styles.outline,
+												(rowIndex + index) % 2 !== 0 && styles.outline,
 											)}
 										>
 											{repeatedItem.text}
