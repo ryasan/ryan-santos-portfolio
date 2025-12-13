@@ -78,11 +78,6 @@
 
 	hr {
 		border-top: 1px solid var(--line-color);
-		border: none;
-		margin: $space-16;
-
-		@media (max-width: $tablet) {
-			margin: $space-12;
-		}
+		margin: $space-32 0;
 	}
 }
