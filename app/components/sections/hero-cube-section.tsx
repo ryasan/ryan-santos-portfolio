@@ -1,11 +1,12 @@
 import * as THREE from 'three'
+import ClientOnly from '~/components/client-only'
 import type { HeroCubeSection as HeroCubeSectionType } from '~/graphql/__generated/sdk'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { DARK_COLOR, LIGHT_COLOR } from '~/utils/constants'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Text, PerspectiveCamera, Edges } from '@react-three/drei'
 import { useGSAP } from '@gsap/react'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useTheme } from '~/hooks/use-theme'
 
 type CubeProps = {
@@ -23,11 +24,11 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 	// Adjust cube size based on viewport width to fit on mobile screens
 	const responsiveSize = viewport.width * 0.75
 	const cubeSize = Math.min(3, responsiveSize)
-	
+
 	const txtOffset = cubeSize / 2 + 0.01 // Slightly offset text to avoid z-fighting
 	const contentColor = theme === 'light' ? DARK_COLOR : LIGHT_COLOR
 	const backgroundColor = theme === 'light' ? LIGHT_COLOR : DARK_COLOR
-	
+
 	// Scale font size relative to cube size (base ratio approx 0.35/3 ≈ 0.116)
 	const fontSize = cubeSize * 0.12
 
@@ -45,12 +46,12 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 		// x: -1 (left) to 1 (right)
 		// y: -1 (bottom) to 1 (top)
 		const tiltStrength = 0.15
-		
+
 		// If mouse is at top (y=1), we want to look up (rotate X negative)
 		const mouseTiltX = -state.mouse.y * tiltStrength
-		
+
 		// If mouse is at right (x=1), we want to look right (rotate Y negative? or positive?)
-		// Standard Y rotation: positive is counter-clockwise (left). 
+		// Standard Y rotation: positive is counter-clockwise (left).
 		// So if we want to look right, we rotate Y negative.
 		const mouseTiltY = -state.mouse.x * tiltStrength
 
@@ -157,18 +158,24 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 	)
 
 	return (
-		<section id={id} ref={containerRef} style={{ position: 'relative', zIndex: 10 }}>
+		<section
+			id={id}
+			ref={containerRef}
+			style={{ position: 'relative', zIndex: 10 }}
+		>
 			{/* The trigger element needs to fill the viewport to start */}
 			<div
 				ref={triggerRef}
 				style={{ height: '100vh', width: '100%', overflow: 'hidden' }}
 			>
-				<Canvas>
-					<PerspectiveCamera makeDefault position={[0, 0, 6]} />
-					<ambientLight intensity={0.6} />
-					<directionalLight position={[5, 5, 5]} intensity={1.5} />
-					<Cube rotationProgress={progress} textItems={data?.textItems} />
-				</Canvas>
+				<ClientOnly>
+					<Canvas>
+						<PerspectiveCamera makeDefault position={[0, 0, 6]} />
+						<ambientLight intensity={0.6} />
+						<directionalLight position={[5, 5, 5]} intensity={1.5} />
+						<Cube rotationProgress={progress} textItems={data?.textItems} />
+					</Canvas>
+				</ClientOnly>
 			</div>
 		</section>
 	)
