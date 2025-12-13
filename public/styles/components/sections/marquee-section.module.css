@@ -42,7 +42,7 @@
   font-weight: 700;
   white-space: nowrap;
   line-height: 1;
-  font-size: 15rem;
+  font-size: 150px;
   color: var(--content-color);
 }
 .text.outline {
@@ -51,7 +51,7 @@
 }
 
 .delimiter {
-  font-size: 1.5rem;
+  font-size: 15px;
   font-weight: 500;
   color: var(--content-color);
   white-space: nowrap;
@@ -64,10 +64,10 @@
     gap: 20px;
   }
   .text {
-    font-size: 7.5rem;
+    font-size: 75px;
   }
   .delimiter {
-    font-size: 1rem;
+    font-size: 10px;
   }
 }
 

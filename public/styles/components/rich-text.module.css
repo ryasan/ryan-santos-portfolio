@@ -8,6 +8,11 @@
 .richText p:last-child {
   margin-bottom: 0;
 }
+@media (max-width: 768px) {
+  .richText p {
+    font-size: 16px;
+  }
+}
 .richText h1,
 .richText h2,
 .richText h3,
@@ -25,15 +30,38 @@
 .richText h6:first-child {
   margin-top: 0;
 }
+@media (max-width: 768px) {
+  .richText h1,
+  .richText h2,
+  .richText h3,
+  .richText h4,
+  .richText h5,
+  .richText h6 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}
 .richText ul {
   list-style: disc;
   margin-bottom: 16px;
   padding-left: 24px;
 }
+@media (max-width: 768px) {
+  .richText ul {
+    margin-bottom: 12px;
+    padding-left: 16px;
+  }
+}
 .richText ol {
   list-style: decimal;
   margin-bottom: 16px;
   padding-left: 24px;
+}
+@media (max-width: 768px) {
+  .richText ol {
+    margin-bottom: 12px;
+    padding-left: 16px;
+  }
 }
 .richText blockquote {
   border-left: 4px solid var(--line-color);
@@ -42,10 +70,21 @@
   margin-bottom: 16px;
   padding-left: 24px;
 }
+@media (max-width: 768px) {
+  .richText blockquote {
+    margin-bottom: 12px;
+    padding-left: 16px;
+  }
+}
 .richText hr {
   border-top: 1px solid var(--line-color);
   border: none;
   margin: 16px;
+}
+@media (max-width: 768px) {
+  .richText hr {
+    margin: 12px;
+  }
 }
 
 /*# sourceMappingURL=rich-text.module.css.map */

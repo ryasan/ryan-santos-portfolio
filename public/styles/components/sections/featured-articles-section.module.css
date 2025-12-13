@@ -76,10 +76,10 @@
   position: relative;
   z-index: 1;
 }
-.articleCard:hover .articleImage img {
+.articleCard:hover .articleImage img, .articleCard.active .articleImage img {
   filter: blur(3px) grayscale(50%) brightness(0.5);
 }
-.articleCard:hover .articleContent {
+.articleCard:hover .articleContent, .articleCard.active .articleContent {
   transform: translateY(0);
   opacity: 1;
   visibility: visible;

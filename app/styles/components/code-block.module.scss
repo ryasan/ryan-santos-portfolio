@@ -26,6 +26,12 @@
 }
 
 .codeBlock {
+	font-size: 18px !important;
+
+	@media (max-width: $tablet) {
+		font-size: 14px !important;
+	}
+
 	pre {
 		margin: $space-24 0 !important;
 	}

@@ -83,7 +83,8 @@
 	position: relative;
 	z-index: 1;
 
-	&:hover {
+	&:hover,
+	&.active {
 		.articleImage {
 			img {
 				filter: blur(3px) grayscale(50%) brightness(0.5);

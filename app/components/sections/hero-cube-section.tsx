@@ -26,7 +26,7 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 	// Configuration
 
 	// Adjust cube size based on viewport width to fit on mobile screens
-	const responsiveSize = viewport.width * 0.75
+	const responsiveSize = viewport.width * 0.65
 	const cubeSize = Math.min(3, responsiveSize)
 
 	const txtOffset = cubeSize / 2 + 0.01 // Slightly offset text to avoid z-fighting

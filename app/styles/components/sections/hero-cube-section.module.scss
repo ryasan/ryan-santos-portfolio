@@ -33,3 +33,22 @@
 .arrowRightIcon {
 	height: 20px;
 }
+
+@media (max-width: $tablet) {
+	.scrollToExplore {
+		font-size: 12px;
+		transform: rotate(0deg) translateX(-50%);
+		transform-origin: center top;
+		left: 50%;
+		bottom: 25px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.arrowRightIcon {
+		height: 16px;
+		transform: rotate(90deg);
+	}
+}

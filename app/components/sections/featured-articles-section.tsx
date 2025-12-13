@@ -29,8 +29,9 @@ export default function FeaturedArticlesSection({
 		const stickyBox = stickyBoxRef.current
 		const title = titleRef.current
 		const subtitle = subtitleRef.current
+		const articles = document.querySelectorAll(`.${styles.articleCard}`)
 
-		if (!section || !stickyBox || !title || !subtitle) return
+		if (!section || !stickyBox || !title || !subtitle || !articles) return
 
 		ScrollTrigger.create({
 			trigger: section,
@@ -64,10 +65,34 @@ export default function FeaturedArticlesSection({
 				})
 			},
 		})
+
+		articles.forEach((article) => {
+			ScrollTrigger.create({
+				trigger: article,
+				start: 'top center+=100px',
+				end: 'bottom center-=100px',
+				onEnter: () => {
+					article.classList.add(styles.active as string)
+				},
+				onLeave: () => {
+					article.classList.remove(styles.active as string)
+				},
+				onEnterBack: () => {
+					article.classList.add(styles.active as string)
+				},
+				onLeaveBack: () => {
+					article.classList.remove(styles.active as string)
+				},
+			})
+		})
 	}, [])
 
 	return (
-		<section className={styles.featuredArticlesSection} id={id} ref={sectionRef}>
+		<section
+			className={styles.featuredArticlesSection}
+			id={id}
+			ref={sectionRef}
+		>
 			<div className="container">
 				<div className={styles.stickyBox} ref={stickyBoxRef}>
 					{data?.title && (

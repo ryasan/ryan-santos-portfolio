@@ -12,6 +12,10 @@
 		&:last-child {
 			margin-bottom: 0;
 		}
+
+		@media (max-width: $tablet) {
+			font-size: 16px;
+		}
 	}
 
 	h1,
@@ -26,18 +30,33 @@
 		&:first-child {
 			margin-top: 0;
 		}
+
+		@media (max-width: $tablet) {
+			margin-top: $space-20;
+			margin-bottom: $space-10;
+		}
 	}
 
 	ul {
 		list-style: disc;
 		margin-bottom: $space-16;
 		padding-left: $space-24;
+
+		@media (max-width: $tablet) {
+			margin-bottom: $space-12;
+			padding-left: $space-16;
+		}
 	}
 
 	ol {
 		list-style: decimal;
 		margin-bottom: $space-16;
 		padding-left: $space-24;
+
+		@media (max-width: $tablet) {
+			margin-bottom: $space-12;
+			padding-left: $space-16;
+		}
 	}
 
 	blockquote {
@@ -46,11 +65,20 @@
 		font-style: italic;
 		margin-bottom: $space-16;
 		padding-left: $space-24;
+
+		@media (max-width: $tablet) {
+			margin-bottom: $space-12;
+			padding-left: $space-16;
+		}
 	}
 
 	hr {
 		border-top: 1px solid var(--line-color);
 		border: none;
 		margin: $space-16;
+
+		@media (max-width: $tablet) {
+			margin: $space-12;
+		}
 	}
 }

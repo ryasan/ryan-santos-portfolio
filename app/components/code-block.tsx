@@ -74,12 +74,12 @@ export default function CodeBlock({ code }: CodeBlockProps) {
 				style={style}
 				customStyle={{
 					fontFamily: 'Fira Code, monospace',
-					fontSize: '18px',
+					fontSize: '1em',
 				}}
 				codeTagProps={{
 					style: {
 						fontFamily: 'Fira Code, monospace',
-						fontSize: '18px',
+						fontSize: '1em',
 					},
 				}}
 			>
