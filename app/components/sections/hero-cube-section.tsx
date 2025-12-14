@@ -199,10 +199,10 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 
 				{/* Scroll to explore button */}
 				<div
-					className={clsx(styles.scrollToExplore, 'link')}
+					className={clsx(styles.scrollToExplore, 'body')}
 					ref={scrollToExploreRef}
 				>
-					<span>Scroll To Explore</span>
+					<span>SCROLL DOWN</span>
 					<ArrowRightIcon className={styles.arrowRightIcon} />
 				</div>
 			</div>
