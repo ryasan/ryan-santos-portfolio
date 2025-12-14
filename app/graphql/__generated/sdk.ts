@@ -3053,7 +3053,7 @@ export type PagePageSectionsFilter = {
   sys?: InputMaybe<SysFilter>;
 };
 
-export type PagePageSectionsItem = ArticleGridSection | CarouselSection | ContactSection | ExperienceSection | FeaturedArticlesSection | HeroCubeSection | HeroSection | MarqueeSection | SocialSection | TerminalAnimationSection | TextRevealSection;
+export type PagePageSectionsItem = ArticleGridSection | CarouselSection | ContactSection | ExperienceSection | FeaturedArticlesSection | HeroCubeSection | HeroSection | MarqueeSection | SocialSection | TextRevealSection;
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/person) */
 export type Person = Entry & _Node & {
@@ -3545,8 +3545,6 @@ export type Query = {
   socialLinkCollection?: Maybe<SocialLinkCollection>;
   socialSection?: Maybe<SocialSection>;
   socialSectionCollection?: Maybe<SocialSectionCollection>;
-  terminalAnimationSection?: Maybe<TerminalAnimationSection>;
-  terminalAnimationSectionCollection?: Maybe<TerminalAnimationSectionCollection>;
   textRevealItem?: Maybe<TextRevealItem>;
   textRevealItemCollection?: Maybe<TextRevealItemCollection>;
   textRevealSection?: Maybe<TextRevealSection>;
@@ -3977,25 +3975,6 @@ export type QuerySocialSectionCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<SocialSectionFilter>;
-};
-
-
-export type QueryTerminalAnimationSectionArgs = {
-  id: Scalars['String']['input'];
-  locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-
-export type QueryTerminalAnimationSectionCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<TerminalAnimationSectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
-  where?: InputMaybe<TerminalAnimationSectionFilter>;
 };
 
 
@@ -4585,108 +4564,6 @@ export type TaxonomyConcept = {
   __typename?: 'TaxonomyConcept';
   id?: Maybe<Scalars['String']['output']>;
 };
-
-/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/terminalAnimationSection) */
-export type TerminalAnimationSection = Entry & _Node & {
-  __typename?: 'TerminalAnimationSection';
-  _id: Scalars['ID']['output'];
-  contentfulMetadata: ContentfulMetadata;
-  internalName?: Maybe<Scalars['String']['output']>;
-  linkedFrom?: Maybe<TerminalAnimationSectionLinkingCollections>;
-  sys: Sys;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/terminalAnimationSection) */
-export type TerminalAnimationSectionInternalNameArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/terminalAnimationSection) */
-export type TerminalAnimationSectionLinkedFromArgs = {
-  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type TerminalAnimationSectionCollection = {
-  __typename?: 'TerminalAnimationSectionCollection';
-  items: Array<Maybe<TerminalAnimationSection>>;
-  limit: Scalars['Int']['output'];
-  skip: Scalars['Int']['output'];
-  total: Scalars['Int']['output'];
-};
-
-export type TerminalAnimationSectionFilter = {
-  AND?: InputMaybe<Array<InputMaybe<TerminalAnimationSectionFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<TerminalAnimationSectionFilter>>>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  internalName?: InputMaybe<Scalars['String']['input']>;
-  internalName_contains?: InputMaybe<Scalars['String']['input']>;
-  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  internalName_not?: InputMaybe<Scalars['String']['input']>;
-  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
-  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  sys?: InputMaybe<SysFilter>;
-};
-
-export type TerminalAnimationSectionLinkingCollections = {
-  __typename?: 'TerminalAnimationSectionLinkingCollections';
-  entryCollection?: Maybe<EntryCollection>;
-  pageCollection?: Maybe<PageCollection>;
-};
-
-
-export type TerminalAnimationSectionLinkingCollectionsEntryCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-
-export type TerminalAnimationSectionLinkingCollectionsPageCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<TerminalAnimationSectionLinkingCollectionsPageCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-export enum TerminalAnimationSectionLinkingCollectionsPageCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  JumpLinksEnabledAsc = 'jumpLinksEnabled_ASC',
-  JumpLinksEnabledDesc = 'jumpLinksEnabled_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TypeAsc = 'type_ASC',
-  TypeDesc = 'type_DESC'
-}
-
-export enum TerminalAnimationSectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/textRevealItem) */
 export type TextRevealItem = Entry & _Node & {
