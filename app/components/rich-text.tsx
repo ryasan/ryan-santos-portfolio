@@ -4,7 +4,7 @@ import styles from '~/styles/components/rich-text.module.scss'
 import type { Document } from '@contentful/rich-text-types'
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import CodeBlock from '~/components/code-block';
+import CodeBlock from '~/components/code-block'
 
 type RichTextProps = {
 	data: Document | any
@@ -30,7 +30,9 @@ const renderOptions = {
 		),
 		[BLOCKS.TABLE]: (node: any, children: React.ReactNode) => (
 			<div className={styles.tableWrapper}>
-				<table>{children}</table>
+				<table>
+					<tbody>{children}</tbody>
+				</table>
 			</div>
 		),
 		[INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => (
@@ -47,10 +49,10 @@ const renderOptions = {
 		[BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => {
 			// If it's a code block, return the content without any wrapping elements
 			if (node.content[0]?.marks[0]?.type === MARKS.CODE) {
-				return children;
+				return children
 			}
 			return <p>{children}</p>
-		}
+		},
 	},
 }
 
