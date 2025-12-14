@@ -65,6 +65,7 @@
   align-items: start;
   padding: 40px;
   transition: all 0.4s ease-out;
+  transform: translateY(20px);
   opacity: 0;
   visibility: hidden;
 }
@@ -75,12 +76,25 @@
   position: relative;
   z-index: 1;
 }
-.articleCard.active .articleImage img {
-  filter: blur(3px) grayscale(50%) brightness(0.5);
+@media (min-width: 769px) {
+  .articleCard:hover .articleImage img {
+    filter: blur(3px) grayscale(50%) brightness(0.5);
+  }
+  .articleCard:hover .articleContent {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
 }
-.articleCard.active .articleContent {
-  opacity: 1;
-  visibility: visible;
+@media (max-width: 768px) {
+  .articleCard.active .articleImage img {
+    filter: blur(3px) grayscale(50%) brightness(0.5);
+  }
+  .articleCard.active .articleContent {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .articleTitle {

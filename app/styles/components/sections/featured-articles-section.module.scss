@@ -5,6 +5,20 @@
 	position: relative;
 }
 
+@mixin article-card-active-state {
+	.articleImage {
+		img {
+			filter: blur(3px) grayscale(50%) brightness(0.5);
+		}
+	}
+
+	.articleContent {
+		transform: translateY(0);
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
 .stickyBox {
 	display: flex;
 	align-items: center;
@@ -72,6 +86,7 @@
 	align-items: start;
 	padding: $space-40;
 	transition: all 0.4s ease-out;
+	transform: translateY(20px);
 	opacity: 0;
 	visibility: hidden;
 }
@@ -82,16 +97,15 @@
 	position: relative;
 	z-index: 1;
 
-	&.active {
-		.articleImage {
-			img {
-				filter: blur(3px) grayscale(50%) brightness(0.5);
-			}
+	@media (min-width: $tablet + 1px) {
+		&:hover {
+			@include article-card-active-state;
 		}
+	}
 
-		.articleContent {
-			opacity: 1;
-			visibility: visible;
+	@media (max-width: $tablet) {
+		&.active {
+			@include article-card-active-state;
 		}
 	}
 }
