@@ -33,7 +33,9 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 			: ''
 
 	const shareUrl =
-		typeof window !== 'undefined' ? `${window.location.origin}${pathname}` : ''
+		typeof window !== 'undefined' && window.location
+			? `${window.location.origin}${pathname}`
+			: ''
 
 	const shareTitle = data?.title || 'Check out this article'
 
