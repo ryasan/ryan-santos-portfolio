@@ -35,7 +35,7 @@
 
 	.jobTitle {
 		color: var(--content-color);
-		font-weight: 500;
+		font-weight: 600;
 		line-height: 1;
 		margin-bottom: $space-8;
 	}
@@ -43,6 +43,11 @@
 	.company {
 		line-height: 1;
 		margin-bottom: $space-16;
+		font-size: 65px;
+
+		@media (max-width: $tablet) {
+			font-size: 40px;
+		}
 	}
 }
 

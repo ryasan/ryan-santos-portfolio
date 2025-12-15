@@ -35,13 +35,19 @@
 }
 .info .jobTitle {
   color: var(--content-color);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1;
   margin-bottom: 8px;
 }
 .info .company {
   line-height: 1;
   margin-bottom: 16px;
+  font-size: 65px;
+}
+@media (max-width: 768px) {
+  .info .company {
+    font-size: 40px;
+  }
 }
 
 .experienceItem {
