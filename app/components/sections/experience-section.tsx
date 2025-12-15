@@ -160,7 +160,7 @@ export default function ExperienceSection({
 										<div
 											className={clsx(
 												styles.countNumber,
-												'h3',
+												'h4',
 												'experience-number-target',
 											)}
 										>
@@ -169,7 +169,7 @@ export default function ExperienceSection({
 									</div>
 									<div className={styles.info}>
 										{item.jobTitle && (
-											<div className={clsx(styles.jobTitle, 'h5')}>
+											<div className={clsx(styles.jobTitle, 'h6')}>
 												{item.jobTitle}
 											</div>
 										)}
