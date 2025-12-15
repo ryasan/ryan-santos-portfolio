@@ -101,7 +101,7 @@ export default function FeaturedArticlesSection({
 						</h2>
 					)}
 					{data?.subtitle && (
-						<p className={clsx(styles.subtitle, 'h5')} ref={subtitleRef}>
+						<p className={clsx(styles.subtitle, 'h6')} ref={subtitleRef}>
 							{data.subtitle}
 						</p>
 					)}
@@ -136,13 +136,13 @@ export default function FeaturedArticlesSection({
 											</div>
 											<div className={styles.articleContent}>
 												{article.title && (
-													<h3 className={clsx(styles.articleTitle, 'h3 mb-16')}>
+													<h3 className={clsx(styles.articleTitle, 'h4 mb-16')}>
 														{article.title}
 													</h3>
 												)}
 												{article.caption && (
 													<p
-														className={clsx(styles.articleCaption, 'h4 mb-16')}
+														className={clsx(styles.articleCaption, 'h5 mb-16')}
 													>
 														{article.caption}
 													</p>

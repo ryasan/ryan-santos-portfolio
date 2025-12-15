@@ -9,6 +9,12 @@
 	padding: $space-40 0;
 }
 
+.title {
+	// font-size: 100px;
+	margin: 0 auto $space-140;
+	opacity: 0;
+}
+
 .experienceList {
 	display: flex;
 	flex-direction: column;
@@ -35,6 +41,7 @@
 .experienceItem {
 	display: flex;
 	gap: $space-40;
+	opacity: 0;
 
 	&:last-child {
 		.info {

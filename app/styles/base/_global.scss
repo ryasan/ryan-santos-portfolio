@@ -76,14 +76,31 @@ h1,
 
 h2,
 .h2 {
-	font-size: 64px;
+	font-size: 100px;
 	line-height: 1;
 	letter-spacing: -0.04em;
 	font-weight: 600;
 	color: var(--content-color);
 
 	@media (max-width: $desktop) {
-		font-size: 52px;
+		font-size: 80px;
+	}
+
+	@media (max-width: $tablet) {
+		font-size: 60px;
+	}
+}
+
+h3,
+.h3 {
+	font-size: 75px;
+	line-height: 1;
+	letter-spacing: -0.04em;
+	font-weight: 600;
+	color: var(--content-color);
+
+	@media (max-width: $desktop) {
+		font-size: 60px;
 	}
 
 	@media (max-width: $tablet) {
@@ -91,43 +108,36 @@ h2,
 	}
 }
 
-h3,
-.h3 {
-	font-size: 36px;
+h4,
+.h4 {
+	font-size: 50px;
 	line-height: 1;
 	letter-spacing: -0.04em;
 	font-weight: 600;
 	color: var(--content-color);
 
 	@media (max-width: $desktop) {
-		font-size: 32px;
+		font-size: 40px;
 	}
 
 	@media (max-width: $tablet) {
-		font-size: 24px;
+		font-size: 30px;
 	}
 }
 
-h4,
-.h4 {
-	font-size: 32px;
+h5,
+.h5 {
+	font-size: 30px;
 	line-height: 1;
-	letter-spacing: -0.04em;
 	font-weight: 600;
 	color: var(--content-color);
-
-	@media (max-width: $desktop) {
-		font-size: 28px;
-	}
 
 	@media (max-width: $tablet) {
 		font-size: 20px;
 	}
 }
 
-h5,
 h6,
-.h5,
 .h6 {
 	font-size: 20px;
 	line-height: 1;

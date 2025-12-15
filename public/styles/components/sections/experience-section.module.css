@@ -7,6 +7,11 @@
   padding: 40px 0;
 }
 
+.title {
+  margin: 0 auto 140px;
+  opacity: 0;
+}
+
 .experienceList {
   display: flex;
   flex-direction: column;
@@ -31,6 +36,7 @@
 .experienceItem {
   display: flex;
   gap: 40px;
+  opacity: 0;
 }
 .experienceItem:last-child .info {
   padding-bottom: 0;

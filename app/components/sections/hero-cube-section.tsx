@@ -35,6 +35,7 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 
 	// Scale font size relative to cube size (base ratio approx 0.35/3 ≈ 0.116)
 	const fontSize = cubeSize * 0.12
+	const fontWeight = 650
 
 	useFrame((state) => {
 		if (!meshRef.current) return
@@ -78,6 +79,7 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 			<Text
 				position={[0, 0, txtOffset]}
 				fontSize={fontSize}
+				fontWeight={fontWeight}
 				color={contentColor}
 				anchorX="center"
 				anchorY="middle"
@@ -92,6 +94,7 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 				position={[txtOffset, 0, 0]}
 				rotation={[0, Math.PI / 2, 0]}
 				fontSize={fontSize}
+				fontWeight={fontWeight}
 				color={contentColor}
 				anchorX="center"
 				anchorY="middle"
@@ -106,6 +109,7 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 				position={[0, 0, -txtOffset]}
 				rotation={[0, Math.PI, 0]}
 				fontSize={fontSize}
+				fontWeight={fontWeight}
 				color={contentColor}
 				anchorX="center"
 				anchorY="middle"
@@ -120,6 +124,7 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 				position={[-txtOffset, 0, 0]}
 				rotation={[0, -Math.PI / 2, 0]}
 				fontSize={fontSize}
+				fontWeight={fontWeight}
 				color={contentColor}
 				anchorX="center"
 				anchorY="middle"
