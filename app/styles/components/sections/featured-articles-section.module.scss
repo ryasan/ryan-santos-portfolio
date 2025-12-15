@@ -111,7 +111,13 @@
 }
 
 .articleTitle {
+	font-size: 45px;
 	font-weight: 500;
+	margin-bottom: 20px;
+
+	@media (max-width: $tablet) {
+		font-size: 32px;
+	}
 
 	[data-theme='light'] & {
 		color: var(--background-secondary-color);
@@ -120,7 +126,13 @@
 
 .articleCaption {
 	color: var(--content-color-2);
+	font-size: 24px;
 	font-weight: 500;
+	margin-bottom: 12px;
+
+	@media (max-width: $tablet) {
+		font-size: 18px;
+	}
 
 	[data-theme='light'] & {
 		color: var(--background-secondary-color);

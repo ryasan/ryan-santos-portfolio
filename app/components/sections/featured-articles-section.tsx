@@ -136,13 +136,13 @@ export default function FeaturedArticlesSection({
 											</div>
 											<div className={styles.articleContent}>
 												{article.title && (
-													<h3 className={clsx(styles.articleTitle, 'h4 mb-16')}>
+													<h3 className={styles.articleTitle}>
 														{article.title}
 													</h3>
 												)}
 												{article.caption && (
 													<p
-														className={clsx(styles.articleCaption, 'h5 mb-16')}
+														className={styles.articleCaption}
 													>
 														{article.caption}
 													</p>

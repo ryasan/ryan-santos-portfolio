@@ -98,7 +98,14 @@
 }
 
 .articleTitle {
+  font-size: 45px;
   font-weight: 500;
+  margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+  .articleTitle {
+    font-size: 32px;
+  }
 }
 [data-theme=light] .articleTitle {
   color: var(--background-secondary-color);
@@ -106,7 +113,14 @@
 
 .articleCaption {
   color: var(--content-color-2);
+  font-size: 24px;
   font-weight: 500;
+  margin-bottom: 12px;
+}
+@media (max-width: 768px) {
+  .articleCaption {
+    font-size: 18px;
+  }
 }
 [data-theme=light] .articleCaption {
   color: var(--background-secondary-color);
