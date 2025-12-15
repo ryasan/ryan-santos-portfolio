@@ -2,20 +2,21 @@
 
 .experienceSection {
 	display: block;
+	padding: $space-140 0;
 }
 
 .box {
-	border-bottom: 1px solid var(--line-color);
 	padding: $space-40 0;
 }
 
 .experienceList {
-	display: block;
+	display: flex;
+	flex-direction: column;
+	gap: $space-140;
+	align-items: center;
 }
 
 .info {
-	max-width: 600px;
-	padding-bottom: $space-32;
 	width: 100%;
 
 	.jobTitle {
@@ -33,14 +34,7 @@
 
 .experienceItem {
 	display: flex;
-	justify-content: space-between;
-	padding-top: $space-32;
-
-	&:not(:last-child) {
-		.info {
-			border-bottom: 1px solid var(--line-color);
-		}
-	}
+	gap: $space-40;
 
 	&:last-child {
 		.info {
@@ -65,4 +59,8 @@
 	.yearRange {
 		margin-bottom: $space-8;
 	}
+}
+
+.description {
+	max-width: 950px;
 }

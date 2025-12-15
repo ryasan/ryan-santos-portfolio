@@ -1,6 +1,7 @@
 .contactSection {
   border-top: 1px solid var(--line-color);
   position: relative;
+  margin-top: 140px;
 }
 
 .box {

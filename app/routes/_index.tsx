@@ -5,6 +5,8 @@ import { PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
 import { useLoaderData } from '@remix-run/react'
+import ExperienceSection from '~/components/sections/experience-section'
+import workExperienceData from '../../ignore/work-experience.json'
 
 export async function loader() {
 	const page = await client.getPageBySlug('home')
@@ -55,10 +57,12 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 export default function Index() {
 	const { page } = useLoaderData<typeof loader>()
 	const sections = page.pageSectionsCollection?.items
+	// sections.splice(2, 0, workExperienceData as any)
+	const tempSections = [...sections.slice(0, 2), workExperienceData as any, ...sections.slice(2)]
 
 	return (
 		<>
-			{sections?.map((section: PagePageSectionsItem) => {
+			{tempSections?.map((section: PagePageSectionsItem) => {
 				if (!section?.sys?.id) return null
 				return (
 					<SectionRenderer

@@ -1,19 +1,20 @@
 .experienceSection {
   display: block;
+  padding: 140px 0;
 }
 
 .box {
-  border-bottom: 1px solid var(--line-color);
   padding: 40px 0;
 }
 
 .experienceList {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 140px;
+  align-items: center;
 }
 
 .info {
-  max-width: 600px;
-  padding-bottom: 32px;
   width: 100%;
 }
 .info .jobTitle {
@@ -29,11 +30,7 @@
 
 .experienceItem {
   display: flex;
-  justify-content: space-between;
-  padding-top: 32px;
-}
-.experienceItem:not(:last-child) .info {
-  border-bottom: 1px solid var(--line-color);
+  gap: 40px;
 }
 .experienceItem:last-child .info {
   padding-bottom: 0;
@@ -53,6 +50,9 @@
   .yearRange {
     margin-bottom: 8px;
   }
+}
+.description {
+  max-width: 950px;
 }
 
 /*# sourceMappingURL=experience-section.module.css.map */

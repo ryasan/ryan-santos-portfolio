@@ -4,6 +4,7 @@ node_modules
 /.cache
 /public/build
 /build
+/ignore
 .env
 .env.development
 .env.production
