@@ -3,6 +3,10 @@
 .experienceSection {
 	display: block;
 	padding: 200px 0;
+
+	@media (max-width: $tablet) {
+		padding: 50px 0;
+	}
 }
 
 .box {
@@ -10,7 +14,6 @@
 }
 
 .title {
-	// font-size: 100px;
 	margin: 0 auto $space-140;
 	opacity: 0;
 }
@@ -18,9 +21,13 @@
 .experienceList {
 	display: flex;
 	flex-direction: column;
-	gap: $space-140;
+	gap: 200px;
 	align-items: center;
 	position: relative;
+
+	@media (max-width: $tablet) {
+		gap: 100px;
+	}
 }
 
 .info {
@@ -45,6 +52,10 @@
 	opacity: 0;
 	position: relative;
 	z-index: 1;
+
+	@media (max-width: $tablet) {
+		gap: $space-20;
+	}
 
 	&:last-child {
 		.info {

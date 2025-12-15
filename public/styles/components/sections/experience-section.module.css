@@ -2,6 +2,11 @@
   display: block;
   padding: 200px 0;
 }
+@media (max-width: 768px) {
+  .experienceSection {
+    padding: 50px 0;
+  }
+}
 
 .box {
   padding: 40px 0;
@@ -15,9 +20,14 @@
 .experienceList {
   display: flex;
   flex-direction: column;
-  gap: 140px;
+  gap: 200px;
   align-items: center;
   position: relative;
+}
+@media (max-width: 768px) {
+  .experienceList {
+    gap: 100px;
+  }
 }
 
 .info {
@@ -40,6 +50,11 @@
   opacity: 0;
   position: relative;
   z-index: 1;
+}
+@media (max-width: 768px) {
+  .experienceItem {
+    gap: 20px;
+  }
 }
 .experienceItem:last-child .info {
   padding-bottom: 0;
