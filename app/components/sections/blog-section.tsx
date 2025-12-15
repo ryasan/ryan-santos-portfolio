@@ -79,7 +79,7 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 	return (
 		<section className={styles.blogSection} ref={sectionRef}>
 			<div className="container">
-				<h1 className="h2 mb-40">Search insights by topics</h1>
+				<h1 className="h4 mb-40">Search insights by topics</h1>
 
 				<div className={styles.tagList}>
 					<button

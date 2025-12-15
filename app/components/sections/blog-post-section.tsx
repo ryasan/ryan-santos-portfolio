@@ -84,7 +84,7 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 						<span className={clsx('link', linkStyles.link)}>Back</span>
 					</button>
 
-					{data?.title && <h1 className="mb-32 h3">{data?.title}</h1>}
+					{data?.title && <h1 className="mb-32 h4">{data?.title}</h1>}
 
 					<div className={styles.author}>
 						<Avatar
