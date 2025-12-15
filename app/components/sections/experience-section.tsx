@@ -142,7 +142,7 @@ export default function ExperienceSection({
 			<div className="container">
 				<div className={styles.box}>
 					{data?.title && (
-						<h2 className={clsx(styles.title, 'h1')} ref={titleRef}>
+						<h2 className={clsx(styles.title, 'h2')} ref={titleRef}>
 							{data?.title}
 						</h2>
 					)}

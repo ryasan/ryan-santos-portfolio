@@ -14,8 +14,9 @@
 }
 
 .title {
-	margin: 300px auto;
+	margin: 200px auto;
 	opacity: 0;
+	font-size: 125px;
 
 	@media (max-width: $tablet) {
 		margin-bottom: 100px;
