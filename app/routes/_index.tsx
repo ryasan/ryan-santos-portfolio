@@ -58,7 +58,7 @@ export default function Index() {
 	const { page } = useLoaderData<typeof loader>()
 	const sections = page.pageSectionsCollection?.items
 	// sections.splice(2, 0, workExperienceData as any)
-	const tempSections = [...sections.slice(0, 2), workExperienceData as any, ...sections.slice(2)]
+	const tempSections = [...sections.slice(0, 1), workExperienceData as any, ...sections.slice(1)]
 
 	return (
 		<>

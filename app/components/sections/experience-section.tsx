@@ -22,11 +22,13 @@ export default function ExperienceSection({
 }: ExperienceSectionProps) {
 	const titleRef = useRef<HTMLHeadingElement>(null)
 	const containerRef = useRef<HTMLDivElement>(null)
+	const progressBarRef = useRef<HTMLDivElement>(null)
 
 	useGSAP(
 		() => {
 			const title = titleRef.current
 			const container = containerRef.current
+			const progressBar = progressBarRef.current
 
 			if (!title || !container) return
 
@@ -43,22 +45,12 @@ export default function ExperienceSection({
 			})
 
 			const items = gsap.utils.toArray<HTMLElement>(container.children)
+			// Filter out the progress bar from items if it's a child
+			const experienceItems = items.filter((item) =>
+				item.classList.contains(styles.experienceItem || ''),
+			)
 
-			items.forEach((item) => {
-				// gsap.fromTo(
-				// 	item,
-				// 	{ opacity: 0 },
-				// 	{
-				// 		opacity: 1,
-				// 		scrollTrigger: {
-				// 			trigger: item,
-				// 			start: 'top 70%',
-				// 			end: 'top 40%',
-				// 			scrub: true,
-				// 		},
-				// 	},
-				// )
-
+			experienceItems.forEach((item) => {
 				ScrollTrigger.create({
 					trigger: item,
 					start: 'bottom bottom-=100px',
@@ -71,6 +63,76 @@ export default function ExperienceSection({
 					},
 				})
 			})
+
+			// Progress Bar Animation
+			const numbers = gsap.utils.toArray<HTMLElement>(
+				'.experience-number-target',
+			)
+
+			if (progressBar && numbers.length > 0) {
+				const updatePosition = () => {
+					const containerRect = container.getBoundingClientRect()
+					const firstNum = numbers[0]
+					const lastNum = numbers[numbers.length - 1]
+
+					if (!firstNum || !lastNum) return
+
+					const firstRect = firstNum.getBoundingClientRect()
+					const lastRect = lastNum.getBoundingClientRect()
+
+					const left = firstRect.left - containerRect.left + firstRect.width / 2
+					const top = firstRect.top - containerRect.top + firstRect.height / 2
+					const height = lastRect.top - firstRect.top
+
+					gsap.set(progressBar, {
+						left: left,
+						top: top,
+						height: height,
+					})
+				}
+
+				updatePosition()
+				window.addEventListener('resize', updatePosition)
+
+				const firstNum = numbers[0]
+				const lastNum = numbers[numbers.length - 1]
+
+				if (!firstNum || !lastNum) return
+
+				// We need relative positions for ScrollTrigger start/end if we trigger on container
+				// Or we can use the elements themselves as reference points
+
+				gsap.fromTo(
+					progressBar.firstElementChild,
+					{ scaleY: 0 },
+					{
+						scaleY: 1,
+						ease: 'none',
+						scrollTrigger: {
+							trigger: container,
+							start: () => {
+								const containerRect = container.getBoundingClientRect()
+								const firstRect = firstNum.getBoundingClientRect()
+								// When the center of the first number hits the center of viewport
+								// Offset from container top
+								const offset =
+									firstRect.top - containerRect.top + firstRect.height / 2
+								return `top+=${offset} center`
+							},
+							end: () => {
+								const containerRect = container.getBoundingClientRect()
+								const lastRect = lastNum.getBoundingClientRect()
+								const offset =
+									lastRect.top - containerRect.top + lastRect.height / 2
+								return `top+=${offset} center`
+							},
+							scrub: true,
+						},
+					},
+				)
+
+				return () => window.removeEventListener('resize', updatePosition)
+			}
 		},
 		{ scope: containerRef },
 	)
@@ -86,13 +148,22 @@ export default function ExperienceSection({
 					)}
 
 					<div className={styles.experienceList} ref={containerRef}>
+						<div className={styles.progressBar} ref={progressBarRef}>
+							<div className={styles.progressBarInner} />
+						</div>
 						{data?.experienceCollection?.items?.map((item, index) => {
 							if (!item) return null
 
 							return (
 								<div className={styles.experienceItem} key={item.sys.id}>
 									<div className={styles.count}>
-										<div className={clsx(styles.countNumber, 'h3')}>
+										<div
+											className={clsx(
+												styles.countNumber,
+												'h3',
+												'experience-number-target',
+											)}
+										>
 											{index < 10 ? `0${index + 1}` : index + 1}
 										</div>
 									</div>
