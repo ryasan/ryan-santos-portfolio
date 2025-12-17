@@ -1,4 +1,4 @@
-import { Blog, Projects } from '~/graphql/__generated/sdk'
+import { type Blog, type Projects } from '~/graphql/__generated/sdk'
 import { formatDate } from './format-date'
 
 const getTags = (data: Blog | Projects) => {
@@ -9,26 +9,26 @@ const getTags = (data: Blog | Projects) => {
 
 export const normalizeData = {
 	fromBlogToCard: (data: Blog) => ({
-		id: data.sys?.id,
-		type: 'blog',
-		eyebrow: formatDate(data.publishDate || ''),
-		title: data.title,
 		caption: null,
 		description: data.description,
+		eyebrow: formatDate(data.publishDate || ''),
+		id: data.sys?.id,
 		image: data.openGraphImage?.url,
 		link: data.slug,
 		tags: getTags(data),
+		title: data.title,
+		type: 'blog',
 	}),
 	fromProjectsToCard: (data: Projects) => ({
-		id: data.sys?.id,
-		type: 'projects',
-		eyebrow: '',
-		title: data.title,
 		caption: data.caption,
 		description: data.desc?.json,
+		eyebrow: '',
+		id: data.sys?.id,
 		image: data.previewImage?.url,
 		link: data.link,
 		tags: getTags(data),
+		title: data.title,
+		type: 'projects',
 	}),
 }
 

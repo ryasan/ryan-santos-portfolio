@@ -8,7 +8,7 @@ import HeroCubeSection from './sections/hero-cube-section'
 import MarqueeSection from '~/components/sections/marquee-section';
 import SocialSection from './sections/social-section'
 import TextRevealSection from './sections/text-reveal-section'
-import type { PagePageSectionsItem } from '~/graphql/__generated/sdk'
+import  { type PagePageSectionsItem } from '~/graphql/__generated/sdk'
 
 const sections = {
 	ArticleGridSection: ArticleGridSection,
@@ -16,19 +16,19 @@ const sections = {
 	ContactSection: ContactSection,
 	ExperienceSection: ExperienceSection,
 	FeaturedArticlesSection: FeaturedArticlesSection,
-	HeroSection: HeroSection,
 	HeroCubeSection: HeroCubeSection,
+	HeroSection: HeroSection,
 	MarqueeSection: MarqueeSection,
 	SocialSection: SocialSection,
 	TextRevealSection: TextRevealSection,
 } as const
 
 type SectionRendererProps = {
-	section: PagePageSectionsItem
 	id?: string
+	section: PagePageSectionsItem
 }
 
-export default function SectionRenderer({ section, id }: SectionRendererProps) {
+export default function SectionRenderer({ id, section }: SectionRendererProps) {
 	const key = section?.__typename
 	const PageSection = sections[key as keyof typeof sections]
 

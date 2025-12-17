@@ -1,22 +1,22 @@
-import { MarqueeSection as MarqueeSectionType } from '~/graphql/__generated/sdk'
+import styles from '~/styles/components/sections/marquee-section.module.scss'
 import { clsx } from 'clsx'
 import { gsap } from 'gsap'
+import { type MarqueeSection as MarqueeSectionType } from '~/graphql/__generated/sdk'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
-import styles from '~/styles/components/sections/marquee-section.module.scss'
 
 const mockItems = [
-	{ text: 'STRATEGIC', delimiter: 'purpose' },
-	{ text: 'COLLABORATIVE', delimiter: 'human' },
-	{ text: 'EXPERIMENTAL', delimiter: 'integrity' },
+	{ delimiter: 'purpose', text: 'STRATEGIC' },
+	{ delimiter: 'human', text: 'COLLABORATIVE' },
+	{ delimiter: 'integrity', text: 'EXPERIMENTAL' },
 ]
 
 type MarqueeSectionProps = {
-	id?: string
 	data: MarqueeSectionType
+	id?: string
 }
 
-export default function MarqueeSection({ data, id }: MarqueeSectionProps) {
+export default function MarqueeSection({ id }: MarqueeSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
 
 	useGSAP(
@@ -32,14 +32,14 @@ export default function MarqueeSection({ data, id }: MarqueeSectionProps) {
 						xPercent: isReverse ? -60 : -57,
 					},
 					{
-						xPercent: isReverse ? -57 : -60,
 						ease: 'none',
 						scrollTrigger: {
-							trigger: sectionRef.current,
-							start: 'top bottom',
 							end: 'bottom top',
 							scrub: 2,
+							start: 'top bottom',
+							trigger: sectionRef.current,
 						},
+						xPercent: isReverse ? -57 : -60,
 					},
 				)
 			})

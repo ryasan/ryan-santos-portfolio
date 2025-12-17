@@ -2,7 +2,7 @@ import ThemeToggle from '~/components/theme-toggle'
 import clsx from 'clsx'
 import gsap from 'gsap'
 import styles from '~/styles/components/header.module.scss'
-import { GlobalHeader } from '~/graphql/__generated/sdk'
+import { type GlobalHeader } from '~/graphql/__generated/sdk'
 import { LIGHT_THEME, DARK_THEME } from '~/utils/constants'
 import { Link as RemixLink, NavLink } from '@remix-run/react'
 import { useGSAP } from '@gsap/react'
@@ -20,9 +20,9 @@ export default function Header({ data }: HeaderProps) {
 		if (!header) return
 
 		gsap.to(header, {
-			opacity: 1,
 			duration: 1,
 			ease: 'power2.out',
+			opacity: 1,
 		})
 	}, [])
 
@@ -30,7 +30,7 @@ export default function Header({ data }: HeaderProps) {
 		<header className={styles.header} ref={headerRef}>
 			<div className="container">
 				<div className={styles.container}>
-					<RemixLink className={styles.logo} to="/" aria-label="Home page">
+					<RemixLink aria-label="Home page" className={styles.logo} to="/">
 						<div data-hide-on-theme={DARK_THEME}>
 							<span className={clsx('link', styles.logoText1)}>Ryan</span>
 							&nbsp;
@@ -49,11 +49,11 @@ export default function Header({ data }: HeaderProps) {
 
 								return (
 									<NavLink
-										key={item.label}
-										to={item.internalPage?.slug || item.url || ''}
 										className={({ isActive }) =>
 											clsx('link', styles.link, isActive && styles.activeLink)
 										}
+										key={item.label}
+										to={item.internalPage?.slug || item.url || ''}
 									>
 										{item.label}
 									</NavLink>

@@ -2,7 +2,7 @@ import Link from '~/components/link'
 import Teleport from '~/components/teleport'
 import clsx from 'clsx'
 import styles from '~/styles/components/jump-links.module.scss'
-import { PagePageSectionsItem } from '~/graphql/__generated/sdk'
+import { type PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -41,28 +41,27 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 		if (!jumpLinks || !isTeleported) return
 
 		gsap.to(jumpLinks, {
-			opacity: 1,
+			delay: 0.75,
 			duration: 1,
 			ease: 'power2.out',
-			delay: 0.75,
+			opacity: 1,
 		})
 	}, [isTeleported])
 
 	return (
-		<Teleport to="#global-main" onReady={() => setIsTeleported(true)}>
+		<Teleport onReady={() => setIsTeleported(true)} to="#global-main">
 			<div className={styles.jumpLinks} ref={jumpLinksRef}>
 				{sections
 					.map((section, index) => {
 						if (!section?.sys?.id) return null
 
 						const isActive = hashWithoutHash === section.sys.id
-
 						return (
 							<Link
 								className={clsx(styles.link, isActive && styles.active)}
 								key={section.sys.id}
-								to={`#${section.sys.id}`}
 								onClick={(e) => handleClick(e, section)}
+								to={`#${section.sys.id}`}
 							>{`${index < 10 ? '0' : ''}${index + 1}`}</Link>
 						)
 					})

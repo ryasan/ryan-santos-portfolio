@@ -1,7 +1,7 @@
 import JumpLinks from '~/components/jump-links'
 import SectionRenderer from '~/components/section-renderer'
-import type { MetaFunction } from '@netlify/remix-runtime'
-import { PagePageSectionsItem } from '~/graphql/__generated/sdk'
+import  { type MetaFunction } from '@netlify/remix-runtime'
+import { type PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
 import { useLoaderData } from '@remix-run/react'
@@ -26,26 +26,26 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	return [
 		{ title: page.seoMetadata?.title || page.title },
 		{
+			content: page.seoMetadata?.description || 'Page description',
 			name: 'description',
-			content: page.seoMetadata?.description || 'Page description',
 		},
 		{
-			property: 'og:title',
 			content: page.seoMetadata?.title || page.title,
+			property: 'og:title',
 		},
 		{
-			property: 'og:description',
 			content: page.seoMetadata?.description || 'Page description',
+			property: 'og:description',
 		},
 		{
-			property: 'og:url',
 			content: 'https://ryan-santos.com',
+			property: 'og:url',
 		},
 		...(page.seoMetadata?.ogImage
 			? [
 					{
-						property: 'og:image',
 						content: page.seoMetadata.ogImage.url,
+						property: 'og:image',
 					},
 				]
 			: []),
@@ -62,9 +62,9 @@ export default function Index() {
 				if (!section?.sys?.id) return null
 				return (
 					<SectionRenderer
+						id={section.sys.id}
 						key={section.sys.id}
 						section={section}
-						id={section.sys.id}
 					/>
 				)
 			})}

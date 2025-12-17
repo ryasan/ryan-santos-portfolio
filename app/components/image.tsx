@@ -4,31 +4,31 @@ import styles from '~/styles/components/image.module.scss'
 import { useState } from 'react'
 
 interface ImageProps {
-	src: string
 	alt: string
-	width?: number
-	height?: number
-	className?: string
-	loading?: 'lazy' | 'eager'
-	priority?: boolean
-	placeholder?: 'blur' | 'empty'
 	blurDataURL?: string
-	sizes?: string
+	className?: string
+	height?: number
+	loading?: 'lazy' | 'eager'
+	placeholder?: 'blur' | 'empty'
+	priority?: boolean
 	quality?: number
+	sizes?: string
+	src: string
+	width?: number
 }
 
 export default function Image({
-	src,
 	alt,
-	width,
-	height,
-	className = '',
-	loading = 'lazy',
-	priority = false,
-	placeholder = 'blur',
 	blurDataURL,
-	sizes,
+	className = '',
+	height,
+	loading = 'lazy',
+	placeholder = 'blur',
+	priority = false,
 	quality = 75,
+	sizes,
+	src,
+	width,
 }: ImageProps) {
 	const [isLoading, setIsLoading] = useState(true)
 	const [hasError, setHasError] = useState(false)
@@ -70,19 +70,19 @@ export default function Image({
 			)}
 
 			<img
-				src={optimizedSrc}
 				alt={alt}
-				width={width}
-				height={height}
-				loading={priority ? 'eager' : loading}
-				sizes={sizes}
 				className={clsx(
 					styles.image,
 					isLoading ? styles.loading : styles.loaded,
 					hasError ? styles.error : '',
 				)}
-				onLoad={() => setIsLoading(false)}
+				height={height}
+				loading={priority ? 'eager' : loading}
 				onError={() => setHasError(true)}
+				onLoad={() => setIsLoading(false)}
+				sizes={sizes}
+				src={optimizedSrc}
+				width={width}
 			/>
 		</div>
 	)

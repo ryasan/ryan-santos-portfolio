@@ -16,22 +16,22 @@ export default function ThemeToggle() {
 
 		fetcher.submit(
 			{ theme: updatedTheme },
-			{ method: 'post', action: '/resources/theme-toggle' },
+			{ action: '/resources/theme-toggle', method: 'post' },
 		)
 	}
 
 	return (
 		<button
+			aria-label={ariaLabel}
 			className={styles.themeToggle}
 			onClick={toggleTheme}
-			aria-label={ariaLabel}
 			type="button"
 		>
 			<div data-hide-on-theme={DARK_THEME}>
-				<MoonIcon className={styles.icon} aria-hidden="true" />
+				<MoonIcon aria-hidden="true" className={styles.icon} />
 			</div>
 			<div data-hide-on-theme={LIGHT_THEME}>
-				<SunIcon className={styles.icon} aria-hidden="true" />
+				<SunIcon aria-hidden="true" className={styles.icon} />
 			</div>
 		</button>
 	)

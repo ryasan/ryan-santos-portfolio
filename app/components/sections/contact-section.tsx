@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/contact-section.module.scss'
-import type { ContactSection } from '~/graphql/__generated/sdk'
+import  { type ContactSection } from '~/graphql/__generated/sdk'
 import {
 	CodepenIcon,
 	CopySimpleIcon,
@@ -17,11 +17,11 @@ const icons = {
 
 const getIcon = (icon?: string) => {
 	const Icon = icons[icon?.toLowerCase() as keyof typeof icons]
-	return Icon ? <Icon className={styles.icon} aria-hidden="true" /> : null
+	return Icon ? <Icon aria-hidden="true" className={styles.icon} /> : null
 }
 type ContactSectionProps = {
-	id?: string
 	data?: ContactSection
+	id?: string
 }
 
 export default function ContactSection({ data, id }: ContactSectionProps) {
@@ -58,11 +58,11 @@ export default function ContactSection({ data, id }: ContactSectionProps) {
 
 							return (
 								<a
-									key={social.sys.id}
-									href={social.url}
-									target="_blank"
-									rel="noopener noreferrer"
 									aria-label={social.label}
+									href={social.url}
+									key={social.sys.id}
+									rel="noopener noreferrer"
+									target="_blank"
 								>
 									{getIcon(social.icon || '')}
 								</a>

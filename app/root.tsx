@@ -28,7 +28,7 @@ import { useTheme } from '~/hooks'
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP)
 
 export const links: LinksFunction = () => {
-	return [{ rel: 'stylesheet', href: mainStyles }]
+	return [{ href: mainStyles, rel: 'stylesheet' }]
 }
 
 export async function loader({ request }: LoaderFunctionArgs) {
@@ -42,7 +42,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 		},
 	}
 
-	return json({ headerData, footerData, requestInfo })
+	return json({ footerData, headerData, requestInfo })
 }
 
 type DocumentProps = {
@@ -54,11 +54,11 @@ function Document({ children, theme = 'dark' }: DocumentProps) {
 	const data = useLoaderData<typeof loader>()
 
 	return (
-		<html lang="en" data-theme={theme}>
+		<html data-theme={theme} lang="en">
 			<head>
 				<ClientHintScript />
 				<meta charSet="utf-8" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta content="width=device-width, initial-scale=1" name="viewport" />
 				<Meta />
 				<Links />
 			</head>

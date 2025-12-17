@@ -4,14 +4,12 @@ import clsx from 'clsx'
 import gsap from 'gsap'
 import linkStyles from '~/styles/components/link.module.scss'
 import styles from '~/styles/components/sections/blog-post-section.module.scss'
-import { ArrowLeftIcon } from '~/components/icons'
-import { Blog } from '~/graphql/__generated/sdk'
-import {
+import { ArrowLeftIcon,
 	TwitterIcon,
 	FacebookIcon,
 	LinkedinIcon,
-	CopySimpleIcon,
-} from '~/components/icons'
+	CopySimpleIcon } from '~/components/icons'
+import { type Blog } from '~/graphql/__generated/sdk'
 import { formatDate } from '~/utils'
 import { useGSAP } from '@gsap/react'
 import { useLocation, useNavigate } from '@remix-run/react'
@@ -67,8 +65,8 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 		if (!section) return
 
 		gsap.to(section, {
-			opacity: 1,
 			duration: 1,
+			opacity: 1,
 		})
 	}, [])
 
@@ -88,10 +86,10 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 
 					<div className={styles.author}>
 						<Avatar
-							className={styles.avatar}
-							src={data?.author?.avatar?.url}
 							alt={name}
+							className={styles.avatar}
 							size="small"
+							src={data?.author?.avatar?.url}
 						/>
 						{(name || data?.publishDate) && (
 							<div className={styles.authorInfo}>
@@ -109,8 +107,8 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 				<div className="container">
 					<div className={styles.heroImage}>
 						<img
-							src={data?.openGraphImage?.url}
 							alt={data?.openGraphImage?.title || ''}
+							src={data?.openGraphImage?.url}
 						/>
 					</div>
 				</div>

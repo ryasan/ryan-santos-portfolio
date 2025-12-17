@@ -7,6 +7,9 @@ export default defineConfig(async () => {
 	const checker = await import('vite-plugin-checker').then((mod) => mod.default)
 
 	return {
+		build: {
+			cssMinify: process.env.NODE_ENV === 'production',
+		},
 		plugins: [
 			remix({
 				future: {
@@ -20,8 +23,5 @@ export default defineConfig(async () => {
 			netlifyPlugin(),
 			tsconfigPaths(),
 		],
-		build: {
-			cssMinify: process.env.NODE_ENV === 'production',
-		},
 	}
 })

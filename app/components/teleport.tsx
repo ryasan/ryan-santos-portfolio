@@ -1,14 +1,14 @@
 // app/components/teleport.tsx
-import { useEffect, useState, ReactNode, useLayoutEffect } from 'react'
+import { useEffect, useState, type ReactNode, useLayoutEffect } from 'react'
 import { createPortal } from 'react-dom'
 
 type TeleportProps = {
 	children: ReactNode
-	to: string
 	onReady?: () => void
+	to: string
 }
 
-export default function Teleport({ children, to, onReady }: TeleportProps) {
+export default function Teleport({ children, onReady, to }: TeleportProps) {
 	const [mounted, setMounted] = useState(false)
 	const [target, setTarget] = useState<HTMLElement | null>(null)
 

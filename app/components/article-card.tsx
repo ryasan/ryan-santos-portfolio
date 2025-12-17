@@ -5,29 +5,29 @@ import { isExternalLink } from '~/utils'
 import { useState } from 'react'
 
 export type NormalizedArticleCard = {
-	type?: string | null
-	eyebrow?: string | null
-	title?: string | null
 	description?: string | null
+	eyebrow?: string | null
 	image?: string | null
 	link?: string | null
 	tags?: (string | undefined)[] | null
+	title?: string | null
+	type?: string | null
 }
 
 type ArticleCardProps = {
 	data: NormalizedArticleCard
-	isBig?: boolean
-	horizontal?: boolean
-	forceDescription?: boolean
 	disableImageAnimation?: boolean
+	forceDescription?: boolean
+	horizontal?: boolean
+	isBig?: boolean
 }
 
 export default function ArticleCard({
 	data,
-	isBig,
-	horizontal,
-	forceDescription,
 	disableImageAnimation = false,
+	forceDescription,
+	horizontal,
+	isBig,
 }: ArticleCardProps) {
 	const navigate = useNavigate()
 	const [isImageLoaded, setIsImageLoaded] = useState(false)
@@ -45,8 +45,6 @@ export default function ArticleCard({
 
 	return (
 		<Component
-			to={data.link || ''}
-			target={isExternal ? '_blank' : undefined}
 			className={clsx(
 				styles.articleCard,
 				isBig && styles.bigCard,
@@ -55,13 +53,14 @@ export default function ArticleCard({
 					? styles.loaded
 					: styles.loading,
 			)}
+			target={isExternal ? '_blank' : undefined}
+			to={data.link || ''}
 		>
 			<div className={styles.articleImage}>
 				{data.image && (
 					<img
-						className={styles.articleImage}
-						src={data.image}
 						alt={data.title || ''}
+						className={styles.articleImage}
 						onLoad={() => {
 							setIsImageLoaded(true)
 						}}
@@ -70,6 +69,7 @@ export default function ArticleCard({
 								setIsImageLoaded(true)
 							}
 						}}
+						src={data.image}
 					/>
 				)}
 			</div>

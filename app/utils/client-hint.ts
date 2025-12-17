@@ -1,4 +1,4 @@
-import type { ClientHint, ClientHintsValue } from '~/types/client-hint'
+import  { type ClientHint, type ClientHintsValue } from '~/types/client-hint'
 
 //
 export function getHintUtils<Hints extends Record<string, ClientHint<any>>>(
@@ -133,5 +133,5 @@ checkClientHints();
 `
 	}
 
-	return { getHints, getClientHintCheckScript }
+	return { getClientHintCheckScript, getHints }
 }

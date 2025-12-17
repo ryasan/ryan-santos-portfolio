@@ -1,7 +1,7 @@
 import RichText from '~/components/rich-text'
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/featured-articles-section.module.scss'
-import type { FeaturedArticlesSection } from '~/graphql/__generated/sdk'
+import  { type FeaturedArticlesSection } from '~/graphql/__generated/sdk'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
 import { normalizeSlide } from '~/utils'
@@ -11,8 +11,8 @@ import { useRef } from 'react'
 const cardAlignments = ['left', 'right', 'center']
 
 type FeaturedArticlesSectionProps = {
-	id?: string
 	data?: FeaturedArticlesSection
+	id?: string
 }
 
 export default function FeaturedArticlesSection({
@@ -34,55 +34,55 @@ export default function FeaturedArticlesSection({
 		if (!section || !stickyBox || !title || !subtitle || !articles) return
 
 		ScrollTrigger.create({
-			trigger: section,
-			pin: stickyBox,
-			start: 'top top',
-			end: 'bottom bottom',
-			pinSpacing: false,
 			anticipatePin: 1,
+			end: 'bottom bottom',
+			pin: stickyBox,
+			pinSpacing: false,
+			start: 'top top',
+			trigger: section,
 		})
 
 		ScrollTrigger.create({
-			trigger: title,
-			start: 'bottom bottom-=200px',
 			onEnter: () => {
 				gsap.to(title, {
-					opacity: 1,
 					duration: 1,
 					ease: 'power2.out',
+					opacity: 1,
 				})
 			},
+			start: 'bottom bottom-=200px',
+			trigger: title,
 		})
 
 		ScrollTrigger.create({
-			trigger: subtitle,
-			start: 'bottom bottom-=200px',
 			onEnter: () => {
 				gsap.to(subtitle, {
-					opacity: 1,
 					duration: 1,
 					ease: 'power2.out',
+					opacity: 1,
 				})
 			},
+			start: 'bottom bottom-=200px',
+			trigger: subtitle,
 		})
 
 		articles.forEach((article) => {
 			ScrollTrigger.create({
-				trigger: article,
-				start: 'top center+=100px',
 				end: 'bottom center-=100px',
 				onEnter: () => {
+					article.classList.add(styles.active as string)
+				},
+				onEnterBack: () => {
 					article.classList.add(styles.active as string)
 				},
 				onLeave: () => {
 					article.classList.remove(styles.active as string)
 				},
-				onEnterBack: () => {
-					article.classList.add(styles.active as string)
-				},
 				onLeaveBack: () => {
 					article.classList.remove(styles.active as string)
 				},
+				start: 'top center+=100px',
+				trigger: article,
 			})
 		})
 	}, [])
@@ -128,9 +128,9 @@ export default function FeaturedArticlesSection({
 											<div className={styles.articleImage}>
 												{article?.image && (
 													<img
+														alt={article.title || ''}
 														className={styles.articleImage}
 														src={article.image}
-														alt={article.title || ''}
 													/>
 												)}
 											</div>
@@ -157,8 +157,8 @@ export default function FeaturedArticlesSection({
 													<a
 														className={clsx(styles.articleLink, 'button')}
 														href={article.link || ''}
-														target="_blank"
 														rel="noopener noreferrer"
+														target="_blank"
 													>
 														View Project
 													</a>

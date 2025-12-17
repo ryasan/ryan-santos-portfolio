@@ -8,6 +8,7 @@ import {
 } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useState } from 'react'
 import { useTheme } from '~/hooks'
+
 /**
  * Triple backticks are used to define a code block in Markdown.
  * This function extracts the language and the code from the string.
@@ -26,7 +27,7 @@ const parseCodeString = (code: string) => {
 	const language = trimmedCode.match(/```(\w+)/)?.[1] || 'plaintext'
 	const parsedCode = trimmedCode.replace(/^```(\w+)?|```(\w+)?$/g, '').trim()
 
-	return { parsedCode, language }
+	return { language, parsedCode }
 }
 
 type CodeBlockProps = {
@@ -35,7 +36,10 @@ type CodeBlockProps = {
 
 export default function CodeBlock({ code }: CodeBlockProps) {
 	const [copySuccess, setCopySuccess] = useState(false)
-	const { parsedCode, language } = parseCodeString(String(code))
+	const { language, parsedCode } = parseCodeString(String(code))
+
+	const theme = useTheme()
+	const style = theme === 'dark' ? atomDark : oneLight
 
 	// If it's a short string meant to be used inline, just return the code span
 	if (language === 'plaintext') {
@@ -46,12 +50,9 @@ export default function CodeBlock({ code }: CodeBlockProps) {
 		)
 	}
 
-	const theme = useTheme()
-	const style = theme === 'dark' ? atomDark : oneLight
-
 	const copyToClipboard = () => {
 		if (parsedCode) {
-			navigator.clipboard.writeText(parsedCode)
+			void navigator.clipboard.writeText(parsedCode)
 			setCopySuccess(true)
 			setTimeout(() => {
 				setCopySuccess(false)
@@ -66,22 +67,26 @@ export default function CodeBlock({ code }: CodeBlockProps) {
 				onClick={copyToClipboard}
 				title="Copy to clipboard"
 			>
-				{copySuccess ? 'Copied' : <CopySimpleIcon className={styles.copyIcon} />}
+				{copySuccess ? (
+					'Copied'
+				) : (
+					<CopySimpleIcon className={styles.copyIcon} />
+				)}
 			</button>
 			<SyntaxHighlighter
 				className={styles.codeBlock}
-				language={language}
-				style={style}
-				customStyle={{
-					fontFamily: 'Fira Code, monospace',
-					fontSize: '1em',
-				}}
 				codeTagProps={{
 					style: {
 						fontFamily: 'Fira Code, monospace',
 						fontSize: '1em',
 					},
 				}}
+				customStyle={{
+					fontFamily: 'Fira Code, monospace',
+					fontSize: '1em',
+				}}
+				language={language}
+				style={style}
 			>
 				{String(parsedCode)}
 			</SyntaxHighlighter>

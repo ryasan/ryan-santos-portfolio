@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import styles from '~/styles/components/footer.module.scss'
-import { GlobalFooter } from '~/graphql/__generated/sdk'
+import { type GlobalFooter } from '~/graphql/__generated/sdk'
 
 const formatCopyrightText = (text: string) => {
 	return text.replace('{{year}}', new Date().getFullYear().toString())

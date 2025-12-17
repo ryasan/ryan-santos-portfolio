@@ -2,16 +2,16 @@ import TextBlock from '~/components/text-block'
 import styles from '~/styles/components/sections/text-reveal-section.module.scss'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
-	TextRevealItem,
-	TextRevealSection as TextRevealSectionType,
+	type TextRevealItem,
+	type TextRevealSection as TextRevealSectionType,
 } from '~/graphql/__generated/sdk'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
 
 type TextRevealSectionProps = {
-	id?: string
 	data?: TextRevealSectionType
+	id?: string
 }
 
 export default function TextRevealSection({
@@ -30,69 +30,69 @@ export default function TextRevealSection({
 		const blocks = gsap.utils.toArray<HTMLDivElement>(blockList.children)
 
 		ScrollTrigger.create({
-			trigger: section,
 			onLeave: () => {
 				blocks.forEach((block) => {
 					gsap.to(block, {
-						y: 100,
-						opacity: 0,
 						duration: 0.75,
 						ease: 'power2.out',
+						opacity: 0,
+						y: 100,
 					})
 				})
 			},
 			onLeaveBack: () => {
 				blocks.forEach((block) => {
 					gsap.to(block, {
-						opacity: 0,
 						duration: 0.75,
 						ease: 'power2.out',
+						opacity: 0,
 					})
 				})
 			},
+			trigger: section,
 		})
 
 		blocks.forEach((currentBlock, currentIndex) => {
 			ScrollTrigger.create({
-				trigger: currentBlock,
-				start: 'bottom bottom-=150px',
 				end: 'top top+=150px',
 				onEnter: () => {
 					gsap.to(currentBlock, {
-						opacity: 1,
 						duration: 0.75,
 						ease: 'power2.out',
+						opacity: 1,
 					})
 
 					blocks.forEach((otherBlock, otherIndex) => {
 						if (otherIndex < currentIndex) {
 							gsap.to(otherBlock, {
-								y: 100,
-								opacity: 0,
 								duration: 0.75,
 								ease: 'power2.out',
+								opacity: 0,
+								y: 100,
 							})
 						}
 					})
 				},
 				onEnterBack: () => {
 					gsap.to(currentBlock, {
-						y: 0,
-						opacity: 1,
 						duration: 0.75,
 						ease: 'power2.out',
+						opacity: 1,
+						y: 0,
 					})
 
 					blocks.forEach((otherBlock, otherIndex) => {
 						if (otherIndex !== currentIndex) {
 							gsap.to(otherBlock, {
-								opacity: 0,
 								duration: 0.75,
 								ease: 'power2.out',
+								opacity: 0,
 							})
 						}
 					})
 				},
+				start: 'bottom bottom-=150px',
+				trigger: currentBlock,
 			})
 		})
 	}, [])
@@ -107,9 +107,9 @@ export default function TextRevealSection({
 								if (!block) return null
 								return (
 									<TextBlock
-										className={styles.textBlock}
-										block={block}
 										align="center"
+										block={block}
+										className={styles.textBlock}
 										index={index}
 										key={index}
 									/>

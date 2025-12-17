@@ -6,19 +6,19 @@ import {
 	type ReactNode,
 } from 'react'
 import { useSearchParams } from '@remix-run/react'
-import { Blog, ContentfulTag } from '~/graphql/__generated/sdk'
+import { type Blog, type ContentfulTag } from '~/graphql/__generated/sdk'
 
 interface BlogFilterContextValue {
-	searchQuery: string
-	setSearchQuery: (query: string) => void
-	selectedTags: string[]
-	tags: ContentfulTag[]
-	toggleTag: (tag: string) => void
+	clearAllFilters: () => void
 	clearTags: () => void
 	filteredPosts: Blog[]
+	searchQuery: string
+	selectedTags: string[]
 	setAllPosts: (posts: any[]) => void
+	setSearchQuery: (query: string) => void
 	syncFiltersToUrl: () => void
-	clearAllFilters: () => void
+	tags: ContentfulTag[]
+	toggleTag: (tag: string) => void
 }
 
 const BlogFilterContext = createContext<BlogFilterContextValue | undefined>(
@@ -138,16 +138,16 @@ export function BlogFilterProvider({
 	}
 
 	const value: BlogFilterContextValue = {
-		searchQuery,
-		setSearchQuery,
-		selectedTags,
-		toggleTag,
+		clearAllFilters,
 		clearTags,
 		filteredPosts,
+		searchQuery,
+		selectedTags,
 		setAllPosts,
+		setSearchQuery,
 		syncFiltersToUrl,
-		clearAllFilters,
 		tags,
+		toggleTag,
 	}
 
 	return (

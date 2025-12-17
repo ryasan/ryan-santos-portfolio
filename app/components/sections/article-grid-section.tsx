@@ -1,18 +1,21 @@
 import ArticleCard from '~/components/article-card'
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/article-grid-section.module.scss'
-import { ArticleGridSection as ArticleGridSectionType } from '~/graphql/__generated/sdk'
 import { ListBulletsIcon, SquaresFourIcon } from '~/components/icons'
 import { normalizeSlide } from '~/utils'
-import { useMatchMedia } from '~/hooks'
+import { type ArticleGridSection as ArticleGridSectionType } from '~/graphql/__generated/sdk'
 import { useEffect, useState } from 'react'
+import { useMatchMedia } from '~/hooks'
 
 type ArticleGridSectionProps = {
 	data?: ArticleGridSectionType
 	id?: string
 }
 
-export default function ArticleGridSection({ data, id }: ArticleGridSectionProps) {
+export default function ArticleGridSection({
+	data,
+	id,
+}: ArticleGridSectionProps) {
 	const [view, setView] = useState<'list' | 'grid'>('list')
 	const { isMatching } = useMatchMedia('(max-width:768px)', false)
 
@@ -28,24 +31,24 @@ export default function ArticleGridSection({ data, id }: ArticleGridSectionProps
 					{!isMatching && (
 						<div className={styles.controls}>
 							<button
+								aria-label="Switch to list view"
 								className={clsx(
 									styles.controlButton,
 									view === 'list' && styles.active,
 								)}
-								title="List view"
-								aria-label="Switch to list view"
 								onClick={() => setView('list')}
+								title="List view"
 							>
 								<ListBulletsIcon />
 							</button>
 							<button
+								aria-label="Switch to grid view"
 								className={clsx(
 									styles.controlButton,
 									view === 'grid' && styles.active,
 								)}
-								title="Grid view"
-								aria-label="Switch to grid view"
 								onClick={() => setView('grid')}
+								title="Grid view"
 							>
 								<SquaresFourIcon />
 							</button>
@@ -67,11 +70,11 @@ export default function ArticleGridSection({ data, id }: ArticleGridSectionProps
 
 							return (
 								<ArticleCard
-									key={article.id}
 									data={article}
+									forceDescription={isMatching}
 									horizontal={view === 'list'}
 									isBig={false}
-									forceDescription={isMatching}
+									key={article.id}
 								/>
 							)
 						})}

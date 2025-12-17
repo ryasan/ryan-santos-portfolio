@@ -8,31 +8,31 @@ import { useMemo } from 'react'
 import 'keen-slider/keen-slider.min.css'
 
 type CarouselProps = {
-	title?: string | null
 	slides: (JSX.Element | null)[]
 	slidesPerView?: number | null
+	title?: string | null
 }
 
 export default function Carousel({
-	title,
 	slides,
 	slidesPerView,
+	title,
 }: CarouselProps) {
 	const { isMatching } = useMatchMedia('(max-width:768px)', true)
 
 	const memoizedSliderOptions = useMemo(
 		() => ({
+			created: (slider: any) => {
+				slider.container.classList.add(styles.visible)
+			},
 			initial: 0,
 			loop: false,
 			slides: {
 				perView: isMatching ? 1 : (slidesPerView || 2),
 				spacing: 30,
 			},
-			created: (slider: any) => {
-				slider.container.classList.add(styles.visible)
-			},
 		}),
-		[isMatching],
+		[isMatching, slidesPerView],
 	)
 
 	const [sliderRef, instanceRef] = useKeenSlider(memoizedSliderOptions)
@@ -45,15 +45,15 @@ export default function Carousel({
 					<div className={styles.navigation}>
 						<button
 							className={clsx(styles.button, styles.buttonPrev)}
-							title="Previous slide"
 							onClick={() => instanceRef.current?.prev()}
+							title="Previous slide"
 						>
 							<ArrowLeftIcon />
 						</button>
 						<button
 							className={clsx(styles.button, styles.buttonNext)}
-							title="Next slide"
 							onClick={() => instanceRef.current?.next()}
+							title="Next slide"
 						>
 							<ArrowRightIcon />
 						</button>
@@ -63,8 +63,8 @@ export default function Carousel({
 					<div className={clsx('keen-slider', styles.slider)} ref={sliderRef}>
 						{slides.map((slide, index) => (
 							<div
-								key={index}
 								className={clsx('keen-slider__slide', styles.slide)}
+								key={index}
 							>
 								{slide}
 							</div>

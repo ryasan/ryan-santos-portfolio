@@ -1,6 +1,6 @@
 import BlogPostSection from '~/components/sections/blog-post-section'
 import { client } from '~/services/contentful.server'
-import { json, LoaderFunctionArgs, MetaFunction } from '@remix-run/node'
+import { json, type LoaderFunctionArgs, type MetaFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 
 export async function loader({ params }: LoaderFunctionArgs) {
@@ -23,14 +23,14 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	return [
 		{ title: blog.title },
 		{
-			name: 'description',
 			content: blog.description,
+			name: 'description',
 		},
 		...(blog.openGraphImage
 			? [
 					{
-						property: 'og:image',
 						content: blog.openGraphImage.url,
+						property: 'og:image',
 					},
 				]
 			: []),

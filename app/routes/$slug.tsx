@@ -1,7 +1,7 @@
 import JumpLinks from '~/components/jump-links'
 import SectionRenderer from '~/components/section-renderer'
-import type { LoaderFunctionArgs, MetaFunction } from '@netlify/remix-runtime'
-import type { PagePageSectionsItem } from '~/graphql/__generated/sdk'
+import  { type LoaderFunctionArgs, type MetaFunction } from '@netlify/remix-runtime'
+import  { type PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
 import { useLoaderData } from '@remix-run/react'
@@ -32,14 +32,14 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	return [
 		{ title: page.seoMetadata?.title || page.title },
 		{
-			name: 'description',
 			content: page.seoMetadata?.description || 'Page description',
+			name: 'description',
 		},
 		...(page.seoMetadata?.ogImage
 			? [
 					{
-						property: 'og:image',
 						content: page.seoMetadata.ogImage.url,
+						property: 'og:image',
 					},
 				]
 			: []),
@@ -56,9 +56,9 @@ export default function DynamicPage() {
 				if (!section?.sys?.id) return null
 				return (
 					<SectionRenderer
+						id={section.sys.id}
 						key={section.sys.id}
 						section={section}
-						id={section.sys.id}
 					/>
 				)
 			})}

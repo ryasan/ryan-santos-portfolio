@@ -2,27 +2,27 @@ import clsx from 'clsx'
 import styles from '~/styles/components/avatar.module.scss'
 
 type AvatarProps = {
-	src?: string | null
 	alt?: string
 	className?: string
 	size?: 'small' | 'medium'
+	src?: string | null
 }
 
 export default function Avatar({
-	src,
-	className,
 	alt = 'Avatar',
+	className,
 	size = 'medium',
+	src,
 }: AvatarProps) {
 	return (
 		<div className={clsx(styles.avatar, styles[size], className)}>
 			{src ? (
-				<img className={styles.avatarImage} src={src} alt={alt} />
+				<img alt={alt} className={styles.avatarImage} src={src} />
 			) : (
 				<img
+					alt="Default avatar picture"
 					className={styles.avatarPlaceholder}
 					src="/images/github-avatar.png"
-					alt="Default avatar picture"
 				/>
 			)}
 		</div>

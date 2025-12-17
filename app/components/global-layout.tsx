@@ -1,13 +1,13 @@
 import Header from '~/components/header'
 import ScrollSmoothLayout from '~/components/scroll-smooth-layout'
-import { GlobalHeader, GlobalFooter } from '~/graphql/__generated/sdk'
+import { type GlobalHeader, type GlobalFooter } from '~/graphql/__generated/sdk'
 import { useRef } from 'react'
 
 type GlobalLayoutProps = {
 	children: React.ReactNode
 	data?: {
-		headerData?: GlobalHeader
 		footerData?: GlobalFooter
+		headerData?: GlobalHeader
 	}
 }
 

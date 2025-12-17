@@ -1,4 +1,4 @@
-import { Theme } from '~/types'
+import { type Theme } from '~/types'
 
 // Theme
 export const LIGHT_THEME: Theme = 'light'

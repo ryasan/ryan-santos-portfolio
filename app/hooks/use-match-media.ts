@@ -29,5 +29,5 @@ export const useMatchMedia = (mediaQuery: string, initialValue: boolean) => {
 		}
 	}, [mediaQuery])
 
-	return { isMatching, calculated }
+	return { calculated, isMatching }
 }

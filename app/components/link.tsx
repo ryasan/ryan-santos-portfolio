@@ -1,24 +1,23 @@
 import clsx from 'clsx'
 import styles from '~/styles/components/link.module.scss'
-import type { LinkProps as RemixLinkProps } from '@remix-run/react'
+import  { type LinkProps as RemixLinkProps, Link as RemixLink  } from '@remix-run/react'
 import { ArrowUpRightIcon } from '~/components/icons'
-import { Link as RemixLink } from '@remix-run/react'
 import { isExternalLink } from '~/utils'
 
 type LinkProps = {
-	to: string
 	children: React.ReactNode
 	className?: string
-	target?: string
 	rel?: string
+	target?: string
+	to: string
 } & Omit<RemixLinkProps, 'to' | 'children' | 'className'>
 
 export default function Link({
-	to,
 	children,
 	className,
-	target = '_blank',
 	rel = 'noopener noreferrer',
+	target = '_blank',
+	to,
 	...rest
 }: LinkProps) {
 	const isExternal = isExternalLink(to)
@@ -26,10 +25,10 @@ export default function Link({
 	if (isExternal) {
 		return (
 			<a
-				href={to}
 				className={clsx(styles.linkBox, className)}
-				target={target}
+				href={to}
 				rel={rel}
+				target={target}
 				{...rest}
 			>
 				<span className={clsx('link', styles.link)}>{children}</span>
@@ -39,7 +38,7 @@ export default function Link({
 	}
 
 	return (
-		<RemixLink to={to} className={clsx(styles.linkBox, className)} {...rest}>
+		<RemixLink className={clsx(styles.linkBox, className)} to={to} {...rest}>
 			<span className={clsx('link', styles.link)}>{children}</span>
 		</RemixLink>
 	)

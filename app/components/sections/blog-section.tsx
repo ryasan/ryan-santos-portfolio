@@ -2,7 +2,7 @@ import ArticleCard from '~/components/article-card'
 import clsx from 'clsx'
 import gsap from 'gsap'
 import styles from '~/styles/components/sections/blog-section.module.scss'
-import { Blog, ContentfulTag } from '~/graphql/__generated/sdk'
+import { type Blog, type ContentfulTag } from '~/graphql/__generated/sdk'
 import { normalizeSlide } from '~/utils/normalize-data'
 import { useEffect, useState, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
@@ -71,8 +71,8 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 		if (!section) return
 
 		gsap.to(section, {
-			opacity: 1,
 			duration: 1,
+			opacity: 1,
 		})
 	}, [])
 
@@ -83,11 +83,11 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 
 				<div className={styles.tagList}>
 					<button
-						onClick={clearTags}
 						className={clsx(
 							styles.tag,
 							selectedTags.length === 0 && styles.active,
 						)}
+						onClick={clearTags}
 					>
 						All
 					</button>
@@ -96,11 +96,11 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 						if (!tag.name) return null
 						return (
 							<button
-								key={tag.id}
 								className={clsx(
 									styles.tag,
 									selectedTags.includes(tag.name) && styles.active,
 								)}
+								key={tag.id}
 								onClick={() => tag.name && toggleTag(tag.name)}
 							>
 								{tag.name}
@@ -112,7 +112,7 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 				<div className={styles.postList}>
 					{filteredPosts.map(normalizeSlide).map((post) => {
 						if (!post) return null
-						return <ArticleCard key={post.id} data={post} forceDescription />
+						return <ArticleCard data={post} forceDescription key={post.id} />
 					})}
 				</div>
 			</div>

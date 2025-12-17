@@ -2,7 +2,7 @@ import RichText from '~/components/rich-text'
 import clsx from 'clsx'
 import gsap from 'gsap'
 import styles from '~/styles/components/sections/experience-section.module.scss'
-import { ExperienceSection as ExperienceSectionType } from '~/graphql/__generated/sdk'
+import { type ExperienceSection as ExperienceSectionType } from '~/graphql/__generated/sdk'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
@@ -33,15 +33,15 @@ export default function ExperienceSection({
 			if (!title || !container) return
 
 			ScrollTrigger.create({
-				trigger: title,
-				start: 'bottom bottom-=200px',
 				onEnter: () => {
 					gsap.to(title, {
-						opacity: 1,
 						duration: 1,
 						ease: 'power2.out',
+						opacity: 1,
 					})
 				},
+				start: 'bottom bottom-=200px',
+				trigger: title,
 			})
 
 			const items = gsap.utils.toArray<HTMLElement>(container.children)
@@ -52,15 +52,15 @@ export default function ExperienceSection({
 
 			experienceItems.forEach((item) => {
 				ScrollTrigger.create({
-					trigger: item,
-					start: 'bottom bottom-=100px',
 					onEnter: () => {
 						gsap.to(item, {
-							opacity: 1,
 							duration: 1,
 							ease: 'power2.out',
+							opacity: 1,
 						})
 					},
+					start: 'bottom bottom-=100px',
+					trigger: item,
 				})
 			})
 
@@ -85,9 +85,9 @@ export default function ExperienceSection({
 					const height = lastRect.top - firstRect.top
 
 					gsap.set(progressBar, {
+						height: height,
 						left: left,
 						top: top,
-						height: height,
 					})
 				}
 
@@ -106,10 +106,17 @@ export default function ExperienceSection({
 					progressBar.firstElementChild,
 					{ scaleY: 0 },
 					{
-						scaleY: 1,
 						ease: 'none',
+						scaleY: 1,
 						scrollTrigger: {
-							trigger: container,
+							end: () => {
+								const containerRect = container.getBoundingClientRect()
+								const lastRect = lastNum.getBoundingClientRect()
+								const offset =
+									lastRect.top - containerRect.top + lastRect.height / 2
+								return `top+=${offset} center`
+							},
+							scrub: true,
 							start: () => {
 								const containerRect = container.getBoundingClientRect()
 								const firstRect = firstNum.getBoundingClientRect()
@@ -119,14 +126,7 @@ export default function ExperienceSection({
 									firstRect.top - containerRect.top + firstRect.height / 2
 								return `top+=${offset} center`
 							},
-							end: () => {
-								const containerRect = container.getBoundingClientRect()
-								const lastRect = lastNum.getBoundingClientRect()
-								const offset =
-									lastRect.top - containerRect.top + lastRect.height / 2
-								return `top+=${offset} center`
-							},
-							scrub: true,
+							trigger: container,
 						},
 					},
 				)

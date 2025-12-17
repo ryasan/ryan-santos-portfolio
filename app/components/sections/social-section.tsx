@@ -1,6 +1,6 @@
 import Link from '~/components/link'
 import styles from '~/styles/components/sections/social-section.module.scss'
-import { SocialSection as SocialSectionType } from '~/graphql/__generated/sdk'
+import { type SocialSection as SocialSectionType } from '~/graphql/__generated/sdk'
 import {
 	CodepenIcon,
 	EnvelopeIcon,
@@ -17,7 +17,7 @@ const icons = {
 
 const getIcon = (icon?: string) => {
 	const Icon = icons[icon?.toLowerCase() as keyof typeof icons]
-	return Icon ? <Icon className={styles.icon} aria-hidden="true" /> : null
+	return Icon ? <Icon aria-hidden="true" className={styles.icon} /> : null
 }
 
 type SocialSectionProps = {

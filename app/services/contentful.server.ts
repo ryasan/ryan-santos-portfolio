@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 // import axios from 'axios';
 // import { getPlaiceholder } from 'plaiceholder';
 
@@ -27,12 +27,12 @@ if (!CONTENTFUL_SPACE_ID || !CONTENTFUL_ACCESS_TOKEN) {
 async function apiCall(query: string, variables?: any) {
 	const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}/environments/master`
 	const options = {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${CONTENTFUL_ACCESS_TOKEN}`,
-		},
 		body: JSON.stringify({ query, variables }),
+		headers: {
+			Authorization: `Bearer ${CONTENTFUL_ACCESS_TOKEN}`,
+			'Content-Type': 'application/json',
+		},
+		method: 'POST',
 	}
 
 	return await fetch(fetchUrl, options)
@@ -147,11 +147,11 @@ async function getPageBySlug(slug: string) {
 }
 
 export const client = {
-	getGlobalHeader,
-	getGlobalFooter,
 	getAllBlogs,
 	getAllProjects,
 	getBlogBySlug,
+	getGlobalFooter,
+	getGlobalHeader,
 	getPageBySlug,
 	getPageByTitle,
 }

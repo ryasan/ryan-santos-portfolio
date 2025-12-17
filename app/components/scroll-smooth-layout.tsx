@@ -16,10 +16,10 @@ export default function ScrollSmoothLayout({
 		if (isTouchDevice) return
 
 		const instance = ScrollSmoother.create({
-			smooth: 2,
 			effects: true,
 			ignoreMobileResize: true,
 			normalizeScroll: true,
+			smooth: 2,
 		})
 
 		return () => {

@@ -1,8 +1,8 @@
-import * as THREE from 'three'
+import type * as THREE from 'three'
 import ClientOnly from '~/components/client-only'
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/hero-cube-section.module.scss'
-import type { HeroCubeSection as HeroCubeSectionType } from '~/graphql/__generated/sdk'
+import  { type HeroCubeSection as HeroCubeSectionType } from '~/graphql/__generated/sdk'
 import { ArrowRightIcon } from '~/components/icons'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { BLACK, WHITE } from '~/utils/constants'
@@ -77,59 +77,59 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 
 			{/* Side 1: Front (0 deg) */}
 			<Text
-				position={[0, 0, txtOffset]}
-				fontSize={fontSize}
-				fontWeight={fontWeight}
-				color={contentColor}
 				anchorX="center"
 				anchorY="middle"
-				textAlign="center"
+				color={contentColor}
+				fontSize={fontSize}
+				fontWeight={fontWeight}
 				maxWidth={cubeSize - 0.2}
+				position={[0, 0, txtOffset]}
+				textAlign="center"
 			>
 				{textItems?.[0]}
 			</Text>
 
 			{/* Side 2: Right (-90 deg) */}
 			<Text
-				position={[txtOffset, 0, 0]}
-				rotation={[0, Math.PI / 2, 0]}
-				fontSize={fontSize}
-				fontWeight={fontWeight}
-				color={contentColor}
 				anchorX="center"
 				anchorY="middle"
-				textAlign="center"
+				color={contentColor}
+				fontSize={fontSize}
+				fontWeight={fontWeight}
 				maxWidth={cubeSize - 0.2}
+				position={[txtOffset, 0, 0]}
+				rotation={[0, Math.PI / 2, 0]}
+				textAlign="center"
 			>
 				{textItems?.[1]}
 			</Text>
 
 			{/* Side 3: Back (-180 deg) */}
 			<Text
-				position={[0, 0, -txtOffset]}
-				rotation={[0, Math.PI, 0]}
-				fontSize={fontSize}
-				fontWeight={fontWeight}
-				color={contentColor}
 				anchorX="center"
 				anchorY="middle"
-				textAlign="center"
+				color={contentColor}
+				fontSize={fontSize}
+				fontWeight={fontWeight}
 				maxWidth={cubeSize - 0.2}
+				position={[0, 0, -txtOffset]}
+				rotation={[0, Math.PI, 0]}
+				textAlign="center"
 			>
 				{textItems?.[2]}
 			</Text>
 
 			{/* Side 4: Left (-270 deg) */}
 			<Text
-				position={[-txtOffset, 0, 0]}
-				rotation={[0, -Math.PI / 2, 0]}
-				fontSize={fontSize}
-				fontWeight={fontWeight}
-				color={contentColor}
 				anchorX="center"
 				anchorY="middle"
-				textAlign="center"
+				color={contentColor}
+				fontSize={fontSize}
+				fontWeight={fontWeight}
 				maxWidth={cubeSize - 0.2}
+				position={[-txtOffset, 0, 0]}
+				rotation={[0, -Math.PI / 2, 0]}
+				textAlign="center"
 			>
 				{textItems?.[3]}
 			</Text>
@@ -157,33 +157,33 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 			if (!stickyBox || !scrollToExplore) return
 
 			gsap.to(stickyBox, {
-				opacity: 1,
+				delay: 0.75,
 				duration: 1,
 				ease: 'power2.out',
-				delay: 0.75,
+				opacity: 1,
 			})
 
 			gsap.to(scrollToExplore, {
-				opacity: 1,
+				delay: 0.75,
 				duration: 1,
 				ease: 'power2.out',
-				delay: 0.75,
+				opacity: 1,
 			})
 
 			ScrollTrigger.create({
-				trigger: stickyBox,
-				start: 'top top',
 				end: '+=400%', // Pin for 4 screens
-				pin: true,
-				scrub: 1, // Smooth scrubbing
 				onUpdate: (self) => {
 					progress.current = self.progress
 					gsap.to(scrollToExplore, {
-						opacity: 1 - progress.current * 1,
 						duration: 0.1,
 						ease: 'none',
+						opacity: 1 - progress.current * 1,
 					})
 				},
+				pin: true,
+				scrub: 1, // Smooth scrubbing
+				start: 'top top',
+				trigger: stickyBox,
 			})
 		},
 		{ scope: containerRef },
@@ -197,7 +197,7 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 					<Canvas>
 						<PerspectiveCamera makeDefault position={[0, 0, 6]} />
 						<ambientLight intensity={0.6} />
-						<directionalLight position={[5, 5, 5]} intensity={1.5} />
+						<directionalLight intensity={1.5} position={[5, 5, 5]} />
 						<Cube rotationProgress={progress} textItems={data?.textItems} />
 					</Canvas>
 				</ClientOnly>

@@ -1,6 +1,6 @@
 import BlogSection from '~/components/sections/blog-section'
-import type { Blog, ContentfulTag } from '~/graphql/__generated/sdk'
-import type { MetaFunction } from '@netlify/remix-runtime'
+import  { type Blog, type ContentfulTag } from '~/graphql/__generated/sdk'
+import  { type MetaFunction } from '@netlify/remix-runtime'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
 import { useLoaderData } from '@remix-run/react'
@@ -14,7 +14,7 @@ export async function loader() {
 		throw new Response('Not Found', { status: 404 })
 	}
 
-	return json({ page, blogs })
+	return json({ blogs, page })
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
@@ -27,14 +27,14 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	return [
 		{ title: page.seoMetadata?.title || page.title },
 		{
-			name: 'description',
 			content: page.seoMetadata?.description || 'Page description',
+			name: 'description',
 		},
 		...(page.seoMetadata?.ogImage
 			? [
 					{
-						property: 'og:image',
 						content: page.seoMetadata.ogImage.url,
+						property: 'og:image',
 					},
 				]
 			: []),

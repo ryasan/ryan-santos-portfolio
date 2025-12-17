@@ -1,7 +1,7 @@
 export type ClientHint<Value> = {
 	cookieName: string
-	getValueCode: string
 	fallback: Value
+	getValueCode: string
 	transform?: (value: string) => Value
 }
 
