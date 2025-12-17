@@ -28,7 +28,7 @@ export default function ContactSection({ data, id }: ContactSectionProps) {
 	const [copySuccess, setCopySuccess] = useState(false)
 
 	const copyToClipboard = () => {
-		navigator.clipboard.writeText(data?.email || '')
+		void navigator.clipboard.writeText(data?.email || '')
 		setCopySuccess(true)
 		setTimeout(() => {
 			setCopySuccess(false)

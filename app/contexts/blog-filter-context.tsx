@@ -67,7 +67,7 @@ export function BlogFilterProvider({
 		if (newSearchString !== currentSearchString) {
 			setSearchParams(params, { replace: true })
 		}
-	}, [searchQuery, selectedTags])
+	}, [searchQuery, selectedTags, searchParams, setSearchParams])
 
 	// Filter posts based on search query and selected tags
 	useEffect(() => {

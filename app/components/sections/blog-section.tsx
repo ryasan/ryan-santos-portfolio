@@ -48,7 +48,7 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 		if (newSearchString !== currentSearchString) {
 			setSearchParams(params, { replace: true })
 		}
-	}, [selectedTags])
+	}, [selectedTags, searchParams, setSearchParams])
 
 	useEffect(() => {
 		let filtered = [...posts]

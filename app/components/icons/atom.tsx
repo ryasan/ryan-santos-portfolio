@@ -1,6 +1,6 @@
 import { type SVGProps } from 'react'
 
-export default function AtomIcon(props: SVGProps<SVGSVGElement>) {
+export default function AtomIcon(_props: SVGProps<SVGSVGElement>) {
 	return (
 		<svg
 			fill="var(--content-color)"

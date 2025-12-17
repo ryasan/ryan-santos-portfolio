@@ -53,7 +53,7 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 	}
 
 	const copyToClipboard = () => {
-		navigator.clipboard.writeText(`${window.location.origin}${pathname}`)
+		void navigator.clipboard.writeText(`${window.location.origin}${pathname}`)
 		setCopySuccess(true)
 		setTimeout(() => {
 			setCopySuccess(false)
