@@ -12,10 +12,6 @@ type ExperienceSectionProps = {
 	id?: string
 }
 
-function extractYear(date: string {
-	return date.split('-')[0]
-}
-
 export default function ExperienceSection({
 	data,
 	id,
