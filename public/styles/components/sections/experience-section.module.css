@@ -1,11 +1,5 @@
 .experienceSection {
   display: block;
-  padding: 200px 0;
-}
-@media (max-width: 768px) {
-  .experienceSection {
-    padding: 50px 0;
-  }
 }
 
 .box {
