@@ -139,7 +139,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 							})}
 						</h1>
 					)}
-					<div className={clsx(styles.subtitle, 'h5')} ref={subtitleRef}>
+					<div className={clsx(styles.subtitle, 'h6')} ref={subtitleRef}>
 						{data?.leftSubtitle && (
 							<div className={styles.leftSubtitle}>{data?.leftSubtitle}</div>
 						)}
