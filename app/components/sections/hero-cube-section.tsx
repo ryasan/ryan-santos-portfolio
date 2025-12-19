@@ -37,7 +37,7 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 			delay: 0.5,
 			duration: 2,
 			ease: 'bounce.out',
-			y: viewport.height * 0.25,
+			y: viewport.height * 0.5,
 		})
 	}, [])
 
