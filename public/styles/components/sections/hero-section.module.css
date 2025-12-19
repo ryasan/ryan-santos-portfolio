@@ -68,7 +68,7 @@
   justify-content: center;
   transform: rotate(90deg);
   transform-origin: left top;
-  position: fixed;
+  position: absolute;
   bottom: 200px;
   left: 45px;
   opacity: 0;
