@@ -37,7 +37,7 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 		gsap.from(mesh.position, {
 			delay: 0.5,
 			duration: 2,
-			ease: 'bounce.out',
+			ease: 'elastic.out(1, 0.75)',
 			y: viewport.height * 0.5,
 		})
 	}, [])
