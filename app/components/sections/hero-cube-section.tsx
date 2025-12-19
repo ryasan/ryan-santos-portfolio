@@ -172,7 +172,7 @@ const MovingGrid = ({
 		<Grid
 			args={[10, 10]}
 			cellColor={theme === 'light' ? BLACK : WHITE}
-			cellSize={1.25}
+			cellSize={1.65}
 			cellThickness={2}
 			position={[0, -2, 0]}
 			ref={gridRef}
@@ -251,7 +251,7 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 			{/* The trigger element needs to fill the viewport to start */}
 			<div className={styles.stickyBox} ref={stickyBoxRef}>
 				<ClientOnly>
-					<Canvas>
+					<Canvas className={styles.canvas}>
 						<fog attach="fog" args={[backgroundColor, 5, 15]} />
 						<PerspectiveCamera makeDefault position={[0, 0, 6]} />
 						<ambientLight intensity={0.6} />
