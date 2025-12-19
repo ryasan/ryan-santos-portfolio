@@ -10,6 +10,7 @@ import {
 	ContactShadows,
 	Edges,
 	Float,
+	Grid,
 	PerspectiveCamera,
 	Text,
 } from '@react-three/drei'
@@ -153,6 +154,34 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 	)
 }
 
+const MovingGrid = ({
+	rotationProgress,
+}: {
+	rotationProgress: React.MutableRefObject<number>
+}) => {
+	const gridRef = useRef<THREE.Mesh>(null)
+	const theme = useTheme()
+
+	useFrame(() => {
+		if (!gridRef.current) return
+		const scrollDistance = rotationProgress.current * -10
+		gridRef.current.position.z = scrollDistance % 1
+	})
+
+	return (
+		<Grid
+			args={[10, 10]}
+			cellColor={theme === 'light' ? BLACK : WHITE}
+			cellSize={1.25}
+			cellThickness={2}
+			position={[0, -2, 0]}
+			ref={gridRef}
+			sectionSize={0}
+			sectionThickness={0}
+		/>
+	)
+}
+
 type HeroCubeSectionProps = {
 	data?: HeroCubeSectionType
 	id?: string
@@ -164,6 +193,8 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 	const scrollToExploreRef = useRef<HTMLDivElement>(null)
 	// Mutable ref to share scroll progress with the Canvas without re-renders
 	const progress = useRef(0)
+	const theme = useTheme()
+	const backgroundColor = theme === 'light' ? WHITE : BLACK
 
 	useGSAP(
 		() => {
@@ -221,9 +252,11 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 			<div className={styles.stickyBox} ref={stickyBoxRef}>
 				<ClientOnly>
 					<Canvas>
+						<fog attach="fog" args={[backgroundColor, 5, 15]} />
 						<PerspectiveCamera makeDefault position={[0, 0, 6]} />
 						<ambientLight intensity={0.6} />
 						<directionalLight intensity={1.5} position={[5, 5, 5]} />
+						<MovingGrid rotationProgress={progress} />
 						<Float floatIntensity={0.5} rotationIntensity={0.5} speed={2}>
 							<Cube rotationProgress={progress} textItems={data?.textItems} />
 						</Float>
