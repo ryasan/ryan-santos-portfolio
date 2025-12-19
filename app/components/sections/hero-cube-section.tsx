@@ -181,7 +181,7 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 					})
 				},
 				pin: true,
-				scrub: 1, // Smooth scrubbing
+				scrub: 1,
 				start: 'top top',
 				trigger: stickyBox,
 			})

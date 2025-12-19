@@ -1,4 +1,3 @@
-import Teleport from '~/components/teleport'
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/hero-section.module.scss'
 import { ArrowRightIcon } from '~/components/icons'
@@ -6,7 +5,7 @@ import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 
 type HeroSectionProps = {
 	data?: HeroSectionType
@@ -19,23 +18,12 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 	const subtitleRef = useRef<HTMLDivElement>(null)
 	const scrollToExploreRef = useRef<HTMLDivElement>(null)
 
-	const [isTeleported, setIsTeleported] = useState(false)
-
 	useGSAP(
 		() => {
 			const section = sectionRef.current
 			const stickyBox = stickyBoxRef.current
 			const subtitle = subtitleRef.current
 			const scrollToExplore = scrollToExploreRef.current
-
-			if (
-				!section ||
-				!stickyBox ||
-				!subtitle ||
-				!scrollToExplore ||
-				!isTeleported
-			)
-				return
 
 			gsap.to('.word', {
 				duration: 0.75,
@@ -51,26 +39,8 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				opacity: 1,
 			})
 
-			if (window.scrollY === 0) {
-				gsap.to(scrollToExplore, {
-					delay: 0.75,
-					duration: 1,
-					ease: 'power2.out',
-					opacity: 1,
-				})
-			}
-
 			ScrollTrigger.create({
-				anticipatePin: 1,
-				end: 'bottom bottom-=300px',
-				pin: stickyBox,
-				pinSpacing: false,
-				start: 'top top',
-				trigger: section,
-			})
-
-			ScrollTrigger.create({
-				end: 'bottom bottom',
+				end: '+=120%',
 				onUpdate: (self) => {
 					const progress = self.progress
 					const scale = 1 - progress * 0.3
@@ -89,37 +59,13 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 						opacity,
 					})
 				},
-				scrub: 1,
-				start: 'top top',
-				trigger: section,
-			})
-
-			ScrollTrigger.create({
-				end: 'bottom bottom',
-				onUpdate: (self) => {
-					const progress = self.progress
-					const scale = 1 - progress * 0.3
-					const opacity = 1 - progress * 1
-
-					gsap.to(stickyBox, {
-						duration: 0.1,
-						ease: 'none',
-						opacity,
-						scale,
-					})
-
-					gsap.to(scrollToExplore, {
-						duration: 0.1,
-						ease: 'none',
-						opacity,
-					})
-				},
+				pin: true,
 				scrub: 1,
 				start: 'top top',
 				trigger: section,
 			})
 		},
-		{ dependencies: [isTeleported], scope: sectionRef },
+		{ scope: sectionRef },
 	)
 
 	return (
@@ -148,16 +94,13 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 						)}
 					</div>
 				</div>
-				<Teleport onReady={() => setIsTeleported(true)} to="#global-main">
-					<div
-						className={clsx(styles.scrollToExplore, 'link')}
-						ref={scrollToExploreRef}
-					>
-						<span>Scroll To Explore</span>
-						<ArrowRightIcon className={styles.arrowRightIcon} />
-					</div>
-				</Teleport>
-				<div className={styles.spacer} />
+				<div
+					className={clsx(styles.scrollToExplore, 'link')}
+					ref={scrollToExploreRef}
+				>
+					<span>Scroll To Explore</span>
+					<ArrowRightIcon className={styles.arrowRightIcon} />
+				</div>
 			</div>
 		</section>
 	)

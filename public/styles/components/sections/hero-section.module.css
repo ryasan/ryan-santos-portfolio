@@ -1,5 +1,6 @@
 .heroSection {
   position: relative;
+  height: 100vh;
 }
 
 .stickyBox {
@@ -13,10 +14,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.spacer {
-  height: 100lvh;
 }
 
 .title {
