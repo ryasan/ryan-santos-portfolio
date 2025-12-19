@@ -165,7 +165,7 @@ const MovingGrid = ({
 	useFrame(() => {
 		if (!gridRef.current) return
 		const scrollDistance = rotationProgress.current * -10
-		gridRef.current.position.z = scrollDistance % 1
+		gridRef.current.position.z = scrollDistance % 3
 	})
 
 	return (
@@ -255,7 +255,7 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 				<ClientOnly>
 					<Canvas className={styles.canvas}>
 						<fog attach="fog" args={[backgroundColor, 5, 15]} />
-						<PerspectiveCamera makeDefault position={[0, 0, 6]} />
+						<PerspectiveCamera makeDefault position={[0, 1, 6]} rotation={[-0.2, 0, 0]} />
 						<ambientLight intensity={0.6} />
 						<directionalLight intensity={1.5} position={[5, 5, 5]} />
 						<MovingGrid rotationProgress={progress} />
