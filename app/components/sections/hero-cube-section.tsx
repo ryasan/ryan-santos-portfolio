@@ -30,12 +30,14 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 	const { viewport } = useThree()
 
 	useGSAP(() => {
-		if (!meshRef.current) return
-		gsap.from(meshRef.current.position, {
+		const mesh = meshRef.current
+		if (!mesh) return
+
+		gsap.from(mesh.position, {
 			delay: 0.5,
 			duration: 2,
 			ease: 'bounce.out',
-			y: viewport.height,
+			y: viewport.height * 1.5,
 		})
 	}, [])
 
