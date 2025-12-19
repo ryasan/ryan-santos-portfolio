@@ -11,7 +11,6 @@ import {
 	Edges,
 	Float,
 	PerspectiveCamera,
-	Sparkles,
 	Text,
 } from '@react-three/drei'
 import { gsap } from 'gsap'
@@ -30,7 +29,15 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 	const theme = useTheme()
 	const { viewport } = useThree()
 
-	// Configuration
+	useGSAP(() => {
+		if (!meshRef.current) return
+		gsap.from(meshRef.current.position, {
+			delay: 0.5,
+			duration: 2,
+			ease: 'bounce.out',
+			y: viewport.height,
+		})
+	}, [])
 
 	// Adjust cube size based on viewport width to fit on mobile screens
 	const responsiveSize = viewport.width * 0.6
@@ -155,7 +162,6 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 	const scrollToExploreRef = useRef<HTMLDivElement>(null)
 	// Mutable ref to share scroll progress with the Canvas without re-renders
 	const progress = useRef(0)
-	const theme = useTheme()
 
 	useGSAP(
 		() => {
@@ -225,15 +231,6 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 							opacity={0.4}
 							position={[0, -2, 0]}
 							scale={10}
-						/>
-						<Sparkles
-							color={theme === 'light' ? BLACK : WHITE}
-							count={50}
-							opacity={0.5}
-							position={[0, 0, -4]}
-							scale={10}
-							size={4}
-							speed={0.4}
 						/>
 					</Canvas>
 				</ClientOnly>
