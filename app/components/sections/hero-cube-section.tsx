@@ -170,10 +170,12 @@ const MovingGrid = ({
 
 	return (
 		<Grid
-			args={[10, 10]}
+			args={[50, 50]}
 			cellColor={theme === 'light' ? BLACK : WHITE}
-			cellSize={1.65}
+			cellSize={3}
 			cellThickness={2}
+			fadeDistance={35}
+			fadeStrength={1}
 			position={[0, -2, 0]}
 			ref={gridRef}
 			sectionSize={0}
