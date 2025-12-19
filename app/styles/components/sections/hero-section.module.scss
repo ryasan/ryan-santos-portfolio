@@ -11,6 +11,7 @@
 	width: 100%;
 	min-height: 90lvh;
 	will-change: transform, opacity;
+	transform-origin: center center;
 	backface-visibility: hidden;
 	display: flex;
 	flex-direction: column;

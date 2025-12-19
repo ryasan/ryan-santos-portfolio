@@ -50,7 +50,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 						duration: 0.1,
 						ease: 'none',
 						opacity,
-						scale,
+						// scale,
 					})
 
 					gsap.to(scrollToExplore, {
