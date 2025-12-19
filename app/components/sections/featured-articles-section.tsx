@@ -31,8 +31,6 @@ export default function FeaturedArticlesSection({
 		const subtitle = subtitleRef.current
 		const articles = document.querySelectorAll(`.${styles.articleCard}`)
 
-		if (!section || !stickyBox || !title || !subtitle || !articles) return
-
 		ScrollTrigger.create({
 			anticipatePin: 1,
 			end: 'bottom bottom',

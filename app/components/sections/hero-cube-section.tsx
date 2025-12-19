@@ -161,8 +161,7 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 		() => {
 			const stickyBox = stickyBoxRef.current
 			const scrollToExplore = scrollToExploreRef.current
-
-			if (!stickyBox || !scrollToExplore) return
+			const container = containerRef.current
 
 			gsap.to(stickyBox, {
 				delay: 0.75,
@@ -178,7 +177,7 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 				opacity: 1,
 			})
 
-			ScrollTrigger.create({
+			const pinTrigger = ScrollTrigger.create({
 				end: '+=400%', // Pin for 4 screens
 				onUpdate: (self) => {
 					progress.current = self.progress
@@ -192,6 +191,17 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 				scrub: 1,
 				start: 'top top',
 				trigger: stickyBox,
+			})
+
+			gsap.to(container, {
+				ease: 'none',
+				opacity: 0,
+				scrollTrigger: {
+					end: () => pinTrigger.end + window.innerHeight,
+					scrub: true,
+					start: () => pinTrigger.end,
+					trigger: container,
+				},
 			})
 		},
 		{ scope: containerRef },

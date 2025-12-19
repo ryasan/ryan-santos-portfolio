@@ -26,7 +26,7 @@ export default function ExperienceSection({
 			const container = containerRef.current
 			const progressBar = progressBarRef.current
 
-			if (!title || !container) return
+			if (!container) return
 
 			ScrollTrigger.create({
 				onEnter: () => {

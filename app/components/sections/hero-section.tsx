@@ -50,7 +50,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				end: '+=120%',
 				onUpdate: (self) => {
 					const progress = self.progress
-					const scale = 1 - progress * 0.3
+					// const scale = 1 - progress * 0.3
 					const opacity = 1 - progress * 1
 
 					gsap.to(stickyBox, {
