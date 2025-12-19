@@ -6,7 +6,14 @@ import { ArrowRightIcon } from '~/components/icons'
 import { BLACK, WHITE } from '~/utils/constants'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Text, PerspectiveCamera, Edges } from '@react-three/drei'
+import {
+	ContactShadows,
+	Edges,
+	Float,
+	PerspectiveCamera,
+	Sparkles,
+	Text,
+} from '@react-three/drei'
 import { gsap } from 'gsap'
 import { type HeroCubeSection as HeroCubeSectionType } from '~/graphql/__generated/sdk'
 import { useGSAP } from '@gsap/react'
@@ -26,7 +33,7 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 	// Configuration
 
 	// Adjust cube size based on viewport width to fit on mobile screens
-	const responsiveSize = viewport.width * 0.65
+	const responsiveSize = viewport.width * 0.6
 	const cubeSize = Math.min(3, responsiveSize)
 
 	const txtOffset = cubeSize / 2 + 0.01 // Slightly offset text to avoid z-fighting
@@ -148,6 +155,7 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 	const scrollToExploreRef = useRef<HTMLDivElement>(null)
 	// Mutable ref to share scroll progress with the Canvas without re-renders
 	const progress = useRef(0)
+	const theme = useTheme()
 
 	useGSAP(
 		() => {
@@ -198,7 +206,25 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 						<PerspectiveCamera makeDefault position={[0, 0, 6]} />
 						<ambientLight intensity={0.6} />
 						<directionalLight intensity={1.5} position={[5, 5, 5]} />
-						<Cube rotationProgress={progress} textItems={data?.textItems} />
+						<Float floatIntensity={0.5} rotationIntensity={0.5} speed={2}>
+							<Cube rotationProgress={progress} textItems={data?.textItems} />
+						</Float>
+						<ContactShadows
+							blur={2.5}
+							far={4}
+							opacity={0.4}
+							position={[0, -2, 0]}
+							scale={10}
+						/>
+						<Sparkles
+							color={theme === 'light' ? BLACK : WHITE}
+							count={50}
+							opacity={0.5}
+							position={[0, 0, -4]}
+							scale={10}
+							size={4}
+							speed={0.4}
+						/>
 					</Canvas>
 				</ClientOnly>
 
