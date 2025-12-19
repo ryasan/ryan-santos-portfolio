@@ -26,7 +26,7 @@
 	transform: rotate(90deg);
 	transform-origin: left top;
 	position: absolute;
-	bottom: 200px;
+	top: 100px;
 	left: 45px;
 	opacity: 0;
 	will-change: opacity;
@@ -41,18 +41,22 @@
 @media (max-width: $tablet) {
 	.scrollToExplore {
 		font-size: 12px;
-		transform: rotate(0deg) translateX(-50%);
-		transform-origin: center top;
-		left: 50%;
-		bottom: 25px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
+		left: 25px;
+		top: 75px;
+
+		// transform: rotate(0deg) translateX(-50%);
+		// transform-origin: center top;
+
+		// left: 50%;
+		// display: flex;
+		// flex-direction: column;
+		// align-items: center;
+		// justify-content: center;
 	}
 
 	.arrowRightIcon {
 		height: 16px;
-		transform: rotate(90deg);
+
+		// transform: rotate(90deg);
 	}
 }
