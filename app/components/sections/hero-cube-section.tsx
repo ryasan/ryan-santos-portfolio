@@ -47,8 +47,8 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 	const cubeSize = Math.min(2.75, responsiveSize)
 
 	const txtOffset = cubeSize / 2 + 0.01 // Slightly offset text to avoid z-fighting
-	const contentColor = theme === 'light' ? BLACK : WHITE
-	const backgroundColor = theme === 'light' ? WHITE : BLACK
+	const contentColor = theme === 'dark' ? WHITE : BLACK
+	const backgroundColor = theme === 'dark' ? BLACK : WHITE
 
 	// Scale font size relative to cube size (base ratio approx 0.35/3 ≈ 0.116)
 	const fontSize = cubeSize * 0.12
@@ -171,11 +171,11 @@ const MovingGrid = ({
 	return (
 		<Grid
 			args={[50, 50]}
-			cellColor={theme === 'light' ? BLACK : WHITE}
+			cellColor={theme === 'dark' ? WHITE : BLACK	}
 			cellSize={3}
 			cellThickness={2}
-			fadeDistance={35}
-			fadeStrength={1}
+			fadeDistance={theme === 'dark' ? 35 : undefined}
+			fadeStrength={theme === 'dark' ? 1 : undefined}
 			position={[0, -2, 0]}
 			ref={gridRef}
 			sectionSize={0}
@@ -196,7 +196,7 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 	// Mutable ref to share scroll progress with the Canvas without re-renders
 	const progress = useRef(0)
 	const theme = useTheme()
-	const backgroundColor = theme === 'light' ? WHITE : BLACK
+	const backgroundColor = theme === 'dark' ? BLACK : WHITE
 
 	useGSAP(
 		() => {
@@ -255,7 +255,11 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 				<ClientOnly>
 					<Canvas className={styles.canvas}>
 						<fog attach="fog" args={[backgroundColor, 5, 15]} />
-						<PerspectiveCamera makeDefault position={[0, 1, 6]} rotation={[-0.2, 0, 0]} />
+						<PerspectiveCamera
+							makeDefault
+							position={[0, 1, 6]}
+							rotation={[-0.2, 0, 0]}
+						/>
 						<ambientLight intensity={0.6} />
 						<directionalLight intensity={1.5} position={[5, 5, 5]} />
 						<MovingGrid rotationProgress={progress} />
