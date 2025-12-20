@@ -225,7 +225,7 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 					gsap.to(scrollToExplore, {
 						duration: 0.1,
 						ease: 'none',
-						opacity: 1 - progress.current * 1,
+						opacity: 1 - progress.current * 3,
 					})
 				},
 				pin: true,
