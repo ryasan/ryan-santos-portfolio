@@ -7,6 +7,7 @@ import {
 	GET_GLOBAL_FOOTER_QUERY,
 	GET_ALL_BLOGS_QUERY,
 	GET_ALL_PROJECTS_QUERY,
+	GET_ALL_PAGES_QUERY,
 	GET_BLOG_BY_SLUG_QUERY,
 	GET_PAGE_BY_SLUG_QUERY,
 	GET_PAGE_BY_TITLE_QUERY,
@@ -110,6 +111,17 @@ async function getAllBlogs(order?: string) {
 	}
 }
 
+async function getAllPages() {
+	try {
+		const response = await apiCall(GET_ALL_PAGES_QUERY)
+		const json = await response.json()
+		return await json.data.pageCollection.items
+	} catch (error) {
+		console.error('Something went wrong while fetching all pages', error)
+		throw error
+	}
+}
+
 async function getBlogBySlug(slug: string) {
 	try {
 		const response = await apiCall(GET_BLOG_BY_SLUG_QUERY, { slug })
@@ -148,6 +160,7 @@ async function getPageBySlug(slug: string) {
 
 export const client = {
 	getAllBlogs,
+	getAllPages,
 	getAllProjects,
 	getBlogBySlug,
 	getGlobalFooter,

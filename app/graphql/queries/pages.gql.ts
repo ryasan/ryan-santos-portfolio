@@ -53,6 +53,19 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 	${TEXT_REVEAL_SECTION_FRAGMENT}
 `
 
+export const GET_ALL_PAGES_QUERY = gql`
+	query GetAllPages {
+		pageCollection {
+			items {
+				slug
+				sys {
+					publishedAt
+				}
+			}
+		}
+	}
+`
+
 export const GET_PAGE_BY_TITLE_QUERY = gql`
 	query GetPageByTitle($title: String) {
 		pageCollection(where: { title: $title }) {
