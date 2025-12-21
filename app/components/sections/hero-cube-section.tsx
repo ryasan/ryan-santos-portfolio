@@ -30,18 +30,6 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 	const theme = useTheme()
 	const { viewport } = useThree()
 
-	useGSAP(() => {
-		const mesh = meshRef.current
-		if (!mesh) return
-
-		gsap.from(mesh.position, {
-			delay: 0.5,
-			duration: 2,
-			ease: 'elastic.out(1, 0.75)',
-			y: viewport.height * 0.5,
-		})
-	}, [])
-
 	// Adjust cube size based on viewport width to fit on mobile screens
 	const responsiveSize = viewport.width * 0.6
 	const cubeSize = Math.min(2.75, responsiveSize)
@@ -154,11 +142,11 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 	)
 }
 
-const MovingGrid = ({
-	rotationProgress,
-}: {
+type MovingGridProps = {
 	rotationProgress: React.MutableRefObject<number>
-}) => {
+}
+
+const MovingGrid = ({ rotationProgress }: MovingGridProps) => {
 	const gridRef = useRef<THREE.Mesh>(null)
 	const theme = useTheme()
 
@@ -171,7 +159,7 @@ const MovingGrid = ({
 	return (
 		<Grid
 			args={[50, 50]}
-			cellColor={theme === 'dark' ? WHITE : BLACK	}
+			cellColor={theme === 'dark' ? WHITE : BLACK}
 			cellSize={3}
 			cellThickness={2}
 			fadeDistance={theme === 'dark' ? 35 : undefined}
