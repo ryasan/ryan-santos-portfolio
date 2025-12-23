@@ -149,18 +149,19 @@ type MovingGridProps = {
 const MovingGrid = ({ rotationProgress }: MovingGridProps) => {
 	const gridRef = useRef<THREE.Mesh>(null)
 	const theme = useTheme()
+	const cellSize = 3
 
 	useFrame(() => {
 		if (!gridRef.current) return
 		const scrollDistance = rotationProgress.current * -10
-		gridRef.current.position.z = scrollDistance % 3
+		gridRef.current.position.z = scrollDistance % cellSize
 	})
 
 	return (
 		<Grid
 			args={[50, 50]}
 			cellColor={theme === 'dark' ? WHITE : BLACK}
-			cellSize={3}
+			cellSize={cellSize}
 			cellThickness={2}
 			fadeDistance={theme === 'dark' ? 35 : undefined}
 			fadeStrength={theme === 'dark' ? 1 : undefined}
