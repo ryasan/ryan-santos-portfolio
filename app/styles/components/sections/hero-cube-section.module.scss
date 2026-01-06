@@ -22,7 +22,7 @@
 	transform: rotate(90deg);
 	transform-origin: left top;
 	position: absolute;
-	top: 100px;
+	bottom: 225px;
 	left: 45px;
 	opacity: 0;
 	will-change: opacity;
@@ -38,7 +38,7 @@
 	.scrollToExplore {
 		font-size: 12px;
 		left: 25px;
-		top: 75px;
+		bottom: 175px;
 	}
 
 	.arrowRightIcon {
