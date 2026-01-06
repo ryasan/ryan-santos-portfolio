@@ -12,10 +12,6 @@
   backface-visibility: hidden;
 }
 
-.canvas {
-  border-bottom: 3px solid var(--content-color);
-}
-
 .scrollToExplore {
   display: inline-flex;
   align-items: center;

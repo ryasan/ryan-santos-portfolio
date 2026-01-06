@@ -10,7 +10,6 @@ import {
 	ContactShadows,
 	Edges,
 	Float,
-	Grid,
 	PerspectiveCamera,
 	Text,
 } from '@react-three/drei'
@@ -142,37 +141,6 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 	)
 }
 
-type MovingGridProps = {
-	rotationProgress: React.MutableRefObject<number>
-}
-
-const MovingGrid = ({ rotationProgress }: MovingGridProps) => {
-	const gridRef = useRef<THREE.Mesh>(null)
-	const theme = useTheme()
-	const cellSize = 3
-
-	useFrame(() => {
-		if (!gridRef.current) return
-		const scrollDistance = rotationProgress.current * -10
-		gridRef.current.position.z = scrollDistance % cellSize
-	})
-
-	return (
-		<Grid
-			args={[50, 50]}
-			cellColor={theme === 'dark' ? WHITE : BLACK}
-			cellSize={cellSize}
-			cellThickness={2}
-			fadeDistance={theme === 'dark' ? 35 : undefined}
-			fadeStrength={theme === 'dark' ? 1 : undefined}
-			position={[0, -2, 0]}
-			ref={gridRef}
-			sectionSize={0}
-			sectionThickness={0}
-		/>
-	)
-}
-
 type HeroCubeSectionProps = {
 	data?: HeroCubeSectionType
 	id?: string
@@ -243,7 +211,7 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 			<div className={styles.stickyBox} ref={stickyBoxRef}>
 				<ClientOnly>
 					<Canvas className={styles.canvas}>
-						<fog attach="fog" args={[backgroundColor, 5, 15]} />
+						<fog args={[backgroundColor, 5, 15]} attach="fog" />
 						<PerspectiveCamera
 							makeDefault
 							position={[0, 1, 6]}
@@ -251,7 +219,6 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 						/>
 						<ambientLight intensity={0.6} />
 						<directionalLight intensity={1.5} position={[5, 5, 5]} />
-						<MovingGrid rotationProgress={progress} />
 						<Float floatIntensity={0.5} rotationIntensity={0.5} speed={2}>
 							<Cube rotationProgress={progress} textItems={data?.textItems} />
 						</Float>

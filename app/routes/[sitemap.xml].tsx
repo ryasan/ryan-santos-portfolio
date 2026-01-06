@@ -11,6 +11,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 	const [pages, blogs] = await Promise.all([
 		client.getAllPages(),
 		client.getAllBlogs(),
+		//...other collections here...
 	])
 
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

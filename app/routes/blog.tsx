@@ -1,6 +1,6 @@
 import BlogSection from '~/components/sections/blog-section'
-import  { type Blog, type ContentfulTag } from '~/graphql/__generated/sdk'
-import  { type MetaFunction } from '@netlify/remix-runtime'
+import { type Blog, type ContentfulTag } from '~/graphql/__generated/sdk'
+import { type MetaFunction } from '@netlify/remix-runtime'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
 import { useLoaderData } from '@remix-run/react'
@@ -58,7 +58,5 @@ export default function BlogPage() {
 		return uniqueTags
 	}, [blogs])
 
-	return (
-		<BlogSection posts={blogs} tags={tags} />
-	)
+	return <BlogSection posts={blogs} tags={tags} />
 }
