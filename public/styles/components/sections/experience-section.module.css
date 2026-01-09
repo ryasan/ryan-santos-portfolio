@@ -28,7 +28,7 @@
 .experienceList {
   display: flex;
   flex-direction: column;
-  gap: 350px;
+  gap: 250px;
   align-items: center;
   position: relative;
 }
