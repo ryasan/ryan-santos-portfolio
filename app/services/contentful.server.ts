@@ -11,6 +11,7 @@ import {
 	GET_BLOG_BY_SLUG_QUERY,
 	GET_PAGE_BY_SLUG_QUERY,
 	GET_PAGE_BY_TITLE_QUERY,
+	GET_CONTACT_SECTION_QUERY,
 } from '~/graphql/queries'
 
 const CONTENTFUL_SPACE_ID = import.meta.env.VITE_CONTENTFUL_SPACE_ID
@@ -158,11 +159,26 @@ async function getPageBySlug(slug: string) {
 	}
 }
 
+async function getContactSection(internalName: string) {
+	try {
+		const response = await apiCall(GET_CONTACT_SECTION_QUERY, { internalName })
+		const json = await response.json()
+		return await json.data.contactSectionCollection.items[0]
+	} catch (error) {
+		console.error(
+			'Something went wrong while fetching the contact section',
+			error,
+		)
+		throw error
+	}
+}
+
 export const client = {
 	getAllBlogs,
 	getAllPages,
 	getAllProjects,
 	getBlogBySlug,
+	getContactSection,
 	getGlobalFooter,
 	getGlobalHeader,
 	getPageBySlug,

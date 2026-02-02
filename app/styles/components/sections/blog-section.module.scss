@@ -3,24 +3,30 @@
 .blogSection {
 	min-height: 100lvh;
 	margin-top: $header-height;
-	padding: $space-80 0;
+	padding: $space-140 0;
 	opacity: 0;
 	will-change: opacity;
 }
 
 .title {
 	line-height: 1;
-	max-width: 1000px;
+	text-align: center;
+	margin-bottom: $space-80;
 
-	span {
+	strong {
+		font-weight: 700;
+	}
+
+	em {
 		color: var(--content-color-2);
+		font-weight: 600;
 	}
 }
 
 .postList {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: $space-30;
+	gap: 30px;
 }
 
 @media (max-width: $tablet) {

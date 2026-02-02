@@ -1,4 +1,5 @@
 import BlogSection from '~/components/sections/blog-section'
+import ContactSection from '~/components/sections/contact-section'
 import { type Blog, type ContentfulTag } from '~/graphql/__generated/sdk'
 import { type MetaFunction } from '@netlify/remix-runtime'
 import { client } from '~/services/contentful.server'
@@ -9,12 +10,13 @@ import { useMemo } from 'react'
 export async function loader() {
 	const page = await client.getPageBySlug('blog')
 	const blogs = await client.getAllBlogs('publishDate_DESC')
+	const contactSection = await client.getContactSection('Contact - Default')
 
 	if (!page) {
 		throw new Response('Not Found', { status: 404 })
 	}
 
-	return json({ blogs, page })
+	return json({ blogs, contactSection, page })
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
@@ -42,7 +44,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 }
 
 export default function BlogPage() {
-	const { blogs } = useLoaderData<typeof loader>()
+	const { blogs, contactSection } = useLoaderData<typeof loader>()
 
 	const tags = useMemo(() => {
 		const uniqueTags: ContentfulTag[] = []
@@ -58,5 +60,10 @@ export default function BlogPage() {
 		return uniqueTags
 	}, [blogs])
 
-	return <BlogSection posts={blogs} tags={tags} />
+	return (
+		<>
+			<BlogSection posts={blogs} tags={tags} />
+			<ContactSection data={contactSection} />
+		</>
+	)
 }

@@ -86,13 +86,13 @@
 	align-items: start;
 	padding: $space-40;
 	transition: all 0.4s ease-out;
-	transform: translateY(20px);
+	transform: translateY($space-20);
 	opacity: 0;
 	visibility: hidden;
 }
 
 .articleCard {
-	border-radius: 20px;
+	border-radius: $space-20;
 	overflow: hidden;
 	position: relative;
 	z-index: 1;
@@ -113,7 +113,7 @@
 .articleTitle {
 	font-size: 45px;
 	font-weight: 500;
-	margin-bottom: 20px;
+	margin-bottom: $space-20;
 
 	@media (max-width: $tablet) {
 		font-size: 32px;

@@ -20,6 +20,7 @@ type ArticleCardProps = {
 	forceDescription?: boolean
 	horizontal?: boolean
 	isBig?: boolean
+	viewArticleText?: string
 }
 
 export default function ArticleCard({
@@ -28,6 +29,7 @@ export default function ArticleCard({
 	forceDescription,
 	horizontal,
 	isBig,
+	viewArticleText = 'View Article',
 }: ArticleCardProps) {
 	const navigate = useNavigate()
 	const [isImageLoaded, setIsImageLoaded] = useState(false)
@@ -72,6 +74,12 @@ export default function ArticleCard({
 						src={data.image}
 					/>
 				)}
+				{/* View Project Overlay */}
+				{viewArticleText && (
+					<div className={styles.viewArticleOverlay}>
+						<p className={styles.viewArticleText}>{viewArticleText}</p>
+					</div>
+				)}
 			</div>
 			<div className={styles.content}>
 				{data.eyebrow && <p className="badge mb-12">{data.eyebrow}</p>}
@@ -92,7 +100,8 @@ export default function ArticleCard({
 									key={tag}
 									onClick={(e) => {
 										e.preventDefault()
-										handleTagClick(tag)
+										// Enable this when filtering is implemented
+										// handleTagClick(tag)
 									}}
 								>
 									{tag}

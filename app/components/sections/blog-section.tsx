@@ -15,6 +15,8 @@ type BlogSectionProps = {
 
 export default function BlogSection({ posts, tags }: BlogSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
+	const titleRef = useRef<HTMLHeadingElement>(null)
+	const postListRef = useRef<HTMLDivElement>(null)
 
 	const [searchParams, setSearchParams] = useSearchParams()
 	const [filteredPosts, setFilteredPosts] = useState<Blog[]>(posts)
@@ -27,10 +29,6 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 		setSelectedTags((prev) =>
 			prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
 		)
-	}
-
-	const clearTags = () => {
-		setSelectedTags([])
 	}
 
 	// Update URL parameters when filters change
@@ -66,32 +64,56 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 		setFilteredPosts(filtered)
 	}, [selectedTags, posts])
 
-	useGSAP(() => {
-		const section = sectionRef.current
-		if (!section) return
+	useGSAP(
+		() => {
+			const section = sectionRef.current
+			const title = titleRef.current
+			const postList = postListRef.current
 
-		gsap.to(section, {
-			duration: 1,
-			opacity: 1,
-		})
-	}, [])
+			if (!section) return
+
+			gsap.to(section, {
+				duration: 1,
+				opacity: 1,
+			})
+
+			if (title && postList) {
+				gsap.fromTo(
+					postList,
+					{ y: 800 },
+					{
+						scrollTrigger: {
+							end: 'bottom top',
+							scrub: true,
+							start: 'top bottom',
+							trigger: section,
+						},
+						y: -400,
+					},
+				)
+
+				gsap.fromTo(
+					title,
+					{ y: 150 },
+					{
+						scrollTrigger: {
+							end: 'bottom top',
+							scrub: true,
+							start: 'top bottom',
+							trigger: section,
+						},
+						y: -100,
+					},
+				)
+			}
+		},
+		{ scope: sectionRef },
+	)
 
 	return (
 		<section className={styles.blogSection} ref={sectionRef}>
 			<div className="container">
-				<h1 className="h4 mb-40">Search insights by topics</h1>
-
-				<div className={styles.tagList}>
-					<button
-						className={clsx(
-							styles.tag,
-							selectedTags.length === 0 && styles.active,
-						)}
-						onClick={clearTags}
-					>
-						All
-					</button>
-
+				{/* <div className={styles.tagList}>
 					{tags.map((tag) => {
 						if (!tag.name) return null
 						return (
@@ -107,12 +129,23 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 							</button>
 						)
 					})}
-				</div>
+				</div> */}
 
-				<div className={styles.postList}>
+				<h1 className={clsx(styles.title, 'h2')} ref={titleRef}>
+					<strong>Latest</strong> <em>Blogs</em>
+				</h1>
+
+				<div className={styles.postList} ref={postListRef}>
 					{filteredPosts.map(normalizeSlide).map((post) => {
 						if (!post) return null
-						return <ArticleCard data={post} forceDescription key={post.id} />
+						return (
+							<ArticleCard
+								data={post}
+								forceDescription
+								key={post.id}
+								viewArticleText="View Post"
+							/>
+						)
 					})}
 				</div>
 			</div>

@@ -13,6 +13,20 @@ import {
 	TEXT_REVEAL_SECTION_FRAGMENT,
 } from './fragments'
 
+import { CONTACT_SECTION_FRAGMENT } from './fragments'
+import { gql } from 'graphql-request'
+
+export const GET_CONTACT_SECTION_QUERY = gql`
+	query GetContactSection($internalName: String) {
+		contactSectionCollection(where: { internalName: $internalName }, limit: 1) {
+			items {
+				...ContactSectionFields
+			}
+		}
+	}
+	${CONTACT_SECTION_FRAGMENT}
+`
+
 export const GET_PAGE_BY_SLUG_QUERY = gql`
 	query GetPageBySlug($slug: String) {
 		pageCollection(where: { slug: $slug }, limit: 1) {

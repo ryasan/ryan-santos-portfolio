@@ -2,20 +2,27 @@
   aspect-ratio: 13/9;
   width: 100%;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 20px;
+  position: relative;
 }
 .articleImage img {
   width: 100%;
   height: 100%;
-  transition: transform 0.4s ease;
+  transition: all 0.4s ease;
   object-fit: cover;
 }
 
 .articleCard {
+  border: 1px solid rgba(var(--content-color-rgb, 255, 255, 255), 0.1);
+  border-radius: 20px;
+  padding: 16px;
   width: 100%;
   color: var(--content-color);
-  transition: opacity 0.2s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  background-color: var(--background-primary-color);
+  position: relative;
+  overflow: hidden;
 }
 .articleCard.loading {
   opacity: 0;
@@ -23,8 +30,36 @@
 .articleCard.loaded {
   opacity: 1;
 }
+.articleCard:hover {
+  border: 1px solid rgba(var(--content-color-rgb, 255, 255, 255), 0.2);
+}
 .articleCard:hover .articleImage img {
-  transform: scale(1.1);
+  filter: blur(3px) grayscale(50%) brightness(0.5);
+}
+.articleCard:hover .viewArticleOverlay {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%);
+}
+
+.viewArticleOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 20px));
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease-out;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.viewArticleText {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .description {
@@ -63,9 +98,6 @@
   padding: 6px 16px;
   text-transform: lowercase;
   transition: 0.2s ease;
-}
-.tag:hover {
-  border-color: var(--content-color);
 }
 
 @media screen and (max-width: 768px) {
