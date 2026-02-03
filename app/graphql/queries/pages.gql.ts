@@ -5,16 +5,13 @@ import {
 	CONTACT_SECTION_FRAGMENT,
 	EXPERIENCE_SECTION_FRAGMENT,
 	FEATURED_ARTICLES_SECTION_FRAGMENT,
-	HERO_SECTION_FRAGMENT,
 	HERO_CUBE_SECTION_FRAGMENT,
+	HERO_SECTION_FRAGMENT,
 	MARQUEE_SECTION_FRAGMENT,
 	SEO_METADATA_FRAGMENT,
 	SOCIAL_SECTION_FRAGMENT,
 	TEXT_REVEAL_SECTION_FRAGMENT,
 } from './fragments'
-
-import { CONTACT_SECTION_FRAGMENT } from './fragments'
-import { gql } from 'graphql-request'
 
 export const GET_CONTACT_SECTION_QUERY = gql`
 	query GetContactSection($internalName: String) {
@@ -44,8 +41,8 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 						...ContactSectionFields
 						...ExperienceSectionFields
 						...FeaturedArticlesSectionFields
-						...HeroSectionFields
 						...HeroCubeSectionFields
+						...HeroSectionFields
 						...MarqueeSectionFields
 						...SocialSectionFields
 						...TextRevealSectionFields
@@ -59,8 +56,8 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 	${CONTACT_SECTION_FRAGMENT}
 	${EXPERIENCE_SECTION_FRAGMENT}
 	${FEATURED_ARTICLES_SECTION_FRAGMENT}
-	${HERO_SECTION_FRAGMENT}
 	${HERO_CUBE_SECTION_FRAGMENT}
+	${HERO_SECTION_FRAGMENT}
 	${MARQUEE_SECTION_FRAGMENT}
 	${SEO_METADATA_FRAGMENT}
 	${SOCIAL_SECTION_FRAGMENT}
