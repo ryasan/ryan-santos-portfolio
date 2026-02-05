@@ -14,7 +14,7 @@
 }
 
 .articleCard {
-  border: 1px solid rgba(var(--content-color-rgb, 255, 255, 255), 0.1);
+  border: 1px solid var(--content-color-2);
   border-radius: 20px;
   padding: 16px;
   width: 100%;
@@ -31,10 +31,10 @@
   opacity: 1;
 }
 .articleCard:hover {
-  border: 1px solid rgba(var(--content-color-rgb, 255, 255, 255), 0.2);
+  border-color: var(--content-color);
 }
 .articleCard:hover .articleImage img {
-  filter: blur(3px) grayscale(50%) brightness(0.5);
+  filter: grayscale(50%) brightness(0.5);
 }
 .articleCard:hover .viewArticleOverlay {
   opacity: 1;
@@ -92,7 +92,7 @@
 .tag {
   align-items: center;
   border-radius: 100px;
-  border: 1px solid var(--line-color);
+  border: 1px solid var(--content-color-2);
   display: flex;
   justify-content: center;
   padding: 6px 16px;

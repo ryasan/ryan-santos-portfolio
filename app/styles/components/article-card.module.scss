@@ -18,7 +18,7 @@
 }
 
 .articleCard {
-	border: 1px solid rgba(var(--content-color-rgb, 255, 255, 255), 0.1);
+	border: 1px solid var(--content-color-2);
 	border-radius: $space-20;
 	padding: $space-16;
 	width: 100%;
@@ -37,10 +37,12 @@
 	}
 
 	&:hover {
-		border: 1px solid rgba(var(--content-color-rgb, 255, 255, 255), 0.2);
+		border-color: var(--content-color);
 
-		.articleImage img {
-			filter: blur(3px) grayscale(50%) brightness(0.5);
+		.articleImage {
+			img {
+				filter: grayscale(50%) brightness(0.5);
+			}
 		}
 
 		.viewArticleOverlay {
@@ -101,7 +103,7 @@
 .tag {
 	align-items: center;
 	border-radius: 100px;
-	border: 1px solid var(--line-color);
+	border: 1px solid var(--content-color-2);
 	display: flex;
 	justify-content: center;
 	padding: 6px 16px;
