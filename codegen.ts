@@ -5,6 +5,11 @@ dotenv.config()
 
 const CONTENTFUL_SPACE_ID = process.env.VITE_CONTENTFUL_SPACE_ID
 const CONTENTFUL_ACCESS_TOKEN = process.env.VITE_CONTENTFUL_ACCESS_TOKEN
+const CONTENTFUL_ENVIRONMENT = process.env.VITE_CONTENTFUL_ENVIRONMENT
+
+if (!CONTENTFUL_SPACE_ID || !CONTENTFUL_ACCESS_TOKEN || !CONTENTFUL_ENVIRONMENT) {
+	throw new Error('Contentful space ID, access token, and environment must be provided.')
+}
 
 const config: CodegenConfig = {
 	generates: {
@@ -29,7 +34,7 @@ const config: CodegenConfig = {
 	overwrite: true,
 	schema: [
 		{
-			[`https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}/environments/master`]:
+			[`https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}/environments/${CONTENTFUL_ENVIRONMENT}`]:
 				{
 					headers: {
 						Authorization: `Bearer ${CONTENTFUL_ACCESS_TOKEN}`,

@@ -16,9 +16,11 @@ import {
 
 const CONTENTFUL_SPACE_ID = import.meta.env.VITE_CONTENTFUL_SPACE_ID
 const CONTENTFUL_ACCESS_TOKEN = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN
+const CONTENTFUL_ENVIRONMENT =
+	import.meta.env.VITE_CONTENTFUL_ENVIRONMENT
 
-if (!CONTENTFUL_SPACE_ID || !CONTENTFUL_ACCESS_TOKEN) {
-	throw new Error('Contentful space ID and access token must be provided.')
+if (!CONTENTFUL_SPACE_ID || !CONTENTFUL_ACCESS_TOKEN || !CONTENTFUL_ENVIRONMENT) {
+	throw new Error('Contentful space ID, access token, and environment must be provided.')
 }
 
 // async function fetchFileAsBuffer(url: string): Promise<Buffer> {
@@ -27,7 +29,7 @@ if (!CONTENTFUL_SPACE_ID || !CONTENTFUL_ACCESS_TOKEN) {
 // }
 
 async function apiCall(query: string, variables?: any) {
-	const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}/environments/master`
+	const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}/environments/${CONTENTFUL_ENVIRONMENT}`
 	const options = {
 		body: JSON.stringify({ query, variables }),
 		headers: {
