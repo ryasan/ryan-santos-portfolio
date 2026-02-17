@@ -14,7 +14,7 @@
 }
 
 .articleCard {
-  border: 1px solid var(--content-color-2);
+  border: 1px solid var(--line-color);
   border-radius: 20px;
   padding: 16px;
   width: 100%;
