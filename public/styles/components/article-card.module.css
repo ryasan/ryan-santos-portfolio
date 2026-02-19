@@ -1,28 +1,29 @@
 .articleImage {
   aspect-ratio: 13/9;
-  width: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   overflow: hidden;
-  border-radius: 12px;
-  margin-bottom: 20px;
   position: relative;
+  transition: all 0.4s ease;
+  width: 100%;
 }
 .articleImage img {
   width: 100%;
   height: 100%;
-  transition: all 0.4s ease;
   object-fit: cover;
 }
 
 .articleCard {
-  border: 1px solid var(--line-color);
-  border-radius: 20px;
-  padding: 16px;
-  width: 100%;
-  color: var(--content-color);
-  transition: all 0.4s ease-in-out;
   background-color: var(--background-primary-color);
-  position: relative;
+  border-radius: 20px;
+  border: 1px solid var(--line-color);
+  color: var(--content-color);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  position: relative;
+  transition: all 0.4s ease;
+  width: 100%;
 }
 .articleCard.loading {
   opacity: 0;
@@ -30,36 +31,35 @@
 .articleCard.loaded {
   opacity: 1;
 }
-.articleCard:hover {
+.articleCard:hover:not(:has(.tag:hover)) {
   border-color: var(--content-color);
 }
-.articleCard:hover .articleImage img {
-  filter: grayscale(50%) brightness(0.5);
-}
-.articleCard:hover .viewArticleOverlay {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, -50%);
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  padding: 20px;
 }
 
-.viewArticleOverlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, calc(-50% + 20px));
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.4s ease-out;
-  z-index: 2;
-  pointer-events: none;
+.eyebrow {
+  color: var(--content-color-2);
+  font-size: 14px;
+}
+@media (max-width: 768px) {
+  .eyebrow {
+    font-size: 12px;
+  }
 }
 
-.viewArticleText {
-  color: #fff;
+.title {
   font-size: 24px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+}
+@media (max-width: 768px) {
+  .title {
+    font-size: 20px;
+  }
 }
 
 .description {
@@ -87,17 +87,23 @@
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
+  margin-top: auto;
 }
 
 .tag {
   align-items: center;
   border-radius: 100px;
-  border: 1px solid var(--content-color-2);
+  border: 1px solid var(--line-color);
+  color: var(--content-color-2);
   display: flex;
   justify-content: center;
   padding: 6px 16px;
   text-transform: lowercase;
-  transition: 0.2s ease;
+  transition: all 0.4s ease;
+}
+.tag:hover {
+  border-color: var(--content-color);
+  color: var(--content-color);
 }
 
 @media screen and (max-width: 768px) {

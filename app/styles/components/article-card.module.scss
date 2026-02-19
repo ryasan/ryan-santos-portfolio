@@ -3,30 +3,31 @@
 
 .articleImage {
 	aspect-ratio: 13 / 9;
-	width: 100%;
+	border-top-left-radius: $space-12;
+	border-top-right-radius: $space-12;
 	overflow: hidden;
-	border-radius: $space-12;
-	margin-bottom: $space-20;
 	position: relative;
+	transition: all 0.4s ease;
+	width: 100%;
 
 	img {
 		width: 100%;
 		height: 100%;
-		transition: all 0.4s ease;
 		object-fit: cover;
 	}
 }
 
 .articleCard {
-	border: 1px solid var(--line-color);
-	border-radius: $space-20;
-	padding: $space-16;
-	width: 100%;
-	color: var(--content-color);
-	transition: all 0.4s ease-in-out;
 	background-color: var(--background-primary-color);
-	position: relative;
+	border-radius: $space-20;
+	border: 1px solid var(--line-color);
+	color: var(--content-color);
+	display: flex;
+	flex-direction: column;
 	overflow: hidden;
+	position: relative;
+	transition: all 0.4s ease;
+	width: 100%;
 
 	&.loading {
 		opacity: 0;
@@ -36,41 +37,34 @@
 		opacity: 1;
 	}
 
-	&:hover {
+	&:hover:not(:has(.tag:hover)) {
 		border-color: var(--content-color);
-
-		.articleImage {
-			img {
-				filter: grayscale(50%) brightness(0.5);
-			}
-		}
-
-		.viewArticleOverlay {
-			opacity: 1;
-			visibility: visible;
-			transform: translate(-50%, -50%);
-		}
 	}
 }
 
-.viewArticleOverlay {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, calc(-50% + 20px));
-	opacity: 0;
-	visibility: hidden;
-	transition: all 0.4s ease-out;
-	z-index: 2;
-	pointer-events: none;
+.content {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	min-height: 0;
+	padding: $space-20;
 }
 
-.viewArticleText {
-	color: #fff;
+.eyebrow {
+	color: var(--content-color-2);
+	font-size: 14px;
+
+	@media (max-width: $tablet) {
+		font-size: 12px;
+	}
+}
+
+.title {
 	font-size: 24px;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
+
+	@media (max-width: $tablet) {
+		font-size: 20px;
+	}
 }
 
 .description {
@@ -98,21 +92,24 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: $space-4;
+	margin-top: auto;
 }
 
 .tag {
 	align-items: center;
 	border-radius: 100px;
-	border: 1px solid var(--content-color-2);
+	border: 1px solid var(--line-color);
+	color: var(--content-color-2);
 	display: flex;
 	justify-content: center;
 	padding: 6px 16px;
 	text-transform: lowercase;
-	transition: 0.2s ease;
+	transition: all 0.4s ease;
 
-	// &:hover {
-	// 	border-color: var(--content-color);
-	// }
+	&:hover {
+		border-color: var(--content-color);
+		color: var(--content-color);
+	}
 }
 
 @media screen and (max-width: $tablet) {

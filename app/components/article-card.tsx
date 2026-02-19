@@ -20,7 +20,6 @@ type ArticleCardProps = {
 	forceDescription?: boolean
 	horizontal?: boolean
 	isBig?: boolean
-	viewArticleText?: string
 }
 
 export default function ArticleCard({
@@ -29,7 +28,6 @@ export default function ArticleCard({
 	forceDescription,
 	horizontal,
 	isBig,
-	viewArticleText = 'View Article',
 }: ArticleCardProps) {
 	const navigate = useNavigate()
 	const [isImageLoaded, setIsImageLoaded] = useState(false)
@@ -40,7 +38,7 @@ export default function ArticleCard({
 	const handleTagClick = (tag: string) => {
 		if (!tag || !data.type) return
 
-		const searchParams = new URLSearchParams({ tag })
+		const searchParams = new URLSearchParams({ tags: tag })
 		const path = `/${data.type}?${searchParams.toString()}`
 		navigate(path)
 	}
@@ -74,18 +72,12 @@ export default function ArticleCard({
 						src={data.image}
 					/>
 				)}
-				{/* View Project Overlay */}
-				{viewArticleText && (
-					<div className={styles.viewArticleOverlay}>
-						<p className={styles.viewArticleText}>{viewArticleText}</p>
-					</div>
-				)}
 			</div>
 			<div className={styles.content}>
-				{data.eyebrow && <p className="badge mb-12">{data.eyebrow}</p>}
-				{data.title && <h3 className="h5 mb-16">{data.title}</h3>}
+				{data.eyebrow && <p className={clsx('badge mb-12', styles.eyebrow)}>{data.eyebrow}</p>}
+				{data.title && <h3 className={clsx('h6 mb-12', styles.title)}>{data.title}</h3>}
 				{data.description && (horizontal || forceDescription) && (
-					<p className={clsx('body mb-16', styles.description)}>
+					<p className={clsx('body mb-20', styles.description)}>
 						{data.description}
 					</p>
 				)}
@@ -100,7 +92,7 @@ export default function ArticleCard({
 									key={tag}
 									onClick={(e) => {
 										e.preventDefault()
-										// Enable this when filtering is implemented
+										// Uncomment this when filtering is implemented
 										// handleTagClick(tag)
 									}}
 								>

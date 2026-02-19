@@ -143,7 +143,6 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 								data={post}
 								forceDescription
 								key={post.id}
-								viewArticleText="View Post"
 							/>
 						)
 					})}
