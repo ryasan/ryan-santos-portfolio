@@ -2,7 +2,6 @@ import Link from '~/components/link'
 import clsx from 'clsx'
 import styles from '~/styles/components/rich-text.module.scss'
 import CodeBlock from '~/components/code-block'
-import ClientOnly from '~/components/client-only'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
@@ -16,49 +15,48 @@ export default function Markdown({ className, content }: MarkdownProps) {
 		return null
 	}
 
+	return null;
+
 	return (
-		<ClientOnly>
-			<div className={clsx(styles.richText, className)}>
-				<ReactMarkdown
-					components={{
-						a({ children, href }) {
-							if (!href) {
-								return <span>{children}</span>
-							}
+		<div className={clsx(styles.richText, className)}>
+			<ReactMarkdown
+				components={{
+					a({ children, href }) {
+						if (!href) {
+							return <span>{children}</span>
+						}
 
-							return (
-								<Link inline to={href}>
-									{children}
-								</Link>
-							)
-						},
-						code({ children, className: codeClassName }) {
-							const match = /language-(\w+)/.exec(codeClassName || '')
-							const codeString = String(children).replace(/\n$/, '')
+						return (
+							<Link inline to={href}>
+								{children}
+							</Link>
+						)
+					},
+					code({ children, className: codeClassName }) {
+						const match = /language-(\w+)/.exec(codeClassName || '')
+						const codeString = String(children).replace(/\n$/, '')
 
-							if (match) {
-								return <CodeBlock language={match[1]} value={codeString} />
-							}
+						if (match) {
+							return <CodeBlock language={match[1]} value={codeString} />
+						}
 
-							return <CodeBlock language="plaintext" value={codeString} />
-						},
-						pre({ children }) {
-							return <>{children}</>
-						},
-						table({ children }) {
-							return (
-								<div className={styles.tableWrapper}>
-									<table>{children}</table>
-								</div>
-							)
-						},
-					}}
-					remarkPlugins={[remarkGfm]}
-				>
-					{content}
-				</ReactMarkdown>
-			</div>
-		</ClientOnly>
-
+						return <CodeBlock language="plaintext" value={codeString} />
+					},
+					pre({ children }) {
+						return <>{children}</>
+					},
+					table({ children }) {
+						return (
+							<div className={styles.tableWrapper}>
+								<table>{children}</table>
+							</div>
+						)
+					},
+				}}
+				remarkPlugins={[remarkGfm]}
+			>
+				{content}
+			</ReactMarkdown>
+		</div>
 	)
 }
