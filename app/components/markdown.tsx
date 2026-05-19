@@ -17,8 +17,8 @@ export default function Markdown({ className, content }: MarkdownProps) {
 	}
 
 	return (
-		<div className={clsx(styles.richText, className)}>
-			<ClientOnly>
+		<ClientOnly>
+			<div className={clsx(styles.richText, className)}>
 				<ReactMarkdown
 					components={{
 						a({ children, href }) {
@@ -57,7 +57,8 @@ export default function Markdown({ className, content }: MarkdownProps) {
 				>
 					{content}
 				</ReactMarkdown>
-			</ClientOnly>
-		</div>
+			</div>
+		</ClientOnly>
+
 	)
 }
