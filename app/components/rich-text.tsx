@@ -47,10 +47,16 @@ const renderOptions = {
 		[INLINES.ENTRY_HYPERLINK]: (node: any, children: React.ReactNode) => {
 			// Handle links to other Contentful entries
 			const entryId = node.data.target.sys.id
-			return <Link to={`/entry/${entryId}`}>{children}</Link>
+			return (
+				<Link inline to={`/entry/${entryId}`}>
+					{children}
+				</Link>
+			)
 		},
 		[INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => (
-			<Link to={node.data.uri}>{children}</Link>
+			<Link inline to={node.data.uri}>
+				{children}
+			</Link>
 		),
 	},
 }

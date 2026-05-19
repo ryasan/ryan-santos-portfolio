@@ -7,6 +7,7 @@ import { isExternalLink } from '~/utils'
 type LinkProps = {
 	children: React.ReactNode
 	className?: string
+	inline?: boolean
 	rel?: string
 	target?: string
 	to: string
@@ -15,31 +16,37 @@ type LinkProps = {
 export default function Link({
 	children,
 	className,
+	inline = false,
 	rel = 'noopener noreferrer',
 	target = '_blank',
 	to,
 	...rest
 }: LinkProps) {
 	const isExternal = isExternalLink(to)
+	const linkBoxClass = clsx(
+		inline ? styles.linkBoxInline : styles.linkBox,
+		className,
+	)
+	const linkClass = clsx('link', inline ? styles.linkInline : styles.link)
 
 	if (isExternal) {
 		return (
 			<a
-				className={clsx(styles.linkBox, className)}
+				className={linkBoxClass}
 				href={to}
 				rel={rel}
 				target={target}
 				{...rest}
 			>
-				<span className={clsx('link', styles.link)}>{children}</span>
+				<span className={linkClass}>{children}</span>
 				<ArrowUpRightIcon className={styles.icon} />
 			</a>
 		)
 	}
 
 	return (
-		<RemixLink className={clsx(styles.linkBox, className)} to={to} {...rest}>
-			<span className={clsx('link', styles.link)}>{children}</span>
+		<RemixLink className={linkBoxClass} to={to} {...rest}>
+			<span className={linkClass}>{children}</span>
 		</RemixLink>
 	)
 }

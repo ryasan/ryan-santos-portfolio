@@ -20,6 +20,19 @@
 	}
 }
 
+.linkBoxInline {
+	display: inline-flex;
+	align-items: baseline;
+	height: auto;
+	width: auto;
+	vertical-align: baseline;
+	margin-inline-start: 0.25em;
+}
+
+.linkInline {
+	display: inline;
+}
+
 .linkBox {
 	display: flex;
 	align-items: center;

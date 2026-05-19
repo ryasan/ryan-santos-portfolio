@@ -24,7 +24,11 @@ export default function Markdown({ className, content }: MarkdownProps) {
 							return <span>{children}</span>
 						}
 
-						return <Link to={href}>{children}</Link>
+						return (
+							<Link inline to={href}>
+								{children}
+							</Link>
+						)
 					},
 					code({ children, className: codeClassName }) {
 						const match = /language-(\w+)/.exec(codeClassName || '')
