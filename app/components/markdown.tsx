@@ -15,6 +15,8 @@ export default function Markdown({ className, content }: MarkdownProps) {
 		return null
 	}
 
+	return null;
+
 	return (
 		<div className={clsx(styles.richText, className)}>
 			<ReactMarkdown
