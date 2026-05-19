@@ -1,4 +1,5 @@
 import Avatar from '~/components/avatar'
+import Markdown from '~/components/markdown'
 import RichText from '~/components/rich-text'
 import clsx from 'clsx'
 import gsap from 'gsap'
@@ -116,9 +117,15 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 
 			<div className="container">
 				<div className={styles.layout}>
-					{data?.blogBody?.json && (
+					{(data?.blogBodyMarkdown || data?.blogBody?.json) && (
 						<div className={styles.blogBody}>
-							{data?.blogBody?.json && <RichText data={data?.blogBody?.json} />}
+							{data?.blogBodyMarkdown ? (
+								<Markdown content={data.blogBodyMarkdown} />
+							) : (
+								data?.blogBody?.json && (
+									<RichText data={data.blogBody.json} />
+								)
+							)}
 						</div>
 					)}
 

@@ -32,11 +32,20 @@ const parseCodeString = (code: string) => {
 
 type CodeBlockProps = {
 	code?: React.ReactNode
+	language?: string
+	value?: string
 }
 
-export default function CodeBlock({ code }: CodeBlockProps) {
+export default function CodeBlock({
+	code,
+	language: languageProp,
+	value,
+}: CodeBlockProps) {
 	const [copySuccess, setCopySuccess] = useState(false)
-	const { language, parsedCode } = parseCodeString(String(code))
+	const { language, parsedCode } =
+		languageProp != null && value != null
+			? { language: languageProp, parsedCode: value }
+			: parseCodeString(String(code))
 
 	const theme = useTheme()
 	const style = theme === 'dark' ? atomDark : oneLight
