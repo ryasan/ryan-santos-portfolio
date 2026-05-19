@@ -47,6 +47,7 @@ export const BLOG_FRAGMENT = gql`
 		author {
 			...PersonFields
 		}
+		blogBodyMarkdown
 		blogBody {
 			json
 		}
