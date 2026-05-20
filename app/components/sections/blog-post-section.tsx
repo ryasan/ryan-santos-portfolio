@@ -1,6 +1,5 @@
 import Avatar from '~/components/avatar'
 import ClientOnly from '~/components/client-only'
-import Markdown from '~/components/markdown'
 import RichText from '~/components/rich-text'
 import clsx from 'clsx'
 import gsap from 'gsap'
@@ -11,7 +10,9 @@ import { formatDate } from '~/utils'
 import { type Blog } from '~/graphql/__generated/sdk'
 import { useGSAP } from '@gsap/react'
 import { useLocation, useNavigate } from '@remix-run/react'
-import { useRef, useState } from 'react'
+import { useRef, useState, lazy, Suspense } from 'react'
+
+const Markdown = lazy(() => import('~/components/markdown'))
 
 type BlogPostSectionProps = {
 	data?: Blog
@@ -118,8 +119,9 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 						<div className={styles.blogBody}>
 							{data?.blogBodyMarkdown ? (
 								<ClientOnly>
-									<></>
-									{/* <Markdown content={data.blogBodyMarkdown} /> */}
+									<Suspense fallback={null}>
+										<Markdown content={data.blogBodyMarkdown} />
+									</Suspense>
 								</ClientOnly>
 							) : (
 								data?.blogBody?.json && (
