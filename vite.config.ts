@@ -10,9 +10,6 @@ export default defineConfig(async () => {
 		build: {
 			cssMinify: process.env.NODE_ENV === 'production',
 		},
-		ssr: {
-			noExternal: ['react-markdown', 'remark-gfm', 'react-syntax-highlighter', /^vfile.*/, /^unist.*/, /^mdast.*/, /^micromark.*/, /^decode-named-character-reference.*/, /^character-entities.*/, /^property-information.*/, /^hast.*/, /^space-separated-tokens.*/, /^comma-separated-tokens.*/],
-		},
 		plugins: [
 			remix({
 				future: {
