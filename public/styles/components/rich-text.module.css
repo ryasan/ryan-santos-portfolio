@@ -65,6 +65,13 @@
 }
 .richText li {
   line-height: 1.8;
+  font-size: 20px;
+  color: var(--content-color-2);
+}
+@media (max-width: 768px) {
+  .richText li {
+    font-size: 16px;
+  }
 }
 .richText blockquote {
   border-left: 4px solid var(--line-color);
