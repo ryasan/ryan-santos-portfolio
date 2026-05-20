@@ -1,9 +1,9 @@
-import Link from '~/components/link'
-import clsx from 'clsx'
-import styles from '~/styles/components/rich-text.module.scss'
 import CodeBlock from '~/components/code-block'
+import Link from '~/components/link'
 import ReactMarkdown from 'react-markdown'
+import clsx from 'clsx'
 import remarkGfm from 'remark-gfm'
+import styles from '~/styles/components/rich-text.module.scss'
 
 type MarkdownProps = {
 	className?: string

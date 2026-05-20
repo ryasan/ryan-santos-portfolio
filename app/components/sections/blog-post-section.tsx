@@ -1,17 +1,14 @@
 import Avatar from '~/components/avatar'
+import ClientOnly from '~/components/client-only'
 import Markdown from '~/components/markdown'
 import RichText from '~/components/rich-text'
 import clsx from 'clsx'
 import gsap from 'gsap'
 import linkStyles from '~/styles/components/link.module.scss'
 import styles from '~/styles/components/sections/blog-post-section.module.scss'
-import { ArrowLeftIcon,
-	TwitterIcon,
-	FacebookIcon,
-	LinkedinIcon,
-	CopySimpleIcon } from '~/components/icons'
-import { type Blog } from '~/graphql/__generated/sdk'
+import { ArrowLeftIcon, TwitterIcon, FacebookIcon, LinkedinIcon, CopySimpleIcon } from '~/components/icons'
 import { formatDate } from '~/utils'
+import { type Blog } from '~/graphql/__generated/sdk'
 import { useGSAP } from '@gsap/react'
 import { useLocation, useNavigate } from '@remix-run/react'
 import { useRef, useState } from 'react'
@@ -120,7 +117,9 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 					{(data?.blogBodyMarkdown || data?.blogBody?.json) && (
 						<div className={styles.blogBody}>
 							{data?.blogBodyMarkdown ? (
-								<Markdown content={data.blogBodyMarkdown} />
+								<ClientOnly>
+									<Markdown content={data.blogBodyMarkdown} />
+								</ClientOnly>
 							) : (
 								data?.blogBody?.json && (
 									<RichText data={data.blogBody.json} />
