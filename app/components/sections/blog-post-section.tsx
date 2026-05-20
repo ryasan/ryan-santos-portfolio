@@ -118,7 +118,8 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 						<div className={styles.blogBody}>
 							{data?.blogBodyMarkdown ? (
 								<ClientOnly>
-									<Markdown content={data.blogBodyMarkdown} />
+									<></>
+									{/* <Markdown content={data.blogBodyMarkdown} /> */}
 								</ClientOnly>
 							) : (
 								data?.blogBody?.json && (
