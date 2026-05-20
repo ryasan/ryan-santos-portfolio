@@ -15,32 +15,42 @@ export default function Markdown({ className, content }: MarkdownProps) {
 		return null
 	}
 
-	return null;
-
 	return (
 		<div className={clsx(styles.richText, className)}>
 			<ReactMarkdown
 				components={{
-					a({ children, href }) {
+					a({ children, href, ...props }) {
 						if (!href) {
 							return <span>{children}</span>
 						}
 
 						return (
-							<Link inline to={href}>
+							<Link inline to={href} {...props}>
 								{children}
 							</Link>
 						)
 					},
-					code({ children, className: codeClassName }) {
+					code({ children, className: codeClassName, node, ...props }) {
 						const match = /language-(\w+)/.exec(codeClassName || '')
 						const codeString = String(children).replace(/\n$/, '')
 
 						if (match) {
-							return <CodeBlock language={match[1]} value={codeString} />
+							return (
+								<CodeBlock
+									language={match[1]}
+									value={codeString}
+									{...props}
+								/>
+							)
 						}
 
-						return <CodeBlock language="plaintext" value={codeString} />
+						return (
+							<CodeBlock
+								language="plaintext"
+								value={codeString}
+								{...props}
+							/>
+						)
 					},
 					pre({ children }) {
 						return <>{children}</>

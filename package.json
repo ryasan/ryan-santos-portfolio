@@ -2,7 +2,7 @@
   "name": "ryan-santos-portfolio",
   "private": true,
   "sideEffects": false,
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "build": "npm run codegen && npm run typecheck && npm run build:css && remix vite:build",
     "build:css": "sass app/styles/:public/styles",
