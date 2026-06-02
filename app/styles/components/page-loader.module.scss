@@ -1,0 +1,32 @@
+@import '../base/variables';
+
+.loader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--background-primary-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: $z-index-above-all;
+	pointer-events: all;
+	transition: none !important;
+
+	* {
+		transition: none !important;
+	}
+}
+
+.percentage {
+	font-family: $heading-font-family;
+	font-size: 175px;
+	font-weight: 500;
+	color: var(--content-color-2);
+	letter-spacing: -0.04em;
+
+	@media (max-width: $tablet) {
+		font-size: 100px;
+	}
+}

@@ -1,4 +1,5 @@
 import JumpLinks from '~/components/jump-links'
+import PageLoader from '~/components/page-loader'
 import SectionRenderer from '~/components/section-renderer'
 import  { type MetaFunction } from '@netlify/remix-runtime'
 import { type PagePageSectionsItem } from '~/graphql/__generated/sdk'
@@ -58,6 +59,7 @@ export default function Index() {
 
 	return (
 		<>
+			<PageLoader />
 			{sections?.map((section: PagePageSectionsItem) => {
 				if (!section?.sys?.id) return null
 				return (
