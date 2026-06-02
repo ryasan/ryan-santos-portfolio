@@ -2,12 +2,18 @@ import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { useEffect, useRef, useState } from 'react'
 import Teleport from '~/components/teleport'
+import { useTheme } from '~/hooks/use-theme'
 import styles from '~/styles/components/page-loader.module.scss'
 
 export default function PageLoader() {
 	const [percentage, setPercentage] = useState(0)
 	const [isMounted, setIsMounted] = useState(false)
+	const theme = useTheme()
 	const loaderRef = useRef<HTMLDivElement>(null)
+	const leftHalfRef = useRef<HTMLDivElement>(null)
+	const rightHalfRef = useRef<HTMLDivElement>(null)
+	const cutLineRef = useRef<HTMLDivElement>(null)
+	const percentageTextRef = useRef<HTMLDivElement>(null)
 	const percentageRef = useRef<{ value: number }>({ value: 0 })
 	const stepsRef = useRef<number[]>([0])
 
@@ -30,7 +36,7 @@ export default function PageLoader() {
 			const tl = gsap.timeline()
 
 			tl.to(percentageRef.current, {
-				duration: 0.5,
+				duration: 0.8,
 				ease: 'power2.inOut',
 				onUpdate: () => {
 					const value = percentageRef.current.value
@@ -44,15 +50,64 @@ export default function PageLoader() {
 				value: 100,
 			})
 
-			tl.to(loaderRef.current, {
+			// 1. Fade out percentage text
+			tl.to(percentageTextRef.current, {
 				autoAlpha: 0,
-				duration: 0.8,
+				duration: 0.4,
 				ease: 'power2.inOut',
+			})
+
+			// 2. "Cut" animation - line appears AND clip-path creates a slit
+			tl.to(
+				[cutLineRef.current, loaderRef.current],
+				{
+					clipPath:
+						'polygon(0% 0%, 49.8% 0%, 49.8% 100%, 50.2% 100%, 50.2% 0%, 100% 0%, 100% 100%, 0% 100%)',
+					duration: 0.5,
+					ease: 'power4.inOut',
+					scaleY: 1, // Only applies to cutLineRef
+					stagger: 0,
+				},
+				'-=0.1',
+			)
+
+			// 3. Slide the two halves apart AND widen the clip-path slit to reveal everything
+			tl.to(
+				loaderRef.current,
+				{
+					clipPath:
+						'polygon(0% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 0%, 100% 0%, 100% 100%, 0% 100%)',
+					duration: 1,
+					ease: 'power4.inOut',
+				},
+				'+=0.1',
+			)
+
+			tl.to(
+				[leftHalfRef.current, rightHalfRef.current],
+				{
+					duration: 1,
+					ease: 'power4.inOut',
+					xPercent: (i) => (i === 0 ? -100 : 100),
+				},
+				'<',
+			)
+
+			// 4. Hide the line as they separate
+			tl.to(
+				cutLineRef.current,
+				{
+					autoAlpha: 0,
+					duration: 0.3,
+				},
+				'<',
+			)
+
+			// 5. Final cleanup
+			tl.set(loaderRef.current, {
+				display: 'none',
 				onComplete: () => {
 					document.body.style.overflow = ''
-					if (loaderRef.current) {
-						loaderRef.current.style.display = 'none'
-					}
 				},
 			})
 		},
@@ -61,8 +116,13 @@ export default function PageLoader() {
 
 	return (
 		<Teleport to="body">
-			<div className={styles.loader} ref={loaderRef}>
-				<div className={styles.percentage}>{percentage}%</div>
+			<div className={styles.loader} data-theme={theme} ref={loaderRef}>
+				<div className={styles.half} data-side="left" ref={leftHalfRef} />
+				<div className={styles.half} data-side="right" ref={rightHalfRef} />
+				<div className={styles.percentage} ref={percentageTextRef}>
+					{percentage}%
+				</div>
+				<div className={styles.cutLine} ref={cutLineRef} />
 			</div>
 		</Teleport>
 	)
