@@ -23,7 +23,8 @@
 	font-family: $heading-font-family;
 	font-size: 175px;
 	font-weight: 500;
-	color: var(--content-color-2);
+	color: var(--content-color);
+	opacity: 0.05;
 	letter-spacing: -0.04em;
 
 	@media (max-width: $tablet) {

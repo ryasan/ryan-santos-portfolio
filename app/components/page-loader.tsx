@@ -30,7 +30,7 @@ export default function PageLoader() {
 			const tl = gsap.timeline()
 
 			tl.to(percentageRef.current, {
-				duration: 2.5,
+				duration: 0.5,
 				ease: 'power2.inOut',
 				onUpdate: () => {
 					const value = percentageRef.current.value
