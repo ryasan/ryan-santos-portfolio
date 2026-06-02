@@ -30,8 +30,8 @@ const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 	const { viewport } = useThree()
 
 	// Adjust cube size based on viewport width to fit on mobile screens
-	const responsiveSize = viewport.width * 0.6
-	const cubeSize = Math.min(2.75, responsiveSize)
+	const responsiveSize = viewport.width * 0.48
+	const cubeSize = Math.min(2.2, responsiveSize)
 
 	const txtOffset = cubeSize / 2 + 0.01 // Slightly offset text to avoid z-fighting
 	const contentColor = theme === 'dark' ? WHITE : BLACK
