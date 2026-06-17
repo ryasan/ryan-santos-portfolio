@@ -5,7 +5,7 @@ export async function action({ request }: ActionFunctionArgs) {
 	const formData = await request.formData()
 	const theme = formData.get('theme')
 
-	const validTheme = theme === 'light' || theme === 'dark' ? theme : 'light'
+	const validTheme = theme === 'light' || theme === 'dark' ? theme : 'dark'
 
 	const responseInit = {
 		headers: { 'set-cookie': setTheme(validTheme) },

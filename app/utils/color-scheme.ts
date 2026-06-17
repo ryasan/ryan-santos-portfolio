@@ -2,7 +2,7 @@ import  { type ClientHint } from '~/types/client-hint'
 
 export const clientHint = {
 	cookieName: 'CH-prefers-color-scheme',
-	fallback: 'light',
+	fallback: 'dark',
 	getValueCode: `window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'`,
 	transform(value) {
 		return value === 'dark' ? 'dark' : 'light'
