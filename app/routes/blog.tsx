@@ -27,7 +27,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	const { page } = data
 
 	return [
-		{ title: page.seoMetadata?.title || page.title },
+		{ title: page.seoMetadata?.title || page.title || 'Blog | Ryan Santos' },
 		{
 			content: page.seoMetadata?.description || 'Page description',
 			name: 'description',

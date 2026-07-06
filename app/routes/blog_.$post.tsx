@@ -21,7 +21,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	const { blog } = data
 
 	return [
-		{ title: blog.title },
+		{ title: `${blog.title} - Blog | Ryan Santos` },
 		{
 			content: blog.description,
 			name: 'description',
