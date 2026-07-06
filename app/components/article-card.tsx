@@ -3,11 +3,12 @@ import styles from '~/styles/components/article-card.module.scss'
 import { Link as RemixLink, useNavigate } from '@remix-run/react'
 import { isExternalLink } from '~/utils'
 import { useState } from 'react'
+import { type Asset } from '~/graphql/__generated/sdk'
 
 export type NormalizedArticleCard = {
 	description?: string | null
 	eyebrow?: string | null
-	image?: string | null
+	image?: Asset | null
 	link?: string | null
 	tags?: (string | undefined)[] | null
 	title?: string | null
@@ -59,7 +60,7 @@ export default function ArticleCard({
 			<div className={styles.articleImage}>
 				{data.image && (
 					<img
-						alt={data.title || ''}
+						alt={data.image?.description || ''}
 						className={styles.articleImage}
 						onLoad={() => {
 							setIsImageLoaded(true)
@@ -69,7 +70,7 @@ export default function ArticleCard({
 								setIsImageLoaded(true)
 							}
 						}}
-						src={data.image}
+						src={data.image?.url || ''}
 					/>
 				)}
 			</div>

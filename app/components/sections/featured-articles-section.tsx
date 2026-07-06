@@ -126,9 +126,9 @@ export default function FeaturedArticlesSection({
 											<div className={styles.articleImage}>
 												{article?.image && (
 													<img
-														alt={article.title || ''}
+														alt={article.image?.description || ''}
 														className={styles.articleImage}
-														src={article.image}
+														src={article.image?.url || ''}
 													/>
 												)}
 											</div>

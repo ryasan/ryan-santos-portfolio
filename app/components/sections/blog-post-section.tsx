@@ -106,7 +106,7 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 				<div className="container">
 					<div className={styles.heroImage}>
 						<img
-							alt={data?.openGraphImage?.title || ''}
+							alt={data?.openGraphImage?.description || ''}
 							src={data?.openGraphImage?.url}
 						/>
 					</div>
