@@ -1,10 +1,5 @@
 # Ryan Santos Portfolio - Cursor Rules
 
-## Chat Rules
-
-- Suggest changes in code blocks within chat rather than making changes directly.
-- Always ask before adding, removing, or modifying any files.
-
 ## File Organization
 
 - Keep components in their own folders with index.tsx
