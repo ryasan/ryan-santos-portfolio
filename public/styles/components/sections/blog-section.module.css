@@ -2,8 +2,6 @@
   min-height: 100lvh;
   margin-top: 68px;
   padding: 140px 0;
-  opacity: 0;
-  will-change: opacity;
 }
 
 .title {

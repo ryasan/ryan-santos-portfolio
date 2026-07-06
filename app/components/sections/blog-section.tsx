@@ -1,11 +1,9 @@
 import ArticleCard from '~/components/article-card'
 import clsx from 'clsx'
-import gsap from 'gsap'
 import styles from '~/styles/components/sections/blog-section.module.scss'
 import { type Blog, type ContentfulTag } from '~/graphql/__generated/sdk'
 import { normalizeSlide } from '~/utils/normalize-data'
-import { useEffect, useState, useRef } from 'react'
-import { useGSAP } from '@gsap/react'
+import { useEffect, useState } from 'react'
 import { useSearchParams } from '@remix-run/react'
 
 type BlogSectionProps = {
@@ -13,23 +11,21 @@ type BlogSectionProps = {
 	tags: ContentfulTag[]
 }
 
-export default function BlogSection({ posts, tags }: BlogSectionProps) {
-	const sectionRef = useRef<HTMLElement>(null)
-	const titleRef = useRef<HTMLHeadingElement>(null)
-	const postListRef = useRef<HTMLDivElement>(null)
-
+export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const [filteredPosts, setFilteredPosts] = useState<Blog[]>(posts)
-	const [selectedTags, setSelectedTags] = useState<string[]>(() => {
+	const [selectedTags] = useState<string[]>(() => {
 		const tagsParam = searchParams.get('tags')
 		return tagsParam ? tagsParam.split(',').filter(Boolean) : []
 	})
 
+	/*
 	const toggleTag = (tag: string) => {
 		setSelectedTags((prev) =>
 			prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
 		)
 	}
+	*/
 
 	// Update URL parameters when filters change
 	useEffect(() => {
@@ -64,54 +60,8 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 		setFilteredPosts(filtered)
 	}, [selectedTags, posts])
 
-	useGSAP(
-		() => {
-			const section = sectionRef.current
-			const title = titleRef.current
-			const postList = postListRef.current
-
-			if (!section) return
-
-			gsap.to(section, {
-				duration: 1,
-				opacity: 1,
-			})
-
-			if (title && postList) {
-				gsap.fromTo(
-					postList,
-					{ y: 800 },
-					{
-						scrollTrigger: {
-							end: 'bottom top',
-							scrub: true,
-							start: 'top bottom',
-							trigger: section,
-						},
-						y: -400,
-					},
-				)
-
-				gsap.fromTo(
-					title,
-					{ y: 150 },
-					{
-						scrollTrigger: {
-							end: 'bottom top',
-							scrub: true,
-							start: 'top bottom',
-							trigger: section,
-						},
-						y: -100,
-					},
-				)
-			}
-		},
-		{ scope: sectionRef },
-	)
-
 	return (
-		<section className={styles.blogSection} ref={sectionRef}>
+		<section className={styles.blogSection}>
 			<div className="container">
 				{/* <div className={styles.tagList}>
 					{tags.map((tag) => {
@@ -131,11 +81,11 @@ export default function BlogSection({ posts, tags }: BlogSectionProps) {
 					})}
 				</div> */}
 
-				<h1 className={clsx(styles.title, 'h2')} ref={titleRef}>
+				<h1 className={clsx(styles.title, 'h2')}>
 					<strong>Latest</strong> <em>Blogs</em>
 				</h1>
 
-				<div className={styles.postList} ref={postListRef}>
+				<div className={styles.postList}>
 					{filteredPosts.map(normalizeSlide).map((post) => {
 						if (!post) return null
 						return (
