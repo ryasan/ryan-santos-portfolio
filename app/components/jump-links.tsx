@@ -62,7 +62,10 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 								key={section.sys.id}
 								onClick={(e) => handleClick(e, section)}
 								to={`#${section.sys.id}`}
-							>{`${index < 10 ? '0' : ''}${index + 1}`}</Link>
+							>
+								<span className="sr-only">{`Jump to page section ${index + 1}`}</span>
+								<span className={styles.linkDot} />
+							</Link>
 						)
 					})
 					.reverse()}

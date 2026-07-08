@@ -1,6 +1,8 @@
 .heroSection {
   position: relative;
   height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .stickyBox {
@@ -20,8 +22,8 @@
 .title {
   margin-bottom: 20px;
   overflow: hidden;
-  text-align: center;
-  text-transform: uppercase;
+  line-height: 1.25;
+  font-size: 100px;
 }
 
 .subtitle {

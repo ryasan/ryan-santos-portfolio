@@ -23,7 +23,26 @@
 .link {
 	position: relative;
 
-	span {
-		font-size: 22px;
+	&:hover,
+	&.active {
+		.linkDot {
+			background-color: var(--content-color);
+		}
 	}
+
+	span::before {
+		content: none !important;
+	}
+}
+
+.linkDot {
+	width: 10px;
+	height: 10px;
+	background-color: var(--content-color-2);
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
+	transition: background-color 0.3s ease;
 }

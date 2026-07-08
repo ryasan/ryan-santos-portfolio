@@ -2,7 +2,6 @@ import clsx from 'clsx'
 import styles from '~/styles/components/sections/hero-section.module.scss'
 import { ArrowRightIcon } from '~/components/icons'
 import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
@@ -25,6 +24,8 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 			const subtitle = subtitleRef.current
 			const scrollToExplore = scrollToExploreRef.current
 
+			if (!section || !stickyBox || !scrollToExplore) return
+
 			gsap.to('.word', {
 				duration: 0.75,
 				ease: 'power2.inOut',
@@ -46,31 +47,29 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				opacity: 1,
 			})
 
-			ScrollTrigger.create({
-				end: '+=120%',
-				onUpdate: (self) => {
-					const progress = self.progress
-					// const scale = 1 - progress * 0.3
-					const opacity = 1 - progress * 1
-
-					gsap.to(stickyBox, {
-						duration: 0.1,
-						ease: 'none',
-						opacity,
-						// scale,
-					})
-
-					gsap.to(scrollToExplore, {
-						duration: 0.1,
-						ease: 'none',
-						opacity,
-					})
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					end: '+=120%',
+					pin: true,
+					scrub: 1,
+					start: 'top top',
+					trigger: section,
 				},
-				pin: true,
-				scrub: 1,
-				start: 'top top',
-				trigger: section,
 			})
+
+			tl.fromTo(
+				stickyBox,
+				{ opacity: 1 },
+				{ ease: 'none', immediateRender: false, opacity: 0 },
+				0,
+			)
+
+			tl.fromTo(
+				scrollToExplore,
+				{ opacity: 1 },
+				{ ease: 'none', immediateRender: false, opacity: 0 },
+				0,
+			)
 		},
 		{ scope: sectionRef },
 	)
