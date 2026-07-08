@@ -21,7 +21,7 @@
 
 .hudWrapper {
   position: relative;
-  padding: 56px 80px;
+  padding: 100px 80px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -57,7 +57,7 @@
   width: 16px;
   height: 16px;
   border: 1px solid transparent;
-  opacity: 0.4;
+  opacity: 0.5;
 }
 @media (max-width: 768px) {
   .cornerBracket {
@@ -68,8 +68,8 @@
 .cornerBracket.topLeft {
   top: 20px;
   left: 20px;
-  border-top-color: var(--line-color);
-  border-left-color: var(--line-color);
+  border-top-color: var(--content-color-2);
+  border-left-color: var(--content-color-2);
 }
 @media (max-width: 768px) {
   .cornerBracket.topLeft {
@@ -80,8 +80,8 @@
 .cornerBracket.topRight {
   top: 20px;
   right: 20px;
-  border-top-color: var(--line-color);
-  border-right-color: var(--line-color);
+  border-top-color: var(--content-color-2);
+  border-right-color: var(--content-color-2);
 }
 @media (max-width: 768px) {
   .cornerBracket.topRight {
@@ -92,8 +92,8 @@
 .cornerBracket.bottomLeft {
   bottom: 20px;
   left: 20px;
-  border-bottom-color: var(--line-color);
-  border-left-color: var(--line-color);
+  border-bottom-color: var(--content-color-2);
+  border-left-color: var(--content-color-2);
 }
 @media (max-width: 768px) {
   .cornerBracket.bottomLeft {
@@ -104,8 +104,8 @@
 .cornerBracket.bottomRight {
   bottom: 20px;
   right: 20px;
-  border-bottom-color: var(--line-color);
-  border-right-color: var(--line-color);
+  border-bottom-color: var(--content-color-2);
+  border-right-color: var(--content-color-2);
 }
 @media (max-width: 768px) {
   .cornerBracket.bottomRight {
@@ -116,10 +116,10 @@
 
 .hudLabel {
   position: absolute;
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 0.08em;
-  opacity: 0.35;
   color: var(--content-color-2);
+  opacity: 0.5;
   font-weight: 500;
   white-space: nowrap;
 }

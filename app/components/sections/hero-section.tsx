@@ -96,23 +96,23 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				<div className={styles.stickyBox} ref={stickyBoxRef}>
 					<div className={styles.hudWrapper}>
 						<div className={styles.hudContainer} ref={hudRef}>
-							<div className={clsx(styles.cornerBracket, styles.topLeft)} />
+							{/* <div className={clsx(styles.cornerBracket, styles.topLeft)} /> */}
 							<div className={clsx(styles.cornerBracket, styles.topRight)} />
 							<div className={clsx(styles.cornerBracket, styles.bottomLeft)} />
-							<div className={clsx(styles.cornerBracket, styles.bottomRight)} />
+							{/* <div className={clsx(styles.cornerBracket, styles.bottomRight)} /> */}
 
-							<div className={clsx(styles.hudLabel, styles.labelTopLeft, 'code')}>
-								{/* [SYS_STATUS: ACTIVE] */}
-							</div>
+							{/* <div className={clsx(styles.hudLabel, styles.labelTopLeft, 'code')}>
+								[SYS_STATUS: ACTIVE]
+							</div> */}
 							<div className={clsx(styles.hudLabel, styles.labelTopRight, 'code')}>
 								[LOC: 34.0522° N, 118.2437° W]
 							</div>
 							<div className={clsx(styles.hudLabel, styles.labelBottomLeft, 'code')}>
 								[STACK: REMIX / GSAP / CONTENTFUL]
 							</div>
-							<div className={clsx(styles.hudLabel, styles.labelBottomRight, 'code')}>
-								{/* [v2.6_PROD] */}
-							</div>
+							{/* <div className={clsx(styles.hudLabel, styles.labelBottomRight, 'code')}>
+								[v2.6_PROD]
+							</div> */}
 						</div>
 
 						{data?.titleWords && (
