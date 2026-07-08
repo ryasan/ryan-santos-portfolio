@@ -93,9 +93,10 @@ export default function ArticleCard({
 									key={tag}
 									onClick={(e) => {
 										e.preventDefault()
-										// Uncomment this when filtering is implemented
-										// handleTagClick(tag)
+										e.stopPropagation()
+										handleTagClick(tag)
 									}}
+									type="button"
 								>
 									{tag}
 								</button>

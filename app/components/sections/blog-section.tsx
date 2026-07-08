@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import styles from '~/styles/components/sections/blog-section.module.scss'
 import { normalizeSlide } from '~/utils/normalize-data'
 import { type Blog, type ContentfulTag } from '~/graphql/__generated/sdk'
-import { useEffect, useRef, useState } from 'react'
+import { useMemo, useRef } from 'react'
 import { useSearchParams } from '@remix-run/react'
 
 type BlogSectionProps = {
@@ -11,54 +11,48 @@ type BlogSectionProps = {
 	tags: ContentfulTag[]
 }
 
+function parseTagsFromUrl(tagsParam: string | null) {
+	if (!tagsParam) return []
+	const tags = tagsParam
+		.split(',')
+		.map((t) => t.trim())
+		.filter(Boolean)
+
+	return Array.from(new Set(tags)).sort()
+}
+
 export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
 	const [searchParams, setSearchParams] = useSearchParams()
-	const [filteredPosts, setFilteredPosts] = useState<Blog[]>(posts)
-	const [selectedTags] = useState<string[]>(() => {
-		const tagsParam = searchParams.get('tags')
-		return tagsParam ? tagsParam.split(',').filter(Boolean) : []
-	})
+	const selectedTags = parseTagsFromUrl(searchParams.get('tags'))
 
-	/*
-	const toggleTag = (tag: string) => {
-		setSelectedTags((prev) =>
-			prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
-		)
+	const toggleTag = (tagName: string) => {
+		const next = new Set(selectedTags)
+		if (next.has(tagName)) next.delete(tagName)
+		else next.add(tagName)
+
+		const params = new URLSearchParams(searchParams)
+		const sortedTags = Array.from(next).sort()
+
+		if (sortedTags.length > 0) {
+			params.set('tags', sortedTags.join(','))
+		} else {
+			params.delete('tags')
+		}
+
+		setSearchParams(params, { replace: true })
 	}
-	*/
 
-	// Update URL parameters when filters change
-	useEffect(() => {
-		const params = new URLSearchParams()
+	const filteredPosts = useMemo(() => {
+		if (selectedTags.length === 0) return posts
 
-		if (selectedTags.length > 0) {
-			params.set('tags', selectedTags.join(','))
-		}
+		return posts.filter((post) => {
+			const postTags = post.contentfulMetadata?.tags?.filter(Boolean) || []
 
-		// Only update URL if params changed
-		const newSearchString = params.toString()
-		const currentSearchString = searchParams.toString()
-
-		if (newSearchString !== currentSearchString) {
-			setSearchParams(params, { replace: true })
-		}
-	}, [selectedTags, searchParams, setSearchParams])
-
-	useEffect(() => {
-		let filtered = [...posts]
-
-		if (selectedTags.length > 0) {
-			filtered = filtered.filter((post) => {
-				const postTags = post.contentfulMetadata?.tags?.filter(Boolean) || []
-
-				return selectedTags.some((selectedTag) =>
-					postTags.some((tag) => tag && tag.name === selectedTag),
-				)
-			})
-		}
-
-		setFilteredPosts(filtered)
+			return selectedTags.some((selectedTag) =>
+				postTags.some((tag) => tag && tag.name === selectedTag),
+			)
+		})
 	}, [selectedTags, posts])
 
 	return (
@@ -71,16 +65,24 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 
 				{/* Tag Filters */}
 				<div className={styles.tagFilters}>
-					{_tags.map((tag) => (
-						<button
-							className="button button--outline"
-							key={tag.id}
-							title={tag.name || ''}
-							type="button"
-						>
-							{tag.name}
-						</button>
-					))}
+					{_tags.map((tag) => {
+						const tagName = tag.name?.trim()
+						if (!tagName) return null
+
+						const isActive = selectedTags.includes(tagName)
+
+						return (
+							<button
+								className={clsx('button', !isActive && 'button--outline')}
+								key={tag.id}
+								onClick={() => toggleTag(tagName)}
+								title={tagName}
+								type="button"
+							>
+								{tagName}
+							</button>
+						)
+					})}
 				</div>
 
 				{/* Post list */}
