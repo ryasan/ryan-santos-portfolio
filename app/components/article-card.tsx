@@ -2,7 +2,6 @@ import clsx from 'clsx'
 import styles from '~/styles/components/article-card.module.scss'
 import { Link as RemixLink, useNavigate } from '@remix-run/react'
 import { isExternalLink } from '~/utils'
-import { useState } from 'react'
 import { type Asset } from '~/graphql/__generated/sdk'
 
 export type NormalizedArticleCard = {
@@ -17,7 +16,6 @@ export type NormalizedArticleCard = {
 
 type ArticleCardProps = {
 	data: NormalizedArticleCard
-	disableImageAnimation?: boolean
 	forceDescription?: boolean
 	horizontal?: boolean
 	isBig?: boolean
@@ -25,13 +23,11 @@ type ArticleCardProps = {
 
 export default function ArticleCard({
 	data,
-	disableImageAnimation = false,
 	forceDescription,
 	horizontal,
 	isBig,
 }: ArticleCardProps) {
 	const navigate = useNavigate()
-	const [isImageLoaded, setIsImageLoaded] = useState(false)
 
 	const Component = data.link ? RemixLink : 'div'
 	const isExternal = isExternalLink(data.link || '')
@@ -50,9 +46,6 @@ export default function ArticleCard({
 				styles.articleCard,
 				isBig && styles.bigCard,
 				horizontal && styles.horizontal,
-				!disableImageAnimation && isImageLoaded
-					? styles.loaded
-					: styles.loading,
 			)}
 			target={isExternal ? '_blank' : undefined}
 			to={data.link || ''}
@@ -62,14 +55,6 @@ export default function ArticleCard({
 					<img
 						alt={data.image?.description || ''}
 						className={styles.articleImage}
-						onLoad={() => {
-							setIsImageLoaded(true)
-						}}
-						ref={(img) => {
-							if (img?.complete) {
-								setIsImageLoaded(true)
-							}
-						}}
 						src={data.image?.url || ''}
 					/>
 				)}

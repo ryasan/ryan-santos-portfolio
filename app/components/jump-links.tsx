@@ -41,7 +41,7 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 		if (!jumpLinks || !isTeleported) return
 
 		gsap.to(jumpLinks, {
-			delay: 0.75,
+			delay: 1.2,
 			duration: 1,
 			ease: 'power2.out',
 			opacity: 1,

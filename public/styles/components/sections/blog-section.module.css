@@ -1,7 +1,11 @@
 .blogSection {
   min-height: 100lvh;
-  margin-top: 68px;
-  padding: 50px 0;
+  padding: 118px 0;
+}
+
+.header {
+  will-change: opacity;
+  opacity: 0;
 }
 
 .grid {
@@ -9,12 +13,12 @@
   grid-template-columns: 300px 1fr;
   gap: 30px;
 }
-
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
   }
 }
+
 .filtersColumn {
   align-self: stretch;
 }
@@ -25,12 +29,12 @@
   gap: 20px;
   align-self: start;
 }
-
 @media (max-width: 768px) {
   .filters {
     display: none;
   }
 }
+
 .title {
   line-height: 1;
   text-align: center;
@@ -46,6 +50,23 @@
   font-weight: 600;
 }
 
+.wordMask {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  vertical-align: bottom;
+}
+
+.word {
+  display: inline-block;
+}
+
+.char {
+  display: inline-block;
+  will-change: transform;
+  transform: translateY(110%);
+}
+
 .tagFilters {
   display: flex;
   align-items: center;
@@ -59,18 +80,17 @@
   white-space: nowrap;
   text-transform: lowercase;
 }
-
 @media (max-width: 768px) {
   .tagFilters {
     justify-content: start;
   }
 }
+
 .postList {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
-
 @media (max-width: 768px) {
   .postList {
     grid-template-columns: repeat(1, 1fr);

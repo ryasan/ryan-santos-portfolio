@@ -16,6 +16,8 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 	const stickyBoxRef = useRef<HTMLDivElement>(null)
 	const subtitleRef = useRef<HTMLDivElement>(null)
 	const scrollToExploreRef = useRef<HTMLDivElement>(null)
+	const scrollToExploreWrapperRef = useRef<HTMLDivElement>(null)
+	const hudRef = useRef<HTMLDivElement>(null)
 
 	useGSAP(
 		() => {
@@ -23,8 +25,10 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 			const stickyBox = stickyBoxRef.current
 			const subtitle = subtitleRef.current
 			const scrollToExplore = scrollToExploreRef.current
+			const scrollToExploreWrapper = scrollToExploreWrapperRef.current
+			const hud = hudRef.current
 
-			if (!section || !stickyBox || !scrollToExplore) return
+			if (!section || !stickyBox || !scrollToExplore || !scrollToExploreWrapper) return
 
 			const words = gsap.utils.toArray<HTMLElement>('.word')
 			words.forEach((word, wordIndex) => {
@@ -46,7 +50,14 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 			})
 
 			gsap.to(scrollToExplore, {
-				delay: 1,
+				delay: 1.2,
+				duration: 1,
+				ease: 'power2.out',
+				opacity: 1,
+			})
+
+			gsap.to(hud, {
+				delay: 1.2,
 				duration: 1,
 				ease: 'power2.out',
 				opacity: 1,
@@ -70,7 +81,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 			)
 
 			tl.fromTo(
-				scrollToExplore,
+				scrollToExploreWrapper,
 				{ opacity: 1 },
 				{ ease: 'none', immediateRender: false, opacity: 0 },
 				0,
@@ -83,40 +94,67 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 		<section className={styles.heroSection} id={id} ref={sectionRef}>
 			<div className="container">
 				<div className={styles.stickyBox} ref={stickyBoxRef}>
-					{data?.titleWords && (
-						<h1 className={styles.title}>
-							{data.titleWords?.map((word, index) => {
-								if (!word) return null
+					<div className={styles.hudWrapper}>
+						<div className={styles.hudContainer} ref={hudRef}>
+							<div className={clsx(styles.cornerBracket, styles.topLeft)} />
+							<div className={clsx(styles.cornerBracket, styles.topRight)} />
+							<div className={clsx(styles.cornerBracket, styles.bottomLeft)} />
+							<div className={clsx(styles.cornerBracket, styles.bottomRight)} />
 
-								return (
-									<span className={styles.wordMask} key={index}>
-										<span className={clsx(styles.word, 'word')}>
-											{word.split('').map((char, charIndex) => (
-												<span className={clsx(styles.char, 'char')} key={charIndex}>
-													{char === ' ' ? '\u00A0' : char}
-												</span>
-											))}
+							<div className={clsx(styles.hudLabel, styles.labelTopLeft, 'code')}>
+								{/* [SYS_STATUS: ACTIVE] */}
+							</div>
+							<div className={clsx(styles.hudLabel, styles.labelTopRight, 'code')}>
+								[LOC: 34.0522° N, 118.2437° W]
+							</div>
+							<div className={clsx(styles.hudLabel, styles.labelBottomLeft, 'code')}>
+								[STACK: REMIX / GSAP / CONTENTFUL]
+							</div>
+							<div className={clsx(styles.hudLabel, styles.labelBottomRight, 'code')}>
+								{/* [v2.6_PROD] */}
+							</div>
+						</div>
+
+						{data?.titleWords && (
+							<h1 className={styles.title}>
+								{data.titleWords?.map((word, index) => {
+									if (!word) return null
+
+									return (
+										<span className={styles.wordMask} key={index}>
+											<span className={clsx(styles.word, 'word')}>
+												{word.split('').map((char, charIndex) => (
+													<span className={clsx(styles.char, 'char')} key={charIndex}>
+														{char === ' ' ? '\u00A0' : char}
+													</span>
+												))}
+											</span>
 										</span>
-									</span>
-								)
-							})}
-						</h1>
-					)}
-					<div className={clsx(styles.subtitle, 'h6')} ref={subtitleRef}>
-						{data?.leftSubtitle && (
-							<div className={styles.leftSubtitle}>{data?.leftSubtitle}</div>
+									)
+								})}
+							</h1>
 						)}
-						{data?.rightSubtitle && (
-							<div className={styles.rightSubtitle}>{data?.rightSubtitle}</div>
-						)}
+						<div className={clsx(styles.subtitle, 'h6')} ref={subtitleRef}>
+							{data?.leftSubtitle && (
+								<div className={styles.leftSubtitle}>{data?.leftSubtitle}</div>
+							)}
+							{data?.rightSubtitle && (
+								<div className={styles.rightSubtitle}>{data?.rightSubtitle}</div>
+							)}
+						</div>
 					</div>
 				</div>
 				<div
-					className={clsx(styles.scrollToExplore, 'link')}
-					ref={scrollToExploreRef}
+					className={styles.scrollToExploreWrapper}
+					ref={scrollToExploreWrapperRef}
 				>
-					<span>Scroll To Explore</span>
-					<MouseIcon className={styles.mouseIcon} />
+					<div
+						className={clsx(styles.scrollToExplore, 'link')}
+						ref={scrollToExploreRef}
+					>
+						<span>Scroll To Explore</span>
+						<MouseIcon className={styles.mouseIcon} />
+					</div>
 				</div>
 			</div>
 		</section>
