@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/hero-section.module.scss'
-import { ArrowRightIcon } from '~/components/icons'
+import { MouseIcon } from '~/components/icons'
 import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -26,22 +26,27 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 
 			if (!section || !stickyBox || !scrollToExplore) return
 
-			gsap.to('.word', {
-				duration: 0.75,
-				ease: 'power2.inOut',
-				stagger: 0.1,
-				y: 0,
+			const words = gsap.utils.toArray<HTMLElement>('.word')
+			words.forEach((word, wordIndex) => {
+				const chars = word.querySelectorAll('.char')
+				gsap.to(chars, {
+					delay: wordIndex * 0.15,
+					duration: 0.8,
+					ease: 'power3.out',
+					stagger: 0.01,
+					y: 0,
+				})
 			})
 
 			gsap.to(subtitle, {
-				delay: 0.75,
+				delay: 1,
 				duration: 1,
 				ease: 'power2.out',
 				opacity: 1,
 			})
 
 			gsap.to(scrollToExplore, {
-				delay: 0.75,
+				delay: 1,
 				duration: 1,
 				ease: 'power2.out',
 				opacity: 1,
@@ -85,7 +90,13 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 
 								return (
 									<span className={styles.wordMask} key={index}>
-										<span className={clsx(styles.word, 'word')}>{word}</span>
+										<span className={clsx(styles.word, 'word')}>
+											{word.split('').map((char, charIndex) => (
+												<span className={clsx(styles.char, 'char')} key={charIndex}>
+													{char === ' ' ? '\u00A0' : char}
+												</span>
+											))}
+										</span>
 									</span>
 								)
 							})}
@@ -105,7 +116,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 					ref={scrollToExploreRef}
 				>
 					<span>Scroll To Explore</span>
-					<ArrowRightIcon className={styles.arrowRightIcon} />
+					<MouseIcon className={styles.mouseIcon} />
 				</div>
 			</div>
 		</section>
