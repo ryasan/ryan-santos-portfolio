@@ -6,10 +6,41 @@
 	padding: $space-140 0;
 }
 
+.grid {
+	display: grid;
+	grid-template-columns: 300px 1fr;
+	gap: 30px;
+}
+
+@media (max-width: $tablet) {
+	.grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.filtersColumn {
+	align-self: stretch;
+}
+
+.filters {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-self: start;
+}
+
+@media (max-width: $tablet) {
+	.filters {
+		display: none;
+	}
+}
+
 .title {
 	line-height: 1;
 	text-align: center;
-	margin-bottom: $space-80;
+	margin-bottom: $space-40;
+	z-index: 1;
+	position: relative;
 
 	strong {
 		font-weight: 700;
@@ -21,62 +52,82 @@
 	}
 }
 
+.content {
+	position: relative;
+}
+
+.filtersBar {
+	background-color: var(--background-primary-color);
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+	padding: 16px 0 15px;
+	display: flex;
+	gap: 10px;
+
+	button {
+		background-color: var(--background-primary-color);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+
+		svg {
+			transition: fill 0.2s ease;
+			height: 20px;
+			width: 20px;
+		}
+
+		&:hover {
+			svg {
+				fill: var(--background-primary-color);
+			}
+		}
+	}
+}
+
+@media (max-width: $tablet) {
+	.filtersBar {
+		display: none;
+	}
+}
+
+.divider {
+	width: 2px;
+	height: 25px;
+	background-color: var(--content-color);
+	flex-shrink: 0;
+	align-self: center;
+}
+
+
+.tags {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	overflow: auto;
+	position: relative;
+
+	// Hide scrollbar
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	button {
+		white-space: nowrap;
+		height: 100%;
+	}
+}
+
 .postList {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 30px;
+	padding-top: 100px;
 }
 
 @media (max-width: $tablet) {
 	.postList {
 		grid-template-columns: repeat(1, 1fr);
 	}
-}
-
-.tagList {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 14px;
-	margin-bottom: $space-40;
-}
-
-.tag {
-	padding: $space-12 $space-24;
-	border-radius: 100px;
-	text-transform: uppercase;
-	font-weight: 500;
-	transition: all 0.2s ease;
-	font-size: 16px;
-	background-color: transparent;
-	color: var(--content-color);
-	position: relative;
-	border: 1px solid var(--content-color);
-	
-	&:hover {
-		opacity: 0.8;
-	}
-}
-
-.clearTagsButton {
-	border-radius: 50%;
-	width: $space-40;
-	height: $space-40;
-	padding: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	svg {
-		fill: var(--background-primary-color);
-	}
-}
-
-.active {
-	background-color: var(--content-color);
-	color: var(--background-primary-color);
-}
-
-.closeIcon {
-	width: 12px;
-	height: 12px;
 }

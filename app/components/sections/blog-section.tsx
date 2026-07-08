@@ -1,10 +1,17 @@
 import ArticleCard from '~/components/article-card'
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/blog-section.module.scss'
-import { type Blog, type ContentfulTag } from '~/graphql/__generated/sdk'
+import { ListBulletsIcon, SearchIcon } from '~/components/icons'
 import { normalizeSlide } from '~/utils/normalize-data'
-import { useEffect, useState } from 'react'
+import { type Blog, type ContentfulTag } from '~/graphql/__generated/sdk'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap } from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { useEffect, useRef, useState } from 'react'
 import { useSearchParams } from '@remix-run/react'
+
+const HEADER_HEIGHT = 68
+const TABLET_BREAKPOINT = 768
 
 type BlogSectionProps = {
 	posts: Blog[]
@@ -12,6 +19,10 @@ type BlogSectionProps = {
 }
 
 export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
+	const sectionRef = useRef<HTMLElement>(null)
+	const filtersRef = useRef<HTMLDivElement>(null)
+	const filtersBarRef = useRef<HTMLDivElement>(null)
+	const contentRef = useRef<HTMLDivElement>(null)
 	const [searchParams, setSearchParams] = useSearchParams()
 	const [filteredPosts, setFilteredPosts] = useState<Blog[]>(posts)
 	const [selectedTags] = useState<string[]>(() => {
@@ -60,42 +71,117 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 		setFilteredPosts(filtered)
 	}, [selectedTags, posts])
 
+	useGSAP(
+		() => {
+			const filters = filtersRef.current
+			const filtersBar = filtersBarRef.current
+			const content = contentRef.current
+
+			if (!filters || !filtersBar || !content) return
+
+			const mm = gsap.matchMedia()
+
+			mm.add(`(min-width: ${TABLET_BREAKPOINT + 1}px)`, () => {
+				const pinOptions = {
+					anticipatePin: 1,
+					end: 'bottom bottom' as const,
+					endTrigger: content,
+					pinSpacing: false,
+					start: `top top+=${HEADER_HEIGHT - 1}`,
+				}
+
+				const filtersPinTrigger = ScrollTrigger.create({
+					...pinOptions,
+					pin: filters,
+					trigger: filters,
+				})
+
+				const filtersBarPin = ScrollTrigger.create({
+					...pinOptions,
+					pin: filtersBar,
+					trigger: filtersBar,
+				})
+
+				return () => {
+					filtersPinTrigger.kill()
+					filtersBarPin.kill()
+				}
+			})
+
+			return () => mm.revert()
+		},
+		{ dependencies: [filteredPosts.length], scope: sectionRef },
+	)
+
 	return (
-		<section className={styles.blogSection}>
+		<section className={styles.blogSection} ref={sectionRef}>
 			<div className="container">
-				{/* <div className={styles.tagList}>
-					{tags.map((tag) => {
-						if (!tag.name) return null
-						return (
+				<div className={styles.grid}>
+					{/* Pinned Filters Sidebar */}
+					<div className={styles.filtersColumn}>
+						<div className={styles.filters} ref={filtersRef}>
+							{/* Search bar */}
+							<div className={styles.search}>
+								<input type="text" placeholder="Search" />
+								<button type="submit" title="Search">
+									<SearchIcon />
+								</button>
+							</div>
+							{/* Date */}
+							{/* Tags */}
+						</div>
+					</div>
+
+					{/* Content */}
+					<div className={styles.content} ref={contentRef}>
+						{/* Title */}
+						<h1 className={clsx(styles.title, 'h2')}>
+							<strong>Latest</strong> <em>Blogs</em>
+						</h1>
+
+						{/* Pinned Filters Bar */}
+						<div className={styles.filtersBar} ref={filtersBarRef}>
 							<button
-								className={clsx(
-									styles.tag,
-									selectedTags.includes(tag.name) && styles.active,
-								)}
-								key={tag.id}
-								onClick={() => tag.name && toggleTag(tag.name)}
+								className="button button--outline"
+								type="button"
+								title="Toggle filters"
 							>
-								{tag.name}
+								<ListBulletsIcon />
+								Filters
 							</button>
-						)
-					})}
-				</div> */}
 
-				<h1 className={clsx(styles.title, 'h2')}>
-					<strong>Latest</strong> <em>Blogs</em>
-				</h1>
+							{/* Divider */}
+							<div className={styles.divider}>
+								{/* Divider */}
+							</div>
 
-				<div className={styles.postList}>
-					{filteredPosts.map(normalizeSlide).map((post) => {
-						if (!post) return null
-						return (
-							<ArticleCard
-								data={post}
-								forceDescription
-								key={post.id}
-							/>
-						)
-					})}
+							{/* Tags */}
+							<div className={styles.tags}>
+								{_tags.map((tag) => (
+									<button
+										className="button button--outline"
+										key={tag.id}
+										title={tag.name || ''}
+										type="button"
+									>
+										{tag.name}
+									</button>
+								))}
+							</div>
+						</div>
+
+						{/* Post list */}
+						<div className={styles.postList}>
+							{[...filteredPosts, ...filteredPosts, ...filteredPosts]
+								.map(normalizeSlide)
+								.map((post) => {
+									if (!post) return null
+									return (
+										<ArticleCard data={post} forceDescription key={post.id} />
+									)
+								})}
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>

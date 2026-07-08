@@ -4,10 +4,39 @@
   padding: 140px 0;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+.filtersColumn {
+  align-self: stretch;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-self: start;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    display: none;
+  }
+}
 .title {
   line-height: 1;
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
+  z-index: 1;
+  position: relative;
 }
 .title strong {
   font-weight: 700;
@@ -17,61 +46,74 @@
   font-weight: 600;
 }
 
+.content {
+  position: relative;
+}
+
+.filtersBar {
+  background-color: var(--background-primary-color);
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  padding: 16px 0 15px;
+  display: flex;
+  gap: 10px;
+}
+.filtersBar button {
+  background-color: var(--background-primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.filtersBar button svg {
+  transition: fill 0.2s ease;
+  height: 20px;
+  width: 20px;
+}
+.filtersBar button:hover svg {
+  fill: var(--background-primary-color);
+}
+
+@media (max-width: 768px) {
+  .filtersBar {
+    display: none;
+  }
+}
+.divider {
+  width: 2px;
+  height: 25px;
+  background-color: var(--content-color);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.tags {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: auto;
+  position: relative;
+}
+.tags::-webkit-scrollbar {
+  display: none;
+}
+.tags button {
+  white-space: nowrap;
+  height: 100%;
+}
+
 .postList {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+  padding-top: 100px;
 }
 
 @media (max-width: 768px) {
   .postList {
     grid-template-columns: repeat(1, 1fr);
   }
-}
-.tagList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-bottom: 40px;
-}
-
-.tag {
-  padding: 12px 24px;
-  border-radius: 100px;
-  text-transform: uppercase;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  font-size: 16px;
-  background-color: transparent;
-  color: var(--content-color);
-  position: relative;
-  border: 1px solid var(--content-color);
-}
-.tag:hover {
-  opacity: 0.8;
-}
-
-.clearTagsButton {
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.clearTagsButton svg {
-  fill: var(--background-primary-color);
-}
-
-.active {
-  background-color: var(--content-color);
-  color: var(--background-primary-color);
-}
-
-.closeIcon {
-  width: 12px;
-  height: 12px;
 }
 
 /*# sourceMappingURL=blog-section.module.css.map */

@@ -11,6 +11,7 @@ import GithubIcon from './github'
 import LinkedinIcon from './linkedin'
 import ListBulletsIcon from './list-bullets'
 import MoonIcon from './moon'
+import SearchIcon from './search'
 import SquaresFourIcon from './squares-four'
 import SunIcon from './sun'
 import TwitterIcon from './twitter'
@@ -29,6 +30,7 @@ export {
 	LinkedinIcon,
 	ListBulletsIcon,
 	MoonIcon,
+	SearchIcon,
 	SquaresFourIcon,
 	SunIcon,
 	TwitterIcon,
