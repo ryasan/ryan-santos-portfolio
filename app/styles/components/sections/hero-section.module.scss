@@ -77,10 +77,12 @@
 		left: $space-20;
 		border-top-color: var(--content-color-2);
 		border-left-color: var(--content-color-2);
+		display: none;
 
 		@media (max-width: $tablet) {
 			top: $space-12;
 			left: $space-12;
+			display: block;
 		}
 	}
 
@@ -113,10 +115,12 @@
 		right: $space-20;
 		border-bottom-color: var(--content-color-2);
 		border-right-color: var(--content-color-2);
+		display: none;
 
 		@media (max-width: $tablet) {
 			bottom: $space-12;
 			right: $space-12;
+			display: block;
 		}
 	}
 }

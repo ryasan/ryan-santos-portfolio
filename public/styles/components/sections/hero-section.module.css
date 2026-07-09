@@ -80,11 +80,13 @@
   left: 20px;
   border-top-color: var(--content-color-2);
   border-left-color: var(--content-color-2);
+  display: none;
 }
 @media (max-width: 768px) {
   .cornerBracket.topLeft {
     top: 12px;
     left: 12px;
+    display: block;
   }
 }
 .cornerBracket.topRight {
@@ -116,11 +118,13 @@
   right: 20px;
   border-bottom-color: var(--content-color-2);
   border-right-color: var(--content-color-2);
+  display: none;
 }
 @media (max-width: 768px) {
   .cornerBracket.bottomRight {
     bottom: 12px;
     right: 12px;
+    display: block;
   }
 }
 
