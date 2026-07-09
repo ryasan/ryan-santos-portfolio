@@ -33,15 +33,15 @@
 	margin: 0 auto;
 
 	@media (max-width: $tablet) {
-		padding: $space-40 $space-40;
+		padding: $space-64 $space-40;
 	}
 
 	@media (max-width: $mobile-lg) {
-		padding: $space-28 $space-32;
+		padding: $space-56 $space-32;
 	}
 
 	@media (max-width: $mobile-md) {
-		padding: $space-20 $space-24;
+		padding: $space-48 $space-24;
 	}
 
 	@media (max-width: $mobile-sm) {
@@ -152,10 +152,6 @@
 			top: calc(#{$space-12} + 1px);
 			right: calc(#{$space-12} + 18px);
 		}
-
-		@media (max-width: $mobile-lg) {
-			display: none;
-		}
 	}
 
 	&.labelBottomLeft {
@@ -165,10 +161,6 @@
 		@media (max-width: $tablet) {
 			bottom: calc(#{$space-12} + 1px);
 			left: calc(#{$space-12} + 18px);
-		}
-
-		@media (max-width: $mobile-lg) {
-			display: none;
 		}
 	}
 
@@ -184,7 +176,6 @@
 }
 
 .title {
-	margin-bottom: $space-20;
 	overflow: hidden;
 	line-height: 1.25;
 	font-size: 85px;
@@ -254,6 +245,7 @@
 	will-change: opacity;
 	text-transform: uppercase;
 	color: var(--content-color-2);
+	margin-bottom: $space-20;
 }
 
 .mouseIcon {
