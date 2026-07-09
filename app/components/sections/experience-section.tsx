@@ -3,7 +3,6 @@ import clsx from 'clsx'
 import gsap from 'gsap'
 import styles from '~/styles/components/sections/experience-section.module.scss'
 import { type ExperienceSection as ExperienceSectionType } from '~/graphql/__generated/sdk'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
 
@@ -28,17 +27,21 @@ export default function ExperienceSection({
 
 			if (!container) return
 
-			ScrollTrigger.create({
-				onEnter: () => {
-					gsap.to(title, {
-						duration: 1,
-						ease: 'power2.out',
-						opacity: 1,
-					})
+			gsap.fromTo(
+				title,
+				{ opacity: 0, y: 50 },
+				{
+					ease: 'power2.out',
+					opacity: 1,
+					scrollTrigger: {
+						end: 'top center+=100px',
+						scrub: 1,
+						start: 'top bottom-=50px',
+						trigger: title,
+					},
+					y: 0,
 				},
-				start: 'bottom bottom-=200px',
-				trigger: title,
-			})
+			)
 
 			const items = gsap.utils.toArray<HTMLElement>(container.children)
 			// Filter out the progress bar from items if it's a child
@@ -47,17 +50,21 @@ export default function ExperienceSection({
 			)
 
 			experienceItems.forEach((item) => {
-				ScrollTrigger.create({
-					onEnter: () => {
-						gsap.to(item, {
-							duration: 1,
-							ease: 'power2.out',
-							opacity: 1,
-						})
+				gsap.fromTo(
+					item,
+					{ opacity: 0, y: 50 },
+					{
+						ease: 'power2.out',
+						opacity: 1,
+						scrollTrigger: {
+							end: 'top center+=100px',
+							scrub: 1,
+							start: 'top bottom-=50px',
+							trigger: item,
+						},
+						y: 0,
 					},
-					start: 'bottom bottom-=100px',
-					trigger: item,
-				})
+				)
 			})
 
 			// Progress Bar Animation
@@ -112,7 +119,7 @@ export default function ExperienceSection({
 									lastRect.top - containerRect.top + lastRect.height / 2
 								return `top+=${offset} center`
 							},
-							scrub: true,
+							scrub: 1,
 							start: () => {
 								const containerRect = container.getBoundingClientRect()
 								const firstRect = firstNum.getBoundingClientRect()

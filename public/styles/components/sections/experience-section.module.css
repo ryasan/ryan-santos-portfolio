@@ -27,6 +27,11 @@
   align-items: center;
   position: relative;
 }
+@media (max-width: 768px) {
+  .experienceList {
+    gap: 100px;
+  }
+}
 
 .info {
   width: 100%;
@@ -89,7 +94,7 @@
 }
 @media (min-width: 768px) {
   .countNumber {
-    padding: 24px 0;
+    padding: 28px 0;
     transform: translateY(-24px);
   }
 }

@@ -27,6 +27,10 @@
 	gap: 150px;
 	align-items: center;
 	position: relative;
+
+	@media (max-width: $tablet) {
+		gap: 100px;
+	}
 }
 
 .info {
@@ -91,7 +95,7 @@
 	background-color: var(--background-primary-color);
 
 	@media (min-width: $tablet) {
-		padding: $space-24 0;
+		padding: $space-28 0;
 		transform: translateY(-$space-24);
 	}
 }
