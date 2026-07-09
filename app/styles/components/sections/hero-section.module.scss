@@ -32,20 +32,17 @@
 	max-width: 100%;
 	margin: 0 auto;
 
+	@media (max-width: $desktop) {
+		padding: $space-80 $space-64;
+	}
+
 	@media (max-width: $tablet) {
 		padding: $space-64 $space-40;
 	}
 
 	@media (max-width: $mobile-lg) {
-		padding: $space-56 $space-32;
-	}
-
-	@media (max-width: $mobile-md) {
-		padding: $space-48 $space-24;
-	}
-
-	@media (max-width: $mobile-sm) {
-		padding: $space-16 $space-16;
+		padding: 0;
+		width: 100%;
 	}
 }
 
@@ -58,6 +55,11 @@
 	pointer-events: none;
 	opacity: 0;
 	will-change: opacity;
+	display: none;
+
+	@media (min-width: $tablet) {
+		display: block;
+	}
 }
 
 .cornerBracket {
@@ -195,18 +197,6 @@
 	@media (max-width: $tablet) {
 		font-size: 48px;
 	}
-
-	@media (max-width: $mobile-lg) {
-		font-size: 38px;
-	}
-
-	@media (max-width: $mobile-md) {
-		font-size: 25px;
-	}
-
-	@media (max-width: $mobile-sm) {
-		font-size: 26px;
-	}
 }
 
 .wordMask {
@@ -214,21 +204,34 @@
 	overflow: hidden;
 	position: relative;
 	color: var(--content-color-2);
+	white-space: nowrap;
 
 	&:first-child {
 		color: var(--content-color);
+	}
+
+	@media (max-width: $tablet) {
+		white-space: normal;
 	}
 }
 
 .word {
 	display: inline-block;
 	white-space: nowrap;
+
+	@media (max-width: $tablet) {
+		opacity: 0;
+	}
 }
 
 .char {
 	display: inline-block;
 	will-change: transform;
 	transform: translateY(110%);
+
+	@media (max-width: $tablet) {
+		transform: none;
+	}
 }
 
 .scrollToExploreWrapper {

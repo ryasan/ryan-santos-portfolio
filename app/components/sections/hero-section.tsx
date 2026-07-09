@@ -28,17 +28,38 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 
 			if (!section || !stickyBox || !scrollToExplore || !scrollToExploreWrapper || !hud) return
 
-			const words = gsap.utils.toArray<HTMLElement>('.word')
-			words.forEach((word, wordIndex) => {
-				const chars = word.querySelectorAll('.char')
-				gsap.to(chars, {
-					delay: wordIndex * 0.05,
-					duration: 0.5,
-					ease: 'power3.out',
-					stagger: 0.01,
-					y: 0,
-				})
-			})
+			const mm = gsap.matchMedia()
+
+			mm.add(
+				{
+					isDesktop: '(min-width: 769px)',
+					isTabletOrMobile: '(max-width: 768px)',
+				},
+				(context) => {
+					const { isDesktop } = (context.conditions as any) || {}
+
+					if (isDesktop) {
+						const words = gsap.utils.toArray<HTMLElement>('.word')
+						words.forEach((word, wordIndex) => {
+							const chars = word.querySelectorAll('.char')
+							gsap.to(chars, {
+								delay: wordIndex * 0.05,
+								duration: 0.5,
+								ease: 'power3.out',
+								stagger: 0.01,
+								y: 0,
+							})
+						})
+					} else {
+						const words = gsap.utils.toArray<HTMLElement>('.word')
+						gsap.to(words, {
+							duration: 0.8,
+							ease: 'power2.out',
+							opacity: 1,
+						})
+					}
+				}
+			)
 
 			gsap.to(scrollToExplore, {
 				delay: 1.2,
@@ -87,10 +108,8 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				<div className={styles.stickyBox} ref={stickyBoxRef}>
 					<div className={styles.hudWrapper}>
 						<div className={styles.hudContainer} ref={hudRef}>
-							<div className={clsx(styles.cornerBracket, styles.topLeft)} />
 							<div className={clsx(styles.cornerBracket, styles.topRight)} />
 							<div className={clsx(styles.cornerBracket, styles.bottomLeft)} />
-							<div className={clsx(styles.cornerBracket, styles.bottomRight)} />
 							<div className={clsx(styles.hudLabel, styles.labelTopRight, 'code')}>
 								[LOC: 34.0522° N, 118.2437° W]
 							</div>

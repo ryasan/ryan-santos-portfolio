@@ -30,6 +30,11 @@
   max-width: 100%;
   margin: 0 auto;
 }
+@media (max-width: 1200px) {
+  .hudWrapper {
+    padding: 80px 64px;
+  }
+}
 @media (max-width: 768px) {
   .hudWrapper {
     padding: 64px 40px;
@@ -37,17 +42,8 @@
 }
 @media (max-width: 610px) {
   .hudWrapper {
-    padding: 56px 32px;
-  }
-}
-@media (max-width: 510px) {
-  .hudWrapper {
-    padding: 48px 24px;
-  }
-}
-@media (max-width: 320px) {
-  .hudWrapper {
-    padding: 16px 16px;
+    padding: 0;
+    width: 100%;
   }
 }
 
@@ -60,6 +56,12 @@
   pointer-events: none;
   opacity: 0;
   will-change: opacity;
+  display: none;
+}
+@media (min-width: 768px) {
+  .hudContainer {
+    display: block;
+  }
 }
 
 .cornerBracket {
@@ -203,41 +205,42 @@
     font-size: 48px;
   }
 }
-@media (max-width: 610px) {
-  .title {
-    font-size: 38px;
-  }
-}
-@media (max-width: 510px) {
-  .title {
-    font-size: 25px;
-  }
-}
-@media (max-width: 320px) {
-  .title {
-    font-size: 26px;
-  }
-}
 
 .wordMask {
   display: block;
   overflow: hidden;
   position: relative;
   color: var(--content-color-2);
+  white-space: nowrap;
 }
 .wordMask:first-child {
   color: var(--content-color);
+}
+@media (max-width: 768px) {
+  .wordMask {
+    white-space: normal;
+  }
 }
 
 .word {
   display: inline-block;
   white-space: nowrap;
 }
+@media (max-width: 768px) {
+  .word {
+    opacity: 0;
+  }
+}
 
 .char {
   display: inline-block;
   will-change: transform;
   transform: translateY(110%);
+}
+@media (max-width: 768px) {
+  .char {
+    transform: none;
+  }
 }
 
 .scrollToExploreWrapper {
