@@ -25,7 +25,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 150px;
-	align-items: center;
+	align-items: stretch;
 	position: relative;
 
 	@media (max-width: $tablet) {
@@ -69,6 +69,10 @@
 		.info {
 			padding-bottom: 0;
 		}
+
+		.countNumber {
+			height: 100%;
+		}
 	}
 }
 
@@ -77,10 +81,6 @@
 	width: 3px;
 	z-index: 0;
 	pointer-events: none;
-
-	@media (max-width: $tablet) {
-		display: none;
-	}
 }
 
 .progressBarInner {
@@ -93,11 +93,7 @@
 
 .countNumber {
 	background-color: var(--background-primary-color);
-
-	@media (min-width: $tablet) {
-		padding: $space-28 0;
-		transform: translateY(-$space-24);
-	}
+	padding: $space-28 0;
 }
 
 .yearRange {
@@ -105,16 +101,6 @@
 
 	div {
 		line-height: 1;
-	}
-}
-
-@media (max-width: $tablet) {
-	.experienceItem {
-		flex-direction: column;
-	}
-
-	.yearRange {
-		margin-bottom: $space-8;
 	}
 }
 

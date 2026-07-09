@@ -24,7 +24,7 @@
   display: flex;
   flex-direction: column;
   gap: 150px;
-  align-items: center;
+  align-items: stretch;
   position: relative;
 }
 @media (max-width: 768px) {
@@ -68,17 +68,15 @@
 .experienceItem:last-child .info {
   padding-bottom: 0;
 }
+.experienceItem:last-child .countNumber {
+  height: 100%;
+}
 
 .progressBar {
   position: absolute;
   width: 3px;
   z-index: 0;
   pointer-events: none;
-}
-@media (max-width: 768px) {
-  .progressBar {
-    display: none;
-  }
 }
 
 .progressBarInner {
@@ -91,12 +89,7 @@
 
 .countNumber {
   background-color: var(--background-primary-color);
-}
-@media (min-width: 768px) {
-  .countNumber {
-    padding: 28px 0;
-    transform: translateY(-24px);
-  }
+  padding: 28px 0;
 }
 
 .yearRange {
@@ -106,14 +99,6 @@
   line-height: 1;
 }
 
-@media (max-width: 768px) {
-  .experienceItem {
-    flex-direction: column;
-  }
-  .yearRange {
-    margin-bottom: 8px;
-  }
-}
 .description {
   max-width: 600px;
 }
