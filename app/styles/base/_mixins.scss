@@ -22,24 +22,24 @@
 
 // Aspect ratio
 @mixin aspect-ratio($width, $height: null) {
-  // If only one value provided, treat as ratio (e.g., 16/9)
-  @if not $height {
-    aspect-ratio: $width;
-  } @else {
-    // If two values provided, calculate ratio
-    aspect-ratio: calc($width / $height);
-  }
+	// If only one value provided, treat as ratio (e.g., 16/9)
+	@if not $height {
+		aspect-ratio: $width;
+	} @else {
+		// If two values provided, calculate ratio
+		aspect-ratio: calc($width / $height);
+	}
 }
 
 // Aspect ratio for media elements
 @mixin aspect-ratio-media($width, $height: null) {
-  @include aspect-ratio($width, $height);
-  
-  [data-media] {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+	@include aspect-ratio($width, $height);
+
+	[data-media] {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 }
 
 // Creates typography styles given a map of breakpoints ($font-breakpoints is default)
@@ -95,4 +95,23 @@
 	-webkit-line-clamp: $lines;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
+}
+
+/// Event wrapper
+/// @author Harry Roberts
+@mixin on-event($self: false) {
+	@if $self {
+		&,
+		&:hover,
+		&:active,
+		&:focus {
+			@content;
+		}
+	} @else {
+		&:hover,
+		&:active,
+		&:focus {
+			@content;
+		}
+	}
 }

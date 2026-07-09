@@ -224,7 +224,13 @@ p,
 		font-size: 14px;
 	}
 
-	&:hover {
+	@media (hover: hover) {
+		&:hover {
+			background-color: var(--content-color-2);
+		}
+	}
+
+	&:active {
 		background-color: var(--content-color-2);
 	}
 
@@ -233,7 +239,14 @@ p,
 		border-color: var(--content-color);
 		color: var(--content-color);
 
-		&:hover {
+		@media (hover: hover) {
+			&:hover {
+				background-color: var(--content-color);
+				color: var(--background-primary-color);
+			}
+		}
+
+		&:active {
 			background-color: var(--content-color);
 			color: var(--background-primary-color);
 		}

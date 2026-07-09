@@ -396,7 +396,12 @@ p,
     font-size: 14px;
   }
 }
-.button:hover {
+@media (hover: hover) {
+  .button:hover {
+    background-color: var(--content-color-2);
+  }
+}
+.button:active {
   background-color: var(--content-color-2);
 }
 .button--outline {
@@ -404,7 +409,13 @@ p,
   border-color: var(--content-color);
   color: var(--content-color);
 }
-.button--outline:hover {
+@media (hover: hover) {
+  .button--outline:hover {
+    background-color: var(--content-color);
+    color: var(--background-primary-color);
+  }
+}
+.button--outline:active {
   background-color: var(--content-color);
   color: var(--background-primary-color);
 }
