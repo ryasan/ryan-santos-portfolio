@@ -67,7 +67,7 @@
   width: 16px;
   height: 16px;
   border: 1px solid transparent;
-  opacity: 0.3;
+  opacity: 0.5;
 }
 @media (max-width: 768px) {
   .cornerBracket {
@@ -129,7 +129,7 @@
   font-size: 14px;
   letter-spacing: 0.08em;
   color: var(--content-color-2);
-  opacity: 0.3;
+  opacity: 0.5;
   font-weight: 500;
   white-space: nowrap;
 }
