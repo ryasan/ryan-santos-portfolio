@@ -32,8 +32,8 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 			words.forEach((word, wordIndex) => {
 				const chars = word.querySelectorAll('.char')
 				gsap.to(chars, {
-					delay: wordIndex * 0.15,
-					duration: 0.8,
+					delay: wordIndex * 0.05,
+					duration: 0.5,
 					ease: 'power3.out',
 					stagger: 0.01,
 					y: 0,
