@@ -77,7 +77,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 
 			const tl = gsap.timeline({
 				scrollTrigger: {
-					end: '+=120%',
+					end: '+=100%',
 					pin: true,
 					scrub: 1,
 					start: 'top top',

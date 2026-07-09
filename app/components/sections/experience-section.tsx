@@ -34,7 +34,7 @@ export default function ExperienceSection({
 					ease: 'power2.out',
 					opacity: 1,
 					scrollTrigger: {
-						end: 'top center+=100px',
+						end: 'top center+=30px',
 						scrub: 1,
 						start: 'top bottom-=50px',
 						trigger: title,
@@ -57,7 +57,7 @@ export default function ExperienceSection({
 						ease: 'power2.out',
 						opacity: 1,
 						scrollTrigger: {
-							end: 'top center+=100px',
+							end: 'top center+=30px',
 							scrub: 1,
 							start: 'top bottom-=50px',
 							trigger: item,
