@@ -1,5 +1,4 @@
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { useLocation } from '@remix-run/react'
 import { useLayoutEffect } from 'react'
@@ -38,7 +37,6 @@ export default function ScrollSmoothLayout({
 		} else {
 			window.scrollTo(0, 0)
 		}
-		ScrollTrigger.refresh()
 	}, [location.pathname])
 
 	return (
