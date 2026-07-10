@@ -2946,6 +2946,7 @@ export type HeroSection = Entry & _Node & {
   rightSubtitle?: Maybe<Scalars['String']['output']>;
   sys: Sys;
   titleWords?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  titleWordsMobile?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
 
 
@@ -2992,6 +2993,13 @@ export type HeroSectionRightSubtitleArgs = {
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/heroSection) */
 export type HeroSectionTitleWordsArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/heroSection) */
+export type HeroSectionTitleWordsMobileArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -3047,6 +3055,10 @@ export type HeroSectionFilter = {
   rightSubtitle_not_contains?: InputMaybe<Scalars['String']['input']>;
   rightSubtitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
+  titleWordsMobile_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  titleWordsMobile_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  titleWordsMobile_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  titleWordsMobile_exists?: InputMaybe<Scalars['Boolean']['input']>;
   titleWords_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   titleWords_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   titleWords_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;

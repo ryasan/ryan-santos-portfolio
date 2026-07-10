@@ -16,7 +16,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 	const stickyBoxRef = useRef<HTMLDivElement>(null)
 	const scrollToExploreRef = useRef<HTMLDivElement>(null)
 	const scrollToExploreWrapperRef = useRef<HTMLDivElement>(null)
-	const hudRef = useRef<HTMLDivElement>(null)
+	const accentRef = useRef<HTMLDivElement>(null)
 
 	useGSAP(
 		() => {
@@ -24,42 +24,28 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 			const stickyBox = stickyBoxRef.current
 			const scrollToExplore = scrollToExploreRef.current
 			const scrollToExploreWrapper = scrollToExploreWrapperRef.current
-			const hud = hudRef.current
+			const accent = accentRef.current
 
-			if (!section || !stickyBox || !scrollToExplore || !scrollToExploreWrapper || !hud) return
-
-			const mm = gsap.matchMedia()
-
-			mm.add(
-				{
-					isDesktop: '(min-width: 769px)',
-					isTabletOrMobile: '(max-width: 768px)',
-				},
-				(context) => {
-					const { isDesktop } = (context.conditions as any) || {}
-
-					if (isDesktop) {
-						const words = gsap.utils.toArray<HTMLElement>('.word')
-						words.forEach((word, wordIndex) => {
-							const chars = word.querySelectorAll('.char')
-							gsap.to(chars, {
-								delay: wordIndex * 0.05,
-								duration: 0.5,
-								ease: 'power3.out',
-								stagger: 0.01,
-								y: 0,
-							})
-						})
-					} else {
-						const words = gsap.utils.toArray<HTMLElement>('.word')
-						gsap.to(words, {
-							duration: 0.8,
-							ease: 'power2.out',
-							opacity: 1,
-						})
-					}
-				}
+			if (
+				!section ||
+				!stickyBox ||
+				!scrollToExplore ||
+				!scrollToExploreWrapper ||
+				!accent
 			)
+				return
+
+			const words = gsap.utils.toArray<HTMLElement>('.word')
+			words.forEach((word, wordIndex) => {
+				const chars = word.querySelectorAll('.char')
+				gsap.to(chars, {
+					delay: wordIndex * 0.05,
+					duration: 0.5,
+					ease: 'power3.out',
+					stagger: 0.01,
+					y: 0,
+				})
+			})
 
 			gsap.to(scrollToExplore, {
 				delay: 1.2,
@@ -68,7 +54,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				opacity: 1,
 			})
 
-			gsap.to(hud, {
+			gsap.to(accent, {
 				delay: 1.2,
 				duration: 1,
 				ease: 'power2.out',
@@ -103,17 +89,36 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 	)
 
 	return (
-		<section className={styles.heroSection} id={id} ref={sectionRef}>
-			<div className="container">
+		<section
+			className={clsx(
+				styles.heroSection,
+				data?.isTopOfPage && styles.isTopOfPage,
+			)}
+			id={id}
+			ref={sectionRef}
+		>
+			<div className={clsx(styles.container, 'container')}>
 				<div className={styles.stickyBox} ref={stickyBoxRef}>
-					<div className={styles.hudWrapper}>
-						<div className={styles.hudContainer} ref={hudRef}>
+					<div className={styles.accentWrapper}>
+						<div className={styles.accentContainer} ref={accentRef}>
 							<div className={clsx(styles.cornerBracket, styles.topRight)} />
 							<div className={clsx(styles.cornerBracket, styles.bottomLeft)} />
-							<div className={clsx(styles.hudLabel, styles.labelTopRight, 'code')}>
+							<div
+								className={clsx(
+									styles.accentLabel,
+									styles.labelTopRight,
+									'code',
+								)}
+							>
 								[LOC: 34.0522° N, 118.2437° W]
 							</div>
-							<div className={clsx(styles.hudLabel, styles.labelBottomLeft, 'code')}>
+							<div
+								className={clsx(
+									styles.accentLabel,
+									styles.labelBottomLeft,
+									'code',
+								)}
+							>
 								[STACK: REMIX / GSAP / CONTENTFUL]
 							</div>
 						</div>
@@ -125,18 +130,61 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 
 									return (
 										<span className={styles.wordMask} key={index}>
-											{word.split(' ').map((singleWord, wordIndex) => (
-												<span className={clsx(styles.word, 'word')} key={wordIndex}>
-													{singleWord.split('').map((char, charIndex) => (
-														<span className={clsx(styles.char, 'char')} key={charIndex}>
-															{char}
-														</span>
-													))}
-												</span>
-											)).reduce<ReactNode[]>((acc, curr, wordIndex) => {
-												if (wordIndex === 0) return [curr]
-												return [...acc, ' ', curr]
-											}, [])}
+											{word
+												.split(' ')
+												.map((singleWord, wordIndex) => (
+													<span
+														className={clsx(styles.word, 'word')}
+														key={wordIndex}
+													>
+														{singleWord.split('').map((char, charIndex) => (
+															<span
+																className={clsx(styles.char, 'char')}
+																key={charIndex}
+															>
+																{char}
+															</span>
+														))}
+													</span>
+												))
+												.reduce<ReactNode[]>((acc, curr, wordIndex) => {
+													if (wordIndex === 0) return [curr]
+													return [...acc, ' ', curr]
+												}, [])}
+										</span>
+									)
+								})}
+							</h1>
+						)}
+
+						{data?.titleWordsMobile && (
+							<h1 className={clsx(styles.title, styles.mobile)}>
+								{data.titleWordsMobile?.map((word, index) => {
+									if (!word) return null
+
+									return (
+										<span className={styles.wordMask} key={index}>
+											{word
+												.split(' ')
+												.map((singleWord, wordIndex) => (
+													<span
+														className={clsx(styles.word, 'word')}
+														key={wordIndex}
+													>
+														{singleWord.split('').map((char, charIndex) => (
+															<span
+																className={clsx(styles.char, 'char')}
+																key={charIndex}
+															>
+																{char}
+															</span>
+														))}
+													</span>
+												))
+												.reduce<ReactNode[]>((acc, curr, wordIndex) => {
+													if (wordIndex === 0) return [curr]
+													return [...acc, ' ', curr]
+												}, [])}
 										</span>
 									)
 								})}

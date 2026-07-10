@@ -2,16 +2,25 @@
 
 .heroSection {
 	position: relative;
-	height: 100svh;
+	height: (100svh);
+
+	&.isTopOfPage {
+		height: calc(100svh - $header-height);
+		margin-top: $header-height;
+	}
+}
+
+.container {
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 100%;
 }
 
 .stickyBox {
 	position: relative;
 	margin: 0 auto;
 	width: 100%;
-	min-height: 90lvh;
 	will-change: transform, opacity;
 	transform-origin: center center;
 	backface-visibility: hidden;
@@ -21,7 +30,7 @@
 	justify-content: center;
 }
 
-.hudWrapper {
+.accentWrapper {
 	position: relative;
 	padding: $space-100 $space-80;
 	display: flex;
@@ -32,21 +41,16 @@
 	max-width: 100%;
 	margin: 0 auto;
 
-	@media (max-width: $desktop) {
-		padding: $space-80 $space-64;
-	}
-
-	@media (max-width: $tablet) {
+	@media (max-width: $laptop) {
 		padding: $space-64 $space-40;
 	}
 
 	@media (max-width: $mobile-lg) {
-		padding: 0;
-		width: 100%;
+		padding: $space-64 $space-20;
 	}
 }
 
-.hudContainer {
+.accentContainer {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -55,11 +59,6 @@
 	pointer-events: none;
 	opacity: 0;
 	will-change: opacity;
-	display: none;
-
-	@media (min-width: $tablet) {
-		display: block;
-	}
 }
 
 .cornerBracket {
@@ -69,7 +68,7 @@
 	border: 1px solid transparent;
 	opacity: 0.5;
 
-	@media (max-width: $tablet) {
+	@media (max-width: $laptop) {
 		width: 12px;
 		height: 12px;
 	}
@@ -79,9 +78,8 @@
 		left: $space-20;
 		border-top-color: var(--content-color-2);
 		border-left-color: var(--content-color-2);
-		display: none;
 
-		@media (max-width: $tablet) {
+		@media (max-width: $laptop) {
 			top: $space-12;
 			left: $space-12;
 			display: block;
@@ -94,7 +92,7 @@
 		border-top-color: var(--content-color-2);
 		border-right-color: var(--content-color-2);
 
-		@media (max-width: $tablet) {
+		@media (max-width: $laptop) {
 			top: $space-12;
 			right: $space-12;
 		}
@@ -106,7 +104,7 @@
 		border-bottom-color: var(--content-color-2);
 		border-left-color: var(--content-color-2);
 
-		@media (max-width: $tablet) {
+		@media (max-width: $laptop) {
 			bottom: $space-12;
 			left: $space-12;
 		}
@@ -117,9 +115,8 @@
 		right: $space-20;
 		border-bottom-color: var(--content-color-2);
 		border-right-color: var(--content-color-2);
-		display: none;
 
-		@media (max-width: $tablet) {
+		@media (max-width: $laptop) {
 			bottom: $space-12;
 			right: $space-12;
 			display: block;
@@ -127,7 +124,7 @@
 	}
 }
 
-.hudLabel {
+.accentLabel {
 	position: absolute;
 	font-size: 14px;
 	letter-spacing: 0.08em;
@@ -136,7 +133,7 @@
 	font-weight: 500;
 	white-space: nowrap;
 
-	@media (max-width: $tablet) {
+	@media (max-width: $laptop) {
 		font-size: 10px;
 	}
 
@@ -144,7 +141,7 @@
 		top: calc(#{$space-20} + 2px);
 		left: calc(#{$space-20} + 24px);
 
-		@media (max-width: $tablet) {
+		@media (max-width: $laptop) {
 			top: calc(#{$space-12} + 1px);
 			left: calc(#{$space-12} + 18px);
 		}
@@ -154,7 +151,7 @@
 		top: calc(#{$space-20} + 2px);
 		right: calc(#{$space-20} + 24px);
 
-		@media (max-width: $tablet) {
+		@media (max-width: $laptop) {
 			top: calc(#{$space-12} + 1px);
 			right: calc(#{$space-12} + 18px);
 		}
@@ -164,7 +161,7 @@
 		bottom: calc(#{$space-20} + 2px);
 		left: calc(#{$space-20} + 24px);
 
-		@media (max-width: $tablet) {
+		@media (max-width: $laptop) {
 			bottom: calc(#{$space-12} + 1px);
 			left: calc(#{$space-12} + 18px);
 		}
@@ -174,7 +171,7 @@
 		bottom: calc(#{$space-20} + 2px);
 		right: calc(#{$space-20} + 24px);
 
-		@media (max-width: $tablet) {
+		@media (max-width: $laptop) {
 			bottom: calc(#{$space-12} + 1px);
 			right: calc(#{$space-12} + 18px);
 		}
@@ -187,15 +184,24 @@
 	font-size: 85px;
 
 	@media (max-width: $desktop) {
-		font-size: 72px;
-	}
-
-	@media (max-width: $laptop) {
 		font-size: 60px;
 	}
 
-	@media (max-width: $tablet) {
-		font-size: 48px;
+	@media (max-width: $laptop) {
+		font-size: 40px;
+	}
+
+	@media (max-width: $mobile-lg) {
+		display: none;
+	}
+
+	&.mobile {
+		display: none;
+
+		@media (max-width: $mobile-lg) {
+			display: block;
+			font-size: 48px;
+		}
 	}
 }
 
@@ -209,36 +215,23 @@
 	&:first-child {
 		color: var(--content-color);
 	}
-
-	@media (max-width: $tablet) {
-		white-space: normal;
-	}
 }
 
 .word {
 	display: inline-block;
 	white-space: nowrap;
-
-	@media (max-width: $tablet) {
-		opacity: 0;
-	}
 }
 
 .char {
 	display: inline-block;
 	will-change: transform;
 	transform: translateY(110%);
-
-	@media (max-width: $tablet) {
-		transform: none;
-	}
 }
 
 .scrollToExploreWrapper {
 	width: 100%;
 	display: flex;
 	justify-content: center;
-	margin-bottom: 50px;
 	will-change: opacity;
 }
 
@@ -252,7 +245,6 @@
 	will-change: opacity;
 	text-transform: uppercase;
 	color: var(--content-color-2);
-	margin-bottom: $space-20;
 }
 
 .mouseIcon {

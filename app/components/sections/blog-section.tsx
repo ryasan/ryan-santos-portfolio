@@ -35,7 +35,7 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 			if (!header) return
 
 			gsap.to(header, {
-				delay: 1.2,
+				delay: 0.5,
 				duration: 1,
 				ease: 'power2.out',
 				opacity: 1,

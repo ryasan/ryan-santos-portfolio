@@ -8,6 +8,7 @@ export const HERO_SECTION_FRAGMENT = gql`
 			id
 		}
 		titleWords
+		titleWordsMobile
 		leftSubtitle
 		rightSubtitle
 		isTopOfPage
