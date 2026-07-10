@@ -42,7 +42,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 					delay: wordIndex * 0.05,
 					duration: 0.5,
 					ease: 'power3.out',
-					stagger: 0.01,
+					stagger: 0.003,
 					y: 0,
 				})
 			})

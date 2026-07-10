@@ -29,17 +29,16 @@ export default function ExperienceSection({
 
 			gsap.fromTo(
 				title,
-				{ opacity: 0, y: 50 },
+				{ opacity: 0 },
 				{
 					ease: 'power2.out',
 					opacity: 1,
 					scrollTrigger: {
-						end: 'top center+=30px',
+						end: 'top center',
 						scrub: 1,
-						start: 'top bottom-=50px',
+						start: 'top bottom-=150px',
 						trigger: title,
 					},
-					y: 0,
 				},
 			)
 
@@ -52,17 +51,16 @@ export default function ExperienceSection({
 			experienceItems.forEach((item) => {
 				gsap.fromTo(
 					item,
-					{ opacity: 0, y: 50 },
+					{ opacity: 0 },
 					{
 						ease: 'power2.out',
 						opacity: 1,
 						scrollTrigger: {
-							end: 'top center+=30px',
+							end: 'top center',
 							scrub: 1,
-							start: 'top bottom-=50px',
+							start: 'top bottom-=150px',
 							trigger: item,
 						},
-						y: 0,
 					},
 				)
 			})
@@ -117,7 +115,7 @@ export default function ExperienceSection({
 								const lastRect = lastNum.getBoundingClientRect()
 								const offset =
 									lastRect.top - containerRect.top + lastRect.height / 2
-								return `top+=${offset} center`
+								return `top+=${offset} center+=100px`
 							},
 							scrub: 1,
 							start: () => {
@@ -127,7 +125,7 @@ export default function ExperienceSection({
 								// Offset from container top
 								const offset =
 									firstRect.top - containerRect.top + firstRect.height / 2
-								return `top+=${offset} center`
+								return `top+=${offset} center+=100px`
 							},
 							trigger: container,
 						},
@@ -149,7 +147,6 @@ export default function ExperienceSection({
 							{data?.title}
 						</h2>
 					)}
-
 					<div className={styles.experienceList} ref={containerRef}>
 						<div className={styles.progressBar} ref={progressBarRef}>
 							<div className={styles.progressBarInner} />

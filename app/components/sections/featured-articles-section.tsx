@@ -1,7 +1,7 @@
 import RichText from '~/components/rich-text'
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/featured-articles-section.module.scss'
-import  { type FeaturedArticlesSection } from '~/graphql/__generated/sdk'
+import { type FeaturedArticlesSection } from '~/graphql/__generated/sdk'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
 import { normalizeSlide } from '~/utils'
@@ -40,29 +40,35 @@ export default function FeaturedArticlesSection({
 			trigger: section,
 		})
 
-		ScrollTrigger.create({
-			onEnter: () => {
-				gsap.to(title, {
-					duration: 1,
-					ease: 'power2.out',
-					opacity: 1,
-				})
+		gsap.fromTo(
+			title,
+			{ opacity: 0 },
+			{
+				ease: 'power2.out',
+				opacity: 1,
+				scrollTrigger: {
+					end: 'top center',
+					scrub: 1,
+					start: 'top bottom-=150px',
+					trigger: title,
+				},
 			},
-			start: 'bottom bottom-=200px',
-			trigger: title,
-		})
+		)
 
-		ScrollTrigger.create({
-			onEnter: () => {
-				gsap.to(subtitle, {
-					duration: 1,
-					ease: 'power2.out',
-					opacity: 1,
-				})
+		gsap.fromTo(
+			subtitle,
+			{ opacity: 0 },
+			{
+				ease: 'power2.out',
+				opacity: 1,
+				scrollTrigger: {
+					end: 'top center',
+					scrub: 1,
+					start: 'top bottom-=150px',
+					trigger: subtitle,
+				},
 			},
-			start: 'bottom bottom-=200px',
-			trigger: subtitle,
-		})
+		)
 
 		articles.forEach((article) => {
 			ScrollTrigger.create({
@@ -139,9 +145,7 @@ export default function FeaturedArticlesSection({
 													</h3>
 												)}
 												{article.caption && (
-													<p
-														className={styles.articleCaption}
-													>
+													<p className={styles.articleCaption}>
 														{article.caption}
 													</p>
 												)}

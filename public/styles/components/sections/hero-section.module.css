@@ -4,7 +4,7 @@
 }
 .heroSection.isTopOfPage {
   height: calc(100svh - 68px);
-  margin-top: 68px;
+  padding-top: 68px;
 }
 
 .container {
