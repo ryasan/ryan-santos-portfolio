@@ -75,7 +75,7 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 				<div className="container">
 					<button
 						className={clsx(styles.linkBox, linkStyles.linkBox)}
-						onClick={() => navigate(-1)}
+						onClick={() => navigate('/blog')}
 					>
 						<ArrowLeftIcon className={clsx(styles.icon, linkStyles.icon)} />
 						<span className={clsx('link', linkStyles.link)}>Back</span>
