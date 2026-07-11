@@ -10,6 +10,7 @@ import {
 } from '@remix-run/react'
 import {
 	json,
+	type HeadersFunction,
 	type LinksFunction,
 	type LoaderFunctionArgs,
 } from '@remix-run/node'
@@ -18,6 +19,7 @@ import GlobalLayout from '~/components/global-layout'
 import mainStyles from '~/styles/main.css?url'
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { cdnCacheHeaders } from '~/utils'
 import { client } from '~/services/contentful.server'
 import { getTheme } from '~/services/theme.server'
 import { gsap } from 'gsap'
@@ -30,6 +32,8 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP)
 export const links: LinksFunction = () => {
 	return [{ href: mainStyles, rel: 'stylesheet' }]
 }
+
+export const headers: HeadersFunction = () => cdnCacheHeaders
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	const headerData = await client.getGlobalHeader()

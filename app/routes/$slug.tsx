@@ -1,7 +1,8 @@
 import JumpLinks from '~/components/jump-links'
 import SectionRenderer from '~/components/section-renderer'
-import  { type LoaderFunctionArgs, type MetaFunction } from '@netlify/remix-runtime'
+import  { type HeadersFunction, type LoaderFunctionArgs, type MetaFunction } from '@netlify/remix-runtime'
 import  { type PagePageSectionsItem } from '~/graphql/__generated/sdk'
+import { cdnCacheHeaders } from '~/utils'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
 import { useLoaderData } from '@remix-run/react'
@@ -21,6 +22,8 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 	return json({ page })
 }
+
+export const headers: HeadersFunction = () => cdnCacheHeaders
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	if (!data?.page) {

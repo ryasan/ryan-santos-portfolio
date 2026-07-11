@@ -1,3 +1,4 @@
+export * from './cache-headers'
 export * from './call-all'
 export * from './client-hint'
 export * from './color-scheme'

@@ -1,7 +1,8 @@
 import BlogSection from '~/components/sections/blog-section'
 import ContactSection from '~/components/sections/contact-section'
 import { type Blog, type ContentfulTag } from '~/graphql/__generated/sdk'
-import { type MetaFunction } from '@netlify/remix-runtime'
+import { type HeadersFunction, type MetaFunction } from '@netlify/remix-runtime'
+import { cdnCacheHeaders } from '~/utils'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
 import { useLoaderData } from '@remix-run/react'
@@ -18,6 +19,8 @@ export async function loader() {
 
 	return json({ blogs, contactSection, page })
 }
+
+export const headers: HeadersFunction = () => cdnCacheHeaders
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	if (!data?.page) {
