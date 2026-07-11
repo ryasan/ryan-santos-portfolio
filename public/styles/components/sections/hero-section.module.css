@@ -65,7 +65,7 @@
   width: 16px;
   height: 16px;
   border: 1px solid transparent;
-  opacity: 0.5;
+  opacity: 0.2;
 }
 @media (max-width: 992px) {
   .cornerBracket {
@@ -129,7 +129,7 @@
   font-size: 14px;
   letter-spacing: 0.08em;
   color: var(--content-color-2);
-  opacity: 0.5;
+  opacity: 0.2;
   font-weight: 500;
   white-space: nowrap;
 }
@@ -247,13 +247,13 @@
   opacity: 0;
   will-change: opacity;
   text-transform: uppercase;
-  color: var(--content-color-2);
+  color: var(--content-color);
 }
 
 .mouseIcon {
-  height: 30px;
-  width: 30px;
-  fill: var(--content-color-2);
+  height: 25px;
+  width: 25px;
+  fill: var(--content-color);
 }
 
 /*# sourceMappingURL=hero-section.module.css.map */
