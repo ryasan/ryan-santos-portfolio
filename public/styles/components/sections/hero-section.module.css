@@ -220,7 +220,6 @@
   justify-content: center;
   opacity: 0;
   will-change: opacity;
-  text-transform: uppercase;
   color: var(--content-color);
 }
 

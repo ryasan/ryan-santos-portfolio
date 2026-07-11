@@ -33,6 +33,25 @@
   }
 }
 
+.experienceItem {
+  display: flex;
+  gap: 40px;
+  opacity: 0;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 768px) {
+  .experienceItem {
+    gap: 20px;
+  }
+}
+.experienceItem:last-child .info {
+  padding-bottom: 0;
+}
+.experienceItem:last-child .countNumber {
+  height: 100%;
+}
+
 .info {
   width: 100%;
 }
@@ -53,23 +72,20 @@
   }
 }
 
-.experienceItem {
-  display: flex;
-  gap: 40px;
-  opacity: 0;
-  position: relative;
-  z-index: 1;
+.countNumber {
+  background-color: var(--background-primary-color);
+  padding: 28px 0;
 }
-@media (max-width: 768px) {
-  .experienceItem {
-    gap: 20px;
-  }
+
+.yearRange {
+  white-space: nowrap;
 }
-.experienceItem:last-child .info {
-  padding-bottom: 0;
+.yearRange div {
+  line-height: 1;
 }
-.experienceItem:last-child .countNumber {
-  height: 100%;
+
+.description {
+  max-width: 750px;
 }
 
 .progressBar {
@@ -85,22 +101,6 @@
   background-color: var(--content-color);
   transform-origin: top;
   transform: scaleY(0);
-}
-
-.countNumber {
-  background-color: var(--background-primary-color);
-  padding: 28px 0;
-}
-
-.yearRange {
-  white-space: nowrap;
-}
-.yearRange div {
-  line-height: 1;
-}
-
-.description {
-  max-width: 600px;
 }
 
 /*# sourceMappingURL=experience-section.module.css.map */
