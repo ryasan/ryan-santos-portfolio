@@ -180,29 +180,6 @@
 
 .title {
 	overflow: hidden;
-	line-height: 1.25;
-	font-size: 85px;
-
-	@media (max-width: $desktop) {
-		font-size: 60px;
-	}
-
-	@media (max-width: $laptop) {
-		font-size: 40px;
-	}
-
-	@media (max-width: $mobile-lg) {
-		display: none;
-	}
-
-	&.mobile {
-		display: none;
-
-		@media (max-width: $mobile-lg) {
-			display: block;
-			font-size: 48px;
-		}
-	}
 }
 
 .wordMask {

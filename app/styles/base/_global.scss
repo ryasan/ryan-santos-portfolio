@@ -49,10 +49,14 @@ body {
 	background-color: var(--background-primary-color);
 	color: var(--content-color);
 	font-family: $body-font-family;
-	transition: color 0.5s ease, background-color 0.5s ease;
+	transition:
+		color 0.5s ease,
+		background-color 0.5s ease;
 
 	* {
-		transition: color 0.5s ease, background-color 0.5s ease;
+		transition:
+			color 0.5s ease,
+			background-color 0.5s ease;
 	}
 }
 
@@ -162,6 +166,36 @@ p,
 	}
 }
 
+// Hero title sizing lives here (not in the CSS module) so it ships in the
+// always-present global stylesheet. This avoids a FOUC where the lazily
+// injected module CSS hasn't applied yet and the title briefly falls back to
+// the huge default `h1` size.
+.hero-title {
+	line-height: 1.25;
+	font-size: 85px;
+
+	@media (max-width: $desktop) {
+		font-size: 60px;
+	}
+
+	@media (max-width: $laptop) {
+		font-size: 40px;
+	}
+
+	@media (max-width: $mobile-lg) {
+		display: none;
+	}
+
+	&--mobile {
+		display: none;
+
+		@media (max-width: $mobile-lg) {
+			display: block;
+			font-size: 48px;
+		}
+	}
+}
+
 .body-2 {
 	font-size: 12px;
 	font-style: normal;
@@ -216,7 +250,10 @@ p,
 	border-radius: 100px;
 	text-transform: uppercase;
 	font-weight: 500;
-	transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		color 0.2s ease;
 	font-size: 16px;
 	border: 2px solid transparent;
 

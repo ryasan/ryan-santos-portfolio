@@ -11,11 +11,11 @@
 }
 
 .title {
-	margin: 0 auto 150px;
+	margin: 0 auto 250px;
 	opacity: 0;
 
 	@media (max-width: $tablet) {
-		margin-bottom: 100px;
+		margin-bottom: 150px;
 		font-size: 60px;
 		line-height: 1.2;
 	}
@@ -24,12 +24,12 @@
 .experienceList {
 	display: flex;
 	flex-direction: column;
-	gap: 150px;
+	gap: 250px;
 	align-items: stretch;
 	position: relative;
 
 	@media (max-width: $tablet) {
-		gap: 100px;
+		gap: 150px;
 	}
 }
 

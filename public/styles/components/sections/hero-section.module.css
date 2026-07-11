@@ -181,32 +181,6 @@
 
 .title {
   overflow: hidden;
-  line-height: 1.25;
-  font-size: 85px;
-}
-@media (max-width: 1200px) {
-  .title {
-    font-size: 60px;
-  }
-}
-@media (max-width: 992px) {
-  .title {
-    font-size: 40px;
-  }
-}
-@media (max-width: 610px) {
-  .title {
-    display: none;
-  }
-}
-.title.mobile {
-  display: none;
-}
-@media (max-width: 610px) {
-  .title.mobile {
-    display: block;
-    font-size: 48px;
-  }
 }
 
 .wordMask {

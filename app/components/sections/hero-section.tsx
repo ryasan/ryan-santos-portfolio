@@ -101,9 +101,9 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				<div className={styles.stickyBox} ref={stickyBoxRef}>
 					<div className={styles.accentWrapper}>
 						<div className={styles.accentContainer} ref={accentRef}>
-							<div className={clsx(styles.cornerBracket, styles.topRight)} />
+							{/* <div className={clsx(styles.cornerBracket, styles.topRight)} /> */}
 							<div className={clsx(styles.cornerBracket, styles.bottomLeft)} />
-							<div
+							{/* <div
 								className={clsx(
 									styles.accentLabel,
 									styles.labelTopRight,
@@ -111,7 +111,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 								)}
 							>
 								[LOC: 34.0522° N, 118.2437° W]
-							</div>
+							</div> */}
 							<div
 								className={clsx(
 									styles.accentLabel,
@@ -124,7 +124,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 						</div>
 
 						{data?.titleWords && (
-							<h1 className={styles.title}>
+							<h1 className={clsx(styles.title, 'hero-title')}>
 								{data.titleWords?.map((word, index) => {
 									if (!word) return null
 
@@ -158,7 +158,13 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 						)}
 
 						{data?.titleWordsMobile && (
-							<h1 className={clsx(styles.title, styles.mobile)}>
+							<h1
+								className={clsx(
+									styles.title,
+									'hero-title',
+									'hero-title--mobile',
+								)}
+							>
 								{data.titleWordsMobile?.map((word, index) => {
 									if (!word) return null
 
