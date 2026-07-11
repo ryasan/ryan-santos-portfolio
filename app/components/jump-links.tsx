@@ -4,10 +4,12 @@ import clsx from 'clsx'
 import styles from '~/styles/components/jump-links.module.scss'
 import { type PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { useLocation } from '@remix-run/react'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+const HEADER_HEIGHT = '68px'
 
 type JumpLinksProps = {
 	sections: PagePageSectionsItem[]
@@ -16,10 +18,12 @@ type JumpLinksProps = {
 export default function JumpLinks({ sections }: JumpLinksProps) {
 	const [isTeleported, setIsTeleported] = useState(false)
 	const jumpLinksRef = useRef<HTMLDivElement>(null)
-	const location = useLocation()
 
-	const hash = location.hash
-	const hashWithoutHash = hash.slice(1)
+	const [activeSectionId, setActiveSectionId] = useState('')
+
+	const sectionsWithJumpLinkLabels = sections.filter((section) =>
+		Boolean('jumpLinkLabel' in section && section.jumpLinkLabel !== null),
+	)
 
 	const handleClick = (
 		e: React.MouseEvent<HTMLAnchorElement>,
@@ -31,9 +35,23 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 		const smoother = ScrollSmoother.get()
 
 		if (element && smoother) {
-			smoother.scrollTo(element, true, 'top top')
+			smoother.scrollTo(element, true, `top ${HEADER_HEIGHT}`)
 		}
 	}
+
+	useEffect(() => {
+		if ('scrollRestoration' in window.history) {
+			window.history.scrollRestoration = 'manual'
+		}
+
+		window.history.replaceState(
+			null,
+			'',
+			window.location.pathname + window.location.search,
+		)
+		window.scrollTo(0, 0)
+		ScrollSmoother.get()?.scrollTo(0)
+	}, [])
 
 	useGSAP(() => {
 		const jumpLinks = jumpLinksRef.current
@@ -48,27 +66,52 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 		})
 	}, [isTeleported])
 
+	useGSAP(() => {
+		const triggers = sectionsWithJumpLinkLabels
+			.map((section) => {
+				const element = document.getElementById(section.sys.id)
+
+				if (!element) return null
+
+				return ScrollTrigger.create({
+					end: 'bottom center',
+					onEnter: () => setActiveSectionId(section.sys.id),
+					onEnterBack: () => setActiveSectionId(section.sys.id),
+					start: 'top center',
+					trigger: element,
+				})
+			})
+			.filter((trigger): trigger is ScrollTrigger => trigger !== null)
+
+		return () => {
+			triggers.forEach((trigger) => trigger.kill())
+		}
+	}, [sectionsWithJumpLinkLabels])
+
+	useEffect(() => {
+		if (!activeSectionId) return
+
+		window.history.replaceState(null, '', `#${activeSectionId}`)
+	}, [activeSectionId])
+
 	return (
 		<Teleport onReady={() => setIsTeleported(true)} to="#global-main">
 			<div className={styles.jumpLinks} ref={jumpLinksRef}>
-				{sections
-					.map((section, index) => {
-						if (!section?.sys?.id) return null
+				{sectionsWithJumpLinkLabels.map((section) => {
+					if (!section?.sys?.id || !('jumpLinkLabel' in section)) return null
 
-						const isActive = hashWithoutHash === section.sys.id
-						return (
-							<Link
-								className={clsx(styles.link, isActive && styles.active)}
-								key={section.sys.id}
-								onClick={(e) => handleClick(e, section)}
-								to={`#${section.sys.id}`}
-							>
-								<span className="sr-only">{`Jump to page section ${index + 1}`}</span>
-								<span className={styles.linkDot} />
-							</Link>
-						)
-					})
-					.reverse()}
+					const isActive = activeSectionId === section.sys.id
+					return (
+						<a
+							className={clsx(styles.link, isActive && styles.active)}
+							href={`#${section.sys.id}`}
+							key={section.sys.id}
+							onClick={(e) => handleClick(e, section)}
+						>
+							{section.jumpLinkLabel}
+						</a>
+					)
+				})}
 			</div>
 		</Teleport>
 	)

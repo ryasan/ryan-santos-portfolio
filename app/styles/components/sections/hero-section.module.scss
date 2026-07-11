@@ -5,7 +5,7 @@
 	height: (100svh);
 
 	&.isTopOfPage {
-		height: calc(100svh - $header-height);
+		height: 100svh;
 		padding-top: $header-height;
 	}
 }

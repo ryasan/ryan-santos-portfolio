@@ -3,7 +3,7 @@
   height: 100svh;
 }
 .heroSection.isTopOfPage {
-  height: calc(100svh - 68px);
+  height: 100svh;
   padding-top: 68px;
 }
 

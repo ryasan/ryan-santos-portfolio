@@ -1182,6 +1182,7 @@ export type ContactSection = Entry & _Node & {
   contentfulMetadata: ContentfulMetadata;
   email?: Maybe<Scalars['String']['output']>;
   internalName?: Maybe<Scalars['String']['output']>;
+  jumpLinkLabel?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ContactSectionLinkingCollections>;
   socialLinksCollection?: Maybe<ContactSectionSocialLinksCollection>;
   socialLinksCursorCollection?: Maybe<ContactSectionSocialLinksCursorCollection>;
@@ -1199,6 +1200,13 @@ export type ContactSectionEmailArgs = {
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/contactSection) */
 export type ContactSectionInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/contactSection) */
+export type ContactSectionJumpLinkLabelArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -1274,6 +1282,13 @@ export type ContactSectionFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jumpLinkLabel?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_contains?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  jumpLinkLabel_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jumpLinkLabel_not?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_not_contains?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   socialLinks?: InputMaybe<CfSocialLinkNestedFilter>;
   socialLinksCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
@@ -1377,6 +1392,8 @@ export enum ContactSectionOrder {
   EmailDesc = 'email_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1780,6 +1797,8 @@ export enum ExperienceItemLinkingCollectionsExperienceSectionCollectionOrder {
   InsertDividersDesc = 'insertDividers_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1799,6 +1818,8 @@ export enum ExperienceItemLinkingCollectionsExperienceSectionCursorCollectionOrd
   InsertDividersDesc = 'insertDividers_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1892,6 +1913,7 @@ export type ExperienceSection = Entry & _Node & {
   experienceCursorCollection?: Maybe<ExperienceSectionExperienceCursorCollection>;
   insertDividers?: Maybe<Scalars['Boolean']['output']>;
   internalName?: Maybe<Scalars['String']['output']>;
+  jumpLinkLabel?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ExperienceSectionLinkingCollections>;
   sys: Sys;
   title?: Maybe<Scalars['String']['output']>;
@@ -1939,6 +1961,13 @@ export type ExperienceSectionInsertDividersArgs = {
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/experienceSection) */
 export type ExperienceSectionInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/experienceSection) */
+export type ExperienceSectionJumpLinkLabelArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -2051,6 +2080,13 @@ export type ExperienceSectionFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jumpLinkLabel?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_contains?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  jumpLinkLabel_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jumpLinkLabel_not?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_not_contains?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
   title?: InputMaybe<Scalars['String']['input']>;
   title_contains?: InputMaybe<Scalars['String']['input']>;
@@ -2154,6 +2190,8 @@ export enum ExperienceSectionOrder {
   InsertDividersDesc = 'insertDividers_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -2174,6 +2212,7 @@ export type FeaturedArticlesSection = Entry & _Node & {
   featuredArticlesCollection?: Maybe<FeaturedArticlesSectionFeaturedArticlesCollection>;
   featuredArticlesCursorCollection?: Maybe<FeaturedArticlesSectionFeaturedArticlesCursorCollection>;
   internalName?: Maybe<Scalars['String']['output']>;
+  jumpLinkLabel?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<FeaturedArticlesSectionLinkingCollections>;
   paddingSize?: Maybe<Scalars['String']['output']>;
   subtitle?: Maybe<Scalars['String']['output']>;
@@ -2209,6 +2248,13 @@ export type FeaturedArticlesSectionFeaturedArticlesCursorCollectionArgs = {
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/featuredArticlesSection) */
 export type FeaturedArticlesSectionInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/featuredArticlesSection) */
+export type FeaturedArticlesSectionJumpLinkLabelArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -2321,6 +2367,13 @@ export type FeaturedArticlesSectionFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jumpLinkLabel?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_contains?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  jumpLinkLabel_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jumpLinkLabel_not?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_not_contains?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   paddingSize?: InputMaybe<Scalars['String']['input']>;
   paddingSize_contains?: InputMaybe<Scalars['String']['input']>;
   paddingSize_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2434,6 +2487,8 @@ export enum FeaturedArticlesSectionLinkingCollectionsPageCursorCollectionOrder {
 export enum FeaturedArticlesSectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   PaddingSizeAsc = 'paddingSize_ASC',
   PaddingSizeDesc = 'paddingSize_DESC',
   SubtitleAsc = 'subtitle_ASC',
@@ -2940,6 +2995,7 @@ export type HeroSection = Entry & _Node & {
   contentfulMetadata: ContentfulMetadata;
   internalName?: Maybe<Scalars['String']['output']>;
   isTopOfPage?: Maybe<Scalars['Boolean']['output']>;
+  jumpLinkLabel?: Maybe<Scalars['String']['output']>;
   leftSubtitle?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<HeroSectionLinkingCollections>;
   paddingSize?: Maybe<Scalars['String']['output']>;
@@ -2959,6 +3015,13 @@ export type HeroSectionInternalNameArgs = {
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/heroSection) */
 export type HeroSectionIsTopOfPageArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/heroSection) */
+export type HeroSectionJumpLinkLabelArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -3033,6 +3096,13 @@ export type HeroSectionFilter = {
   isTopOfPage?: InputMaybe<Scalars['Boolean']['input']>;
   isTopOfPage_exists?: InputMaybe<Scalars['Boolean']['input']>;
   isTopOfPage_not?: InputMaybe<Scalars['Boolean']['input']>;
+  jumpLinkLabel?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_contains?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  jumpLinkLabel_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jumpLinkLabel_not?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_not_contains?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leftSubtitle?: InputMaybe<Scalars['String']['input']>;
   leftSubtitle_contains?: InputMaybe<Scalars['String']['input']>;
   leftSubtitle_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3156,6 +3226,8 @@ export enum HeroSectionOrder {
   InternalNameDesc = 'internalName_DESC',
   IsTopOfPageAsc = 'isTopOfPage_ASC',
   IsTopOfPageDesc = 'isTopOfPage_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   LeftSubtitleAsc = 'leftSubtitle_ASC',
   LeftSubtitleDesc = 'leftSubtitle_DESC',
   PaddingSizeAsc = 'paddingSize_ASC',
@@ -4655,6 +4727,8 @@ export enum ProjectsLinkingCollectionsCarouselSectionCursorCollectionOrder {
 export enum ProjectsLinkingCollectionsFeaturedArticlesSectionCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   PaddingSizeAsc = 'paddingSize_ASC',
   PaddingSizeDesc = 'paddingSize_DESC',
   SubtitleAsc = 'subtitle_ASC',
@@ -4674,6 +4748,8 @@ export enum ProjectsLinkingCollectionsFeaturedArticlesSectionCollectionOrder {
 export enum ProjectsLinkingCollectionsFeaturedArticlesSectionCursorCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   PaddingSizeAsc = 'paddingSize_ASC',
   PaddingSizeDesc = 'paddingSize_DESC',
   SubtitleAsc = 'subtitle_ASC',
@@ -5914,6 +5990,8 @@ export enum SocialLinkLinkingCollectionsContactSectionCollectionOrder {
   EmailDesc = 'email_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -5931,6 +6009,8 @@ export enum SocialLinkLinkingCollectionsContactSectionCursorCollectionOrder {
   EmailDesc = 'email_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',

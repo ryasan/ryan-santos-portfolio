@@ -13,6 +13,7 @@ export const HERO_SECTION_FRAGMENT = gql`
 		rightSubtitle
 		isTopOfPage
 		paddingSize
+		jumpLinkLabel
 	}
 `
 
@@ -23,6 +24,7 @@ export const EXPERIENCE_SECTION_FRAGMENT = gql`
 			id
 		}
 		title
+		jumpLinkLabel
 		experienceCollection {
 			items {
 				sys {
@@ -129,6 +131,7 @@ export const FEATURED_ARTICLES_SECTION_FRAGMENT = gql`
 		title
 		subtitle
 		paddingSize
+		jumpLinkLabel
 		featuredArticlesCollection {
 			items {
 				...ProjectFields
@@ -145,6 +148,7 @@ export const CONTACT_SECTION_FRAGMENT = gql`
 		}
 		title
 		email
+		jumpLinkLabel
 		socialLinksCollection {
 			items {
 				sys {

@@ -2,47 +2,42 @@
 
 .jumpLinks {
 	position: fixed;
-	top: 50%;
-	transform: translateY(-50%) rotate(-90deg);
-	right: -114px;
-	gap: $space-32;
-	width: 300px;
+	top: 30%;
+	right: 20px;
+	gap: 30px;
 	display: none;
 	opacity: 0;
 	will-change: opacity;
 }
 
-@media (min-width: $desktop-lg) {
+@media (min-width: $laptop) {
 	.jumpLinks {
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
-		align-items: center;
 	}
 }
 
 .link {
+	color: var(--content-color);
+	opacity: 0.2;
 	position: relative;
+	font-size: 14px;
+	width: fit-content;
+	text-transform: uppercase;
+	transition: opacity 0.2s ease;
 
-	&:hover,
+	@media (max-width: $laptop) {
+		font-size: 10px;
+	}
+
 	&.active {
-		.linkDot {
-			background-color: var(--content-color);
+		opacity: 1;
+	}
+
+	@media (hover: hover) {
+		&:hover {
+			opacity: 1;
 		}
 	}
-
-	span::before {
-		content: none !important;
-	}
-}
-
-.linkDot {
-	width: 10px;
-	height: 10px;
-	background-color: var(--content-color-2);
-	border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
-	transition: background-color 0.3s ease;
 }
