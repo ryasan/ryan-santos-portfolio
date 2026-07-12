@@ -1,4 +1,3 @@
-import Teleport from '~/components/teleport'
 import clsx from 'clsx'
 import styles from '~/styles/components/jump-links.module.scss'
 import { type PagePageSectionsItem } from '~/graphql/__generated/sdk'
@@ -15,7 +14,6 @@ type JumpLinksProps = {
 }
 
 export default function JumpLinks({ sections }: JumpLinksProps) {
-	const [isTeleported, setIsTeleported] = useState(false)
 	const jumpLinksRef = useRef<HTMLDivElement>(null)
 
 	const [activeSectionId, setActiveSectionId] = useState('')
@@ -55,7 +53,7 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 	useGSAP(() => {
 		const jumpLinks = jumpLinksRef.current
 
-		if (!jumpLinks || !isTeleported) return
+		if (!jumpLinks) return
 
 		gsap.to(jumpLinks, {
 			delay: 1.2,
@@ -63,7 +61,7 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 			ease: 'power2.out',
 			opacity: 1,
 		})
-	}, [isTeleported])
+	}, [])
 
 	useGSAP(() => {
 		const triggers = sectionsWithJumpLinkLabels
@@ -94,24 +92,22 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 	}, [activeSectionId])
 
 	return (
-		<Teleport onReady={() => setIsTeleported(true)} to="#global-main">
-			<div className={styles.jumpLinks} ref={jumpLinksRef}>
-				{sectionsWithJumpLinkLabels.map((section) => {
-					if (!section?.sys?.id || !('jumpLinkLabel' in section)) return null
+		<div className={styles.jumpLinks} ref={jumpLinksRef}>
+			{sectionsWithJumpLinkLabels.map((section) => {
+				if (!section?.sys?.id || !('jumpLinkLabel' in section)) return null
 
-					const isActive = activeSectionId === section.sys.id
-					return (
-						<a
-							className={clsx(styles.link, isActive && styles.active)}
-							href={`#${section.sys.id}`}
-							key={section.sys.id}
-							onClick={(e) => handleClick(e, section)}
-						>
-							{section.jumpLinkLabel}
-						</a>
-					)
-				})}
-			</div>
-		</Teleport>
+				const isActive = activeSectionId === section.sys.id
+				return (
+					<a
+						className={clsx(styles.link, isActive && styles.active)}
+						href={`#${section.sys.id}`}
+						key={section.sys.id}
+						onClick={(e) => handleClick(e, section)}
+					>
+						{section.jumpLinkLabel}
+					</a>
+				)
+			})}
+		</div>
 	)
 }

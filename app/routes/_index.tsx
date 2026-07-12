@@ -1,6 +1,5 @@
-import JumpLinks from '~/components/jump-links'
 import SectionRenderer from '~/components/section-renderer'
-import  { type HeadersFunction, type MetaFunction } from '@netlify/remix-runtime'
+import { type HeadersFunction, type MetaFunction } from '@netlify/remix-runtime'
 import { type PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import { cdnCacheHeaders } from '~/utils'
 import { client } from '~/services/contentful.server'
@@ -71,9 +70,6 @@ export default function Index() {
 					/>
 				)
 			})}
-			{page.jumpLinksEnabled && sections?.length > 0 && (
-				<JumpLinks sections={sections} />
-			)}
 		</>
 	)
 }
