@@ -1,6 +1,5 @@
 .blogPostSection {
-  margin-top: 68px;
-  padding: 40px 0;
+  padding: 120px 0 40px;
   opacity: 0;
   will-change: opacity;
 }

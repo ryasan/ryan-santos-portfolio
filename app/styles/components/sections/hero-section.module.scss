@@ -2,10 +2,9 @@
 
 .heroSection {
 	position: relative;
-	height: (100svh);
+	height: 100svh;
 
 	&.isTopOfPage {
-		height: 100svh;
 		padding-top: $header-height;
 	}
 }

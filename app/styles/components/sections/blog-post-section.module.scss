@@ -1,8 +1,7 @@
 @import '../../base/variables';
 
 .blogPostSection {
-	margin-top: $header-height;
-	padding: $space-40 0;
+	padding: $space-120 0 $space-40;
 	opacity: 0;
 	will-change: opacity;
 }
@@ -42,7 +41,7 @@
 	align-items: center;
 	display: flex;
 	gap: $space-16;
-	
+
 	h5 {
 		margin-bottom: $space-6;
 	}
@@ -81,7 +80,7 @@
 
 .blogBody {
 	margin-bottom: $space-120;
-	
+
 	@media (max-width: $tablet) {
 		margin-bottom: $space-40;
 	}
