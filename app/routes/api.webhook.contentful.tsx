@@ -34,6 +34,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
 		await purgeCache({
 			tags: tagsToPurge,
+			token: process.env.NETLIFY_PURGE_API_TOKEN,
 		})
 
 		return new Response('Cache purged successfully', { status: 200 })
