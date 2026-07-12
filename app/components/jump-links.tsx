@@ -1,4 +1,3 @@
-import Link from '~/components/link'
 import Teleport from '~/components/teleport'
 import clsx from 'clsx'
 import styles from '~/styles/components/jump-links.module.scss'
