@@ -1,5 +1,5 @@
 import BlogPostSection from '~/components/sections/blog-post-section'
-import { cdnCacheHeaders } from '~/utils'
+import { cdnCacheHeaders, generateCacheHeaders, mergeHeaders } from '~/utils'
 import { client } from '~/services/contentful.server'
 import { json, type HeadersFunction, type LoaderFunctionArgs, type MetaFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
@@ -11,10 +11,11 @@ export async function loader({ params }: LoaderFunctionArgs) {
 	}
 
 	const blog = await client.getBlogBySlug(post)
-	return json({ blog }, { headers: cdnCacheHeaders })
+	const tags = [`entry-${blog.sys.id}`, 'content-type-blog']
+	return json({ blog }, { headers: generateCacheHeaders(tags) })
 }
 
-export const headers: HeadersFunction = () => cdnCacheHeaders
+export const headers: HeadersFunction = mergeHeaders
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	if (!data?.blog) {

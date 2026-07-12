@@ -12,3 +12,18 @@ export const cdnCacheHeaders = {
 	// cached document for data requests (loader data comes back undefined).
 	'Netlify-Vary': 'query=_data',
 }
+
+export function generateCacheHeaders(tags: string[]) {
+	return {
+		...cdnCacheHeaders,
+		'Netlify-Cache-Tag': tags.join(','),
+	}
+}
+
+export const mergeHeaders = ({ loaderHeaders }: { loaderHeaders: Headers }) => {
+	const tags = loaderHeaders.get('Netlify-Cache-Tag')
+	return {
+		...cdnCacheHeaders,
+		...(tags ? { 'Netlify-Cache-Tag': tags } : {}),
+	}
+}

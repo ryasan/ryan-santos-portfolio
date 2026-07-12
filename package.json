@@ -22,6 +22,7 @@
     "@graphql-codegen/typescript-graphql-request": "^6.3.0",
     "@gsap/react": "^2.1.2",
     "@netlify/edge-functions": "^2.3.1",
+    "@netlify/functions": "^5.3.0",
     "@netlify/remix-edge-adapter": "^3.5.0",
     "@netlify/remix-runtime": "^2.4.0",
     "@react-three/drei": "^9.122.0",

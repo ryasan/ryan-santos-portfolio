@@ -19,7 +19,7 @@ import GlobalLayout from '~/components/global-layout'
 import mainStyles from '~/styles/main.css?url'
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { cdnCacheHeaders } from '~/utils'
+import { cdnCacheHeaders, generateCacheHeaders, mergeHeaders } from '~/utils'
 import { client } from '~/services/contentful.server'
 import { getTheme } from '~/services/theme.server'
 import { gsap } from 'gsap'
@@ -33,7 +33,7 @@ export const links: LinksFunction = () => {
 	return [{ href: mainStyles, rel: 'stylesheet' }]
 }
 
-export const headers: HeadersFunction = () => cdnCacheHeaders
+export const headers: HeadersFunction = mergeHeaders
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	const headerData = await client.getGlobalHeader()
@@ -46,7 +46,17 @@ export async function loader({ request }: LoaderFunctionArgs) {
 		},
 	}
 
-	return json({ footerData, headerData, requestInfo }, { headers: cdnCacheHeaders })
+	const tags = [
+		`entry-${headerData?.sys?.id}`,
+		`entry-${footerData?.sys?.id}`,
+		'content-type-globalHeader',
+		'content-type-globalFooter',
+	].filter(Boolean)
+
+	return json(
+		{ footerData, headerData, requestInfo },
+		{ headers: generateCacheHeaders(tags) }
+	)
 }
 
 type DocumentProps = {

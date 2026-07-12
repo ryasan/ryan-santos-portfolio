@@ -1,7 +1,7 @@
 import SectionRenderer from '~/components/section-renderer'
 import { type HeadersFunction, type MetaFunction } from '@netlify/remix-runtime'
 import { type PagePageSectionsItem } from '~/graphql/__generated/sdk'
-import { cdnCacheHeaders } from '~/utils'
+import { cdnCacheHeaders, generateCacheHeaders, mergeHeaders } from '~/utils'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
 import { useLoaderData } from '@remix-run/react'
@@ -13,10 +13,11 @@ export async function loader() {
 		throw new Response('Not Found', { status: 404 })
 	}
 
-	return json({ page }, { headers: cdnCacheHeaders })
+	const tags = [`entry-${page.sys.id}`, 'content-type-page']
+	return json({ page }, { headers: generateCacheHeaders(tags) })
 }
 
-export const headers: HeadersFunction = () => cdnCacheHeaders
+export const headers: HeadersFunction = mergeHeaders
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	if (!data?.page) {
