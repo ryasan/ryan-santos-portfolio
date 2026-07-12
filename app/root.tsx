@@ -19,7 +19,7 @@ import GlobalLayout from '~/components/global-layout'
 import mainStyles from '~/styles/main.css?url'
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { cdnCacheHeaders, generateCacheHeaders, mergeHeaders } from '~/utils'
+import { generateCacheHeaders, mergeHeaders } from '~/utils'
 import { client } from '~/services/contentful.server'
 import { getTheme } from '~/services/theme.server'
 import { gsap } from 'gsap'
@@ -47,11 +47,11 @@ export async function loader({ request }: LoaderFunctionArgs) {
 	}
 
 	const tags = [
-		`entry-${headerData?.sys?.id}`,
-		`entry-${footerData?.sys?.id}`,
+		headerData?.sys?.id ? `entry-${headerData.sys.id}` : null,
+		footerData?.sys?.id ? `entry-${footerData.sys.id}` : null,
 		'content-type-globalHeader',
 		'content-type-globalFooter',
-	].filter(Boolean)
+	].filter((tag): tag is string => tag !== null)
 
 	return json(
 		{ footerData, headerData, requestInfo },

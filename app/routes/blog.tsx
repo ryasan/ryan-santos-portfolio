@@ -2,7 +2,7 @@ import BlogSection from '~/components/sections/blog-section'
 import ContactSection from '~/components/sections/contact-section'
 import { type Blog, type ContentfulTag } from '~/graphql/__generated/sdk'
 import { type HeadersFunction, type MetaFunction } from '@netlify/remix-runtime'
-import { cdnCacheHeaders, generateCacheHeaders, mergeHeaders } from '~/utils'
+import { generateCacheHeaders, mergeHeaders } from '~/utils'
 import { client } from '~/services/contentful.server'
 import { json } from '@remix-run/server-runtime'
 import { useLoaderData } from '@remix-run/react'
@@ -18,12 +18,12 @@ export async function loader() {
 	}
 
 	const tags = [
-		`entry-${page.sys.id}`,
-		`entry-${contactSection.sys.id}`,
+		page?.sys?.id ? `entry-${page.sys.id}` : null,
+		contactSection?.sys?.id ? `entry-${contactSection.sys.id}` : null,
 		'content-type-blog', // Purge when any blog is published
 		'content-type-page',
 		'content-type-contactSection',
-	]
+	].filter((tag): tag is string => tag !== null)
 
 	return json({ blogs, contactSection, page }, { headers: generateCacheHeaders(tags) })
 }
