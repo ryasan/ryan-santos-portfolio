@@ -1,9 +1,12 @@
 export const cdnCacheHeaders = {
 	// Browsers revalidate; the CDN does the heavy lifting
 	'Cache-Control': 'public, max-age=0, must-revalidate',
-	// Netlify CDN: fresh 5 min, serve stale up to 1 day while revalidating
+	// Netlify CDN: fresh 1 hour, serve stale up to 1 year while revalidating in the background.
+	// Ideal for portfolios: maximizes cache hits for instant loads across infrequent visits,
+	// while still automatically fetching updates behind the scenes when content changes. Refresh
+	// twice in a row if you want to see the latest content from the server.
 	'Netlify-CDN-Cache-Control':
-		'public, s-maxage=300, stale-while-revalidate=86400',
+		'public, s-maxage=3600, stale-while-revalidate=31536000',
 	// Remix uses ?_data to tell HTML document requests apart from JSON loader
 	// requests; without this, Netlify ignores the query string and serves the
 	// cached document for data requests (loader data comes back undefined).
