@@ -12,8 +12,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 	const blog = await client.getBlogBySlug(post)
 	const tags = [
-		blog?.sys?.id ? `entry-${blog.sys.id}` : null,
-		'content-type-blog'
+		blog?.sys?.id ? `entry-${blog.sys.id}` : null
 	].filter((tag): tag is string => tag !== null)
 	return json({ blog }, { headers: generateCacheHeaders(tags) })
 }
