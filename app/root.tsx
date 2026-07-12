@@ -46,7 +46,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 		},
 	}
 
-	return json({ footerData, headerData, requestInfo })
+	return json({ footerData, headerData, requestInfo }, { headers: cdnCacheHeaders })
 }
 
 type DocumentProps = {

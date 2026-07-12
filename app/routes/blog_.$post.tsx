@@ -11,7 +11,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 	}
 
 	const blog = await client.getBlogBySlug(post)
-	return json({ blog })
+	return json({ blog }, { headers: cdnCacheHeaders })
 }
 
 export const headers: HeadersFunction = () => cdnCacheHeaders

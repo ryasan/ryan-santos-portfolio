@@ -17,7 +17,7 @@ export async function loader() {
 		throw new Response('Not Found', { status: 404 })
 	}
 
-	return json({ blogs, contactSection, page })
+	return json({ blogs, contactSection, page }, { headers: cdnCacheHeaders })
 }
 
 export const headers: HeadersFunction = () => cdnCacheHeaders
