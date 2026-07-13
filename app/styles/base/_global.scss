@@ -53,6 +53,15 @@ body {
 		color 0.5s ease,
 		background-color 0.5s ease;
 
+	// Prevent transitions on page load to avoid a flash of unstyled content
+	&.preload {
+		transition: none !important;
+
+		* {
+			transition: none !important;
+		}
+	}
+
 	* {
 		transition:
 			color 0.5s ease,

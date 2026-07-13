@@ -198,6 +198,12 @@ body {
   font-family: "Poppins", sans-serif;
   transition: color 0.5s ease, background-color 0.5s ease;
 }
+body.preload {
+  transition: none !important;
+}
+body.preload * {
+  transition: none !important;
+}
 body * {
   transition: color 0.5s ease, background-color 0.5s ease;
 }

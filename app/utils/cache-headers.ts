@@ -9,16 +9,7 @@ const baseCacheHeaders = {
 		'public, s-maxage=3600, stale-while-revalidate=31536000',
 }
 
-// 1. Headers for the HTML Document
-// We MUST vary on the theme cookie here so the server can render the correct initial HTML.
-export const documentCacheHeaders = {
-	...baseCacheHeaders,
-	'Netlify-Vary': 'query=_data|cookie=en_theme',
-}
-
-// 2. Headers for the JSON Loader Data
-// We DO NOT vary on the theme cookie here, because the data is the same for both themes.
-export const loaderCacheHeaders = {
+export const cdnCacheHeaders = {
 	...baseCacheHeaders,
 	// Remix uses ?_data to tell HTML document requests apart from JSON loader
 	// requests; without this, Netlify ignores the query string and serves the
@@ -28,7 +19,7 @@ export const loaderCacheHeaders = {
 
 export function generateCacheHeaders(tags: string[]) {
 	return {
-		...loaderCacheHeaders,
+		...cdnCacheHeaders,
 		'Netlify-Cache-Tag': tags.join(','),
 	}
 }
@@ -36,7 +27,7 @@ export function generateCacheHeaders(tags: string[]) {
 export const mergeHeaders = ({ loaderHeaders }: { loaderHeaders: Headers }) => {
 	const tags = loaderHeaders.get('Netlify-Cache-Tag')
 	return {
-		...documentCacheHeaders,
+		...cdnCacheHeaders,
 		...(tags ? { 'Netlify-Cache-Tag': tags } : {}),
 	}
 }

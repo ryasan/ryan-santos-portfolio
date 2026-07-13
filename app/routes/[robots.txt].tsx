@@ -1,6 +1,6 @@
 import { type LoaderFunctionArgs } from '@remix-run/node'
 
-import { documentCacheHeaders } from '~/utils'
+import { cdnCacheHeaders } from '~/utils'
 
 export const loader = ({ request }: LoaderFunctionArgs) => {
 	const url = new URL(request.url)
@@ -16,7 +16,7 @@ Sitemap: ${protocol}//${host}/sitemap.xml
 
 	return new Response(robotText, {
 		headers: {
-			...documentCacheHeaders,
+			...cdnCacheHeaders,
 			'Content-Type': 'text/plain',
 		},
 		status: 200,

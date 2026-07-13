@@ -23,7 +23,6 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { generateCacheHeaders, mergeHeaders } from '~/utils'
 import { client } from '~/services/contentful.server'
-import { getTheme } from '~/services/theme.server'
 import { gsap } from 'gsap'
 import { type Theme } from '~/types'
 import { useGSAP } from '@gsap/react'
@@ -42,9 +41,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 	const requestInfo = {
 		hints: getHints(request),
-		userPrefs: {
-			theme: getTheme(request),
-		},
 	}
 
 	const tags = [
@@ -71,6 +67,18 @@ function Document({ children, theme = 'dark' }: DocumentProps) {
 	return (
 		<html data-theme={theme} lang="en">
 			<head>
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `
+							try {
+								var localTheme = localStorage.getItem('theme');
+								if (localTheme) {
+									document.documentElement.setAttribute('data-theme', localTheme);
+								}
+							} catch (e) {}
+						`,
+					}}
+				/>
 				<ClientHintScript />
 				<meta charSet="utf-8" />
 				<meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -78,7 +86,16 @@ function Document({ children, theme = 'dark' }: DocumentProps) {
 				<Links />
 			</head>
 
-			<body>
+			<body className="preload">
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `
+							setTimeout(function() {
+								document.body.classList.remove('preload');
+							}, 0);
+						`,
+					}}
+				/>
 				<GlobalLayout data={data}>{children}</GlobalLayout>
 				<ScrollRestoration />
 				<Scripts />
@@ -88,13 +105,14 @@ function Document({ children, theme = 'dark' }: DocumentProps) {
 }
 
 function App() {
-	const data = useLoaderData<typeof loader>()
-	const serverTheme = data.requestInfo.userPrefs.theme || 'dark'
-	const [theme, setTheme] = useState<Theme | null>(serverTheme)
+	const [theme, setTheme] = useState<Theme | null>('dark')
 
 	useEffect(() => {
-		setTheme(serverTheme)
-	}, [serverTheme])
+		const localTheme = localStorage.getItem('theme') as Theme | null
+		if (localTheme) {
+			setTheme(localTheme)
+		}
+	}, [])
 
 	return (
 		<ThemeContext.Provider value={[theme, setTheme]}>
