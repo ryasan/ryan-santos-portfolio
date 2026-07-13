@@ -65,7 +65,6 @@
 	width: 16px;
 	height: 16px;
 	border: 1px solid transparent;
-	opacity: 0.2;
 
 	@media (max-width: $laptop) {
 		width: 12px;
@@ -75,8 +74,8 @@
 	&.topLeft {
 		top: $space-20;
 		left: $space-20;
-		border-top-color: var(--content-color-2);
-		border-left-color: var(--content-color-2);
+		border-top-color: var(--content-color);
+		border-left-color: var(--content-color);
 
 		@media (max-width: $laptop) {
 			top: $space-12;
@@ -88,8 +87,8 @@
 	&.topRight {
 		top: $space-20;
 		right: $space-20;
-		border-top-color: var(--content-color-2);
-		border-right-color: var(--content-color-2);
+		border-top-color: var(--content-color);
+		border-right-color: var(--content-color);
 
 		@media (max-width: $laptop) {
 			top: $space-12;
@@ -100,8 +99,8 @@
 	&.bottomLeft {
 		bottom: $space-20;
 		left: $space-20;
-		border-bottom-color: var(--content-color-2);
-		border-left-color: var(--content-color-2);
+		border-bottom-color: var(--content-color);
+		border-left-color: var(--content-color);
 
 		@media (max-width: $laptop) {
 			bottom: $space-12;
@@ -112,8 +111,8 @@
 	&.bottomRight {
 		bottom: $space-20;
 		right: $space-20;
-		border-bottom-color: var(--content-color-2);
-		border-right-color: var(--content-color-2);
+		border-bottom-color: var(--content-color);
+		border-right-color: var(--content-color);
 
 		@media (max-width: $laptop) {
 			bottom: $space-12;
@@ -127,8 +126,7 @@
 	position: absolute;
 	font-size: 14px;
 	letter-spacing: 0.08em;
-	color: var(--content-color-2);
-	opacity: 0.2;
+	color: var(--content-color);
 	font-weight: 500;
 	white-space: nowrap;
 
@@ -185,7 +183,7 @@
 	display: block;
 	overflow: hidden;
 	position: relative;
-	color: var(--content-color-2);
+	color: var(--content-color);
 	white-space: nowrap;
 
 	&:first-child {

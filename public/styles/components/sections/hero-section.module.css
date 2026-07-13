@@ -64,7 +64,6 @@
   width: 16px;
   height: 16px;
   border: 1px solid transparent;
-  opacity: 0.2;
 }
 @media (max-width: 992px) {
   .cornerBracket {
@@ -75,8 +74,8 @@
 .cornerBracket.topLeft {
   top: 20px;
   left: 20px;
-  border-top-color: var(--content-color-2);
-  border-left-color: var(--content-color-2);
+  border-top-color: var(--content-color);
+  border-left-color: var(--content-color);
 }
 @media (max-width: 992px) {
   .cornerBracket.topLeft {
@@ -88,8 +87,8 @@
 .cornerBracket.topRight {
   top: 20px;
   right: 20px;
-  border-top-color: var(--content-color-2);
-  border-right-color: var(--content-color-2);
+  border-top-color: var(--content-color);
+  border-right-color: var(--content-color);
 }
 @media (max-width: 992px) {
   .cornerBracket.topRight {
@@ -100,8 +99,8 @@
 .cornerBracket.bottomLeft {
   bottom: 20px;
   left: 20px;
-  border-bottom-color: var(--content-color-2);
-  border-left-color: var(--content-color-2);
+  border-bottom-color: var(--content-color);
+  border-left-color: var(--content-color);
 }
 @media (max-width: 992px) {
   .cornerBracket.bottomLeft {
@@ -112,8 +111,8 @@
 .cornerBracket.bottomRight {
   bottom: 20px;
   right: 20px;
-  border-bottom-color: var(--content-color-2);
-  border-right-color: var(--content-color-2);
+  border-bottom-color: var(--content-color);
+  border-right-color: var(--content-color);
 }
 @media (max-width: 992px) {
   .cornerBracket.bottomRight {
@@ -127,8 +126,7 @@
   position: absolute;
   font-size: 14px;
   letter-spacing: 0.08em;
-  color: var(--content-color-2);
-  opacity: 0.2;
+  color: var(--content-color);
   font-weight: 500;
   white-space: nowrap;
 }
@@ -186,7 +184,7 @@
   display: block;
   overflow: hidden;
   position: relative;
-  color: var(--content-color-2);
+  color: var(--content-color);
   white-space: nowrap;
 }
 .wordMask:first-child {
