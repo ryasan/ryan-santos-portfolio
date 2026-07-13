@@ -1,4 +1,4 @@
-import { cdnCacheHeaders } from '~/utils'
+import { documentCacheHeaders } from '~/utils'
 import { client } from '~/services/contentful.server'
 import { type Blog, type Page } from '~/graphql/__generated/sdk'
 import { type LoaderFunctionArgs } from '@remix-run/node'
@@ -57,7 +57,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 	return new Response(sitemap, {
 		headers: {
-			...cdnCacheHeaders,
+			...documentCacheHeaders,
 			'Content-Type': 'application/xml',
 			encoding: 'UTF-8',
 			'xml-version': '1.0',
