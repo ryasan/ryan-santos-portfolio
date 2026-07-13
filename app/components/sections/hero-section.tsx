@@ -101,10 +101,8 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				<div className={styles.stickyBox} ref={stickyBoxRef}>
 					<div className={styles.accentWrapper}>
 						<div className={styles.accentContainer} ref={accentRef}>
-							{/* <div className={clsx(styles.cornerBracket, styles.topLeft)} /> */}
 							<div className={clsx(styles.cornerBracket, styles.topRight)} />
 							<div className={clsx(styles.cornerBracket, styles.bottomLeft)} />
-							{/* <div className={clsx(styles.cornerBracket, styles.bottomRight)} /> */}
 							<div
 								className={clsx(
 									styles.accentLabel,
@@ -112,7 +110,6 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 									'code',
 								)}
 							>
-								{/* [LOC: 34.0522° N, 118.2437° W] */}
 								[v2.6_PROD]
 							</div>
 							<div

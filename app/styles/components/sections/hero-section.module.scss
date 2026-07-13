@@ -3,20 +3,18 @@
 .heroSection {
 	position: relative;
 	height: 100svh;
-
-	&.isTopOfPage {
-		padding-top: $header-height;
-	}
 }
 
 .container {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: center;
 	height: 100%;
+	padding-bottom: 25px;
 }
 
 .stickyBox {
+	flex: 1;
 	position: relative;
 	margin: 0 auto;
 	width: 100%;
@@ -218,6 +216,7 @@
 	opacity: 0;
 	will-change: opacity;
 	color: var(--content-color);
+	margin-top: auto;
 }
 
 .mouseIcon {

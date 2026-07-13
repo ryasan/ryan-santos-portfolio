@@ -86,7 +86,7 @@ function Document({ children, theme = 'dark' }: DocumentProps) {
 				<Links />
 			</head>
 
-			<body className="preload">
+			<body className="preload" suppressHydrationWarning>
 				<script
 					dangerouslySetInnerHTML={{
 						__html: `
