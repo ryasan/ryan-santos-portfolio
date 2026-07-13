@@ -10,7 +10,7 @@ export const cdnCacheHeaders = {
 	// Remix uses ?_data to tell HTML document requests apart from JSON loader
 	// requests; without this, Netlify ignores the query string and serves the
 	// cached document for data requests (loader data comes back undefined).
-	'Netlify-Vary': 'query=_data',
+	'Netlify-Vary': 'query=_data|cookie=en_theme',
 }
 
 export function generateCacheHeaders(tags: string[]) {
