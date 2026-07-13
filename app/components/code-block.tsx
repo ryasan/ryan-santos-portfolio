@@ -47,7 +47,7 @@ export default function CodeBlock({
 			? { language: languageProp, parsedCode: value }
 			: parseCodeString(String(code))
 
-	const theme = useTheme()
+	const [theme] = useTheme()
 	const style = theme === 'dark' ? atomDark : oneLight
 
 	// If it's a short string meant to be used inline, just return the code span

@@ -1,5 +1,6 @@
 import { useHints } from './use-hints'
-import {  useRequestInfo } from './use-request-info'
+import { useRequestInfo } from './use-request-info'
+import { useThemeContext } from '~/contexts/theme-context'
 
 /**
  * @returns the theme from the user's preferences or the system preference
@@ -7,5 +8,9 @@ import {  useRequestInfo } from './use-request-info'
 export function useTheme() {
   const hints = useHints();
   const requestInfo = useRequestInfo();
-  return requestInfo.userPrefs.theme ?? hints.theme;
+  const [themeState, setThemeState] = useThemeContext()
+  
+  const theme = themeState ?? requestInfo.userPrefs.theme ?? hints.theme ?? 'dark';
+
+  return [theme, setThemeState] as const;
 }

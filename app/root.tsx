@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+import { ThemeContext } from '~/contexts/theme-context'
 import {
 	Links,
 	Meta,
@@ -25,7 +27,6 @@ import { getTheme } from '~/services/theme.server'
 import { gsap } from 'gsap'
 import { type Theme } from '~/types'
 import { useGSAP } from '@gsap/react'
-import { useTheme } from '~/hooks'
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP)
 
@@ -87,12 +88,20 @@ function Document({ children, theme = 'dark' }: DocumentProps) {
 }
 
 function App() {
-	const theme = useTheme()
+	const data = useLoaderData<typeof loader>()
+	const serverTheme = data.requestInfo.userPrefs.theme || 'dark'
+	const [theme, setTheme] = useState<Theme | null>(serverTheme)
+
+	useEffect(() => {
+		setTheme(serverTheme)
+	}, [serverTheme])
 
 	return (
-		<Document theme={theme}>
-			<Outlet />
-		</Document>
+		<ThemeContext.Provider value={[theme, setTheme]}>
+			<Document theme={theme || 'dark'}>
+				<Outlet />
+			</Document>
+		</ThemeContext.Provider>
 	)
 }
 

@@ -1,11 +1,11 @@
 import styles from '~/styles/components/theme-toggle.module.scss'
 import { DARK_THEME, LIGHT_THEME } from '~/utils/constants'
 import { MoonIcon, SunIcon } from '~/components/icons'
-import { useFetcher } from '@remix-run/react'
 import { useTheme } from '~/hooks'
+import { useFetcher } from '@remix-run/react'
 
 export default function ThemeToggle() {
-	const theme = useTheme()
+	const [theme, setTheme] = useTheme()
 	const fetcher = useFetcher()
 
 	const isDarkMode = theme === DARK_THEME
@@ -14,6 +14,11 @@ export default function ThemeToggle() {
 	const toggleTheme = () => {
 		const updatedTheme = theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME
 
+		// 1. Instantly update the UI state (no reload!)
+		setTheme(updatedTheme)
+
+		// 2. Quietly update the cookie in the background so the next 
+		// page load gets the correct cached HTML from Netlify
 		fetcher.submit(
 			{ theme: updatedTheme },
 			{ action: '/resources/theme-toggle', method: 'post' },

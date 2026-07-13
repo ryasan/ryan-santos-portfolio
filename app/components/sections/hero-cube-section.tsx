@@ -26,7 +26,7 @@ type CubeProps = {
 
 const Cube = ({ rotationProgress, textItems }: CubeProps) => {
 	const meshRef = useRef<THREE.Mesh>(null)
-	const theme = useTheme()
+	const [theme] = useTheme()
 	const { viewport } = useThree()
 
 	// Adjust cube size based on viewport width to fit on mobile screens
@@ -152,7 +152,7 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 	const scrollToExploreRef = useRef<HTMLDivElement>(null)
 	// Mutable ref to share scroll progress with the Canvas without re-renders
 	const progress = useRef(0)
-	const theme = useTheme()
+	const [theme] = useTheme()
 	const backgroundColor = theme === 'dark' ? BLACK : WHITE
 
 	useGSAP(
