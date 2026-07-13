@@ -5,7 +5,6 @@ import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useRef, type ReactNode } from 'react'
-import { useMatchMedia } from '~/hooks'
 
 type HeroSectionProps = {
 	data?: HeroSectionType
@@ -19,15 +18,8 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 	const scrollToExploreWrapperRef = useRef<HTMLDivElement>(null)
 	const accentRef = useRef<HTMLDivElement>(null)
 
-	const { calculated, isMatching: isMobile } = useMatchMedia(
-		'(max-width: 610px)',
-		false,
-	)
-
 	useGSAP(
 		() => {
-			if (!calculated) return
-
 			const section = sectionRef.current
 			const stickyBox = stickyBoxRef.current
 			const scrollToExplore = scrollToExploreRef.current
@@ -93,14 +85,8 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				0,
 			)
 		},
-		{
-			dependencies: [calculated, isMobile],
-			revertOnUpdate: true,
-			scope: sectionRef,
-		},
+		{ scope: sectionRef },
 	)
-
-	const titleWords = isMobile ? data?.titleWordsMobile : data?.titleWords
 
 	return (
 		<section
@@ -137,15 +123,49 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 							</div>
 						</div>
 
-						{titleWords && (
+						{data?.titleWords && (
+							<h1 className={clsx(styles.title, 'hero-title')}>
+								{data.titleWords?.map((word, index) => {
+									if (!word) return null
+
+									return (
+										<span className={styles.wordMask} key={index}>
+											{word
+												.split(' ')
+												.map((singleWord, wordIndex) => (
+													<span
+														className={clsx(styles.word, 'word')}
+														key={wordIndex}
+													>
+														{singleWord.split('').map((char, charIndex) => (
+															<span
+																className={clsx(styles.char, 'char')}
+																key={charIndex}
+															>
+																{char}
+															</span>
+														))}
+													</span>
+												))
+												.reduce<ReactNode[]>((acc, curr, wordIndex) => {
+													if (wordIndex === 0) return [curr]
+													return [...acc, ' ', curr]
+												}, [])}
+										</span>
+									)
+								})}
+							</h1>
+						)}
+
+						{data?.titleWordsMobile && (
 							<h1
 								className={clsx(
 									styles.title,
 									'hero-title',
-									isMobile && 'hero-title--mobile',
+									'hero-title--mobile',
 								)}
 							>
-								{titleWords.map((word, index) => {
+								{data.titleWordsMobile?.map((word, index) => {
 									if (!word) return null
 
 									return (
