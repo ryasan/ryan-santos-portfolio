@@ -9,6 +9,11 @@
 	.articleImage {
 		img {
 			filter: blur(3px) grayscale(50%) brightness(0.5);
+
+			[data-theme='light'] & {
+				filter: blur(3px) grayscale(10%) brightness(1.1);
+				opacity: 0.3;
+			}
 		}
 	}
 
@@ -96,6 +101,7 @@
 	overflow: hidden;
 	position: relative;
 	z-index: 1;
+	background-color: var(--background-primary-color);
 
 	@media (min-width: $tablet + 1px) {
 		&:hover {
@@ -118,10 +124,6 @@
 	@media (max-width: $tablet) {
 		font-size: 32px;
 	}
-
-	[data-theme='light'] & {
-		color: var(--background-secondary-color);
-	}
 }
 
 .articleCaption {
@@ -133,31 +135,12 @@
 	@media (max-width: $tablet) {
 		font-size: 18px;
 	}
-
-	[data-theme='light'] & {
-		color: var(--background-secondary-color);
-	}
 }
 
 .articleDescription p {
 	color: var(--content-color);
-
-	[data-theme='light'] & {
-		color: var(--background-secondary-color);
-	}
 }
 
 .articleLink {
 	margin-top: auto;
-
-	[data-theme='light'] & {
-		background-color: var(--background-primary-color);
-		color: var(--content-color);
-	}
-
-	&:hover {
-		[data-theme='light'] & {
-			background-color: var(--background-secondary-color);
-		}
-	}
 }

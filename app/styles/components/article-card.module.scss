@@ -40,6 +40,10 @@
 		opacity: 1;
 	}
 
+	[data-theme='light'] & {
+		border-color: var(--content-color);
+	}
+
 	&:hover:not(:has(.tag:hover)) {
 		border-color: var(--content-color);
 	}
@@ -112,6 +116,10 @@
 	&:hover {
 		border-color: var(--content-color);
 		color: var(--content-color);
+	}
+
+	[data-theme='light'] & {
+		border-color: var(--content-color);
 	}
 }
 

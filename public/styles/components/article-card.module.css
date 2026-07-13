@@ -32,6 +32,9 @@
 .articleCard.loaded {
   opacity: 1;
 }
+[data-theme=light] .articleCard {
+  border-color: var(--content-color);
+}
 .articleCard:hover:not(:has(.tag:hover)) {
   border-color: var(--content-color);
 }
@@ -105,6 +108,9 @@
 .tag:hover {
   border-color: var(--content-color);
   color: var(--content-color);
+}
+[data-theme=light] .tag {
+  border-color: var(--content-color);
 }
 
 @media screen and (max-width: 768px) {

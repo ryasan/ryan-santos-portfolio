@@ -75,10 +75,15 @@
   overflow: hidden;
   position: relative;
   z-index: 1;
+  background-color: var(--background-primary-color);
 }
 @media (min-width: 769px) {
   .articleCard:hover .articleImage img {
     filter: blur(3px) grayscale(50%) brightness(0.5);
+  }
+  [data-theme=light] .articleCard:hover .articleImage img {
+    filter: blur(3px) grayscale(10%) brightness(1.1);
+    opacity: 0.3;
   }
   .articleCard:hover .articleContent {
     transform: translateY(0);
@@ -89,6 +94,10 @@
 @media (max-width: 768px) {
   .articleCard.active .articleImage img {
     filter: blur(3px) grayscale(50%) brightness(0.5);
+  }
+  [data-theme=light] .articleCard.active .articleImage img {
+    filter: blur(3px) grayscale(10%) brightness(1.1);
+    opacity: 0.3;
   }
   .articleCard.active .articleContent {
     transform: translateY(0);
@@ -107,9 +116,6 @@
     font-size: 32px;
   }
 }
-[data-theme=light] .articleTitle {
-  color: var(--background-secondary-color);
-}
 
 .articleCaption {
   color: var(--content-color-2);
@@ -122,26 +128,13 @@
     font-size: 18px;
   }
 }
-[data-theme=light] .articleCaption {
-  color: var(--background-secondary-color);
-}
 
 .articleDescription p {
   color: var(--content-color);
 }
-[data-theme=light] .articleDescription p {
-  color: var(--background-secondary-color);
-}
 
 .articleLink {
   margin-top: auto;
-}
-[data-theme=light] .articleLink {
-  background-color: var(--background-primary-color);
-  color: var(--content-color);
-}
-[data-theme=light] .articleLink:hover {
-  background-color: var(--background-secondary-color);
 }
 
 /*# sourceMappingURL=featured-articles-section.module.css.map */
