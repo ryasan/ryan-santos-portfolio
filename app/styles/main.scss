@@ -10,7 +10,13 @@
 @import 'base/utilities';
 @import 'base/overrides';
 
-// Section styles live in the root bundle to avoid Vite CSS code-split FOUC on navigations
+// Component + section styles live in the root bundle to avoid Vite CSS code-split FOUC on navigations
+@import 'components/header';
+@import 'components/article-card';
+@import 'components/avatar';
+@import 'components/link';
+@import 'components/rich-text';
+@import 'components/code-block';
 @import 'components/sections/hero-section';
 @import 'components/sections/experience-section';
 @import 'components/sections/featured-articles-section';

@@ -1,7 +1,9 @@
 @import '../base/variables';
 @import '../base/mixins';
 
-.avatar {
+$ns: '.avatar';
+
+#{$ns} {
 	width: 136px;
 	height: 136px;
 	border: 1px solid var(--line-color);
@@ -16,22 +18,20 @@
 		border-radius: 100%;
 		object-fit: cover;
 	}
-	
+
 	&.small {
 		width: 50px;
 		height: 50px;
 	}
-}
 
-@media screen and (width <= 610px) {
-	.avatar {
-			height: 80px;
-			width: 80px;
+	&__placeholder {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
-}
 
-.avatarPlaceholder {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@media screen and (width <= 610px) {
+		height: 80px;
+		width: 80px;
+	}
 }

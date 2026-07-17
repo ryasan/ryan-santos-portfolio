@@ -1,15 +1,17 @@
 @import '../../base/variables';
 
-.blog-post-section {
+$ns: '.blog-post-section';
+
+#{$ns} {
 	padding: $space-120 0 $space-40;
 	opacity: 0;
 	will-change: opacity;
 
-	.header {
+	&__header {
 		margin-bottom: $space-40;
 	}
 
-	.link-box {
+	&__link-box {
 		display: flex;
 		align-items: center;
 		height: $space-24;
@@ -17,7 +19,7 @@
 		margin-bottom: $space-40;
 
 		&:hover {
-			.link {
+			#{$ns}__link {
 				&::before {
 					transform: scaleX(0);
 					transform-origin: right center;
@@ -30,13 +32,34 @@
 		}
 	}
 
-	.icon {
+	&__link {
+		display: flex;
+		align-items: center;
+		position: relative;
+
+		&::before {
+			position: absolute;
+			left: 0;
+			bottom: -4px;
+			content: '';
+			height: 1px;
+			width: 100%;
+			transform: scaleX(1);
+			will-change: transform;
+			background: var(--content-color);
+			transform-origin: left center;
+			transition: transform 0.5s cubic-bezier(1, 0, 0, 1);
+		}
+	}
+
+	&__icon {
 		margin-right: $space-8;
 		margin-left: 0;
 		width: $space-24;
+		transition: 0.2s ease;
 	}
 
-	.author {
+	&__author {
 		align-items: center;
 		display: flex;
 		gap: $space-16;
@@ -46,7 +69,7 @@
 		}
 	}
 
-	.hero-image {
+	&__hero-image {
 		img {
 			width: 100%;
 			height: 100%;
@@ -58,14 +81,14 @@
 	}
 
 	@media (max-width: $mobile-lg) {
-		.hero-image {
+		&__hero-image {
 			img {
 				max-height: 250px;
 			}
 		}
 	}
 
-	.layout {
+	&__layout {
 		margin-top: $space-40;
 		display: grid;
 		grid-template-columns: 70% 30%;
@@ -76,7 +99,7 @@
 		}
 	}
 
-	.blog-body {
+	&__blog-body {
 		margin-bottom: $space-120;
 
 		@media (max-width: $tablet) {
@@ -84,7 +107,7 @@
 		}
 	}
 
-	.share-actions {
+	&__share-actions {
 		display: flex;
 		align-items: start;
 		justify-content: end;
@@ -97,8 +120,8 @@
 		}
 	}
 
-	.share-button,
-	.share-copy-button {
+	&__share-button,
+	&__share-copy-button {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -115,7 +138,7 @@
 		}
 	}
 
-	.share-copy-button {
+	&__share-copy-button {
 		border-radius: 100px;
 		gap: $space-8;
 		padding: 0 15px;

@@ -1,0 +1,62 @@
+@import '../base/variables';
+
+$ns: '.link-box';
+
+#{$ns} {
+	display: flex;
+	align-items: center;
+	height: $space-24;
+	width: fit-content;
+
+	&__link {
+		display: flex;
+		align-items: center;
+		position: relative;
+
+		&::before {
+			position: absolute;
+			left: 0;
+			bottom: -4px;
+			content: '';
+			height: 1px;
+			width: 100%;
+			transform: scaleX(1);
+			will-change: transform;
+			background: var(--content-color);
+			transform-origin: left center;
+			transition: transform 0.5s cubic-bezier(1, 0, 0, 1);
+		}
+
+		&--inline {
+			display: inline;
+		}
+	}
+
+	&__icon {
+		margin-left: $space-8;
+		transition: 0.2s ease;
+		width: 16px;
+	}
+
+	&:hover {
+		#{$ns}__link {
+			&::before {
+				transform: scaleX(0);
+				transform-origin: right center;
+			}
+		}
+
+		svg {
+			transform: translateX(4px);
+		}
+	}
+
+	&--inline {
+		display: inline-flex;
+		align-items: baseline;
+		height: auto;
+		width: auto;
+		vertical-align: baseline;
+		margin-inline-start: 0.25em;
+	}
+}

@@ -1,8 +1,9 @@
 import clsx from 'clsx'
-import styles from '~/styles/components/article-card.module.scss'
 import { Link as RemixLink, useNavigate } from '@remix-run/react'
 import { isExternalLink } from '~/utils'
 import { type Asset } from '~/graphql/__generated/sdk'
+
+const ns = 'article-card'
 
 export type NormalizedArticleCard = {
 	description?: string | null
@@ -45,39 +46,43 @@ export default function ArticleCard({
 	return (
 		<Component
 			className={clsx(
-				styles.articleCard,
-				isBig && styles.bigCard,
-				horizontal && styles.horizontal,
+				ns,
+				isBig && 'big-card',
+				horizontal && 'horizontal',
 				className,
 			)}
 			target={isExternal ? '_blank' : undefined}
 			to={data.link || ''}
 		>
-			<div className={styles.articleImage}>
+			<div className={`${ns}__image`}>
 				{data.image && (
 					<img
 						alt={data.image?.description || ''}
-						className={styles.articleImage}
+						className={`${ns}__image`}
 						src={data.image?.url || ''}
 					/>
 				)}
 			</div>
-			<div className={styles.content}>
-				{data.eyebrow && <p className={clsx('badge mb-12', styles.eyebrow)}>{data.eyebrow}</p>}
-				{data.title && <h3 className={clsx('h6 mb-12', styles.title)}>{data.title}</h3>}
+			<div className={`${ns}__content`}>
+				{data.eyebrow && (
+					<p className={clsx('badge mb-12', `${ns}__eyebrow`)}>{data.eyebrow}</p>
+				)}
+				{data.title && (
+					<h3 className={clsx('h6 mb-12', `${ns}__title`)}>{data.title}</h3>
+				)}
 				{data.description && (horizontal || forceDescription) && (
-					<p className={clsx('body mb-20', styles.description)}>
+					<p className={clsx('body mb-20', `${ns}__description`)}>
 						{data.description}
 					</p>
 				)}
 				{data.tags && (
-					<div className={styles.tags}>
+					<div className={`${ns}__tags`}>
 						{data.tags.map((tag) => {
 							if (!tag) return null
 
 							return (
 								<button
-									className={clsx('link badge', styles.tag)}
+									className={clsx('link badge', `${ns}__tag`)}
 									key={tag}
 									onClick={(e) => {
 										e.preventDefault()

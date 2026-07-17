@@ -5,6 +5,8 @@ import { type ExperienceSection as ExperienceSectionType } from '~/graphql/__gen
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
 
+const ns = 'experience-section'
+
 type ExperienceSectionProps = {
 	data?: ExperienceSectionType
 	id?: string
@@ -43,7 +45,7 @@ export default function ExperienceSection({
 
 			const items = gsap.utils.toArray<HTMLElement>(container.children)
 			const experienceItems = items.filter((item) =>
-				item.classList.contains('experience-item'),
+				item.classList.contains(`${ns}__item`),
 			)
 
 			experienceItems.forEach((item) => {
@@ -64,7 +66,7 @@ export default function ExperienceSection({
 			})
 
 			const numbers = gsap.utils.toArray<HTMLElement>(
-				'.experience-number-target',
+				`.${ns}__number-target`,
 			)
 
 			if (progressBar && numbers.length > 0) {
@@ -131,47 +133,47 @@ export default function ExperienceSection({
 	)
 
 	return (
-		<section className="experience-section" id={id}>
+		<section className={ns} id={id}>
 			<div className="container">
-				<div className="box">
+				<div className={`${ns}__box`}>
 					{data?.title && (
-						<h2 className={clsx('title', 'h2')} ref={titleRef}>
+						<h2 className={clsx(`${ns}__title`, 'h2')} ref={titleRef}>
 							{data?.title}
 						</h2>
 					)}
-					<div className="experience-list" ref={containerRef}>
-						<div className="progress-bar" ref={progressBarRef}>
-							<div className="progress-bar-inner" />
+					<div className={`${ns}__list`} ref={containerRef}>
+						<div className={`${ns}__progress-bar`} ref={progressBarRef}>
+							<div className={`${ns}__progress-bar-inner`} />
 						</div>
 						{data?.experienceCollection?.items?.map((item, index) => {
 							if (!item) return null
 
 							return (
-								<div className="experience-item" key={item.sys.id}>
-									<div className="count">
+								<div className={`${ns}__item`} key={item.sys.id}>
+									<div className={`${ns}__count`}>
 										<div
 											className={clsx(
-												'count-number',
+												`${ns}__count-number`,
+												`${ns}__number-target`,
 												'h4',
-												'experience-number-target',
 											)}
 										>
 											{index < 10 ? `0${index + 1}` : index + 1}
 										</div>
 									</div>
-									<div className="info">
+									<div className={`${ns}__info`}>
 										{item.jobTitle && (
-											<div className={clsx('job-title', 'h6')}>
+											<div className={clsx(`${ns}__job-title`, 'h6')}>
 												{item.jobTitle}
 											</div>
 										)}
 										{item.company && (
-											<div className={clsx('company', 'h2')}>
+											<div className={clsx(`${ns}__company`, 'h2')}>
 												{item.company}
 											</div>
 										)}
 										{item.description?.json && (
-											<div className="description">
+											<div className={`${ns}__description`}>
 												<RichText data={item.description.json} />
 											</div>
 										)}

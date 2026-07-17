@@ -7,6 +7,8 @@ import { useSearchParams } from '@remix-run/react'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 
+const ns = 'blog-section'
+
 type BlogSectionProps = {
 	posts: Blog[]
 	tags: ContentfulTag[]
@@ -51,7 +53,7 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 			const items = gsap.utils.toArray<HTMLElement>(postList.children)
 
 			const postListItems = items.filter((item) =>
-				item.classList.contains('post-item'),
+				item.classList.contains(`${ns}__post-item`),
 			)
 
 			postListItems.forEach((item) => {
@@ -108,13 +110,13 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 	}, [selectedTags, posts])
 
 	return (
-		<section className="blog-section" ref={sectionRef}>
+		<section className={ns} ref={sectionRef}>
 			<div className="container">
-				<div className="header" ref={headerRef}>
-					<h1 className={clsx('title', 'h2')}>
+				<div className={`${ns}__header`} ref={headerRef}>
+					<h1 className={clsx(`${ns}__title`, 'h2')}>
 						<strong>Latest</strong> <em>Blogs</em>
 					</h1>
-					<div className="tag-filters">
+					<div className={`${ns}__tag-filters`}>
 						{_tags.map((tag) => {
 							const tagName = tag.name?.trim()
 							if (!tagName) return null
@@ -135,12 +137,12 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 						})}
 					</div>
 				</div>
-				<div className="post-list" ref={postListRef}>
+				<div className={`${ns}__post-list`} ref={postListRef}>
 					{filteredPosts.map(normalizeSlide).map((post) => {
 						if (!post) return null
 						return (
 							<ArticleCard
-								className="post-item"
+								className={`${ns}__post-item`}
 								data={post}
 								forceDescription
 								key={post.id}

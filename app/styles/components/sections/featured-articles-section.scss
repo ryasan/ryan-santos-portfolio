@@ -1,10 +1,12 @@
 @import '../../base/variables';
 
-.featured-articles-section {
+$ns: '.featured-articles-section';
+
+#{$ns} {
 	position: relative;
 
-	@mixin article-card-active-state {
-		.article-image {
+	@mixin card-active-state {
+		#{$ns}__image {
 			img {
 				filter: blur(3px) grayscale(50%) brightness(0.5);
 
@@ -15,14 +17,14 @@
 			}
 		}
 
-		.article-content {
+		#{$ns}__content {
 			transform: translateY(0);
 			opacity: 1;
 			visibility: visible;
 		}
 	}
 
-	.sticky-box {
+	&__sticky-box {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -31,22 +33,22 @@
 		height: 100lvh;
 	}
 
-	.title {
+	&__title {
 		opacity: 0;
 	}
 
-	.subtitle {
+	&__subtitle {
 		opacity: 0;
 		color: var(--content-color-2);
 	}
 
-	.article-list {
+	&__list {
 		max-width: 1200px;
 		margin: 0 auto;
 		padding: 50lvh 0;
 	}
 
-	.article-container {
+	&__container {
 		height: 100lvh;
 		display: flex;
 		align-items: start;
@@ -63,12 +65,12 @@
 	}
 
 	@media (max-width: $tablet) {
-		.article-card {
+		&__card {
 			justify-content: center !important;
 		}
 	}
 
-	.article-image {
+	&__image {
 		img {
 			aspect-ratio: 450 / 500;
 			width: 100%;
@@ -80,7 +82,7 @@
 		}
 	}
 
-	.article-content {
+	&__content {
 		position: absolute;
 		inset: 0;
 		display: flex;
@@ -94,7 +96,7 @@
 		visibility: hidden;
 	}
 
-	.article-card {
+	&__card {
 		border-radius: $space-20;
 		overflow: hidden;
 		position: relative;
@@ -103,18 +105,18 @@
 
 		@media (min-width: $tablet + 1px) {
 			&:hover {
-				@include article-card-active-state;
+				@include card-active-state;
 			}
 		}
 
 		@media (max-width: $tablet) {
 			&.active {
-				@include article-card-active-state;
+				@include card-active-state;
 			}
 		}
 	}
 
-	.article-title {
+	&__card-title {
 		font-size: 45px;
 		font-weight: 500;
 		margin-bottom: $space-20;
@@ -124,7 +126,7 @@
 		}
 	}
 
-	.article-caption {
+	&__caption {
 		color: var(--content-color-2);
 		font-size: 24px;
 		font-weight: 500;
@@ -135,11 +137,11 @@
 		}
 	}
 
-	.article-description p {
+	&__description p {
 		color: var(--content-color);
 	}
 
-	.article-link {
+	&__link {
 		margin-top: auto;
 	}
 }

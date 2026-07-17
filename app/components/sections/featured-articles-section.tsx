@@ -7,6 +7,7 @@ import { normalizeSlide } from '~/utils'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
 
+const ns = 'featured-articles-section'
 const cardAlignments = ['left', 'right', 'center']
 
 type FeaturedArticlesSectionProps = {
@@ -29,7 +30,7 @@ export default function FeaturedArticlesSection({
 			const stickyBox = stickyBoxRef.current
 			const title = titleRef.current
 			const subtitle = subtitleRef.current
-			const articles = section?.querySelectorAll('.article-card') ?? []
+			const articles = section?.querySelectorAll(`.${ns}__card`) ?? []
 
 			ScrollTrigger.create({
 				anticipatePin: 1,
@@ -94,23 +95,23 @@ export default function FeaturedArticlesSection({
 	)
 
 	return (
-		<section className="featured-articles-section" id={id} ref={sectionRef}>
+		<section className={ns} id={id} ref={sectionRef}>
 			<div className="container">
-				<div className="sticky-box" ref={stickyBoxRef}>
+				<div className={`${ns}__sticky-box`} ref={stickyBoxRef}>
 					{data?.title && (
-						<h2 className={clsx('title', 'h1 mb-56')} ref={titleRef}>
+						<h2 className={clsx(`${ns}__title`, 'h1 mb-56')} ref={titleRef}>
 							{data.title}
 						</h2>
 					)}
 					{data?.subtitle && (
-						<p className={clsx('subtitle', 'h6')} ref={subtitleRef}>
+						<p className={clsx(`${ns}__subtitle`, 'h6')} ref={subtitleRef}>
 							{data.subtitle}
 						</p>
 					)}
 				</div>
 
 				{data?.featuredArticlesCollection && (
-					<div className="article-list">
+					<div className={`${ns}__list`}>
 						{data.featuredArticlesCollection.items
 							.map(normalizeSlide)
 							.map((article, index) => {
@@ -120,35 +121,37 @@ export default function FeaturedArticlesSection({
 
 								return (
 									<div
-										className={clsx('article-container', cardAlignment)}
+										className={clsx(`${ns}__container`, cardAlignment)}
 										key={article.id}
 									>
-										<div className="article-card">
-											<div className="article-image">
+										<div className={`${ns}__card`}>
+											<div className={`${ns}__image`}>
 												{article?.image && (
 													<img
 														alt={article.image?.description || ''}
-														className="article-image"
+														className={`${ns}__image`}
 														src={article.image?.url || ''}
 													/>
 												)}
 											</div>
-											<div className="article-content">
+											<div className={`${ns}__content`}>
 												{article.title && (
-													<h3 className="article-title">{article.title}</h3>
+													<h3 className={`${ns}__card-title`}>
+														{article.title}
+													</h3>
 												)}
 												{article.caption && (
-													<p className="article-caption">{article.caption}</p>
+													<p className={`${ns}__caption`}>{article.caption}</p>
 												)}
 												{article.description && (
 													<RichText
-														className="article-description"
+														className={`${ns}__description`}
 														data={article.description}
 													/>
 												)}
 												{article.link && (
 													<a
-														className={clsx('article-link', 'button')}
+														className={clsx(`${ns}__link`, 'button')}
 														href={article.link || ''}
 														rel="noopener noreferrer"
 														target="_blank"

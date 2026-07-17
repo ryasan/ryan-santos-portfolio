@@ -1,17 +1,19 @@
 @import '../../base/variables';
 
-.hero-section {
+$ns: '.hero-section';
+
+#{$ns} {
 	position: relative;
 	height: 110svh;
 
-	.container {
+	&__container {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		height: calc(100% - 10svh);
 	}
 
-	.sticky-box {
+	&__sticky-box {
 		flex: 1;
 		position: relative;
 		margin: 0 auto;
@@ -25,7 +27,7 @@
 		justify-content: center;
 	}
 
-	.accent-wrapper {
+	&__accent-wrapper {
 		position: relative;
 		padding: $space-100 $space-80;
 		display: flex;
@@ -45,7 +47,7 @@
 		}
 	}
 
-	.accent-container {
+	&__accent-container {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -56,7 +58,7 @@
 		will-change: opacity;
 	}
 
-	.corner-bracket {
+	&__corner-bracket {
 		position: absolute;
 		width: 16px;
 		height: 16px;
@@ -119,7 +121,7 @@
 		}
 	}
 
-	.accent-label {
+	&__accent-label {
 		position: absolute;
 		font-size: 14px;
 		letter-spacing: 0.08em;
@@ -173,11 +175,11 @@
 		}
 	}
 
-	.title {
+	&__title {
 		overflow: hidden;
 	}
 
-	.word-mask {
+	&__word-mask {
 		display: block;
 		overflow: hidden;
 		position: relative;
@@ -189,25 +191,25 @@
 		}
 	}
 
-	.word {
+	&__word {
 		display: inline-block;
 		white-space: nowrap;
 	}
 
-	.char {
+	&__char {
 		display: inline-block;
 		will-change: transform;
 		transform: translateY(110%);
 	}
 
-	.scroll-to-explore-wrapper {
+	&__scroll-to-explore-wrapper {
 		width: 100%;
 		display: flex;
 		justify-content: center;
 		will-change: opacity;
 	}
 
-	.scroll-to-explore {
+	&__scroll-to-explore {
 		display: flex;
 		align-items: center;
 		flex-direction: column;
@@ -219,7 +221,7 @@
 		margin-top: auto;
 	}
 
-	.mouse-icon {
+	&__mouse-icon {
 		height: 25px;
 		width: 25px;
 		fill: var(--content-color);

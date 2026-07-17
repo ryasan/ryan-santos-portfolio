@@ -1,23 +1,23 @@
 .experience-section {
   display: block;
 }
-.experience-section .box {
+.experience-section__box {
   padding: 40px 0;
   max-width: 950px;
   margin: 0 auto;
 }
-.experience-section .title {
+.experience-section__title {
   margin: 0 auto 250px;
   opacity: 0;
 }
 @media (max-width: 768px) {
-  .experience-section .title {
+  .experience-section__title {
     margin-bottom: 150px;
     font-size: 60px;
     line-height: 1.2;
   }
 }
-.experience-section .experience-list {
+.experience-section__list {
   display: flex;
   flex-direction: column;
   gap: 250px;
@@ -25,11 +25,11 @@
   position: relative;
 }
 @media (max-width: 768px) {
-  .experience-section .experience-list {
+  .experience-section__list {
     gap: 150px;
   }
 }
-.experience-section .experience-item {
+.experience-section__item {
   display: flex;
   gap: 40px;
   opacity: 0;
@@ -37,55 +37,55 @@
   z-index: 1;
 }
 @media (max-width: 768px) {
-  .experience-section .experience-item {
+  .experience-section__item {
     gap: 20px;
   }
 }
-.experience-section .experience-item:last-child .info {
+.experience-section__item:last-child .experience-section__info {
   padding-bottom: 0;
 }
-.experience-section .experience-item:last-child .count-number {
+.experience-section__item:last-child .experience-section__count-number {
   height: 100%;
 }
-.experience-section .info {
+.experience-section__info {
   width: 100%;
 }
-.experience-section .info .job-title {
+.experience-section__job-title {
   color: var(--content-color);
   font-weight: 400;
   line-height: 1;
   margin-bottom: 8px;
 }
-.experience-section .info .company {
+.experience-section__company {
   line-height: 1;
   margin-bottom: 16px;
   font-size: 65px;
 }
 @media (max-width: 768px) {
-  .experience-section .info .company {
+  .experience-section__company {
     font-size: 40px;
   }
 }
-.experience-section .count-number {
+.experience-section__count-number {
   background-color: var(--background-primary-color);
   padding: 28px 0;
 }
-.experience-section .year-range {
+.experience-section__year-range {
   white-space: nowrap;
 }
-.experience-section .year-range div {
+.experience-section__year-range div {
   line-height: 1;
 }
-.experience-section .description {
+.experience-section__description {
   max-width: 750px;
 }
-.experience-section .progress-bar {
+.experience-section__progress-bar {
   position: absolute;
   width: 3px;
   z-index: 0;
   pointer-events: none;
 }
-.experience-section .progress-bar-inner {
+.experience-section__progress-bar-inner {
   width: 100%;
   height: 100%;
   background-color: var(--content-color);

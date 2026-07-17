@@ -1,6 +1,8 @@
 @import '../base/variables';
 
-.richText {
+$ns: '.rich-text';
+
+#{$ns} {
 	p {
 		margin: $space-24 0;
 		font-size: 20px;
@@ -87,7 +89,7 @@
 		margin: $space-32 0;
 	}
 
-	.tableWrapper {
+	&__table-wrapper {
 		width: 100%;
 		overflow-x: auto;
 		margin: $space-24 0;

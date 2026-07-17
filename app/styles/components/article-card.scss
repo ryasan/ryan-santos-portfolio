@@ -1,0 +1,123 @@
+@import '../base/variables';
+@import '../base/mixins';
+
+$ns: '.article-card';
+
+#{$ns} {
+	background-color: var(--background-primary-color);
+	border-radius: $space-20;
+	border: 1px solid var(--line-color);
+	color: var(--content-color);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+
+	[data-theme='light'] & {
+		border-color: var(--content-color);
+	}
+
+	&:hover:not(:has(#{$ns}__tag:hover)) {
+		border-color: var(--content-color);
+	}
+
+	&__image {
+		aspect-ratio: 13 / 9;
+		border-top-left-radius: $space-12;
+		border-top-right-radius: $space-12;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__content {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		min-height: 0;
+		padding: $space-20;
+	}
+
+	&__eyebrow {
+		color: var(--content-color-2);
+		font-size: 14px;
+
+		@media (max-width: $tablet) {
+			font-size: 12px;
+		}
+	}
+
+	&__title {
+		font-size: 24px;
+
+		@media (max-width: $tablet) {
+			font-size: 20px;
+		}
+	}
+
+	&__description {
+		@include truncate-text(2);
+	}
+
+	&.big-card {
+		#{$ns}__image {
+			overflow: hidden;
+			height: 260px;
+		}
+	}
+
+	&.horizontal {
+		display: grid;
+		grid-template-columns: 240px 1fr;
+		gap: $space-32;
+
+		#{$ns}__image {
+			margin-bottom: 0;
+		}
+	}
+
+	&__tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: $space-4;
+		margin-top: auto;
+	}
+
+	&__tag {
+		align-items: center;
+		border-radius: 100px;
+		border: 1px solid var(--line-color);
+		color: var(--content-color-2);
+		display: flex;
+		justify-content: center;
+		padding: 6px 16px;
+		text-transform: lowercase;
+		transition: all 0.4s ease;
+
+		&:hover {
+			border-color: var(--content-color);
+			color: var(--content-color);
+		}
+
+		[data-theme='light'] & {
+			border-color: var(--content-color);
+		}
+	}
+
+	@media screen and (max-width: $tablet) {
+		&__image {
+			height: 228px !important;
+		}
+
+		&__image img {
+			height: 228px !important;
+		}
+	}
+}

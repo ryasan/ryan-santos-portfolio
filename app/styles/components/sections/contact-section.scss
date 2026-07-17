@@ -1,11 +1,13 @@
 @import '../../base/variables';
 
-.contact-section {
+$ns: '.contact-section';
+
+#{$ns} {
 	border-top: 1px solid var(--line-color);
 	position: relative;
 	margin-top: $space-140;
 
-	.box {
+	&__box {
 		padding: $space-120 0;
 		display: flex;
 		flex-direction: column;
@@ -13,7 +15,7 @@
 		justify-content: center;
 	}
 
-	.title {
+	&__title {
 		text-align: center;
 		font-size: 100px;
 		max-width: 850px;
@@ -29,7 +31,7 @@
 		}
 	}
 
-	.copy-button {
+	&__copy-button {
 		margin-top: $space-64;
 		display: flex;
 		align-items: center;
@@ -38,14 +40,14 @@
 		width: 320px;
 	}
 
-	.copy-icon {
+	&__copy-icon {
 		width: 24px;
 		height: 24px;
 		flex-shrink: 0;
 		fill: var(--background-primary-color);
 	}
 
-	.social-links {
+	&__social-links {
 		display: flex;
 		align-items: center;
 		gap: $space-56;
@@ -60,7 +62,7 @@
 		}
 	}
 
-	.icon {
+	&__icon {
 		width: 32px;
 		height: 32px;
 	}

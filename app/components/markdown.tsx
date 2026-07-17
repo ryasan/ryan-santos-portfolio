@@ -3,7 +3,8 @@ import Link from '~/components/link'
 import ReactMarkdown from 'react-markdown'
 import clsx from 'clsx'
 import remarkGfm from 'remark-gfm'
-import styles from '~/styles/components/rich-text.module.scss'
+
+const ns = 'rich-text'
 
 type MarkdownProps = {
 	className?: string
@@ -16,7 +17,7 @@ export default function Markdown({ className, content }: MarkdownProps) {
 	}
 
 	return (
-		<div className={clsx(styles.richText, className)}>
+		<div className={clsx(ns, className)}>
 			<ReactMarkdown
 				components={{
 					a({ children, href }) {
@@ -45,7 +46,7 @@ export default function Markdown({ className, content }: MarkdownProps) {
 					},
 					table({ children }) {
 						return (
-							<div className={styles.tableWrapper}>
+							<div className={`${ns}__table-wrapper`}>
 								<table>{children}</table>
 							</div>
 						)

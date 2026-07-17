@@ -1,8 +1,7 @@
-.container {
+.code-block {
   position: relative;
 }
-
-.copyButton {
+.code-block__copy-button {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -16,32 +15,29 @@
   font-size: 18px;
   font-weight: 500;
 }
-
-.copyIcon {
+.code-block__copy-icon {
   width: 18px;
   height: 18px;
   fill: var(--content-color);
 }
-
-.codeBlock {
+.code-block__highlighter {
   font-size: 18px !important;
 }
 @media (max-width: 768px) {
-  .codeBlock {
+  .code-block__highlighter {
     font-size: 14px !important;
   }
 }
-.codeBlock pre {
+.code-block__highlighter pre {
   margin: 24px 0 !important;
 }
-.codeBlock:first-child pre {
+.code-block__highlighter:first-child pre {
   margin-top: 0 !important;
 }
-.codeBlock:last-child pre {
+.code-block__highlighter:last-child pre {
   margin-bottom: 0 !important;
 }
-
-.codespan {
+.code-block__codespan {
   padding: 2px 4px;
   background-color: var(--background-secondary-color);
   color: var(--content-color);
@@ -50,9 +46,9 @@
   font-size: 1em;
 }
 @media (max-width: 768px) {
-  .codespan {
+  .code-block__codespan {
     font-size: 0.8em;
   }
 }
 
-/*# sourceMappingURL=code-block.module.css.map */
+/*# sourceMappingURL=code-block.css.map */

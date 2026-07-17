@@ -2,31 +2,31 @@
   min-height: 100lvh;
   padding: 118px 0;
 }
-.blog-section .grid {
+.blog-section__grid {
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 30px;
 }
 @media (max-width: 768px) {
-  .blog-section .grid {
+  .blog-section__grid {
     grid-template-columns: 1fr;
   }
 }
-.blog-section .filters-column {
+.blog-section__filters-column {
   align-self: stretch;
 }
-.blog-section .filters {
+.blog-section__filters {
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-self: start;
 }
 @media (max-width: 768px) {
-  .blog-section .filters {
+  .blog-section__filters {
     display: none;
   }
 }
-.blog-section .title {
+.blog-section__title {
   line-height: 1;
   text-align: center;
   margin-bottom: 50px;
@@ -34,28 +34,28 @@
   position: relative;
   will-change: opacity, transform;
 }
-.blog-section .title strong {
+.blog-section__title strong {
   font-weight: 700;
 }
-.blog-section .title em {
+.blog-section__title em {
   color: var(--content-color-2);
   font-weight: 600;
 }
-.blog-section .word-mask {
+.blog-section__word-mask {
   display: inline-block;
   overflow: hidden;
   position: relative;
   vertical-align: bottom;
 }
-.blog-section .word {
+.blog-section__word {
   display: inline-block;
 }
-.blog-section .char {
+.blog-section__char {
   display: inline-block;
   will-change: transform;
   transform: translateY(110%);
 }
-.blog-section .tag-filters {
+.blog-section__tag-filters {
   will-change: opacity, transform;
   display: flex;
   align-items: center;
@@ -65,26 +65,26 @@
   margin-bottom: 50px;
   flex-wrap: wrap;
 }
-.blog-section .tag-filters button {
+.blog-section__tag-filters button {
   white-space: nowrap;
   text-transform: lowercase;
 }
 @media (max-width: 768px) {
-  .blog-section .tag-filters {
+  .blog-section__tag-filters {
     justify-content: start;
   }
 }
-.blog-section .post-list {
+.blog-section__post-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
 @media (max-width: 768px) {
-  .blog-section .post-list {
+  .blog-section__post-list {
     grid-template-columns: repeat(1, 1fr);
   }
 }
-.blog-section .post-item {
+.blog-section__post-item {
   will-change: opacity, transform;
 }
 

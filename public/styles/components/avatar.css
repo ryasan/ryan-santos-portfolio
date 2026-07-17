@@ -17,17 +17,16 @@
   width: 50px;
   height: 50px;
 }
-
+.avatar__placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media screen and (width <= 610px) {
   .avatar {
     height: 80px;
     width: 80px;
   }
 }
-.avatarPlaceholder {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-/*# sourceMappingURL=avatar.module.css.map */
+/*# sourceMappingURL=avatar.css.map */

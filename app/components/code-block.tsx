@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import styles from '~/styles/components/code-block.module.scss'
 import { CopySimpleIcon } from '~/components/icons'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {
@@ -8,6 +7,8 @@ import {
 } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useState } from 'react'
 import { useTheme } from '~/hooks'
+
+const ns = 'code-block'
 
 /**
  * Triple backticks are used to define a code block in Markdown.
@@ -53,9 +54,7 @@ export default function CodeBlock({
 	// If it's a short string meant to be used inline, just return the code span
 	if (language === 'plaintext') {
 		return (
-			<code className={clsx(styles.codespan, 'codespan')}>
-				{String(parsedCode)}
-			</code>
+			<code className={clsx(`${ns}__codespan`)}>{String(parsedCode)}</code>
 		)
 	}
 
@@ -70,20 +69,20 @@ export default function CodeBlock({
 	}
 
 	return (
-		<div className={styles.container}>
+		<div className={ns}>
 			<button
-				className={styles.copyButton}
+				className={`${ns}__copy-button`}
 				onClick={copyToClipboard}
 				title="Copy to clipboard"
 			>
 				{copySuccess ? (
 					'Copied'
 				) : (
-					<CopySimpleIcon className={styles.copyIcon} />
+					<CopySimpleIcon className={`${ns}__copy-icon`} />
 				)}
 			</button>
 			<SyntaxHighlighter
-				className={styles.codeBlock}
+				className={`${ns}__highlighter`}
 				codeTagProps={{
 					style: {
 						fontFamily: 'Fira Code, monospace',

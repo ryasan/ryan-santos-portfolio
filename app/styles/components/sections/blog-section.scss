@@ -1,10 +1,12 @@
 @import '../../base/variables';
 
-.blog-section {
+$ns: '.blog-section';
+
+#{$ns} {
 	min-height: 100lvh;
 	padding: calc($header-height + 50px) 0;
 
-	.grid {
+	&__grid {
 		display: grid;
 		grid-template-columns: 300px 1fr;
 		gap: 30px;
@@ -14,11 +16,11 @@
 		}
 	}
 
-	.filters-column {
+	&__filters-column {
 		align-self: stretch;
 	}
 
-	.filters {
+	&__filters {
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
@@ -29,7 +31,7 @@
 		}
 	}
 
-	.title {
+	&__title {
 		line-height: 1;
 		text-align: center;
 		margin-bottom: 50px;
@@ -47,24 +49,24 @@
 		}
 	}
 
-	.word-mask {
+	&__word-mask {
 		display: inline-block;
 		overflow: hidden;
 		position: relative;
 		vertical-align: bottom;
 	}
 
-	.word {
+	&__word {
 		display: inline-block;
 	}
 
-	.char {
+	&__char {
 		display: inline-block;
 		will-change: transform;
 		transform: translateY(110%);
 	}
 
-	.tag-filters {
+	&__tag-filters {
 		will-change: opacity, transform;
 		display: flex;
 		align-items: center;
@@ -84,7 +86,7 @@
 		}
 	}
 
-	.post-list {
+	&__post-list {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 30px;
@@ -94,7 +96,7 @@
 		}
 	}
 
-	.post-item {
+	&__post-item {
 		will-change: opacity, transform;
 	}
 }

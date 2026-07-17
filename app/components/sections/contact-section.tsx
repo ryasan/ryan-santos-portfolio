@@ -8,6 +8,8 @@ import {
 } from '~/components/icons'
 import { useState } from 'react'
 
+const ns = 'contact-section'
+
 const icons = {
 	codepen: CodepenIcon,
 	github: GithubIcon,
@@ -16,7 +18,7 @@ const icons = {
 
 const getIcon = (icon?: string) => {
 	const Icon = icons[icon?.toLowerCase() as keyof typeof icons]
-	return Icon ? <Icon aria-hidden="true" className="icon" /> : null
+	return Icon ? <Icon aria-hidden="true" className={`${ns}__icon`} /> : null
 }
 
 type ContactSectionProps = {
@@ -36,23 +38,23 @@ export default function ContactSection({ data, id }: ContactSectionProps) {
 	}
 
 	return (
-		<section className="contact-section" id={id}>
+		<section className={ns} id={id}>
 			<div className="container">
-				<div className="box">
+				<div className={`${ns}__box`}>
 					{data?.title && (
-						<h2 className={clsx('title', 'h1 mb-56')}>{data.title}</h2>
+						<h2 className={clsx(`${ns}__title`, 'h1 mb-56')}>{data.title}</h2>
 					)}
 					{data?.email && (
 						<button
-							className={clsx('copy-button', 'button')}
+							className={clsx(`${ns}__copy-button`, 'button')}
 							onClick={copyToClipboard}
 							title="Copy to clipboard"
 						>
 							{copySuccess ? 'email copied!' : data.email}
-							<CopySimpleIcon className="copy-icon" />
+							<CopySimpleIcon className={`${ns}__copy-icon`} />
 						</button>
 					)}
-					<div className="social-links">
+					<div className={`${ns}__social-links`}>
 						{data?.socialLinksCollection?.items?.map((social) => {
 							if (!social?.url || !social?.label) return null
 

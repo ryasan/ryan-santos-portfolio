@@ -1,9 +1,7 @@
 import Avatar from '~/components/avatar'
 import ClientOnly from '~/components/client-only'
 import RichText from '~/components/rich-text'
-import clsx from 'clsx'
 import gsap from 'gsap'
-import linkStyles from '~/styles/components/link.module.scss'
 import {
 	ArrowLeftIcon,
 	TwitterIcon,
@@ -18,6 +16,7 @@ import { useLocation, useNavigate } from '@remix-run/react'
 import { useRef, useState, lazy, Suspense } from 'react'
 
 const Markdown = lazy(() => import('~/components/markdown'))
+const ns = 'blog-post-section'
 
 type BlogPostSectionProps = {
 	data?: Blog
@@ -75,28 +74,27 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 	}, [])
 
 	return (
-		<section className="blog-post-section" ref={sectionRef}>
-			<div className="header">
+		<section className={ns} ref={sectionRef}>
+			<div className={`${ns}__header`}>
 				<div className="container">
 					<button
-						className={clsx('link-box', linkStyles.linkBox)}
+						className={`${ns}__link-box`}
 						onClick={() => navigate('/blog')}
 					>
-						<ArrowLeftIcon className={clsx('icon', linkStyles.icon)} />
-						<span className={clsx('link', linkStyles.link)}>Back</span>
+						<ArrowLeftIcon className={`${ns}__icon`} />
+						<span className={`${ns}__link`}>Back</span>
 					</button>
 
 					{data?.title && <h1 className="mb-32 h4">{data?.title}</h1>}
 
-					<div className="author">
+					<div className={`${ns}__author`}>
 						<Avatar
 							alt={name}
-							className="avatar"
 							size="small"
 							src={data?.author?.avatar?.url}
 						/>
 						{(name || data?.publishDate) && (
-							<div className="author-info">
+							<div className={`${ns}__author-info`}>
 								{name && <h5 className="h5">{name}</h5>}
 								{data?.publishDate && (
 									<div className="body">{formatDate(data?.publishDate)}</div>
@@ -109,7 +107,7 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 
 			{data?.openGraphImage?.url && (
 				<div className="container">
-					<div className="hero-image">
+					<div className={`${ns}__hero-image`}>
 						<img
 							alt={data?.openGraphImage?.description || ''}
 							src={data?.openGraphImage?.url}
@@ -119,9 +117,9 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 			)}
 
 			<div className="container">
-				<div className="layout">
+				<div className={`${ns}__layout`}>
 					{(data?.blogBodyMarkdown || data?.blogBody?.json) && (
-						<div className="blog-body">
+						<div className={`${ns}__blog-body`}>
 							{data?.blogBodyMarkdown ? (
 								<ClientOnly>
 									<Suspense fallback={null}>
@@ -134,35 +132,35 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 						</div>
 					)}
 
-					<div className="share-actions">
+					<div className={`${ns}__share-actions`}>
 						<button
-							className="share-copy-button"
+							className={`${ns}__share-copy-button`}
 							onClick={copyToClipboard}
 							title="Share this article via link"
 						>
 							<span>{copySuccess ? 'Copied' : 'Copy Link'}</span>
-							<CopySimpleIcon className="share-icon" />
+							<CopySimpleIcon className={`${ns}__share-icon`} />
 						</button>
 						<button
-							className="share-button"
+							className={`${ns}__share-button`}
 							onClick={shareOnTwitter}
 							title="Share this article on Twitter"
 						>
-							<TwitterIcon className="share-icon" />
+							<TwitterIcon className={`${ns}__share-icon`} />
 						</button>
 						<button
-							className="share-button"
+							className={`${ns}__share-button`}
 							onClick={shareOnLinkedIn}
 							title="Share this article on LinkedIn"
 						>
-							<LinkedinIcon className="share-icon" />
+							<LinkedinIcon className={`${ns}__share-icon`} />
 						</button>
 						<button
-							className="share-button"
+							className={`${ns}__share-button`}
 							onClick={shareOnFacebook}
 							title="Share this article on Facebook"
 						>
-							<FacebookIcon className="share-icon" />
+							<FacebookIcon className={`${ns}__share-icon`} />
 						</button>
 					</div>
 				</div>

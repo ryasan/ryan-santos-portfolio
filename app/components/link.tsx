@@ -1,8 +1,9 @@
 import clsx from 'clsx'
-import styles from '~/styles/components/link.module.scss'
-import  { type LinkProps as RemixLinkProps, Link as RemixLink  } from '@remix-run/react'
+import { type LinkProps as RemixLinkProps, Link as RemixLink } from '@remix-run/react'
 import { ArrowUpRightIcon } from '~/components/icons'
 import { isExternalLink } from '~/utils'
+
+const ns = 'link-box'
 
 type LinkProps = {
 	children: React.ReactNode
@@ -23,11 +24,8 @@ export default function Link({
 	...rest
 }: LinkProps) {
 	const isExternal = isExternalLink(to)
-	const linkBoxClass = clsx(
-		inline ? styles.linkBoxInline : styles.linkBox,
-		className,
-	)
-	const linkClass = clsx('link', inline ? styles.linkInline : styles.link)
+	const linkBoxClass = clsx(ns, inline && `${ns}--inline`, className)
+	const linkClass = clsx('link', `${ns}__link`, inline && `${ns}__link--inline`)
 
 	if (isExternal) {
 		return (
@@ -39,7 +37,7 @@ export default function Link({
 				{...rest}
 			>
 				<span className={linkClass}>{children}</span>
-				<ArrowUpRightIcon className={styles.icon} />
+				<ArrowUpRightIcon className={`${ns}__icon`} />
 			</a>
 		)
 	}

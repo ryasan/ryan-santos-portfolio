@@ -4,6 +4,8 @@ import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useRef, type ReactNode } from 'react'
 
+const ns = 'hero-section'
+
 type HeroSectionProps = {
 	data?: HeroSectionType
 	id?: string
@@ -22,9 +24,9 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 
 			if (!section || !stickyBox || !accent) return
 
-			const words = gsap.utils.toArray<HTMLElement>('.word')
+			const words = gsap.utils.toArray<HTMLElement>(`.${ns}__word`)
 			words.forEach((word, wordIndex) => {
-				const chars = word.querySelectorAll('.char')
+				const chars = word.querySelectorAll(`.${ns}__char`)
 				gsap.to(chars, {
 					delay: wordIndex * 0.05,
 					duration: 0.5,
@@ -46,37 +48,37 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 
 	return (
 		<section
-			className={clsx('hero-section', data?.isTopOfPage && 'is-top-of-page')}
+			className={clsx(ns, data?.isTopOfPage && 'is-top-of-page')}
 			id={id}
 			ref={sectionRef}
 		>
-			<div className="container">
-				<div className="sticky-box" ref={stickyBoxRef}>
-					<div className="accent-wrapper">
-						<div className="accent-container" ref={accentRef}>
-							<div className="corner-bracket top-right" />
-							<div className="corner-bracket bottom-left" />
-							<div className="accent-label label-top-right code">
+			<div className={`${ns}__container`}>
+				<div className={`${ns}__sticky-box`} ref={stickyBoxRef}>
+					<div className={`${ns}__accent-wrapper`}>
+						<div className={`${ns}__accent-container`} ref={accentRef}>
+							<div className={`${ns}__corner-bracket top-right`} />
+							<div className={`${ns}__corner-bracket bottom-left`} />
+							<div className={`${ns}__accent-label label-top-right code`}>
 								[v2.6_PROD]
 							</div>
-							<div className="accent-label label-bottom-left code">
+							<div className={`${ns}__accent-label label-bottom-left code`}>
 								[STACK: REMIX / GSAP / CONTENTFUL]
 							</div>
 						</div>
 
 						{data?.titleWords && (
-							<h1 className="title hero-title">
+							<h1 className={`${ns}__title hero-title`}>
 								{data.titleWords?.map((word, index) => {
 									if (!word) return null
 
 									return (
-										<span className="word-mask" key={index}>
+										<span className={`${ns}__word-mask`} key={index}>
 											{word
 												.split(' ')
 												.map((singleWord, wordIndex) => (
-													<span className="word" key={wordIndex}>
+													<span className={`${ns}__word`} key={wordIndex}>
 														{singleWord.split('').map((char, charIndex) => (
-															<span className="char" key={charIndex}>
+															<span className={`${ns}__char`} key={charIndex}>
 																{char}
 															</span>
 														))}
@@ -93,18 +95,18 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 						)}
 
 						{data?.titleWordsMobile && (
-							<h1 className="title hero-title hero-title--mobile">
+							<h1 className={`${ns}__title hero-title hero-title--mobile`}>
 								{data.titleWordsMobile?.map((word, index) => {
 									if (!word) return null
 
 									return (
-										<span className="word-mask" key={index}>
+										<span className={`${ns}__word-mask`} key={index}>
 											{word
 												.split(' ')
 												.map((singleWord, wordIndex) => (
-													<span className="word" key={wordIndex}>
+													<span className={`${ns}__word`} key={wordIndex}>
 														{singleWord.split('').map((char, charIndex) => (
-															<span className="char" key={charIndex}>
+															<span className={`${ns}__char`} key={charIndex}>
 																{char}
 															</span>
 														))}

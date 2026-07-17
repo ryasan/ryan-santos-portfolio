@@ -1,15 +1,17 @@
 @import '../../base/variables';
 
-.experience-section {
+$ns: '.experience-section';
+
+#{$ns} {
 	display: block;
 
-	.box {
+	&__box {
 		padding: $space-40 0;
 		max-width: 950px;
 		margin: 0 auto;
 	}
 
-	.title {
+	&__title {
 		margin: 0 auto 250px;
 		opacity: 0;
 
@@ -20,7 +22,7 @@
 		}
 	}
 
-	.experience-list {
+	&__list {
 		display: flex;
 		flex-direction: column;
 		gap: 250px;
@@ -32,7 +34,7 @@
 		}
 	}
 
-	.experience-item {
+	&__item {
 		display: flex;
 		gap: $space-40;
 		opacity: 0;
@@ -44,43 +46,43 @@
 		}
 
 		&:last-child {
-			.info {
+			#{$ns}__info {
 				padding-bottom: 0;
 			}
 
-			.count-number {
+			#{$ns}__count-number {
 				height: 100%;
 			}
 		}
 	}
 
-	.info {
+	&__info {
 		width: 100%;
+	}
 
-		.job-title {
-			color: var(--content-color);
-			font-weight: 400;
-			line-height: 1;
-			margin-bottom: $space-8;
-		}
+	&__job-title {
+		color: var(--content-color);
+		font-weight: 400;
+		line-height: 1;
+		margin-bottom: $space-8;
+	}
 
-		.company {
-			line-height: 1;
-			margin-bottom: $space-16;
-			font-size: 65px;
+	&__company {
+		line-height: 1;
+		margin-bottom: $space-16;
+		font-size: 65px;
 
-			@media (max-width: $tablet) {
-				font-size: 40px;
-			}
+		@media (max-width: $tablet) {
+			font-size: 40px;
 		}
 	}
 
-	.count-number {
+	&__count-number {
 		background-color: var(--background-primary-color);
 		padding: $space-28 0;
 	}
 
-	.year-range {
+	&__year-range {
 		white-space: nowrap;
 
 		div {
@@ -88,18 +90,18 @@
 		}
 	}
 
-	.description {
+	&__description {
 		max-width: 750px;
 	}
 
-	.progress-bar {
+	&__progress-bar {
 		position: absolute;
 		width: 3px;
 		z-index: 0;
 		pointer-events: none;
 	}
 
-	.progress-bar-inner {
+	&__progress-bar-inner {
 		width: 100%;
 		height: 100%;
 		background-color: var(--content-color);
