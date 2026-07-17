@@ -80,7 +80,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 							</div>
 						</div>
 
-						{data?.titleWords && (
+						{/* {data?.titleWords && (
 							<h1 className={clsx(styles.title, 'hero-title')}>
 								{data.titleWords?.map((word, index) => {
 									if (!word) return null
@@ -112,7 +112,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 									)
 								})}
 							</h1>
-						)}
+						)} */}
 
 						{data?.titleWordsMobile && (
 							<h1
