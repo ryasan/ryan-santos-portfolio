@@ -29,18 +29,16 @@ export default function ExperienceSection({
 
 			gsap.fromTo(
 				title,
-				{ opacity: 0, y: 100 },
+				{ opacity: 0 },
 				{
-					duration: 1,
 					ease: 'power2.out',
 					opacity: 1,
 					scrollTrigger: {
 						end: 'top center',
-						once: true,
+						scrub: 1,
 						start: 'top bottom-=150px',
 						trigger: title,
 					},
-					y: 0,
 				},
 			)
 
@@ -53,18 +51,16 @@ export default function ExperienceSection({
 			experienceItems.forEach((item) => {
 				gsap.fromTo(
 					item,
-					{ opacity: 0, y: 100 },
+					{ opacity: 0 },
 					{
-						duration: 1,
 						ease: 'power2.out',
 						opacity: 1,
 						scrollTrigger: {
 							end: 'top center',
-							once: true,
+							scrub: 1,
 							start: 'top bottom-=150px',
 							trigger: item,
 						},
-						y: 0,
 					},
 				)
 			})
@@ -119,7 +115,7 @@ export default function ExperienceSection({
 								const lastRect = lastNum.getBoundingClientRect()
 								const offset =
 									lastRect.top - containerRect.top + lastRect.height / 2
-								return `top+=${offset} center`
+								return `top+=${offset} center+=100px`
 							},
 							scrub: 1,
 							start: () => {
@@ -129,7 +125,7 @@ export default function ExperienceSection({
 								// Offset from container top
 								const offset =
 									firstRect.top - containerRect.top + firstRect.height / 2
-								return `top+=${offset} center`
+								return `top+=${offset} center+=100px`
 							},
 							trigger: container,
 						},

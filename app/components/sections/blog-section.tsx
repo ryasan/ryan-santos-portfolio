@@ -26,9 +26,23 @@ function parseTagsFromUrl(tagsParam: string | null) {
 export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
 	const headerRef = useRef<HTMLDivElement>(null)
-	const postListRef = useRef<HTMLDivElement>(null)
 	const [searchParams, setSearchParams] = useSearchParams()
 	const selectedTags = parseTagsFromUrl(searchParams.get('tags'))
+
+	useGSAP(
+		() => {
+			const header = headerRef.current
+			if (!header) return
+
+			gsap.to(header, {
+				delay: 0.5,
+				duration: 1,
+				ease: 'power2.out',
+				opacity: 1,
+			})
+		},
+		{ scope: sectionRef },
+	)
 
 	const toggleTag = (tagName: string) => {
 		const next = new Set(selectedTags)
@@ -59,45 +73,6 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 		})
 	}, [selectedTags, posts])
 
-	useGSAP(
-		() => {
-			const header = headerRef.current
-			const postList = postListRef.current
-
-			if (header) {
-				gsap.to(header, {
-					delay: 0.5,
-					duration: 1,
-					ease: 'power2.out',
-					opacity: 1,
-				})
-			}
-
-			if (!postList) return
-
-			const cards = gsap.utils.toArray<HTMLElement>(postList.children)
-
-			cards.forEach((card) => {
-				gsap.fromTo(
-					card,
-					{ opacity: 0, y: 100 },
-					{
-						duration: 1,
-						ease: 'power2.out',
-						opacity: 1,
-						scrollTrigger: {
-							once: true,
-							start: 'top bottom-=150px',
-							trigger: card,
-						},
-						y: 0,
-					},
-				)
-			})
-		},
-		{ dependencies: [filteredPosts], revertOnUpdate: true, scope: sectionRef },
-	)
-
 	return (
 		<section className={styles.blogSection} ref={sectionRef}>
 			<div className="container">
@@ -125,7 +100,7 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 							)
 						})}
 					</div>
-					<div className={styles.postList} ref={postListRef}>
+					<div className={styles.postList}>
 						{filteredPosts.map(normalizeSlide).map((post) => {
 							if (!post) return null
 							return <ArticleCard data={post} forceDescription key={post.id} />
