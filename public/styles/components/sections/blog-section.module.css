@@ -3,11 +3,6 @@
   padding: 118px 0;
 }
 
-.header {
-  will-change: opacity;
-  opacity: 0;
-}
-
 .grid {
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -41,6 +36,7 @@
   margin-bottom: 50px;
   z-index: 1;
   position: relative;
+  will-change: opacity, transform;
 }
 .title strong {
   font-weight: 700;
@@ -68,6 +64,7 @@
 }
 
 .tagFilters {
+  will-change: opacity, transform;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,6 +92,10 @@
   .postList {
     grid-template-columns: repeat(1, 1fr);
   }
+}
+
+.postItem {
+  will-change: opacity, transform;
 }
 
 /*# sourceMappingURL=blog-section.module.css.map */

@@ -15,6 +15,7 @@ export type NormalizedArticleCard = {
 }
 
 type ArticleCardProps = {
+	className?: string
 	data: NormalizedArticleCard
 	forceDescription?: boolean
 	horizontal?: boolean
@@ -22,6 +23,7 @@ type ArticleCardProps = {
 }
 
 export default function ArticleCard({
+	className,
 	data,
 	forceDescription,
 	horizontal,
@@ -46,6 +48,7 @@ export default function ArticleCard({
 				styles.articleCard,
 				isBig && styles.bigCard,
 				horizontal && styles.horizontal,
+				className,
 			)}
 			target={isExternal ? '_blank' : undefined}
 			to={data.link || ''}

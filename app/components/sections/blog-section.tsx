@@ -26,19 +26,50 @@ function parseTagsFromUrl(tagsParam: string | null) {
 export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
 	const headerRef = useRef<HTMLDivElement>(null)
+	const postListRef = useRef<HTMLDivElement>(null)
 	const [searchParams, setSearchParams] = useSearchParams()
 	const selectedTags = parseTagsFromUrl(searchParams.get('tags'))
 
 	useGSAP(
 		() => {
 			const header = headerRef.current
-			if (!header) return
+			const postList = postListRef.current
 
-			gsap.to(header, {
-				delay: 0.5,
+			if (!header || !postList) return
+
+			gsap.fromTo(header, {
+				opacity: 0,
+			}, {
 				duration: 1,
 				ease: 'power2.out',
 				opacity: 1,
+			})
+
+			const items = gsap.utils.toArray<HTMLElement>(postList.children)
+
+			const postListItems = items.filter((item) =>
+				item.classList.contains(styles.postItem || ''),
+			)
+
+			postListItems.forEach((item) => {
+				gsap.fromTo(
+					item,
+					{
+						opacity: 0,
+						y: 50,
+					},
+					{
+						duration: 1,
+						ease: 'power2.out',
+						opacity: 1,
+						scrollTrigger: {
+							once: true,
+							start: 'top bottom-=100px',
+							trigger: item,
+						},
+						y: 0,
+					},
+				)
 			})
 		},
 		{ scope: sectionRef },
@@ -100,12 +131,19 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 							)
 						})}
 					</div>
-					<div className={styles.postList}>
-						{filteredPosts.map(normalizeSlide).map((post) => {
-							if (!post) return null
-							return <ArticleCard data={post} forceDescription key={post.id} />
-						})}
-					</div>
+				</div>
+				<div className={styles.postList} ref={postListRef}>
+					{filteredPosts.map(normalizeSlide).map((post) => {
+						if (!post) return null
+						return (
+							<ArticleCard
+								className={styles.postItem}
+								data={post}
+								forceDescription
+								key={post.id}
+							/>
+						)
+					})}
 				</div>
 			</div>
 		</section>

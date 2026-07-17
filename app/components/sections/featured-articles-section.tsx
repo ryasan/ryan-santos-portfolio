@@ -48,7 +48,7 @@ export default function FeaturedArticlesSection({
 				opacity: 1,
 				scrollTrigger: {
 					end: 'top center',
-					scrub: 1,
+					once: true,
 					start: 'top bottom-=150px',
 					trigger: title,
 				},
@@ -63,7 +63,7 @@ export default function FeaturedArticlesSection({
 				opacity: 1,
 				scrollTrigger: {
 					end: 'top center',
-					scrub: 1,
+					once: true,
 					start: 'top bottom-=150px',
 					trigger: subtitle,
 				},

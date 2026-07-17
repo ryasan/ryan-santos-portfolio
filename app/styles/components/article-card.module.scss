@@ -7,7 +7,6 @@
 	border-top-right-radius: $space-12;
 	overflow: hidden;
 	position: relative;
-	transition: all 0.4s ease;
 	width: 100%;
 
 	img {
@@ -26,19 +25,7 @@
 	flex-direction: column;
 	overflow: hidden;
 	position: relative;
-	transition: all 0.4s ease;
 	width: 100%;
-
-	// Keep opacity at 1 by default so GSAP can control it, but allow loading/loaded classes if needed
-	opacity: 1;
-
-	&.loading {
-		opacity: 0;
-	}
-
-	&.loaded {
-		opacity: 1;
-	}
 
 	[data-theme='light'] & {
 		border-color: var(--content-color);

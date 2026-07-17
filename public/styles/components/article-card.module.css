@@ -4,7 +4,6 @@
   border-top-right-radius: 12px;
   overflow: hidden;
   position: relative;
-  transition: all 0.4s ease;
   width: 100%;
 }
 .articleImage img {
@@ -22,15 +21,7 @@
   flex-direction: column;
   overflow: hidden;
   position: relative;
-  transition: all 0.4s ease;
   width: 100%;
-  opacity: 1;
-}
-.articleCard.loading {
-  opacity: 0;
-}
-.articleCard.loaded {
-  opacity: 1;
 }
 [data-theme=light] .articleCard {
   border-color: var(--content-color);

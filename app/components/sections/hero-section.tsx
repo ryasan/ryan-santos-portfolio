@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/hero-section.module.scss'
-import { MouseIcon } from '~/components/icons'
 import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -14,26 +13,15 @@ type HeroSectionProps = {
 export default function HeroSection({ data, id }: HeroSectionProps) {
 	const sectionRef = useRef<HTMLElement>(null)
 	const stickyBoxRef = useRef<HTMLDivElement>(null)
-	const scrollToExploreRef = useRef<HTMLDivElement>(null)
-	const scrollToExploreWrapperRef = useRef<HTMLDivElement>(null)
 	const accentRef = useRef<HTMLDivElement>(null)
 
 	useGSAP(
 		() => {
 			const section = sectionRef.current
 			const stickyBox = stickyBoxRef.current
-			const scrollToExplore = scrollToExploreRef.current
-			const scrollToExploreWrapper = scrollToExploreWrapperRef.current
 			const accent = accentRef.current
 
-			if (
-				!section ||
-				!stickyBox ||
-				!scrollToExplore ||
-				!scrollToExploreWrapper ||
-				!accent
-			)
-				return
+			if (!section || !stickyBox || !accent) return
 
 			const words = gsap.utils.toArray<HTMLElement>('.word')
 			words.forEach((word, wordIndex) => {
@@ -47,43 +35,12 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				})
 			})
 
-			gsap.to(scrollToExplore, {
-				delay: 1.2,
-				duration: 1,
-				ease: 'power2.out',
-				opacity: 1,
-			})
-
 			gsap.to(accent, {
 				delay: 1.2,
 				duration: 1,
 				ease: 'power2.out',
 				opacity: 1,
 			})
-
-			const tl = gsap.timeline({
-				scrollTrigger: {
-					end: '+=100%',
-					pin: true,
-					scrub: 1,
-					start: 'top top',
-					trigger: section,
-				},
-			})
-
-			tl.fromTo(
-				stickyBox,
-				{ opacity: 1 },
-				{ ease: 'none', immediateRender: false, opacity: 0 },
-				0,
-			)
-
-			tl.fromTo(
-				scrollToExploreWrapper,
-				{ opacity: 1 },
-				{ ease: 'none', immediateRender: false, opacity: 0 },
-				0,
-			)
 		},
 		{ scope: sectionRef },
 	)
@@ -196,18 +153,6 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 								})}
 							</h1>
 						)}
-					</div>
-				</div>
-				<div
-					className={styles.scrollToExploreWrapper}
-					ref={scrollToExploreWrapperRef}
-				>
-					<div
-						className={clsx(styles.scrollToExplore, 'link')}
-						ref={scrollToExploreRef}
-					>
-						<span>Scroll To Explore</span>
-						<MouseIcon className={styles.mouseIcon} />
 					</div>
 				</div>
 			</div>

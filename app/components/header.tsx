@@ -20,7 +20,6 @@ export default function Header({ data }: HeaderProps) {
 		if (!header) return
 
 		gsap.to(header, {
-			delay: 1.2,
 			duration: 1,
 			ease: 'power2.out',
 			opacity: 1,
