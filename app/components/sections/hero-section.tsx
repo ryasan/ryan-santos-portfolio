@@ -28,7 +28,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 			words.forEach((word, wordIndex) => {
 				const chars = word.querySelectorAll(`.${ns}__char`)
 				gsap.to(chars, {
-					delay: wordIndex * 0.05,
+					delay: wordIndex * 0.03,
 					duration: 0.5,
 					ease: 'power3.out',
 					stagger: 0.003,
@@ -56,13 +56,8 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				<div className={`${ns}__sticky-box`} ref={stickyBoxRef}>
 					<div className={`${ns}__accent-wrapper`}>
 						<div className={`${ns}__accent-container`} ref={accentRef}>
-							<div className={`${ns}__corner-bracket top-right`} />
-							<div className={`${ns}__corner-bracket bottom-left`} />
-							<div className={`${ns}__accent-label label-top-right code`}>
-								[v2.6_PROD]
-							</div>
 							<div className={`${ns}__accent-label label-bottom-left code`}>
-								[STACK: REMIX / GSAP / CONTENTFUL]
+								[v2.6_PROD]
 							</div>
 						</div>
 

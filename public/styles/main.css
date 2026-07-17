@@ -1435,7 +1435,6 @@ em {
   width: 16px;
   height: 16px;
   border: 1px solid transparent;
-  opacity: 0.25;
 }
 @media (max-width: 992px) {
   .hero-section__corner-bracket {
@@ -1500,7 +1499,6 @@ em {
   color: var(--content-color);
   font-weight: 500;
   white-space: nowrap;
-  opacity: 0.25;
 }
 @media (max-width: 992px) {
   .hero-section__accent-label {

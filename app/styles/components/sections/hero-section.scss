@@ -63,7 +63,6 @@ $ns: '.hero-section';
 		width: 16px;
 		height: 16px;
 		border: 1px solid transparent;
-		opacity: 0.25;
 
 		@media (max-width: $laptop) {
 			width: 12px;
@@ -128,7 +127,6 @@ $ns: '.hero-section';
 		color: var(--content-color);
 		font-weight: 500;
 		white-space: nowrap;
-		opacity: 0.25;
 
 		@media (max-width: $laptop) {
 			font-size: 10px;
