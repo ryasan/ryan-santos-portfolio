@@ -65,13 +65,15 @@ export default function ArticleCard({
 			</div>
 			<div className={`${ns}__content`}>
 				{data.eyebrow && (
-					<p className={clsx('badge mb-12', `${ns}__eyebrow`)}>{data.eyebrow}</p>
+					<p className={clsx(`${ns}__eyebrow`, 'badge mb-12')}>
+						{data.eyebrow}
+					</p>
 				)}
 				{data.title && (
-					<h3 className={clsx('h6 mb-12', `${ns}__title`)}>{data.title}</h3>
+					<h3 className={clsx(`${ns}__title`, 'h6 mb-12')}>{data.title}</h3>
 				)}
 				{data.description && (horizontal || forceDescription) && (
-					<p className={clsx('body mb-20', `${ns}__description`)}>
+					<p className={clsx(`${ns}__description`, 'body mb-20')}>
 						{data.description}
 					</p>
 				)}
@@ -82,7 +84,7 @@ export default function ArticleCard({
 
 							return (
 								<button
-									className={clsx('link badge', `${ns}__tag`)}
+									className={clsx(`${ns}__tag`, 'link badge')}
 									key={tag}
 									onClick={(e) => {
 										e.preventDefault()

@@ -33,14 +33,14 @@ export default function Header({ data }: HeaderProps) {
 				<div className={`${ns}__inner`}>
 					<RemixLink aria-label="Home page" className={`${ns}__logo`} to="/">
 						<div data-hide-on-theme={DARK_THEME}>
-							<span className={clsx('link', `${ns}__logo-text-1`)}>Ryan</span>
+							<span className={clsx(`${ns}__logo-text-1`, 'link')}>Ryan</span>
 							&nbsp;
-							<span className={clsx('link', `${ns}__logo-text-2`)}>Santos</span>
+							<span className={clsx(`${ns}__logo-text-2`, 'link')}>Santos</span>
 						</div>
 						<div data-hide-on-theme={LIGHT_THEME}>
-							<span className={clsx('link', `${ns}__logo-text-1`)}>Ryan</span>
+							<span className={clsx(`${ns}__logo-text-1`, 'link')}>Ryan</span>
 							&nbsp;
-							<span className={clsx('link', `${ns}__logo-text-2`)}>Santos</span>
+							<span className={clsx(`${ns}__logo-text-2`, 'link')}>Santos</span>
 						</div>
 					</RemixLink>
 					<div className={`${ns}__navigation-box`}>
@@ -51,7 +51,7 @@ export default function Header({ data }: HeaderProps) {
 								return (
 									<NavLink
 										className={({ isActive }) =>
-											clsx('link', `${ns}__link`, isActive && 'active')
+											clsx(`${ns}__link`, 'link', isActive && 'active')
 										}
 										key={item.label}
 										to={item.internalPage?.slug || item.url || ''}

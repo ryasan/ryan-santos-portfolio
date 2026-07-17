@@ -64,9 +64,9 @@ export default function MarqueeSection({ id }: MarqueeSectionProps) {
 									>
 										<span
 											className={clsx(
-												'h1',
 												`${ns}__text`,
 												`${ns}__text--outline`,
+												'h1',
 											)}
 										>
 											{repeatedItem.text}

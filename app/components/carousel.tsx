@@ -41,7 +41,7 @@ export default function Carousel({
 	return (
 		<div className={ns}>
 			<div className="container">
-				<div className={clsx('mb-40', `${ns}__header`)}>
+				<div className={clsx(`${ns}__header`, 'mb-40')}>
 					{title && <h2 className="h1">{title}</h2>}
 					<div className={`${ns}__navigation`}>
 						<button
@@ -62,12 +62,12 @@ export default function Carousel({
 				</div>
 				{slides.length > 0 && (
 					<div
-						className={clsx('keen-slider', `${ns}__slider`)}
+						className={clsx(`${ns}__slider`, 'keen-slider')}
 						ref={sliderRef}
 					>
 						{slides.map((slide, index) => (
 							<div
-								className={clsx('keen-slider__slide', `${ns}__slide`)}
+								className={clsx(`${ns}__slide`, 'keen-slider__slide')}
 								key={index}
 							>
 								{slide}
