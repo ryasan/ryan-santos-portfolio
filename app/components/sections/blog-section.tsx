@@ -1,6 +1,5 @@
 import ArticleCard from '~/components/article-card'
 import clsx from 'clsx'
-import styles from '~/styles/components/sections/blog-section.module.scss'
 import { normalizeSlide } from '~/utils/normalize-data'
 import { type Blog, type ContentfulTag } from '~/graphql/__generated/sdk'
 import { useMemo, useRef } from 'react'
@@ -37,18 +36,22 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 
 			if (!header || !postList) return
 
-			gsap.fromTo(header, {
-				opacity: 0,
-			}, {
-				duration: 1,
-				ease: 'power2.out',
-				opacity: 1,
-			})
+			gsap.fromTo(
+				header,
+				{
+					opacity: 0,
+				},
+				{
+					duration: 1,
+					ease: 'power2.out',
+					opacity: 1,
+				},
+			)
 
 			const items = gsap.utils.toArray<HTMLElement>(postList.children)
 
 			const postListItems = items.filter((item) =>
-				item.classList.contains(styles.postItem || ''),
+				item.classList.contains('post-item'),
 			)
 
 			postListItems.forEach((item) => {
@@ -105,13 +108,13 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 	}, [selectedTags, posts])
 
 	return (
-		<section className={styles.blogSection} ref={sectionRef}>
+		<section className="blog-section" ref={sectionRef}>
 			<div className="container">
-				<div className={styles.header} ref={headerRef}>
-					<h1 className={clsx(styles.title, 'h2')}>
+				<div className="header" ref={headerRef}>
+					<h1 className={clsx('title', 'h2')}>
 						<strong>Latest</strong> <em>Blogs</em>
 					</h1>
-					<div className={styles.tagFilters}>
+					<div className="tag-filters">
 						{_tags.map((tag) => {
 							const tagName = tag.name?.trim()
 							if (!tagName) return null
@@ -132,12 +135,12 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 						})}
 					</div>
 				</div>
-				<div className={styles.postList} ref={postListRef}>
+				<div className="post-list" ref={postListRef}>
 					{filteredPosts.map(normalizeSlide).map((post) => {
 						if (!post) return null
 						return (
 							<ArticleCard
-								className={styles.postItem}
+								className="post-item"
 								data={post}
 								forceDescription
 								key={post.id}

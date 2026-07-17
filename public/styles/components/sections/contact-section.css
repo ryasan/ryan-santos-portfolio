@@ -1,18 +1,16 @@
-.contactSection {
+.contact-section {
   border-top: 1px solid var(--line-color);
   position: relative;
   margin-top: 140px;
 }
-
-.box {
+.contact-section .box {
   padding: 120px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-
-.title {
+.contact-section .title {
   text-align: center;
   font-size: 100px;
   max-width: 850px;
@@ -20,17 +18,16 @@
   line-height: 1.1;
 }
 @media (max-width: 1200px) {
-  .title {
+  .contact-section .title {
     font-size: 70px;
   }
 }
 @media (max-width: 768px) {
-  .title {
+  .contact-section .title {
     font-size: 50px;
   }
 }
-
-.copyButton {
+.contact-section .copy-button {
   margin-top: 64px;
   display: flex;
   align-items: center;
@@ -38,30 +35,27 @@
   gap: 8px;
   width: 320px;
 }
-
-.copyIcon {
+.contact-section .copy-icon {
   width: 24px;
   height: 24px;
   flex-shrink: 0;
   fill: var(--background-primary-color);
 }
-
-.socialLinks {
+.contact-section .social-links {
   display: flex;
   align-items: center;
   gap: 56px;
   margin-top: 32px;
 }
-.socialLinks a {
+.contact-section .social-links a {
   transition: opacity 0.2s ease;
 }
-.socialLinks a:hover {
+.contact-section .social-links a:hover {
   opacity: 0.8;
 }
-
-.icon {
+.contact-section .icon {
   width: 32px;
   height: 32px;
 }
 
-/*# sourceMappingURL=contact-section.module.css.map */
+/*# sourceMappingURL=contact-section.css.map */

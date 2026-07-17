@@ -1,0 +1,145 @@
+@import '../../base/variables';
+
+.featured-articles-section {
+	position: relative;
+
+	@mixin article-card-active-state {
+		.article-image {
+			img {
+				filter: blur(3px) grayscale(50%) brightness(0.5);
+
+				[data-theme='light'] & {
+					filter: blur(3px) grayscale(10%) brightness(1.1);
+					opacity: 0.3;
+				}
+			}
+		}
+
+		.article-content {
+			transform: translateY(0);
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	.sticky-box {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		text-align: center;
+		height: 100lvh;
+	}
+
+	.title {
+		opacity: 0;
+	}
+
+	.subtitle {
+		opacity: 0;
+		color: var(--content-color-2);
+	}
+
+	.article-list {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 50lvh 0;
+	}
+
+	.article-container {
+		height: 100lvh;
+		display: flex;
+		align-items: start;
+		justify-content: center;
+		position: relative;
+
+		&.left {
+			justify-content: start;
+		}
+
+		&.right {
+			justify-content: flex-end;
+		}
+	}
+
+	@media (max-width: $tablet) {
+		.article-card {
+			justify-content: center !important;
+		}
+	}
+
+	.article-image {
+		img {
+			aspect-ratio: 450 / 500;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			max-width: 450px;
+			transition: all 0.4s ease;
+			transform: scale(1.05);
+		}
+	}
+
+	.article-content {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+		align-items: start;
+		padding: $space-40;
+		transition: all 0.4s ease-out;
+		transform: translateY($space-20);
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	.article-card {
+		border-radius: $space-20;
+		overflow: hidden;
+		position: relative;
+		z-index: 1;
+		background-color: var(--background-primary-color);
+
+		@media (min-width: $tablet + 1px) {
+			&:hover {
+				@include article-card-active-state;
+			}
+		}
+
+		@media (max-width: $tablet) {
+			&.active {
+				@include article-card-active-state;
+			}
+		}
+	}
+
+	.article-title {
+		font-size: 45px;
+		font-weight: 500;
+		margin-bottom: $space-20;
+
+		@media (max-width: $tablet) {
+			font-size: 32px;
+		}
+	}
+
+	.article-caption {
+		color: var(--content-color-2);
+		font-size: 24px;
+		font-weight: 500;
+		margin-bottom: 12px;
+
+		@media (max-width: $tablet) {
+			font-size: 18px;
+		}
+	}
+
+	.article-description p {
+		color: var(--content-color);
+	}
+
+	.article-link {
+		margin-top: auto;
+	}
+}

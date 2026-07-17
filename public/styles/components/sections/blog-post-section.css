@@ -1,44 +1,39 @@
-.blogPostSection {
+.blog-post-section {
   padding: 120px 0 40px;
   opacity: 0;
   will-change: opacity;
 }
-
-.header {
+.blog-post-section .header {
   margin-bottom: 40px;
 }
-
-.linkBox {
+.blog-post-section .link-box {
   display: flex;
   align-items: center;
   height: 24px;
   width: fit-content;
   margin-bottom: 40px;
 }
-.linkBox:hover .link::before {
+.blog-post-section .link-box:hover .link::before {
   transform: scaleX(0);
   transform-origin: right center;
 }
-.linkBox:hover svg {
+.blog-post-section .link-box:hover svg {
   transform: translateX(-4px);
 }
-
-.icon {
+.blog-post-section .icon {
   margin-right: 8px;
   margin-left: 0;
   width: 24px;
 }
-
-.author {
+.blog-post-section .author {
   align-items: center;
   display: flex;
   gap: 16px;
 }
-.author h5 {
+.blog-post-section .author h5 {
   margin-bottom: 6px;
 }
-
-.heroImage img {
+.blog-post-section .hero-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -46,35 +41,31 @@
   aspect-ratio: auto 1440/686;
   border-radius: 10px;
 }
-
 @media (max-width: 610px) {
-  .heroImage img {
+  .blog-post-section .hero-image img {
     max-height: 250px;
   }
 }
-.layout {
+.blog-post-section .layout {
   margin-top: 40px;
   display: grid;
   grid-template-columns: 70% 30%;
 }
 @media (max-width: 768px) {
-  .layout {
+  .blog-post-section .layout {
     display: flex;
-    flex-direction: column;
     flex-direction: column-reverse;
   }
 }
-
-.blogBody {
+.blog-post-section .blog-body {
   margin-bottom: 120px;
 }
 @media (max-width: 768px) {
-  .blogBody {
+  .blog-post-section .blog-body {
     margin-bottom: 40px;
   }
 }
-
-.shareActions {
+.blog-post-section .share-actions {
   display: flex;
   align-items: start;
   justify-content: end;
@@ -82,14 +73,13 @@
   margin-bottom: 64px;
 }
 @media (max-width: 768px) {
-  .shareActions {
+  .blog-post-section .share-actions {
     justify-content: start;
     margin-bottom: 40px;
   }
 }
-
-.shareButton,
-.shareCopyButton {
+.blog-post-section .share-button,
+.blog-post-section .share-copy-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,12 +91,11 @@
   height: 43px;
   transition: all 0.2s ease;
 }
-.shareButton:hover,
-.shareCopyButton:hover {
+.blog-post-section .share-button:hover,
+.blog-post-section .share-copy-button:hover {
   border-color: var(--content-color);
 }
-
-.shareCopyButton {
+.blog-post-section .share-copy-button {
   border-radius: 100px;
   gap: 8px;
   padding: 0 15px;
@@ -115,4 +104,4 @@
   width: 128px;
 }
 
-/*# sourceMappingURL=blog-post-section.module.css.map */
+/*# sourceMappingURL=blog-post-section.css.map */

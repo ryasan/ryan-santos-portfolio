@@ -1,6 +1,5 @@
 import RichText from '~/components/rich-text'
 import clsx from 'clsx'
-import styles from '~/styles/components/sections/featured-articles-section.module.scss'
 import { type FeaturedArticlesSection } from '~/graphql/__generated/sdk'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
@@ -24,95 +23,94 @@ export default function FeaturedArticlesSection({
 	const titleRef = useRef<HTMLHeadingElement>(null)
 	const subtitleRef = useRef<HTMLParagraphElement>(null)
 
-	useGSAP(() => {
-		const section = sectionRef.current
-		const stickyBox = stickyBoxRef.current
-		const title = titleRef.current
-		const subtitle = subtitleRef.current
-		const articles = document.querySelectorAll(`.${styles.articleCard}`)
+	useGSAP(
+		() => {
+			const section = sectionRef.current
+			const stickyBox = stickyBoxRef.current
+			const title = titleRef.current
+			const subtitle = subtitleRef.current
+			const articles = section?.querySelectorAll('.article-card') ?? []
 
-		ScrollTrigger.create({
-			anticipatePin: 1,
-			end: 'bottom bottom',
-			pin: stickyBox,
-			pinSpacing: false,
-			start: 'top top',
-			trigger: section,
-		})
-
-		gsap.fromTo(
-			title,
-			{ opacity: 0 },
-			{
-				ease: 'power2.out',
-				opacity: 1,
-				scrollTrigger: {
-					end: 'top center',
-					once: true,
-					start: 'top bottom-=150px',
-					trigger: title,
-				},
-			},
-		)
-
-		gsap.fromTo(
-			subtitle,
-			{ opacity: 0 },
-			{
-				ease: 'power2.out',
-				opacity: 1,
-				scrollTrigger: {
-					end: 'top center',
-					once: true,
-					start: 'top bottom-=150px',
-					trigger: subtitle,
-				},
-			},
-		)
-
-		articles.forEach((article) => {
 			ScrollTrigger.create({
-				end: 'bottom center-=100px',
-				onEnter: () => {
-					article.classList.add(styles.active as string)
-				},
-				onEnterBack: () => {
-					article.classList.add(styles.active as string)
-				},
-				onLeave: () => {
-					article.classList.remove(styles.active as string)
-				},
-				onLeaveBack: () => {
-					article.classList.remove(styles.active as string)
-				},
-				start: 'top center+=100px',
-				trigger: article,
+				anticipatePin: 1,
+				end: 'bottom bottom',
+				pin: stickyBox,
+				pinSpacing: false,
+				start: 'top top',
+				trigger: section,
 			})
-		})
-	}, [])
+
+			gsap.fromTo(
+				title,
+				{ opacity: 0 },
+				{
+					ease: 'power2.out',
+					opacity: 1,
+					scrollTrigger: {
+						end: 'top center',
+						once: true,
+						start: 'top bottom-=150px',
+						trigger: title,
+					},
+				},
+			)
+
+			gsap.fromTo(
+				subtitle,
+				{ opacity: 0 },
+				{
+					ease: 'power2.out',
+					opacity: 1,
+					scrollTrigger: {
+						end: 'top center',
+						once: true,
+						start: 'top bottom-=150px',
+						trigger: subtitle,
+					},
+				},
+			)
+
+			articles.forEach((article) => {
+				ScrollTrigger.create({
+					end: 'bottom center-=100px',
+					onEnter: () => {
+						article.classList.add('active')
+					},
+					onEnterBack: () => {
+						article.classList.add('active')
+					},
+					onLeave: () => {
+						article.classList.remove('active')
+					},
+					onLeaveBack: () => {
+						article.classList.remove('active')
+					},
+					start: 'top center+=100px',
+					trigger: article,
+				})
+			})
+		},
+		{ scope: sectionRef },
+	)
 
 	return (
-		<section
-			className={styles.featuredArticlesSection}
-			id={id}
-			ref={sectionRef}
-		>
+		<section className="featured-articles-section" id={id} ref={sectionRef}>
 			<div className="container">
-				<div className={styles.stickyBox} ref={stickyBoxRef}>
+				<div className="sticky-box" ref={stickyBoxRef}>
 					{data?.title && (
-						<h2 className={clsx(styles.title, 'h1 mb-56')} ref={titleRef}>
+						<h2 className={clsx('title', 'h1 mb-56')} ref={titleRef}>
 							{data.title}
 						</h2>
 					)}
 					{data?.subtitle && (
-						<p className={clsx(styles.subtitle, 'h6')} ref={subtitleRef}>
+						<p className={clsx('subtitle', 'h6')} ref={subtitleRef}>
 							{data.subtitle}
 						</p>
 					)}
 				</div>
 
 				{data?.featuredArticlesCollection && (
-					<div className={styles.articleList}>
+					<div className="article-list">
 						{data.featuredArticlesCollection.items
 							.map(normalizeSlide)
 							.map((article, index) => {
@@ -122,42 +120,35 @@ export default function FeaturedArticlesSection({
 
 								return (
 									<div
-										className={clsx(
-											styles.articleContainer,
-											styles[cardAlignment],
-										)}
+										className={clsx('article-container', cardAlignment)}
 										key={article.id}
 									>
-										<div className={styles.articleCard}>
-											<div className={styles.articleImage}>
+										<div className="article-card">
+											<div className="article-image">
 												{article?.image && (
 													<img
 														alt={article.image?.description || ''}
-														className={styles.articleImage}
+														className="article-image"
 														src={article.image?.url || ''}
 													/>
 												)}
 											</div>
-											<div className={styles.articleContent}>
+											<div className="article-content">
 												{article.title && (
-													<h3 className={styles.articleTitle}>
-														{article.title}
-													</h3>
+													<h3 className="article-title">{article.title}</h3>
 												)}
 												{article.caption && (
-													<p className={styles.articleCaption}>
-														{article.caption}
-													</p>
+													<p className="article-caption">{article.caption}</p>
 												)}
 												{article.description && (
 													<RichText
-														className={styles.articleDescription}
+														className="article-description"
 														data={article.description}
 													/>
 												)}
 												{article.link && (
 													<a
-														className={clsx(styles.articleLink, 'button')}
+														className={clsx('article-link', 'button')}
 														href={article.link || ''}
 														rel="noopener noreferrer"
 														target="_blank"

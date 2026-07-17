@@ -1,26 +1,23 @@
-.experienceSection {
+.experience-section {
   display: block;
 }
-
-.box {
+.experience-section .box {
   padding: 40px 0;
   max-width: 950px;
   margin: 0 auto;
 }
-
-.title {
+.experience-section .title {
   margin: 0 auto 250px;
   opacity: 0;
 }
 @media (max-width: 768px) {
-  .title {
+  .experience-section .title {
     margin-bottom: 150px;
     font-size: 60px;
     line-height: 1.2;
   }
 }
-
-.experienceList {
+.experience-section .experience-list {
   display: flex;
   flex-direction: column;
   gap: 250px;
@@ -28,12 +25,11 @@
   position: relative;
 }
 @media (max-width: 768px) {
-  .experienceList {
+  .experience-section .experience-list {
     gap: 150px;
   }
 }
-
-.experienceItem {
+.experience-section .experience-item {
   display: flex;
   gap: 40px;
   opacity: 0;
@@ -41,61 +37,55 @@
   z-index: 1;
 }
 @media (max-width: 768px) {
-  .experienceItem {
+  .experience-section .experience-item {
     gap: 20px;
   }
 }
-.experienceItem:last-child .info {
+.experience-section .experience-item:last-child .info {
   padding-bottom: 0;
 }
-.experienceItem:last-child .countNumber {
+.experience-section .experience-item:last-child .count-number {
   height: 100%;
 }
-
-.info {
+.experience-section .info {
   width: 100%;
 }
-.info .jobTitle {
+.experience-section .info .job-title {
   color: var(--content-color);
   font-weight: 400;
   line-height: 1;
   margin-bottom: 8px;
 }
-.info .company {
+.experience-section .info .company {
   line-height: 1;
   margin-bottom: 16px;
   font-size: 65px;
 }
 @media (max-width: 768px) {
-  .info .company {
+  .experience-section .info .company {
     font-size: 40px;
   }
 }
-
-.countNumber {
+.experience-section .count-number {
   background-color: var(--background-primary-color);
   padding: 28px 0;
 }
-
-.yearRange {
+.experience-section .year-range {
   white-space: nowrap;
 }
-.yearRange div {
+.experience-section .year-range div {
   line-height: 1;
 }
-
-.description {
+.experience-section .description {
   max-width: 750px;
 }
-
-.progressBar {
+.experience-section .progress-bar {
   position: absolute;
   width: 3px;
   z-index: 0;
   pointer-events: none;
 }
-
-.progressBarInner {
+.experience-section .progress-bar-inner {
   width: 100%;
   height: 100%;
   background-color: var(--content-color);
@@ -103,4 +93,4 @@
   transform: scaleY(0);
 }
 
-/*# sourceMappingURL=experience-section.module.css.map */
+/*# sourceMappingURL=experience-section.css.map */

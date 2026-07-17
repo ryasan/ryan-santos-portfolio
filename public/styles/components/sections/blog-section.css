@@ -1,36 +1,32 @@
-.blogSection {
+.blog-section {
   min-height: 100lvh;
   padding: 118px 0;
 }
-
-.grid {
+.blog-section .grid {
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 30px;
 }
 @media (max-width: 768px) {
-  .grid {
+  .blog-section .grid {
     grid-template-columns: 1fr;
   }
 }
-
-.filtersColumn {
+.blog-section .filters-column {
   align-self: stretch;
 }
-
-.filters {
+.blog-section .filters {
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-self: start;
 }
 @media (max-width: 768px) {
-  .filters {
+  .blog-section .filters {
     display: none;
   }
 }
-
-.title {
+.blog-section .title {
   line-height: 1;
   text-align: center;
   margin-bottom: 50px;
@@ -38,32 +34,28 @@
   position: relative;
   will-change: opacity, transform;
 }
-.title strong {
+.blog-section .title strong {
   font-weight: 700;
 }
-.title em {
+.blog-section .title em {
   color: var(--content-color-2);
   font-weight: 600;
 }
-
-.wordMask {
+.blog-section .word-mask {
   display: inline-block;
   overflow: hidden;
   position: relative;
   vertical-align: bottom;
 }
-
-.word {
+.blog-section .word {
   display: inline-block;
 }
-
-.char {
+.blog-section .char {
   display: inline-block;
   will-change: transform;
   transform: translateY(110%);
 }
-
-.tagFilters {
+.blog-section .tag-filters {
   will-change: opacity, transform;
   display: flex;
   align-items: center;
@@ -73,29 +65,27 @@
   margin-bottom: 50px;
   flex-wrap: wrap;
 }
-.tagFilters button {
+.blog-section .tag-filters button {
   white-space: nowrap;
   text-transform: lowercase;
 }
 @media (max-width: 768px) {
-  .tagFilters {
+  .blog-section .tag-filters {
     justify-content: start;
   }
 }
-
-.postList {
+.blog-section .post-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
 @media (max-width: 768px) {
-  .postList {
+  .blog-section .post-list {
     grid-template-columns: repeat(1, 1fr);
   }
 }
-
-.postItem {
+.blog-section .post-item {
   will-change: opacity, transform;
 }
 
-/*# sourceMappingURL=blog-section.module.css.map */
+/*# sourceMappingURL=blog-section.css.map */

@@ -1,6 +1,5 @@
 import clsx from 'clsx'
-import styles from '~/styles/components/sections/contact-section.module.scss'
-import  { type ContactSection } from '~/graphql/__generated/sdk'
+import { type ContactSection } from '~/graphql/__generated/sdk'
 import {
 	CodepenIcon,
 	CopySimpleIcon,
@@ -17,8 +16,9 @@ const icons = {
 
 const getIcon = (icon?: string) => {
 	const Icon = icons[icon?.toLowerCase() as keyof typeof icons]
-	return Icon ? <Icon aria-hidden="true" className={styles.icon} /> : null
+	return Icon ? <Icon aria-hidden="true" className="icon" /> : null
 }
+
 type ContactSectionProps = {
 	data?: ContactSection
 	id?: string
@@ -36,23 +36,23 @@ export default function ContactSection({ data, id }: ContactSectionProps) {
 	}
 
 	return (
-		<section className={styles.contactSection} id={id}>
+		<section className="contact-section" id={id}>
 			<div className="container">
-				<div className={styles.box}>
+				<div className="box">
 					{data?.title && (
-						<h2 className={clsx(styles.title, 'h1 mb-56')}>{data.title}</h2>
+						<h2 className={clsx('title', 'h1 mb-56')}>{data.title}</h2>
 					)}
 					{data?.email && (
 						<button
-							className={clsx(styles.copyButton, 'button')}
+							className={clsx('copy-button', 'button')}
 							onClick={copyToClipboard}
 							title="Copy to clipboard"
 						>
 							{copySuccess ? 'email copied!' : data.email}
-							<CopySimpleIcon className={styles.copyIcon} />
+							<CopySimpleIcon className="copy-icon" />
 						</button>
 					)}
-					<div className={styles.socialLinks}>
+					<div className="social-links">
 						{data?.socialLinksCollection?.items?.map((social) => {
 							if (!social?.url || !social?.label) return null
 

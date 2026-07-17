@@ -4,8 +4,13 @@ import RichText from '~/components/rich-text'
 import clsx from 'clsx'
 import gsap from 'gsap'
 import linkStyles from '~/styles/components/link.module.scss'
-import styles from '~/styles/components/sections/blog-post-section.module.scss'
-import { ArrowLeftIcon, TwitterIcon, FacebookIcon, LinkedinIcon, CopySimpleIcon } from '~/components/icons'
+import {
+	ArrowLeftIcon,
+	TwitterIcon,
+	FacebookIcon,
+	LinkedinIcon,
+	CopySimpleIcon,
+} from '~/components/icons'
 import { formatDate } from '~/utils'
 import { type Blog } from '~/graphql/__generated/sdk'
 import { useGSAP } from '@gsap/react'
@@ -70,28 +75,28 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 	}, [])
 
 	return (
-		<section className={styles.blogPostSection} ref={sectionRef}>
-			<div className={styles.header}>
+		<section className="blog-post-section" ref={sectionRef}>
+			<div className="header">
 				<div className="container">
 					<button
-						className={clsx(styles.linkBox, linkStyles.linkBox)}
+						className={clsx('link-box', linkStyles.linkBox)}
 						onClick={() => navigate('/blog')}
 					>
-						<ArrowLeftIcon className={clsx(styles.icon, linkStyles.icon)} />
+						<ArrowLeftIcon className={clsx('icon', linkStyles.icon)} />
 						<span className={clsx('link', linkStyles.link)}>Back</span>
 					</button>
 
 					{data?.title && <h1 className="mb-32 h4">{data?.title}</h1>}
 
-					<div className={styles.author}>
+					<div className="author">
 						<Avatar
 							alt={name}
-							className={styles.avatar}
+							className="avatar"
 							size="small"
 							src={data?.author?.avatar?.url}
 						/>
 						{(name || data?.publishDate) && (
-							<div className={styles.authorInfo}>
+							<div className="author-info">
 								{name && <h5 className="h5">{name}</h5>}
 								{data?.publishDate && (
 									<div className="body">{formatDate(data?.publishDate)}</div>
@@ -104,7 +109,7 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 
 			{data?.openGraphImage?.url && (
 				<div className="container">
-					<div className={styles.heroImage}>
+					<div className="hero-image">
 						<img
 							alt={data?.openGraphImage?.description || ''}
 							src={data?.openGraphImage?.url}
@@ -114,9 +119,9 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 			)}
 
 			<div className="container">
-				<div className={styles.layout}>
+				<div className="layout">
 					{(data?.blogBodyMarkdown || data?.blogBody?.json) && (
-						<div className={styles.blogBody}>
+						<div className="blog-body">
 							{data?.blogBodyMarkdown ? (
 								<ClientOnly>
 									<Suspense fallback={null}>
@@ -124,50 +129,44 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 									</Suspense>
 								</ClientOnly>
 							) : (
-								data?.blogBody?.json && (
-									<RichText data={data.blogBody.json} />
-								)
+								data?.blogBody?.json && <RichText data={data.blogBody.json} />
 							)}
 						</div>
 					)}
 
-					<div className={styles.shareActions}>
+					<div className="share-actions">
 						<button
-							className={styles.shareCopyButton}
+							className="share-copy-button"
 							onClick={copyToClipboard}
 							title="Share this article via link"
 						>
 							<span>{copySuccess ? 'Copied' : 'Copy Link'}</span>
-							<CopySimpleIcon className={styles.shareIcon} />
+							<CopySimpleIcon className="share-icon" />
 						</button>
 						<button
-							className={styles.shareButton}
+							className="share-button"
 							onClick={shareOnTwitter}
 							title="Share this article on Twitter"
 						>
-							<TwitterIcon className={styles.shareIcon} />
+							<TwitterIcon className="share-icon" />
 						</button>
 						<button
-							className={styles.shareButton}
+							className="share-button"
 							onClick={shareOnLinkedIn}
 							title="Share this article on LinkedIn"
 						>
-							<LinkedinIcon className={styles.shareIcon} />
+							<LinkedinIcon className="share-icon" />
 						</button>
 						<button
-							className={styles.shareButton}
+							className="share-button"
 							onClick={shareOnFacebook}
 							title="Share this article on Facebook"
 						>
-							<FacebookIcon className={styles.shareIcon} />
+							<FacebookIcon className="share-icon" />
 						</button>
 					</div>
 				</div>
 			</div>
-
-			{/* Tags - Post Tags */}
-			{/* Related Posts - Post Related Posts */}
-			{/* Comments - Post Comments */}
 		</section>
 	)
 }
