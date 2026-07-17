@@ -13,6 +13,12 @@ export default function ScrollSmoothLayout({
 	const location = useLocation()
 
 	useGSAP(() => {
+		// Only enable on desktop (non-touch devices)
+		const isTouchDevice =
+			'ontouchstart' in window || navigator.maxTouchPoints > 0
+
+		if (isTouchDevice) return
+
 		const instance = ScrollSmoother.create({
 			effects: true,
 			ignoreMobileResize: true,
