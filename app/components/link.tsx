@@ -25,7 +25,7 @@ export default function Link({
 }: LinkProps) {
 	const isExternal = isExternalLink(to)
 	const linkBoxClass = clsx(ns, inline && `${ns}--inline`, className)
-	const linkClass = clsx('link', `${ns}__link`, inline && `${ns}__link--inline`)
+	const linkClass = clsx(`${ns}__link`, 'link', inline && `${ns}__link--inline`)
 
 	if (isExternal) {
 		return (
