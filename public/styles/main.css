@@ -350,6 +350,14 @@ p,
   }
 }
 @media (max-width: 610px) {
+  .hero-title {
+    display: none;
+  }
+}
+.hero-title--mobile {
+  display: none;
+}
+@media (max-width: 610px) {
   .hero-title--mobile {
     display: block;
     font-size: 48px;

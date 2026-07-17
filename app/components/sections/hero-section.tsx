@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import styles from '~/styles/components/sections/hero-section.module.scss'
 import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
-// import { gsap } from 'gsap'
-// import { useGSAP } from '@gsap/react'
+import { gsap } from 'gsap'
+import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
 
 type HeroSectionProps = {
@@ -15,31 +15,31 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 	const stickyBoxRef = useRef<HTMLDivElement>(null)
 	const accentRef = useRef<HTMLDivElement>(null)
 
-	// useGSAP(
-	// 	() => {
-	// 		const section = sectionRef.current
-	// 		const stickyBox = stickyBoxRef.current
-	// 		const accent = accentRef.current
+	useGSAP(
+		() => {
+			const section = sectionRef.current
+			const stickyBox = stickyBoxRef.current
+			const accent = accentRef.current
 
-	// 		if (!section || !stickyBox || !accent) return
+			if (!section || !stickyBox || !accent) return
 
-	// 		const titles = gsap.utils.toArray<HTMLElement>('.hero-title')
+			const titles = gsap.utils.toArray<HTMLElement>('.hero-title')
 
-	// 		gsap.to(titles, {
-	// 			duration: 0.8,
-	// 			ease: 'power2.out',
-	// 			opacity: 1,
-	// 		})
+			gsap.to(titles, {
+				duration: 0.8,
+				ease: 'power2.out',
+				opacity: 1,
+			})
 
-	// 		gsap.to(accent, {
-	// 			delay: 0.6,
-	// 			duration: 1,
-	// 			ease: 'power2.out',
-	// 			opacity: 1,
-	// 		})
-	// 	},
-	// 	{ scope: sectionRef },
-	// )
+			gsap.to(accent, {
+				delay: 0.6,
+				duration: 1,
+				ease: 'power2.out',
+				opacity: 1,
+			})
+		},
+		{ scope: sectionRef },
+	)
 
 	return (
 		<section
@@ -76,7 +76,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 							</div>
 						</div>
 
-						{/* {data?.titleWords && (
+						{data?.titleWords && (
 							<h1 className={clsx(styles.title, 'hero-title')}>
 								{data.titleWords.map((word, index) => {
 									if (!word) return null
@@ -88,14 +88,14 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 									)
 								})}
 							</h1>
-						)} */}
+						)}
 
 						{data?.titleWordsMobile && (
 							<h1
 								className={clsx(
 									styles.title,
 									'hero-title',
-									// 'hero-title--mobile',
+									'hero-title--mobile',
 								)}
 							>
 								{data.titleWordsMobile.map((word, index) => {
