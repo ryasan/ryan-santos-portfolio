@@ -10,5 +10,5 @@
 @import 'base/utilities';
 @import 'base/overrides';
 
-// Temporary: keep hero CSS in the root stylesheet so it isn't code-split with the route
+// Section styles live in the root bundle to avoid Vite CSS code-split FOUC on navigations
 @import 'components/sections/hero-section';
