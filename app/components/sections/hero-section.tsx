@@ -1,7 +1,6 @@
 import clsx from 'clsx'
 import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { type ReactNode } from 'react'
-import '~/styles/components/sections/hero-section.scss'
 
 type HeroSectionProps = {
 	data?: HeroSectionType

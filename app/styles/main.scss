@@ -9,3 +9,6 @@
 @import 'base/fonts';
 @import 'base/utilities';
 @import 'base/overrides';
+
+// Temporary: keep hero CSS in the root stylesheet so it isn't code-split with the route
+@import 'components/sections/hero-section';
