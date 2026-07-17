@@ -1,7 +1,12 @@
 import BlogPostSection from '~/components/sections/blog-post-section'
 import { generateCacheHeaders, mergeHeaders } from '~/utils'
 import { client } from '~/services/contentful.server'
-import { json, type HeadersFunction, type LoaderFunctionArgs, type MetaFunction } from '@remix-run/node'
+import {
+	json,
+	type HeadersFunction,
+	type LoaderFunctionArgs,
+	type MetaFunction,
+} from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 
 export async function loader({ params }: LoaderFunctionArgs) {
@@ -11,9 +16,13 @@ export async function loader({ params }: LoaderFunctionArgs) {
 	}
 
 	const blog = await client.getBlogBySlug(post)
+
 	const tags = [
-		blog?.sys?.id ? `entry-${blog.sys.id}` : null
+		blog?.sys?.id ? `entry-${blog.sys.id}` : null,
+		blog?.author?.sys?.id ? `entry-${blog.author.sys.id}` : null,
+		blog?.seoMetadata?.sys?.id ? `entry-${blog.seoMetadata?.sys?.id}` : null,
 	].filter((tag): tag is string => tag !== null)
+
 	return json({ blog }, { headers: generateCacheHeaders(tags) })
 }
 

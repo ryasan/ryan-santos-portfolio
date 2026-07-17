@@ -13,10 +13,20 @@ export async function loader() {
 		throw new Response('Not Found', { status: 404 })
 	}
 
+	const sectionTags =
+		page.pageSectionsCollection?.items
+			.map((section: PagePageSectionsItem) =>
+				section?.sys?.id ? `entry-${section.sys.id}` : null,
+			)
+			.filter((tag: string | null): tag is string => tag !== null) || []
+
 	const tags = [
 		page?.sys?.id ? `entry-${page.sys.id}` : null,
-		'content-type-page'
+		page?.seoMetadata?.sys?.id ? `entry-${page.seoMetadata.sys.id}` : null,
+		'content-type-page',
+		...sectionTags,
 	].filter((tag): tag is string => tag !== null)
+
 	return json({ page }, { headers: generateCacheHeaders(tags) })
 }
 

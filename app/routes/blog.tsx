@@ -19,13 +19,17 @@ export async function loader() {
 
 	const tags = [
 		page?.sys?.id ? `entry-${page.sys.id}` : null,
+		page?.seoMetadata?.sys?.id ? `entry-${page.seoMetadata.sys.id}` : null,
 		contactSection?.sys?.id ? `entry-${contactSection.sys.id}` : null,
 		'content-type-blog', // Purge when any blog is published
 		'content-type-page',
 		'content-type-contactSection',
 	].filter((tag): tag is string => tag !== null)
 
-	return json({ blogs, contactSection, page }, { headers: generateCacheHeaders(tags) })
+	return json(
+		{ blogs, contactSection, page },
+		{ headers: generateCacheHeaders(tags) },
+	)
 }
 
 export const headers: HeadersFunction = mergeHeaders
