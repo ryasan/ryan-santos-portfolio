@@ -3,7 +3,7 @@ import styles from '~/styles/components/sections/hero-section.module.scss'
 import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { useRef } from 'react'
+import { useRef, type ReactNode } from 'react'
 
 type HeroSectionProps = {
 	data?: HeroSectionType
@@ -23,20 +23,20 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 
 			if (!section || !stickyBox || !accent) return
 
-			const titles = gsap.utils.toArray<HTMLElement>('.hero-title')
-
-			gsap.fromTo(titles, {
-				opacity: 0,
-			}, {
-				duration: 0.8,
-				ease: 'power2.out',
-				opacity: 1,
+			const words = gsap.utils.toArray<HTMLElement>('.word')
+			words.forEach((word, wordIndex) => {
+				const chars = word.querySelectorAll('.char')
+				gsap.to(chars, {
+					delay: wordIndex * 0.05,
+					duration: 0.5,
+					ease: 'power3.out',
+					stagger: 0.003,
+					y: 0,
+				})
 			})
 
-			gsap.fromTo(accent, {
-				opacity: 0,
-			}, {
-				delay: 0.6,
+			gsap.to(accent, {
+				delay: 1.2,
 				duration: 1,
 				ease: 'power2.out',
 				opacity: 1,
@@ -82,12 +82,32 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 
 						{data?.titleWords && (
 							<h1 className={clsx(styles.title, 'hero-title')}>
-								{data.titleWords.map((word, index) => {
+								{data.titleWords?.map((word, index) => {
 									if (!word) return null
 
 									return (
 										<span className={styles.wordMask} key={index}>
-											{word}
+											{word
+												.split(' ')
+												.map((singleWord, wordIndex) => (
+													<span
+														className={clsx(styles.word, 'word')}
+														key={wordIndex}
+													>
+														{singleWord.split('').map((char, charIndex) => (
+															<span
+																className={clsx(styles.char, 'char')}
+																key={charIndex}
+															>
+																{char}
+															</span>
+														))}
+													</span>
+												))
+												.reduce<ReactNode[]>((acc, curr, wordIndex) => {
+													if (wordIndex === 0) return [curr]
+													return [...acc, ' ', curr]
+												}, [])}
 										</span>
 									)
 								})}
@@ -102,12 +122,32 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 									'hero-title--mobile',
 								)}
 							>
-								{data.titleWordsMobile.map((word, index) => {
+								{data.titleWordsMobile?.map((word, index) => {
 									if (!word) return null
 
 									return (
 										<span className={styles.wordMask} key={index}>
-											{word}
+											{word
+												.split(' ')
+												.map((singleWord, wordIndex) => (
+													<span
+														className={clsx(styles.word, 'word')}
+														key={wordIndex}
+													>
+														{singleWord.split('').map((char, charIndex) => (
+															<span
+																className={clsx(styles.char, 'char')}
+																key={charIndex}
+															>
+																{char}
+															</span>
+														))}
+													</span>
+												))
+												.reduce<ReactNode[]>((acc, curr, wordIndex) => {
+													if (wordIndex === 0) return [curr]
+													return [...acc, ' ', curr]
+												}, [])}
 										</span>
 									)
 								})}
