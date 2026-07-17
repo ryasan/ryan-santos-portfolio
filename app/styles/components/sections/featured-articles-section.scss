@@ -20,7 +20,7 @@ $ns: '.featured-articles-section';
 		#{$ns}__content {
 			transform: translateY(0);
 			opacity: 1;
-			visibility: visible;
+			pointer-events: auto;
 		}
 	}
 
@@ -93,7 +93,7 @@ $ns: '.featured-articles-section';
 		transition: all 0.4s ease-out;
 		transform: translateY($space-20);
 		opacity: 0;
-		visibility: hidden;
+		pointer-events: none;
 	}
 
 	&__card {
@@ -104,13 +104,15 @@ $ns: '.featured-articles-section';
 		background-color: var(--background-primary-color);
 
 		@media (min-width: $tablet + 1px) {
-			&:hover {
+			&:hover,
+			&:focus-within {
 				@include card-active-state;
 			}
 		}
 
 		@media (max-width: $tablet) {
-			&.active {
+			&.active,
+			&:focus-within {
 				@include card-active-state;
 			}
 		}

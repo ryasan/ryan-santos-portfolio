@@ -151,6 +151,11 @@ export default function FeaturedArticlesSection({
 												)}
 												{article.link && (
 													<a
+														aria-label={
+															article.title
+																? `View project: ${article.title}`
+																: 'View project'
+														}
 														className={clsx(`${ns}__link`, 'button')}
 														href={article.link || ''}
 														rel="noopener noreferrer"
