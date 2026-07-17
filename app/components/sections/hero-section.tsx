@@ -25,13 +25,17 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 
 			const titles = gsap.utils.toArray<HTMLElement>('.hero-title')
 
-			gsap.to(titles, {
+			gsap.fromTo(titles, {
+				opacity: 0,
+			}, {
 				duration: 0.8,
 				ease: 'power2.out',
 				opacity: 1,
 			})
 
-			gsap.to(accent, {
+			gsap.fromTo(accent, {
+				opacity: 0,
+			}, {
 				delay: 0.6,
 				duration: 1,
 				ease: 'power2.out',
