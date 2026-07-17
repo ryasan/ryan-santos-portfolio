@@ -64,7 +64,7 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 						opacity: 1,
 						scrollTrigger: {
 							once: true,
-							start: 'top bottom-=100px',
+							start: 'top bottom-=50px',
 							trigger: item,
 						},
 						y: 0,
