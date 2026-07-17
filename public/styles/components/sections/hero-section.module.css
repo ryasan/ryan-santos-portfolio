@@ -177,29 +177,15 @@
 }
 
 .title {
-  overflow: hidden;
+  opacity: 0;
+  will-change: opacity;
 }
 
 .wordMask {
   display: block;
-  overflow: hidden;
   position: relative;
   color: var(--content-color);
   white-space: nowrap;
-}
-.wordMask:first-child {
-  color: var(--content-color);
-}
-
-.word {
-  display: inline-block;
-  white-space: nowrap;
-}
-
-.char {
-  display: inline-block;
-  will-change: transform;
-  transform: translateY(110%);
 }
 
 .scrollToExploreWrapper {
