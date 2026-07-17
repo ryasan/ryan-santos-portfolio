@@ -21,8 +21,8 @@ $ns: '.blog-post-section';
 		&:hover {
 			#{$ns}__link {
 				&::before {
-					transform: scaleX(0);
-					transform-origin: right center;
+					transform: scaleX(1);
+					transform-origin: left center;
 				}
 			}
 
@@ -45,10 +45,10 @@ $ns: '.blog-post-section';
 			content: '';
 			height: 1px;
 			width: 100%;
-			transform: scaleX(1);
+			transform: scaleX(0);
 			will-change: transform;
 			background: var(--content-color);
-			transform-origin: left center;
+			transform-origin: right center;
 			transition: transform 0.5s cubic-bezier(1, 0, 0, 1);
 		}
 	}

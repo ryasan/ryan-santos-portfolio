@@ -2022,8 +2022,8 @@ em {
   margin-bottom: 40px;
 }
 .blog-post-section__link-box:hover .blog-post-section__link::before {
-  transform: scaleX(0);
-  transform-origin: right center;
+  transform: scaleX(1);
+  transform-origin: left center;
 }
 .blog-post-section__link-box:hover svg {
   transform: translateX(-4px);
@@ -2041,10 +2041,10 @@ em {
   content: "";
   height: 1px;
   width: 100%;
-  transform: scaleX(1);
+  transform: scaleX(0);
   will-change: transform;
   background: var(--content-color);
-  transform-origin: left center;
+  transform-origin: right center;
   transition: transform 0.5s cubic-bezier(1, 0, 0, 1);
 }
 .blog-post-section__icon {
