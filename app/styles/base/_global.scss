@@ -192,11 +192,11 @@ p,
 	}
 
 	@media (max-width: $mobile-lg) {
-		display: none;
+		// display: none;
 	}
 
 	&--mobile {
-		display: none;
+		// display: none;
 
 		@media (max-width: $mobile-lg) {
 			display: block;
