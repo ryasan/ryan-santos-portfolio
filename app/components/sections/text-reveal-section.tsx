@@ -1,5 +1,4 @@
 import TextBlock from '~/components/text-block'
-import styles from '~/styles/components/sections/text-reveal-section.module.scss'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
 	type TextRevealItem,
@@ -8,6 +7,8 @@ import {
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
+
+const ns = 'text-reveal-section'
 
 type TextRevealSectionProps = {
 	data?: TextRevealSectionType
@@ -98,9 +99,9 @@ export default function TextRevealSection({
 	}, [])
 
 	return (
-		<section className={styles.textRevealSection} id={id} ref={sectionRef}>
+		<section className={ns} id={id} ref={sectionRef}>
 			<div className="container">
-				<div className={styles.box}>
+				<div className={`${ns}__box`}>
 					<div ref={blockListRef}>
 						{data?.textRevealListCollection?.items?.map(
 							(block: TextRevealItem | null, index: number) => {
@@ -109,7 +110,7 @@ export default function TextRevealSection({
 									<TextBlock
 										align="center"
 										block={block}
-										className={styles.textBlock}
+										className={`${ns}__text-block`}
 										index={index}
 										key={index}
 									/>

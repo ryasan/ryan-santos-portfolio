@@ -36,6 +36,7 @@ $ns: '.blog-post-section';
 		display: flex;
 		align-items: center;
 		position: relative;
+		color: var(--content-color);
 
 		&::before {
 			position: absolute;

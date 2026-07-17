@@ -1,0 +1,22 @@
+.carousel {
+  display: block;
+}
+.carousel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.carousel__navigation {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.carousel__slider {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.carousel__slider--visible {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=carousel.css.map */

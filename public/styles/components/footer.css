@@ -1,0 +1,22 @@
+.footer {
+  padding: 24px 40px;
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 250;
+}
+.footer .container p {
+  white-space: pre-wrap;
+}
+@media (max-width: 768px) {
+  .footer {
+    padding-left: 0;
+  }
+  .footer .container {
+    margin-left: 0 !important;
+  }
+}
+
+/*# sourceMappingURL=footer.css.map */

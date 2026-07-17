@@ -1,0 +1,31 @@
+@import '../../base/variables';
+
+$ns: '.text-reveal-section';
+
+#{$ns} {
+	padding: $space-120 0;
+	min-height: 100lvh;
+
+	&__box {
+		margin: 0 auto;
+		max-width: 850px;
+		position: relative;
+	}
+
+	&__text-block {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		margin: 250px 0;
+		opacity: 0;
+		will-change: opacity, transform;
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}

@@ -1,0 +1,40 @@
+@import '../../base/variables';
+
+$ns: '.social-section';
+
+#{$ns} {
+	display: block;
+
+	&__box {
+		padding: $space-40 0;
+		display: flex;
+		justify-content: space-between;
+
+		@media (max-width: $tablet) {
+			flex-direction: column;
+		}
+	}
+
+	&__social-list {
+		display: flex;
+		flex-direction: column;
+		gap: $space-24;
+		max-width: 600px;
+		width: 100%;
+
+		@media (max-width: $tablet) {
+			gap: $space-16;
+			padding-top: $space-32;
+		}
+	}
+
+	&__social-item {
+		display: flex;
+		align-items: center;
+		gap: $space-8;
+
+		@media (max-width: $tablet) {
+			gap: $space-16;
+		}
+	}
+}

@@ -1,0 +1,8 @@
+@import '../../base/variables';
+
+$ns: '.carousel-section';
+
+#{$ns} {
+	display: block;
+	padding: $space-40 0;
+}

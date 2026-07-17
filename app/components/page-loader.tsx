@@ -3,7 +3,8 @@ import { gsap } from 'gsap'
 import { useEffect, useRef, useState } from 'react'
 import Teleport from '~/components/teleport'
 import { useTheme } from '~/hooks/use-theme'
-import styles from '~/styles/components/page-loader.module.scss'
+
+const ns = 'page-loader'
 
 export default function PageLoader() {
 	const [percentage, setPercentage] = useState(0)
@@ -116,13 +117,13 @@ export default function PageLoader() {
 
 	return (
 		<Teleport to="body">
-			<div className={styles.loader} data-theme={theme} ref={loaderRef}>
-				<div className={styles.half} data-side="left" ref={leftHalfRef} />
-				<div className={styles.half} data-side="right" ref={rightHalfRef} />
-				<div className={styles.percentage} ref={percentageTextRef}>
+			<div className={ns} data-theme={theme} ref={loaderRef}>
+				<div className={`${ns}__half`} data-side="left" ref={leftHalfRef} />
+				<div className={`${ns}__half`} data-side="right" ref={rightHalfRef} />
+				<div className={`${ns}__percentage`} ref={percentageTextRef}>
 					{percentage}%
 				</div>
-				<div className={styles.cutLine} ref={cutLineRef} />
+				<div className={`${ns}__cut-line`} ref={cutLineRef} />
 			</div>
 		</Teleport>
 	)

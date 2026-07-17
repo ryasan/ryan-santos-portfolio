@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import styles from '~/styles/components/jump-links.module.scss'
 import { type PagePageSectionsItem } from '~/graphql/__generated/sdk'
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -7,6 +6,7 @@ import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useEffect, useRef, useState } from 'react'
 
+const ns = 'jump-links'
 const HEADER_HEIGHT = '68px'
 
 type JumpLinksProps = {
@@ -92,14 +92,14 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 	}, [activeSectionId])
 
 	return (
-		<div className={styles.jumpLinks} ref={jumpLinksRef}>
+		<div className={ns} ref={jumpLinksRef}>
 			{sectionsWithJumpLinkLabels.map((section) => {
 				if (!section?.sys?.id || !('jumpLinkLabel' in section)) return null
 
 				const isActive = activeSectionId === section.sys.id
 				return (
 					<a
-						className={clsx(styles.link, isActive && styles.active)}
+						className={clsx(`${ns}__link`, isActive && 'active')}
 						href={`#${section.sys.id}`}
 						key={section.sys.id}
 						onClick={(e) => handleClick(e, section)}

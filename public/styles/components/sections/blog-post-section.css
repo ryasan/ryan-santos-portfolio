@@ -24,6 +24,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  color: var(--content-color);
 }
 .blog-post-section__link::before {
   position: absolute;

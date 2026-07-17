@@ -1,0 +1,90 @@
+@import '../../base/variables';
+
+$ns: '.marquee-section';
+
+#{$ns} {
+	display: block;
+	padding: 30lvh 0;
+	overflow: hidden;
+
+	&__title {
+		color: var(--content-color-2);
+	}
+
+	&__marquee {
+		display: flex;
+		width: 100%;
+		overflow: hidden;
+		user-select: none;
+
+		// Gradient mask for fade effect on edges
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			black 10%,
+			black 90%,
+			transparent
+		);
+
+		// Spacing between rows
+		&:not(:last-child) {
+			margin-bottom: $space-40;
+		}
+
+		&--reverse {
+			#{$ns}__track {
+				animation-direction: reverse;
+			}
+		}
+	}
+
+	&__track {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		gap: $space-80;
+		padding-right: $space-80; // Ensure equal spacing between the end of first track and start of second
+		min-width: 100%;
+		will-change: transform;
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: $space-80;
+
+		@media (max-width: $tablet) {
+			gap: $space-20;
+		}
+	}
+
+	&__text {
+		font-weight: 700;
+		white-space: nowrap;
+		line-height: 1;
+		font-size: 150px;
+		color: var(--content-color);
+
+		@media (max-width: $tablet) {
+			font-size: 75px;
+		}
+
+		&--outline {
+			color: transparent;
+			-webkit-text-stroke: 2px var(--content-color);
+		}
+	}
+
+	&__delimiter {
+		font-size: 15px;
+		font-weight: 500;
+		color: var(--content-color);
+		white-space: nowrap;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+
+		@media (max-width: $tablet) {
+			font-size: 10px;
+		}
+	}
+}

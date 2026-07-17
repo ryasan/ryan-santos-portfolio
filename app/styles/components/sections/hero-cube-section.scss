@@ -1,0 +1,47 @@
+@import '../../base/variables';
+
+$ns: '.hero-cube-section';
+
+#{$ns} {
+	position: relative;
+	z-index: 10;
+
+	&__sticky-box {
+		height: 100svh;
+		width: 100%;
+		opacity: 0;
+		overflow: hidden;
+		will-change: opacity;
+		backface-visibility: hidden;
+	}
+
+	&__scroll-to-explore {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		justify-content: center;
+		transform: rotate(90deg);
+		transform-origin: left top;
+		position: absolute;
+		bottom: 225px;
+		left: 45px;
+		opacity: 0;
+		will-change: opacity;
+		letter-spacing: 0.05em;
+		font-weight: 500;
+
+		@media (max-width: $tablet) {
+			font-size: 12px;
+			left: 25px;
+			bottom: 175px;
+		}
+	}
+
+	&__arrow-right-icon {
+		height: 20px;
+
+		@media (max-width: $tablet) {
+			height: 16px;
+		}
+	}
+}

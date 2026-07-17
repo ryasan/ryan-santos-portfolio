@@ -1,8 +1,9 @@
 import ArticleCard from '~/components/article-card'
 import Carousel from '~/components/carousel'
-import styles from '~/styles/components/sections/carousel-section.module.scss'
 import { type CarouselSection as CarouselSectionType } from '~/graphql/__generated/sdk'
 import { normalizeSlide } from '~/utils'
+
+const ns = 'carousel-section'
 
 type CarouselSectionProps = {
 	data?: CarouselSectionType
@@ -18,7 +19,7 @@ export default function CarouselSection({ data, id }: CarouselSectionProps) {
 		})
 
 	return (
-		<section className={styles.carouselSection} id={id}>
+		<section className={ns} id={id}>
 			<Carousel
 				slides={slides || []}
 				slidesPerView={data?.slidesPerView}

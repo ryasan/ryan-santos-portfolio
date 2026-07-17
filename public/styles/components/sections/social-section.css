@@ -1,0 +1,38 @@
+.social-section {
+  display: block;
+}
+.social-section__box {
+  padding: 40px 0;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 768px) {
+  .social-section__box {
+    flex-direction: column;
+  }
+}
+.social-section__social-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 600px;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .social-section__social-list {
+    gap: 16px;
+    padding-top: 32px;
+  }
+}
+.social-section__social-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (max-width: 768px) {
+  .social-section__social-item {
+    gap: 16px;
+  }
+}
+
+/*# sourceMappingURL=social-section.css.map */

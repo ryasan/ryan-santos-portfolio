@@ -1,11 +1,12 @@
 import clsx from 'clsx'
-import styles from '~/styles/components/carousel.module.scss'
 import { ArrowLeftIcon, ArrowRightIcon } from '~/components/icons'
 import { useKeenSlider } from 'keen-slider/react'
 import { useMatchMedia } from '~/hooks'
 import { useMemo } from 'react'
 
 import 'keen-slider/keen-slider.min.css'
+
+const ns = 'carousel'
 
 type CarouselProps = {
 	slides: (JSX.Element | null)[]
@@ -23,7 +24,7 @@ export default function Carousel({
 	const memoizedSliderOptions = useMemo(
 		() => ({
 			created: (slider: any) => {
-				slider.container.classList.add(styles.visible)
+				slider.container.classList.add(`${ns}__slider--visible`)
 			},
 			initial: 0,
 			loop: false,
@@ -38,20 +39,20 @@ export default function Carousel({
 	const [sliderRef, instanceRef] = useKeenSlider(memoizedSliderOptions)
 
 	return (
-		<div className={styles.carousel}>
+		<div className={ns}>
 			<div className="container">
-				<div className={clsx("mb-40", styles.header)}>
+				<div className={clsx('mb-40', `${ns}__header`)}>
 					{title && <h2 className="h1">{title}</h2>}
-					<div className={styles.navigation}>
+					<div className={`${ns}__navigation`}>
 						<button
-							className={clsx(styles.button, styles.buttonPrev)}
+							className={clsx(`${ns}__button`, `${ns}__button--prev`)}
 							onClick={() => instanceRef.current?.prev()}
 							title="Previous slide"
 						>
 							<ArrowLeftIcon />
 						</button>
 						<button
-							className={clsx(styles.button, styles.buttonNext)}
+							className={clsx(`${ns}__button`, `${ns}__button--next`)}
 							onClick={() => instanceRef.current?.next()}
 							title="Next slide"
 						>
@@ -60,10 +61,13 @@ export default function Carousel({
 					</div>
 				</div>
 				{slides.length > 0 && (
-					<div className={clsx('keen-slider', styles.slider)} ref={sliderRef}>
+					<div
+						className={clsx('keen-slider', `${ns}__slider`)}
+						ref={sliderRef}
+					>
 						{slides.map((slide, index) => (
 							<div
-								className={clsx('keen-slider__slide', styles.slide)}
+								className={clsx('keen-slider__slide', `${ns}__slide`)}
 								key={index}
 							>
 								{slide}

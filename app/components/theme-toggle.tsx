@@ -1,7 +1,8 @@
-import styles from '~/styles/components/theme-toggle.module.scss'
 import { DARK_THEME, LIGHT_THEME } from '~/utils/constants'
 import { MoonIcon, SunIcon } from '~/components/icons'
 import { useTheme } from '~/hooks'
+
+const ns = 'theme-toggle'
 
 export default function ThemeToggle() {
 	const [theme, setTheme] = useTheme()
@@ -24,15 +25,15 @@ export default function ThemeToggle() {
 	return (
 		<button
 			aria-label={ariaLabel}
-			className={styles.themeToggle}
+			className={ns}
 			onClick={toggleTheme}
 			type="button"
 		>
 			<div data-hide-on-theme={DARK_THEME}>
-				<MoonIcon aria-hidden="true" className={styles.icon} />
+				<MoonIcon aria-hidden="true" className={`${ns}__icon`} />
 			</div>
 			<div data-hide-on-theme={LIGHT_THEME}>
-				<SunIcon aria-hidden="true" className={styles.icon} />
+				<SunIcon aria-hidden="true" className={`${ns}__icon`} />
 			</div>
 		</button>
 	)

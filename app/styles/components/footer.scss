@@ -1,0 +1,27 @@
+@import '../base/variables';
+
+$ns: '.footer';
+
+#{$ns} {
+	padding: $space-24 $space-40;
+	display: flex;
+	align-items: center;
+	margin-top: auto;
+	text-transform: uppercase;
+	position: relative;
+	z-index: $z-index-above-all;
+
+	.container {
+		p {
+			white-space: pre-wrap;
+		}
+	}
+
+	@media (max-width: $tablet) {
+		padding-left: 0;
+
+		.container {
+			margin-left: 0 !important;
+		}
+	}
+}

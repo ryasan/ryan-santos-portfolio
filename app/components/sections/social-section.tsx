@@ -1,5 +1,4 @@
 import Link from '~/components/link'
-import styles from '~/styles/components/sections/social-section.module.scss'
 import { type SocialSection as SocialSectionType } from '~/graphql/__generated/sdk'
 import {
 	CodepenIcon,
@@ -7,6 +6,8 @@ import {
 	GithubIcon,
 	LinkedinIcon,
 } from '~/components/icons'
+
+const ns = 'social-section'
 
 const icons = {
 	codepen: CodepenIcon,
@@ -17,7 +18,7 @@ const icons = {
 
 const getIcon = (icon?: string) => {
 	const Icon = icons[icon?.toLowerCase() as keyof typeof icons]
-	return Icon ? <Icon aria-hidden="true" className={styles.icon} /> : null
+	return Icon ? <Icon aria-hidden="true" className={`${ns}__icon`} /> : null
 }
 
 type SocialSectionProps = {
@@ -27,17 +28,17 @@ type SocialSectionProps = {
 
 export default function SocialSection({ data, id }: SocialSectionProps) {
 	return (
-		<section className={styles.socialSection} id={id}>
+		<section className={ns} id={id}>
 			<div className="container">
-				<div className={styles.box}>
+				<div className={`${ns}__box`}>
 					{data?.title && <h2 className="label">{data.title}</h2>}
 
-					<div className={styles.socialList}>
+					<div className={`${ns}__social-list`}>
 						{data?.socialLinksCollection?.items?.map((social) => {
 							if (!social?.url || !social?.label) return null
 
 							return (
-								<div className={styles.socialItem} key={social.sys.id}>
+								<div className={`${ns}__social-item`} key={social.sys.id}>
 									{getIcon(social.icon || '')}
 									<Link className="link" to={social.url}>
 										{social.label}
