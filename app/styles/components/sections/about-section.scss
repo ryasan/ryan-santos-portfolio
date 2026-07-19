@@ -6,6 +6,7 @@ $ns: '.about-section';
 	background-color: var(--background-primary-color);
 	color: var(--content-color);
 	padding: $space-64 0;
+	margin: 0 auto;
 
 	&__heading {
 		display: flex;
@@ -22,7 +23,7 @@ $ns: '.about-section';
 	}
 
 	&__title-bar {
-		background-color: currentColor;
+		background-color: currentcolor;
 		width: 90px;
 		height: 7px;
 	}
@@ -89,7 +90,7 @@ $ns: '.about-section';
 	&__social-icon {
 		width: 24px;
 		height: 24px;
-		fill: currentColor;
+		fill: currentcolor;
 	}
 
 	&__skill-grid {
@@ -114,7 +115,7 @@ $ns: '.about-section';
 		flex-shrink: 0;
 		width: 29px;
 		height: 30px;
-		color: currentColor;
+		color: currentcolor;
 	}
 
 	&__skill-divider {

@@ -2,6 +2,7 @@
   background-color: var(--background-primary-color);
   color: var(--content-color);
   padding: 64px 0;
+  margin: 0 auto;
 }
 .about-section__heading {
   display: flex;
@@ -16,7 +17,7 @@
   line-height: 1;
 }
 .about-section__title-bar {
-  background-color: currentColor;
+  background-color: currentcolor;
   width: 90px;
   height: 7px;
 }
@@ -73,7 +74,7 @@
 .about-section__social-icon {
   width: 24px;
   height: 24px;
-  fill: currentColor;
+  fill: currentcolor;
 }
 .about-section__skill-grid {
   display: grid;
@@ -95,7 +96,7 @@
   flex-shrink: 0;
   width: 29px;
   height: 30px;
-  color: currentColor;
+  color: currentcolor;
 }
 .about-section__skill-divider {
   flex-shrink: 0;

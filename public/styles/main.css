@@ -384,7 +384,7 @@ p,
 .link {
   font-size: 16px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
   color: var(--content-color);
 }
@@ -397,7 +397,7 @@ p,
 .badge {
   font-size: 16px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
 }
 @media (max-width: 768px) {
@@ -411,8 +411,8 @@ p,
   color: var(--background-primary-color);
   padding: 12px 24px;
   border-radius: 100px;
-  text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
+  text-transform: capitalize;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   font-size: 16px;
   border: 2px solid transparent;
@@ -450,7 +450,7 @@ code,
 .code {
   font-size: 12px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
   font-family: "Fira Code", monospace;
 }
@@ -581,7 +581,7 @@ em {
 }
 .container {
   margin: 0 auto;
-  max-width: 1440px;
+  max-width: 1360px;
   padding: 0 40px;
   width: 100%;
 }
@@ -813,7 +813,7 @@ em {
 .jump-links {
   position: fixed;
   top: 50%;
-  left: 50px;
+  left: 25px;
   display: none;
   flex-direction: column;
   align-items: center;
@@ -1325,6 +1325,7 @@ em {
   background-color: var(--background-primary-color);
   color: var(--content-color);
   padding: 64px 0;
+  margin: 0 auto;
 }
 .about-section__heading {
   display: flex;
@@ -1339,7 +1340,7 @@ em {
   line-height: 1;
 }
 .about-section__title-bar {
-  background-color: currentColor;
+  background-color: currentcolor;
   width: 90px;
   height: 7px;
 }
@@ -1396,7 +1397,7 @@ em {
 .about-section__social-icon {
   width: 24px;
   height: 24px;
-  fill: currentColor;
+  fill: currentcolor;
 }
 .about-section__skill-grid {
   display: grid;
@@ -1418,7 +1419,7 @@ em {
   flex-shrink: 0;
   width: 29px;
   height: 30px;
-  color: currentColor;
+  color: currentcolor;
 }
 .about-section__skill-divider {
   flex-shrink: 0;
