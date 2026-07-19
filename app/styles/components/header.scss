@@ -24,10 +24,14 @@ $ns: '.header';
 
 	&__logo-text {
 		font-weight: 800;
-		font-size: 2.25rem;
+		font-size: 28px;
 		line-height: 1;
 		letter-spacing: -0.025em;
 		color: var(--content-color);
+
+		@media (max-width: $tablet) {
+			font-size: 20px;
+		}
 	}
 
 	&__navigation-box {

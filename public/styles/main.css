@@ -742,10 +742,15 @@ em {
 }
 .header__logo-text {
   font-weight: 800;
-  font-size: 2.25rem;
+  font-size: 28px;
   line-height: 1;
   letter-spacing: -0.025em;
   color: var(--content-color);
+}
+@media (max-width: 768px) {
+  .header__logo-text {
+    font-size: 20px;
+  }
 }
 .header__navigation-box {
   display: flex;
