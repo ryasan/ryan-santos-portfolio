@@ -180,6 +180,7 @@
   font-size: clamp(1.5rem, 4vw, 4rem);
   line-height: 1.2;
   font-family: "DotGothic16", sans-serif;
+  letter-spacing: 0.02em;
 }
 .hero-section__headline-text {
   display: inline;
