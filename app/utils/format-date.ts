@@ -1,16 +1,16 @@
-const MONTH_ABBREV = [
-	'Jan',
-	'Feb',
-	'Mar',
-	'Apr',
+const MONTH_NAMES = [
+	'January',
+	'February',
+	'March',
+	'April',
 	'May',
-	'Jun',
-	'Jul',
-	'Aug',
-	'Sep',
-	'Oct',
-	'Nov',
-	'Dec',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December',
 ]
 
 // Example: 09-17T00:00:00.000Z-2024 -> 09-17-2024
@@ -37,14 +37,14 @@ export const formatDate = (inputDate: string) => {
 	return `${month}-${day}-${year}`
 }
 
-// Example: 09-17T00:00:00.000Z-2024 -> Sep 17, 2024
+// Example: 2024-09-17T00:00:00.000Z -> September 17, 2024
 export const formatDateWithMonth = (inputDate: string) => {
 	if (!inputDate) return ''
 
 	const date = new Date(inputDate)
 	if (isNaN(date.getTime())) return ''
 
-	const month = MONTH_ABBREV[date.getUTCMonth()]
+	const month = MONTH_NAMES[date.getUTCMonth()]
 	const day = date.getUTCDate()
 	const year = date.getUTCFullYear()
 

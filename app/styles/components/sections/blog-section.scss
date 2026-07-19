@@ -79,6 +79,7 @@ $ns: '.blog-section';
 		button {
 			white-space: nowrap;
 			text-transform: lowercase;
+			border-width: 1px;
 		}
 
 		@media (max-width: $tablet) {

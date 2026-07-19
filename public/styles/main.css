@@ -885,6 +885,7 @@ em {
   overflow: hidden;
   position: relative;
   width: 100%;
+  transition: border-color 0.2s ease;
 }
 [data-theme=light] .article-card {
   border-color: var(--content-color);
@@ -962,7 +963,7 @@ em {
   justify-content: center;
   padding: 6px 16px;
   text-transform: lowercase;
-  transition: all 0.4s ease;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 .article-card__tag:hover {
   border-color: var(--content-color);
@@ -2179,6 +2180,7 @@ em {
 .blog-section__tag-filters button {
   white-space: nowrap;
   text-transform: lowercase;
+  border-width: 1px;
 }
 @media (max-width: 768px) {
   .blog-section__tag-filters {

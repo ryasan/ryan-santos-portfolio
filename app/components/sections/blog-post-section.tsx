@@ -9,7 +9,7 @@ import {
 	LinkedinIcon,
 	CopySimpleIcon,
 } from '~/components/icons'
-import { formatDate } from '~/utils'
+import { formatPublishMeta } from '~/utils'
 import { type Blog } from '~/graphql/__generated/sdk'
 import { useGSAP } from '@gsap/react'
 import { useLocation, useNavigate } from '@remix-run/react'
@@ -96,8 +96,16 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 						{(name || data?.publishDate) && (
 							<div className={`${ns}__author-info`}>
 								{name && <h5 className="h5">{name}</h5>}
-								{data?.publishDate && (
-									<div className="body">{formatDate(data?.publishDate)}</div>
+								{(data?.publishDate ||
+									data?.blogBodyMarkdown ||
+									data?.blogBody?.json) && (
+									<div className="body">
+										{formatPublishMeta(
+											data?.publishDate,
+											data?.blogBodyMarkdown,
+											data?.blogBody?.json,
+										)}
+									</div>
 								)}
 							</div>
 						)}

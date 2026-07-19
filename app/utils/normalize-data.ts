@@ -1,5 +1,5 @@
 import { type Blog, type Projects } from '~/graphql/__generated/sdk'
-import { formatDateWithMonth } from './format-date'
+import { formatPublishMeta } from './reading-time'
 
 const getTags = (data: Blog | Projects) => {
 	return data.contentfulMetadata?.tags
@@ -11,7 +11,11 @@ export const normalizeData = {
 	fromBlogToCard: (data: Blog) => ({
 		caption: null,
 		description: data.description,
-		eyebrow: formatDateWithMonth(data.publishDate || ''),
+		eyebrow: formatPublishMeta(
+			data.publishDate,
+			data.blogBodyMarkdown,
+			data.blogBody?.json,
+		),
 		id: data.sys?.id,
 		image: data.openGraphImage,
 		link: data.slug,

@@ -68,6 +68,7 @@
 .blog-section__tag-filters button {
   white-space: nowrap;
   text-transform: lowercase;
+  border-width: 1px;
 }
 @media (max-width: 768px) {
   .blog-section__tag-filters {

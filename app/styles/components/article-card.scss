@@ -13,6 +13,7 @@ $ns: '.article-card';
 	overflow: hidden;
 	position: relative;
 	width: 100%;
+	transition: border-color 0.2s ease;
 
 	[data-theme='light'] & {
 		border-color: var(--content-color);
@@ -99,7 +100,9 @@ $ns: '.article-card';
 		justify-content: center;
 		padding: 6px 16px;
 		text-transform: lowercase;
-		transition: all 0.4s ease;
+		transition:
+			border-color 0.2s ease,
+			color 0.2s ease;
 
 		&:hover {
 			border-color: var(--content-color);
