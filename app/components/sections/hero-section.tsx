@@ -1,4 +1,4 @@
-import { PauseIcon, PlayIcon } from '~/components/icons'
+import { MouseIcon, PauseIcon, PlayIcon } from '~/components/icons'
 import TypewriterHeadline, {
 	SECOND_HEADLINE,
 } from '~/components/typewriter-headline'

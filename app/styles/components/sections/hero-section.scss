@@ -4,13 +4,13 @@ $ns: '.hero-section';
 
 #{$ns} {
 	position: relative;
-	height: 110svh;
+	height: 100svh;
 
 	&__container {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		height: calc(100% - 10svh);
+		height: 100%;
 	}
 
 	&__sticky-box {
@@ -225,6 +225,11 @@ $ns: '.hero-section';
 		border-radius: 50%;
 		color: var(--content-color);
 		transition: opacity 0.2s ease;
+		animation: play-button-fade-in 1s ease-out 1.675s both;
+
+		@media (prefers-reduced-motion: reduce) {
+			animation: none;
+		}
 
 		@media (hover: hover) {
 			&:hover {
@@ -253,28 +258,13 @@ $ns: '.hero-section';
 		}
 	}
 
-	&__scroll-to-explore-wrapper {
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		will-change: opacity;
-	}
+	@keyframes play-button-fade-in {
+		from {
+			opacity: 0;
+		}
 
-	&__scroll-to-explore {
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		gap: 10px;
-		justify-content: center;
-		opacity: 0;
-		will-change: opacity;
-		color: var(--content-color);
-		margin-top: auto;
-	}
-
-	&__mouse-icon {
-		height: 25px;
-		width: 25px;
-		fill: var(--content-color);
+		to {
+			opacity: 1;
+		}
 	}
 }
