@@ -1,23 +1,3 @@
-// Poppins font variables
-$poppins-thin-src: font-src('Poppins-Thin');
-$poppins-thin-italic-src: font-src('Poppins-ThinItalic');
-$poppins-extra-light-src: font-src('Poppins-ExtraLight');
-$poppins-extra-light-italic-src: font-src('Poppins-ExtraLightItalic');
-$poppins-light-src: font-src('Poppins-Light');
-$poppins-light-italic-src: font-src('Poppins-LightItalic');
-$poppins-regular-src: font-src('Poppins-Regular');
-$poppins-italic-src: font-src('Poppins-Italic');
-$poppins-medium-src: font-src('Poppins-Medium');
-$poppins-medium-italic-src: font-src('Poppins-MediumItalic');
-$poppins-semibold-src: font-src('Poppins-SemiBold');
-$poppins-semibold-italic-src: font-src('Poppins-SemiBoldItalic');
-$poppins-bold-src: font-src('Poppins-Bold');
-$poppins-bold-italic-src: font-src('Poppins-BoldItalic');
-$poppins-extrabold-src: font-src('Poppins-ExtraBold');
-$poppins-extrabold-italic-src: font-src('Poppins-ExtraBoldItalic');
-$poppins-black-src: font-src('Poppins-Black');
-$poppins-black-italic-src: font-src('Poppins-BlackItalic');
-
 // Fira Code font variables
 $fira-code-bold-src: font-src('FiraCode-Bold');
 $fira-code-light-src: font-src('FiraCode-Light');
@@ -26,27 +6,19 @@ $fira-code-regular-src: font-src('FiraCode-Regular');
 $fira-code-retina-src: font-src('FiraCode-Retina');
 $fira-code-semibold-src: font-src('FiraCode-SemiBold');
 
-@at-root {
-	// Poppins font faces
-	@include font-face('Poppins', $poppins-thin-src, 100, normal);
-	@include font-face('Poppins', $poppins-thin-italic-src, 100, italic);
-	@include font-face('Poppins', $poppins-extra-light-src, 200, normal);
-	@include font-face('Poppins', $poppins-extra-light-italic-src, 200, italic);
-	@include font-face('Poppins', $poppins-light-src, 300, normal);
-	@include font-face('Poppins', $poppins-light-italic-src, 300, italic);
-	@include font-face('Poppins', $poppins-regular-src, 400, normal);
-	@include font-face('Poppins', $poppins-italic-src, 400, italic);
-	@include font-face('Poppins', $poppins-medium-src, 500, normal);
-	@include font-face('Poppins', $poppins-medium-italic-src, 500, italic);
-	@include font-face('Poppins', $poppins-semibold-src, 600, normal);
-	@include font-face('Poppins', $poppins-semibold-italic-src, 600, italic);
-	@include font-face('Poppins', $poppins-bold-src, 700, normal);
-	@include font-face('Poppins', $poppins-bold-italic-src, 700, italic);
-	@include font-face('Poppins', $poppins-extrabold-src, 800, normal);
-	@include font-face('Poppins', $poppins-extrabold-italic-src, 800, italic);
-	@include font-face('Poppins', $poppins-black-src, 900, normal);
-	@include font-face('Poppins', $poppins-black-italic-src, 900, italic);
+// DotGothic16 font variables
+$dot-gothic-16-regular-src: font-src('DotGothic16-Regular');
 
+// Manrope font variables
+$manrope-extra-light-src: font-src('Manrope-ExtraLight');
+$manrope-light-src: font-src('Manrope-Light');
+$manrope-regular-src: font-src('Manrope-Regular');
+$manrope-medium-src: font-src('Manrope-Medium');
+$manrope-semibold-src: font-src('Manrope-SemiBold');
+$manrope-bold-src: font-src('Manrope-Bold');
+$manrope-extrabold-src: font-src('Manrope-ExtraBold');
+
+@at-root {
 	// Fira Code font faces
 	@include font-face('Fira Code', $fira-code-bold-src, 700, normal);
 	@include font-face('Fira Code', $fira-code-light-src, 300, normal);
@@ -54,4 +26,16 @@ $fira-code-semibold-src: font-src('FiraCode-SemiBold');
 	@include font-face('Fira Code', $fira-code-regular-src, 400, normal);
 	@include font-face('Fira Code', $fira-code-retina-src, 400, normal);
 	@include font-face('Fira Code', $fira-code-semibold-src, 600, normal);
+
+	// DotGothic16 font faces
+	@include font-face('DotGothic16', $dot-gothic-16-regular-src, 400, normal);
+
+	// Manrope font faces
+	@include font-face('Manrope', $manrope-extra-light-src, 200, normal);
+	@include font-face('Manrope', $manrope-light-src, 300, normal);
+	@include font-face('Manrope', $manrope-regular-src, 400, normal);
+	@include font-face('Manrope', $manrope-medium-src, 500, normal);
+	@include font-face('Manrope', $manrope-semibold-src, 600, normal);
+	@include font-face('Manrope', $manrope-bold-src, 700, normal);
+	@include font-face('Manrope', $manrope-extrabold-src, 800, normal);
 }

@@ -37,7 +37,8 @@ $ns: '.contact-section';
 		align-items: center;
 		justify-content: center;
 		gap: $space-8;
-		width: 320px;
+		font-weight: 500;
+		text-transform: none;
 	}
 
 	&__copy-icon {

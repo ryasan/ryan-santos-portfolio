@@ -4,40 +4,61 @@ $ns: '.jump-links';
 
 #{$ns} {
 	position: fixed;
-	top: 30%;
-	right: 20px;
-	gap: 30px;
+	top: 50%;
+	left: 50px;
 	display: none;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.35rem;
 	opacity: 0;
+	transform: translateY(-50%);
 	will-change: opacity;
+	z-index: $z-index-header;
 
 	@media (min-width: $laptop) {
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
 	}
 
 	&__link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 1.2rem;
+		height: calc(var(--label-len) * 0.52rem + 0.85rem);
 		color: var(--content-color);
-		opacity: 0.2;
-		position: relative;
-		font-size: 14px;
-		width: fit-content;
-		text-transform: uppercase;
+		font-weight: 600;
+		font-size: 0.875rem;
+		line-height: 1;
 		transition: opacity 0.2s ease;
 
-		@media (max-width: $laptop) {
-			font-size: 10px;
+		@media (hover: hover) {
+			&:hover {
+				opacity: 0.7;
+			}
 		}
 
 		&.active {
 			opacity: 1;
 		}
+	}
 
-		@media (hover: hover) {
-			&:hover {
-				opacity: 1;
-			}
-		}
+	&__inner {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: flex-start;
+		transform: rotate(-90deg);
+		white-space: nowrap;
+	}
+
+	&__tick {
+		margin-top: 7px;
+		background-color: currentcolor;
+		width: 15px;
+		height: 1px;
+		opacity: 0;
+	}
+
+	&__link.active &__tick {
+		opacity: 1;
 	}
 }

@@ -1,5 +1,6 @@
 import { gql } from 'graphql-request'
 import {
+	ABOUT_SECTION_FRAGMENT,
 	ARTICLE_GRID_SECTION_FRAGMENT,
 	CAROUSEL_SECTION_FRAGMENT,
 	CONTACT_SECTION_FRAGMENT,
@@ -36,6 +37,7 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 				pageSectionsCollection {
 					__typename
 					items {
+						...AboutSectionFields
 						...ArticleGridSectionFields
 						...CarouselSectionFields
 						...ContactSectionFields
@@ -51,6 +53,7 @@ export const GET_PAGE_BY_SLUG_QUERY = gql`
 			}
 		}
 	}
+	${ABOUT_SECTION_FRAGMENT}
 	${ARTICLE_GRID_SECTION_FRAGMENT}
 	${CAROUSEL_SECTION_FRAGMENT}
 	${CONTACT_SECTION_FRAGMENT}

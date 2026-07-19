@@ -11,10 +11,12 @@
 }
 .featured-articles-section__title {
   opacity: 0;
+  font-size: clamp(3rem, 7vw, 10rem);
 }
 .featured-articles-section__subtitle {
   opacity: 0;
   color: var(--content-color-2);
+  font-weight: 600;
 }
 .featured-articles-section__list {
   max-width: 1200px;
@@ -98,7 +100,7 @@
 }
 .featured-articles-section__card-title {
   font-size: 45px;
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 20px;
 }
 @media (max-width: 768px) {

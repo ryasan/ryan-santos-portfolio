@@ -35,11 +35,13 @@ $ns: '.featured-articles-section';
 
 	&__title {
 		opacity: 0;
+		font-size: clamp(3rem, 7vw, 10rem);
 	}
 
 	&__subtitle {
 		opacity: 0;
 		color: var(--content-color-2);
+		font-weight: 600;
 	}
 
 	&__list {
@@ -120,7 +122,7 @@ $ns: '.featured-articles-section';
 
 	&__card-title {
 		font-size: 45px;
-		font-weight: 500;
+		font-weight: 700;
 		margin-bottom: $space-20;
 
 		@media (max-width: $tablet) {

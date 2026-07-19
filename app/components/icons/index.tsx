@@ -1,21 +1,27 @@
-import ArrowLeftIcon from './arrow-left'
-import ArrowRightIcon from './arrow-right'
-import ArrowUpRightIcon from './arrow-up-right'
-import AtomIcon from './atom'
-import CloseIcon from './close'
-import CodepenIcon from './codepen'
-import CopySimpleIcon from './copy-simple'
-import EnvelopeIcon from './envelope'
-import FacebookIcon from './facebook'
-import GithubIcon from './github'
-import LinkedinIcon from './linkedin'
-import ListBulletsIcon from './list-bullets'
-import MoonIcon from './moon'
-import MouseIcon from './mouse'
-import SearchIcon from './search'
-import SquaresFourIcon from './squares-four'
-import SunIcon from './sun'
-import TwitterIcon from './twitter'
+import ArrowLeftIcon from './icon-arrow-left'
+import ArrowRightIcon from './icon-arrow-right'
+import ArrowUpRightIcon from './icon-arrow-up-right'
+import AtomIcon from './icon-atom'
+import CloseIcon from './icon-close'
+import CodepenIcon from './icon-codepen'
+import CopySimpleIcon from './icon-copy-simple'
+import EnvelopeIcon from './icon-envelope'
+import FacebookIcon from './icon-facebook'
+import GithubIcon from './icon-github'
+import HtmlIcon from './icon-html'
+import InterfaceIcon from './icon-interface'
+import LinkedinIcon from './icon-linkedin'
+import ListBulletsIcon from './icon-list-bullets'
+import MoonIcon from './icon-moon'
+import MouseIcon from './icon-mouse'
+import PauseIcon from './icon-pause'
+import PlayIcon from './icon-play'
+import ReactIcon from './icon-react'
+import SearchIcon from './icon-search'
+import SquaresFourIcon from './icon-squares-four'
+import SunIcon from './icon-sun'
+import TwitterIcon from './icon-twitter'
+import WordpressIcon from './icon-wordpress'
 
 export {
 	ArrowLeftIcon,
@@ -28,12 +34,18 @@ export {
 	EnvelopeIcon,
 	FacebookIcon,
 	GithubIcon,
+	HtmlIcon,
+	InterfaceIcon,
 	LinkedinIcon,
 	ListBulletsIcon,
 	MoonIcon,
 	MouseIcon,
+	PauseIcon,
+	PlayIcon,
+	ReactIcon,
 	SearchIcon,
 	SquaresFourIcon,
 	SunIcon,
 	TwitterIcon,
+	WordpressIcon,
 }

@@ -190,3 +190,13 @@ export const HERO_CUBE_SECTION_FRAGMENT = gql`
 		isTopOfPage
 	}
 `
+
+export const ABOUT_SECTION_FRAGMENT = gql`
+	fragment AboutSectionFields on AboutSection {
+		__typename
+		sys {
+			id
+		}
+		jumpLinkLabel
+	}
+`

@@ -1,3 +1,4 @@
+import AboutSection from './sections/about-section'
 import ArticleGridSection from './sections/article-grid-section'
 import CarouselSection from './sections/carousel-section'
 import ContactSection from './sections/contact-section'
@@ -11,6 +12,7 @@ import TextRevealSection from './sections/text-reveal-section'
 import  { type PagePageSectionsItem } from '~/graphql/__generated/sdk'
 
 const sections = {
+	AboutSection: AboutSection,
 	ArticleGridSection: ArticleGridSection,
 	CarouselSection: CarouselSection,
 	ContactSection: ContactSection,

@@ -22,6 +22,174 @@ export type Scalars = {
   Quality: { input: any; output: any; }
 };
 
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/aboutSection) */
+export type AboutSection = Entry & _Node & {
+  __typename?: 'AboutSection';
+  _id: Scalars['ID']['output'];
+  contentfulMetadata: ContentfulMetadata;
+  internalName?: Maybe<Scalars['String']['output']>;
+  jumpLinkLabel?: Maybe<Scalars['String']['output']>;
+  linkedFrom?: Maybe<AboutSectionLinkingCollections>;
+  sys: Sys;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/aboutSection) */
+export type AboutSectionInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/aboutSection) */
+export type AboutSectionJumpLinkLabelArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/aboutSection) */
+export type AboutSectionLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type AboutSectionCollection = {
+  __typename?: 'AboutSectionCollection';
+  items: Array<Maybe<AboutSection>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type AboutSectionCursorCollection = {
+  __typename?: 'AboutSectionCursorCollection';
+  items: Array<Maybe<AboutSection>>;
+  limit: Scalars['Int']['output'];
+  pages: CursorPages;
+};
+
+export type AboutSectionFilter = {
+  AND?: InputMaybe<Array<InputMaybe<AboutSectionFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<AboutSectionFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']['input']>;
+  internalName_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName_not?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jumpLinkLabel?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_contains?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  jumpLinkLabel_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jumpLinkLabel_not?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_not_contains?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type AboutSectionLinkingCollections = {
+  __typename?: 'AboutSectionLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+  entryCursorCollection?: Maybe<EntryCursorCollection>;
+  pageCollection?: Maybe<PageCollection>;
+  pageCursorCollection?: Maybe<PageCursorCollection>;
+};
+
+
+export type AboutSectionLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type AboutSectionLinkingCollectionsEntryCursorCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  pageNext?: InputMaybe<Scalars['String']['input']>;
+  pagePrev?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type AboutSectionLinkingCollectionsPageCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<AboutSectionLinkingCollectionsPageCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type AboutSectionLinkingCollectionsPageCursorCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<AboutSectionLinkingCollectionsPageCursorCollectionOrder>>>;
+  pageNext?: InputMaybe<Scalars['String']['input']>;
+  pagePrev?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export enum AboutSectionLinkingCollectionsPageCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  JumpLinksEnabledAsc = 'jumpLinksEnabled_ASC',
+  JumpLinksEnabledDesc = 'jumpLinksEnabled_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
+}
+
+export enum AboutSectionLinkingCollectionsPageCursorCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  JumpLinksEnabledAsc = 'jumpLinksEnabled_ASC',
+  JumpLinksEnabledDesc = 'jumpLinksEnabled_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
+}
+
+export enum AboutSectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/articleGridSection) */
 export type ArticleGridSection = Entry & _Node & {
   __typename?: 'ArticleGridSection';
@@ -249,8 +417,9 @@ export enum ArticleGridSectionOrder {
 }
 
 /** Represents a binary file in a space. An asset can be any file type. */
-export type Asset = {
+export type Asset = _Node & {
   __typename?: 'Asset';
+  _id: Scalars['ID']['output'];
   contentType?: Maybe<Scalars['String']['output']>;
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<Scalars['String']['output']>;
@@ -4180,7 +4349,7 @@ export type PagePageSectionsFilter = {
   sys?: InputMaybe<SysFilter>;
 };
 
-export type PagePageSectionsItem = ArticleGridSection | CarouselSection | ContactSection | ExperienceSection | FeaturedArticlesSection | HeroCubeSection | HeroSection | MarqueeSection | SocialSection | TextRevealSection;
+export type PagePageSectionsItem = AboutSection | ArticleGridSection | CarouselSection | ContactSection | ExperienceSection | FeaturedArticlesSection | HeroCubeSection | HeroSection | MarqueeSection | SocialSection | TextRevealSection;
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/person) */
 export type Person = Entry & _Node & {
@@ -4789,6 +4958,9 @@ export type Query = {
   __typename?: 'Query';
   _node?: Maybe<_Node>;
   _nodes: Array<Maybe<_Node>>;
+  aboutSection?: Maybe<AboutSection>;
+  aboutSectionCollection?: Maybe<AboutSectionCollection>;
+  aboutSectionCursorCollection?: Maybe<AboutSectionCursorCollection>;
   articleGridSection?: Maybe<ArticleGridSection>;
   articleGridSectionCollection?: Maybe<ArticleGridSectionCollection>;
   articleGridSectionCursorCollection?: Maybe<ArticleGridSectionCursorCollection>;
@@ -4876,6 +5048,37 @@ export type Query_NodesArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryAboutSectionArgs = {
+  id: Scalars['String']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryAboutSectionCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<AboutSectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<AboutSectionFilter>;
+};
+
+
+export type QueryAboutSectionCursorCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<AboutSectionOrder>>>;
+  pageNext?: InputMaybe<Scalars['String']['input']>;
+  pagePrev?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<AboutSectionFilter>;
 };
 
 

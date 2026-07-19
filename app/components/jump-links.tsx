@@ -14,7 +14,7 @@ type JumpLinksProps = {
 }
 
 export default function JumpLinks({ sections }: JumpLinksProps) {
-	const jumpLinksRef = useRef<HTMLDivElement>(null)
+	const jumpLinksRef = useRef<HTMLElement>(null)
 
 	const [activeSectionId, setActiveSectionId] = useState('')
 
@@ -92,22 +92,29 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 	}, [activeSectionId])
 
 	return (
-		<div className={ns} ref={jumpLinksRef}>
+		<nav aria-label="Page sections" className={ns} ref={jumpLinksRef}>
 			{sectionsWithJumpLinkLabels.map((section) => {
 				if (!section?.sys?.id || !('jumpLinkLabel' in section)) return null
 
+				const label = section.jumpLinkLabel || ''
 				const isActive = activeSectionId === section.sys.id
+
 				return (
 					<a
+						aria-current={isActive ? 'true' : undefined}
 						className={clsx(`${ns}__link`, isActive && 'active')}
 						href={`#${section.sys.id}`}
 						key={section.sys.id}
 						onClick={(e) => handleClick(e, section)}
+						style={{ ['--label-len' as string]: label.length }}
 					>
-						{section.jumpLinkLabel}
+						<span className={`${ns}__inner`}>
+							{label}
+							<span aria-hidden className={`${ns}__tick`} />
+						</span>
 					</a>
 				)
 			})}
-		</div>
+		</nav>
 	)
 }

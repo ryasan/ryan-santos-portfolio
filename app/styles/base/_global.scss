@@ -1,24 +1,24 @@
 // Root
 :root {
-	--content-color: #111316;
+	--content-color: #000;
 	--content-color-2: #272727;
-	--background-primary-color: #eeece9;
-	--background-secondary-color: #d8d8d8;
-	--background-primary-color-rgb: 238, 236, 233;
-	--background-secondary-color-rgb: 216, 216, 216;
+	--background-primary-color: #fff;
+	--background-secondary-color: #c8c8c8;
+	--background-primary-color-rgb: 255, 255, 255;
+	--background-secondary-color-rgb: 200, 200, 200;
 	--line-color: #bbb;
-	--blue-color: #e5edff;
-	--green-color: #d0fbd0;
-	--yellow-color: #fff4cc;
-	--red-color: #fcc;
+	--blue-color: #4c6bb9;
+	--green-color: #4cb84e;
+	--yellow-color: #b7a14e;
+	--red-color: #b74d4e;
 }
 
 [data-theme='dark'] {
 	--content-color: #fff;
 	--content-color-2: #c8c8c8;
-	--background-primary-color: #111316;
+	--background-primary-color: #000;
 	--background-secondary-color: #272727;
-	--background-primary-color-rgb: 17, 19, 22;
+	--background-primary-color-rgb: 0, 0, 0;
 	--background-secondary-color-rgb: 39, 39, 39;
 	--line-color: #424345;
 	--blue-color: #4c6bb9;
@@ -75,7 +75,7 @@ h1,
 	font-size: 150px;
 	line-height: 0.8;
 	letter-spacing: -0.04em;
-	font-weight: 600;
+	font-weight: 700;
 	color: var(--content-color);
 
 	@media (max-width: $desktop) {
@@ -92,7 +92,7 @@ h2,
 	font-size: 100px;
 	line-height: 1;
 	letter-spacing: -0.04em;
-	font-weight: 600;
+	font-weight: 700;
 	color: var(--content-color);
 
 	@media (max-width: $desktop) {
@@ -109,7 +109,7 @@ h3,
 	font-size: 75px;
 	line-height: 1;
 	letter-spacing: -0.04em;
-	font-weight: 600;
+	font-weight: 700;
 	color: var(--content-color);
 
 	@media (max-width: $desktop) {
@@ -126,7 +126,7 @@ h4,
 	font-size: 50px;
 	line-height: 1;
 	letter-spacing: -0.04em;
-	font-weight: 600;
+	font-weight: 700;
 	color: var(--content-color);
 
 	@media (max-width: $desktop) {
@@ -142,7 +142,7 @@ h5,
 .h5 {
 	font-size: 30px;
 	line-height: 1;
-	font-weight: 600;
+	font-weight: 700;
 	color: var(--content-color);
 
 	@media (max-width: $tablet) {
@@ -154,7 +154,7 @@ h6,
 .h6 {
 	font-size: 20px;
 	line-height: 1;
-	font-weight: 600;
+	font-weight: 700;
 	color: var(--content-color);
 
 	@media (max-width: $tablet) {
@@ -166,7 +166,7 @@ p,
 .body {
 	font-size: 16px;
 	font-style: normal;
-	font-weight: 400;
+	font-weight: 500;
 	line-height: 1.3;
 	color: var(--content-color-2);
 
@@ -192,23 +192,14 @@ p,
 	}
 
 	@media (max-width: $mobile-lg) {
-		display: none;
-	}
-
-	&--mobile {
-		display: none;
-
-		@media (max-width: $mobile-lg) {
-			display: block;
-			font-size: 48px;
-		}
+		font-size: 32px;
 	}
 }
 
 .body-2 {
 	font-size: 12px;
 	font-style: normal;
-	font-weight: 400;
+	font-weight: 500;
 	line-height: 1.2;
 	color: var(--content-color-2);
 
@@ -220,7 +211,7 @@ p,
 .label {
 	font-size: 12px;
 	font-style: normal;
-	font-weight: 600;
+	font-weight: 700;
 	line-height: 1;
 	color: var(--content-color-2);
 
@@ -232,7 +223,7 @@ p,
 .link {
 	font-size: 16px;
 	font-style: normal;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 1;
 	color: var(--content-color);
 
@@ -244,7 +235,7 @@ p,
 .badge {
 	font-size: 16px;
 	font-style: normal;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 1;
 
 	@media (max-width: $tablet) {
@@ -258,7 +249,7 @@ p,
 	padding: $space-12 $space-24;
 	border-radius: 100px;
 	text-transform: uppercase;
-	font-weight: 500;
+	font-weight: 600;
 	transition:
 		background-color 0.2s ease,
 		border-color 0.2s ease,
@@ -303,7 +294,7 @@ code,
 .code {
 	font-size: 12px;
 	font-style: normal;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 1;
 	font-family: $code-font-family;
 
