@@ -33,10 +33,10 @@ export default function Header({ data }: HeaderProps) {
 				<div className={`${ns}__inner`}>
 					<RemixLink aria-label="Home page" className={`${ns}__logo`} to="/">
 						<div data-hide-on-theme={DARK_THEME}>
-							<span className={`${ns}__logo-text`}>ryan.</span>
+							<span className={`${ns}__logo-text`}>Ryan.</span>
 						</div>
 						<div data-hide-on-theme={LIGHT_THEME}>
-							<span className={`${ns}__logo-text`}>ryan.</span>
+							<span className={`${ns}__logo-text`}>Ryan.</span>
 						</div>
 					</RemixLink>
 					<div className={`${ns}__navigation-box`}>
