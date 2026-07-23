@@ -76,9 +76,15 @@ export default function Index() {
 		<>
 			{sections?.map((section: PagePageSectionsItem) => {
 				if (!section?.sys?.id) return null
+
+				const sectionId =
+					'jumpLinkLabel' in section && section.jumpLinkLabel
+						? section.jumpLinkLabel
+						: undefined
+
 				return (
 					<SectionRenderer
-						id={section.sys.id}
+						id={sectionId}
 						key={section.sys.id}
 						section={section}
 					/>

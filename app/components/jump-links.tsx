@@ -22,13 +22,21 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 		Boolean('jumpLinkLabel' in section && section.jumpLinkLabel !== null),
 	)
 
+	const getSectionId = (section: PagePageSectionsItem) =>
+		'jumpLinkLabel' in section && section.jumpLinkLabel
+			? section.jumpLinkLabel
+			: null
+
 	const handleClick = (
 		e: React.MouseEvent<HTMLAnchorElement>,
 		section: PagePageSectionsItem,
 	) => {
 		e.preventDefault()
 
-		const element = document.getElementById(section.sys.id)
+		const sectionId = getSectionId(section)
+		if (!sectionId) return
+
+		const element = document.getElementById(sectionId)
 		const smoother = ScrollSmoother.get()
 
 		if (element && smoother) {
@@ -66,14 +74,17 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 	useGSAP(() => {
 		const triggers = sectionsWithJumpLinkLabels
 			.map((section) => {
-				const element = document.getElementById(section.sys.id)
+				const sectionId = getSectionId(section)
+				if (!sectionId) return null
+
+				const element = document.getElementById(sectionId)
 
 				if (!element) return null
 
 				return ScrollTrigger.create({
 					end: 'bottom center',
-					onEnter: () => setActiveSectionId(section.sys.id),
-					onEnterBack: () => setActiveSectionId(section.sys.id),
+					onEnter: () => setActiveSectionId(sectionId),
+					onEnterBack: () => setActiveSectionId(sectionId),
 					start: 'top center',
 					trigger: element,
 				})
@@ -94,16 +105,17 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 	return (
 		<nav aria-label="Page sections" className={ns} ref={jumpLinksRef}>
 			{sectionsWithJumpLinkLabels.map((section) => {
-				if (!section?.sys?.id || !('jumpLinkLabel' in section)) return null
+				const sectionId = getSectionId(section)
+				if (!section?.sys?.id || !sectionId) return null
 
-				const label = section.jumpLinkLabel || ''
-				const isActive = activeSectionId === section.sys.id
+				const label = sectionId
+				const isActive = activeSectionId === sectionId
 
 				return (
 					<a
 						aria-current={isActive ? 'true' : undefined}
 						className={clsx(`${ns}__link`, isActive && 'active')}
-						href={`#${section.sys.id}`}
+						href={`#${sectionId}`}
 						key={section.sys.id}
 						onClick={(e) => handleClick(e, section)}
 						style={{ ['--label-len' as string]: label.length }}
