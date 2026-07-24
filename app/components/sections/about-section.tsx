@@ -107,11 +107,7 @@ type AboutSectionProps = {
 
 export default function AboutSection({ id }: AboutSectionProps) {
 	return (
-		<section
-			aria-labelledby={`${ns}-title`}
-			className={ns}
-			id={id}
-		>
+		<section aria-labelledby={`${ns}-title`} className={ns} id={id}>
 			<div className="container">
 				<div className={`${ns}__heading`}>
 					<h2 className={`${ns}__title`} id={`${ns}-title`}>
@@ -134,10 +130,10 @@ export default function AboutSection({ id }: AboutSectionProps) {
 					<div className={`${ns}__bio-content`}>
 						<h3 className={`${ns}__name`}>Ryan Santos</h3>
 						<p className={`${ns}__bio-text`}>
-							I&apos;m a Frontend Engineer with a passion for building digital
-							products that not only look great but also keep real usability at its core. My
-							career has mostly been in the digital marketing and e-commerce
-							space. I code up projects in my quiet home office in Los
+							I&apos;m a Frontend Engineer specializing in building performant
+							digital products with human-centered usability at their core. My
+							dev career has mostly been rooted in digital marketing and
+							e-commerce. I code up projects in my quiet home office in Los
 							Angeles, California.
 						</p>
 						<ul className={`${ns}__socials`}>
