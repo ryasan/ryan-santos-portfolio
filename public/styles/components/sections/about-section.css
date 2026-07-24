@@ -89,7 +89,7 @@
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--content-color) 10%, transparent);
   border-radius: 10px;
   background-color: var(--background-primary-color);
-  padding: 16px 16px;
+  padding: 16px;
   min-height: 72px;
 }
 .about-section__skill-icon {
@@ -187,7 +187,7 @@
     margin-bottom: 32px;
   }
 }
-@media (min-width: 1100px) {
+@media (width >= 1100px) {
   .about-section__skill-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }

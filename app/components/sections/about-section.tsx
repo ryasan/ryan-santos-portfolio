@@ -130,11 +130,10 @@ export default function AboutSection({ id }: AboutSectionProps) {
 					<div className={`${ns}__bio-content`}>
 						<h3 className={`${ns}__name`}>Ryan Santos</h3>
 						<p className={`${ns}__bio-text`}>
-							I&apos;m a Frontend Engineer specializing in building performant
-							digital products with human-centered usability at their core. My
-							dev career has mostly been rooted in digital marketing and
-							e-commerce. I code up projects in my quiet home office in Los
-							Angeles, California.
+							I&apos;m a Frontend Engineer based out of Los Angeles, CA. I
+							specialize in building performant digital products with
+							human-centered usability at their core. My development career has
+							mostly been rooted in digital marketing and e-commerce.
 						</p>
 						<ul className={`${ns}__socials`}>
 							{socialLinks.map((link) => {
