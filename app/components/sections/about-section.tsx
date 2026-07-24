@@ -135,9 +135,9 @@ export default function AboutSection({ id }: AboutSectionProps) {
 						<h3 className={`${ns}__name`}>Ryan Santos</h3>
 						<p className={`${ns}__bio-text`}>
 							I&apos;m a Frontend Engineer with a passion for building digital
-							products that are both functional and aesthetically pleasing. My
+							products that not only look great but also keep real usability at its core. My
 							career has mostly been in the digital marketing and e-commerce
-							industry. I work on projects in my quiet home office in Los
+							space. I code up projects in my quiet home office in Los
 							Angeles, California.
 						</p>
 						<ul className={`${ns}__socials`}>
