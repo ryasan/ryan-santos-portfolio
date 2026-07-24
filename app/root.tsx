@@ -129,27 +129,39 @@ export function ErrorBoundary() {
 	const error = useRouteError()
 	const errorStyles = { color: '#de292c', padding: '1rem' }
 
+	let content: React.ReactNode
+
 	if (isRouteErrorResponse(error)) {
-		return (
-			<div style={errorStyles}>
+		content = (
+			<>
 				<h1>Error {error.status}</h1>
 				<p>{error.data}</p>
-			</div>
+			</>
 		)
-	}
-
-	if (error instanceof Error) {
-		return (
-			<div style={errorStyles}>
+	} else if (error instanceof Error) {
+		content = (
+			<>
 				<h1>Error</h1>
 				<p>{error.message}</p>
-			</div>
+			</>
 		)
+	} else {
+		content = <p>Something went wrong while loading the page</p>
 	}
 
 	return (
-		<Document>
-			<div>Something went wrong while loading the page</div>
-		</Document>
+		<html lang="en">
+			<head>
+				<meta charSet="utf-8" />
+				<meta content="width=device-width, initial-scale=1" name="viewport" />
+				<title>Error</title>
+				<Meta />
+				<Links />
+			</head>
+			<body>
+				<div style={errorStyles}>{content}</div>
+				<Scripts />
+			</body>
+		</html>
 	)
 }
