@@ -1,12 +1,10 @@
 import { PauseIcon, PlayIcon } from '~/components/icons'
-import TypewriterHeadline, {
-	SECOND_HEADLINE,
-} from '~/components/typewriter-headline'
 import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { useEffect, useRef, useState } from 'react'
+import { useGSAP } from '@gsap/react'
 import clsx from 'clsx'
 import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
+import TypewriterHeadline from '~/components/typewriter-headline'
 
 const ns = 'hero-section'
 
@@ -18,6 +16,7 @@ type HeroSectionProps = {
 export default function HeroSection({ data, id }: HeroSectionProps) {
 	const [isPlaying, setIsPlaying] = useState(true)
 	const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+	const titleRef = useRef<HTMLHeadingElement>(null)
 	const playbackButtonRef = useRef<HTMLButtonElement>(null)
 
 	useEffect(() => {
@@ -28,8 +27,16 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 
 	useGSAP(
 		() => {
+			const title = titleRef.current
 			const playbackButton = playbackButtonRef.current
-			if (!playbackButton) return
+			
+			if (!title || !playbackButton) return
+
+			gsap.to(title, {
+				duration: 1,
+				ease: 'power2.out',
+				opacity: 1,
+			})
 
 			gsap.to(playbackButton, {
 				duration: 1,
@@ -49,11 +56,15 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				<div className={`${ns}__sticky-box`}>
 					<div className={`${ns}__headline-wrap`}>
 						<h1
-							aria-label={SECOND_HEADLINE}
+							aria-label="Hi, My Name is Ryan Santos"
 							className={`${ns}__title`}
+							ref={titleRef}
 						>
+							<span className={`${ns}__headline-text`}>
+								Hi, My Name is Ryan
+							</span>
 							<span aria-hidden className={`${ns}__headline-text`}>
-								<TypewriterHeadline isPlaying={isPlaying} />
+								I Build <TypewriterHeadline isPlaying={isPlaying} />
 								<span
 									className={clsx(
 										`${ns}__cursor`,
@@ -78,15 +89,9 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 							type="button"
 						>
 							{isPlaying ? (
-								<PauseIcon
-									aria-hidden
-									className={`${ns}__playback-icon`}
-								/>
+								<PauseIcon aria-hidden className={`${ns}__playback-icon`} />
 							) : (
-								<PlayIcon
-									aria-hidden
-									className={`${ns}__playback-icon`}
-								/>
+								<PlayIcon aria-hidden className={`${ns}__playback-icon`} />
 							)}
 						</button>
 					)}

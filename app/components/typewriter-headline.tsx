@@ -1,9 +1,21 @@
 import { useEffect, useRef, useState } from 'react'
 import { TypeAnimation } from 'react-type-animation'
 
-export const FIRST_HEADLINE = 'Hi, My Name is Ryan'
-export const SECOND_HEADLINE = "I'm a Frontend Engineer"
-export const THIRD_HEADLINE = 'I Build Digital Web Products'
+const HEADLINES = [
+	'Digital Products',
+	'Accessible Interfaces',
+	'Design Systems',
+	'Web Applications',
+	'Interactive Components',
+	'Component Libraries',
+	'E-Commerce Stores',
+	'Seamless Workflows',
+	'Headless Frontends',
+	'Scalable Systems',
+] as const
+
+const HOLD_MS = 1500
+const CLEAR_MS = 400
 
 type TypewriterHeadlineProps = {
 	isPlaying?: boolean
@@ -15,9 +27,7 @@ export default function TypewriterHeadline({
 	const [mounted, setMounted] = useState(false)
 	const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
 	const isPlayingRef = useRef(isPlaying)
-	const sequenceRef = useRef<Array<string | (() => Promise<void>)> | null>(
-		null,
-	)
+	const sequenceRef = useRef<Array<string | (() => Promise<void>)> | null>(null)
 
 	isPlayingRef.current = isPlaying
 
@@ -40,22 +50,16 @@ export default function TypewriterHeadline({
 		}
 
 		sequenceRef.current = [
-			pauseAwareDelay(1500),
+			pauseAwareDelay(HOLD_MS),
 			waitWhilePaused,
-			FIRST_HEADLINE,
-			pauseAwareDelay(1500),
-			waitWhilePaused,
-			'',
-			pauseAwareDelay(400),
-			waitWhilePaused,
-			SECOND_HEADLINE,
-			pauseAwareDelay(1500),
-			waitWhilePaused,
-			'',
-			pauseAwareDelay(400),
-			waitWhilePaused,
-			THIRD_HEADLINE,
-			pauseAwareDelay(1500),
+			...HEADLINES.flatMap((headline) => [
+				headline,
+				pauseAwareDelay(HOLD_MS),
+				waitWhilePaused,
+				'',
+				pauseAwareDelay(CLEAR_MS),
+				waitWhilePaused,
+			]),
 		]
 	}
 
@@ -71,7 +75,7 @@ export default function TypewriterHeadline({
 	}
 
 	if (prefersReducedMotion) {
-		return <span>{FIRST_HEADLINE}</span>
+		return <span>{HEADLINES[0]}</span>
 	}
 
 	return (

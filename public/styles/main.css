@@ -1702,16 +1702,20 @@ em {
   width: 100%;
 }
 .hero-section__title {
-  max-width: 100%;
+  width: 100%;
   color: var(--content-color);
-  text-align: center;
-  font-size: clamp(1.5rem, 4vw, 4rem);
-  line-height: 1.2;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  line-height: 1.75;
   font-family: "DotGothic16", sans-serif;
   letter-spacing: 0.02em;
+  text-align: left;
+  opacity: 0;
 }
 .hero-section__headline-text {
-  display: inline;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
 }
 .hero-section__cursor {
   display: inline-block;
