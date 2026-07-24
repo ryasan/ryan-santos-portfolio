@@ -1,0 +1,141 @@
+.root p {
+  margin: 24px 0;
+  font-size: 20px;
+}
+
+.root p:first-child {
+  margin-top: 0;
+}
+
+.root p:last-child {
+  margin-bottom: 0;
+}
+
+@media (width <= 768px) {
+  .root p {
+    font-size: 16px;
+  }
+}
+
+.root h1,
+.root h2,
+.root h3,
+.root h4,
+.root h5,
+.root h6 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.root h1:first-child,
+.root h2:first-child,
+.root h3:first-child,
+.root h4:first-child,
+.root h5:first-child,
+.root h6:first-child {
+  margin-top: 0;
+}
+
+@media (width <= 768px) {
+  .root h1,
+  .root h2,
+  .root h3,
+  .root h4,
+  .root h5,
+  .root h6 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.root ul {
+  list-style: disc;
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+@media (width <= 768px) {
+  .root ul {
+    margin-bottom: 12px;
+    padding-left: 16px;
+  }
+}
+
+.root ol {
+  list-style: decimal;
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+@media (width <= 768px) {
+  .root ol {
+    margin-bottom: 12px;
+    padding-left: 16px;
+  }
+}
+
+.root li {
+  line-height: 1.8;
+  font-size: 20px;
+  color: var(--content-color-2);
+}
+
+@media (width <= 768px) {
+  .root li {
+    font-size: 16px;
+  }
+}
+
+.root blockquote {
+  border-left: 4px solid var(--line-color);
+  color: var(--content-color-2);
+  font-style: italic;
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+@media (width <= 768px) {
+  .root blockquote {
+    margin-bottom: 12px;
+    padding-left: 16px;
+  }
+}
+
+.root hr {
+  border-top: 1px solid var(--line-color);
+  margin: 32px 0;
+}
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin: 24px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tableWrapper table {
+  margin: 0;
+  background-color: var(--background-secondary-color);
+  border-radius: 8px;
+  padding: 16px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.root th,
+.root td {
+  text-align: left;
+  padding: 12px;
+}
+
+.root th p,
+.root td p {
+  font-size: 18px;
+}
+
+@media (width <= 768px) {
+  .root th p,
+  .root td p {
+    font-size: 16px;
+  }
+}

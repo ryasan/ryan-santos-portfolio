@@ -6,8 +6,8 @@ import {
 	GithubIcon,
 	LinkedinIcon,
 } from '~/components/icons'
+import styles from './social-section.module.css'
 
-const ns = 'social-section'
 
 const icons = {
 	codepen: CodepenIcon,
@@ -18,7 +18,7 @@ const icons = {
 
 const getIcon = (icon?: string) => {
 	const Icon = icons[icon?.toLowerCase() as keyof typeof icons]
-	return Icon ? <Icon aria-hidden="true" className={`${ns}__icon`} /> : null
+	return Icon ? <Icon aria-hidden="true" className={styles.icon} /> : null
 }
 
 type SocialSectionProps = {
@@ -28,17 +28,17 @@ type SocialSectionProps = {
 
 export default function SocialSection({ data, id }: SocialSectionProps) {
 	return (
-		<section className={ns} id={id}>
+		<section className={styles.root} id={id}>
 			<div className="container">
-				<div className={`${ns}__box`}>
+				<div className={styles.box}>
 					{data?.title && <h2 className="label">{data.title}</h2>}
 
-					<div className={`${ns}__social-list`}>
+					<div className={styles.socialList}>
 						{data?.socialLinksCollection?.items?.map((social) => {
 							if (!social?.url || !social?.label) return null
 
 							return (
-								<div className={`${ns}__social-item`} key={social.sys.id}>
+								<div className={styles.socialItem} key={social.sys.id}>
 									{getIcon(social.icon || '')}
 									<Link className="link" to={social.url}>
 										{social.label}

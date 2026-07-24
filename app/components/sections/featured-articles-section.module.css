@@ -1,0 +1,151 @@
+.root {
+  position: relative;
+}
+
+.stickyBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100lvh;
+}
+
+.title {
+  opacity: 0;
+  font-size: clamp(4.5rem, 7.5vw, 10rem);
+  position: relative;
+}
+
+.subtitle {
+  opacity: 0;
+  color: var(--content-color-2);
+  font-weight: 600;
+}
+
+.list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50lvh 0;
+}
+
+.container {
+  height: 100lvh;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  position: relative;
+}
+
+.container.left {
+  justify-content: start;
+}
+
+.container.right {
+  justify-content: flex-end;
+}
+
+@media (width <= 768px) {
+  .card {
+    justify-content: center !important;
+  }
+}
+
+.image img {
+  aspect-ratio: 450/500;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-width: 450px;
+  transition: all 0.4s ease;
+  transform: scale(1.05);
+}
+
+.content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 40px;
+  transition: all 0.4s ease-out;
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  background-color: var(--background-primary-color);
+}
+
+@media (width >= 769px) {
+  .card:hover .image img, .card:focus-within .image img {
+    filter: blur(3px) grayscale(50%) brightness(0.5);
+  }
+
+  [data-theme="light"] .card:hover .image img, [data-theme="light"] .card:focus-within .image img {
+    filter: blur(3px) grayscale(10%) brightness(1.1);
+    opacity: 0.3;
+  }
+
+  .card:hover .content, .card:focus-within .content {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (width <= 768px) {
+  .card.active .image img, .card:focus-within .image img {
+    filter: blur(3px) grayscale(50%) brightness(0.5);
+  }
+
+  [data-theme="light"] .card.active .image img, [data-theme="light"] .card:focus-within .image img {
+    filter: blur(3px) grayscale(10%) brightness(1.1);
+    opacity: 0.3;
+  }
+
+  .card.active .content, .card:focus-within .content {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.cardTitle {
+  font-size: 45px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+@media (width <= 768px) {
+  .cardTitle {
+    font-size: 32px;
+  }
+}
+
+.caption {
+  color: var(--content-color-2);
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+@media (width <= 768px) {
+  .caption {
+    font-size: 18px;
+  }
+}
+
+.description p {
+  color: var(--content-color);
+}
+
+.link {
+  margin-top: auto;
+}

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { type TextRevealItem } from '~/graphql/__generated/sdk'
+import styles from './text-block.module.css'
 
-const ns = 'text-block'
 
 type TextBlockProps = {
 	align?: 'left' | 'center' | 'right'
@@ -12,7 +12,7 @@ type TextBlockProps = {
 
 export default function TextBlock({ align, block, className }: TextBlockProps) {
 	return (
-		<div className={clsx(ns, align, className)}>
+		<div className={clsx(styles.root, align && styles[align], className)}>
 			{block.type === 'heading' && <h2>{block.text}</h2>}
 			{block.type === 'subheading' && <h3>{block.text}</h3>}
 			{block.type === 'description' && <p>{block.text}</p>}

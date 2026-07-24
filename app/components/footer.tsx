@@ -1,6 +1,6 @@
 import { type GlobalFooter } from '~/graphql/__generated/sdk'
+import styles from './footer.module.css'
 
-const ns = 'footer'
 
 const formatCopyrightText = (text: string) => {
 	return text.replace('{{year}}', new Date().getFullYear().toString())
@@ -12,7 +12,7 @@ type FooterProps = {
 
 export default function Footer({ data }: FooterProps) {
 	return (
-		<footer className={ns} id="global-footer">
+		<footer className={styles.root} id="global-footer">
 			<div className="container">
 				{data?.copyRightText && (
 					<p className="body-2">

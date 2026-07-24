@@ -5,8 +5,8 @@ import TypewriterHeadline, {
 import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
+import styles from './hero-section.module.css'
 
-const ns = 'hero-section'
 
 type HeroSectionProps = {
 	data?: HeroSectionType
@@ -25,22 +25,22 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 
 	return (
 		<section
-			className={clsx(ns, data?.isTopOfPage && 'is-top-of-page')}
+			className={clsx(styles.root, data?.isTopOfPage && 'is-top-of-page')}
 			id={id}
 		>
-			<div className={`${ns}__container`}>
-				<div className={`${ns}__sticky-box`}>
-					<div className={`${ns}__headline-wrap`}>
+			<div className={styles.container}>
+				<div className={styles.stickyBox}>
+					<div className={styles.headlineWrap}>
 						<h1
 							aria-label={SECOND_HEADLINE}
-							className={`${ns}__title hero-title`}
+							className={clsx(styles.title, 'hero-title')}
 						>
-							<span aria-hidden className={`${ns}__headline-text`}>
+							<span aria-hidden className={styles.headlineText}>
 								<TypewriterHeadline isPlaying={isPlaying} />
 								<span
 									className={clsx(
-										`${ns}__cursor`,
-										!isPlaying && `${ns}__cursor--paused`,
+										styles.cursor,
+										!isPlaying && styles.paused,
 									)}
 								/>
 							</span>
@@ -55,19 +55,19 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 									: 'Play typewriter animation'
 							}
 							aria-pressed={isPlaying}
-							className={`${ns}__playback-button`}
+							className={styles.playbackButton}
 							onClick={() => setIsPlaying((playing) => !playing)}
 							type="button"
 						>
 							{isPlaying ? (
 								<PauseIcon
 									aria-hidden
-									className={`${ns}__playback-icon`}
+									className={styles.playbackIcon}
 								/>
 							) : (
 								<PlayIcon
 									aria-hidden
-									className={`${ns}__playback-icon`}
+									className={styles.playbackIcon}
 								/>
 							)}
 						</button>

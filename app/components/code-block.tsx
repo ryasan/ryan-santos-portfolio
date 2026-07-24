@@ -7,8 +7,8 @@ import {
 } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useState } from 'react'
 import { useTheme } from '~/hooks'
+import styles from './code-block.module.css'
 
-const ns = 'code-block'
 
 /**
  * Triple backticks are used to define a code block in Markdown.
@@ -54,7 +54,7 @@ export default function CodeBlock({
 	// If it's a short string meant to be used inline, just return the code span
 	if (language === 'plaintext') {
 		return (
-			<code className={clsx(`${ns}__codespan`)}>{String(parsedCode)}</code>
+			<code className={clsx(styles.codespan)}>{String(parsedCode)}</code>
 		)
 	}
 
@@ -69,20 +69,20 @@ export default function CodeBlock({
 	}
 
 	return (
-		<div className={ns}>
+		<div className={styles.root}>
 			<button
-				className={`${ns}__copy-button`}
+				className={styles.copyButton}
 				onClick={copyToClipboard}
 				title="Copy to clipboard"
 			>
 				{copySuccess ? (
 					'Copied'
 				) : (
-					<CopySimpleIcon className={`${ns}__copy-icon`} />
+					<CopySimpleIcon className={styles.copyIcon} />
 				)}
 			</button>
 			<SyntaxHighlighter
-				className={`${ns}__highlighter`}
+				className={styles.highlighter}
 				codeTagProps={{
 					style: {
 						fontFamily: 'Fira Code, monospace',

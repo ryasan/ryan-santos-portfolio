@@ -1,0 +1,61 @@
+.root {
+  position: relative;
+}
+
+.copyButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  background-color: var(--background-secondary-color);
+  color: var(--content-color);
+  border-radius: 4px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.copyIcon {
+  width: 18px;
+  height: 18px;
+  fill: var(--content-color);
+}
+
+.highlighter {
+  font-size: 18px !important;
+}
+
+@media (width <= 768px) {
+  .highlighter {
+    font-size: 14px !important;
+  }
+}
+
+.highlighter pre {
+  margin: 24px 0 !important;
+}
+
+.highlighter:first-child pre {
+  margin-top: 0 !important;
+}
+
+.highlighter:last-child pre {
+  margin-bottom: 0 !important;
+}
+
+.codespan {
+  padding: 2px 4px;
+  background-color: var(--background-secondary-color);
+  color: var(--content-color);
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+@media (width <= 768px) {
+  .codespan {
+    font-size: 0.8em;
+  }
+}

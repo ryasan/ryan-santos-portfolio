@@ -1,6 +1,6 @@
 import clsx from 'clsx'
+import styles from './avatar.module.css'
 
-const ns = 'avatar'
 
 type AvatarProps = {
 	alt?: string
@@ -16,13 +16,13 @@ export default function Avatar({
 	src,
 }: AvatarProps) {
 	return (
-		<div className={clsx(ns, size, className)}>
+		<div className={clsx(styles.root, size && styles[size], className)}>
 			{src ? (
-				<img alt={alt} className={`${ns}__image`} src={src} />
+				<img alt={alt} className={styles.image} src={src} />
 			) : (
 				<img
 					alt="Default avatar picture"
-					className={`${ns}__placeholder`}
+					className={styles.placeholder}
 					src="/images/github-avatar.png"
 				/>
 			)}

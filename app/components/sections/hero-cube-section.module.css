@@ -1,0 +1,52 @@
+.root {
+  position: relative;
+  z-index: 10;
+}
+
+.stickyBox {
+  height: 100svh;
+  width: 100%;
+  opacity: 0;
+  overflow: hidden;
+  will-change: opacity;
+  backface-visibility: hidden;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.scrollToExplore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  transform: rotate(90deg);
+  transform-origin: left top;
+  position: absolute;
+  bottom: 225px;
+  left: 45px;
+  opacity: 0;
+  will-change: opacity;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+@media (width <= 768px) {
+  .scrollToExplore {
+    font-size: 12px;
+    left: 25px;
+    bottom: 175px;
+  }
+}
+
+.arrowRightIcon {
+  height: 20px;
+}
+
+@media (width <= 768px) {
+  .arrowRightIcon {
+    height: 16px;
+  }
+}

@@ -6,8 +6,8 @@ import { gsap } from 'gsap'
 import { normalizeSlide } from '~/utils'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
+import styles from './featured-articles-section.module.css'
 
-const ns = 'featured-articles-section'
 const cardAlignments = ['left', 'right', 'center']
 
 type FeaturedArticlesSectionProps = {
@@ -30,7 +30,10 @@ export default function FeaturedArticlesSection({
 			const stickyBox = stickyBoxRef.current
 			const title = titleRef.current
 			const subtitle = subtitleRef.current
-			const articles = section?.querySelectorAll(`.${ns}__card`) ?? []
+			const cardClass = styles.card
+			const activeClass = styles.active
+			const articles =
+				(cardClass && section?.querySelectorAll(`.${cardClass}`)) || []
 
 			ScrollTrigger.create({
 				anticipatePin: 1,
@@ -72,19 +75,21 @@ export default function FeaturedArticlesSection({
 			)
 
 			articles.forEach((article) => {
+				if (!activeClass) return
+
 				ScrollTrigger.create({
 					end: 'bottom center-=100px',
 					onEnter: () => {
-						article.classList.add('active')
+						article.classList.add(activeClass)
 					},
 					onEnterBack: () => {
-						article.classList.add('active')
+						article.classList.add(activeClass)
 					},
 					onLeave: () => {
-						article.classList.remove('active')
+						article.classList.remove(activeClass)
 					},
 					onLeaveBack: () => {
-						article.classList.remove('active')
+						article.classList.remove(activeClass)
 					},
 					start: 'top center+=100px',
 					trigger: article,
@@ -95,23 +100,23 @@ export default function FeaturedArticlesSection({
 	)
 
 	return (
-		<section className={ns} id={id} ref={sectionRef}>
+		<section className={styles.root} id={id} ref={sectionRef}>
 			<div className="container">
-				<div className={`${ns}__sticky-box`} ref={stickyBoxRef}>
+				<div className={styles.stickyBox} ref={stickyBoxRef}>
 					{data?.title && (
-						<h2 className={clsx(`${ns}__title`, 'h1 mb-32')} ref={titleRef}>
+						<h2 className={clsx(styles.title, 'h1 mb-32')} ref={titleRef}>
 							{data.title}
 						</h2>
 					)}
 					{data?.subtitle && (
-						<p className={clsx(`${ns}__subtitle`, 'body-1')} ref={subtitleRef}>
+						<p className={clsx(styles.subtitle, 'body-1')} ref={subtitleRef}>
 							{data.subtitle}
 						</p>
 					)}
 				</div>
 
 				{data?.featuredArticlesCollection && (
-					<div className={`${ns}__list`}>
+					<div className={styles.list}>
 						{data.featuredArticlesCollection.items
 							.map(normalizeSlide)
 							.map((article, index) => {
@@ -121,31 +126,34 @@ export default function FeaturedArticlesSection({
 
 								return (
 									<div
-										className={clsx(`${ns}__container`, cardAlignment)}
+										className={clsx(
+											styles.container,
+											styles[cardAlignment],
+										)}
 										key={article.id}
 									>
-										<div className={`${ns}__card`}>
-											<div className={`${ns}__image`}>
+										<div className={styles.card}>
+											<div className={styles.image}>
 												{article?.image && (
 													<img
 														alt={article.image?.description || ''}
-														className={`${ns}__image`}
+														className={styles.image}
 														src={article.image?.url || ''}
 													/>
 												)}
 											</div>
-											<div className={`${ns}__content`}>
+											<div className={styles.content}>
 												{article.title && (
-													<h3 className={`${ns}__card-title`}>
+													<h3 className={styles.cardTitle}>
 														{article.title}
 													</h3>
 												)}
 												{article.caption && (
-													<p className={`${ns}__caption`}>{article.caption}</p>
+													<p className={styles.caption}>{article.caption}</p>
 												)}
 												{article.description && (
 													<RichText
-														className={`${ns}__description`}
+														className={styles.description}
 														data={article.description}
 													/>
 												)}
@@ -156,7 +164,7 @@ export default function FeaturedArticlesSection({
 																? `View project: ${article.title}`
 																: 'View project'
 														}
-														className={clsx(`${ns}__link`, 'button')}
+														className={clsx(styles.link, 'button')}
 														href={article.link || ''}
 														rel="noopener noreferrer"
 														target="_blank"

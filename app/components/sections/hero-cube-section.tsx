@@ -17,8 +17,8 @@ import { type HeroCubeSection as HeroCubeSectionType } from '~/graphql/__generat
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
 import { useTheme } from '~/hooks/use-theme'
+import styles from './hero-cube-section.module.css'
 
-const ns = 'hero-cube-section'
 
 type CubeProps = {
 	rotationProgress: React.MutableRefObject<number>
@@ -207,11 +207,11 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 	)
 
 	return (
-		<section className={ns} id={id} ref={containerRef}>
+		<section className={styles.root} id={id} ref={containerRef}>
 			{/* The trigger element needs to fill the viewport to start */}
-			<div className={`${ns}__sticky-box`} ref={stickyBoxRef}>
+			<div className={styles.stickyBox} ref={stickyBoxRef}>
 				<ClientOnly>
-					<Canvas className={`${ns}__canvas`}>
+					<Canvas className={styles.canvas}>
 						<fog args={[backgroundColor, 5, 15]} attach="fog" />
 						<PerspectiveCamera
 							makeDefault
@@ -235,11 +235,11 @@ export default function HeroCubeSection({ data, id }: HeroCubeSectionProps) {
 
 				{/* Scroll to explore button */}
 				<div
-					className={clsx(`${ns}__scroll-to-explore`, 'body')}
+					className={clsx(styles.scrollToExplore, 'body')}
 					ref={scrollToExploreRef}
 				>
 					<span>SCROLL TO EXPLORE</span>
-					<ArrowRightIcon className={`${ns}__arrow-right-icon`} />
+					<ArrowRightIcon className={styles.arrowRightIcon} />
 				</div>
 			</div>
 		</section>

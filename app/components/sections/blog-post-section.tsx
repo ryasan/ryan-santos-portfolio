@@ -14,9 +14,9 @@ import { type Blog } from '~/graphql/__generated/sdk'
 import { useGSAP } from '@gsap/react'
 import { useLocation, useNavigate } from '@remix-run/react'
 import { useRef, useState, lazy, Suspense } from 'react'
+import styles from './blog-post-section.module.css'
 
 const Markdown = lazy(() => import('~/components/markdown'))
-const ns = 'blog-post-section'
 
 type BlogPostSectionProps = {
 	data?: Blog
@@ -74,27 +74,27 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 	}, [])
 
 	return (
-		<section className={ns} ref={sectionRef}>
-			<div className={`${ns}__header`}>
+		<section className={styles.root} ref={sectionRef}>
+			<div className={styles.header}>
 				<div className="container">
 					<button
-						className={`${ns}__link-box`}
+						className={styles.linkBox}
 						onClick={() => navigate('/blog')}
 					>
-						<ArrowLeftIcon className={`${ns}__icon`} />
-						<span className={`${ns}__link`}>Back</span>
+						<ArrowLeftIcon className={styles.icon} />
+						<span className={styles.link}>Back</span>
 					</button>
 
 					{data?.title && <h1 className="mb-32 h4">{data?.title}</h1>}
 
-					<div className={`${ns}__author`}>
+					<div className={styles.author}>
 						<Avatar
 							alt={name}
 							size="small"
 							src={data?.author?.avatar?.url}
 						/>
 						{(name || data?.publishDate) && (
-							<div className={`${ns}__author-info`}>
+							<div className={styles.authorInfo}>
 								{name && <h5 className="h5">{name}</h5>}
 								{(data?.publishDate ||
 									data?.blogBodyMarkdown ||
@@ -115,7 +115,7 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 
 			{data?.openGraphImage?.url && (
 				<div className="container">
-					<div className={`${ns}__hero-image`}>
+					<div className={styles.heroImage}>
 						<img
 							alt={data?.openGraphImage?.description || ''}
 							src={data?.openGraphImage?.url}
@@ -125,9 +125,9 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 			)}
 
 			<div className="container">
-				<div className={`${ns}__layout`}>
+				<div className={styles.layout}>
 					{(data?.blogBodyMarkdown || data?.blogBody?.json) && (
-						<div className={`${ns}__blog-body`}>
+						<div className={styles.blogBody}>
 							{data?.blogBodyMarkdown ? (
 								<ClientOnly>
 									<Suspense fallback={null}>
@@ -140,35 +140,35 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 						</div>
 					)}
 
-					<div className={`${ns}__share-actions`}>
+					<div className={styles.shareActions}>
 						<button
-							className={`${ns}__share-copy-button`}
+							className={styles.shareCopyButton}
 							onClick={copyToClipboard}
 							title="Share this article via link"
 						>
 							<span>{copySuccess ? 'Copied' : 'Copy Link'}</span>
-							<CopySimpleIcon className={`${ns}__share-icon`} />
+							<CopySimpleIcon className={styles.shareIcon} />
 						</button>
 						<button
-							className={`${ns}__share-button`}
+							className={styles.shareButton}
 							onClick={shareOnTwitter}
 							title="Share this article on Twitter"
 						>
-							<TwitterIcon className={`${ns}__share-icon`} />
+							<TwitterIcon className={styles.shareIcon} />
 						</button>
 						<button
-							className={`${ns}__share-button`}
+							className={styles.shareButton}
 							onClick={shareOnLinkedIn}
 							title="Share this article on LinkedIn"
 						>
-							<LinkedinIcon className={`${ns}__share-icon`} />
+							<LinkedinIcon className={styles.shareIcon} />
 						</button>
 						<button
-							className={`${ns}__share-button`}
+							className={styles.shareButton}
 							onClick={shareOnFacebook}
 							title="Share this article on Facebook"
 						>
-							<FacebookIcon className={`${ns}__share-icon`} />
+							<FacebookIcon className={styles.shareIcon} />
 						</button>
 					</div>
 				</div>

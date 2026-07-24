@@ -1,0 +1,47 @@
+.root {
+  display: block;
+}
+
+.box {
+  padding: 40px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (width <= 768px) {
+  .box {
+    flex-direction: column;
+  }
+}
+
+.socialList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 600px;
+  width: 100%;
+}
+
+@media (width <= 768px) {
+  .socialList {
+    gap: 16px;
+    padding-top: 32px;
+  }
+}
+
+.socialItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+@media (width <= 768px) {
+  .socialItem {
+    gap: 16px;
+  }
+}

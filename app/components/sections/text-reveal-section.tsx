@@ -7,8 +7,8 @@ import {
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
+import styles from './text-reveal-section.module.css'
 
-const ns = 'text-reveal-section'
 
 type TextRevealSectionProps = {
 	data?: TextRevealSectionType
@@ -99,9 +99,9 @@ export default function TextRevealSection({
 	}, [])
 
 	return (
-		<section className={ns} id={id} ref={sectionRef}>
+		<section className={styles.root} id={id} ref={sectionRef}>
 			<div className="container">
-				<div className={`${ns}__box`}>
+				<div className={styles.box}>
 					<div ref={blockListRef}>
 						{data?.textRevealListCollection?.items?.map(
 							(block: TextRevealItem | null, index: number) => {
@@ -110,7 +110,7 @@ export default function TextRevealSection({
 									<TextBlock
 										align="center"
 										block={block}
-										className={`${ns}__text-block`}
+										className={styles.textBlock}
 										index={index}
 										key={index}
 									/>

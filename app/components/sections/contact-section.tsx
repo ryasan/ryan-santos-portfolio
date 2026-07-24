@@ -7,8 +7,8 @@ import {
 	LinkedinIcon,
 } from '~/components/icons'
 import { useState } from 'react'
+import styles from './contact-section.module.css'
 
-const ns = 'contact-section'
 
 const icons = {
 	codepen: CodepenIcon,
@@ -18,7 +18,7 @@ const icons = {
 
 const getIcon = (icon?: string) => {
 	const Icon = icons[icon?.toLowerCase() as keyof typeof icons]
-	return Icon ? <Icon aria-hidden="true" className={`${ns}__icon`} /> : null
+	return Icon ? <Icon aria-hidden="true" className={styles.icon} /> : null
 }
 
 type ContactSectionProps = {
@@ -38,23 +38,23 @@ export default function ContactSection({ data, id }: ContactSectionProps) {
 	}
 
 	return (
-		<section className={ns} id={id}>
+		<section className={styles.root} id={id}>
 			<div className="container">
-				<div className={`${ns}__box`}>
+				<div className={styles.box}>
 					{data?.title && (
-						<h2 className={clsx(`${ns}__title`, 'h1 mb-56')}>{data.title}</h2>
+						<h2 className={clsx(styles.title, 'h1 mb-56')}>{data.title}</h2>
 					)}
 					{data?.email && (
 						<button
-							className={clsx(`${ns}__copy-button`, 'button')}
+							className={clsx(styles.copyButton, 'button')}
 							onClick={copyToClipboard}
 							title="Copy to clipboard"
 						>
 							{copySuccess ? 'email copied!' : data.email}
-							<CopySimpleIcon className={`${ns}__copy-icon`} />
+							<CopySimpleIcon className={styles.copyIcon} />
 						</button>
 					)}
-					<div className={`${ns}__social-links`}>
+					<div className={styles.socialLinks}>
 						{data?.socialLinksCollection?.items?.map((social) => {
 							if (!social?.url || !social?.label) return null
 

@@ -1,0 +1,111 @@
+.root {
+  min-height: 100lvh;
+  padding: 118px 0;
+}
+
+.header {
+  will-change: opacity;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+}
+
+@media (width <= 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.filtersColumn {
+  align-self: stretch;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-self: start;
+}
+
+@media (width <= 768px) {
+  .filters {
+    display: none;
+  }
+}
+
+.title {
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 50px;
+  z-index: 1;
+  position: relative;
+  will-change: opacity, transform;
+}
+
+.title strong {
+  font-weight: 700;
+}
+
+.title em {
+  color: var(--content-color-2);
+  font-weight: 600;
+}
+
+.wordMask {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  vertical-align: bottom;
+}
+
+.word {
+  display: inline-block;
+}
+
+.char {
+  display: inline-block;
+  will-change: transform;
+  transform: translateY(110%);
+}
+
+.tagFilters {
+  will-change: opacity, transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.tagFilters button {
+  white-space: nowrap;
+  text-transform: lowercase;
+  border-width: 1px;
+}
+
+@media (width <= 768px) {
+  .tagFilters {
+    justify-content: start;
+  }
+}
+
+.postList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+@media (width <= 768px) {
+  .postList {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.postItem {
+  will-change: opacity, transform;
+}

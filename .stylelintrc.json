@@ -1,11 +1,7 @@
-{ 
-	"extends": ["stylelint-config-standard-scss"],
+{
+	"extends": ["stylelint-config-standard"],
 	"rules": {
-		"scss/no-global-function-names": null,
 		"selector-class-pattern": null,
 		"no-descending-specificity": null
-	},
-	"ignoreFiles": [
-		"app/styles/_reset.scss"
-	]
+	}
 }

@@ -1,0 +1,15 @@
+.root {
+  display: block;
+}
+
+.root.left {
+  text-align: left;
+}
+
+.root.center {
+  text-align: center;
+}
+
+.root.right {
+  text-align: right;
+}

@@ -5,8 +5,8 @@ import { normalizeSlide } from '~/utils'
 import { type ArticleGridSection as ArticleGridSectionType } from '~/graphql/__generated/sdk'
 import { useEffect, useState } from 'react'
 import { useMatchMedia } from '~/hooks'
+import styles from './article-grid-section.module.css'
 
-const ns = 'article-grid-section'
 
 type ArticleGridSectionProps = {
 	data?: ArticleGridSectionType
@@ -25,17 +25,17 @@ export default function ArticleGridSection({
 	}, [isMatching])
 
 	return (
-		<section className={ns} id={id}>
+		<section className={styles.root} id={id}>
 			<div className="container">
-				<div className={`${ns}__header`}>
+				<div className={styles.header}>
 					<h2 className="h1">{data?.title}</h2>
 					{!isMatching && (
-						<div className={`${ns}__controls`}>
+						<div className={styles.controls}>
 							<button
 								aria-label="Switch to list view"
 								className={clsx(
-									`${ns}__control-button`,
-									view === 'list' && `${ns}__control-button--active`,
+									styles.controlButton,
+									view === 'list' && styles.active,
 								)}
 								onClick={() => setView('list')}
 								title="List view"
@@ -45,8 +45,8 @@ export default function ArticleGridSection({
 							<button
 								aria-label="Switch to grid view"
 								className={clsx(
-									`${ns}__control-button`,
-									view === 'grid' && `${ns}__control-button--active`,
+									styles.controlButton,
+									view === 'grid' && styles.active,
 								)}
 								onClick={() => setView('grid')}
 								title="Grid view"
@@ -59,9 +59,9 @@ export default function ArticleGridSection({
 
 				<div
 					className={clsx(
-						`${ns}__article-list`,
-						view === 'list' && `${ns}__article-list--list`,
-						view === 'grid' && `${ns}__article-list--grid`,
+						styles.articleList,
+						view === 'list' && styles.list,
+						view === 'grid' && styles.grid,
 					)}
 				>
 					{data?.articlesCollection?.items

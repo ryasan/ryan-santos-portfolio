@@ -6,8 +6,8 @@ import { LIGHT_THEME, DARK_THEME } from '~/utils/constants'
 import { Link as RemixLink, NavLink } from '@remix-run/react'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
+import styles from './header.module.css'
 
-const ns = 'header'
 
 type HeaderProps = {
 	data?: GlobalHeader
@@ -28,26 +28,30 @@ export default function Header({ data }: HeaderProps) {
 	}, [])
 
 	return (
-		<header className={ns} ref={headerRef}>
+		<header className={styles.root} ref={headerRef}>
 			<div className="container">
-				<div className={`${ns}__inner`}>
-					<RemixLink aria-label="Home page" className={`${ns}__logo`} to="/">
+				<div className={styles.inner}>
+					<RemixLink aria-label="Home page" className={styles.logo} to="/">
 						<div data-hide-on-theme={DARK_THEME}>
-							<span className={`${ns}__logo-text`}>Ryan.</span>
+							<span className={styles.logoText}>Ryan.</span>
 						</div>
 						<div data-hide-on-theme={LIGHT_THEME}>
-							<span className={`${ns}__logo-text`}>Ryan.</span>
+							<span className={styles.logoText}>Ryan.</span>
 						</div>
 					</RemixLink>
-					<div className={`${ns}__navigation-box`}>
-						<nav className={`${ns}__navigation`}>
+					<div className={styles.navigationBox}>
+						<nav className={styles.navigation}>
 							{data?.menuItemsCollection?.items?.map((item) => {
 								if (!item) return null
 
 								return (
 									<NavLink
 										className={({ isActive }) =>
-											clsx(`${ns}__link`, 'link', isActive && 'active')
+											clsx(
+												styles.link,
+												'link',
+												isActive && styles.active,
+											)
 										}
 										key={item.label}
 										to={item.internalPage?.slug || item.url || ''}

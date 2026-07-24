@@ -9,8 +9,8 @@ import {
 } from '~/components/icons'
 import { type ComponentType, type SVGProps } from 'react'
 import clsx from 'clsx'
+import styles from './about-section.module.css'
 
-const ns = 'about-section'
 
 const socialLinks = [
 	{
@@ -108,39 +108,39 @@ type AboutSectionProps = {
 export default function AboutSection({ id }: AboutSectionProps) {
 	return (
 		<section
-			aria-labelledby={`${ns}-title`}
-			className={ns}
+			aria-labelledby="about-section-title"
+			className={styles.root}
 			id={id}
 		>
 			<div className="container">
-				<div className={`${ns}__heading`}>
-					<h2 className={`${ns}__title`} id={`${ns}-title`}>
+				<div className={styles.heading}>
+					<h2 className={styles.title} id="about-section-title">
 						About Me
 					</h2>
-					<span aria-hidden className={`${ns}__title-bar`} />
+					<span aria-hidden className={styles.titleBar} />
 				</div>
 
-				<div className={`${ns}__bio`}>
-					<div className={`${ns}__avatar-wrap`}>
+				<div className={styles.bio}>
+					<div className={styles.avatarWrap}>
 						<img
 							alt=""
-							className={`${ns}__avatar`}
+							className={styles.avatar}
 							height={198}
 							src="/images/ryan-santos-avatar.png"
 							width={198}
 						/>
 					</div>
 
-					<div className={`${ns}__bio-content`}>
-						<h3 className={`${ns}__name`}>Ryan Santos</h3>
-						<p className={`${ns}__bio-text`}>
+					<div className={styles.bioContent}>
+						<h3 className={styles.name}>Ryan Santos</h3>
+						<p className={styles.bioText}>
 							I&apos;m a Frontend Engineer with a passion for building digital
 							products that not only look great but also keep real usability at its core. My
 							career has mostly been in the digital marketing and e-commerce
 							space. I tinker around with projects in my quiet home office in Los
 							Angeles, California.
 						</p>
-						<ul className={`${ns}__socials`}>
+						<ul className={styles.socials}>
 							{socialLinks.map((link) => {
 								const isMail = link.href.startsWith('mailto:')
 
@@ -148,7 +148,7 @@ export default function AboutSection({ id }: AboutSectionProps) {
 									<li key={link.label}>
 										<a
 											aria-label={link.label}
-											className={`${ns}__social-link`}
+											className={styles.socialLink}
 											href={link.href}
 											{...(isMail
 												? {}
@@ -159,7 +159,7 @@ export default function AboutSection({ id }: AboutSectionProps) {
 										>
 											<link.icon
 												aria-hidden
-												className={`${ns}__social-icon`}
+												className={styles.socialIcon}
 												height={24}
 												width={24}
 											/>
@@ -171,28 +171,28 @@ export default function AboutSection({ id }: AboutSectionProps) {
 					</div>
 				</div>
 
-				<ul className={`${ns}__skill-grid`}>
+				<ul className={styles.skillGrid}>
 					{skills.map((skill) => {
 						const Icon = skill.icon
 						return (
-							<li className={`${ns}__skill-card`} key={skill.title}>
+							<li className={styles.skillCard} key={skill.title}>
 								<Icon
 									aria-hidden
-									className={`${ns}__skill-icon`}
+									className={styles.skillIcon}
 									height={30}
 									width={29}
 								/>
-								<div aria-hidden className={`${ns}__skill-divider`} />
-								<div className={`${ns}__skill-text`}>
+								<div aria-hidden className={styles.skillDivider} />
+								<div className={styles.skillText}>
 									<p
 										className={clsx(
-											`${ns}__skill-title`,
-											skill.uppercase && `${ns}__skill-title--upper`,
+											styles.skillTitle,
+											skill.uppercase && styles.upper,
 										)}
 									>
 										{skill.title}
 									</p>
-									<p className={`${ns}__skill-description`}>
+									<p className={styles.skillDescription}>
 										{skill.description}
 									</p>
 								</div>
@@ -201,13 +201,13 @@ export default function AboutSection({ id }: AboutSectionProps) {
 					})}
 				</ul>
 
-				<ul className={`${ns}__experience-grid`}>
+				<ul className={styles.experienceGrid}>
 					{experienceColumns.map((column) => (
-						<li className={`${ns}__experience-card`} key={column.title}>
-							<div aria-hidden className={`${ns}__experience-divider`} />
-							<div className={`${ns}__experience-content`}>
-								<h3 className={`${ns}__experience-title`}>{column.title}</h3>
-								<ul className={`${ns}__experience-list`}>
+						<li className={styles.experienceCard} key={column.title}>
+							<div aria-hidden className={styles.experienceDivider} />
+							<div className={styles.experienceContent}>
+								<h3 className={styles.experienceTitle}>{column.title}</h3>
+								<ul className={styles.experienceList}>
 									{column.items.map((item) => (
 										<li key={item}>{item}</li>
 									))}

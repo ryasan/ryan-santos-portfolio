@@ -3,8 +3,8 @@ import clsx from 'clsx'
 import { type Document, BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import CodeBlock from '~/components/code-block'
+import styles from './rich-text.module.css'
 
-const ns = 'rich-text'
 
 type RichTextProps = {
 	className?: string
@@ -36,7 +36,7 @@ const renderOptions = {
 			<blockquote>{children}</blockquote>
 		),
 		[BLOCKS.TABLE]: (node: any, children: React.ReactNode) => (
-			<div className={`${ns}__table-wrapper`}>
+			<div className={styles.tableWrapper}>
 				<table>
 					<tbody>{children}</tbody>
 				</table>
@@ -69,7 +69,7 @@ export default function RichText({ className, data }: RichTextProps) {
 	}
 
 	return (
-		<div className={clsx(ns, className)}>
+		<div className={clsx(styles.root, className)}>
 			{documentToReactComponents(data, renderOptions)}
 		</div>
 	)

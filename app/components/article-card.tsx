@@ -2,8 +2,8 @@ import clsx from 'clsx'
 import { Link as RemixLink, useNavigate } from '@remix-run/react'
 import { isExternalLink } from '~/utils'
 import { type Asset } from '~/graphql/__generated/sdk'
+import styles from './article-card.module.css'
 
-const ns = 'article-card'
 
 export type NormalizedArticleCard = {
 	description?: string | null
@@ -46,45 +46,45 @@ export default function ArticleCard({
 	return (
 		<Component
 			className={clsx(
-				ns,
-				isBig && 'big-card',
-				horizontal && 'horizontal',
+				styles.root,
+				isBig && styles.bigCard,
+				horizontal && styles.horizontal,
 				className,
 			)}
 			target={isExternal ? '_blank' : undefined}
 			to={data.link || ''}
 		>
-			<div className={`${ns}__image`}>
+			<div className={styles.image}>
 				{data.image && (
 					<img
 						alt={data.image?.description || ''}
-						className={`${ns}__image`}
+						className={styles.image}
 						src={data.image?.url || ''}
 					/>
 				)}
 			</div>
-			<div className={`${ns}__content`}>
+			<div className={styles.content}>
 				{data.eyebrow && (
-					<p className={clsx(`${ns}__eyebrow`, 'badge mb-12')}>
+					<p className={clsx(styles.eyebrow, 'badge mb-12')}>
 						{data.eyebrow}
 					</p>
 				)}
 				{data.title && (
-					<h3 className={clsx(`${ns}__title`, 'h6 mb-12')}>{data.title}</h3>
+					<h3 className={clsx(styles.title, 'h6 mb-12')}>{data.title}</h3>
 				)}
 				{data.description && (horizontal || forceDescription) && (
-					<p className={clsx(`${ns}__description`, 'body mb-20')}>
+					<p className={clsx(styles.description, 'body mb-20')}>
 						{data.description}
 					</p>
 				)}
 				{data.tags && (
-					<div className={`${ns}__tags`}>
+					<div className={styles.tags}>
 						{data.tags.map((tag) => {
 							if (!tag) return null
 
 							return (
 								<button
-									className={clsx(`${ns}__tag`, 'link badge')}
+									className={clsx(styles.tag, 'link badge')}
 									key={tag}
 									onClick={(e) => {
 										e.preventDefault()

@@ -5,8 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useEffect, useRef, useState } from 'react'
+import styles from './jump-links.module.css'
 
-const ns = 'jump-links'
 const HEADER_HEIGHT = '68px'
 
 type JumpLinksProps = {
@@ -103,7 +103,7 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 	}, [activeSectionId])
 
 	return (
-		<nav aria-label="Page sections" className={ns} ref={jumpLinksRef}>
+		<nav aria-label="Page sections" className={styles.root} ref={jumpLinksRef}>
 			{sectionsWithJumpLinkLabels.map((section) => {
 				const sectionId = getSectionId(section)
 				if (!section?.sys?.id || !sectionId) return null
@@ -114,15 +114,18 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 				return (
 					<a
 						aria-current={isActive ? 'true' : undefined}
-						className={clsx(`${ns}__link`, isActive && 'active')}
+						className={clsx(
+							styles.link,
+							isActive && styles.active,
+						)}
 						href={`#${sectionId}`}
 						key={section.sys.id}
 						onClick={(e) => handleClick(e, section)}
 						style={{ ['--label-len' as string]: label.length }}
 					>
-						<span className={`${ns}__inner`}>
+						<span className={styles.inner}>
 							{label}
-							<span aria-hidden className={`${ns}__tick`} />
+							<span aria-hidden className={styles.tick} />
 						</span>
 					</a>
 				)

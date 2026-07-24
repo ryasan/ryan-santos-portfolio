@@ -3,8 +3,8 @@ import { gsap } from 'gsap'
 import { type MarqueeSection as MarqueeSectionType } from '~/graphql/__generated/sdk'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
+import styles from './marquee-section.module.css'
 
-const ns = 'marquee-section'
 
 const mockItems = [
 	{ delimiter: 'purpose', text: 'STRATEGIC' },
@@ -22,7 +22,7 @@ export default function MarqueeSection({ id }: MarqueeSectionProps) {
 
 	useGSAP(
 		() => {
-			const tracks = gsap.utils.toArray<HTMLElement>(`.${ns}__track`)
+			const tracks = gsap.utils.toArray<HTMLElement>(`.${styles.track}`)
 
 			tracks.forEach((track, index) => {
 				const isReverse = index % 2 !== 0
@@ -49,11 +49,11 @@ export default function MarqueeSection({ id }: MarqueeSectionProps) {
 	)
 
 	return (
-		<section className={ns} id={id} ref={sectionRef}>
+		<section className={styles.root} id={id} ref={sectionRef}>
 			{mockItems.map((item, rowIndex) => (
-				<div className={`${ns}__marquee`} key={rowIndex}>
-					<div className={`${ns}__track`}>
-						<div className={`${ns}__item`}>
+				<div className={styles.marquee} key={rowIndex}>
+					<div className={styles.track}>
+						<div className={styles.item}>
 							{/* Create repeated array of the specific item for this row */}
 							{Array(8)
 								.fill(item)
@@ -64,14 +64,14 @@ export default function MarqueeSection({ id }: MarqueeSectionProps) {
 									>
 										<span
 											className={clsx(
-												`${ns}__text`,
-												`${ns}__text--outline`,
+												styles.text,
+												clsx(styles.text, styles.outline),
 												'h1',
 											)}
 										>
 											{repeatedItem.text}
 										</span>
-										<span className={`${ns}__delimiter`}>
+										<span className={styles.delimiter}>
 											{repeatedItem.delimiter}
 										</span>
 									</div>

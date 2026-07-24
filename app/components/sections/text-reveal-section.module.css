@@ -1,0 +1,27 @@
+.root {
+  padding: 120px 0;
+  min-height: 100lvh;
+}
+
+.box {
+  margin: 0 auto;
+  max-width: 850px;
+  position: relative;
+}
+
+.textBlock {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 250px 0;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.textBlock:first-child {
+  margin-top: 0;
+}
+
+.textBlock:last-child {
+  margin-bottom: 0;
+}

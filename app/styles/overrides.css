@@ -1,0 +1,15 @@
+/* stylelint-disable selector-class-pattern */
+
+/* Locomotive Scroll */
+.c-scrollbar {
+	transform: none !important;
+	transition: none !important;
+}
+
+.c-scrollbar_thumb {
+	opacity: 1;
+	z-index: var(--z-index-above-all);
+	mix-blend-mode: difference;
+	background: var(--content-color);
+	width: 5px;
+}

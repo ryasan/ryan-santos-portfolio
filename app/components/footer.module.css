@@ -1,0 +1,23 @@
+.root {
+  padding: 24px 40px;
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 250;
+}
+
+.root .container p {
+  white-space: pre-wrap;
+}
+
+@media (width <= 768px) {
+  .root {
+    padding-left: 0;
+  }
+
+  .root .container {
+    margin-left: 0 !important;
+  }
+}

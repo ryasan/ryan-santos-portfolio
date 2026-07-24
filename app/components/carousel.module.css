@@ -1,0 +1,35 @@
+.root {
+  display: block;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.slider {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.slider.visible {
+  opacity: 1;
+}
+
+.prev,
+.next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  /* keen-slider slide wrapper */
+}

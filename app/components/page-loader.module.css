@@ -1,0 +1,64 @@
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 250;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  overflow: hidden;
+  clip-path: polygon(0% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.root * {
+  transition: none !important;
+}
+
+.half {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-color: var(--content-color);
+  z-index: 1;
+}
+
+.half[data-side="left"] {
+  left: 0;
+}
+
+.half[data-side="right"] {
+  right: 0;
+}
+
+.percentage {
+  position: relative;
+  z-index: 2;
+  font-family: Manrope, sans-serif;
+  font-size: 175px;
+  font-weight: 500;
+  color: var(--background-secondary-color);
+  letter-spacing: -0.04em;
+}
+
+@media (width <= 768px) {
+  .percentage {
+    font-size: 100px;
+  }
+}
+
+.cutLine {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background-color: var(--background-primary-color);
+  z-index: 3;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top;
+  opacity: 0.6;
+}

@@ -18,7 +18,7 @@ import {
 } from '@remix-run/node'
 import ClientHintScript, { getHints } from '~/components/client-hint-script'
 import GlobalLayout from '~/components/global-layout'
-import mainStyles from '~/styles/main.css?url'
+import globalStyles from '~/styles/global.css?url'
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { generateCacheHeaders, mergeHeaders } from '~/utils'
@@ -30,7 +30,7 @@ import { useGSAP } from '@gsap/react'
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP)
 
 export const links: LinksFunction = () => {
-	return [{ href: mainStyles, rel: 'stylesheet' }]
+	return [{ href: globalStyles, rel: 'stylesheet' }]
 }
 
 export const headers: HeadersFunction = mergeHeaders
