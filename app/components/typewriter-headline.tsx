@@ -77,11 +77,11 @@ export default function TypewriterHeadline({
 	return (
 		<TypeAnimation
 			cursor={false}
-			deletionSpeed={50}
+			deletionSpeed={30}
 			preRenderFirstString={false}
 			repeat={Infinity}
 			sequence={sequenceRef.current}
-			speed={40}
+			speed={20}
 			wrapper="span"
 		/>
 	)
