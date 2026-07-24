@@ -137,7 +137,7 @@ export default function AboutSection({ id }: AboutSectionProps) {
 							I&apos;m a Frontend Engineer with a passion for building digital
 							products that are both functional and aesthetically pleasing. My
 							career has mostly been in the digital marketing and e-commerce
-							industry. I code up projects in my quiet home office in Los
+							industry. I work on projects in my quiet home office in Los
 							Angeles, California.
 						</p>
 						<ul className={`${ns}__socials`}>
