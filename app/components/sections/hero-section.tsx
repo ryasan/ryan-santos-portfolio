@@ -1,10 +1,12 @@
 import { PauseIcon, PlayIcon } from '~/components/icons'
+import TypewriterHeadline, {
+	SECOND_HEADLINE,
+} from '~/components/typewriter-headline'
 import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { useEffect, useRef, useState } from 'react'
-import { useGSAP } from '@gsap/react'
 import clsx from 'clsx'
 import gsap from 'gsap'
-import TypewriterHeadline from '~/components/typewriter-headline'
+import { useGSAP } from '@gsap/react'
 
 const ns = 'hero-section'
 
@@ -16,6 +18,7 @@ type HeroSectionProps = {
 export default function HeroSection({ data, id }: HeroSectionProps) {
 	const [isPlaying, setIsPlaying] = useState(true)
 	const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+	const stickyBoxRef = useRef<HTMLDivElement>(null)
 	const titleRef = useRef<HTMLHeadingElement>(null)
 	const playbackButtonRef = useRef<HTMLButtonElement>(null)
 
@@ -27,18 +30,11 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 
 	useGSAP(
 		() => {
-			const title = titleRef.current
-			const playbackButton = playbackButtonRef.current
-			
-			if (!title || !playbackButton) return
+			const stickyBox = stickyBoxRef.current
 
-			gsap.to(title, {
-				duration: 1,
-				ease: 'power2.out',
-				opacity: 1,
-			})
+			if (!stickyBox) return
 
-			gsap.to(playbackButton, {
+			gsap.to(stickyBox, {
 				duration: 1,
 				ease: 'power2.out',
 				opacity: 1,
@@ -53,18 +49,15 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 			id={id}
 		>
 			<div className={`${ns}__container`}>
-				<div className={`${ns}__sticky-box`}>
+				<div className={`${ns}__sticky-box`} ref={stickyBoxRef}>
 					<div className={`${ns}__headline-wrap`}>
 						<h1
-							aria-label="Hi, My Name is Ryan Santos"
+							aria-label={SECOND_HEADLINE}
 							className={`${ns}__title`}
 							ref={titleRef}
 						>
-							<span className={`${ns}__headline-text`}>
-								Hi, My Name is Ryan
-							</span>
 							<span aria-hidden className={`${ns}__headline-text`}>
-								I Build <TypewriterHeadline isPlaying={isPlaying} />
+								<TypewriterHeadline isPlaying={isPlaying} />
 								<span
 									className={clsx(
 										`${ns}__cursor`,
@@ -73,6 +66,11 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 								/>
 							</span>
 						</h1>
+					</div>
+
+					<div className={`${ns}__scroll-indicator`}>
+						<span className={`${ns}__scroll-indicator-icon`}>↓</span>
+						<span className={`${ns}__scroll-indicator-text`}>Scroll</span>
 					</div>
 
 					{!prefersReducedMotion && (
