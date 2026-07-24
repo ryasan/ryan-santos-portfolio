@@ -1777,6 +1777,12 @@ em {
   flex-direction: column;
   gap: 8px;
 }
+@media (max-width: 768px) {
+  .hero-section__scroll-indicator {
+    bottom: 24px;
+    font-size: 12px;
+  }
+}
 .hero-section__scroll-indicator-text {
   display: block;
   width: 100%;
