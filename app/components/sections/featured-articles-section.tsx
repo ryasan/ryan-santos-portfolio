@@ -73,7 +73,7 @@ export default function FeaturedArticlesSection({
 
 			articles.forEach((article) => {
 				ScrollTrigger.create({
-					end: 'bottom center-=100px',
+					end: 'bottom center',
 					onEnter: () => {
 						article.classList.add('active')
 					},
@@ -86,7 +86,7 @@ export default function FeaturedArticlesSection({
 					onLeaveBack: () => {
 						article.classList.remove('active')
 					},
-					start: 'top center+=100px',
+					start: 'top center',
 					trigger: article,
 				})
 			})

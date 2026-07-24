@@ -105,18 +105,9 @@ $ns: '.featured-articles-section';
 		z-index: 1;
 		background-color: var(--background-primary-color);
 
-		@media (min-width: $tablet + 1px) {
-			&:hover,
-			&:focus-within {
-				@include card-active-state;
-			}
-		}
-
-		@media (max-width: $tablet) {
-			&.active,
-			&:focus-within {
-				@include card-active-state;
-			}
+		&.active,
+		&:focus-within {
+			@include card-active-state;
 		}
 	}
 
