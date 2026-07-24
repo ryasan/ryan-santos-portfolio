@@ -42,8 +42,8 @@ $ns: '.header';
 	&__navigation {
 		display: flex;
 		align-items: center;
-		gap: $space-16;
-		margin-right: $space-64;
+		gap: 16px;
+		margin-right: 64px;
 	}
 
 	&__link {
@@ -78,10 +78,10 @@ $ns: '.header';
 	}
 
 	@media (max-width: $tablet) {
-		padding: $space-24 0;
+		padding: 24px 0;
 
 		&__navigation {
-			margin-right: $space-32;
+			margin-right: 32px;
 		}
 	}
 }

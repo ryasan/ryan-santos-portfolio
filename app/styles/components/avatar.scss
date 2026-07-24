@@ -13,8 +13,8 @@ $ns: '.avatar';
 	align-items: center;
 
 	img {
-		width: calc(100% - $space-8);
-		height: calc(100% - $space-8);
+		width: calc(100% - 8px);
+		height: calc(100% - 8px);
 		border-radius: 100%;
 		object-fit: cover;
 	}

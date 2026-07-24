@@ -28,7 +28,7 @@ $ns: '.marquee-section';
 
 		// Spacing between rows
 		&:not(:last-child) {
-			margin-bottom: $space-40;
+			margin-bottom: 40px;
 		}
 
 		&--reverse {
@@ -42,8 +42,8 @@ $ns: '.marquee-section';
 		flex-shrink: 0;
 		display: flex;
 		align-items: center;
-		gap: $space-80;
-		padding-right: $space-80; // Ensure equal spacing between the end of first track and start of second
+		gap: 80px;
+		padding-right: 80px; // Ensure equal spacing between the end of first track and start of second
 		min-width: 100%;
 		will-change: transform;
 	}
@@ -51,10 +51,10 @@ $ns: '.marquee-section';
 	&__item {
 		display: flex;
 		align-items: center;
-		gap: $space-80;
+		gap: 80px;
 
 		@media (max-width: $tablet) {
-			gap: $space-20;
+			gap: 20px;
 		}
 	}
 

@@ -2,29 +2,29 @@
 .container {
 	margin: 0 auto;
 	max-width: 1360px;
-	padding: 0 $space-40;
+	padding: 0 40px;
 	width: 100%;
 }
 
 @media (max-width: $tablet) {
 	.container {
-		padding: 0 $space-24;
+		padding: 0 24px;
 	}
 }
 
 // Spacing styles
 $spacing-values: (
-	0: $space-0,
-	4: $space-4,
-	8: $space-8,
-	12: $space-12,
-	14: $space-14,
-	16: $space-16,
-	20: $space-20,
-	24: $space-24,
-	32: $space-32,
-	40: $space-40,
-	56: $space-56,
+	0: 0,
+	4: 4px,
+	8: 8px,
+	12: 12px,
+	14: 14px,
+	16: 16px,
+	20: 20px,
+	24: 24px,
+	32: 32px,
+	40: 40px,
+	56: 56px,
 );
 
 // Generate margin utilities

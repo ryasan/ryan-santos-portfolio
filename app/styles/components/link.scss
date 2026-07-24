@@ -5,7 +5,7 @@ $ns: '.link-box';
 #{$ns} {
 	display: flex;
 	align-items: center;
-	height: $space-24;
+	height: 24px;
 	width: fit-content;
 
 	&__link {
@@ -33,7 +33,7 @@ $ns: '.link-box';
 	}
 
 	&__icon {
-		margin-left: $space-8;
+		margin-left: 8px;
 		transition: 0.2s ease;
 		width: 16px;
 	}

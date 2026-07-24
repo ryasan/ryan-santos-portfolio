@@ -6,7 +6,7 @@ $ns: '.social-section';
 	display: block;
 
 	&__box {
-		padding: $space-40 0;
+		padding: 40px 0;
 		display: flex;
 		justify-content: space-between;
 
@@ -18,23 +18,23 @@ $ns: '.social-section';
 	&__social-list {
 		display: flex;
 		flex-direction: column;
-		gap: $space-24;
+		gap: 24px;
 		max-width: 600px;
 		width: 100%;
 
 		@media (max-width: $tablet) {
-			gap: $space-16;
-			padding-top: $space-32;
+			gap: 16px;
+			padding-top: 32px;
 		}
 	}
 
 	&__social-item {
 		display: flex;
 		align-items: center;
-		gap: $space-8;
+		gap: 8px;
 
 		@media (max-width: $tablet) {
-			gap: $space-16;
+			gap: 16px;
 		}
 	}
 }

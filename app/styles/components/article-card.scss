@@ -5,7 +5,7 @@ $ns: '.article-card';
 
 #{$ns} {
 	background-color: var(--background-primary-color);
-	border-radius: $space-20;
+	border-radius: 20px;
 	border: 1px solid var(--line-color);
 	color: var(--content-color);
 	display: flex;
@@ -25,8 +25,8 @@ $ns: '.article-card';
 
 	&__image {
 		aspect-ratio: 13 / 9;
-		border-top-left-radius: $space-12;
-		border-top-right-radius: $space-12;
+		border-top-left-radius: 12px;
+		border-top-right-radius: 12px;
 		overflow: hidden;
 		position: relative;
 		width: 100%;
@@ -43,7 +43,7 @@ $ns: '.article-card';
 		flex: 1;
 		flex-direction: column;
 		min-height: 0;
-		padding: $space-20;
+		padding: 20px;
 	}
 
 	&__eyebrow {
@@ -77,7 +77,7 @@ $ns: '.article-card';
 	&.horizontal {
 		display: grid;
 		grid-template-columns: 240px 1fr;
-		gap: $space-32;
+		gap: 32px;
 
 		#{$ns}__image {
 			margin-bottom: 0;
@@ -87,7 +87,7 @@ $ns: '.article-card';
 	&__tags {
 		display: flex;
 		flex-wrap: wrap;
-		gap: $space-4;
+		gap: 4px;
 		margin-top: auto;
 	}
 

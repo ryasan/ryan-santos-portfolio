@@ -3,20 +3,20 @@
 $ns: '.blog-post-section';
 
 #{$ns} {
-	padding: $space-120 0 $space-40;
+	padding: 120px 0 40px;
 	opacity: 0;
 	will-change: opacity;
 
 	&__header {
-		margin-bottom: $space-40;
+		margin-bottom: 40px;
 	}
 
 	&__link-box {
 		display: flex;
 		align-items: center;
-		height: $space-24;
+		height: 24px;
 		width: fit-content;
-		margin-bottom: $space-40;
+		margin-bottom: 40px;
 
 		&:hover {
 			#{$ns}__link {
@@ -54,19 +54,19 @@ $ns: '.blog-post-section';
 	}
 
 	&__icon {
-		margin-right: $space-8;
+		margin-right: 8px;
 		margin-left: 0;
-		width: $space-24;
+		width: 24px;
 		transition: 0.2s ease;
 	}
 
 	&__author {
 		align-items: center;
 		display: flex;
-		gap: $space-16;
+		gap: 16px;
 
 		h5 {
-			margin-bottom: $space-6;
+			margin-bottom: 6px;
 		}
 	}
 
@@ -90,7 +90,7 @@ $ns: '.blog-post-section';
 	}
 
 	&__layout {
-		margin-top: $space-40;
+		margin-top: 40px;
 		display: grid;
 		grid-template-columns: 70% 30%;
 
@@ -101,10 +101,10 @@ $ns: '.blog-post-section';
 	}
 
 	&__blog-body {
-		margin-bottom: $space-120;
+		margin-bottom: 120px;
 
 		@media (max-width: $tablet) {
-			margin-bottom: $space-40;
+			margin-bottom: 40px;
 		}
 	}
 
@@ -112,12 +112,12 @@ $ns: '.blog-post-section';
 		display: flex;
 		align-items: start;
 		justify-content: end;
-		gap: $space-16;
-		margin-bottom: $space-64;
+		gap: 16px;
+		margin-bottom: 64px;
 
 		@media (max-width: $tablet) {
 			justify-content: start;
-			margin-bottom: $space-40;
+			margin-bottom: 40px;
 		}
 	}
 
@@ -141,7 +141,7 @@ $ns: '.blog-post-section';
 
 	&__share-copy-button {
 		border-radius: 100px;
-		gap: $space-8;
+		gap: 8px;
 		padding: 0 15px;
 		font-weight: 500;
 		font-size: 14px;

@@ -29,7 +29,7 @@ $ns: '.hero-section';
 
 	&__accent-wrapper {
 		position: relative;
-		padding: $space-100 $space-80;
+		padding: 100px 80px;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
@@ -39,11 +39,11 @@ $ns: '.hero-section';
 		margin: 0 auto;
 
 		@media (max-width: $laptop) {
-			padding: $space-64 $space-40;
+			padding: 64px 40px;
 		}
 
 		@media (max-width: $mobile-lg) {
-			padding: $space-64 $space-20;
+			padding: 64px 20px;
 		}
 	}
 
@@ -70,51 +70,51 @@ $ns: '.hero-section';
 		}
 
 		&.top-left {
-			top: $space-20;
-			left: $space-20;
+			top: 20px;
+			left: 20px;
 			border-top-color: var(--content-color);
 			border-left-color: var(--content-color);
 
 			@media (max-width: $laptop) {
-				top: $space-12;
-				left: $space-12;
+				top: 12px;
+				left: 12px;
 				display: block;
 			}
 		}
 
 		&.top-right {
-			top: $space-20;
-			right: $space-20;
+			top: 20px;
+			right: 20px;
 			border-top-color: var(--content-color);
 			border-right-color: var(--content-color);
 
 			@media (max-width: $laptop) {
-				top: $space-12;
-				right: $space-12;
+				top: 12px;
+				right: 12px;
 			}
 		}
 
 		&.bottom-left {
-			bottom: $space-20;
-			left: $space-20;
+			bottom: 20px;
+			left: 20px;
 			border-bottom-color: var(--content-color);
 			border-left-color: var(--content-color);
 
 			@media (max-width: $laptop) {
-				bottom: $space-12;
-				left: $space-12;
+				bottom: 12px;
+				left: 12px;
 			}
 		}
 
 		&.bottom-right {
-			bottom: $space-20;
-			right: $space-20;
+			bottom: 20px;
+			right: 20px;
 			border-bottom-color: var(--content-color);
 			border-right-color: var(--content-color);
 
 			@media (max-width: $laptop) {
-				bottom: $space-12;
-				right: $space-12;
+				bottom: 12px;
+				right: 12px;
 				display: block;
 			}
 		}
@@ -133,42 +133,42 @@ $ns: '.hero-section';
 		}
 
 		&.label-top-left {
-			top: calc(#{$space-20} + 2px);
-			left: calc(#{$space-20} + 24px);
+			top: calc(20px + 2px);
+			left: calc(20px + 24px);
 
 			@media (max-width: $laptop) {
-				top: calc(#{$space-12} + 1px);
-				left: calc(#{$space-12} + 18px);
+				top: calc(12px + 1px);
+				left: calc(12px + 18px);
 			}
 		}
 
 		&.label-top-right {
-			top: calc(#{$space-20} + 2px);
-			right: calc(#{$space-20} + 24px);
+			top: calc(20px + 2px);
+			right: calc(20px + 24px);
 
 			@media (max-width: $laptop) {
-				top: calc(#{$space-12} + 1px);
-				right: calc(#{$space-12} + 18px);
+				top: calc(12px + 1px);
+				right: calc(12px + 18px);
 			}
 		}
 
 		&.label-bottom-left {
-			bottom: calc(#{$space-20} + 2px);
-			left: calc(#{$space-20} + 24px);
+			bottom: calc(20px + 2px);
+			left: calc(20px + 24px);
 
 			@media (max-width: $laptop) {
-				bottom: calc(#{$space-12} + 1px);
-				left: calc(#{$space-12} + 18px);
+				bottom: calc(12px + 1px);
+				left: calc(12px + 18px);
 			}
 		}
 
 		&.label-bottom-right {
-			bottom: calc(#{$space-20} + 2px);
-			right: calc(#{$space-20} + 24px);
+			bottom: calc(20px + 2px);
+			right: calc(20px + 24px);
 
 			@media (max-width: $laptop) {
-				bottom: calc(#{$space-12} + 1px);
-				right: calc(#{$space-12} + 18px);
+				bottom: calc(12px + 1px);
+				right: calc(12px + 18px);
 			}
 		}
 	}
@@ -214,8 +214,8 @@ $ns: '.hero-section';
 
 	&__playback-button {
 		position: absolute;
-		right: $space-40;
-		bottom: $space-40;
+		right: 40px;
+		bottom: 40px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -238,8 +238,8 @@ $ns: '.hero-section';
 		}
 
 		@media (max-width: $tablet) {
-			right: $space-24;
-			bottom: $space-24;
+			right: 24px;
+			bottom: 24px;
 			width: 40px;
 			height: 40px;
 		}

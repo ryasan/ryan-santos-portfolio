@@ -4,29 +4,29 @@ $ns: '.article-grid-section';
 
 #{$ns} {
 	display: block;
-	padding: $space-40 0;
+	padding: 40px 0;
 
 	&__header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-bottom: $space-40;
+		margin-bottom: 40px;
 	}
 
 	&__controls {
 		display: flex;
-		gap: $space-16;
+		gap: 16px;
 	}
 
 	&__control-button {
 		align-items: center;
 		background-color: transparent;
-		border-radius: $space-4;
+		border-radius: 4px;
 		border: none;
 		cursor: pointer;
 		display: flex;
 		justify-content: center;
-		padding: $space-8;
+		padding: 8px;
 		transition: 200ms ease;
 
 		&:hover {
@@ -42,7 +42,7 @@ $ns: '.article-grid-section';
 		&--list {
 			display: flex;
 			flex-direction: column;
-			gap: $space-40;
+			gap: 40px;
 		}
 
 		&--grid {
@@ -52,7 +52,7 @@ $ns: '.article-grid-section';
 
 			@media (max-width: $tablet) {
 				grid-template-columns: repeat(1, 1fr);
-				gap: $space-40;
+				gap: 40px;
 			}
 		}
 	}
