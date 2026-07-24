@@ -6,17 +6,13 @@ $fira-code-regular-src: font-src('FiraCode-Regular');
 $fira-code-retina-src: font-src('FiraCode-Retina');
 $fira-code-semibold-src: font-src('FiraCode-SemiBold');
 
-// DotGothic16 font variables
-$dot-gothic-16-regular-src: font-src('DotGothic16-Regular');
 
-// Manrope font variables
-$manrope-extra-light-src: font-src('Manrope-ExtraLight');
-$manrope-light-src: font-src('Manrope-Light');
-$manrope-regular-src: font-src('Manrope-Regular');
-$manrope-medium-src: font-src('Manrope-Medium');
-$manrope-semibold-src: font-src('Manrope-SemiBold');
-$manrope-bold-src: font-src('Manrope-Bold');
-$manrope-extrabold-src: font-src('Manrope-ExtraBold');
+
+// Inter Tight font variables
+$inter-tight-regular-src: font-src('InterTight-Regular');
+$inter-tight-medium-src: font-src('InterTight-Medium');
+$inter-tight-semibold-src: font-src('InterTight-SemiBold');
+$inter-tight-bold-src: font-src('InterTight-Bold');
 
 @at-root {
 	// Fira Code font faces
@@ -27,15 +23,10 @@ $manrope-extrabold-src: font-src('Manrope-ExtraBold');
 	@include font-face('Fira Code', $fira-code-retina-src, 400, normal);
 	@include font-face('Fira Code', $fira-code-semibold-src, 600, normal);
 
-	// DotGothic16 font faces
-	@include font-face('DotGothic16', $dot-gothic-16-regular-src, 400, normal);
 
-	// Manrope font faces
-	@include font-face('Manrope', $manrope-extra-light-src, 200, normal);
-	@include font-face('Manrope', $manrope-light-src, 300, normal);
-	@include font-face('Manrope', $manrope-regular-src, 400, normal);
-	@include font-face('Manrope', $manrope-medium-src, 500, normal);
-	@include font-face('Manrope', $manrope-semibold-src, 600, normal);
-	@include font-face('Manrope', $manrope-bold-src, 700, normal);
-	@include font-face('Manrope', $manrope-extrabold-src, 800, normal);
+	// Inter Tight font faces
+	@include font-face('Inter Tight', $inter-tight-regular-src, 400, normal);
+	@include font-face('Inter Tight', $inter-tight-medium-src, 500, normal);
+	@include font-face('Inter Tight', $inter-tight-semibold-src, 600, normal);
+	@include font-face('Inter Tight', $inter-tight-bold-src, 700, normal);
 }

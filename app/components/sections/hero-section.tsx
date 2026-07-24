@@ -1,12 +1,10 @@
-import { PauseIcon, PlayIcon } from '~/components/icons'
-import TypewriterHeadline, {
-	SECOND_HEADLINE,
-} from '~/components/typewriter-headline'
+import { ArrowRightIcon } from '~/components/icons'
+import { gsap } from 'gsap'
+import { Link } from '@remix-run/react'
 import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
-import { useEffect, useRef, useState } from 'react'
-import clsx from 'clsx'
-import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import clsx from 'clsx'
+import { useRef } from 'react'
 
 const ns = 'hero-section'
 
@@ -16,83 +14,54 @@ type HeroSectionProps = {
 }
 
 export default function HeroSection({ data, id }: HeroSectionProps) {
-	const [isPlaying, setIsPlaying] = useState(true)
-	const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
-	const stickyBoxRef = useRef<HTMLDivElement>(null)
-	const titleRef = useRef<HTMLHeadingElement>(null)
-	const playbackButtonRef = useRef<HTMLButtonElement>(null)
+	const containerRef = useRef<HTMLDivElement>(null)
 
-	useEffect(() => {
-		setPrefersReducedMotion(
-			window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-		)
+	useGSAP(() => {
+		const container = containerRef.current
+
+		if (!container) return
+
+		gsap.to(container, {
+			duration: 1,
+			ease: 'power2.out',
+			opacity: 1,
+		})
 	}, [])
-
-	useGSAP(
-		() => {
-			const stickyBox = stickyBoxRef.current
-
-			if (!stickyBox) return
-
-			gsap.to(stickyBox, {
-				duration: 1,
-				ease: 'power2.out',
-				opacity: 1,
-			})
-		},
-		{ dependencies: [prefersReducedMotion] },
-	)
 
 	return (
 		<section
 			className={clsx(ns, data?.isTopOfPage && 'is-top-of-page')}
 			id={id}
 		>
-			<div className={`${ns}__container`}>
-				<div className={`${ns}__sticky-box`} ref={stickyBoxRef}>
-					<div className={`${ns}__headline-wrap`}>
-						<h1
-							aria-label={SECOND_HEADLINE}
-							className={`${ns}__title`}
-							ref={titleRef}
-						>
-							<span aria-hidden className={`${ns}__headline-text`}>
-								<TypewriterHeadline isPlaying={isPlaying} />
-								<span
-									className={clsx(
-										`${ns}__cursor`,
-										!isPlaying && `${ns}__cursor--paused`,
-									)}
-								/>
-							</span>
+			<div className={clsx(`${ns}__container`, 'container')} ref={containerRef}>
+				<div className={`${ns}__content`}>
+					<div className={`${ns}__intro`}>
+						<p className={`${ns}__eyebrow`}>Hello, I&apos;m Ryan.</p>
+						<h1 className={`${ns}__title`}>
+							Developing digital products with emphasis on{' '}
+							<span className={`${ns}__title-accent`}>frontend web</span>
 						</h1>
 					</div>
 
-					<div className={`${ns}__scroll-indicator`}>
-						<span className={`${ns}__scroll-indicator-icon`}>↓</span>
-						<span className={`${ns}__scroll-indicator-text`}>Scroll</span>
-					</div>
-
-					{!prefersReducedMotion && (
-						<button
-							aria-label={
-								isPlaying
-									? 'Pause typewriter animation'
-									: 'Play typewriter animation'
-							}
-							aria-pressed={isPlaying}
-							className={`${ns}__playback-button`}
-							onClick={() => setIsPlaying((playing) => !playing)}
-							ref={playbackButtonRef}
-							type="button"
+					<div className={`${ns}__footer`}>
+						<Link
+							className={clsx('button', 'button--l', `${ns}__cta`)}
+							to="#contact"
 						>
-							{isPlaying ? (
-								<PauseIcon aria-hidden className={`${ns}__playback-icon`} />
-							) : (
-								<PlayIcon aria-hidden className={`${ns}__playback-icon`} />
-							)}
-						</button>
-					)}
+							Let&apos;s Talk
+							<ArrowRightIcon
+								aria-hidden
+								className={`${ns}__cta-icon`}
+								fill="currentColor"
+								height={28}
+								width={28}
+							/>
+						</Link>
+						<p className={`${ns}__description`}>
+							I&apos;m a software engineer harnessing the power of web
+							technologies to achieve online goals.
+						</p>
+					</div>
 				</div>
 			</div>
 		</section>

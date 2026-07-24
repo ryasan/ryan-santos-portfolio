@@ -42,16 +42,23 @@ export default function ContactSection({ data, id }: ContactSectionProps) {
 			<div className="container">
 				<div className={`${ns}__box`}>
 					{data?.title && (
-						<h2 className={clsx(`${ns}__title`, 'mb-56')}>{data.title}</h2>
+						<h2 className={clsx(`${ns}__title`, 'h1', 'mb-56')}>{data.title}</h2>
 					)}
 					{data?.email && (
 						<button
-							className={clsx(`${ns}__copy-button`, 'button')}
+							className={clsx(`${ns}__copy-button`, 'button', 'button--l')}
 							onClick={copyToClipboard}
 							title="Copy to clipboard"
+							type="button"
 						>
 							{copySuccess ? 'email copied!' : data.email}
-							<CopySimpleIcon className={`${ns}__copy-icon`} />
+							<CopySimpleIcon
+								aria-hidden
+								className={`${ns}__copy-icon`}
+								fill="currentColor"
+								height={28}
+								width={28}
+							/>
 						</button>
 					)}
 					<div className={`${ns}__social-links`}>

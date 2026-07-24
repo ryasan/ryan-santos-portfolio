@@ -1,7 +1,7 @@
 .jump-links {
   position: fixed;
   top: 50%;
-  left: 25px;
+  right: 25px;
   display: none;
   flex-direction: column;
   align-items: center;
@@ -44,7 +44,7 @@
   white-space: nowrap;
 }
 .jump-links__tick {
-  margin-top: 7px;
+  margin-top: 5px;
   background-color: currentcolor;
   width: 15px;
   height: 1px;
