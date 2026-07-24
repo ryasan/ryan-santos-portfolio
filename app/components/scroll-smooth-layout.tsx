@@ -1,29 +1,16 @@
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
-import { useLocation, useNavigation } from '@remix-run/react'
+import { useLocation } from '@remix-run/react'
 import { useLayoutEffect } from 'react'
 
 type ScrollSmoothLayoutProps = {
 	children: React.ReactNode
 }
 
-function killPageScrollTriggers() {
-	const smoother = ScrollSmoother.get()
-	const smootherTrigger = smoother?.scrollTrigger
-
-	ScrollTrigger.getAll().forEach((trigger) => {
-		if (trigger !== smootherTrigger) {
-			trigger.kill()
-		}
-	})
-}
-
 export default function ScrollSmoothLayout({
 	children,
 }: ScrollSmoothLayoutProps) {
 	const location = useLocation()
-	const navigation = useNavigation()
 
 	useGSAP(() => {
 		// Only enable on desktop (non-touch devices)
@@ -43,34 +30,14 @@ export default function ScrollSmoothLayout({
 		}
 	}, [])
 
-	// Kill page-level ScrollTriggers (especially pins) while the old route
-	// is still mounted so React can safely swap the DOM on navigation.
-	// Skip same-path updates (e.g. blog tag search params).
 	useLayoutEffect(() => {
-		if (navigation.state !== 'loading' || !navigation.location) return
-		if (navigation.location.pathname === location.pathname) return
-
+		// Reset scroll position to top on page change
 		const smoother = ScrollSmoother.get()
-		smoother?.paused(true)
-		killPageScrollTriggers()
-	}, [navigation.state, navigation.location, location.pathname])
-
-	useLayoutEffect(() => {
-		const smoother = ScrollSmoother.get()
-
 		if (smoother) {
 			smoother.scrollTop(0)
-			smoother.paused(false)
 		} else {
 			window.scrollTo(0, 0)
 		}
-
-		// Refresh after the new route's triggers have been created
-		const frame = requestAnimationFrame(() => {
-			ScrollTrigger.refresh()
-		})
-
-		return () => cancelAnimationFrame(frame)
 	}, [location.pathname])
 
 	return (
