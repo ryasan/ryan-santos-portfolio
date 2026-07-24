@@ -1,5 +1,5 @@
 .blog-post-section {
-  padding: 120px 0 40px;
+  padding: 120px 0 0;
   opacity: 0;
   will-change: opacity;
 }
@@ -75,14 +75,6 @@
   .blog-post-section__layout {
     display: flex;
     flex-direction: column-reverse;
-  }
-}
-.blog-post-section__blog-body {
-  margin-bottom: 120px;
-}
-@media (max-width: 768px) {
-  .blog-post-section__blog-body {
-    margin-bottom: 40px;
   }
 }
 .blog-post-section__share-actions {

@@ -1,4 +1,5 @@
 import BlogPostSection from '~/components/sections/blog-post-section'
+import ContactSection from '~/components/sections/contact-section'
 import { generateCacheHeaders, mergeHeaders } from '~/utils'
 import { client } from '~/services/contentful.server'
 import {
@@ -16,6 +17,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 	}
 
 	const blog = await client.getBlogBySlug(post)
+	const contactSection = await client.getContactSection('Contact - Default')
 
 	const tags = [
 		blog?.sys?.id ? `entry-${blog.sys.id}` : null,
@@ -23,7 +25,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 		blog?.seoMetadata?.sys?.id ? `entry-${blog.seoMetadata?.sys?.id}` : null,
 	].filter((tag): tag is string => tag !== null)
 
-	return json({ blog }, { headers: generateCacheHeaders(tags) })
+	return json({ blog, contactSection }, { headers: generateCacheHeaders(tags) })
 }
 
 export const headers: HeadersFunction = mergeHeaders
@@ -53,7 +55,12 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 }
 
 export default function BlogPost() {
-	const { blog } = useLoaderData<typeof loader>()
+	const { blog, contactSection } = useLoaderData<typeof loader>()
 
-	return <BlogPostSection data={blog} />
+	return (
+		<>
+			<BlogPostSection data={blog} />
+			<ContactSection data={contactSection} />
+		</>
+	)
 }

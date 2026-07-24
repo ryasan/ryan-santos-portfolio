@@ -50,7 +50,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 					<div className={`${ns}__headline-wrap`}>
 						<h1
 							aria-label={SECOND_HEADLINE}
-							className={`${ns}__title hero-title`}
+							className={`${ns}__title`}
 						>
 							<span aria-hidden className={`${ns}__headline-text`}>
 								<TypewriterHeadline isPlaying={isPlaying} />

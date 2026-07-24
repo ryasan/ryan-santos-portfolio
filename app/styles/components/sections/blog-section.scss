@@ -4,7 +4,7 @@ $ns: '.blog-section';
 
 #{$ns} {
 	min-height: 100lvh;
-	padding: calc($header-height + 50px) 0;
+	padding: calc($header-height + 50px) 0 0;
 
 	&__grid {
 		display: grid;
@@ -34,10 +34,14 @@ $ns: '.blog-section';
 	&__title {
 		line-height: 1;
 		text-align: center;
-		margin-bottom: 50px;
+		margin-bottom: 100px;
 		z-index: 1;
 		position: relative;
 		will-change: opacity, transform;
+
+		@media (max-width: $tablet) {
+			margin-bottom: 75px;
+		}
 
 		strong {
 			font-weight: 700;
@@ -76,6 +80,10 @@ $ns: '.blog-section';
 		margin-bottom: 50px;
 		flex-wrap: wrap;
 
+		@media (max-width: $tablet) {
+			margin-bottom: 25px;
+		}
+
 		button {
 			white-space: nowrap;
 			text-transform: lowercase;
@@ -93,6 +101,10 @@ $ns: '.blog-section';
 		gap: 30px;
 
 		@media (max-width: $tablet) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (max-width: $mobile-lg) {
 			grid-template-columns: repeat(1, 1fr);
 		}
 	}

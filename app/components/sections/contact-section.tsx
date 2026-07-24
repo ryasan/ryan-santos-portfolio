@@ -42,7 +42,7 @@ export default function ContactSection({ data, id }: ContactSectionProps) {
 			<div className="container">
 				<div className={`${ns}__box`}>
 					{data?.title && (
-						<h2 className={clsx(`${ns}__title`, 'h1 mb-56')}>{data.title}</h2>
+						<h2 className={clsx(`${ns}__title`, 'mb-56')}>{data.title}</h2>
 					)}
 					{data?.email && (
 						<button

@@ -3,7 +3,7 @@
 $ns: '.blog-post-section';
 
 #{$ns} {
-	padding: 120px 0 40px;
+	padding: 120px 0 0;
 	opacity: 0;
 	will-change: opacity;
 
@@ -97,14 +97,6 @@ $ns: '.blog-post-section';
 		@media (max-width: $tablet) {
 			display: flex;
 			flex-direction: column-reverse;
-		}
-	}
-
-	&__blog-body {
-		margin-bottom: 120px;
-
-		@media (max-width: $tablet) {
-			margin-bottom: 40px;
 		}
 	}
 

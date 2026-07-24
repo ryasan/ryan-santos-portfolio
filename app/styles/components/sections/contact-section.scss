@@ -7,6 +7,10 @@ $ns: '.contact-section';
 	position: relative;
 	margin-top: 140px;
 
+	@media (max-width: $tablet) {
+		margin-top: 100px;
+	}
+
 	&__box {
 		padding: 120px 0;
 		display: flex;
@@ -17,7 +21,6 @@ $ns: '.contact-section';
 
 	&__title {
 		text-align: center;
-		font-size: clamp(4.5rem, 7.5vw, 10rem);
 		max-width: 850px;
 		margin: 0 auto;
 		line-height: 1.1;

@@ -89,18 +89,18 @@ h1,
 
 h2,
 .h2 {
-	font-size: 100px;
+	font-size: 125px;
 	line-height: 1;
 	letter-spacing: -0.04em;
 	font-weight: 700;
 	color: var(--content-color);
 
 	@media (max-width: $desktop) {
-		font-size: 80px;
+		font-size: 100px;
 	}
 
 	@media (max-width: $tablet) {
-		font-size: 60px;
+		font-size: 80px;
 	}
 }
 

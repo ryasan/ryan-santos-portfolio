@@ -99,7 +99,7 @@ export default function FeaturedArticlesSection({
 			<div className="container">
 				<div className={`${ns}__sticky-box`} ref={stickyBoxRef}>
 					{data?.title && (
-						<h2 className={clsx(`${ns}__title`, 'h1 mb-32')} ref={titleRef}>
+						<h2 className={clsx(`${ns}__title`, 'h2 mb-32')} ref={titleRef}>
 							{data.title}
 						</h2>
 					)}

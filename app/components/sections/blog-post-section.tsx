@@ -82,7 +82,7 @@ export default function BlogPostSection({ data }: BlogPostSectionProps) {
 						onClick={() => navigate('/blog')}
 					>
 						<ArrowLeftIcon className={`${ns}__icon`} />
-						<span className={`${ns}__link`}>Back</span>
+						<span className={`${ns}__link body`}>Back</span>
 					</button>
 
 					{data?.title && <h1 className="mb-32 h4">{data?.title}</h1>}

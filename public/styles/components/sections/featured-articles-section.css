@@ -11,7 +11,6 @@
 }
 .featured-articles-section__title {
   opacity: 0;
-  font-size: clamp(4.5rem, 7.5vw, 10rem);
   position: relative;
 }
 .featured-articles-section__subtitle {
