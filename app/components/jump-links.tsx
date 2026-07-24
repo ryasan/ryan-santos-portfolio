@@ -64,7 +64,6 @@ export default function JumpLinks({ sections }: JumpLinksProps) {
 		if (!jumpLinks) return
 
 		gsap.to(jumpLinks, {
-			delay: 1.2,
 			duration: 1,
 			ease: 'power2.out',
 			opacity: 1,

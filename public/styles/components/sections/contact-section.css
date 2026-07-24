@@ -12,20 +12,10 @@
 }
 .contact-section__title {
   text-align: center;
-  font-size: 100px;
+  font-size: clamp(4.5rem, 7.5vw, 10rem);
   max-width: 850px;
   margin: 0 auto;
   line-height: 1.1;
-}
-@media (max-width: 1200px) {
-  .contact-section__title {
-    font-size: 70px;
-  }
-}
-@media (max-width: 768px) {
-  .contact-section__title {
-    font-size: 50px;
-  }
 }
 .contact-section__copy-button {
   margin-top: 64px;

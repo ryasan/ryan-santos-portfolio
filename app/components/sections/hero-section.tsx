@@ -3,8 +3,10 @@ import TypewriterHeadline, {
 	SECOND_HEADLINE,
 } from '~/components/typewriter-headline'
 import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 const ns = 'hero-section'
 
@@ -16,12 +18,27 @@ type HeroSectionProps = {
 export default function HeroSection({ data, id }: HeroSectionProps) {
 	const [isPlaying, setIsPlaying] = useState(true)
 	const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+	const playbackButtonRef = useRef<HTMLButtonElement>(null)
 
 	useEffect(() => {
 		setPrefersReducedMotion(
 			window.matchMedia('(prefers-reduced-motion: reduce)').matches,
 		)
 	}, [])
+
+	useGSAP(
+		() => {
+			const playbackButton = playbackButtonRef.current
+			if (!playbackButton) return
+
+			gsap.to(playbackButton, {
+				duration: 1,
+				ease: 'power2.out',
+				opacity: 1,
+			})
+		},
+		{ dependencies: [prefersReducedMotion] },
+	)
 
 	return (
 		<section
@@ -57,6 +74,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 							aria-pressed={isPlaying}
 							className={`${ns}__playback-button`}
 							onClick={() => setIsPlaying((playing) => !playing)}
+							ref={playbackButtonRef}
 							type="button"
 						>
 							{isPlaying ? (

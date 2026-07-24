@@ -214,18 +214,7 @@
   border: 1px solid var(--content-color);
   border-radius: 50%;
   color: var(--content-color);
-  transition: opacity 0.2s ease;
-  animation: play-button-fade-in 1s ease-out 1.675s both;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-section__playback-button {
-    animation: none;
-  }
-}
-@media (hover: hover) {
-  .hero-section__playback-button:hover {
-    opacity: 1;
-  }
+  opacity: 0;
 }
 @media (max-width: 768px) {
   .hero-section__playback-button {
@@ -244,14 +233,6 @@
 @keyframes hero-cursor-blink {
   50% {
     opacity: 0;
-  }
-}
-@keyframes play-button-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
 
