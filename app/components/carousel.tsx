@@ -42,7 +42,7 @@ export default function Carousel({
 		<div className={ns}>
 			<div className="container">
 				<div className={clsx(`${ns}__header`, 'mb-40')}>
-					{title && <h2 className="h3">{title}</h2>}
+					{title && <h2>{title}</h2>}
 					<div className={`${ns}__navigation`}>
 						<button
 							className={clsx(`${ns}__button`, `${ns}__button--prev`)}

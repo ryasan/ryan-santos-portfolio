@@ -57,8 +57,8 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 							/>
 						</a>
 						<p className={`${ns}__description`}>
-							Frontend Engineer harnessing the power of web
-							technologies to achieve online goals.
+							Frontend Engineer harnessing the power of web technologies to
+							achieve online goals.
 						</p>
 					</div>
 				</div>
