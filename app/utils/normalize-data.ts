@@ -18,7 +18,7 @@ export const normalizeData = {
 		),
 		id: data.sys?.id,
 		image: data.openGraphImage,
-		link: data.slug,
+		link: data.slug ? `/blog/${data.slug}` : null,
 		openGraphImage: data.openGraphImage,
 		tags: getTags(data),
 		title: data.title,
