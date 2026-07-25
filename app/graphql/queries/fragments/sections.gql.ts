@@ -73,6 +73,7 @@ export const CAROUSEL_SECTION_FRAGMENT = gql`
 			id
 		}
 		title
+		jumpLinkLabel
 		slidesPerView
 		slidesCollection {
 			items {

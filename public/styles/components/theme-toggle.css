@@ -1,5 +1,7 @@
 .theme-toggle__icon {
   display: block;
+  width: 24px;
+  height: 24px;
 }
 
 /*# sourceMappingURL=theme-toggle.css.map */

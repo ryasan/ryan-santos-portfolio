@@ -46,7 +46,7 @@ export default function ContactSection({ data, id }: ContactSectionProps) {
 					)}
 					{data?.email && (
 						<button
-							className={clsx(`${ns}__copy-button`, 'button', 'button--l')}
+							className={clsx(`${ns}__copy-button`, 'button')}
 							onClick={copyToClipboard}
 							title="Copy to clipboard"
 							type="button"

@@ -29,7 +29,7 @@ export default function Carousel({
 			initial: 0,
 			loop: false,
 			slides: {
-				perView: isMatching ? 1 : (slidesPerView || 2),
+				perView: isMatching ? 1 : slidesPerView || 2,
 				spacing: 30,
 			},
 		}),
@@ -42,10 +42,11 @@ export default function Carousel({
 		<div className={ns}>
 			<div className="container">
 				<div className={clsx(`${ns}__header`, 'mb-40')}>
-					{title && <h2 className="h1">{title}</h2>}
+					{title && <h2 className="h3">{title}</h2>}
 					<div className={`${ns}__navigation`}>
 						<button
 							className={clsx(`${ns}__button`, `${ns}__button--prev`)}
+							disabled={instanceRef.current?.track.details.isBeginning}
 							onClick={() => instanceRef.current?.prev()}
 							title="Previous slide"
 						>
@@ -53,6 +54,7 @@ export default function Carousel({
 						</button>
 						<button
 							className={clsx(`${ns}__button`, `${ns}__button--next`)}
+							disabled={instanceRef.current?.track.details.isEnd}
 							onClick={() => instanceRef.current?.next()}
 							title="Next slide"
 						>
@@ -61,10 +63,7 @@ export default function Carousel({
 					</div>
 				</div>
 				{slides.length > 0 && (
-					<div
-						className={clsx(`${ns}__slider`, 'keen-slider')}
-						ref={sliderRef}
-					>
+					<div className={clsx(`${ns}__slider`, 'keen-slider')} ref={sliderRef}>
 						{slides.map((slide, index) => (
 							<div
 								className={clsx(`${ns}__slide`, 'keen-slider__slide')}

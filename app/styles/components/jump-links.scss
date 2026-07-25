@@ -27,7 +27,6 @@ $ns: '.jump-links';
 		height: calc(var(--label-len) * 0.52rem + 0.85rem);
 		color: var(--content-color);
 		font-weight: 600;
-		font-size: 0.875rem;
 		line-height: 1;
 		transition: opacity 0.2s ease;
 
@@ -54,7 +53,7 @@ $ns: '.jump-links';
 		margin-top: 5px;
 		background-color: currentcolor;
 		width: 15px;
-		height: 1px;
+		height: 2px;
 		opacity: 0;
 	}
 

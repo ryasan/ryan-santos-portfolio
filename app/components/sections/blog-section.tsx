@@ -113,8 +113,8 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 		<section className={ns} ref={sectionRef}>
 			<div className="container">
 				<div className={`${ns}__header`} ref={headerRef}>
-					<h1 className={clsx(`${ns}__title`, 'h2')}>
-						<strong>Latest</strong> <em>Blogs</em>
+					<h1 className={clsx(`${ns}__title`, 'h1')}>
+						Latest <span>Insights</span>
 					</h1>
 					<div className={`${ns}__tag-filters`}>
 						{_tags.map((tag) => {
@@ -125,7 +125,7 @@ export default function BlogSection({ posts, tags: _tags }: BlogSectionProps) {
 
 							return (
 								<button
-									className={clsx('button', !isActive && 'button--outline')}
+									className={clsx('button button--s', !isActive && 'button--outline')}
 									key={tag.id}
 									onClick={() => toggleTag(tagName)}
 									title={tagName}

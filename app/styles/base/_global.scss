@@ -1,12 +1,26 @@
 // Root
 :root {
-	--content-color: #000;
-	--content-color-2: #272727;
-	--background-primary-color: #fff;
-	--background-secondary-color: #c8c8c8;
+	// Neutral palette
+	--neutral-0: #fff;
+	--neutral-10: #f9fafb;
+	--neutral-20: #e5e7eb;
+	--neutral-30: #d1d5db;
+	--neutral-40: #aeb2ba;
+	--neutral-50: #6b7280;
+	--neutral-60: #4b5563;
+	--neutral-70: #374151;
+	--neutral-80: #1f2937;
+	--neutral-90: #111827;
+	--neutral-100: #030712;
+
+	// Semantic theme tokens
+	--content-color: var(--neutral-100);
+	--content-color-2: var(--neutral-70);
+	--background-primary-color: var(--neutral-0);
+	--background-secondary-color: var(--neutral-10);
 	--background-primary-color-rgb: 255, 255, 255;
-	--background-secondary-color-rgb: 200, 200, 200;
-	--line-color: #bbb;
+	--background-secondary-color-rgb: 249, 250, 251;
+	--line-color: var(--neutral-20);
 	--blue-color: #4c6bb9;
 	--green-color: #4cb84e;
 	--yellow-color: #b7a14e;
@@ -14,13 +28,13 @@
 }
 
 [data-theme='dark'] {
-	--content-color: #fff;
-	--content-color-2: #c8c8c8;
-	--background-primary-color: #000;
-	--background-secondary-color: #272727;
-	--background-primary-color-rgb: 0, 0, 0;
-	--background-secondary-color-rgb: 39, 39, 39;
-	--line-color: #424345;
+	--content-color: var(--neutral-0);
+	--content-color-2: var(--neutral-30);
+	--background-primary-color: var(--neutral-100);
+	--background-secondary-color: var(--neutral-80);
+	--background-primary-color-rgb: 3, 7, 18;
+	--background-secondary-color-rgb: 31, 41, 55;
+	--line-color: var(--neutral-80);
 	--blue-color: #4c6bb9;
 	--green-color: #4cb84e;
 	--yellow-color: #b7a14e;
@@ -274,9 +288,11 @@ p {
 		border-color 0.2s ease,
 		color 0.2s ease;
 
-	&:active {
-		background-color: var(--background-primary-color);
-		color: var(--content-color);
+	@media (hover: hover) {
+		&:hover {
+			background-color: var(--content-color-2);
+			border-color: var(--content-color-2);
+		}
 	}
 
 	&--outline {
@@ -284,9 +300,11 @@ p {
 		border-color: var(--content-color);
 		color: var(--content-color);
 
-		&:active {
-			background-color: var(--content-color);
-			color: var(--background-primary-color);
+		@media (hover: hover) {
+			&:hover {
+				background-color: var(--content-color);
+				color: var(--background-primary-color);
+			}
 		}
 	}
 
@@ -316,10 +334,10 @@ code,
 
 /* stylelint-disable */
 pre {
-	white-space: pre-wrap; // css-3
+	white-space: -o-pre-wrap; // css-3
 	white-space: -moz-pre-wrap; // Mozilla, since 1999
 	white-space: -pre-wrap; // Opera 4-6
-	white-space: -o-pre-wrap; // Opera 7
+	white-space: pre-wrap; // Opera 7
 	word-wrap: break-word; // Internet Explorer 5.5+
 }
 

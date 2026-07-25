@@ -43,13 +43,8 @@ $ns: '.blog-section';
 			margin-bottom: 75px;
 		}
 
-		strong {
-			font-weight: 700;
-		}
-
-		em {
-			color: var(--content-color-2);
-			font-weight: 600;
+		span {
+			color: var(--neutral-50);
 		}
 	}
 

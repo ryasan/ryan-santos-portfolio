@@ -1047,6 +1047,8 @@ export enum BlogLinkingCollectionsArticleGridSectionCursorCollectionOrder {
 export enum BlogLinkingCollectionsCarouselSectionCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   SlidesPerViewAsc = 'slidesPerView_ASC',
   SlidesPerViewDesc = 'slidesPerView_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1064,6 +1066,8 @@ export enum BlogLinkingCollectionsCarouselSectionCollectionOrder {
 export enum BlogLinkingCollectionsCarouselSectionCursorCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   SlidesPerViewAsc = 'slidesPerView_ASC',
   SlidesPerViewDesc = 'slidesPerView_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1105,6 +1109,7 @@ export type CarouselSection = Entry & _Node & {
   _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
   internalName?: Maybe<Scalars['String']['output']>;
+  jumpLinkLabel?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<CarouselSectionLinkingCollections>;
   slidesCollection?: Maybe<CarouselSectionSlidesCollection>;
   slidesCursorCollection?: Maybe<CarouselSectionSlidesCursorCollection>;
@@ -1116,6 +1121,13 @@ export type CarouselSection = Entry & _Node & {
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/carouselSection) */
 export type CarouselSectionInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/carouselSection) */
+export type CarouselSectionJumpLinkLabelArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -1189,6 +1201,13 @@ export type CarouselSectionFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jumpLinkLabel?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_contains?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  jumpLinkLabel_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  jumpLinkLabel_not?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_not_contains?: InputMaybe<Scalars['String']['input']>;
+  jumpLinkLabel_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   slides?: InputMaybe<CfslidesMultiTypeNestedFilter>;
   slidesCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   slidesPerView?: InputMaybe<Scalars['Int']['input']>;
@@ -1299,6 +1318,8 @@ export enum CarouselSectionLinkingCollectionsPageCursorCollectionOrder {
 export enum CarouselSectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   SlidesPerViewAsc = 'slidesPerView_ASC',
   SlidesPerViewDesc = 'slidesPerView_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -4862,6 +4883,8 @@ export enum ProjectsLinkingCollectionsArticleGridSectionCursorCollectionOrder {
 export enum ProjectsLinkingCollectionsCarouselSectionCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   SlidesPerViewAsc = 'slidesPerView_ASC',
   SlidesPerViewDesc = 'slidesPerView_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -4879,6 +4902,8 @@ export enum ProjectsLinkingCollectionsCarouselSectionCollectionOrder {
 export enum ProjectsLinkingCollectionsCarouselSectionCursorCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
   SlidesPerViewAsc = 'slidesPerView_ASC',
   SlidesPerViewDesc = 'slidesPerView_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',

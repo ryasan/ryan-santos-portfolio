@@ -49,14 +49,12 @@
 .hero-section__title {
   margin: 0;
   max-width: 1120px;
-  font-weight: 700;
-  color: var(--content-color);
 }
 .hero-section__title-accent {
-  color: #aeb2ba;
+  color: var(--neutral-40);
 }
 [data-theme=dark] .hero-section__title-accent {
-  color: #6b7280;
+  color: var(--neutral-50);
 }
 .hero-section__footer {
   display: flex;

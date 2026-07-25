@@ -54,15 +54,13 @@ $ns: '.hero-section';
 	&__title {
 		margin: 0;
 		max-width: 1120px;
-		font-weight: 700;
-		color: var(--content-color);
 	}
 
 	&__title-accent {
-		color: #aeb2ba;
+		color: var(--neutral-40);
 
 		[data-theme='dark'] & {
-			color: #6b7280;
+			color: var(--neutral-50);
 		}
 	}
 

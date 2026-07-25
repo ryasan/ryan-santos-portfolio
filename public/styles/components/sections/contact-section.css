@@ -25,8 +25,8 @@
 }
 .contact-section__copy-icon {
   display: block;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
 }
 .contact-section__social-links {
@@ -42,8 +42,8 @@
   opacity: 0.8;
 }
 .contact-section__icon {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
 }
 
 /*# sourceMappingURL=contact-section.css.map */

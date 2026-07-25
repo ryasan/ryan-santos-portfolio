@@ -39,12 +39,8 @@
     margin-bottom: 75px;
   }
 }
-.blog-section__title strong {
-  font-weight: 700;
-}
-.blog-section__title em {
-  color: var(--content-color-2);
-  font-weight: 600;
+.blog-section__title span {
+  color: var(--neutral-50);
 }
 .blog-section__word-mask {
   display: inline-block;

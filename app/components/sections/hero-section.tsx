@@ -1,6 +1,5 @@
 import { ArrowRightIcon } from '~/components/icons'
 import { gsap } from 'gsap'
-import { Link } from '@remix-run/react'
 import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { useGSAP } from '@gsap/react'
 import clsx from 'clsx'
@@ -36,17 +35,17 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 			<div className={clsx(`${ns}__container`, 'container')} ref={containerRef}>
 				<div className={`${ns}__content`}>
 					<div className={`${ns}__intro`}>
-						<p className={`${ns}__eyebrow`}>Hello, I&apos;m Ryan.</p>
+						<p className={`${ns}__eyebrow`}>Hello! I&apos;m Ryan.</p>
 						<h1 className={`${ns}__title`}>
-							Developing digital products with emphasis on{' '}
-							<span className={`${ns}__title-accent`}>frontend web</span>
+							Building digital web experiences that{' '}
+							<span className={`${ns}__title-accent`}>people love to use</span>
 						</h1>
 					</div>
 
 					<div className={`${ns}__footer`}>
-						<Link
+						<a
 							className={clsx('button', 'button--l', `${ns}__cta`)}
-							to="#contact"
+							href="mailto:ryansantos.dev@gmail.com"
 						>
 							Let&apos;s Talk
 							<ArrowRightIcon
@@ -56,9 +55,9 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 								height={28}
 								width={28}
 							/>
-						</Link>
+						</a>
 						<p className={`${ns}__description`}>
-							I&apos;m a software engineer harnessing the power of web
+							Frontend Engineer harnessing the power of web
 							technologies to achieve online goals.
 						</p>
 					</div>

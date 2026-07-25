@@ -156,7 +156,7 @@ export default function FeaturedArticlesSection({
 																? `View project: ${article.title}`
 																: 'View project'
 														}
-														className={clsx(`${ns}__link`, 'button')}
+														className={clsx(`${ns}__link`, 'button button--s')}
 														href={article.link || ''}
 														rel="noopener noreferrer"
 														target="_blank"

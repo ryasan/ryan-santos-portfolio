@@ -34,6 +34,16 @@ $ns: '.header';
 		}
 	}
 
+	&__logo-dot {
+		line-height: 1;
+		letter-spacing: -0.025em;
+		color: var(--neutral-40);
+
+		[data-theme='dark'] & {
+			color: var(--neutral-50);
+		}
+	}
+
 	&__navigation-box {
 		display: flex;
 		align-items: center;
@@ -43,18 +53,19 @@ $ns: '.header';
 		display: flex;
 		align-items: center;
 		gap: 16px;
-		margin-right: 64px;
+		margin-right: 32px;
 	}
 
 	&__link {
 		position: relative;
+		font-weight: 600;
 
 		&::before {
 			position: absolute;
 			left: 0;
 			bottom: -4px;
 			content: '';
-			height: 1px;
+			height: 2px;
 			width: 100%;
 			transform: scaleX(0);
 			will-change: transform;
