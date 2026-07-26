@@ -1,3 +1,4 @@
+import ArticleCard from '~/components/article-card'
 import { ArrowRightIcon } from '~/components/icons'
 import { Link } from '@remix-run/react'
 import clsx from 'clsx'
@@ -97,46 +98,13 @@ export default function FeaturedBlogsSection({
 							.map((article) => {
 								if (!article) return null
 
-								const cardContent = (
-									<>
-										<div className={`${ns}__image`}>
-											{article.image && (
-												<img
-													alt={article.image.description || ''}
-													src={article.image.url || ''}
-												/>
-											)}
-										</div>
-										<div className={`${ns}__content`}>
-											{article.title && (
-												<h3 className={`${ns}__card-title`}>{article.title}</h3>
-											)}
-											{typeof article.description === 'string' &&
-												article.description && (
-													<p className={`${ns}__description`}>
-														{article.description}
-													</p>
-												)}
-										</div>
-									</>
-								)
-
-								if (article.link) {
-									return (
-										<Link
-											className={`${ns}__card`}
-											key={article.id}
-											to={article.link}
-										>
-											{cardContent}
-										</Link>
-									)
-								}
-
 								return (
-									<div className={`${ns}__card`} key={article.id}>
-										{cardContent}
-									</div>
+									<ArticleCard
+										className={`${ns}__card`}
+										data={article}
+										forceDescription
+										key={article.id}
+									/>
 								)
 							})}
 					</div>

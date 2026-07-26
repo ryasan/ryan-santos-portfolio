@@ -36,13 +36,18 @@
 }
 .article-grid-section__article-list--grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: 1fr;
+  gap: 40px;
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .article-grid-section__article-list--grid {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+@media (min-width: 1200px) {
+  .article-grid-section__article-list--grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

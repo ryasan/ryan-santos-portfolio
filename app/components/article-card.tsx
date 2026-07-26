@@ -65,17 +65,11 @@ export default function ArticleCard({
 			</div>
 			<div className={`${ns}__content`}>
 				{data.eyebrow && (
-					<p className={clsx(`${ns}__eyebrow`, 'badge mb-12')}>
-						{data.eyebrow}
-					</p>
+					<p className={clsx(`${ns}__eyebrow`, 'badge')}>{data.eyebrow}</p>
 				)}
-				{data.title && (
-					<h3 className={clsx(`${ns}__title`, 'h6 mb-12')}>{data.title}</h3>
-				)}
+				{data.title && <h3 className={`${ns}__title`}>{data.title}</h3>}
 				{data.description && (horizontal || forceDescription) && (
-					<p className={clsx(`${ns}__description`, 'body mb-20')}>
-						{data.description}
-					</p>
+					<p className={`${ns}__description`}>{data.description}</p>
 				)}
 				{data.tags && (
 					<div className={`${ns}__tags`}>
