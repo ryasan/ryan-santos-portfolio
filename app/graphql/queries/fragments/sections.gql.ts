@@ -133,9 +133,12 @@ export const FEATURED_ARTICLES_SECTION_FRAGMENT = gql`
 		subtitle
 		paddingSize
 		jumpLinkLabel
+		type
 		featuredArticlesCollection {
 			items {
+				__typename
 				...ProjectFields
+				...BlogFields
 			}
 		}
 	}

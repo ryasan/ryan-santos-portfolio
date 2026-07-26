@@ -951,6 +951,8 @@ export type BlogLinkingCollections = {
   carouselSectionCursorCollection?: Maybe<CarouselSectionCursorCollection>;
   entryCollection?: Maybe<EntryCollection>;
   entryCursorCollection?: Maybe<EntryCursorCollection>;
+  featuredArticlesSectionCollection?: Maybe<FeaturedArticlesSectionCollection>;
+  featuredArticlesSectionCursorCollection?: Maybe<FeaturedArticlesSectionCursorCollection>;
 };
 
 
@@ -1008,6 +1010,27 @@ export type BlogLinkingCollectionsEntryCollectionArgs = {
 export type BlogLinkingCollectionsEntryCursorCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
+  pageNext?: InputMaybe<Scalars['String']['input']>;
+  pagePrev?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type BlogLinkingCollectionsFeaturedArticlesSectionCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<BlogLinkingCollectionsFeaturedArticlesSectionCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type BlogLinkingCollectionsFeaturedArticlesSectionCursorCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<BlogLinkingCollectionsFeaturedArticlesSectionCursorCollectionOrder>>>;
   pageNext?: InputMaybe<Scalars['String']['input']>;
   pagePrev?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1080,6 +1103,52 @@ export enum BlogLinkingCollectionsCarouselSectionCursorCollectionOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
   TitleAsc = 'title_ASC',
   TitleDesc = 'title_DESC'
+}
+
+export enum BlogLinkingCollectionsFeaturedArticlesSectionCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
+  PaddingSizeAsc = 'paddingSize_ASC',
+  PaddingSizeDesc = 'paddingSize_DESC',
+  SubtitleAsc = 'subtitle_ASC',
+  SubtitleDesc = 'subtitle_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
+}
+
+export enum BlogLinkingCollectionsFeaturedArticlesSectionCursorCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  JumpLinkLabelAsc = 'jumpLinkLabel_ASC',
+  JumpLinkLabelDesc = 'jumpLinkLabel_DESC',
+  PaddingSizeAsc = 'paddingSize_ASC',
+  PaddingSizeDesc = 'paddingSize_DESC',
+  SubtitleAsc = 'subtitle_ASC',
+  SubtitleDesc = 'subtitle_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
 }
 
 export enum BlogOrder {
@@ -2408,6 +2477,7 @@ export type FeaturedArticlesSection = Entry & _Node & {
   subtitle?: Maybe<Scalars['String']['output']>;
   sys: Sys;
   title?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -2415,11 +2485,10 @@ export type FeaturedArticlesSection = Entry & _Node & {
 export type FeaturedArticlesSectionFeaturedArticlesCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<FeaturedArticlesSectionFeaturedArticlesCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
-  where?: InputMaybe<ProjectsFilter>;
+  where?: InputMaybe<FeaturedArticlesSectionFeaturedArticlesFilter>;
 };
 
 
@@ -2427,12 +2496,11 @@ export type FeaturedArticlesSectionFeaturedArticlesCollectionArgs = {
 export type FeaturedArticlesSectionFeaturedArticlesCursorCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<FeaturedArticlesSectionFeaturedArticlesCursorCollectionOrder>>>;
   pageNext?: InputMaybe<Scalars['String']['input']>;
   pagePrev?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
-  where?: InputMaybe<ProjectsFilter>;
+  where?: InputMaybe<FeaturedArticlesSectionFeaturedArticlesFilter>;
 };
 
 
@@ -2476,6 +2544,13 @@ export type FeaturedArticlesSectionTitleArgs = {
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+
+/** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/featuredArticlesSection) */
+export type FeaturedArticlesSectionTypeArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type FeaturedArticlesSectionCollection = {
   __typename?: 'FeaturedArticlesSectionCollection';
   items: Array<Maybe<FeaturedArticlesSection>>;
@@ -2493,62 +2568,40 @@ export type FeaturedArticlesSectionCursorCollection = {
 
 export type FeaturedArticlesSectionFeaturedArticlesCollection = {
   __typename?: 'FeaturedArticlesSectionFeaturedArticlesCollection';
-  items: Array<Maybe<Projects>>;
+  items: Array<Maybe<FeaturedArticlesSectionFeaturedArticlesItem>>;
   limit: Scalars['Int']['output'];
   skip: Scalars['Int']['output'];
   total: Scalars['Int']['output'];
 };
 
-export enum FeaturedArticlesSectionFeaturedArticlesCollectionOrder {
-  CaptionAsc = 'caption_ASC',
-  CaptionDesc = 'caption_DESC',
-  LinkAsc = 'link_ASC',
-  LinkDesc = 'link_DESC',
-  ReleaseDateAsc = 'releaseDate_ASC',
-  ReleaseDateDesc = 'releaseDate_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
-}
-
 export type FeaturedArticlesSectionFeaturedArticlesCursorCollection = {
   __typename?: 'FeaturedArticlesSectionFeaturedArticlesCursorCollection';
-  items: Array<Maybe<Projects>>;
+  items: Array<Maybe<FeaturedArticlesSectionFeaturedArticlesItem>>;
   limit: Scalars['Int']['output'];
   pages: CursorPages;
 };
 
-export enum FeaturedArticlesSectionFeaturedArticlesCursorCollectionOrder {
-  CaptionAsc = 'caption_ASC',
-  CaptionDesc = 'caption_DESC',
-  LinkAsc = 'link_ASC',
-  LinkDesc = 'link_DESC',
-  ReleaseDateAsc = 'releaseDate_ASC',
-  ReleaseDateDesc = 'releaseDate_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
-}
+export type FeaturedArticlesSectionFeaturedArticlesFilter = {
+  AND?: InputMaybe<Array<InputMaybe<FeaturedArticlesSectionFeaturedArticlesFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<FeaturedArticlesSectionFeaturedArticlesFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  title_contains?: InputMaybe<Scalars['String']['input']>;
+  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title_not?: InputMaybe<Scalars['String']['input']>;
+  title_not_contains?: InputMaybe<Scalars['String']['input']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type FeaturedArticlesSectionFeaturedArticlesItem = Blog | Projects;
 
 export type FeaturedArticlesSectionFilter = {
   AND?: InputMaybe<Array<InputMaybe<FeaturedArticlesSectionFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<FeaturedArticlesSectionFilter>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  featuredArticles?: InputMaybe<CfProjectsNestedFilter>;
+  featuredArticles?: InputMaybe<CffeaturedArticlesMultiTypeNestedFilter>;
   featuredArticlesCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   internalName?: InputMaybe<Scalars['String']['input']>;
   internalName_contains?: InputMaybe<Scalars['String']['input']>;
@@ -2586,6 +2639,13 @@ export type FeaturedArticlesSectionFilter = {
   title_not?: InputMaybe<Scalars['String']['input']>;
   title_not_contains?: InputMaybe<Scalars['String']['input']>;
   title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  type_contains?: InputMaybe<Scalars['String']['input']>;
+  type_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  type_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type_not?: InputMaybe<Scalars['String']['input']>;
+  type_not_contains?: InputMaybe<Scalars['String']['input']>;
+  type_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type FeaturedArticlesSectionLinkingCollections = {
@@ -2692,7 +2752,9 @@ export enum FeaturedArticlesSectionOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
   TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
+  TitleDesc = 'title_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
 }
 
 /** [See type definition](https://app.contentful.com/spaces/h4xhjdvwsvf7/content_types/globalFooter) */
@@ -4936,7 +4998,9 @@ export enum ProjectsLinkingCollectionsFeaturedArticlesSectionCollectionOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
   TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
+  TitleDesc = 'title_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
 }
 
 export enum ProjectsLinkingCollectionsFeaturedArticlesSectionCursorCollectionOrder {
@@ -4957,7 +5021,9 @@ export enum ProjectsLinkingCollectionsFeaturedArticlesSectionCursorCollectionOrd
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
   TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
+  TitleDesc = 'title_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC'
 }
 
 export enum ProjectsOrder {
@@ -7213,47 +7279,6 @@ export type CfPersonNestedFilter = {
   sys?: InputMaybe<SysFilter>;
 };
 
-export type CfProjectsNestedFilter = {
-  AND?: InputMaybe<Array<InputMaybe<CfProjectsNestedFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<CfProjectsNestedFilter>>>;
-  caption?: InputMaybe<Scalars['String']['input']>;
-  caption_contains?: InputMaybe<Scalars['String']['input']>;
-  caption_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  caption_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  caption_not?: InputMaybe<Scalars['String']['input']>;
-  caption_not_contains?: InputMaybe<Scalars['String']['input']>;
-  caption_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  desc_contains?: InputMaybe<Scalars['String']['input']>;
-  desc_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  desc_not_contains?: InputMaybe<Scalars['String']['input']>;
-  link?: InputMaybe<Scalars['String']['input']>;
-  link_contains?: InputMaybe<Scalars['String']['input']>;
-  link_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  link_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  link_not?: InputMaybe<Scalars['String']['input']>;
-  link_not_contains?: InputMaybe<Scalars['String']['input']>;
-  link_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  previewImage_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  releaseDate?: InputMaybe<Scalars['DateTime']['input']>;
-  releaseDate_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  releaseDate_gt?: InputMaybe<Scalars['DateTime']['input']>;
-  releaseDate_gte?: InputMaybe<Scalars['DateTime']['input']>;
-  releaseDate_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
-  releaseDate_lt?: InputMaybe<Scalars['DateTime']['input']>;
-  releaseDate_lte?: InputMaybe<Scalars['DateTime']['input']>;
-  releaseDate_not?: InputMaybe<Scalars['DateTime']['input']>;
-  releaseDate_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
-  sys?: InputMaybe<SysFilter>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  title_contains?: InputMaybe<Scalars['String']['input']>;
-  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  title_not?: InputMaybe<Scalars['String']['input']>;
-  title_not_contains?: InputMaybe<Scalars['String']['input']>;
-  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
 export type CfSeoMetaDataNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfSeoMetaDataNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfSeoMetaDataNestedFilter>>>;
@@ -7349,6 +7374,20 @@ export type CfTextRevealItemNestedFilter = {
 export type CfarticlesMultiTypeNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfarticlesMultiTypeNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfarticlesMultiTypeNestedFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  title_contains?: InputMaybe<Scalars['String']['input']>;
+  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title_not?: InputMaybe<Scalars['String']['input']>;
+  title_not_contains?: InputMaybe<Scalars['String']['input']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CffeaturedArticlesMultiTypeNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CffeaturedArticlesMultiTypeNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CffeaturedArticlesMultiTypeNestedFilter>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   sys?: InputMaybe<SysFilter>;
   title?: InputMaybe<Scalars['String']['input']>;
