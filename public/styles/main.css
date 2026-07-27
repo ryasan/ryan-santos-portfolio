@@ -797,9 +797,6 @@ em {
   transform: scaleX(1);
   transform-origin: left center;
 }
-.header__link.active::before {
-  transform: scaleX(1);
-}
 @media (max-width: 768px) {
   .header {
     padding: 24px 0;

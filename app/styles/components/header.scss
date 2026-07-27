@@ -103,12 +103,6 @@ $ns: '.header';
 				transform-origin: left center;
 			}
 		}
-
-		&.active {
-			&::before {
-				transform: scaleX(1);
-			}
-		}
 	}
 
 	@media (max-width: $tablet) {
