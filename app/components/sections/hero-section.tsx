@@ -80,7 +80,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 						</p>
 						<h1 className={`${ns}__title`} ref={titleRef}>
 							Building digital <br /> products & experiences for{' '}
-							<span className={`${ns}__title-accent`}>modern brands</span>
+							<span className={`${ns}__title-accent`}>ambitious brands</span>
 						</h1>
 					</div>
 
