@@ -1,9 +1,12 @@
 import { ArrowRightIcon } from '~/components/icons'
 import { gsap } from 'gsap'
+import { SplitText } from 'gsap/SplitText'
 import { type HeroSection as HeroSectionType } from '~/graphql/__generated/sdk'
 import { useGSAP } from '@gsap/react'
-import clsx from 'clsx'
 import { useRef } from 'react'
+import clsx from 'clsx'
+
+gsap.registerPlugin(SplitText)
 
 const ns = 'hero-section'
 
@@ -13,36 +16,77 @@ type HeroSectionProps = {
 }
 
 export default function HeroSection({ data, id }: HeroSectionProps) {
-	const containerRef = useRef<HTMLDivElement>(null)
+	const sectionRef = useRef<HTMLElement>(null)
+	const eyebrowRef = useRef<HTMLParagraphElement>(null)
+	const titleRef = useRef<HTMLHeadingElement>(null)
+	const footerRef = useRef<HTMLDivElement>(null)
 
-	useGSAP(() => {
-		const container = containerRef.current
+	useGSAP(
+		() => {
+			const eyebrow = eyebrowRef.current
+			const title = titleRef.current
+			const footer = footerRef.current
 
-		if (!container) return
+			SplitText.create(title, {
+				onSplit(self) {
+					gsap.set(title, { visibility: 'visible' })
 
-		gsap.to(container, {
-			duration: 1,
-			ease: 'power2.out',
-			opacity: 1,
-		})
-	}, [])
+					return gsap.fromTo(
+						self.lines,
+						{
+							opacity: 0,
+							x: 50,
+						},
+						{
+							duration: 1.75,
+							ease: 'power4',
+							opacity: 1,
+							stagger: 0.5,
+							x: 0,
+						},
+					)
+				},
+				type: 'lines',
+			})
+
+			gsap.to(eyebrow, {
+				delay: 2,
+				duration: 1.2,
+				ease: 'power3',
+				opacity: 1,
+			})
+
+			gsap.to(footer, {
+				delay: 2,
+				duration: 1.2,
+				ease: 'power3',
+				opacity: 1,
+			})
+		},
+		{ scope: sectionRef },
+	)
 
 	return (
 		<section
 			className={clsx(ns, data?.isTopOfPage && 'is-top-of-page')}
 			id={id}
+			ref={sectionRef}
 		>
-			<div className={clsx(`${ns}__container`, 'container')} ref={containerRef}>
+			<div className={clsx(`${ns}__container`, 'container')}>
 				<div className={`${ns}__content`}>
 					<div className={`${ns}__intro`}>
-						<p className={`${ns}__eyebrow`}>Hello! I&apos;m Ryan.</p>
-						<h1 className={`${ns}__title`}>
-							Building digital web experiences that{' '}
-							<span className={`${ns}__title-accent`}>people love to use</span>
+						<p className={`${ns}__eyebrow`} ref={eyebrowRef}>
+							Hello! I&apos;m Ryan.
+						</p>
+						<h1 className={`${ns}__title`} ref={titleRef}>
+							Building digital web <br /> experiences for{' '}
+							<span className={`${ns}__title-accent`}>people</span>
+							<br />
+							like you
 						</h1>
 					</div>
 
-					<div className={`${ns}__footer`}>
+					<div className={`${ns}__footer`} ref={footerRef}>
 						<a
 							className={clsx('button', 'button--l', `${ns}__cta`)}
 							href="mailto:ryansantos.dev@gmail.com"

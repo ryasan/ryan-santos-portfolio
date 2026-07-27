@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import gsap from 'gsap'
 import { type GlobalHeader } from '~/graphql/__generated/sdk'
 import { LIGHT_THEME, DARK_THEME } from '~/utils/constants'
-import { Link as RemixLink, NavLink } from '@remix-run/react'
+import { Link as RemixLink, NavLink, useLocation } from '@remix-run/react'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
 
@@ -15,17 +15,20 @@ type HeaderProps = {
 
 export default function Header({ data }: HeaderProps) {
 	const headerRef = useRef<HTMLDivElement>(null)
+	const { pathname } = useLocation()
+	const isHomePage = pathname === '/'
 
 	useGSAP(() => {
 		const header = headerRef.current
 		if (!header) return
 
 		gsap.to(header, {
-			duration: 1,
+			delay: isHomePage ? 2 : 0,
+			duration: 1.2,
 			ease: 'power2.out',
 			opacity: 1,
 		})
-	}, [])
+	}, [isHomePage])
 
 	return (
 		<header className={ns} ref={headerRef}>
