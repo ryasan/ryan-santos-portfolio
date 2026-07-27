@@ -79,10 +79,8 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 							Hello! I&apos;m Ryan.
 						</p>
 						<h1 className={`${ns}__title`} ref={titleRef}>
-							Building digital web <br /> experiences for{' '}
-							<span className={`${ns}__title-accent`}>people</span>
-							<br />
-							<span className={`${ns}__title-accent`}>like you</span>
+							Building digital web <br /> products & experiences for{' '}
+							<span className={`${ns}__title-accent`}>modern brands</span>
 						</h1>
 					</div>
 
