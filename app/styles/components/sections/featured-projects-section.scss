@@ -148,4 +148,8 @@ $ns: '.featured-projects-section';
 	&__link {
 		margin-top: auto;
 	}
+
+	&__link-icon {
+		flex-shrink: 0;
+	}
 }

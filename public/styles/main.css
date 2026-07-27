@@ -1915,6 +1915,9 @@ em {
 .featured-projects-section__link {
   margin-top: auto;
 }
+.featured-projects-section__link-icon {
+  flex-shrink: 0;
+}
 
 .featured-blogs-section__header {
   display: flex;

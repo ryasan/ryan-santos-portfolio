@@ -1,4 +1,5 @@
 import RichText from '~/components/rich-text'
+import { ArrowRightIcon } from '~/components/icons'
 import clsx from 'clsx'
 import { type FeaturedArticlesSection as FeaturedArticlesSectionType } from '~/graphql/__generated/sdk'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -162,6 +163,13 @@ export default function FeaturedProjectsSection({
 														target="_blank"
 													>
 														View Project
+														<ArrowRightIcon
+															aria-hidden
+															className={`${ns}__link-icon`}
+															fill="currentColor"
+															height={24}
+															width={24}
+														/>
 													</a>
 												)}
 											</div>
