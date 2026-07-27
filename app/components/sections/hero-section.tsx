@@ -82,7 +82,7 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 							Building digital web <br /> experiences for{' '}
 							<span className={`${ns}__title-accent`}>people</span>
 							<br />
-							like you
+							<span className={`${ns}__title-accent`}>like you</span>
 						</h1>
 					</div>
 
