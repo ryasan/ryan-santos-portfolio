@@ -5,6 +5,9 @@
   display: flex;
   align-items: center;
 }
+.hero-section.is-top-of-page {
+  padding-top: 90px;
+}
 @media (max-width: 768px) {
   .hero-section {
     padding: 40px 0;

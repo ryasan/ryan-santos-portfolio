@@ -9,6 +9,10 @@ $ns: '.hero-section';
 	display: flex;
 	align-items: center;
 
+	&.is-top-of-page {
+		padding-top: 90px;
+	}
+
 	@media (max-width: $tablet) {
 		padding: 40px 0;
 	}
