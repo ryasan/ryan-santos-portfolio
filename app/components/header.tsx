@@ -1,11 +1,14 @@
 import ThemeToggle from '~/components/theme-toggle'
 import clsx from 'clsx'
 import gsap from 'gsap'
+import { DownloadSimpleIcon } from '~/components/icons'
 import { type GlobalHeader } from '~/graphql/__generated/sdk'
 import { LIGHT_THEME, DARK_THEME } from '~/utils/constants'
 import { Link as RemixLink, NavLink, useLocation } from '@remix-run/react'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
+
+const RESUME_HREF = '/Ryan%20Santos%20Software%20Engineer%20Resume.pdf'
 
 const ns = 'header'
 
@@ -46,6 +49,19 @@ export default function Header({ data }: HeaderProps) {
 							</span>
 						</div>
 					</RemixLink>
+					<a
+						aria-label="View resume"
+						className={clsx(`${ns}__link`, `${ns}__resume`, 'link')}
+						href={RESUME_HREF}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						Resume
+						<DownloadSimpleIcon
+							aria-hidden="true"
+							className={`${ns}__resume-icon`}
+						/>
+					</a>
 					<div className={`${ns}__navigation-box`}>
 						<nav className={`${ns}__navigation`}>
 							{data?.menuItemsCollection?.items?.map((item) => {

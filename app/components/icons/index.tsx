@@ -5,6 +5,7 @@ import AtomIcon from './icon-atom'
 import CloseIcon from './icon-close'
 import CodepenIcon from './icon-codepen'
 import CopySimpleIcon from './icon-copy-simple'
+import DownloadSimpleIcon from './icon-download-simple'
 import EnvelopeIcon from './icon-envelope'
 import FacebookIcon from './icon-facebook'
 import GithubIcon from './icon-github'
@@ -31,6 +32,7 @@ export {
 	CloseIcon,
 	CodepenIcon,
 	CopySimpleIcon,
+	DownloadSimpleIcon,
 	EnvelopeIcon,
 	FacebookIcon,
 	GithubIcon,
