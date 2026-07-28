@@ -26,7 +26,7 @@ export default function Header({ data }: HeaderProps) {
 		if (!header) return
 
 		gsap.to(header, {
-			delay: isHomePage ? 2 : 0,
+			delay: isHomePage ? 2.5 : 0,
 			duration: 1.2,
 			ease: 'power2.out',
 			opacity: 1,
@@ -49,7 +49,7 @@ export default function Header({ data }: HeaderProps) {
 							</span>
 						</div>
 					</RemixLink>
-					<a
+					{/* <a
 						aria-label="View resume"
 						className={clsx(`${ns}__link`, `${ns}__resume`, 'link')}
 						href={RESUME_HREF}
@@ -61,7 +61,7 @@ export default function Header({ data }: HeaderProps) {
 							aria-hidden="true"
 							className={`${ns}__resume-icon`}
 						/>
-					</a>
+					</a> */}
 					<div className={`${ns}__navigation-box`}>
 						<nav className={`${ns}__navigation`}>
 							{data?.menuItemsCollection?.items?.map((item) => {

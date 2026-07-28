@@ -27,9 +27,9 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 			const title = titleRef.current
 			const footer = footerRef.current
 
-			SplitText.create(title, {
+			SplitText.create(eyebrow, {
 				onSplit(self) {
-					gsap.set(title, { visibility: 'visible' })
+					gsap.set(eyebrow, { visibility: 'visible' })
 
 					return gsap.fromTo(
 						self.lines,
@@ -41,6 +41,28 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 							duration: 1.75,
 							ease: 'power4',
 							opacity: 1,
+							x: 0,
+						},
+					)
+				},
+				type: 'lines',
+			})
+
+			SplitText.create(title, {
+				onSplit(self) {
+					gsap.set(title, { visibility: 'visible' })
+
+					return gsap.fromTo(
+						self.lines,
+						{
+							opacity: 0,
+							x: 75,
+						},
+						{
+							delay: 0.5,
+							duration: 1.75,
+							ease: 'power4',
+							opacity: 1,
 							stagger: 0.5,
 							x: 0,
 						},
@@ -49,15 +71,8 @@ export default function HeroSection({ data, id }: HeroSectionProps) {
 				type: 'lines',
 			})
 
-			gsap.to(eyebrow, {
-				delay: 2,
-				duration: 1.2,
-				ease: 'power3',
-				opacity: 1,
-			})
-
 			gsap.to(footer, {
-				delay: 2,
+				delay: 2.5,
 				duration: 1.2,
 				ease: 'power3',
 				opacity: 1,

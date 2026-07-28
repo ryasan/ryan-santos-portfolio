@@ -45,8 +45,8 @@
   line-height: 120%;
   letter-spacing: 0.03em;
   color: var(--content-color);
-  opacity: 0;
-  will-change: opacity;
+  will-change: opacity, transform;
+  visibility: hidden;
 }
 .hero-section__title {
   margin: 0;

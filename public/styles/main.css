@@ -721,8 +721,8 @@ em {
   z-index: 230;
 }
 .header__inner {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 .header__logo {
@@ -1606,8 +1606,8 @@ em {
   line-height: 120%;
   letter-spacing: 0.03em;
   color: var(--content-color);
-  opacity: 0;
-  will-change: opacity;
+  will-change: opacity, transform;
+  visibility: hidden;
 }
 .hero-section__title {
   margin: 0;

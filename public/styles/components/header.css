@@ -12,8 +12,8 @@
   z-index: 230;
 }
 .header__inner {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 .header__logo {
